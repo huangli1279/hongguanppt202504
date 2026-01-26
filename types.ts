@@ -312,3 +312,15 @@ export interface DepositFlowDataPoint {
     household: number; // 100M RMB
     nonBank: number;
 }
+
+export interface IndustrialFinancialTableData {
+    title: string;
+    source: string;
+    unit: string;
+    months: string[];
+    revenue: number[];
+    cost: number[];
+    operatingProfit: number[];
+    totalProfit: number[];
+    investmentIncome: number[];
+}

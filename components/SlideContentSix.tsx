@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { ProfitBridgeChart } from './ProfitBridgeChart';
+import { IndustrialFinancialTable } from './IndustrialFinancialTable';
 import { InventoryCycleChart } from './InventoryCycleChart';
-import { profitBridgeData, inventoryCycleData } from '../data';
+import { industrialFinancialTableData, inventoryCycleData } from '../data';
 import { TrendingDown, BarChart4, Archive, Clock } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => (
@@ -58,9 +58,9 @@ export const SlideContentSix: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
+      <section className="grid grid-cols-2 gap-10 h-64">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ProfitBridgeChart data={profitBridgeData} />
+          <IndustrialFinancialTable data={industrialFinancialTableData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
           <InventoryCycleChart data={inventoryCycleData} />

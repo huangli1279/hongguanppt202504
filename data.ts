@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData } from './types';
 
 // Slide 1 Data
 
@@ -134,6 +134,18 @@ export const profitBridgeData: ProfitBridgeDataPoint[] = [
   { name: '投资收益错位', value: -6.4, fill: '#94a3b8' }, // The specific callout
   { name: '利润总额', value: -13.1, fill: '#ef4444', isTotal: true }, // The headline number
 ];
+
+export const industrialFinancialTableData: IndustrialFinancialTableData = {
+  title: "2025年工业企业主要财务指标月度数据",
+  source: "根据国家统计局累计数据计算得出",
+  unit: "亿元",
+  months: ["3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月"],
+  revenue: [120450.7, 113023.4, 113176.9, 120195.7, 112911.4, 115528.6, 124614.8, 112845.9, 119702.5],
+  cost: [103369.9, 97228.1, 97197.5, 102399.1, 96828.0, 98918.7, 106465.2, 96594.3, 101652.1],
+  operatingProfit: [5854.1, 5909.2, 5971.1, 7043.3, 5716.5, 6608.0, 6690.4, 5635.9, 6666.8],
+  totalProfit: [5983.7, 6076.6, 6034.1, 7160.7, 5838.5, 6726.2, 6802.3, 5770.9, 6765.7],
+  investmentIncome: [589.7, 635.4, 1019.3, 1838.6, 723.8, 1255.3, 930.0, 753.9, 574.8]
+};
 
 export const inventoryCycleData: InventoryCycleDataPoint[] = [
   { month: '1月', nominal: 2.1, real: 4.5, days: 68.1 },
