@@ -1,7 +1,6 @@
 import React from 'react';
 import { DemandContributionChart } from './DemandContributionChart';
-import { ThreeCarriagesChart } from './ThreeCarriagesChart';
-import { demandStructureData, threeCarriagesData } from '../data';
+import { threeCarriagesContributionData } from '../data';
 import { Globe, ShoppingCart, Briefcase, TrendingDown, ArrowRight } from 'lucide-react';
 
 const InsightColumn = ({ title, highlight, children, icon: Icon, type, delay }: { title: string, highlight?: string, children?: React.ReactNode, icon: any, type: 'strong' | 'weak' | 'stable', delay: string }) => {
@@ -67,12 +66,9 @@ export const SlideContentThree: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-            <DemandContributionChart data={demandStructureData} />
-         </div>
-         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-            <ThreeCarriagesChart data={threeCarriagesData} />
+      <section className="flex-grow flex justify-center min-h-0">
+         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-2/3" style={{ animationDelay: '500ms' }}>
+            <DemandContributionChart data={threeCarriagesContributionData} />
          </div>
       </section>
 

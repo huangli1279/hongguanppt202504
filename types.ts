@@ -40,6 +40,13 @@ export interface DemandStructureData {
   fill: string;
 }
 
+export interface ThreeCarriagesContributionDataPoint {
+  period: string;
+  consumption: number;
+  investment: number;
+  netExport: number;
+}
+
 export interface GrowthIndicatorData {
   name: string;
   value: number;
