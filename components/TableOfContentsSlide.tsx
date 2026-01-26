@@ -46,7 +46,7 @@ export const TableOfContentsSlide: React.FC = () => {
 
        <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
+        
       </footer>
 
       <style>{`

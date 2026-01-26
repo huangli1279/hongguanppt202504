@@ -17,7 +17,7 @@ export const SectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle })
 
       <div className="z-10 text-center animate-fade-in-up max-w-4xl px-8">
         <div className="text-webank-lightBlue font-serif text-2xl mb-6 font-bold tracking-[0.2em] border-b border-webank-lightBlue/50 inline-block pb-2">
-          SECTION {id}
+          章节 {id}
         </div>
         <h1 className="text-7xl font-serif font-bold mb-8 text-white leading-tight">
           {title}

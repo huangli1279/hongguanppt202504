@@ -42,9 +42,6 @@ export const SlideContentTwentyOne: React.FC = () => {
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             土地与债务：财政平衡术
           </span>
-          <span className="text-xs text-slate-400">
-             数据来源：财政部
-          </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
           土地出让收入降幅扩大至10.7%，<br/>
@@ -86,7 +83,7 @@ export const SlideContentTwentyOne: React.FC = () => {
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
+        
       </footer>
 
       {/* Animation Styles Reuse */}

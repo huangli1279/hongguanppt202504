@@ -31,9 +31,6 @@ export const SlideContent: React.FC = () => {
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             2025年度宏观经济报告
           </span>
-          <span className="text-xs text-slate-400">
-             数据来源：国家统计局
-          </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-3/4">
           2025年GDP实现5.0%增长圆满收官“十四五”，<br/>
@@ -83,7 +80,7 @@ export const SlideContent: React.FC = () => {
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
+        
       </footer>
 
       {/* Styles for simple animations */}

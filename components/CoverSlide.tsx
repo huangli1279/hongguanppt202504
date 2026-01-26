@@ -21,9 +21,9 @@ export const CoverSlide: React.FC = () => {
 
         {/* Main Title */}
         <h1 className="text-6xl font-serif font-bold leading-tight mb-8">
-          2025年度<br/>
+          2025年第四季度<br/>
           <span className="text-webank-lightBlue">中国宏观经济运行</span><br/>
-          深度分析报告
+          分析报告
         </h1>
 
         {/* Subtitle */}
@@ -36,7 +36,7 @@ export const CoverSlide: React.FC = () => {
 
       {/* Footer / Date */}
       <div className="absolute bottom-12 left-24 text-slate-400 font-mono text-sm">
-        2026年1月 · Confidential
+        2026年1月
       </div>
       
       <style>{`
