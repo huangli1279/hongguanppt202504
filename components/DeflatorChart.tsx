@@ -116,7 +116,6 @@ export const DeflatorChart: React.FC<Props> = ({ data }) => {
               stroke="#94a3b8" // Slate 400
               strokeWidth={2}
               dot={false}
-              strokeDasharray="5 5"
               animationDuration={2000}
             />
             <Line
