@@ -23,8 +23,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue">PPI环比: {payload[0].value}%</p>
-        <p className="text-webank-lightBlue">生产资料PPI环比: {payload[1].value}%</p>
+        <p className="text-webank-blue">PPI同比: {payload[0]?.value}%</p>
+        <p className="text-webank-lightBlue">生产资料PPI同比: {payload[1]?.value}%</p>
+        <p className="text-slate-500">生活资料PPI同比: {payload[2]?.value}%</p>
       </div>
     );
   }
@@ -36,10 +37,10 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年PPI及生产资料PPI环比走势
+          2025年PPI及生产/生活资料PPI同比走势
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          10月起连续3个月正增长，价格弹性显著修复
+          全年PPI同比维持负增长，生产资料价格跌幅大于生活资料
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -56,9 +57,6 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
             
-            {/* Annotation for Q4 Turnaround */}
-            <ReferenceLine x="10月" stroke="#ef4444" strokeDasharray="3 3" label={{ value: '拐点', position: 'top', fill: '#ef4444', fontSize: 10 }} />
-
             <XAxis 
               dataKey="month" 
               axisLine={{ stroke: '#e5e7eb' }} 
@@ -71,7 +69,8 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[-0.5, 0.5]}
+              domain={[-5, 2]}
+              ticks={[-5, -4, -3, -2, -1, 0, 1, 2]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -80,21 +79,31 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
               iconSize={8}
             />
             
-            <Bar
-              name="PPI环比"
+            <Line
+              name="PPI同比"
+              type="monotone"
               dataKey="ppi"
-              fill="#051c2c"
-              barSize={20}
-              radius={[2, 2, 0, 0]}
+              stroke="#051c2c"
+              strokeWidth={3}
+              dot={{ r: 4, fill: '#051c2c' }}
               animationDuration={1500}
             />
             <Line
-              name="生产资料PPI环比"
+              name="生产资料PPI同比"
               type="monotone"
               dataKey="productionMaterials"
               stroke="#00a9f4"
-              strokeWidth={3}
+              strokeWidth={2}
               dot={{ r: 3, fill: '#00a9f4' }}
+              animationDuration={2000}
+            />
+            <Line
+              name="生活资料PPI同比"
+              type="monotone"
+              dataKey="livingMaterials"
+              stroke="#94a3b8"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#94a3b8' }}
               animationDuration={2000}
             />
           </ComposedChart>

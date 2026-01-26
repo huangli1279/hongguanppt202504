@@ -103,6 +103,7 @@ export interface PpiTrendDataPoint {
   month: string;
   ppi: number;
   productionMaterials: number;
+  livingMaterials: number;
 }
 
 export interface IndustryPriceDataPoint {

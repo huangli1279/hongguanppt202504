@@ -220,18 +220,18 @@ export const inventoryCycleData: InventoryCycleDataPoint[] = [
 
 // Slide 7 Data
 export const ppiTrendData: PpiTrendDataPoint[] = [
-  { month: '1月', ppi: -0.2, productionMaterials: -0.3 },
-  { month: '2月', ppi: -0.2, productionMaterials: -0.3 },
-  { month: '3月', ppi: -0.1, productionMaterials: -0.2 },
-  { month: '4月', ppi: -0.2, productionMaterials: -0.3 },
-  { month: '5月', ppi: -0.3, productionMaterials: -0.4 },
-  { month: '6月', ppi: -0.2, productionMaterials: -0.3 },
-  { month: '7月', ppi: -0.2, productionMaterials: -0.3 },
-  { month: '8月', ppi: -0.1, productionMaterials: -0.1 },
-  { month: '9月', ppi: 0.0, productionMaterials: 0.0 }, // Stabilizing
-  { month: '10月', ppi: 0.1, productionMaterials: 0.2 }, // Turning point
-  { month: '11月', ppi: 0.1, productionMaterials: 0.1 },
-  { month: '12月', ppi: 0.2, productionMaterials: 0.3 }, // Strong finish
+  { month: '1月', ppi: -2.3, productionMaterials: -2.6, livingMaterials: -1.2 },
+  { month: '2月', ppi: -2.2, productionMaterials: -2.5, livingMaterials: -1.2 },
+  { month: '3月', ppi: -2.5, productionMaterials: -2.8, livingMaterials: -1.5 },
+  { month: '4月', ppi: -2.7, productionMaterials: -3.1, livingMaterials: -1.6 },
+  { month: '5月', ppi: -3.3, productionMaterials: -4.0, livingMaterials: -1.4 },
+  { month: '6月', ppi: -3.6, productionMaterials: -4.4, livingMaterials: -1.4 },
+  { month: '7月', ppi: -3.6, productionMaterials: -4.4, livingMaterials: -1.4 },
+  { month: '8月', ppi: -2.9, productionMaterials: -3.2, livingMaterials: -1.7 },
+  { month: '9月', ppi: -2.3, productionMaterials: -2.4, livingMaterials: -1.7 },
+  { month: '10月', ppi: -2.1, productionMaterials: -2.4, livingMaterials: -1.4 },
+  { month: '11月', ppi: -2.2, productionMaterials: -2.4, livingMaterials: -1.5 },
+  { month: '12月', ppi: -1.9, productionMaterials: -2.1, livingMaterials: -1.3 },
 ];
 
 export const industryPriceData: IndustryPriceDataPoint[] = [
