@@ -20,37 +20,37 @@ export const IndustrialFinancialTable: React.FC<IndustrialFinancialTableProps> =
       </div>
 
       {/* Table */}
-      <div className="flex-grow overflow-auto">
-        <table className="w-full text-[10px] border-collapse">
+      <div className="flex-grow overflow-hidden">
+        <table className="w-full text-xs border-collapse">
           <thead>
             <tr className="bg-webank-blue text-white">
-              <th className="border border-slate-300 px-2 py-2 text-center font-bold">月份</th>
-              <th className="border border-slate-300 px-2 py-2 text-center font-bold whitespace-nowrap">营业收入</th>
-              <th className="border border-slate-300 px-2 py-2 text-center font-bold whitespace-nowrap">营业成本</th>
-              <th className="border border-slate-300 px-2 py-2 text-center font-bold whitespace-nowrap">营业利润</th>
-              <th className="border border-slate-300 px-2 py-2 text-center font-bold whitespace-nowrap">利润总额</th>
-              <th className="border border-slate-300 px-2 py-2 text-center font-bold whitespace-nowrap">投资收益</th>
+              <th className="border border-slate-300 px-3 py-1.5 text-center font-bold">月份</th>
+              <th className="border border-slate-300 px-3 py-1.5 text-center font-bold whitespace-nowrap">营业收入</th>
+              <th className="border border-slate-300 px-3 py-1.5 text-center font-bold whitespace-nowrap">营业成本</th>
+              <th className="border border-slate-300 px-3 py-1.5 text-center font-bold whitespace-nowrap">营业利润</th>
+              <th className="border border-slate-300 px-3 py-1.5 text-center font-bold whitespace-nowrap">利润总额</th>
+              <th className="border border-slate-300 px-3 py-1.5 text-center font-bold whitespace-nowrap">投资收益</th>
             </tr>
           </thead>
           <tbody>
             {data.months.map((month, idx) => (
               <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                <td className="border border-slate-300 px-2 py-2 text-center font-semibold bg-slate-100">
+                <td className="border border-slate-300 px-3 py-1.5 text-center font-semibold bg-slate-100">
                   {month}
                 </td>
-                <td className="border border-slate-300 px-2 py-2 text-right">
+                <td className="border border-slate-300 px-3 py-1.5 text-right">
                   {formatNumber(data.revenue[idx])}
                 </td>
-                <td className="border border-slate-300 px-2 py-2 text-right">
+                <td className="border border-slate-300 px-3 py-1.5 text-right">
                   {formatNumber(data.cost[idx])}
                 </td>
-                <td className="border border-slate-300 px-2 py-2 text-right">
+                <td className="border border-slate-300 px-3 py-1.5 text-right">
                   {formatNumber(data.operatingProfit[idx])}
                 </td>
-                <td className="border border-slate-300 px-2 py-2 text-right">
+                <td className="border border-slate-300 px-3 py-1.5 text-right">
                   {formatNumber(data.totalProfit[idx])}
                 </td>
-                <td className="border border-slate-300 px-2 py-2 text-right">
+                <td className="border border-slate-300 px-3 py-1.5 text-right">
                   {formatNumber(data.investmentIncome[idx])}
                 </td>
               </tr>
