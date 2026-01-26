@@ -8,14 +8,14 @@ import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPo
 // Slide 1 Data
 
 export const gdpTrendData: GdpDataPoint[] = [
-  { period: '24Q1', value: 5.3 },
-  { period: '24Q2', value: 4.7 },
-  { period: '24Q3', value: 4.6 },
-  { period: '24Q4', value: 5.2 },
-  { period: '25Q1', value: 5.4 },
-  { period: '25Q2', value: 5.2 },
-  { period: '25Q3', value: 4.8 },
-  { period: '25Q4', value: 4.5 },
+  { period: '24Q1', value: 5.3, nominal: 4.16 },
+  { period: '24Q2', value: 4.7, nominal: 3.9 },
+  { period: '24Q3', value: 4.6, nominal: 3.96 },
+  { period: '24Q4', value: 5.4, nominal: 4.56 },
+  { period: '25Q1', value: 5.4, nominal: 4.58 },
+  { period: '25Q2', value: 5.2, nominal: 3.9 },
+  { period: '25Q3', value: 4.8, nominal: 3.71 },
+  { period: '25Q4', value: 4.5, nominal: 3.85 },
 ];
 
 export const deflatorData: DeflatorDataPoint[] = [

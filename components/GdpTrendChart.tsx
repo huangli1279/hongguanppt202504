@@ -2,12 +2,14 @@ import React from 'react';
 import {
   AreaChart,
   Area,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LabelList
+  LabelList,
+  Legend
 } from 'recharts';
 import { GdpDataPoint } from '../types';
 
@@ -20,9 +22,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue">{label}</p>
-        <p className="text-webank-accent">
-          GDP增速: {payload[0].value}%
-        </p>
+        {payload.map((entry: any, index: number) => (
+            <p key={index} style={{ color: entry.color }}>
+                {entry.name}: {entry.value}%
+            </p>
+        ))}
       </div>
     );
   }
@@ -34,10 +38,10 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          季度GDP当季同比增速 (2024-2025)
+          2024Q1-2025Q4季度GDP当季同比增速走势图
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          2025年呈现“前高后低”走势，Q4回落至4.5%
+          单位：%
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -67,10 +71,13 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
             />
             <YAxis 
               hide={true} 
-              domain={[3, 6]}
+              domain={[0, 8]}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#cbd5e1', strokeWidth: 1 }} />
+            <Legend iconType="circle" wrapperStyle={{ fontSize: '10px' }} />
+            
             <Area
+              name="GDP不变价"
               type="monotone"
               dataKey="value"
               stroke="#005c8f"
@@ -83,9 +90,28 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
                   position="top" 
                   offset={10} 
                   formatter={(val: number) => `${val}%`}
-                  style={{ fill: '#051c2c', fontSize: '11px', fontWeight: 600 }}
+                  style={{ fill: '#005c8f', fontSize: '11px', fontWeight: 600 }}
                 />
             </Area>
+
+            <Line
+              name="GDP现价"
+              type="monotone"
+              dataKey="nominal"
+              stroke="#ef4444"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#ef4444' }}
+              animationDuration={1500}
+            >
+                <LabelList 
+                  dataKey="nominal" 
+                  position="bottom" 
+                  offset={10} 
+                  formatter={(val: number) => `${val}%`}
+                  style={{ fill: '#ef4444', fontSize: '10px' }}
+                />
+            </Line>
+
           </AreaChart>
         </ResponsiveContainer>
       </div>

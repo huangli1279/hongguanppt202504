@@ -3,6 +3,7 @@
 export interface GdpDataPoint {
   period: string;
   value: number;
+  nominal?: number;
   isForecast?: boolean;
 }
 
