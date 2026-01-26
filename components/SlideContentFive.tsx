@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { IndustrialTrendChart } from './IndustrialTrendChart';
-import { KeyIndustryComparisonChart } from './KeyIndustryComparisonChart';
-import { industrialTrendData, keyIndustryData } from '../data';
+import { industrialTrendData } from '../data';
 import { Rocket, Anchor, AlertCircle, BarChart2 } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
@@ -32,7 +31,7 @@ export const SlideContentFive: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          Q4工业增加值增速回升至5.2%，<span className="text-webank-accent">装备与高技术制造业维持全年高增</span>
+          2025年规模以上工业增加值同比增速走势，<span className="text-webank-accent">年末增速回落至1%以下</span>
         </h1>
       </header>
 
@@ -40,7 +39,7 @@ export const SlideContentFive: React.FC = () => {
       <section className="grid grid-cols-3 gap-6 mb-8 h-32">
          <InsightBox title="总量运行轨迹" icon={BarChart2} delay="100ms">
            <p>
-             全年规上工业增加值增长 <span className="font-bold">5.9%</span>。Q4呈现回升态势：10-11月分别为4.9%和4.8%，12月在政策带动下显著回升至 <span className="font-bold">5.2%</span>。
+             2025年规上工业增加值增速呈现前高后低态势。上半年维持在5%以上，下半年受需求偏弱及基数影响持续回落，12月降至 <span className="font-bold">0.86%</span>。
            </p>
          </InsightBox>
 
@@ -59,12 +58,9 @@ export const SlideContentFive: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+      <section className="flex-grow flex justify-center min-h-0">
+        <div className="bg-white rounded-sm w-full max-w-4xl opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <IndustrialTrendChart data={industrialTrendData} />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <KeyIndustryComparisonChart data={keyIndustryData} />
         </div>
       </section>
 

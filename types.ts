@@ -76,7 +76,7 @@ export interface PmiSizeTrendDataPoint {
 export interface IndustrialTrendDataPoint {
   month: string;
   yoy: number;
-  mom: number;
+  mom?: number;
 }
 
 export interface KeyIndustryDataPoint {
@@ -197,7 +197,17 @@ export interface InvestmentStructureDataPoint {
     category: string;
     value: number;
     fill: string;
-    description: string;
+    description?: string;
+}
+
+export interface IndustryGrowthTableData {
+  title: string;
+  source: string;
+  unit: string;
+  timeSeries: string[];
+  industryData: {
+    [key: string]: (number | null)[];
+  };
 }
 
 export interface HighTechInvestmentDataPoint {
