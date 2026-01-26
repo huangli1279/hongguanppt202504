@@ -20,7 +20,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         <p className="text-red-500 font-bold">
           累计增速: {payload[0].value}%
         </p>
@@ -34,10 +34,10 @@ export const FaiTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年固定资产投资(不含农户)累计同比增速
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           四季度下行斜率显著加大，全年累计下降3.8%
         </p>
       </div>

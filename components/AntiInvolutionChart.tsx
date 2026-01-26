@@ -22,10 +22,10 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         <p className="text-slate-500">10月: {payload[0].value}%</p>
         <p className="text-slate-600">11月: {payload[1].value}%</p>
-        <p className="text-mckinsey-blue font-bold">12月: {payload[2].value}%</p>
+        <p className="text-webank-blue font-bold">12月: {payload[2].value}%</p>
       </div>
     );
   }
@@ -36,10 +36,10 @@ export const AntiInvolutionChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           重点行业价格环比变化追踪 (2025 Q4)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           锂电、水泥等“反内卷”重点领域价格连续回升，新能源车价格止跌转涨
         </p>
       </div>

@@ -19,8 +19,8 @@ export const TableOfContentsSlide: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-2 bg-slate-200"></div>
 
       <header className="mb-10 animate-fade-in">
-        <h1 className="text-4xl font-serif font-bold text-mckinsey-blue">目录</h1>
-        <p className="text-mckinsey-subtext mt-2 text-sm uppercase tracking-widest">Table of Contents</p>
+        <h1 className="text-4xl font-serif font-bold text-webank-blue">目录</h1>
+        <p className="text-webank-subtext mt-2 text-sm uppercase tracking-widest">Table of Contents</p>
       </header>
 
       <div className="grid grid-cols-2 gap-x-12 gap-y-6 flex-grow content-start">
@@ -30,22 +30,22 @@ export const TableOfContentsSlide: React.FC = () => {
             className="flex items-start gap-4 p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors duration-300 opacity-0 animate-fade-in-up fill-mode-forwards"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className="text-2xl font-bold text-mckinsey-lightBlue opacity-50 font-serif">
+            <div className="text-2xl font-bold text-webank-lightBlue opacity-50 font-serif">
               {item.id}
             </div>
             <div className="flex-grow">
               <div className="flex items-center gap-2 mb-1">
-                <item.icon size={16} className="text-mckinsey-blue" />
-                <h3 className="text-lg font-bold text-mckinsey-blue">{item.title}</h3>
+                <item.icon size={16} className="text-webank-blue" />
+                <h3 className="text-lg font-bold text-webank-blue">{item.title}</h3>
               </div>
-              <p className="text-xs text-mckinsey-subtext pl-6">{item.desc}</p>
+              <p className="text-xs text-webank-subtext pl-6">{item.desc}</p>
             </div>
           </div>
         ))}
       </div>
 
        <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
-        <span>McKinsey Global Institute Analysis</span>
+        <span>个金管理部-数据管理室</span>
         <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
       </footer>
 

@@ -6,15 +6,15 @@ import { moneySupplyData, m1RealEstateData } from '../data';
 import { Split, AlertOctagon, Landmark, Briefcase } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
-    let borderColor = 'border-mckinsey-blue';
-    let iconColor = 'text-mckinsey-blue';
+    let borderColor = 'border-webank-blue';
+    let iconColor = 'text-webank-blue';
     
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
     } else if (highlight) {
-        borderColor = 'border-mckinsey-lightBlue';
-        iconColor = 'text-mckinsey-lightBlue';
+        borderColor = 'border-webank-lightBlue';
+        iconColor = 'text-webank-lightBlue';
     }
 
     return (
@@ -23,7 +23,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
                 <Icon size={18} />
                 <h4 className="font-bold text-sm uppercase">{title}</h4>
             </div>
-            <div className="text-xs text-mckinsey-text leading-relaxed">
+            <div className="text-xs text-webank-text leading-relaxed">
                 {children}
             </div>
         </div>
@@ -40,16 +40,16 @@ export const SlideContentTwentyTwo: React.FC = () => {
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
-          <span className="text-xs font-bold text-mckinsey-subtext uppercase tracking-widest">
+          <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             货币供应：M1与M2剪刀差极度走阔
           </span>
           <span className="text-xs text-slate-400">
              数据来源：中国人民银行
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-mckinsey-blue leading-tight w-11/12">
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
           12月M1增速滑落至3.8%创新低，<br/>
-          <span className="text-mckinsey-accent">M2-M1剪刀差扩至4.7%警示资金“定期化”</span>
+          <span className="text-webank-accent">M2-M1剪刀差扩至4.7%警示资金“定期化”</span>
         </h1>
       </header>
 
@@ -86,7 +86,7 @@ export const SlideContentTwentyTwo: React.FC = () => {
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
-        <span>McKinsey Global Institute Analysis</span>
+        <span>个金管理部-数据管理室</span>
         <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
       </footer>
 

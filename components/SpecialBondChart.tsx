@@ -21,9 +21,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue">当月发行: {payload[0].value}亿元</p>
-        <p className="text-mckinsey-lightBlue font-bold">发行进度: {payload[1].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue">当月发行: {payload[0].value}亿元</p>
+        <p className="text-webank-lightBlue font-bold">发行进度: {payload[1].value}%</p>
       </div>
     );
   }
@@ -34,10 +34,10 @@ export const SpecialBondChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年新增专项债发行规模及进度
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           Q4发行显著提速，截至11月进度已超100%，有效支撑财政支出
         </p>
       </div>

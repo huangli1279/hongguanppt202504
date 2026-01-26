@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((p: any, index: number) => (
           <p key={index} style={{ color: p.color }}>
             {p.name}: {p.value}%
@@ -40,10 +40,10 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年1-12月制造业PMI及核心指数走势
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           12月PMI重回扩张区间(50.1%)，生产指数与新订单指数同步大幅改善
         </p>
       </div>

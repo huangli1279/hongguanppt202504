@@ -20,7 +20,7 @@ export const IndustryGrowthChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-2">
-        <h3 className="text-xs font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025 Q4 三大产业增加值增速
         </h3>
       </div>

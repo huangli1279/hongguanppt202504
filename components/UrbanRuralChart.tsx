@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((p: any, index: number) => (
           <p key={index} style={{ color: p.color }}>
             {p.name}: {p.value}%
@@ -40,10 +40,10 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年城乡消费品零售额累计同比增速
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           乡村市场韧性持续强于城镇，12月累计增速差距扩大
         </p>
       </div>

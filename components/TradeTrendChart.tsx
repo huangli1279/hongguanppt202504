@@ -21,9 +21,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue font-bold">出口: {payload[0].value}%</p>
-        <p className="text-mckinsey-lightBlue">进口: {payload[1].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue font-bold">出口: {payload[0].value}%</p>
+        <p className="text-webank-lightBlue">进口: {payload[1].value}%</p>
       </div>
     );
   }
@@ -34,10 +34,10 @@ export const TradeTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年Q4进出口当月同比增速
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           出口呈“先抑后扬”V型反转，12月进出口双双超预期回升
         </p>
       </div>

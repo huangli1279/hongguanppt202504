@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         <p className="text-red-500 font-bold">开发投资: {payload[0].value}%</p>
         <p className="text-slate-500">新开工面积: {payload[1].value}%</p>
       </div>
@@ -34,10 +34,10 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           房地产开发投资 vs 新开工面积累计增速
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           新开工面积降幅超20%，开发投资持续深跌，实物量严重收缩
         </p>
       </div>

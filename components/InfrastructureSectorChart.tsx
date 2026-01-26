@@ -23,8 +23,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className={`${payload[0].value >= 0 ? 'text-mckinsey-blue' : 'text-red-500'} font-bold`}>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className={`${payload[0].value >= 0 ? 'text-webank-blue' : 'text-red-500'} font-bold`}>
           累计增速: {payload[0].value}%
         </p>
       </div>
@@ -37,10 +37,10 @@ export const InfrastructureSectorChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年基建各细分行业全年累计投资增速
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           能源与新基建逆势高增，传统市政类基建成为主要拖累项
         </p>
       </div>

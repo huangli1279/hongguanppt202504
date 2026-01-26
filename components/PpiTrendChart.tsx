@@ -22,9 +22,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue">PPI环比: {payload[0].value}%</p>
-        <p className="text-mckinsey-lightBlue">生产资料PPI环比: {payload[1].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue">PPI环比: {payload[0].value}%</p>
+        <p className="text-webank-lightBlue">生产资料PPI环比: {payload[1].value}%</p>
       </div>
     );
   }
@@ -35,10 +35,10 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年PPI及生产资料PPI环比走势
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           10月起连续3个月正增长，价格弹性显著修复
         </p>
       </div>

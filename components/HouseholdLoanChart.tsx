@@ -23,7 +23,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         <p style={{ color: '#ef4444' }}>短期贷款: {payload[0].value}亿元</p>
         <p style={{ color: '#005c8f' }}>中长期贷款: {payload[1].value}亿元</p>
         <div className="mt-1 pt-1 border-t border-slate-100 font-bold text-slate-700">
@@ -39,10 +39,10 @@ export const HouseholdLoanChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           12月居民户新增贷款结构历史同期对比 (亿元)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           2025年12月出现罕见净偿还，短期贷款大幅收缩
         </p>
       </div>

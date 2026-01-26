@@ -20,7 +20,7 @@ export const IndustryBreakdownChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-2">
-        <h3 className="text-xs font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025 Q4 重点行业/领域增速表现
         </h3>
       </div>

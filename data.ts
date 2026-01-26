@@ -67,7 +67,7 @@ export const breakdownData: BreakdownDataPoint[] = [
 // Slide 3 Data
 
 export const demandStructureData: DemandStructureData[] = [
-  { name: '最终消费支出', value: 52.9, fill: '#051c2c' }, // McKinsey Blue (Main driver)
+  { name: '最终消费支出', value: 52.9, fill: '#051c2c' }, // WeBank Blue (Main driver)
   { name: '货物和服务净出口', value: 31.1, fill: '#00a9f4' }, // Light Blue (Strong support)
   { name: '资本形成总额', value: 16.0, fill: '#94a3b8' }, // Grey (Weakness)
 ];

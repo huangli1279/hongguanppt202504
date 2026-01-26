@@ -22,12 +22,12 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className={payload[0].value > 0 ? 'text-mckinsey-blue font-bold' : 'text-red-500 font-bold'}>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className={payload[0].value > 0 ? 'text-webank-blue font-bold' : 'text-red-500 font-bold'}>
           增速: {payload[0].value > 0 ? '+' : ''}{payload[0].value}%
         </p>
         {payload[0].payload.description && (
-          <p className="text-mckinsey-subtext text-[10px] mt-1 italic">
+          <p className="text-webank-subtext text-[10px] mt-1 italic">
              {payload[0].payload.description}
           </p>
         )}
@@ -41,10 +41,10 @@ export const EquipmentVsConstructionChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           投资结构分化：设备购置 vs. 建筑安装
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           “重设备、轻厂房”特征显著，设备更新成为投资核心驱动力
         </p>
       </div>

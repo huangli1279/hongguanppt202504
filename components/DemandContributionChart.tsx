@@ -35,8 +35,8 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue">{payload[0].name}</p>
-        <p className="text-mckinsey-subtext">贡献率: <span className="font-bold text-mckinsey-accent">{payload[0].value}%</span></p>
+        <p className="font-bold text-webank-blue">{payload[0].name}</p>
+        <p className="text-webank-subtext">贡献率: <span className="font-bold text-webank-accent">{payload[0].value}%</span></p>
       </div>
     );
   }
@@ -47,10 +47,10 @@ export const DemandContributionChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-2">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025 Q4 三大需求对GDP增长贡献率
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           净出口贡献率跃升至31.1%，有效弥补投资缺口
         </p>
       </div>
@@ -85,7 +85,7 @@ export const DemandContributionChart: React.FC<Props> = ({ data }) => {
         {/* Central Text Overlay (Static fallback if interaction is tricky, but label handles it above ideally, or just center text) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none pr-24">
              {/* Adjusted margin right to account for legend offset */}
-             <div className="text-2xl font-bold text-mckinsey-blue font-serif">52.9%</div>
+             <div className="text-2xl font-bold text-webank-blue font-serif">52.9%</div>
              <div className="text-[10px] text-slate-500 uppercase">消费贡献主导</div>
         </div>
       </div>

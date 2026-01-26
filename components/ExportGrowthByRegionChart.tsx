@@ -21,8 +21,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className={payload[0].value > 0 ? 'text-mckinsey-blue font-bold' : 'text-red-500 font-bold'}>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className={payload[0].value > 0 ? 'text-webank-blue font-bold' : 'text-red-500 font-bold'}>
           同比增速: {payload[0].value > 0 ? '+' : ''}{payload[0].value}%
         </p>
       </div>
@@ -35,10 +35,10 @@ export const ExportGrowthByRegionChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年12月主要贸易伙伴出口增速对比
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           对美出口深跌30%，新兴市场及欧盟实现双位数增长有效对冲
         </p>
       </div>

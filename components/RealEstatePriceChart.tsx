@@ -21,9 +21,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue">一线城市: {payload[0].value}%</p>
-        <p className="text-mckinsey-lightBlue">二线城市: {payload[1].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue">一线城市: {payload[0].value}%</p>
+        <p className="text-webank-lightBlue">二线城市: {payload[1].value}%</p>
         <p className="text-slate-500">三线城市: {payload[2].value}%</p>
       </div>
     );
@@ -35,10 +35,10 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           70个大中城市新建商品住宅价格同比变动
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           各线城市房价普遍下行，一线城市跌幅有所扩大，资产价格承压
         </p>
       </div>

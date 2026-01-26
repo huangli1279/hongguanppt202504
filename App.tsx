@@ -190,7 +190,7 @@ const App: React.FC = () => {
            >
              <span className={`font-serif transition-all duration-500 ${
                currentSlide === slide 
-                 ? 'text-mckinsey-blue font-bold text-lg translate-x-0 opacity-100' 
+                 ? 'text-webank-blue font-bold text-lg translate-x-0 opacity-100' 
                  : 'text-slate-400 font-medium text-xs translate-x-1 opacity-60'
              }`}>
                {String(slide).padStart(2, '0')}
@@ -199,7 +199,7 @@ const App: React.FC = () => {
              <div 
                className={`w-1 rounded-full transition-all duration-500 ${
                  currentSlide === slide 
-                   ? 'h-8 bg-mckinsey-blue shadow-lg' 
+                   ? 'h-8 bg-webank-blue shadow-lg' 
                    : 'h-1.5 bg-slate-300'
                }`}
              />

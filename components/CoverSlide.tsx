@@ -13,21 +13,21 @@ export const CoverSlide: React.FC = () => {
       <div className="flex-grow flex flex-col justify-center px-24 z-10 animate-fade-in-up">
         {/* Logo / Brand Area */}
         <div className="flex items-center gap-3 mb-12 opacity-80">
-          <Globe className="text-mckinsey-lightBlue" size={32} />
-          <span className="text-sm font-bold tracking-widest uppercase border-l-2 border-mckinsey-lightBlue pl-3">
-            McKinsey Global Institute Analysis
+          <Globe className="text-webank-lightBlue" size={32} />
+          <span className="text-sm font-bold tracking-widest uppercase border-l-2 border-webank-lightBlue pl-3">
+            个金管理部-数据管理室
           </span>
         </div>
 
         {/* Main Title */}
         <h1 className="text-6xl font-serif font-bold leading-tight mb-8">
           2025年度<br/>
-          <span className="text-mckinsey-lightBlue">中国宏观经济运行</span><br/>
+          <span className="text-webank-lightBlue">中国宏观经济运行</span><br/>
           深度分析报告
         </h1>
 
         {/* Subtitle */}
-        <div className="w-24 h-1 bg-mckinsey-lightBlue mb-8"></div>
+        <div className="w-24 h-1 bg-webank-lightBlue mb-8"></div>
         <h2 className="text-2xl font-light text-slate-300 max-w-2xl leading-relaxed">
           GDP实现5.0%增长圆满收官“十四五”<br/>
           结构性分化与动能转换深度复盘

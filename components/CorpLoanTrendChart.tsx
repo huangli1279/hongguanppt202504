@@ -22,8 +22,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     const value = payload[0].value;
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className={value > 0 ? 'text-mckinsey-blue font-bold' : 'text-red-500 font-bold'}>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className={value > 0 ? 'text-webank-blue font-bold' : 'text-red-500 font-bold'}>
           同比多增: {value > 0 ? '+' : ''}{value}亿元
         </p>
       </div>
@@ -36,10 +36,10 @@ export const CorpLoanTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           企业中长期贷款当月同比多增额走势 (亿元)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           结束连续5个月的少增态势，12月实现显著转正 (+2900亿)
         </p>
       </div>

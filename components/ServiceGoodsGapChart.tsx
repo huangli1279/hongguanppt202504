@@ -21,8 +21,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue">服务零售: {payload[0].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue">服务零售: {payload[0].value}%</p>
         <p className="text-slate-500">商品零售: {payload[1].value}%</p>
         <div className="mt-1 border-t border-slate-100 pt-1 text-[10px] text-slate-500">
           剪刀差: {(payload[0].value - payload[1].value).toFixed(1)}%
@@ -37,10 +37,10 @@ export const ServiceGoodsGapChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年商品零售 vs. 服务零售累计同比增速
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           服务零售全年增长5.5%，持续跑赢商品零售
         </p>
       </div>

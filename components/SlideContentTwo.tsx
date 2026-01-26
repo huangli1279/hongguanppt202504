@@ -6,12 +6,12 @@ import { industryGrowthData, contributionData, breakdownData } from '../data';
 import { TrendingUp, Activity, AlertTriangle, Cpu } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
-  <div className="flex flex-col h-full p-4 bg-slate-50 border-t-2 border-mckinsey-blue opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: delay }}>
+  <div className="flex flex-col h-full p-4 bg-slate-50 border-t-2 border-webank-blue opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: delay }}>
     <div className="flex items-center gap-2 mb-2">
-      <Icon size={16} className="text-mckinsey-accent" />
-      <h4 className="font-bold text-mckinsey-blue text-sm uppercase">{title}</h4>
+      <Icon size={16} className="text-webank-accent" />
+      <h4 className="font-bold text-webank-blue text-sm uppercase">{title}</h4>
     </div>
-    <div className="text-xs text-mckinsey-text leading-relaxed">
+    <div className="text-xs text-webank-text leading-relaxed">
       {children}
     </div>
   </div>
@@ -22,28 +22,28 @@ export const SlideContentTwo: React.FC = () => {
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-mckinsey-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
-          <span className="text-xs font-bold text-mckinsey-subtext uppercase tracking-widest">
+          <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             结构性分析：产业分化
           </span>
           <span className="text-xs text-slate-400">
              数据来源：国家统计局
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-mckinsey-blue leading-tight w-4/5">
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-4/5">
           第三产业Q4增长5.2%支撑稳健，<br/>
-          <span className="text-mckinsey-accent">工业受建筑业拖累放缓</span>
+          <span className="text-webank-accent">工业受建筑业拖累放缓</span>
         </h1>
       </header>
 
       {/* Top Insights Row */}
       <section className="grid grid-cols-3 gap-6 mb-6 h-32">
         <InsightBox title="三产拉动分化" icon={Activity} delay="100ms">
-          <p className="mb-1"><span className="font-bold text-mckinsey-accent">第三产业 (5.2%)</span>: 核心支撑。信息技术 (+11.1%) 与租赁商务服务 (+10.3%) 领跑，现代服务业增势强劲。</p>
+          <p className="mb-1"><span className="font-bold text-webank-accent">第三产业 (5.2%)</span>: 核心支撑。信息技术 (+11.1%) 与租赁商务服务 (+10.3%) 领跑，现代服务业增势强劲。</p>
         </InsightBox>
         
         <InsightBox title="第二产业明显回落" icon={AlertTriangle} delay="200ms">
@@ -77,7 +77,7 @@ export const SlideContentTwo: React.FC = () => {
 
        {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
-        <span>McKinsey Global Institute Analysis</span>
+        <span>个金管理部-数据管理室</span>
         <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
       </footer>
 

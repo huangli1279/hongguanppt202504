@@ -6,15 +6,15 @@ import { investmentStructureData, highTechInvestmentData } from '../data';
 import { RefreshCcw, HardHat, Rocket, AlertCircle } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
-    let borderColor = 'border-mckinsey-blue';
-    let iconColor = 'text-mckinsey-blue';
+    let borderColor = 'border-webank-blue';
+    let iconColor = 'text-webank-blue';
     
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
     } else if (highlight) {
-        borderColor = 'border-mckinsey-lightBlue';
-        iconColor = 'text-mckinsey-lightBlue';
+        borderColor = 'border-webank-lightBlue';
+        iconColor = 'text-webank-lightBlue';
     }
 
     return (
@@ -23,7 +23,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
                 <Icon size={18} />
                 <h4 className="font-bold text-sm uppercase">{title}</h4>
             </div>
-            <div className="text-xs text-mckinsey-text leading-relaxed">
+            <div className="text-xs text-webank-text leading-relaxed">
                 {children}
             </div>
         </div>
@@ -35,21 +35,21 @@ export const SlideContentFifteen: React.FC = () => {
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-mckinsey-blue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
-          <span className="text-xs font-bold text-mckinsey-subtext uppercase tracking-widest">
+          <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             制造业投资结构深度洞察
           </span>
           <span className="text-xs text-slate-400">
              数据来源：国家统计局
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-mckinsey-blue leading-tight w-11/12">
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
           设备购置投资高增11.8%，<br/>
-          <span className="text-mckinsey-subtext">企业“反内卷”导致产能扩张意愿降温</span>
+          <span className="text-webank-subtext">企业“反内卷”导致产能扩张意愿降温</span>
         </h1>
       </header>
 
@@ -92,7 +92,7 @@ export const SlideContentFifteen: React.FC = () => {
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
-        <span>McKinsey Global Institute Analysis</span>
+        <span>个金管理部-数据管理室</span>
         <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
       </footer>
 

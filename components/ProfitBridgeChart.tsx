@@ -22,10 +22,10 @@ export const ProfitBridgeChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           11月规上工业利润增速拆解 (同比贡献度)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           投资收益（其他损益）大幅回落致使降幅扩大，实际经营层面呈“弱修复”
         </p>
       </div>

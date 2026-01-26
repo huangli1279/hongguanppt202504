@@ -18,8 +18,8 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue">{payload[0].name}</p>
-        <p className="text-mckinsey-subtext">份额: <span className="font-bold text-mckinsey-accent">{payload[0].value}%</span></p>
+        <p className="font-bold text-webank-blue">{payload[0].name}</p>
+        <p className="text-webank-subtext">份额: <span className="font-bold text-webank-accent">{payload[0].value}%</span></p>
       </div>
     );
   }
@@ -45,10 +45,10 @@ export const ExportShareStructureChart: React.FC<Props> = ({ data2024, data2025 
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-2">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           我国出口市场份额结构变化 (2024 vs 2025)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           美国份额萎缩3.5pct，东盟与“一带一路”国家份额显著提升
         </p>
       </div>
@@ -81,7 +81,7 @@ export const ExportShareStructureChart: React.FC<Props> = ({ data2024, data2025 
 
          {/* 2025 Chart */}
          <div className="w-1/2 relative">
-             <h4 className="absolute top-2 left-0 w-full text-center text-xs font-bold text-mckinsey-blue">2025年</h4>
+             <h4 className="absolute top-2 left-0 w-full text-center text-xs font-bold text-webank-blue">2025年</h4>
             <ResponsiveContainer width="100%" height="100%">
             <PieChart>
                 <Pie

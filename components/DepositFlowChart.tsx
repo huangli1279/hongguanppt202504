@@ -23,7 +23,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         <p style={{ color: '#005c8f' }}>住户存款: {payload[0].value}亿元</p>
         <p style={{ color: '#94a3b8' }}>非银存款: {payload[1].value}亿元</p>
       </div>
@@ -36,10 +36,10 @@ export const DepositFlowChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           2025年Q4居民存款与非银存款月度增量变化 (亿元)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           12月资金显著回流银行表内，“存款搬家”现象阶段性逆转
         </p>
       </div>

@@ -20,7 +20,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((p: any, index: number) => (
           <p key={index} style={{ color: p.color }}>
             {p.name}: {p.value}%
@@ -36,10 +36,10 @@ export const DeflatorChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           三产业GDP平减指数同比增速 (2023-2025)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           第二产业平减指数持续处于负值区间，拖累整体名义增速
         </p>
       </div>
@@ -101,7 +101,7 @@ export const DeflatorChart: React.FC<Props> = ({ data }) => {
               name="第三产业"
               type="monotone"
               dataKey="tertiary"
-              stroke="#005c8f" // Mckinsey Blue
+              stroke="#005c8f" // WeBank Blue
               strokeWidth={2}
               dot={false}
               animationDuration={2000}

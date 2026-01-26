@@ -19,9 +19,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue">就业信心: {payload[0].value}</p>
-        <p className="text-mckinsey-lightBlue">收入信心: {payload[1].value}</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue">就业信心: {payload[0].value}</p>
+        <p className="text-webank-lightBlue">收入信心: {payload[1].value}</p>
         <div className="mt-1 border-t border-slate-100 pt-1 text-[10px] text-slate-500">
           剪刀差: {(payload[0].value - payload[1].value).toFixed(1)}
         </div>
@@ -35,10 +35,10 @@ export const ConfidenceChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           消费者信心指数分项走势 (2025年)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           就业预期相对平稳，但收入预期持续下滑，两者缺口走阔
         </p>
       </div>

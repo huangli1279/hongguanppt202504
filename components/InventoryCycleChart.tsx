@@ -21,9 +21,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue">实际库存: {payload[0].value}%</p>
-        <p className="text-mckinsey-subtext">名义库存: {payload[1].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue">实际库存: {payload[0].value}%</p>
+        <p className="text-webank-subtext">名义库存: {payload[1].value}%</p>
         <div className="mt-1 pt-1 border-t border-slate-100 text-[10px] text-slate-500">
            周转天数: {payload[0].payload.days}天
         </div>
@@ -37,10 +37,10 @@ export const InventoryCycleChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           产成品存货增速走势 (名义 vs 实际)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           实际库存增速升至7.0%，大幅高于名义增速，呈现明显“被动补库”特征
         </p>
       </div>

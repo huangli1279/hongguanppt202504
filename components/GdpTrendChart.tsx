@@ -19,8 +19,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue">{label}</p>
-        <p className="text-mckinsey-accent">
+        <p className="font-bold text-webank-blue">{label}</p>
+        <p className="text-webank-accent">
           GDP增速: {payload[0].value}%
         </p>
       </div>
@@ -33,10 +33,10 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           季度GDP当季同比增速 (2024-2025)
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           2025年呈现“前高后低”走势，Q4回落至4.5%
         </p>
       </div>

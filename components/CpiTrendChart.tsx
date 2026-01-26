@@ -21,9 +21,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue font-bold">CPI同比: {payload[0].value}%</p>
-        <p className="text-mckinsey-subtext">核心CPI: {payload[1].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue font-bold">CPI同比: {payload[0].value}%</p>
+        <p className="text-webank-subtext">核心CPI: {payload[1].value}%</p>
         <p className="text-red-500 font-bold">剔除黄金后核心: {payload[2].value}%</p>
       </div>
     );
@@ -35,10 +35,10 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           CPI、核心CPI及剔除金价后核心CPI走势
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           剔除金价后的“真实核心CPI”仅0.6%，且呈下行态势
         </p>
       </div>
@@ -77,7 +77,7 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
               name="CPI同比"
               type="monotone"
               dataKey="headline"
-              stroke="#051c2c" // McKinsey Blue
+              stroke="#051c2c" // WeBank Blue
               strokeWidth={3}
               dot={{ r: 3, fill: '#051c2c' }}
               activeDot={{ r: 5 }}

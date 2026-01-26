@@ -20,8 +20,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
-        <p className="font-bold text-mckinsey-blue mb-1">{label}</p>
-        <p className="text-mckinsey-blue font-bold">制造业: {payload[0].value}%</p>
+        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="text-webank-blue font-bold">制造业: {payload[0].value}%</p>
         <p className="text-slate-500">基建: {payload[1].value}%</p>
         <p className="text-red-500 font-bold">房地产: {payload[2].value}%</p>
       </div>
@@ -34,10 +34,10 @@ export const InvestmentPillarsChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
-        <h3 className="text-sm font-bold text-mckinsey-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           三大投资板块累计同比增速走势
         </h3>
-        <p className="text-xs text-mckinsey-subtext mt-1">
+        <p className="text-xs text-webank-subtext mt-1">
           房地产降幅持续走阔(-17.2%)，基建转负，制造业大幅回落
         </p>
       </div>
