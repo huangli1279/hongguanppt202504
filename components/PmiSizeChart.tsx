@@ -1,74 +1,105 @@
 
 import React from 'react';
 import {
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LabelList,
-  ReferenceLine,
-  Cell
+  Legend,
+  ReferenceLine
 } from 'recharts';
-import { PmiSizeDataPoint } from '../types';
+import { PmiSizeTrendDataPoint } from '../types';
 
 interface Props {
-  data: PmiSizeDataPoint[];
+  data: PmiSizeTrendDataPoint[];
 }
+
+const CustomTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
+        <p className="font-bold text-webank-blue mb-1">2025-{label}</p>
+        {payload.map((p: any, index: number) => (
+          <p key={index} style={{ color: p.color }}>
+            {p.name}: {p.value}%
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
 
 export const PmiSizeChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          12月分企业规模PMI对比
+          2025年1-12月分企业规模PMI对比趋势
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          “两重”政策驱动大型企业率先复苏，小型企业仍处收缩区间
+          大型企业维持在扩张区间，中小企业景气度仍待改善
         </p>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart
+          <LineChart
             data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            barCategoryGap="30%"
+            margin={{ top: 10, right: 30, left: -20, bottom: 0 }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={50} stroke="#333" strokeDasharray="3 3" />
             <XAxis 
-              dataKey="name" 
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: '#333', fontSize: 11, fontWeight: 600 }}
+              dataKey="month" 
+              axisLine={{ stroke: '#e5e7eb' }} 
+              tickLine={false} 
+              tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
             />
             <YAxis 
-              hide={false}
-              domain={[48, 52]}
-              ticks={[48, 49, 50, 51, 52]}
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 10, fill: '#999' }}
+              axisLine={false} 
+              tickLine={false} 
+              tick={{ fill: '#999', fontSize: 10 }}
+              domain={[45, 55]}
+              ticks={[45, 47, 50, 52, 55]}
             />
-            <Tooltip 
-               cursor={{ fill: 'transparent' }}
-               contentStyle={{ fontSize: '12px', border: '1px solid #e2e8f0' }}
+            <Tooltip content={<CustomTooltip />} />
+            <Legend 
+              wrapperStyle={{ paddingTop: '10px' }}
+              iconType="circle"
+              iconSize={8}
             />
-            <Bar dataKey="value" radius={[4, 4, 0, 0]} animationDuration={1500}>
-               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.fill} />
-              ))}
-              <LabelList 
-                dataKey="value" 
-                position="top" 
-                formatter={(val: number) => `${val}%`}
-                style={{ fill: '#333', fontSize: '12px', fontWeight: 'bold' }}
-              />
-            </Bar>
-          </BarChart>
+            <Line
+              name="大型企业"
+              type="monotone"
+              dataKey="large"
+              stroke="#051c2c"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#051c2c' }}
+              activeDot={{ r: 5 }}
+            />
+            <Line
+              name="中型企业"
+              type="monotone"
+              dataKey="medium"
+              stroke="#94a3b8"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#94a3b8' }}
+              activeDot={{ r: 5 }}
+            />
+            <Line
+              name="小型企业"
+              type="monotone"
+              dataKey="small"
+              stroke="#ef4444"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#ef4444' }}
+              activeDot={{ r: 5 }}
+            />
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { PmiTrendChart } from './PmiTrendChart';
 import { PmiSizeChart } from './PmiSizeChart';
-import { pmiTrendData, pmiSizeData } from '../data';
+import { pmiTrendData, pmiSizeTrendData } from '../data';
 import { TrendingUp, Layers, Zap, ShoppingBag } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
@@ -64,14 +64,14 @@ export const SlideContentFour: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-3 gap-8 min-h-0">
-         {/* Left Chart: Trend (Takes 2 columns) */}
-         <div className="col-span-2 bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+      <section className="flex-grow grid grid-cols-2 gap-8 min-h-0">
+         {/* Left Chart: Trend */}
+         <div className="col-span-1 bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
             <PmiTrendChart data={pmiTrendData} />
          </div>
-         {/* Right Chart: Size Breakdown (Takes 1 column) */}
+         {/* Right Chart: Size Trend */}
          <div className="col-span-1 bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-            <PmiSizeChart data={pmiSizeData} />
+            <PmiSizeChart data={pmiSizeTrendData} />
          </div>
       </section>
 

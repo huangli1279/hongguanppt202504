@@ -66,6 +66,13 @@ export interface PmiSizeDataPoint {
   fill: string;
 }
 
+export interface PmiSizeTrendDataPoint {
+  month: string;
+  large: number;
+  medium: number;
+  small: number;
+}
+
 export interface IndustrialTrendDataPoint {
   month: string;
   yoy: number;

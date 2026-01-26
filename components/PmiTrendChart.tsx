@@ -104,13 +104,12 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
               animationDuration={2000}
               animationBegin={300}
             />
-             <Line
+            <Line
               name="新订单指数"
               type="monotone"
               dataKey="newOrders"
               stroke="#94a3b8"
               strokeWidth={2}
-              strokeDasharray="5 5"
               dot={false}
               animationDuration={2000}
               animationBegin={600}
