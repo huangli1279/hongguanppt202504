@@ -31,9 +31,8 @@ export const SlideContentTwo: React.FC = () => {
             结构性分析：产业分化
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-4/5">
-          第三产业Q4增长5.2%支撑稳健，<br/>
-          <span className="text-webank-accent">工业受建筑业拖累放缓</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          第三产业Q4增长5.2%支撑稳健，<span className="text-webank-accent">工业受建筑业拖累放缓</span>
         </h1>
       </header>
 

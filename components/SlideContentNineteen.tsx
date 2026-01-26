@@ -43,9 +43,8 @@ export const SlideContentNineteen: React.FC = () => {
             宏观总览：财政运行监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          1-11月广义财政支出增速回落至4.5%，<br/>
-          <span className="text-webank-subtext">受政策前置与收入约束双重挤压</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          1-11月广义财政支出增速回落至4.5%，<span className="text-webank-subtext">受政策前置与收入约束双重挤压</span>
         </h1>
       </header>
 

@@ -45,9 +45,8 @@ export const SlideContentTwentyFour: React.FC = () => {
             部门行为：居民资产负债表监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          12月居民贷款罕见净偿还916亿元，<br/>
-          <span className="text-webank-subtext">避险情绪驱动存款回流银行体系</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          12月居民贷款罕见净偿还916亿元，<span className="text-webank-subtext">避险情绪驱动存款回流银行体系</span>
         </h1>
       </header>
 

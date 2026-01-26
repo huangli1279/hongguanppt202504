@@ -44,9 +44,8 @@ export const SlideContentTwenty: React.FC = () => {
             税收分析：结构性分化
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          生产端走弱拖累税收修复斜率，<br/>
-          <span className="text-webank-lightBlue">证券印花税与个税受政策扰动维持高增</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          生产端走弱拖累税收修复斜率，<span className="text-webank-lightBlue">证券印花税与个税受政策扰动维持高增</span>
         </h1>
       </header>
 

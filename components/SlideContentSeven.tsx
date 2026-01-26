@@ -31,9 +31,8 @@ export const SlideContentSeven: React.FC = () => {
             价格与通胀监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          PPI环比连续三个月上涨，<br/>
-          <span className="text-webank-accent">“反内卷”产能治理驱动重点行业价格回暖</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          PPI环比连续三个月上涨，<span className="text-webank-accent">"反内卷"产能治理驱动重点行业价格回暖</span>
         </h1>
       </header>
 

@@ -40,9 +40,8 @@ export const SlideContentThree: React.FC = () => {
             需求侧分析：供强需弱
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          净出口Q4贡献率升至31.1%有效对冲内需缺口，<br/>
-          <span className="text-webank-subtext">资本形成贡献率仅16%</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          净出口Q4贡献率升至31.1%有效对冲内需缺口，<span className="text-webank-subtext">资本形成贡献率仅16%</span>
         </h1>
       </header>
 

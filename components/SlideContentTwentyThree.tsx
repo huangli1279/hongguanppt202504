@@ -45,9 +45,8 @@ export const SlideContentTwentyThree: React.FC = () => {
             社融与信贷：政府债错位致社融降速
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          12月社融存量增速回落至8.3%，政府债高基数是核心拖累，<br/>
-          <span className="text-webank-accent">企业信贷现积极信号</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          12月社融存量增速回落至8.3%，政府债高基数是核心拖累，<span className="text-webank-accent">企业信贷现积极信号</span>
         </h1>
       </header>
 

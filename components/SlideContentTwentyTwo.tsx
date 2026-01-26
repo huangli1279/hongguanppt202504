@@ -44,9 +44,8 @@ export const SlideContentTwentyTwo: React.FC = () => {
             货币供应：M1与M2剪刀差极度走阔
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          12月M1增速滑落至3.8%创新低，<br/>
-          <span className="text-webank-accent">M2-M1剪刀差扩至4.7%警示资金“定期化”</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          12月M1增速滑落至3.8%创新低，<span className="text-webank-accent">M2-M1剪刀差扩至4.7%警示资金"定期化"</span>
         </h1>
       </header>
 

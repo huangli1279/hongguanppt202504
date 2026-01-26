@@ -43,9 +43,8 @@ export const SlideContentEighteen: React.FC = () => {
             区域结构：贸易版图重构
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          对美出口降幅扩大至30%，<br/>
-          <span className="text-webank-accent">东盟与“一带一路”国家成为外贸绝对基石</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          对美出口降幅扩大至30%，<span className="text-webank-accent">东盟与"一带一路"国家成为外贸绝对基石</span>
         </h1>
       </header>
 

@@ -31,8 +31,8 @@ export const SlideContentEight: React.FC = () => {
             消费市场监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          Q4社零增速受“双十一”错位与高基数拖累滑落至0.9%，<br/>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          Q4社零增速受“双十一”错位与高基数拖累滑落至0.9%，
           <span className="text-webank-subtext">内需修复斜率放缓</span>
         </h1>
       </header>

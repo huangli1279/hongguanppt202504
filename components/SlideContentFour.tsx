@@ -31,9 +31,8 @@ export const SlideContentFour: React.FC = () => {
             制造业景气度监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-4/5">
-          12月制造业PMI录得50.1%实现景气反转，<br/>
-          <span className="text-webank-lightBlue">政策发力与“抢出口”效应驱动产需双升</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          12月制造业PMI录得50.1%实现景气反转，<span className="text-webank-lightBlue">政策发力与"抢出口"效应驱动产需双升</span>
         </h1>
       </header>
 

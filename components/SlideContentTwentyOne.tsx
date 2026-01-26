@@ -43,9 +43,8 @@ export const SlideContentTwentyOne: React.FC = () => {
             土地与债务：财政平衡术
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          土地出让收入降幅扩大至10.7%，<br/>
-          <span className="text-webank-lightBlue">新增专项债发行进度超100%力保支出</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          土地出让收入降幅扩大至10.7%，<span className="text-webank-lightBlue">新增专项债发行进度超100%力保支出</span>
         </h1>
       </header>
 

@@ -41,9 +41,8 @@ export const SlideContentThirteen: React.FC = () => {
             房地产市场深度分析
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          房地产开发投资重挫17.2%，<br/>
-          <span className="text-webank-subtext">新开工面积腰斩式下跌制约后续实物量</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          房地产开发投资重挫17.2%，<span className="text-webank-subtext">新开工面积腰斩式下跌制约后续实物量</span>
         </h1>
       </header>
 

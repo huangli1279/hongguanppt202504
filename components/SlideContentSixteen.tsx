@@ -42,9 +42,8 @@ export const SlideContentSixteen: React.FC = () => {
             外贸进出口监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          Q4出口增速呈“先抑后扬”走势，<br/>
-          <span className="text-webank-accent">12月超预期回升至6.6%圆满收官</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          Q4出口增速呈"先抑后扬"走势，<span className="text-webank-accent">12月超预期回升至6.6%圆满收官</span>
         </h1>
       </header>
 

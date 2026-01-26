@@ -40,9 +40,8 @@ export const SlideContentEleven: React.FC = () => {
             居民信心与财富效应
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          居民收入信心弱于就业信心，“宏微观温差”源于<br/>
-          <span className="text-webank-subtext">资产价值缩水与预防性储蓄</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          居民收入信心弱于就业信心，"宏微观温差"源于<span className="text-webank-subtext">资产价值缩水与预防性储蓄</span>
         </h1>
       </header>
 

@@ -31,9 +31,8 @@ export const SlideContentFive: React.FC = () => {
             工业生产分析：动能切换
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-4/5">
-          Q4工业增加值增速回升至5.2%，<br/>
-          <span className="text-webank-accent">装备与高技术制造业维持全年高增</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          Q4工业增加值增速回升至5.2%，<span className="text-webank-accent">装备与高技术制造业维持全年高增</span>
         </h1>
       </header>
 

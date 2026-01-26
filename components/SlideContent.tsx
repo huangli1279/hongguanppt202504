@@ -32,8 +32,8 @@ export const SlideContent: React.FC = () => {
             2025年度宏观经济报告
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-3/4">
-          2025年GDP实现5.0%增长圆满收官“十四五”，<br/>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          2025年GDP实现5.0%增长圆满收官“十四五”，
           <span className="text-webank-accent">四季度增速回落至4.5%</span>
         </h1>
       </header>

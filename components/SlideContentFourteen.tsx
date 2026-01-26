@@ -44,9 +44,8 @@ export const SlideContentFourteen: React.FC = () => {
             基建投资专项分析
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          基建投资全年下降1.48%，<br/>
-          <span className="text-webank-subtext">债务化解与项目断档导致实物工作量落地受阻</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          基建投资全年下降1.48%，<span className="text-webank-subtext">债务化解与项目断档导致实物工作量落地受阻</span>
         </h1>
       </header>
 

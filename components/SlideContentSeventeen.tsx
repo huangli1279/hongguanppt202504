@@ -43,9 +43,8 @@ export const SlideContentSeventeen: React.FC = () => {
             产品结构深度洞察：科技制造领跑
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          机电产品拉动出口增长的主引擎地位巩固，<br/>
-          <span className="text-webank-lightBlue">汽车与集成电路维持爆发式增长</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          机电产品拉动出口增长的主引擎地位巩固，<span className="text-webank-lightBlue">汽车与集成电路维持爆发式增长</span>
         </h1>
       </header>
 

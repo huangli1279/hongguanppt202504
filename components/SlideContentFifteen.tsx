@@ -44,9 +44,8 @@ export const SlideContentFifteen: React.FC = () => {
             制造业投资结构深度洞察
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          设备购置投资高增11.8%，<br/>
-          <span className="text-webank-subtext">企业“反内卷”导致产能扩张意愿降温</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          设备购置投资高增11.8%，<span className="text-webank-subtext">企业"反内卷"导致产能扩张意愿降温</span>
         </h1>
       </header>
 

@@ -40,9 +40,8 @@ export const SlideContentTwelve: React.FC = () => {
             固定资产投资分析
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          2025年固投全年下降3.8%，<br/>
-          <span className="text-webank-subtext">房地产深跌与基建乏力导致“稳增长”缺口</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          2025年固投全年下降3.8%，<span className="text-webank-subtext">房地产深跌与基建乏力导致"稳增长"缺口</span>
         </h1>
       </header>
 

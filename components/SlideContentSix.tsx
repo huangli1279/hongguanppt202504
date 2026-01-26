@@ -31,9 +31,8 @@ export const SlideContentSix: React.FC = () => {
             企业效益监测
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          11月工企利润因投资收益基数重挫13.1%，<br/>
-          <span className="text-webank-subtext">剔除后实际经营效益呈“弱修复”</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          11月工企利润因投资收益基数重挫13.1%，<span className="text-webank-subtext">剔除后实际经营效益呈"弱修复"</span>
         </h1>
       </header>
 

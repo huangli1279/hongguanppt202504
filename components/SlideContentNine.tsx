@@ -44,9 +44,8 @@ export const SlideContentNine: React.FC = () => {
             商品与服务结构分析
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          服务零售全年增长5.5%跑赢商品，<br/>
-          <span className="text-webank-subtext">耐用品消费在补贴边际递减下承压</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          服务零售全年增长5.5%跑赢商品，<span className="text-webank-subtext">耐用品消费在补贴边际递减下承压</span>
         </h1>
       </header>
 

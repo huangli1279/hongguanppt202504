@@ -44,9 +44,8 @@ export const SlideContentTen: React.FC = () => {
             物价与通胀深度分析
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight w-11/12">
-          12月CPI回升至0.8%主要受鲜菜与金价驱动，<br/>
-          <span className="text-webank-subtext">核心需求内生动力依然不强</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          12月CPI回升至0.8%主要受鲜菜与金价驱动，<span className="text-webank-subtext">核心需求内生动力依然不强</span>
         </h1>
       </header>
 
