@@ -24,45 +24,12 @@ export const ThankYouSlide: React.FC = () => {
             Thank You
             </h2>
         </div>
-
-        {/* Call to Action */}
-        <div className="mb-16 text-center">
-             <p className="text-lg text-slate-400 font-light mb-2">如有任何疑问，欢迎随时联系</p>
-             <p className="text-webank-lightBlue font-serif text-xl">Q & A 环节</p>
-        </div>
-
-        {/* Contact Info Grid */}
-        <div className="grid grid-cols-3 gap-12 text-sm text-slate-300 font-light border-t border-slate-700 pt-8">
-          <div className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="p-3 rounded-full bg-slate-800 group-hover:bg-webank-lightBlue transition-colors duration-300">
-                <Mail size={20} className="text-white" />
-            </div>
-            <span className="group-hover:text-white transition-colors">contact@webank.com</span>
-          </div>
-          
-          <div className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="p-3 rounded-full bg-slate-800 group-hover:bg-webank-lightBlue transition-colors duration-300">
-                 <Phone size={20} className="text-white" />
-            </div>
-            <span className="group-hover:text-white transition-colors">+86 755 8663 3333</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="p-3 rounded-full bg-slate-800 group-hover:bg-webank-lightBlue transition-colors duration-300">
-                <MapPin size={20} className="text-white" />
-            </div>
-            <span className="group-hover:text-white transition-colors">Shenzhen · Guangzhou · Beijing</span>
-          </div>
-        </div>
       </div>
 
       {/* Footer */}
       <footer className="absolute bottom-8 w-full text-center">
         <p className="text-slate-500 font-mono text-[10px] tracking-widest uppercase mb-1">
              个金管理部-数据管理室
-        </p>
-        <p className="text-slate-600 font-mono text-[10px]">
-            © 2026 WeBank. All rights reserved.
         </p>
       </footer>
 
