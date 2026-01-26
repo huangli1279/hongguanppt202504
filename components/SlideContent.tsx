@@ -64,7 +64,7 @@ export const SlideContent: React.FC = () => {
 
         <BulletPoint title="名义 vs 实际“温差”" icon={Scale} delay="400ms">
           <p>
-            Q4实际增长4.5% > 名义3.8%。<br/>
+            Q4实际增长4.5% {'>'} 名义3.8%。<br/>
             <span className="text-red-600 font-semibold">GDP平减指数</span> 约 -0.7%，较Q3(-1.1%)收窄，但连续11个季度为负。
           </p>
         </BulletPoint>

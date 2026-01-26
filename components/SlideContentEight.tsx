@@ -44,7 +44,7 @@ export const SlideContentEight: React.FC = () => {
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
          <InsightBox title="总量特征：前高后低" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             全年增长 <span className="font-bold">3.7%</span>。Q4单月增速逐月下滑：10月（2.9%）-> 11月（1.3%）-> 12月（0.9%）。12月环比下降0.12%，复苏动能暂时性走弱。
+             全年增长 <span className="font-bold">3.7%</span>。Q4单月增速逐月下滑：10月（2.9%）-{'>'} 11月（1.3%）-{'>'} 12月（0.9%）。12月环比下降0.12%，复苏动能暂时性走弱。
            </p>
          </InsightBox>
 
