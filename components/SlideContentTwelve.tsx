@@ -1,0 +1,107 @@
+import React from 'react';
+import { FaiTrendChart } from './FaiTrendChart';
+import { InvestmentPillarsChart } from './InvestmentPillarsChart';
+import { faiTrendData, investmentPillarsData } from '../data';
+import { TrendingDown, Building, Briefcase, BarChart } from 'lucide-react';
+
+const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
+    let borderColor = 'border-mckinsey-blue';
+    let iconColor = 'text-mckinsey-blue';
+    
+    if (alert) {
+        borderColor = 'border-red-500';
+        iconColor = 'text-red-600';
+    }
+
+    return (
+        <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
+            <div className={`flex items-center gap-2 mb-2 ${iconColor}`}>
+                <Icon size={18} />
+                <h4 className="font-bold text-sm uppercase">{title}</h4>
+            </div>
+            <div className="text-xs text-mckinsey-text leading-relaxed">
+                {children}
+            </div>
+        </div>
+    );
+};
+
+export const SlideContentTwelve: React.FC = () => {
+  return (
+    <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
+      
+      {/* Top Decoration */}
+      <div className="absolute top-0 left-0 w-full h-2 bg-red-800"></div>
+
+      {/* Header */}
+      <header className="mb-6 animate-fade-in">
+         <div className="flex justify-between items-end mb-2">
+          <span className="text-xs font-bold text-mckinsey-subtext uppercase tracking-widest">
+            固定资产投资分析
+          </span>
+          <span className="text-xs text-slate-400">
+             数据来源：国家统计局
+          </span>
+        </div>
+        <h1 className="text-3xl font-serif font-bold text-mckinsey-blue leading-tight w-11/12">
+          2025年固投全年下降3.8%，<br/>
+          <span className="text-mckinsey-subtext">房地产深跌与基建乏力导致“稳增长”缺口</span>
+        </h1>
+      </header>
+
+      {/* Insight Section */}
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="总量加速下行" icon={TrendingDown} alert={true} delay="100ms">
+           <p>
+             全年固定资产投资（不含农户）同比下降 <span className="font-bold">3.8%</span>。四季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。
+           </p>
+         </InsightBox>
+
+         <InsightBox title="三大支柱全面降速" icon={Building} delay="200ms" alert={true}>
+           <p>
+             <span className="font-bold">房地产：</span>下降17.2%，降幅持续走阔，是最大负向拉动。<br/>
+             <span className="font-bold">基建：</span>下降1.48%，受化债制约。<br/>
+             <span className="font-bold">制造业：</span>仅微增0.6%，内需不足拖累。
+           </p>
+         </InsightBox>
+
+         <InsightBox title="民间信心低迷" icon={Briefcase} delay="300ms">
+           <p>
+             全年民间投资下降 <span className="font-bold">6.4%</span>，扣除房地产后仍下降1.9%。民营主体资产负债表修复缓慢，扩产意愿不足，市场内生动力亟待提振。
+           </p>
+         </InsightBox>
+      </section>
+
+      {/* Charts Section */}
+      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <FaiTrendChart data={faiTrendData} />
+        </div>
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+          <InvestmentPillarsChart data={investmentPillarsData} />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
+        <span>McKinsey Global Institute Analysis</span>
+        <span>CONFIDENTIAL - INTERNAL USE ONLY</span>
+      </footer>
+
+      {/* Animation Styles Reuse */}
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .fill-mode-forwards { animation-fill-mode: forwards; }
+      `}</style>
+    </div>
+  );
+};
