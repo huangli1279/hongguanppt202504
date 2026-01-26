@@ -1,8 +1,8 @@
 
 
 import React from 'react';
-import { InfrastructureSectorChart } from './InfrastructureSectorChart';
-import { infrastructureSectorData } from '../data';
+import { InfrastructureTable } from './InfrastructureTable';
+import { infrastructureGrowthTableData } from '../data';
 import { TrendingDown, Zap, Clock, Landmark } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
@@ -70,10 +70,10 @@ export const SlideContentFourteen: React.FC = () => {
          </InsightBox>
       </section>
 
-      {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-1 gap-10 min-h-0">
+      {/* Table Section */}
+      <section className="flex-grow min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
-          <InfrastructureSectorChart data={infrastructureSectorData} />
+          <InfrastructureTable data={infrastructureGrowthTableData} />
         </div>
       </section>
 
