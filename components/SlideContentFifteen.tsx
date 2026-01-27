@@ -65,7 +65,7 @@ export const SlideContentFifteen: React.FC = () => {
 
          <InsightBox title="高技术引领" icon={Rocket} delay="300ms">
            <p>
-             <span className="font-bold">信息服务业 (+28.4%)</span> 与 <span className="font-bold">航空航天 (+17.5%)</span> 投资领跑。新质生产力相关领域资金流入加速，投资结构持续优化。
+             <span className="font-bold">航空航天 (+17.5%)</span> 投资领跑。新质生产力相关领域资金流入加速，投资结构持续优化。
            </p>
          </InsightBox>
 
