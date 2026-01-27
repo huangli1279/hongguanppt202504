@@ -1,8 +1,19 @@
 import React from 'react';
-import { ExportGrowthByRegionChart } from './ExportGrowthByRegionChart';
-import { ExportShareStructureChart } from './ExportShareStructureChart';
-import { exportGrowthByRegionData, exportShare2024Data, exportShare2025Data } from '../data';
-import { AlertTriangle, Globe, Leaf, TrendingUp } from 'lucide-react';
+import { ExportDynamicsTable } from './ExportDynamicsTable';
+import { AlertTriangle, Globe, Leaf } from 'lucide-react';
+
+const exportDynamicsData = {
+  "图表标题": "2025年出口动能分化与结构性拖累对比 (美元计价)",
+  "单位": "%",
+  "时间序列": ["2025-12", "2025-11", "2025-10", "2025-09", "2025-08", "2025-07", "2025-06", "2025-05", "2025-04", "2025-03", "2025-02", "2025-01"],
+  "核心指标": {
+      "高新技术产品": [16.70, 7.80, 1.80, 11.90, 9.00, 4.30, 7.30, 5.00, 6.90, 7.90, 8.50, 2.90],
+      "手机": [10.60, -12.50, -16.50, -1.70, -18.90, -21.80, -8.80, -22.80, -20.90, 9.40, 10.70, -12.80],
+      "服装及衣着附件": [-10.20, -10.90, -15.90, -8.00, -10.00, -0.50, 1.10, 3.00, -0.50, 9.30, -28.40, 7.60],
+      "家具及其零件": [-8.60, -8.50, -12.60, 0.40, -3.20, 3.00, 0.60, -9.40, -7.20, 8.20, -29.40, -7.20],
+      "纺织纱线、织物及制品": [-4.20, 1.00, -9.10, 6.40, 1.50, 0.60, -1.60, -1.90, 3.40, 16.50, -25.30, 12.50]
+  }
+};
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -40,48 +51,39 @@ export const SlideContentEighteen: React.FC = () => {
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            区域结构：贸易版图重构
+            双重收缩：地缘财富效应缩水抑制“非必要”消费
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          对美出口降幅扩大至30%，<span className="text-webank-accent">东盟与"一带一路"国家成为外贸绝对基石</span>
+          劳动密集型产品出口乏力，<span className="text-webank-accent">内需外需同步收缩构成双重拖累</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-36">
-         <InsightBox title="美国：压力加剧" icon={AlertTriangle} alert={true} delay="100ms">
+      <section className="grid grid-cols-3 gap-6 mb-8 h-44">
+         <InsightBox title="内需侧（地产周期压制）" icon={AlertTriangle} alert={true} delay="100ms">
            <p>
-             受关税政策滞后及高基数影响，12月对美出口同比 <span className="font-bold">下降 30.0%</span>（前值-28.6%），拖累整体出口约4.4个百分点。2025年美国市场份额降至11.1%，较上年减少3.5pct。
+             建筑及装潢材料类零售额累计同比录得 <span className="font-bold">-2.67%</span>，创近两年新低。这种内需疲软直接拖累了相关出口品类，家具及其零件 12 月出口同比大幅下降 <span className="font-bold">-8.60%</span>，整个四季度均深陷负增长区间。
            </p>
          </InsightBox>
 
-         <InsightBox title="非美：强劲对冲" icon={Globe} highlight={true} delay="200ms">
+         <InsightBox title="外需侧（消费信心匮乏）" icon={Globe} highlight={true} delay="200ms">
            <p>
-             12月对非美区域整体出口增长 <span className="font-bold">12.8%</span>，有效填补了美国需求缺口。多元化市场布局成效显著，出口抗风险能力大幅增强。
+             服装类零售累计同比增速由年初的 5.9% 萎缩至年末的 <span className="font-bold">2.8%</span>。对应出口端，服装及衣着附件 12 月当月同比大幅下挫 <span className="font-bold">-10.20%</span>，显示海外居民在通胀压力下对可选消费的采购极度低迷。
            </p>
          </InsightBox>
 
-         <InsightBox title="新兴市场：工业化红利" icon={Leaf} delay="300ms">
+         <InsightBox title="旺季不旺" icon={Leaf} delay="300ms">
            <p>
-             东盟 (+11.1%)、非洲 (+21.8%)、拉美 (+9.8%) 需求旺盛。受益于这些地区的工业化进程提速，中国中间品和生产资料出口保持高景气。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="欧盟：补库支撑" icon={TrendingUp} delay="400ms">
-           <p>
-             12月对欧盟出口增长 <span className="font-bold">11.6%</span>，虽较上月有所回落，但仍保持两位数增长。显示欧洲在经历了前期的去库存后，补库需求依然尚存。
+             尽管处于传统出口旺季，但纺织纱线及制品 12 月再度转负（<span className="font-bold">-4.20%</span>）。在运费成本上升与利润空间收窄的双重挤压下，劳密产品呈现明显的“有单难接、有货难出”特征。
            </p>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ExportGrowthByRegionChart data={exportGrowthByRegionData} />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <ExportShareStructureChart data2024={exportShare2024Data} data2025={exportShare2025Data} />
+      <section className="flex-grow flex justify-center min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-full" style={{ animationDelay: '500ms' }}>
+          <ExportDynamicsTable data={exportDynamicsData} />
         </div>
       </section>
 
