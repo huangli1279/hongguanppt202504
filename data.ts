@@ -507,17 +507,17 @@ export const investmentPillarsData: InvestmentPillarsDataPoint[] = [
 // Slide 13 Data (Real Estate)
 
 export const realEstateInvestmentData: RealEstateInvestmentDataPoint[] = [
-  { month: '1-2月', investment: -9.0, newStarts: -15.5 },
-  { month: '1-3月', investment: -9.5, newStarts: -16.2 },
-  { month: '1-4月', investment: -9.8, newStarts: -16.8 },
-  { month: '1-5月', investment: -10.1, newStarts: -17.2 },
-  { month: '1-6月', investment: -10.1, newStarts: -17.5 },
-  { month: '1-7月', investment: -10.2, newStarts: -18.0 },
-  { month: '1-8月', investment: -10.2, newStarts: -18.5 },
-  { month: '1-9月', investment: -13.5, newStarts: -20.0 },
-  { month: '1-10月', investment: -15.1, newStarts: -21.5 },
-  { month: '1-11月', investment: -16.3, newStarts: -22.8 },
-  { month: '1-12月', investment: -17.2, newStarts: -20.4 }, // Updated to -20.4 as per prompt
+  { month: '2月', investment: -9.0, newStarts: -15.5 },
+  { month: '3月', investment: -9.5, newStarts: -16.2 },
+  { month: '4月', investment: -9.8, newStarts: -16.8 },
+  { month: '5月', investment: -10.1, newStarts: -17.2 },
+  { month: '6月', investment: -10.1, newStarts: -17.5 },
+  { month: '7月', investment: -10.2, newStarts: -18.0 },
+  { month: '8月', investment: -10.2, newStarts: -18.5 },
+  { month: '9月', investment: -13.5, newStarts: -20.0 },
+  { month: '10月', investment: -15.1, newStarts: -21.5 },
+  { month: '11月', investment: -16.3, newStarts: -22.8 },
+  { month: '12月', investment: -17.2, newStarts: -20.4 }, // Updated to -20.4 as per prompt
 ];
 
 export const realEstatePriceData: RealEstatePriceDataPoint[] = [

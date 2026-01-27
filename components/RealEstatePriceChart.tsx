@@ -77,7 +77,14 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
               dataKey="tier1"
               stroke="#051c2c" // Dark Blue
               strokeWidth={3}
-              dot={false}
+              dot={{ r: 3 }}
+              label={{ 
+                position: 'top', 
+                fontSize: 9, 
+                fill: '#051c2c', 
+                offset: 10,
+                formatter: (val: number) => `${val}%`
+              }}
               animationDuration={2000}
             />
             <Line
@@ -86,7 +93,14 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
               dataKey="tier2"
               stroke="#00a9f4" // Light Blue
               strokeWidth={2}
-              dot={false}
+              dot={{ r: 3 }}
+              label={{ 
+                position: 'bottom', 
+                fontSize: 9, 
+                fill: '#00a9f4', 
+                offset: 10,
+                formatter: (val: number) => `${val}%`
+              }}
               animationDuration={2000}
               animationBegin={300}
             />

@@ -3,7 +3,7 @@ import React from 'react';
 import { RealEstateInvestmentChart } from './RealEstateInvestmentChart';
 import { RealEstatePriceChart } from './RealEstatePriceChart';
 import { realEstateInvestmentData, realEstatePriceData } from '../data';
-import { Home, TrendingDown, DollarSign, AlertTriangle } from 'lucide-react';
+import { Home, TrendingDown } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -47,22 +47,16 @@ export const SlideContentThirteen: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
          <InsightBox title="投资端深度出清" icon={TrendingDown} alert={true} delay="100ms">
            <p>
              全年开发投资下降 <span className="font-bold">17.2%</span>。房屋新开工面积下降 <span className="font-bold">20.4%</span>，竣工面积下降18.1%。先行指标剧烈收缩，意味着未来1-2年建安投资仍面临巨大压力。
            </p>
          </InsightBox>
 
-         <InsightBox title="销售端量价齐跌" icon={Home} delay="200ms" alert={true}>
+         <InsightBox title="房价指数：持续调整" icon={Home} delay="200ms" alert={true}>
            <p>
-             新建商品房销售面积下降 <span className="font-bold">8.7%</span>，销售额下降 <span className="font-bold">12.6%</span>。尽管一线城市新政带动Q4降幅略有收窄，但居民购房预期尚未根本扭转。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="资金链依然紧绷" icon={DollarSign} delay="300ms">
-           <p>
-             房企本年到位资金下降 <span className="font-bold">13.4%</span>。定金及预收款、个人按揭贷款降幅依然显著，房企依靠内生造血能力恢复投资仍需时日。
+             70个大中城市房价指数维持下行态势。12月新建商品住宅价格同比下降 <span className="font-bold">3.05%</span>，二手住宅价格同比下降 <span className="font-bold">6.07%</span>。市场筑底过程仍在延续，价格修复斜率依然偏平。
            </p>
          </InsightBox>
       </section>

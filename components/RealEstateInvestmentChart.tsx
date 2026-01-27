@@ -81,6 +81,13 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               stroke="#ef4444" // Red for investment drop
               strokeWidth={3}
               dot={{ r: 3 }}
+              label={{ 
+                position: 'top', 
+                fontSize: 9, 
+                fill: '#ef4444', 
+                offset: 10,
+                formatter: (val: number) => `${val}%`
+              }}
               animationDuration={2000}
             />
             <Line
@@ -89,8 +96,14 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               dataKey="newStarts"
               stroke="#94a3b8" // Grey for new starts
               strokeWidth={2}
-              strokeDasharray="5 5"
-              dot={false}
+              label={{ 
+                position: 'bottom', 
+                fontSize: 9, 
+                fill: '#64748b', 
+                offset: 10,
+                formatter: (val: number) => `${val}%`
+              }}
+              dot={{ r: 3 }}
               animationDuration={2000}
               animationBegin={300}
             />
