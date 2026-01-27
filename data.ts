@@ -601,6 +601,22 @@ export const equipmentVsConstructionTrendData: EquipmentVsConstructionTrendDataP
   { month: '2025-12', equipment: 11.8, construction: -8.4 },
 ];
 
+export const equipmentInvestmentTableData: IndustryGrowthTableData = {
+  title: "设备投资相关行业2025年累计增长数据",
+  source: "国家统计局",
+  unit: "%",
+  timeSeries: ["2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"],
+  industryData: {
+    "通用设备": [21.6, 17.2, 17.9, 17.5, 16.6, 14.8, 13.7, 11.8, 9.5, 8.9, 6.2],
+    "专用设备": [9.0, 8.1, 8.4, 7.9, 6.2, 4.6, 1.6, -0.7, -2.0, -4.0, -7.1],
+    "电气机械": [-8.6, -7.4, -7.5, -8.6, -7.8, -8.7, -8.8, -9.5, -9.4, -9.5, -10.3],
+    "电子设备": [9.6, 10.5, 9.0, 7.0, 4.6, 2.2, -0.1, -2.1, -2.2, -3.2, -3.2],
+    "汽车制造": [27.0, 24.5, 23.6, 23.4, 22.2, 21.7, 20.2, 19.2, 17.5, 15.3, 11.7],
+    "铁路航天设备": [37.3, 37.9, 29.6, 26.1, 27.3, 29.3, 26.2, 22.3, 20.1, 22.4, 17.5],
+    "金属制品和机械修理": [45.5, 43.6, 44.3, 62.2, 44.2, 49.4, 49.7, 50.1, 49.2, 32.6, 37.9]
+  }
+};
+
 export const highTechInvestmentData: HighTechInvestmentDataPoint[] = [
   { sector: '信息服务业', value: 28.4, category: 'high-tech' },
   { sector: '航空航天/运输', value: 17.5, category: 'high-tech' },

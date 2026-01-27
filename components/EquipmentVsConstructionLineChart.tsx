@@ -84,6 +84,13 @@ export const EquipmentVsConstructionLineChart: React.FC<Props> = ({ data }) => {
               stroke="#005c8f"
               strokeWidth={3}
               dot={{ r: 4, fill: '#005c8f' }}
+              label={{ 
+                position: 'top', 
+                fontSize: 9, 
+                fill: '#005c8f', 
+                offset: 10,
+                formatter: (val: number) => `${val}%`
+              }}
               animationDuration={2000}
             />
             <Line
@@ -93,7 +100,13 @@ export const EquipmentVsConstructionLineChart: React.FC<Props> = ({ data }) => {
               stroke="#ef4444"
               strokeWidth={3}
               dot={{ r: 4, fill: '#ef4444' }}
-              strokeDasharray="5 5"
+              label={{ 
+                position: 'bottom', 
+                fontSize: 9, 
+                fill: '#ef4444', 
+                offset: 10,
+                formatter: (val: number) => `${val}%`
+              }}
               animationDuration={2000}
               animationBegin={300}
             />
