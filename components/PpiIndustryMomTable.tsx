@@ -10,18 +10,18 @@ export const PpiIndustryMomTable: React.FC<PpiIndustryMomTableProps> = ({ data }
   // Industry name abbreviation mapping
   const industryMap: { [key: string]: string } = {
     'lithium': '锂电池',
-    'solar': '光伏',
-    'electronics': '计通',
-    'coal': '煤炭',
-    'oil': '石油',
-    'ferrousMining': '黑金矿',
-    'nonFerrous': '有色',
-    'chemicals': '化工',
-    'nonMetals': '非金属',
-    'ferrousSmelting': '黑金冶',
+    'solar': '光伏设备',
+    'electronics': '计算机通信',
+    'coal': '煤炭开采',
+    'oil': '石油和天然气开采',
+    'ferrousMining': '黑色金属矿采',
+    'nonFerrous': '有色金属矿采',
+    'chemicals': '化学制品',
+    'nonMetals': '非金属矿物制品',
+    'ferrousSmelting': '黑色金属冶炼',
     'generalEquip': '通用设备',
-    'automotive': '汽车',
-    'electrical': '电气'
+    'automotive': '汽车制造',
+    'electrical': '电气机械制造'
   };
   
   // Extract industry keys (excluding 'month')
