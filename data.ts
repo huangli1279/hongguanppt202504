@@ -468,17 +468,26 @@ export const incomeSourceData: IncomeSourceDataPoint[] = [
 // Slide 12 Data (Fixed Asset Investment)
 
 export const faiTrendData: FaiTrendDataPoint[] = [
-  { month: '1-2月', value: 4.2 },
-  { month: '1-3月', value: 4.5 },
-  { month: '1-4月', value: 4.0 },
-  { month: '1-5月', value: 3.2 },
-  { month: '1-6月', value: 2.8 },
-  { month: '1-7月', value: 1.5 },
-  { month: '1-8月', value: 0.4 },
-  { month: '1-9月', value: -0.5 },
-  { month: '1-10月', value: -1.7 },
-  { month: '1-11月', value: -2.6 },
-  { month: '1-12月', value: -3.8 },
+  { month: '24-03', value: 4.5 },
+  { month: '24-04', value: 4.2 },
+  { month: '24-05', value: 4.0 },
+  { month: '24-06', value: 3.9 },
+  { month: '24-07', value: 3.6 },
+  { month: '24-08', value: 3.4 },
+  { month: '24-09', value: 3.4 },
+  { month: '24-10', value: 3.4 },
+  { month: '24-11', value: 3.3 },
+  { month: '24-12', value: 3.2 },
+  { month: '25-03', value: -1.1 },
+  { month: '25-04', value: -0.4 },
+  { month: '25-05', value: -0.3 },
+  { month: '25-06', value: 2.8 },
+  { month: '25-07', value: 4.0 },
+  { month: '25-08', value: 3.4 },
+  { month: '25-09', value: 0.5 },
+  { month: '25-10', value: 0.8 },
+  { month: '25-11', value: 0.8 },
+  { month: '25-12', value: -3.8 },
 ];
 
 export const investmentPillarsData: InvestmentPillarsDataPoint[] = [

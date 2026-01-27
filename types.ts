@@ -181,7 +181,7 @@ export interface IncomeSourceDataPoint {
 
 export interface FaiTrendDataPoint {
     month: string;
-    value: number;
+    value: number | null;
 }
 
 export interface InvestmentPillarsDataPoint {

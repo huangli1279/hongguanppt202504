@@ -90,7 +90,6 @@ export const InvestmentPillarsChart: React.FC<Props> = ({ data }) => {
               stroke="#94a3b8"
               strokeWidth={2}
               dot={false}
-              strokeDasharray="5 5"
               animationDuration={2000}
               animationBegin={300}
             />

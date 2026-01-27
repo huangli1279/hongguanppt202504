@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  AreaChart,
-  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -18,11 +18,13 @@ interface Props {
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
+    const val = payload[0].value;
+    if (val === null) return null;
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-red-500 font-bold">
-          累计增速: {payload[0].value}%
+        <p className="text-webank-blue font-bold">
+          累计增速: {val}%
         </p>
       </div>
     );
@@ -35,65 +37,59 @@ export const FaiTrendChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年固定资产投资(不含农户)累计同比增速
+          全国固定资产投资累计同比增速走势
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          四季度下行斜率显著加大，全年累计下降3.8%
+          单位: %
         </p>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <LineChart
             data={data}
             margin={{
-              top: 20,
+              top: 25,
               right: 20,
               left: -10,
-              bottom: 0,
+              bottom: 10,
             }}
           >
-            <defs>
-              <linearGradient id="colorFai" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ef4444" stopOpacity={0.2}/>
-                <stop offset="95%" stopColor="#ef4444" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
-            <ReferenceLine y={0} stroke="#333" />
+            <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
             <XAxis 
               dataKey="month" 
               axisLine={{ stroke: '#e5e7eb' }} 
               tickLine={false} 
-              tick={{ fill: '#666', fontSize: 10 }}
-              interval={0}
-              angle={-30}
-              textAnchor="end"
-              height={40}
+              tick={{ fill: '#666', fontSize: 9 }}
+              interval={1}
             />
             <YAxis 
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
+              domain={['auto', 'auto']}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Area
+            <Line
               type="monotone"
               dataKey="value"
-              stroke="#ef4444"
+              stroke="#005c8f"
               strokeWidth={3}
-              fill="url(#colorFai)"
+              dot={{ r: 4, fill: '#005c8f', strokeWidth: 0 }}
+              activeDot={{ r: 6, strokeWidth: 0 }}
+              connectNulls={false}
               animationDuration={2000}
             >
               <LabelList 
                 dataKey="value" 
                 position="top" 
                 offset={10} 
-                formatter={(val: number) => `${val}%`}
-                style={{ fill: '#ef4444', fontSize: '10px', fontWeight: 600 }}
+                formatter={(val: number | null) => val !== null ? `${val}%` : ''}
+                style={{ fill: '#005c8f', fontSize: '10px', fontWeight: 600 }}
               />
-            </Area>
-          </AreaChart>
+            </Line>
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

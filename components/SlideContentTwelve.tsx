@@ -46,7 +46,7 @@ export const SlideContentTwelve: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
          <InsightBox title="总量加速下行" icon={TrendingDown} alert={true} delay="100ms">
            <p>
              全年固定资产投资（不含农户）同比下降 <span className="font-bold">3.8%</span>。四季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。
@@ -58,12 +58,6 @@ export const SlideContentTwelve: React.FC = () => {
              <span className="font-bold">房地产：</span>下降17.2%，降幅持续走阔，是最大负向拉动。<br/>
              <span className="font-bold">基建：</span>下降1.48%，受化债制约。<br/>
              <span className="font-bold">制造业：</span>仅微增0.6%，内需不足拖累。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="民间信心低迷" icon={Briefcase} delay="300ms">
-           <p>
-             全年民间投资下降 <span className="font-bold">6.4%</span>，扣除房地产后仍下降1.9%。民营主体资产负债表修复缓慢，扩产意愿不足，市场内生动力亟待提振。
            </p>
          </InsightBox>
       </section>
