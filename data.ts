@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData } from './types';
 
 // Slide 1 Data
 
@@ -179,6 +179,36 @@ export const industryGrowthTableData: IndustryGrowthTableData = {
   industryData: {
     "煤炭开采和洗选业": [null, 4.5, 2.7, null, null, 6.5, null, null, 6.5, 4.2, 5.1, 6.4],
     "石油和天然气開采业": [null, 5.8, 2.2, null, null, 3.6, null, null, 3.6, 4.1, 4.7, 8.9],
+    "化学原料和化学制品制造业": [null, 6.9, 9.4, null, null, 7.5, null, null, 7.5, 7.2, 7.6, 9.0],
+    "橡胶和塑料制品业": [null, 7.2, 9.7, null, null, 6.7, null, null, 6.7, 4.8, 3.5, 5.3],
+    "非金属矿物制品业": [null, -2.6, -0.1, null, null, -0.1, null, null, -0.1, -0.6, 0.5, 0.2],
+    "黑色金属冶炼和压延加工业": [null, 4.0, 8.7, null, null, 4.1, null, null, 4.1, 8.6, 7.3, 2.2],
+    "有色金属冶炼和压延加工业": [null, 7.7, 9.7, null, null, 9.2, null, null, 9.2, 6.8, 9.1, 8.4],
+    "金属制品业": [null, 7.3, 7.9, null, null, 6.7, null, null, 6.7, 4.2, 2.8, 4.0],
+    "通用设备制造业": [null, 2.4, 7.7, null, null, 7.8, null, null, 7.8, 8.4, 7.3, 9.3],
+    "专用设备制造业": [null, 3.0, 4.6, null, null, 4.6, null, null, 4.6, 3.8, 4.0, 5.4],
+    "电气机械和器材制造业": [null, 5.1, 9.2, null, null, 11.4, null, null, 11.4, 10.2, 9.8, 7.9],
+    "农副食品加工业": [null, 1.3, 6.1, null, null, 8.2, null, null, 8.2, 5.6, 4.7, 6.0],
+    "食品制造业": [null, 4.2, 8.4, null, null, 6.4, null, null, 6.4, 3.8, 2.0, 6.5],
+    "酒、饮料和精制茶制造业": [null, 3.0, 3.6, null, null, 3.4, null, null, 3.4, 0.1, -2.4, 0.8],
+    "纺织业": [null, 3.8, 4.6, null, null, 2.5, null, null, 2.5, 1.7, 1.5, 2.2],
+    "医药制造业": [null, 7.8, 2.8, null, null, 2.7, null, null, 2.7, 2.4, 3.3, 5.4],
+    "汽车制造业": [null, 6.2, 17.7, null, null, 11.4, null, null, 11.4, 8.5, 8.4, 16.0],
+    "铁路、船舶、航空航天和其他运输设备制造业": [null, 4.4, 10.6, null, null, 10.1, null, null, 10.1, 13.7, 12.0, 10.3],
+    "计算机、通信和其他电子设备制造业": [null, 10.5, 8.7, null, null, 11.0, null, null, 11.0, 10.2, 9.9, 11.3]
+  }
+};
+
+// Slide 5.5 Data (New Slide - Industry Divergence)
+
+export const industryDivergenceTableData: IndustryGrowthTableData = {
+  title: "2025年分行业规模以上工业增加值当月同比数据",
+  source: "工业增加值数据",
+  unit: "%",
+  timeSeries: ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"],
+  industryData: {
+    "煤炭开采和洗选业": [null, 4.5, 2.7, null, null, 6.5, null, null, 6.5, 4.2, 5.1, 6.4],
+    "石油和天然气开采业": [null, 5.8, 2.2, null, null, 3.6, null, null, 3.6, 4.1, 4.7, 8.9],
     "化学原料和化学制品制造业": [null, 6.9, 9.4, null, null, 7.5, null, null, 7.5, 7.2, 7.6, 9.0],
     "橡胶和塑料制品业": [null, 7.2, 9.7, null, null, 6.7, null, null, 6.7, 4.8, 3.5, 5.3],
     "非金属矿物制品业": [null, -2.6, -0.1, null, null, -0.1, null, null, -0.1, -0.6, 0.5, 0.2],
