@@ -364,6 +364,13 @@ export interface HouseholdLoanStructureDataPoint {
     total: number;
 }
 
+export interface AutoDealerInventoryDataPoint {
+    month: string;
+    year2024: number;
+    year2025: number;
+    yoy: number;
+}
+
 export interface DepositFlowDataPoint {
     month: string;
     household: number; // 100M RMB

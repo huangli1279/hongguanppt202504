@@ -3,7 +3,7 @@ import React from 'react';
 import { RetailTrendChart } from './RetailTrendChart';
 import { UrbanRuralChart } from './UrbanRuralChart';
 import { retailTrendData, urbanRuralData } from '../data';
-import { TrendingDown, CalendarClock, Map, ShoppingBag } from 'lucide-react';
+import { TrendingDown, CalendarClock, ShoppingBag } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => (
   <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${alert ? 'border-red-500' : 'border-webank-blue'} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
@@ -32,28 +32,27 @@ export const SlideContentEight: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          Q4社零增速受“双十一”错位与高基数拖累滑落至0.9%，
-          <span className="text-webank-subtext">内需修复斜率放缓</span>
+          2025 年社零跨越 50 万亿里程碑，Q4"促销平移"效应导致年末动能失速
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="总量特征：前高后低" icon={TrendingDown} alert={true} delay="100ms">
+         <InsightBox title="总量达标与节奏失调" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             全年增长 <span className="font-bold">3.7%</span>。Q4单月增速逐月下滑：10月（2.9%）-{'>'} 11月（1.3%）-{'>'} 12月（0.9%）。12月环比下降0.12%，复苏动能暂时性走弱。
+             2025 年全年社零总额增长 <span className="font-bold">3.7%</span>，规模首破 50 万亿元。Q4 同比逐月衰减（10月 2.9% → 11月 1.3% → 12月 0.9%），12 月创下近三年非极端波动期的最低值，复苏斜率明显放缓。
            </p>
          </InsightBox>
 
-         <InsightBox title="核心扰动：促销错位" icon={CalendarClock} delay="200ms">
+         <InsightBox title={`"促销平移"透支内需`} icon={CalendarClock} delay="200ms">
            <p>
-             <span className="font-bold">双十一提前</span>：2025年大促提前至10月上旬，严重透支11-12月消费潜力。叠加2024年同期因刺激政策形成的高基数，压制了Q4读数表现。
+             2025 年"双十一"促销普遍提前至 10 月上旬开启（较往年提前约 10 天），消费需求在 10 月集中脉冲式释放，实质性透支了 11-12 月购买力，电商平台"战线拉长"未带来总量大幅增长。
            </p>
          </InsightBox>
 
-         <InsightBox title="结构分化：乡村领跑" icon={Map} delay="300ms">
+         <InsightBox title={`高基数与政策"退坡"压制`} icon={ShoppingBag} delay="300ms">
            <p>
-             乡村市场韧性显著强于城镇。12月乡村零售额增长 <span className="font-bold">1.7%</span>，远高于城镇的 <span className="font-bold">0.7%</span>。下沉市场成为消费增长的重要稳定器。
+             <span className="font-bold">基数效应</span>：2024 年 Q4 受疫后补偿性消费及初期政策刺激影响，基数较高。<span className="font-bold">政策钝化</span>：以旧换新等刺激政策在 Q3 达到效果巅峰后，Q4 边际拉动效应减弱，持币观望情绪转浓。
            </p>
          </InsightBox>
       </section>

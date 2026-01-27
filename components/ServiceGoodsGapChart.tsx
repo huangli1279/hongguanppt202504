@@ -81,14 +81,13 @@ export const ServiceGoodsGapChart: React.FC<Props> = ({ data }) => {
               dot={false}
               animationDuration={2000}
             />
-             <Line
+            <Line
               name="商品零售额"
               type="monotone"
               dataKey="goods"
-              stroke="#94a3b8"
+              stroke="#00a9f4"
               strokeWidth={3}
               dot={false}
-              strokeDasharray="5 5"
               animationDuration={2000}
               animationBegin={300}
             />

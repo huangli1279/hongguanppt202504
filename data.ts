@@ -826,3 +826,18 @@ export const depositFlowData: DepositFlowDataPoint[] = [
   { month: '11月', household: 8000, nonBank: 3000 },
   { month: '12月', household: 25800, nonBank: -3300 },
 ];
+
+export const autoDealerInventoryData: AutoDealerInventoryDataPoint[] = [
+  { month: '1月', year2024: 1.38, year2025: 1.40, yoy: 1.4 },
+  { month: '2月', year2024: 1.74, year2025: 1.61, yoy: -7.5 },
+  { month: '3月', year2024: 1.56, year2025: 1.56, yoy: 0.0 },
+  { month: '4月', year2024: 1.70, year2025: 1.41, yoy: -17.1 },
+  { month: '5月', year2024: 1.44, year2025: 1.38, yoy: -4.2 },
+  { month: '6月', year2024: 1.40, year2025: 1.42, yoy: 1.4 },
+  { month: '7月', year2024: 1.50, year2025: 1.35, yoy: -10.0 },
+  { month: '8月', year2024: 1.16, year2025: 1.31, yoy: 12.9 },
+  { month: '9月', year2024: 1.29, year2025: 1.35, yoy: 4.7 },
+  { month: '10月', year2024: 1.10, year2025: 1.17, yoy: 6.4 },
+  { month: '11月', year2024: 1.11, year2025: 1.57, yoy: 41.4 },
+  { month: '12月', year2024: 1.14, year2025: 1.31, yoy: 14.9 },
+];

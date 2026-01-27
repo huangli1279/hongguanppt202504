@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { ServiceGoodsGapChart } from './ServiceGoodsGapChart';
-import { UrbanRuralChart } from './UrbanRuralChart';
-import { serviceGoodsData, urbanRuralData } from '../data';
-import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
+import { Smartphone, Zap, ShoppingBag, TrendingUp, AlertCircle, BarChart3 } from 'lucide-react';
+import { RetailCategoryTable } from './RetailCategoryTable';
+import { AutoDealerInventoryChart } from './AutoDealerInventoryChart';
+import { autoDealerInventoryData } from '../data';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,7 +30,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentNine: React.FC = () => {
+export const SlideContentEighteen: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
@@ -41,31 +41,31 @@ export const SlideContentNine: React.FC = () => {
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            商品与服务结构分析
+            细分品类与政策成效分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          服务消费贡献近半壁江山，乡村消费增速持续快于城镇
+          通讯器材全年高增20.9%领跑市场，家电与汽车消费年底承压
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="服务消费：半壁江山" icon={Coffee} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-3 gap-6 mb-8 h-40">
+         <InsightBox title="通讯器材：最强引擎" icon={Smartphone} delay="100ms" highlight={true}>
            <p>
-             全年服务零售额增长 <span className="font-bold">5.5%</span>，高于商品（3.8%）。人均服务性消费支出占比达 <span className="font-bold">46.1%</span>，兴趣点转向餐饮、旅游和线下娱乐。
+             政策“红包”与AI技术红利共振。2025年通讯器材零售额累计同比增长 <span className="font-bold text-webank-lightBlue">20.9%</span>。
            </p>
          </InsightBox>
 
-         <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
+         <InsightBox title="以旧换新：降维打击" icon={Zap} delay="200ms">
            <p>
-             全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
+             商务部数据显示中高端手机补贴占比为 <span className="font-bold">72.5%</span>，通过“政府补贴+厂方让利”实现精准收割。AI手机渗透率提升，IDC预计2026年中国新一代AI手机出货量将达 <span className="font-bold">1.47亿台</span>，同比增长31.6%，占据整体市场的 <span className="font-bold">53%</span>。
            </p>
          </InsightBox>
 
-         <InsightBox title="逻辑深挖：政策时滞" icon={TrendingUp} delay="300ms">
+         <InsightBox title="家电汽车：透支休克" icon={AlertCircle} delay="300ms" alert={true}>
            <p>
-             以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
+             边际递减效应显现：家电类零售同比转负（12月 <span className="font-bold">-18.7%</span>），反映出存量收割后的补偿性回落。12月汽车经销商库存系数 <span className="font-bold">1.31</span>，仍高于合理区间。
            </p>
          </InsightBox>
       </section>
@@ -73,20 +73,20 @@ export const SlideContentNine: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ServiceGoodsGapChart data={serviceGoodsData} />
+          <RetailCategoryTable />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <UrbanRuralChart data={urbanRuralData} />
+          <AutoDealerInventoryChart data={autoDealerInventoryData} />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        
+        <span>18</span>
       </footer>
 
-      {/* Animation Styles Reuse */}
+      {/* Animation Styles */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

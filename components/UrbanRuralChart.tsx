@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {
+  Dot,
   LineChart,
   Line,
   XAxis,
@@ -11,6 +12,18 @@ import {
   Legend,
   ReferenceLine
 } from 'recharts';
+
+const CustomizedDot = (props: any) => {
+  const { cx, cy, payload, value } = props;
+
+  if (payload.month === '12月') {
+    return (
+      <Dot cx={cx} cy={cy} r={6} fill="#ef4444" stroke="#fff" strokeWidth={2} />
+    );
+  }
+
+  return null;
+};
 import { UrbanRuralDataPoint } from '../types';
 
 interface Props {
@@ -81,7 +94,7 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
               dataKey="rural"
               stroke="#00a9f4"
               strokeWidth={3}
-              dot={false}
+              dot={<CustomizedDot />}
               animationDuration={2000}
             />
             <Line
@@ -90,7 +103,7 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
               dataKey="urban"
               stroke="#051c2c"
               strokeWidth={3}
-              dot={false}
+              dot={<CustomizedDot />}
               animationDuration={2000}
               animationBegin={300}
             />

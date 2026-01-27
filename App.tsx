@@ -23,7 +23,8 @@ import { SlideContentFourteen } from './components/SlideContentFourteen';
 import { SlideContentFifteen } from './components/SlideContentFifteen';
 import { SlideContentSixteen } from './components/SlideContentSixteen';
 import { SlideContentSeventeen } from './components/SlideContentSeventeen';
-import { SlideContentEighteen } from './components/SlideContentEighteen';
+import { SlideContentEighteen as SlideContentEighteenOld } from './components/SlideContentEighteen';
+import { SlideContentEighteen } from './components/SlideContentEighteen_New';
 import { SlideContentNineteen } from './components/SlideContentNineteen';
 import { SlideContentTwenty } from './components/SlideContentTwenty';
 import { SlideContentTwentyOne } from './components/SlideContentTwentyOne';
@@ -36,7 +37,7 @@ const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 37; // Updated for new PPI Industry MoM slide
+  const TOTAL_SLIDES = 38; // Updated for new Consumption slide 18
 
   // Function to handle scaling based on window size to maintain 16:9 visualization
   const handleResize = () => {
@@ -146,44 +147,45 @@ const App: React.FC = () => {
 
         {currentSlide === 16 && <SlideContentEight />}
         {currentSlide === 17 && <SlideContentNine />}
-        {currentSlide === 18 && <SlideContentTen />}
-        {currentSlide === 19 && <SlideContentEleven />}
+        {currentSlide === 18 && <SlideContentEighteen />}
+        {currentSlide === 19 && <SlideContentTen />}
+        {currentSlide === 20 && <SlideContentEleven />}
 
         {/* Transition Slide 4: Investment */}
-        {currentSlide === 20 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
+        {currentSlide === 21 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
 
         {/* Investment Slides */}
-        {currentSlide === 21 && <SlideContentTwelve />}
-        {currentSlide === 22 && <SlideContentThirteen />}
-        {currentSlide === 23 && <SlideContentFourteen />}
-        {currentSlide === 24 && <SlideContentFifteen />}
+        {currentSlide === 22 && <SlideContentTwelve />}
+        {currentSlide === 23 && <SlideContentThirteen />}
+        {currentSlide === 24 && <SlideContentFourteen />}
+        {currentSlide === 25 && <SlideContentFifteen />}
 
         {/* Transition Slide 5: Trade */}
-        {currentSlide === 25 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 26 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
 
         {/* Trade Slides */}
-        {currentSlide === 26 && <SlideContentSixteen />}
-        {currentSlide === 27 && <SlideContentSeventeen />}
-        {currentSlide === 28 && <SlideContentEighteen />}
+        {currentSlide === 27 && <SlideContentSixteen />}
+        {currentSlide === 28 && <SlideContentSeventeen />}
+        {currentSlide === 29 && <SlideContentEighteenOld />}
 
         {/* Transition Slide 6: Fiscal */}
-        {currentSlide === 29 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 30 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
 
         {/* Fiscal Slides */}
-        {currentSlide === 30 && <SlideContentNineteen />}
-        {currentSlide === 31 && <SlideContentTwenty />}
-        {currentSlide === 32 && <SlideContentTwentyOne />}
+        {currentSlide === 31 && <SlideContentNineteen />}
+        {currentSlide === 32 && <SlideContentTwenty />}
+        {currentSlide === 33 && <SlideContentTwentyOne />}
 
         {/* NEW Transition Slide 7: Financial */}
-        {currentSlide === 33 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 34 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides (Indices shifted +1) */}
-        {currentSlide === 34 && <SlideContentTwentyTwo />}
-        {currentSlide === 35 && <SlideContentTwentyThree />}
-        {currentSlide === 36 && <SlideContentTwentyFour />}
+        {currentSlide === 35 && <SlideContentTwentyTwo />}
+        {currentSlide === 36 && <SlideContentTwentyThree />}
+        {currentSlide === 37 && <SlideContentTwentyFour />}
 
         {/* Thank You Slide */}
-        {currentSlide === 37 && <ThankYouSlide />}
+        {currentSlide === 38 && <ThankYouSlide />}
       </div>
 
       {/* Visual Indicators (Vertical, Right Side, Non-interactive) */}
