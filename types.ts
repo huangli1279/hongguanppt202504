@@ -208,6 +208,12 @@ export interface InvestmentStructureDataPoint {
     description?: string;
 }
 
+export interface EquipmentVsConstructionTrendDataPoint {
+    month: string;
+    equipment: number;
+    construction: number;
+}
+
 export interface IndustryGrowthTableData {
   title: string;
   source: string;

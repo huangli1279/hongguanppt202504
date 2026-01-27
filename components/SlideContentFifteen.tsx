@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { EquipmentVsConstructionChart } from './EquipmentVsConstructionChart';
+import { EquipmentVsConstructionLineChart } from './EquipmentVsConstructionLineChart';
 import { HighTechInvestmentChart } from './HighTechInvestmentChart';
-import { investmentStructureData, highTechInvestmentData } from '../data';
+import { equipmentVsConstructionTrendData, highTechInvestmentData } from '../data';
 import { RefreshCcw, HardHat, Rocket, AlertCircle } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
@@ -79,7 +79,7 @@ export const SlideContentFifteen: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <EquipmentVsConstructionChart data={investmentStructureData} />
+          <EquipmentVsConstructionLineChart data={equipmentVsConstructionTrendData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
           <HighTechInvestmentChart data={highTechInvestmentData} />
