@@ -20,9 +20,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p style={{ color: '#005c8f' }}>第三产业: {payload[2].value}%</p>
-        <p style={{ color: '#00a9f4' }}>第二产业: {payload[1].value}%</p>
         <p style={{ color: '#94a3b8' }}>第一产业: {payload[0].value}%</p>
+        <p style={{ color: '#00a9f4' }}>第二产业: {payload[1].value}%</p>
+        <p style={{ color: '#005c8f' }}>第三产业: {payload[2].value}%</p>
         <div className="border-t border-slate-200 mt-1 pt-1 font-bold text-webank-blue">
             GDP: {payload[0].payload.total}%
         </div>
@@ -30,6 +30,33 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     );
   }
   return null;
+};
+
+const CustomLegend = () => {
+  const legendItems = [
+    { label: '第一产业', color: '#94a3b8' },
+    { label: '第二产业', color: '#00a9f4' },
+    { label: '第三产业', color: '#005c8f' }
+  ];
+
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      gap: '20px',
+      fontSize: '10px',
+      paddingTop: '10px'
+    }}>
+      {legendItems.map((item) => (
+        <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <svg width="8" height="8">
+            <circle cx="4" cy="4" r="4" fill={item.color} />
+          </svg>
+          <span>{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export const ContributionChart: React.FC<Props> = ({ data }) => {
@@ -49,20 +76,20 @@ export const ContributionChart: React.FC<Props> = ({ data }) => {
             stackOffset="sign"
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
-            <XAxis 
-              dataKey="period" 
+            <XAxis
+              dataKey="period"
               axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
               tick={{ fill: '#666', fontSize: 10 }}
               dy={5}
             />
-            <YAxis 
+            <YAxis
               axisLine={false}
               tickLine={false}
               tick={{ fill: '#999', fontSize: 10 }}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: '10px' }} />
+            <Legend content={<CustomLegend />} />
             <Bar dataKey="primary" name="第一产业" stackId="a" fill="#94a3b8" />
             <Bar dataKey="secondary" name="第二产业" stackId="a" fill="#00a9f4" />
             <Bar dataKey="tertiary" name="第三产业" stackId="a" fill="#005c8f" />

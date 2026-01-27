@@ -16,8 +16,10 @@ export interface DeflatorDataPoint {
 
 export interface IndustryGrowthData {
   name: string;
-  value: number;
-  fill: string;
+  '2025-03': number;
+  '2025-06': number;
+  '2025-09': number;
+  '2025-12': number;
 }
 
 export interface ContributionDataPoint {

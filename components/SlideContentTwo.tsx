@@ -1,8 +1,7 @@
 import React from 'react';
 import { IndustryGrowthChart } from './IndustryGrowthChart';
 import { ContributionChart } from './ContributionChart';
-import { IndustryBreakdownChart } from './IndustryBreakdownChart';
-import { industryGrowthData, contributionData, breakdownData } from '../data';
+import { industryGrowthData, contributionData } from '../data';
 import { TrendingUp, Activity, AlertTriangle, Cpu } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
@@ -52,21 +51,16 @@ export const SlideContentTwo: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-12 gap-6 min-h-0">
-        
-        {/* Left Column: 2 Stacked Charts (Growth Overview & Contribution) */}
-        <div className="col-span-5 grid grid-rows-2 gap-6">
-           <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-              <IndustryGrowthChart data={industryGrowthData} />
-           </div>
-           <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-              <ContributionChart data={contributionData} />
-           </div>
+      <section className="flex-grow grid grid-cols-2 gap-6 min-h-0">
+
+        {/* Left Column: Industry Growth Chart */}
+        <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+           <IndustryGrowthChart data={industryGrowthData} />
         </div>
 
-        {/* Right Column: Detailed Breakdown */}
-        <div className="col-span-7 bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '700ms' }}>
-           <IndustryBreakdownChart data={breakdownData} />
+        {/* Right Column: Contribution Chart */}
+        <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+           <ContributionChart data={contributionData} />
         </div>
 
       </section>

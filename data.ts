@@ -36,9 +36,9 @@ export const deflatorData: DeflatorDataPoint[] = [
 // Slide 2 Data
 
 export const industryGrowthData: IndustryGrowthData[] = [
-  { name: '第一产业', value: 4.2, fill: '#94a3b8' },
-  { name: '第二产业', value: 3.4, fill: '#ef4444' }, // Red to show slowdown
-  { name: '第三产业', value: 5.2, fill: '#00a9f4' }, // Light blue as core support
+  { name: '第一产业', '2025-03': 3.5, '2025-06': 3.8, '2025-09': 4.0, '2025-12': 4.2 },
+  { name: '第二产业', '2025-03': 5.9, '2025-06': 4.8, '2025-09': 4.2, '2025-12': 3.4 },
+  { name: '第三产业', '2025-03': 5.3, '2025-06': 5.7, '2025-09': 5.4, '2025-12': 5.2 },
 ];
 
 export const contributionData: ContributionDataPoint[] = [
