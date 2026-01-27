@@ -85,20 +85,20 @@ export const DeflatorChart: React.FC<Props> = ({ data }) => {
             data={data}
             margin={{
               top: 5,
-              right: 10,
+              right: 30,
               left: -20,
               bottom: 0,
             }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#666" strokeWidth={1} />
-            <XAxis 
-              dataKey="period" 
-              axisLine={{ stroke: '#e5e7eb' }} 
-              tickLine={false} 
+            <XAxis
+              dataKey="period"
+              axisLine={{ stroke: '#e5e7eb' }}
+              tickLine={false}
               tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
-              interval={1} // Show every other label to avoid clutter
+              interval={0}
             />
             <YAxis 
               axisLine={false} 

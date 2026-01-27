@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-  AreaChart,
-  Area,
+  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -46,53 +45,47 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <LineChart
             data={data}
             margin={{
               top: 20,
               right: 30,
-              left: 0,
+              left: 20,
               bottom: 0,
             }}
           >
-            <defs>
-              <linearGradient id="colorGdp" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#005c8f" stopOpacity={0.15}/>
-                <stop offset="95%" stopColor="#005c8f" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
-            <XAxis 
-              dataKey="period" 
-              axisLine={false} 
-              tickLine={false} 
+            <XAxis
+              dataKey="period"
+              axisLine={false}
+              tickLine={false}
               tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
             />
-            <YAxis 
-              hide={true} 
+            <YAxis
+              hide={true}
               domain={[0, 8]}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#cbd5e1', strokeWidth: 1 }} />
             <Legend iconType="circle" wrapperStyle={{ fontSize: '10px' }} />
-            
-            <Area
+
+            <Line
               name="GDP不变价"
               type="monotone"
               dataKey="value"
               stroke="#005c8f"
               strokeWidth={3}
-              fill="url(#colorGdp)"
+              dot={{ r: 3, fill: '#005c8f' }}
               animationDuration={1500}
             >
-               <LabelList 
-                  dataKey="value" 
-                  position="top" 
-                  offset={10} 
+               <LabelList
+                  dataKey="value"
+                  position="top"
+                  offset={10}
                   formatter={(val: number) => `${val}%`}
                   style={{ fill: '#005c8f', fontSize: '11px', fontWeight: 600 }}
                 />
-            </Area>
+            </Line>
 
             <Line
               name="GDP现价"
@@ -103,16 +96,16 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
               dot={{ r: 3, fill: '#ef4444' }}
               animationDuration={1500}
             >
-                <LabelList 
-                  dataKey="nominal" 
-                  position="bottom" 
-                  offset={10} 
+                <LabelList
+                  dataKey="nominal"
+                  position="bottom"
+                  offset={10}
                   formatter={(val: number) => `${val}%`}
                   style={{ fill: '#ef4444', fontSize: '10px' }}
                 />
             </Line>
 
-          </AreaChart>
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>
