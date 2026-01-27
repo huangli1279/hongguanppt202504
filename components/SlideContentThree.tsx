@@ -30,7 +30,7 @@ export const SlideContentThree: React.FC = () => {
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-800"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
@@ -40,7 +40,7 @@ export const SlideContentThree: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          净出口Q4贡献率升至31.1%有效对冲内需缺口，<span className="text-webank-subtext">资本形成贡献率仅16%</span>
+          净出口Q4贡献率升至31.1%有效对冲内需缺口，<span className="text-webank-accent">资本形成贡献率仅16%</span>
         </h1>
       </header>
 

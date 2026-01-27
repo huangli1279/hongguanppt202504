@@ -84,12 +84,16 @@ export const industryGdpQuarterlyData: IndustryGdpQuarterlyDataPoint[] = [
 // Slide 3 Data
 
 export const demandStructureData: DemandStructureData[] = [
-  { name: '最终消费支出', value: 52.9, fill: '#051c2c' }, // WeBank Blue (Main driver)
-  { name: '货物和服务净出口', value: 31.1, fill: '#00a9f4' }, // Light Blue (Strong support)
-  { name: '资本形成总额', value: 16.0, fill: '#94a3b8' }, // Grey (Weakness)
+  { name: '最终消费支出', value: 52.9, fill: '#005c8f' }, // WeBank Accent Blue
+  { name: '货物和服务净出口', value: 31.1, fill: '#00a9f4' }, // Light Blue
+  { name: '资本形成总额', value: 16.0, fill: '#94a3b8' }, // Grey
 ];
 
 export const threeCarriagesContributionData: ThreeCarriagesContributionDataPoint[] = [
+  { period: '2024-03', consumption: 76.5, investment: 9.2, netExport: 14.3 },
+  { period: '2024-06', consumption: 50.5, investment: 38.4, netExport: 11.1 },
+  { period: '2024-09', consumption: 32.6, investment: 22.8, netExport: 44.5 },
+  { period: '2024-12', consumption: 32.1, investment: 22.1, netExport: 45.8 },
   { period: '2025-03', consumption: 50.1, investment: 4.7, netExport: 45.2 },
   { period: '2025-06', consumption: 51.0, investment: 24.2, netExport: 24.8 },
   { period: '2025-09', consumption: 54.1, investment: 15.9, netExport: 30.0 },
