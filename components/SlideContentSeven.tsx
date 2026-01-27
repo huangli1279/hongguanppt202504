@@ -37,17 +37,18 @@ export const SlideContentSeven: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="价格弹性边际修复" icon={TrendingUp} delay="100ms">
-           <p>
-             12月PPI环比上涨 <span className="font-bold">0.2%</span>，连续第3个月维持正增长，同比降幅收窄至 -1.9%。工业品价格通缩压力显著缓解，企业定价权逐步回归。
-           </p>
+      <section className="grid grid-cols-2 gap-6 mb-8 min-h-[144px]">
+         <InsightBox title="PPI：价格弹性边际修复" icon={TrendingUp} delay="100ms">
+           <div className="text-[10.5px] leading-relaxed">
+             12月PPI环比上涨 <span className="font-bold text-webank-blue">0.2%</span>，连续第3个月维持正增长，同比降幅收窄至 -1.9%。工业品价格通缩压力显著缓解，中下游企业定价权逐步回归，利润空间边际改善。
+           </div>
          </InsightBox>
 
-         <InsightBox title="大宗商品价格分化" icon={Globe} delay="300ms">
-           <p>
-             能源与钢铁指数震荡下行，反映国内建筑需求偏弱；有色类指数逆势走强，主要受全球供应偏紧及输入性因素驱动，大宗商品价格走势呈现明显的结构性分化特征。
-           </p>
+         <InsightBox title="大宗商品：宏观割裂下的两极分化" icon={Globe} delay="300ms">
+           <div className="space-y-2 text-[10.5px]">
+             <p><span className="font-bold text-webank-blue">避险与供需错配推升金属：</span>地缘博弈激发的强避险情绪，叠加AI算力与电网升级带来的结构性短缺，推动贵金属和有色金属（金、银、铜）创下历史新高。</p>
+             <p><span className="font-bold text-webank-blue">供应过剩压制能源：</span>传统的化石能源因产能释放过快及全球制造业需求复苏不均，价格中枢显著下移。</p>
+           </div>
          </InsightBox>
       </section>
 
