@@ -417,18 +417,45 @@ export const durableGoodsData: DurableGoodsDataPoint[] = [
 // Slide 10 Data (CPI)
 
 export const cpiTrendData: CpiTrendDataPoint[] = [
-    { month: '1月', headline: 0.3, core: 0.8, adjustedCore: 0.8 },
-    { month: '2月', headline: 0.7, core: 1.2, adjustedCore: 1.1 },
-    { month: '3月', headline: 0.1, core: 0.6, adjustedCore: 0.6 },
-    { month: '4月', headline: 0.3, core: 0.7, adjustedCore: 0.7 },
-    { month: '5月', headline: 0.3, core: 0.6, adjustedCore: 0.6 },
-    { month: '6月', headline: 0.2, core: 0.6, adjustedCore: 0.6 },
-    { month: '7月', headline: 0.5, core: 0.4, adjustedCore: 0.4 },
-    { month: '8月', headline: 0.6, core: 0.3, adjustedCore: 0.3 },
-    { month: '9月', headline: 0.4, core: 0.8, adjustedCore: 0.7 },
-    { month: '10月', headline: 0.3, core: 1.2, adjustedCore: 0.8 },
-    { month: '11月', headline: 0.7, core: 1.2, adjustedCore: 0.7 },
-    { month: '12月', headline: 0.8, core: 1.2, adjustedCore: 0.6 },
+    { month: '2025-12', headline: 0.2, core: 0.3 },
+    { month: '2025-11', headline: 0.2, core: 0.3 },
+    { month: '2025-10', headline: 0.3, core: 0.2 },
+    { month: '2025-09', headline: 0.4, core: 0.1 },
+    { month: '2025-08', headline: 0.6, core: 0.3 },
+    { month: '2025-07', headline: 0.5, core: 0.4 },
+    { month: '2025-06', headline: 0.2, core: 0.6 },
+    { month: '2025-05', headline: 0.3, core: 0.6 },
+    { month: '2025-04', headline: 0.3, core: 0.7 },
+    { month: '2025-03', headline: 0.1, core: 0.6 },
+    { month: '2025-02', headline: 0.7, core: 1.2 },
+    { month: '2025-01', headline: 0.3, core: 0.4 },
+    { month: '2024-12', headline: 0.3, core: 0.6 },
+    { month: '2024-11', headline: 0.2, core: 0.6 },
+    { month: '2024-10', headline: 0.3, core: 0.6 },
+    { month: '2024-09', headline: 0.4, core: 0.5 },
+    { month: '2024-08', headline: 0.6, core: 0.6 },
+    { month: '2024-07', headline: 0.5, core: 0.7 },
+    { month: '2024-06', headline: 0.2, core: 0.7 },
+    { month: '2024-05', headline: 0.3, core: 0.6 },
+    { month: '2024-04', headline: 0.3, core: 0.7 },
+    { month: '2024-03', headline: 0.1, core: 0.6 },
+    { month: '2024-02', headline: 0.7, core: 1.2 },
+    { month: '2024-01', headline: 0.3, core: 0.4 },
+];
+
+export const consumptionPropensityData: ConsumptionPropensityDataPoint[] = [
+  { period: "2023-Q1", value: 62.0 },
+  { period: "2023-Q2", value: 68.5 },
+  { period: "2023-Q3", value: 69.8 },
+  { period: "2023-Q4", value: 73.2 },
+  { period: "2024-Q1", value: 63.3 },
+  { period: "2024-Q2", value: 67.8 },
+  { period: "2024-Q3", value: 70.2 },
+  { period: "2024-Q4", value: 73.2 },
+  { period: "2025-Q1", value: 62.8 },
+  { period: "2025-Q2", value: 67.4 },
+  { period: "2025-Q3", value: 69.5 },
+  { period: "2025-Q4", value: 72.7 },
 ];
 
 export const cpiContributionData: CpiContributionDataPoint[] = [
@@ -841,3 +868,20 @@ export const autoDealerInventoryData: AutoDealerInventoryDataPoint[] = [
   { month: '11月', year2024: 1.11, year2025: 1.57, yoy: 41.4 },
   { month: '12月', year2024: 1.14, year2025: 1.31, yoy: 14.9 },
 ];
+
+export const cpiEightCategoriesData: IndustryGrowthTableData = {
+  title: "全国居民消费价格指数（CPI）八大类分项环比数据",
+  source: "国家统计局",
+  unit: "%",
+  timeSeries: ["2025-12", "2025-11", "2025-10", "2025-09", "2025-08", "2025-07", "2025-06", "2025-05", "2025-04", "2025-03", "2025-02", "2025-01", "2024-12", "2024-11", "2024-10"],
+  industryData: {
+    "食品烟酒": [0.2, 0.3, -0.7, 0.5, 2.2, 0.7, -0.4, -0.7, 0.2, -2.2, 2.2, 0.3, 0.4, -0.6, -0.8],
+    "衣着": [0.0, 0.7, 0.7, 0.7, -0.1, -0.3, -0.2, -0.1, 0.2, 0.5, -0.2, 0.2, 0.1, 0.6, 1.1],
+    "居住": [-0.1, -0.1, -0.1, 0.0, 0.0, 0.1, 0.1, 0.0, 0.1, 0.0, -0.1, 0.1, -0.1, 0.0, 0.0],
+    "生活用品及服务": [0.4, -0.4, 0.3, 0.3, 0.4, -0.3, -0.1, -0.1, -0.1, 0.2, 0.5, 0.3, 0.0, -0.7, 0.1],
+    "交通通信": [0.0, -0.9, -0.4, -0.9, -0.4, 0.5, -0.1, -1.2, -0.1, -1.4, -0.4, 0.1, -1.2, -2.2, -0.7],
+    "教育文化娱乐": [0.1, -0.8, 0.1, -0.4, -0.1, 1.2, 0.1, -0.1, 0.1, -2.1, 0.3, 0.4, -0.1, -0.9, 0.1],
+    "医疗保健": [0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.0],
+    "其他用品及服务": [2.6, 1.2, 0.9, 1.3, -0.3, 0.5, 0.0, -0.1, -0.2, -0.5, 0.2, 0.3, -0.5, -0.6, 1.1]
+  }
+};

@@ -9,7 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  ReferenceLine
+  ReferenceLine,
+  Label
 } from 'recharts';
 import { CpiTrendDataPoint } from '../types';
 
@@ -24,7 +25,6 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         <p className="text-webank-blue font-bold">CPI同比: {payload[0].value}%</p>
         <p className="text-webank-subtext">核心CPI: {payload[1].value}%</p>
-        <p className="text-red-500 font-bold">剔除黄金后核心: {payload[2].value}%</p>
       </div>
     );
   }
@@ -32,20 +32,23 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export const CpiTrendChart: React.FC<Props> = ({ data }) => {
+  // Sort data chronologically for the chart
+  const sortedData = [...data].sort((a, b) => a.month.localeCompare(b.month));
+
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          CPI、核心CPI及剔除金价后核心CPI走势
+          2025年CPI、核心CPI当月同比走势
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          剔除金价后的“真实核心CPI”仅0.6%，且呈下行态势
+          核心CPI低位波动，反映内生需求依然偏弱
         </p>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={data}
+            data={sortedData}
             margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
@@ -55,7 +58,7 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
               dataKey="month" 
               axisLine={{ stroke: '#e5e7eb' }} 
               tickLine={false} 
-              tick={{ fill: '#666', fontSize: 10 }}
+              tick={{ fill: '#666', fontSize: 9 }}
               dy={10}
             />
             <YAxis 
@@ -63,7 +66,7 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[-0.5, 1.5]}
+              domain={[0, 1.5]}
               ticks={[0, 0.5, 1.0, 1.5]}
             />
             <Tooltip content={<CustomTooltip />} />
@@ -71,6 +74,7 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
                 wrapperStyle={{ paddingTop: '10px' }} 
                 iconType="circle" 
                 iconSize={8} 
+                style={{ fontSize: '10px' }}
             />
             
             <Line
@@ -79,30 +83,60 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
               dataKey="headline"
               stroke="#051c2c" // WeBank Blue
               strokeWidth={3}
-              dot={{ r: 3, fill: '#051c2c' }}
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#051c2c" />
+                      <text
+                        x={cx}
+                        y={cy - 12}
+                        textAnchor="middle"
+                        fill="#051c2c"
+                        fontSize={10}
+                        fontWeight="bold"
+                      >
+                        {payload.headline}%
+                      </text>
+                    </g>
+                  );
+                }
+                return <circle cx={cx} cy={cy} r={3} fill="#051c2c" />;
+              }}
               activeDot={{ r: 5 }}
               animationDuration={2000}
             />
             <Line
-              name="核心CPI"
+              name="核心CPI同比"
               type="monotone"
               dataKey="core"
-              stroke="#94a3b8" // Grey
-              strokeWidth={2}
-              dot={false}
+              stroke="#00a9f4" // Light Blue
+              strokeWidth={3}
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-core-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#00a9f4" />
+                      <text
+                        x={cx}
+                        y={cy - 12}
+                        textAnchor="middle"
+                        fill="#00a9f4"
+                        fontSize={10}
+                        fontWeight="bold"
+                      >
+                        {payload.core}%
+                      </text>
+                    </g>
+                  );
+                }
+                return <circle cx={cx} cy={cy} r={3} fill="#00a9f4" />;
+              }}
+              activeDot={{ r: 5 }}
               animationDuration={2000}
               animationBegin={300}
-            />
-            <Line
-              name="剔除金价后核心CPI"
-              type="monotone"
-              dataKey="adjustedCore"
-              stroke="#ef4444" // Red for warning
-              strokeWidth={2}
-              strokeDasharray="5 5"
-              dot={false}
-              animationDuration={2000}
-              animationBegin={600}
             />
           </LineChart>
         </ResponsiveContainer>

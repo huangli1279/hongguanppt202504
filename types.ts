@@ -157,7 +157,7 @@ export interface CpiTrendDataPoint {
   month: string;
   headline: number;
   core: number;
-  adjustedCore: number;
+  adjustedCore?: number;
 }
 
 export interface CpiContributionDataPoint {
@@ -221,6 +221,11 @@ export interface EquipmentVsConstructionTrendDataPoint {
     month: string;
     equipment: number;
     construction: number;
+}
+
+export interface ConsumptionPropensityDataPoint {
+  period: string;
+  value: number;
 }
 
 export interface IndustryGrowthTableData {
