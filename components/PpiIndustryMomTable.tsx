@@ -28,8 +28,13 @@ export const PpiIndustryMomTable: React.FC<PpiIndustryMomTableProps> = ({ data }
   const industries = Object.keys(data[0] || {}).filter(key => key !== 'month');
   
   // Define color coding function based on value
-  const getColorClass = (value: number | null) => {
+  const getColorClass = (value: number | null, month: string) => {
     if (value === null || value === undefined) return 'text-gray-400';
+    
+    // Only highlight for 2025-10, 2025-11, 2025-12
+    const shouldHighlight = ['2025-10', '2025-11', '2025-12'].includes(month);
+    if (!shouldHighlight) return 'text-gray-700';
+
     if (value >= 2.0) return 'text-green-700 font-bold';
     if (value >= 0.5) return 'text-green-600 font-semibold';
     if (value >= 0) return 'text-gray-700';
@@ -38,8 +43,13 @@ export const PpiIndustryMomTable: React.FC<PpiIndustryMomTableProps> = ({ data }
   };
   
   // Get background color for cell
-  const getBgClass = (value: number | null) => {
+  const getBgClass = (value: number | null, month: string) => {
     if (value === null || value === undefined) return 'bg-gray-50';
+    
+    // Only highlight for 2025-10, 2025-11, 2025-12
+    const shouldHighlight = ['2025-10', '2025-11', '2025-12'].includes(month);
+    if (!shouldHighlight) return '';
+
     if (value >= 2.0) return 'bg-green-50';
     if (value >= 0.5) return 'bg-green-50/50';
     if (value >= 0) return '';
@@ -82,9 +92,9 @@ export const PpiIndustryMomTable: React.FC<PpiIndustryMomTableProps> = ({ data }
                   return (
                     <td 
                       key={industryIdx} 
-                      className={`px-2 py-1 text-center border-r border-gray-100 ${getBgClass(value)}`}
+                      className={`px-2 py-1 text-center border-r border-gray-100 ${getBgClass(value, row.month)}`}
                     >
-                      <span className={getColorClass(value)}>
+                      <span className={getColorClass(value, row.month)}>
                         {value === null || value === undefined ? '-' : value.toFixed(1)}
                       </span>
                     </td>
