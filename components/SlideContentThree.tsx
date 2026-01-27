@@ -67,7 +67,7 @@ export const SlideContentThree: React.FC = () => {
 
       {/* Charts Section */}
       <section className="flex-grow flex justify-center min-h-0">
-         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-2/3" style={{ animationDelay: '500ms' }}>
+         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-full" style={{ animationDelay: '500ms' }}>
             <DemandContributionChart data={threeCarriagesContributionData} />
          </div>
       </section>
