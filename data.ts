@@ -150,16 +150,26 @@ export const pmiSizeTrendData: PmiSizeTrendDataPoint[] = [
 // Slide 5 Data
 
 export const industrialTrendData: IndustrialTrendDataPoint[] = [
-  { month: '3月', yoy: 5.9 },
-  { month: '4月', yoy: 5.1 },
-  { month: '5月', yoy: 6.4 },
-  { month: '6月', yoy: 4.8 },
-  { month: '7月', yoy: 3.7 },
-  { month: '8月', yoy: 3.4 },
-  { month: '9月', yoy: 3 },
-  { month: '10月', yoy: 2.9 },
-  { month: '11月', yoy: 1.3 },
-  { month: '12月', yoy: 0.86 },
+  { month: '24-03', yoy: 4.5, exportYoy: 1.4 },
+  { month: '24-04', yoy: 6.7, exportYoy: 7.3 },
+  { month: '24-05', yoy: 5.6, exportYoy: 4.6 },
+  { month: '24-06', yoy: 5.3, exportYoy: 3.8 },
+  { month: '24-07', yoy: 5.1, exportYoy: 6.4 },
+  { month: '24-08', yoy: 4.5, exportYoy: 6.4 },
+  { month: '24-09', yoy: 5.4, exportYoy: 3.4 },
+  { month: '24-10', yoy: 5.3, exportYoy: 3.7 },
+  { month: '24-11', yoy: 5.4, exportYoy: 7.4 },
+  { month: '24-12', yoy: 6.2, exportYoy: 8.8 },
+  { month: '25-03', yoy: 7.7, exportYoy: 7.7 },
+  { month: '25-04', yoy: 6.1, exportYoy: 0.9 },
+  { month: '25-05', yoy: 5.8, exportYoy: 0.6 },
+  { month: '25-06', yoy: 6.8, exportYoy: 4.0 },
+  { month: '25-07', yoy: 5.7, exportYoy: 0.8 },
+  { month: '25-08', yoy: 5.2, exportYoy: -0.4 },
+  { month: '25-09', yoy: 6.5, exportYoy: 3.8 },
+  { month: '25-10', yoy: 4.9, exportYoy: -2.1 },
+  { month: '25-11', yoy: 4.8, exportYoy: -0.1 },
+  { month: '25-12', yoy: 5.2, exportYoy: 3.2 },
 ];
 
 export const keyIndustryData: KeyIndustryDataPoint[] = [

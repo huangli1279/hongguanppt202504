@@ -79,6 +79,7 @@ export interface IndustrialTrendDataPoint {
   month: string;
   yoy: number;
   mom?: number;
+  exportYoy?: number;
 }
 
 export interface KeyIndustryDataPoint {

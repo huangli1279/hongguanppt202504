@@ -27,32 +27,31 @@ export const SlideContentFive: React.FC = () => {
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            工业生产分析：动能切换
+            工业生产分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          2025年规模以上工业增加值同比增速走势，<span className="text-webank-accent">年末增速回落至1%以下</span>
+          Q4工业生产呈现“V型”修复，<span className="text-webank-accent">12月增速回升至5.2%受出口与高技术双轮驱动</span>
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-32">
-         <InsightBox title="总量运行轨迹" icon={BarChart2} delay="100ms">
+         <InsightBox title="总量运行：年末翘尾" icon={BarChart2} delay="100ms">
            <p>
-             2025年规上工业增加值增速呈现前高后低态势。上半年维持在5%以上，下半年受需求偏弱及基数影响持续回落，12月降至 <span className="font-bold">0.86%</span>。
+             Q4增速呈<span className="font-bold">“先抑后扬”</span>，12月反弹至<span className="font-bold">5.2%</span>。全年增长<span className="font-bold">5.9%</span>，高于GDP增速(5.0%)。12月季调环比增长<span className="font-bold">0.49%</span>，边际动能增强。
            </p>
          </InsightBox>
 
-         <InsightBox title="新动能：双引擎驱动" icon={Rocket} delay="200ms">
+         <InsightBox title="结构分化：新质生产力领跑" icon={Rocket} delay="200ms">
            <p>
-             <span className="font-bold">装备制造业</span> 11月贡献率近60%，12月加速至9.2%。<br/>
-             <span className="font-bold">高技术制造业</span> 领跑 (+9.4%)。集成电路 (+33.7%) 与工业机器人 (+29.2%) 产量爆发式增长。
+             12月高技术制造业增长<span className="font-bold">11.0%</span>。电子(+11.8%)、汽车(+8.3%)领跑；集成电路(+33.7%)、机器人(+28.0%)爆发。传统行业如粗钢(-10.3%)、水泥(-6.6%)受限。
            </p>
          </InsightBox>
 
-         <InsightBox title="传统动能：深度调整" icon={Anchor} delay="300ms">
+         <InsightBox title="驱动归因：外需拉动增强" icon={Anchor} delay="300ms">
            <p>
-             受房地产新开工低迷及“反内卷”限产双重挤压，<span className="font-bold text-red-600">水泥、玻璃等非金属制品业</span> 持续负增长；黑色金属冶炼（钢铁）增速受压 (-1.8%)。
+             12月出口交货值增长<span className="font-bold">3.2%</span>(前值-0.1%)，设备更新政策支撑装备制造业(全年+9.2%)，政策效应持续显现。
            </p>
          </InsightBox>
       </section>

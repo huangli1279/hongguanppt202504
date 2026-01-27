@@ -23,8 +23,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue">规模以上工业增加值: {payload[0].value}%</p>
-        {payload[1] && <p className="text-webank-lightBlue">环比增速: {payload[1].value}%</p>}
+        {payload.map((entry: any, index: number) => (
+          <p key={index} style={{ color: entry.color }}>
+            {entry.name}: {entry.value}%
+          </p>
+        ))}
       </div>
     );
   }
@@ -32,16 +35,14 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export const IndustrialTrendChart: React.FC<Props> = ({ data }) => {
-  const hasMom = data.some(d => d.mom !== undefined);
-
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年规模以上工业增加值同比增速
+          2024-2025年工业增加值与出口交货值当月同比增速
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          2025年各月规模以上工业增加值同比增速走势 (%)
+          规模以上工业增加值:当月同比 / 出口交货值:当月同比 (%)
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -55,62 +56,56 @@ export const IndustrialTrendChart: React.FC<Props> = ({ data }) => {
               dataKey="month" 
               axisLine={{ stroke: '#e5e7eb' }} 
               tickLine={false} 
-              tick={{ fill: '#666', fontSize: 11 }}
+              tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
             />
-            {/* Left Axis for YoY */}
             <YAxis 
               yAxisId="left"
-              orientation="left"
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#051c2c', fontSize: 10, fontWeight: 600 }}
-              domain={[0, 8]}
+              tick={{ fill: '#00a9f4', fontSize: 10, fontWeight: 600 }}
+              domain={['auto', 'auto']}
               tickFormatter={(val) => `${val}%`}
             />
-            {/* Right Axis for MoM */}
-            {hasMom && (
-              <YAxis 
-                yAxisId="right" 
-                orientation="right"
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: '#00a9f4', fontSize: 10 }}
-                domain={[0, 0.8]}
-                tickFormatter={(val) => `${val}%`}
-              />
-            )}
+            <YAxis 
+              yAxisId="right"
+              orientation="right"
+              axisLine={false} 
+              tickLine={false} 
+              tick={{ fill: '#ef4444', fontSize: 10, fontWeight: 600 }}
+              domain={['auto', 'auto']}
+              tickFormatter={(val) => `${val}%`}
+            />
             <Tooltip content={<CustomTooltip />} />
-            <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
+            <Legend verticalAlign="top" align="right" wrapperStyle={{ fontSize: '11px', paddingBottom: '20px' }} />
             
             <Line 
-              yAxisId="left" 
+              yAxisId="left"
               type="monotone"
               dataKey="yoy" 
-              name="规模以上工业增加值" 
+              name="工业增加值:当月同比" 
               stroke="#00a9f4" 
-              strokeWidth={4}
-              dot={{ r: 6, fill: '#00a9f4', strokeWidth: 2, stroke: '#fff' }}
-              activeDot={{ r: 8, strokeWidth: 0 }}
+              strokeWidth={3}
+              dot={{ r: 4, fill: '#00a9f4', strokeWidth: 2, stroke: '#fff' }}
+              activeDot={{ r: 6, strokeWidth: 0 }}
               animationDuration={1500}
             >
-               <LabelList dataKey="yoy" position="top" fill="#00a9f4" fontSize={12} fontWeight="bold" offset={10} formatter={(val: number) => `${val}%`} />
+              <LabelList dataKey="yoy" position="top" style={{ fill: '#00a9f4', fontSize: 10, fontWeight: 'bold' }} />
             </Line>
-            
-            {hasMom && (
-              <Line 
-                yAxisId="right" 
-                type="monotone" 
-                dataKey="mom" 
-                name="环比增速" 
-                stroke="#94a3b8" 
-                strokeWidth={2} 
-                strokeDasharray="5 5"
-                dot={{ r: 4, fill: '#94a3b8' }}
-                animationDuration={1500}
-                animationBegin={500}
-              />
-            )}
+
+            <Line 
+              yAxisId="right"
+              type="monotone"
+              dataKey="exportYoy" 
+              name="出口交货值:当月同比" 
+              stroke="#ef4444" 
+              strokeWidth={3}
+              dot={{ r: 4, fill: '#ef4444', strokeWidth: 2, stroke: '#fff' }}
+              activeDot={{ r: 6, strokeWidth: 0 }}
+              animationDuration={1500}
+            >
+              <LabelList dataKey="exportYoy" position="bottom" style={{ fill: '#ef4444', fontSize: 10, fontWeight: 'bold' }} />
+            </Line>
           </ComposedChart>
         </ResponsiveContainer>
       </div>
