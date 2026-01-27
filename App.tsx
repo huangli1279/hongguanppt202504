@@ -12,6 +12,7 @@ import { SlideContentFive } from './components/SlideContentFive';
 import { SlideContentFivePointFive } from './components/SlideContentFivePointFive';
 import { SlideContentSix } from './components/SlideContentSix';
 import { SlideContentSeven } from './components/SlideContentSeven';
+import { SlideContentSevenPointFive } from './components/SlideContentSevenPointFive';
 import { SlideContentEight } from './components/SlideContentEight';
 import { SlideContentNine } from './components/SlideContentNine';
 import { SlideContentTen } from './components/SlideContentTen';
@@ -35,7 +36,7 @@ const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 36; // Updated for new Industry Divergence slide
+  const TOTAL_SLIDES = 37; // Updated for new PPI Industry MoM slide
 
   // Function to handle scaling based on window size to maintain 16:9 visualization
   const handleResize = () => {
@@ -138,50 +139,51 @@ const App: React.FC = () => {
         {currentSlide === 11 && <SlideContentFivePointFive />}
         {currentSlide === 12 && <SlideContentSix />}
         {currentSlide === 13 && <SlideContentSeven />}
+        {currentSlide === 14 && <SlideContentSevenPointFive />}
 
         {/* Transition Slide 3: Consumption */}
-        {currentSlide === 14 && <SectionTransitionSlide id="03" title="消费分析" subtitle="看意愿，看结构" />}
+        {currentSlide === 15 && <SectionTransitionSlide id="03" title="消费分析" subtitle="看意愿，看结构" />}
 
-        {currentSlide === 15 && <SlideContentEight />}
-        {currentSlide === 16 && <SlideContentNine />}
-        {currentSlide === 17 && <SlideContentTen />}
-        {currentSlide === 18 && <SlideContentEleven />}
+        {currentSlide === 16 && <SlideContentEight />}
+        {currentSlide === 17 && <SlideContentNine />}
+        {currentSlide === 18 && <SlideContentTen />}
+        {currentSlide === 19 && <SlideContentEleven />}
 
         {/* Transition Slide 4: Investment */}
-        {currentSlide === 19 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
+        {currentSlide === 20 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
 
         {/* Investment Slides */}
-        {currentSlide === 20 && <SlideContentTwelve />}
-        {currentSlide === 21 && <SlideContentThirteen />}
-        {currentSlide === 22 && <SlideContentFourteen />}
-        {currentSlide === 23 && <SlideContentFifteen />}
+        {currentSlide === 21 && <SlideContentTwelve />}
+        {currentSlide === 22 && <SlideContentThirteen />}
+        {currentSlide === 23 && <SlideContentFourteen />}
+        {currentSlide === 24 && <SlideContentFifteen />}
 
         {/* Transition Slide 5: Trade */}
-        {currentSlide === 24 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 25 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
 
         {/* Trade Slides */}
-        {currentSlide === 25 && <SlideContentSixteen />}
-        {currentSlide === 26 && <SlideContentSeventeen />}
-        {currentSlide === 27 && <SlideContentEighteen />}
+        {currentSlide === 26 && <SlideContentSixteen />}
+        {currentSlide === 27 && <SlideContentSeventeen />}
+        {currentSlide === 28 && <SlideContentEighteen />}
 
         {/* Transition Slide 6: Fiscal */}
-        {currentSlide === 28 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 29 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
 
         {/* Fiscal Slides */}
-        {currentSlide === 29 && <SlideContentNineteen />}
-        {currentSlide === 30 && <SlideContentTwenty />}
-        {currentSlide === 31 && <SlideContentTwentyOne />}
+        {currentSlide === 30 && <SlideContentNineteen />}
+        {currentSlide === 31 && <SlideContentTwenty />}
+        {currentSlide === 32 && <SlideContentTwentyOne />}
 
         {/* NEW Transition Slide 7: Financial */}
-        {currentSlide === 32 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 33 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides (Indices shifted +1) */}
-        {currentSlide === 33 && <SlideContentTwentyTwo />}
-        {currentSlide === 34 && <SlideContentTwentyThree />}
-        {currentSlide === 35 && <SlideContentTwentyFour />}
+        {currentSlide === 34 && <SlideContentTwentyTwo />}
+        {currentSlide === 35 && <SlideContentTwentyThree />}
+        {currentSlide === 36 && <SlideContentTwentyFour />}
 
         {/* Thank You Slide */}
-        {currentSlide === 36 && <ThankYouSlide />}
+        {currentSlide === 37 && <ThankYouSlide />}
       </div>
 
       {/* Visual Indicators (Vertical, Right Side, Non-interactive) */}

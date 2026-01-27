@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData } from './types';
 
 // Slide 1 Data
 
@@ -286,6 +286,22 @@ export const industryPriceData: IndustryPriceDataPoint[] = [
   { industry: '水泥制造', oct: 0.3, nov: 0.4, dec: 0.5 },
   { industry: '光伏设备', oct: 0.6, nov: 0.4, dec: 0.3 },
   { industry: '新能源车', oct: -0.2, nov: -0.1, dec: 0.1 }, // Turnaround
+];
+
+// Slide 7.5 Data (New Slide - PPI Industry Mom Details)
+export const ppiIndustryMomData: PpiIndustryMomDataPoint[] = [
+  { month: '2025-12', lithium: 1.00, solar: 1.30, electronics: 0.40, coal: -1.30, oil: 0.00, ferrousMining: 3.70, nonFerrous: 0.00, chemicals: 0.10, nonMetals: -0.10, ferrousSmelting: 0.00, generalEquip: -0.10, automotive: -0.10, electrical: 2.80 },
+  { month: '2025-11', lithium: 4.10, solar: -2.40, electronics: 0.30, coal: 0.60, oil: 2.60, ferrousMining: -0.60, nonFerrous: 0.00, chemicals: -0.50, nonMetals: -0.10, ferrousSmelting: 0.10, generalEquip: -0.20, automotive: 0.10, electrical: 2.10 },
+  { month: '2025-10', lithium: 0.20, solar: 0.60, electronics: 0.40, coal: 1.60, oil: 2.30, ferrousMining: 0.90, nonFerrous: 5.30, chemicals: -0.60, nonMetals: 0.10, ferrousSmelting: -0.70, generalEquip: -0.10, automotive: 0.00, electrical: 2.40 },
+  { month: '2025-09', lithium: 0.80, solar: 2.50, electronics: -0.10, coal: -2.00, oil: 2.60, ferrousMining: 2.50, nonFerrous: -0.40, chemicals: -0.40, nonMetals: 0.20, ferrousSmelting: -0.10, generalEquip: -0.50, automotive: -0.20, electrical: 1.20 },
+  { month: '2025-08', lithium: -0.20, solar: 2.80, electronics: -0.10, coal: -1.10, oil: 2.10, ferrousMining: 0.80, nonFerrous: -0.10, chemicals: -1.00, nonMetals: 1.90, ferrousSmelting: -0.10, generalEquip: -0.30, automotive: -0.20, electrical: 0.20 },
+  { month: '2025-07', lithium: -1.50, solar: 3.00, electronics: 0.80, coal: -1.10, oil: 0.70, ferrousMining: -0.70, nonFerrous: -1.40, chemicals: -0.30, nonMetals: -0.20, ferrousSmelting: -0.30, generalEquip: -0.40, automotive: -0.20, electrical: 0.80 },
+  { month: '2025-06', lithium: -3.40, solar: 2.60, electronics: 0.20, coal: -2.00, oil: 1.30, ferrousMining: -0.70, nonFerrous: -1.40, chemicals: -1.80, nonMetals: -0.20, ferrousSmelting: 0.20, generalEquip: -0.40, automotive: -0.20, electrical: 0.20 },
+  { month: '2025-05', lithium: -3.00, solar: -5.60, electronics: 0.10, coal: -0.90, oil: 0.80, ferrousMining: -1.20, nonFerrous: -1.00, chemicals: -1.00, nonMetals: -0.20, ferrousSmelting: 0.00, generalEquip: 0.10, automotive: -0.20, electrical: 0.10 },
+  { month: '2025-04', lithium: -3.30, solar: -3.10, electronics: 0.30, coal: -0.90, oil: 1.50, ferrousMining: -0.60, nonFerrous: 0.00, chemicals: -1.00, nonMetals: -0.20, ferrousSmelting: -0.50, generalEquip: -0.20, automotive: -0.10, electrical: 0.30 },
+  { month: '2025-03', lithium: -4.30, solar: -4.40, electronics: 0.50, coal: 0.10, oil: 0.40, ferrousMining: 0.20, nonFerrous: -0.50, chemicals: -0.50, nonMetals: -0.10, ferrousSmelting: -0.40, generalEquip: -0.70, automotive: -0.10, electrical: 0.30 },
+  { month: '2025-02', lithium: -3.30, solar: 0.30, electronics: 0.30, coal: 0.90, oil: 1.80, ferrousMining: 0.00, nonFerrous: -0.90, chemicals: -0.90, nonMetals: -0.20, ferrousSmelting: -0.30, generalEquip: 0.00, automotive: -0.10, electrical: 0.30 },
+  { month: '2025-01', lithium: -0.60, solar: 0.50, electronics: -0.40, coal: -2.20, oil: 4.50, ferrousMining: 0.40, nonFerrous: -0.20, chemicals: -0.60, nonMetals: -0.90, ferrousSmelting: -0.20, generalEquip: 0.50, automotive: -0.30, electrical: -0.40 },
 ];
 
 // Slide 8 Data

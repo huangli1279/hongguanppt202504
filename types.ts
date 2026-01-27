@@ -115,6 +115,11 @@ export interface IndustryPriceDataPoint {
   dec: number;
 }
 
+export interface PpiIndustryMomDataPoint {
+  month: string;
+  [key: string]: number | string; // Dynamic industry keys
+}
+
 export interface RetailTrendDataPoint {
   month: string;
   value: number;
