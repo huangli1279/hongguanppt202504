@@ -31,13 +31,14 @@ import { SlideContentTwentyTwo } from './components/SlideContentTwentyTwo';
 import { SlideContentTwentyThree } from './components/SlideContentTwentyThree';
 import { SlideContentTwentyFour } from './components/SlideContentTwentyFour';
 import { SlideContentTwentyEight_New } from './components/SlideContentTwentyEight_New';
+import { SlideContentTwentyNine_Added } from './components/SlideContentTwentyNine_Added';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 38; // Updated after adding slide 29
+  const TOTAL_SLIDES = 39; // Updated after adding slide 29+1
 
   // Function to handle scaling based on window size to maintain 16:9 visualization
   const handleResize = () => {
@@ -167,25 +168,26 @@ const App: React.FC = () => {
         {currentSlide === 27 && <SlideContentSeventeen />}
         {currentSlide === 28 && <SlideContentEighteenOld />}
         {currentSlide === 29 && <SlideContentTwentyEight_New />}
+        {currentSlide === 30 && <SlideContentTwentyNine_Added />}
 
         {/* Transition Slide 6: Fiscal */}
-        {currentSlide === 30 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 31 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
 
         {/* Fiscal Slides */}
-        {currentSlide === 31 && <SlideContentNineteen />}
-        {currentSlide === 32 && <SlideContentTwenty />}
-        {currentSlide === 33 && <SlideContentTwentyOne />}
+        {currentSlide === 32 && <SlideContentNineteen />}
+        {currentSlide === 33 && <SlideContentTwenty />}
+        {currentSlide === 34 && <SlideContentTwentyOne />}
 
         {/* NEW Transition Slide 7: Financial */}
-        {currentSlide === 34 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 35 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides */}
-        {currentSlide === 35 && <SlideContentTwentyTwo />}
-        {currentSlide === 36 && <SlideContentTwentyThree />}
-        {currentSlide === 37 && <SlideContentTwentyFour />}
+        {currentSlide === 36 && <SlideContentTwentyTwo />}
+        {currentSlide === 37 && <SlideContentTwentyThree />}
+        {currentSlide === 38 && <SlideContentTwentyFour />}
 
         {/* Thank You Slide */}
-        {currentSlide === 38 && <ThankYouSlide />}
+        {currentSlide === 39 && <ThankYouSlide />}
       </div>
 
       {/* Visual Indicators (Vertical, Right Side, Non-interactive) */}

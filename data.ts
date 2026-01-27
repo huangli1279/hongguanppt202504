@@ -763,6 +763,15 @@ export const exportGrowthByRegionData: ExportGrowthByRegionDataPoint[] = [
   { region: '美国', value: -30.0, category: 'US' },
 ];
 
+export const exportGrowthByRegionDetailedData: ExportGrowthByRegionDataPoint[] = [
+  { region: '非洲', value: 21.8, category: 'EM' },
+  { region: '非美整体', value: 12.8, category: 'EM' },
+  { region: '欧盟', value: 11.6, category: 'EU' },
+  { region: '东盟', value: 11.1, category: 'EM' },
+  { region: '拉美', value: 9.8, category: 'EM' },
+  { region: '美国', value: -30.0, category: 'US' },
+];
+
 export const exportShare2024Data: ExportShareDataPoint[] = [
   { name: '东盟', value: 16.5, fill: '#005c8f' },
   { name: '欧盟', value: 14.2, fill: '#00a9f4' },
@@ -775,6 +784,29 @@ export const exportShare2025Data: ExportShareDataPoint[] = [
   { name: '欧盟', value: 14.5, fill: '#00a9f4' },
   { name: '美国', value: 11.1, fill: '#ef4444' },
   { name: '其他', value: 56.2, fill: '#cbd5e1' },
+];
+
+export const regionalExportTrendData: RegionalExportTrendDataPoint[] = [
+  { month: "01", total: 0.8, us: -0.5, asean: 5.5, africa: 9.3, eu: 2.1 },
+  { month: "02", total: 1.2, us: -2.1, asean: 6.2, africa: 8.1, eu: 1.2 },
+  { month: "03", total: 0.5, us: -3.4, asean: 5.1, africa: 6.5, eu: 0.5 },
+  { month: "04", total: 2.8, us: 1.5, asean: 3.7, africa: 7.6, eu: 1.8 },
+  { month: "05", total: 2.1, us: -2.2, asean: 4.3, africa: 8.4, eu: 2.5 },
+  { month: "06", total: 1.5, us: -4.1, asean: 5.8, africa: 9.2, eu: 3.2 },
+  { month: "07", total: 2.9, us: -5.3, asean: 6.9, africa: 10.5, eu: 4.1 },
+  { month: "08", total: 3.1, us: -8.6, asean: 7.5, africa: 12.8, eu: 5.4 },
+  { month: "09", total: 3.5, us: -12.1, asean: 8.2, africa: 14.1, eu: 6.2 },
+  { month: "10", total: 4.8, us: -18.5, asean: 9.8, africa: 15.2, eu: 8.5 },
+  { month: "11", total: 5.2, us: -25.2, asean: 10.5, africa: 18.6, eu: 9.8 },
+  { month: "12", total: 6.6, us: -30.0, asean: 11.1, africa: 21.8, eu: 11.6 },
+];
+
+export const exportShareMigrationData: ExportShareMigrationDataPoint[] = [
+  { name: '东盟 (ASEAN)', share2024: 15.5, share2025: 16.8 },
+  { name: '美国 (USA)', share2024: 14.8, share2025: 11.1 },
+  { name: '欧盟 (EU)', share2024: 14.7, share2025: 13.9 },
+  { name: '新兴市场', share2024: 40.2, share2025: 43.5 },
+  { name: '其他', share2024: 14.8, share2025: 14.7 },
 ];
 
 // Slide 19 Data

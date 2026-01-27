@@ -408,6 +408,21 @@ export interface DepositFlowDataPoint {
     nonBank: number;
 }
 
+export interface RegionalExportTrendDataPoint {
+    month: string;
+    total: number;
+    us: number;
+    asean: number;
+    africa: number;
+    eu: number;
+}
+
+export interface ExportShareMigrationDataPoint {
+    name: string;
+    share2024: number;
+    share2025: number;
+}
+
 export interface IndustrialFinancialTableData {
     title: string;
     source: string;
