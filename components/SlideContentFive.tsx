@@ -59,7 +59,7 @@ export const SlideContentFive: React.FC = () => {
 
       {/* Charts Section */}
       <section className="flex-grow flex justify-center min-h-0">
-        <div className="bg-white rounded-sm w-full max-w-4xl opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+        <div className="bg-white rounded-sm w-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <IndustrialTrendChart data={industrialTrendData} />
         </div>
       </section>
