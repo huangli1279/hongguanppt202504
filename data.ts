@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, MonthlyTradeGrowthDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -662,6 +662,30 @@ export const tradeTrendData: TradeTrendDataPoint[] = [
   { month: '12月', export: 6.6, import: 5.7 },
 ];
 
+export const q4ExportGrowthData: Q4ExportGrowthDataPoint[] = [
+  { period: '24-10', value: 12.7 },
+  { period: '24-11', value: 6.7 },
+  { period: '24-12', value: 2.3 },
+  { period: '25-10', value: -1.1, annotation: '基数陷阱：受24年台风后补偿性高位影响' },
+  { period: '25-11', value: 5.9 },
+  { period: '25-12', value: 6.6, annotation: '超预期：抢出口+电子周期共振' },
+];
+
+export const monthlyTradeGrowthData: MonthlyTradeGrowthDataPoint[] = [
+  { month: '2025-01', export: 8.2, import: 15.4, total: 11.3 },
+  { month: '2025-02', export: 10.6, import: -1.3, total: 4.9 },
+  { month: '2025-03', export: -3.8, import: 2.0, total: -1.3 },
+  { month: '2025-04', export: 0.9, import: 12.2, total: 5.5 },
+  { month: '2025-05', export: 11.2, import: 5.2, total: 8.6 },
+  { month: '2025-06', export: 10.7, import: -0.6, total: 5.8 },
+  { month: '2025-07', export: 6.5, import: 6.6, total: 6.5 },
+  { month: '2025-08', export: 8.4, import: 0.0, total: 4.8 },
+  { month: '2025-09', export: 1.6, import: 0.7, total: 1.2 },
+  { month: '2025-10', export: -1.1, import: -1.2, total: -1.1 },
+  { month: '2025-11', export: 1.2, import: -0.6, total: 0.4 },
+  { month: '2025-12', export: 6.6, import: 1.1, total: 4.2 },
+];
+
 export const tradeSurplusData: TradeSurplusDataPoint[] = [
   { year: '2024年', value: 5.8 },
   { year: '2025年', value: 6.6 },
@@ -684,6 +708,48 @@ export const exportContributionData: ExportContributionDataPoint[] = [
   { name: '机电产品', value: 5.2, fill: '#051c2c' }, // Strong positive
   { name: '其他产品', value: 2.6, fill: '#94a3b8' }, // Balance
   { name: '劳动密集型', value: -1.2, fill: '#ef4444' }, // Negative drag
+];
+
+export const computingExportGrowthData: ComputingExportGrowthDataPoint[] = [
+  { month: "2024-01", server: 9.20, semiconductor: 9.50 },
+  { month: "2024-02", server: 9.80, semiconductor: 8.10 },
+  { month: "2024-03", server: 3.20, semiconductor: 6.40 },
+  { month: "2024-04", server: 8.50, semiconductor: 7.50 },
+  { month: "2024-05", server: 11.40, semiconductor: 9.80 },
+  { month: "2024-06", server: 10.10, semiconductor: 10.20 },
+  { month: "2024-07", server: 9.20, semiconductor: 8.40 },
+  { month: "2024-08", server: 4.10, semiconductor: 9.50 },
+  { month: "2024-09", server: 3.80, semiconductor: 11.10 },
+  { month: "2024-10", server: 15.60, semiconductor: 14.80 },
+  { month: "2024-11", server: 5.80, semiconductor: 10.20 },
+  { month: "2024-12", server: 7.20, semiconductor: 12.50 },
+  { month: "2025-01", server: 11.30, semiconductor: 10.20 },
+  { month: "2025-02", server: 10.40, semiconductor: 9.60 },
+  { month: "2025-03", server: 7.20, semiconductor: 8.50 },
+  { month: "2025-04", server: 9.50, semiconductor: 10.20 },
+  { month: "2025-05", server: 10.10, semiconductor: 11.40 },
+  { month: "2025-06", server: 13.50, semiconductor: 12.60 },
+  { month: "2025-07", server: 16.20, semiconductor: 15.50 },
+  { month: "2025-08", server: 19.50, semiconductor: 16.80 },
+  { month: "2025-09", server: 11.80, semiconductor: 13.10 },
+  { month: "2025-10", server: 9.10, semiconductor: 14.20 },
+  { month: "2025-11", server: 25.40, semiconductor: 21.50 },
+  { month: "2025-12", server: 36.20, semiconductor: 28.40 }
+];
+
+export const mechElecExportGrowthData: MechElecExportGrowthDataPoint[] = [
+  { month: "2025-01", auto: 41.2, ic: 12.0, total: 8.0 },
+  { month: "2025-02", auto: 33.1, ic: 11.5, total: 7.2 },
+  { month: "2025-03", auto: 28.5, ic: 8.2, total: 5.5 },
+  { month: "2025-04", auto: 30.2, ic: 9.8, total: 6.2 },
+  { month: "2025-05", auto: 35.6, ic: 10.5, total: 8.1 },
+  { month: "2025-06", auto: 42.1, ic: 14.2, total: 7.6 },
+  { month: "2025-07", auto: 48.5, ic: 18.5, total: 8.4 },
+  { month: "2025-08", auto: 51.0, ic: 22.4, total: 9.2 },
+  { month: "2025-09", auto: 45.2, ic: 12.8, total: 4.8 },
+  { month: "2025-10", auto: 38.6, ic: 15.6, total: 2.1 },
+  { month: "2025-11", auto: 52.4, ic: 32.1, total: 6.5 },
+  { month: "2025-12", auto: 71.7, ic: 47.7, total: 12.1 }
 ];
 
 // Slide 18 Data (Regional Structure)

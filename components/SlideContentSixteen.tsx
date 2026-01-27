@@ -1,10 +1,9 @@
 
-
 import React from 'react';
-import { TradeTrendChart } from './TradeTrendChart';
-import { TradeSurplusChart } from './TradeSurplusChart';
-import { tradeTrendData, tradeSurplusData } from '../data';
-import { Globe, TrendingUp, Ship, Calendar } from 'lucide-react';
+import { Q4ExportGrowthChart } from './Q4ExportGrowthChart';
+import { MonthlyTradeGrowthChart } from './MonthlyTradeGrowthChart';
+import { q4ExportGrowthData, monthlyTradeGrowthData } from '../data';
+import { Globe, TrendingUp } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -43,34 +42,21 @@ export const SlideContentSixteen: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          Q4出口增速呈"先抑后扬"走势，<span className="text-webank-accent">12月超预期回升至6.6%圆满收官</span>
+          Q4出口增速"先抑后扬"，<span className="text-webank-accent">12月超预期回升至6.6%圆满收官，扭转10月探底颓势</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-36">
-         <InsightBox title="月度波动：V型反转" icon={TrendingUp} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-2 gap-6 mb-4 h-36">
+         <InsightBox title="全年外贸成绩与贡献" icon={Globe} delay="100ms">
            <p>
-             <span className="font-bold">10月探底 (-1.1%)</span>：受高基数及台风因素扰动。<br/>
-             <span className="font-bold">12月走强 (+6.6%)</span>：受春节前“抢出口”效应及非美需求强劲带动，显著高于市场预期 (2.2%)。
+             2025年全年货物进出口总额（人民币计价）增长<span className="font-bold">3.8%</span>，其中出口增长 <span className="font-bold">6.1%</span>。贸易顺差规模扩大，<span className="font-bold">12月贸易差额达1141.4亿美元</span>，净出口对经济增长贡献率保持高位（全年<span className="font-bold">32.7%</span>），有效对冲了国内耐用品消费的疲软压力。
            </p>
          </InsightBox>
 
-         <InsightBox title="全年成绩单" icon={Globe} delay="200ms">
+         <InsightBox title="Q4出口波动解析" icon={TrendingUp} delay="200ms" highlight={true}>
            <p>
-             全年进出口总额增长 <span className="font-bold">3.8%</span>，其中出口增长6.1%。外贸韧性有效对冲内需波动，净出口对经济增长贡献率维持高位，发挥了宏观经济“稳定器”作用。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="进口改善逻辑" icon={Ship} delay="300ms">
-           <p>
-             12月进口回升至 <span className="font-bold">5.7%</span> (前值1.9%)。制造业PMI重回扩张 (50.1%) 带动原材料补库需求释放，同时大豆等农产品采购规模扩大。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="抢出口效应" icon={Calendar} delay="400ms">
-           <p>
-             鉴于2025年春节较早，外贸企业普遍在12月集中赶工出货。叠加部分市场对未来关税不确定性的担忧，提前发货意愿增强，推高了年末出口读数。
+             受去年同期高基数（台风后补偿性出货）等影响，<span className="font-bold">10月出口同比下降 1.1%</span>，为年内首次转负。<span className="font-bold">12月因集成电路、自动数据处理设备等电子类产品进入补库周期</span>和企业为对冲 2026 年初关税不确定性及避开春节假期，<span className="font-bold">出口加速至 6.6%</span>。
            </p>
          </InsightBox>
       </section>
@@ -78,10 +64,10 @@ export const SlideContentSixteen: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TradeTrendChart data={tradeTrendData} />
+          <Q4ExportGrowthChart data={q4ExportGrowthData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <TradeSurplusChart data={tradeSurplusData} />
+          <MonthlyTradeGrowthChart data={monthlyTradeGrowthData} />
         </div>
       </section>
 

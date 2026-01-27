@@ -259,9 +259,22 @@ export interface TradeTrendDataPoint {
     import: number;
 }
 
+export interface Q4ExportGrowthDataPoint {
+    period: string;
+    value: number;
+    annotation?: string;
+}
+
 export interface TradeSurplusDataPoint {
     year: string;
     value: number;
+}
+
+export interface MonthlyTradeGrowthDataPoint {
+    month: string;
+    export: number;
+    import: number;
+    total: number;
 }
 
 export interface ExportItemGrowthDataPoint {
@@ -274,6 +287,19 @@ export interface ExportContributionDataPoint {
     name: string;
     value: number;
     fill: string;
+}
+
+export interface ComputingExportGrowthDataPoint {
+    month: string;
+    server: number;
+    semiconductor: number;
+}
+
+export interface MechElecExportGrowthDataPoint {
+    month: string;
+    auto: number;
+    ic: number;
+    total: number;
 }
 
 export interface ExportGrowthByRegionDataPoint {

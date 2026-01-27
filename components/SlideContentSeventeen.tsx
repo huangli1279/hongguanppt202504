@@ -1,7 +1,9 @@
 import React from 'react';
 import { KeyExportGrowthChart } from './KeyExportGrowthChart';
+import { ComputingExportGrowthChart } from './ComputingExportGrowthChart';
+import { MechElecExportGrowthChart } from './MechElecExportGrowthChart';
 import { ExportContributionChart } from './ExportContributionChart';
-import { exportItemGrowthData, exportContributionData } from '../data';
+import { exportItemGrowthData, exportContributionData, computingExportGrowthData, mechElecExportGrowthData } from '../data';
 import { Zap, Smartphone, Shirt, Layers } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
@@ -44,34 +46,21 @@ export const SlideContentSeventeen: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          机电产品拉动出口增长的主引擎地位巩固，<span className="text-webank-lightBlue">汽车与集成电路维持爆发式增长</span>
+          科技制造领跑，汽车与半导体产业链爆发，机电产品拉动出口增长的主导地位巩固
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-36">
-         <InsightBox title="核心引擎：机电强" icon={Layers} highlight={true} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-4 h-40">
+         <InsightBox title="机电产品与汽车：竞争力持续兑现" icon={Layers} highlight={true} delay="100ms">
            <p>
-             12月机电产品出口增长 <span className="font-bold">12.1%</span>，显著高于整体出口增速。作为中国出口的压舱石，机电产品的高景气直接决定了出口的韧性。
+             12月机电产品出口同比增长 <span className="font-bold">12.1%</span>，对出口增速拉动作用显著。其中汽车12月出口同比大增 <span className="font-bold">71.7%</span>，全年保持高景气。2025 年中国插混（PHEV）与纯电（BEV）车型在东南亚及中东市场的占有率大幅抬升，抵消了部分地区的贸易壁垒影响，显示中国车企在全球市场的竞争力持续兑现。
            </p>
          </InsightBox>
 
-         <InsightBox title="双星闪耀：车与芯" icon={Zap} highlight={true} delay="200ms">
+         <InsightBox title="集成电路：电子周期上行与AI驱动" icon={Zap} highlight={true} delay="200ms">
            <p>
-             <span className="font-bold">汽车 (+71.7%)</span>：中国车企全球竞争力持续兑现。<br/>
-             <span className="font-bold">集成电路 (+47.7%)</span>：受全球AI算力建设及电子周期上行带动，呈现明显的量价齐升特征。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="消费电子回暖" icon={Smartphone} delay="300ms">
-           <p>
-             受旗舰新机发布及换机周期带动，12月手机出口增长 <span className="font-bold">10.6%</span>，推动消费电子整体增速回升至19.6%。产业链景气度从上游芯片向下游终端传导。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="传统产业承压" icon={Shirt} alert={true} delay="400ms">
-           <p>
-             劳动密集型产品（服装、家具等）出口下降 <span className="font-bold">8.5%</span>，降幅较上月微幅走阔。传统低附加值产业面临外需疲软与产业转移的双重压力。
+             受全球 AI 换机潮（AI 手机、AI PC）及数据中心算力芯片需求爆发驱动，集成电路出口倍增，电子周期进入上行通道。集成电路12月出口金额大增 <span className="font-bold">47.7%</span>，量价齐升特征明显。
            </p>
          </InsightBox>
       </section>
@@ -79,10 +68,10 @@ export const SlideContentSeventeen: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <KeyExportGrowthChart data={exportItemGrowthData} />
+          <ComputingExportGrowthChart data={computingExportGrowthData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <ExportContributionChart data={exportContributionData} />
+          <MechElecExportGrowthChart data={mechElecExportGrowthData} />
         </div>
       </section>
 
