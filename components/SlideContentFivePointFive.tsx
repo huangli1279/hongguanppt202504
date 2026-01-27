@@ -36,28 +36,28 @@ export const SlideContentFivePointFive: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-4 mb-3 h-20">
+      <section className="grid grid-cols-3 gap-4 mb-12 min-h-[120px]">
          <InsightBox title="装备制造：强支撑" icon={Wrench} delay="100ms">
-           <p>
-             11月装备制造业增长<span className="font-bold">7.7%</span>，对全部规上工业增长贡献率达<span className="font-bold">59.4%</span>。12月进一步加速至<span className="font-bold text-green-600">9.2%</span>。
-           </p>
-         </InsightBox>
+          <p>
+            12月装备制造业增长<span className="font-bold text-green-600">7.6%</span>，全年保持稳健。电气机械<span className="font-bold">(+11.8%)</span>、铁路船舶<span className="font-bold">(+11.8%)</span>等细分行业领跑。
+          </p>
+        </InsightBox>
 
-         <InsightBox title="高技术制造：新引擎" icon={Rocket} delay="200ms">
-           <p>
-             12月高技术制造业增加值增长<span className="font-bold text-green-600">9.4%</span>，显著快于整体工业。集成电路<span className="font-bold">(+33.7%)</span>、工业机器人<span className="font-bold">(+29.2%)</span>等产品产量保持两位数高增。
-           </p>
-         </InsightBox>
+        <InsightBox title="汽车制造：新引擎" icon={Rocket} delay="200ms">
+          <p>
+            12月汽车制造业增加值增长<span className="font-bold">4.3%</span>，虽较前期回落但仍具韧性。高技术制造整体受部分权重行业波动影响，12月同比为<span className="font-bold text-red-600">-2.8%</span>。
+          </p>
+        </InsightBox>
 
-         <InsightBox title="传统行业：拖累项" icon={TrendingDown} delay="300ms">
-           <p>
-             受房地产新开工深度调整影响，<span className="font-bold text-red-600">水泥、玻璃等非金属矿物制品业</span>持续低迷；黑色金属冶炼受"反内卷"限产影响，增速受压。
-           </p>
-         </InsightBox>
+        <InsightBox title="传统行业：分化态势" icon={TrendingDown} delay="300ms">
+          <p>
+            煤炭、有色等资源类行业保持稳定；<span className="font-bold text-red-600">医药制造业(-2.4%)、橡胶和塑料制品业(-1.8%)</span>在年末出现阶段性承压，行业间分化进一步加剧。
+          </p>
+        </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow flex justify-center min-h-0 pb-12">
+      <section className="flex-grow flex justify-center min-h-0 pb-8">
         <div className="bg-white rounded-sm w-full h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <IndustryGrowthTableChart data={industryDivergenceTableData} />
         </div>
