@@ -39,19 +39,19 @@ export const SlideContentFivePointFive: React.FC = () => {
       <section className="grid grid-cols-3 gap-4 mb-12 min-h-[120px]">
          <InsightBox title="装备制造：强支撑" icon={Wrench} delay="100ms">
           <p>
-            12月装备制造业增长<span className="font-bold text-green-600">7.6%</span>，全年保持稳健。电气机械<span className="font-bold">(+11.8%)</span>、铁路船舶<span className="font-bold">(+11.8%)</span>等细分行业领跑。
+            装备制造业整体保持稳健。铁路船舶<span className="font-bold">(12月+9.2%)</span>、通用设备<span className="font-bold">(+7.5%)</span>等行业表现出色，虽然部分行业如电气机械<span className="font-bold">(+4.3%)</span>增速有所回落，但支撑作用依然稳固。
           </p>
         </InsightBox>
 
-        <InsightBox title="汽车制造：新引擎" icon={Rocket} delay="200ms">
+        <InsightBox title="高技术制造：回升向好" icon={Rocket} delay="200ms">
           <p>
-            12月汽车制造业增加值增长<span className="font-bold">4.3%</span>，虽较前期回落但仍具韧性。高技术制造整体受部分权重行业波动影响，12月同比为<span className="font-bold text-red-600">-2.8%</span>。
+            12月高技术制造业增长<span className="font-bold text-green-600">11.0%</span>，维持高位运行。汽车制造业增加值增长<span className="font-bold">8.3%</span>，电子设备制造业增长<span className="font-bold">11.8%</span>，展现出强劲的增长动能。
           </p>
         </InsightBox>
 
-        <InsightBox title="传统行业：分化态势" icon={TrendingDown} delay="300ms">
+        <InsightBox title="传统行业：边际改善" icon={TrendingDown} delay="300ms">
           <p>
-            煤炭、有色等资源类行业保持稳定；<span className="font-bold text-red-600">医药制造业(-2.4%)、橡胶和塑料制品业(-1.8%)</span>在年末出现阶段性承压，行业间分化进一步加剧。
+            传统行业年末出现回暖；<span className="font-bold">医药制造业(12月+7.0%)、橡胶和塑料制品业(+4.2%)</span>较前期均有明显改善，行业间的分化态势呈现修复迹象。
           </p>
         </InsightBox>
       </section>
