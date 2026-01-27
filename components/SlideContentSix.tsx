@@ -36,7 +36,7 @@ export const SlideContentSix: React.FC = () => {
       </header>
 
       {/* Insight Grid */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-40 max-w-4xl mx-auto w-full">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-40 w-full">
          <InsightBox title="利润读数剧烈波动" icon={TrendingDown} alert={true} delay="100ms">
            <p>
              11月规上工业企业利润同比 <span className="font-bold">下降 13.1%</span>，降幅较10月大幅扩大（-5.5%）。全年累计增速收窄至0.1%，主要受非经营性因素扰动。
@@ -52,7 +52,7 @@ export const SlideContentSix: React.FC = () => {
 
       {/* Charts Section */}
       <section className="flex-grow flex justify-center min-h-0 mb-10">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-full max-w-4xl" style={{ animationDelay: '500ms' }}>
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-full" style={{ animationDelay: '500ms' }}>
           <IndustrialFinancialTable data={industrialFinancialTableData} />
         </div>
       </section>
