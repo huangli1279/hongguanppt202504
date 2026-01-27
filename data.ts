@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData } from './types';
 
 // Slide 1 Data
 
@@ -62,6 +62,23 @@ export const breakdownData: BreakdownDataPoint[] = [
   { name: '第二产业整体', value: 3.4, type: 'growth' },
   { name: '建筑业', value: -1.2, type: 'lag' },
   { name: '房地产开发投资', value: -17.2, type: 'lag' },
+];
+
+// Slide 2.5 Data (New Slide - Industry GDP Quarterly)
+
+export const industryGdpQuarterlyData: IndustryGdpQuarterlyDataPoint[] = [
+  { industry: '信息传输、软件和信息技术服务业', q1: 10.3, q2: 11.8, q3: 11.7, q4: 10.7, category: 'new-quality' },
+  { industry: '租赁和商务服务业', q1: 10.2, q2: 9.0, q3: 8.6, q4: 12.7, category: 'new-quality' },
+  { industry: '制造业', q1: 6.8, q2: 6.5, q3: 6.3, q4: 5.1, category: 'strong' },
+  { industry: '工业', q1: 6.3, q2: 6.2, q3: 5.8, q4: 5.0, category: 'strong' },
+  { industry: '批发和零售业', q1: 5.8, q2: 6.0, q3: 4.9, q4: 3.7, category: 'moderate' },
+  { industry: '其他行业', q1: 4.1, q2: 4.4, q3: 5.5, q4: 5.9, category: 'moderate' },
+  { industry: '住宿和餐饮业', q1: 5.1, q2: 5.2, q3: 3.6, q4: 5.6, category: 'moderate' },
+  { industry: '农林牧渔业', q1: 3.7, q2: 4.0, q3: 4.1, q4: 4.3, category: 'moderate' },
+  { industry: '交通运输、仓储和邮政业', q1: 7.2, q2: 5.6, q3: 4.8, q4: 3.4, category: 'moderate' },
+  { industry: '金融业', q1: 3.8, q2: 5.8, q3: 5.2, q4: 3.3, category: 'moderate' },
+  { industry: '房地产业', q1: 1.0, q2: 1.0, q3: -0.2, q4: -1.0, category: 'weak' },
+  { industry: '建筑业', q1: 3.1, q2: -0.6, q3: -2.3, q4: -2.5, category: 'weak' },
 ];
 
 // Slide 3 Data

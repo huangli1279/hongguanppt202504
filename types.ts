@@ -213,6 +213,15 @@ export interface IndustryGrowthTableData {
   };
 }
 
+export interface IndustryGdpQuarterlyDataPoint {
+  industry: string;
+  q1: number;
+  q2: number;
+  q3: number;
+  q4: number;
+  category: 'new-quality' | 'strong' | 'moderate' | 'weak';
+}
+
 export interface HighTechInvestmentDataPoint {
     sector: string;
     value: number;
