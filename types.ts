@@ -109,6 +109,14 @@ export interface PpiTrendDataPoint {
   livingMaterials: number;
 }
 
+export interface CommodityIndexDataPoint {
+  month: string;
+  steel: number;
+  minerals: number;
+  nonFerrous: number;
+  energy: number;
+}
+
 export interface IndustryPriceDataPoint {
   industry: string;
   oct: number;

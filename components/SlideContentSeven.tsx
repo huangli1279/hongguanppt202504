@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { PpiTrendChart } from './PpiTrendChart';
-import { AntiInvolutionChart } from './AntiInvolutionChart';
-import { ppiTrendData, industryPriceData } from '../data';
+import { CommodityIndexChart } from './CommodityIndexChart';
+import { ppiTrendData, commodityIndexData } from '../data';
 import { TrendingUp, ShieldCheck, Globe, Zap } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
@@ -32,27 +32,21 @@ export const SlideContentSeven: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          PPI环比连续三个月上涨，<span className="text-webank-accent">"反内卷"产能治理驱动重点行业价格回暖</span>
+          PPI环比连续三个月上涨，<span className="text-webank-accent">大宗商品价格走势出现结构性分化</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
          <InsightBox title="价格弹性边际修复" icon={TrendingUp} delay="100ms">
            <p>
              12月PPI环比上涨 <span className="font-bold">0.2%</span>，连续第3个月维持正增长，同比降幅收窄至 -1.9%。工业品价格通缩压力显著缓解，企业定价权逐步回归。
            </p>
          </InsightBox>
 
-         <InsightBox title="“反内卷”政策显效" icon={ShieldCheck} delay="200ms">
+         <InsightBox title="大宗商品价格分化" icon={Globe} delay="300ms">
            <p>
-             <span className="font-bold">锂离子电池</span>（+1.0%）与 <span className="font-bold">水泥</span>（+0.5%）价格连续3个月上涨。<span className="font-bold">新能源车</span>整车价格由降转涨（+0.1%），恶性价格战得到初步遏制，行业秩序重塑。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="输入性与季节性因素" icon={Globe} delay="300ms">
-           <p>
-             受国际铜价上涨带动，有色金属冶炼价格环比上涨 <span className="font-bold">2.8%</span>。迎峰度冬需求拉动煤炭开采价格上涨 <span className="font-bold">1.3%</span>。
+             能源与钢铁指数震荡下行，反映国内建筑需求偏弱；有色类指数逆势走强，主要受全球供应偏紧及输入性因素驱动，大宗商品价格走势呈现明显的结构性分化特征。
            </p>
          </InsightBox>
       </section>
@@ -63,7 +57,7 @@ export const SlideContentSeven: React.FC = () => {
           <PpiTrendChart data={ppiTrendData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <AntiInvolutionChart data={industryPriceData} />
+          <CommodityIndexChart data={commodityIndexData} />
         </div>
       </section>
 

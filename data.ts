@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -284,18 +284,57 @@ export const inventoryCycleData: InventoryCycleDataPoint[] = [
 
 // Slide 7 Data
 export const ppiTrendData: PpiTrendDataPoint[] = [
-  { month: '1月', ppi: -2.3, productionMaterials: -2.6, livingMaterials: -1.2 },
-  { month: '2月', ppi: -2.2, productionMaterials: -2.5, livingMaterials: -1.2 },
-  { month: '3月', ppi: -2.5, productionMaterials: -2.8, livingMaterials: -1.5 },
-  { month: '4月', ppi: -2.7, productionMaterials: -3.1, livingMaterials: -1.6 },
-  { month: '5月', ppi: -3.3, productionMaterials: -4.0, livingMaterials: -1.4 },
-  { month: '6月', ppi: -3.6, productionMaterials: -4.4, livingMaterials: -1.4 },
-  { month: '7月', ppi: -3.6, productionMaterials: -4.4, livingMaterials: -1.4 },
-  { month: '8月', ppi: -2.9, productionMaterials: -3.2, livingMaterials: -1.7 },
-  { month: '9月', ppi: -2.3, productionMaterials: -2.4, livingMaterials: -1.7 },
-  { month: '10月', ppi: -2.1, productionMaterials: -2.4, livingMaterials: -1.4 },
-  { month: '11月', ppi: -2.2, productionMaterials: -2.4, livingMaterials: -1.5 },
-  { month: '12月', ppi: -1.9, productionMaterials: -2.1, livingMaterials: -1.3 },
+  { month: '24-01', ppi: -2.5, productionMaterials: -3.0, livingMaterials: -1.1 },
+  { month: '24-02', ppi: -2.7, productionMaterials: -3.4, livingMaterials: -1.1 },
+  { month: '24-03', ppi: -2.8, productionMaterials: -3.5, livingMaterials: -1.0 },
+  { month: '24-04', ppi: -2.5, productionMaterials: -3.1, livingMaterials: -0.9 },
+  { month: '24-05', ppi: -1.4, productionMaterials: -1.6, livingMaterials: -0.8 },
+  { month: '24-06', ppi: -0.8, productionMaterials: -0.8, livingMaterials: -0.8 },
+  { month: '24-07', ppi: -0.8, productionMaterials: -0.8, livingMaterials: -0.8 },
+  { month: '24-08', ppi: -1.8, productionMaterials: -2.0, livingMaterials: -1.3 },
+  { month: '24-09', ppi: -2.8, productionMaterials: -3.3, livingMaterials: -1.3 },
+  { month: '24-10', ppi: -2.9, productionMaterials: -3.3, livingMaterials: -1.6 },
+  { month: '24-11', ppi: -2.5, productionMaterials: -2.9, livingMaterials: -1.4 },
+  { month: '24-12', ppi: -2.3, productionMaterials: -2.6, livingMaterials: -1.4 },
+  { month: '25-01', ppi: -2.3, productionMaterials: -2.6, livingMaterials: -1.2 },
+  { month: '25-02', ppi: -2.2, productionMaterials: -2.5, livingMaterials: -1.2 },
+  { month: '25-03', ppi: -2.5, productionMaterials: -2.8, livingMaterials: -1.5 },
+  { month: '25-04', ppi: -2.7, productionMaterials: -3.1, livingMaterials: -1.6 },
+  { month: '25-05', ppi: -3.3, productionMaterials: -4.0, livingMaterials: -1.4 },
+  { month: '25-06', ppi: -3.6, productionMaterials: -4.4, livingMaterials: -1.4 },
+  { month: '25-07', ppi: -3.6, productionMaterials: -4.4, livingMaterials: -1.4 },
+  { month: '25-08', ppi: -2.9, productionMaterials: -3.2, livingMaterials: -1.7 },
+  { month: '25-09', ppi: -2.3, productionMaterials: -2.4, livingMaterials: -1.7 },
+  { month: '25-10', ppi: -2.1, productionMaterials: -2.4, livingMaterials: -1.4 },
+  { month: '25-11', ppi: -2.2, productionMaterials: -2.4, livingMaterials: -1.5 },
+  { month: '25-12', ppi: -1.9, productionMaterials: -2.1, livingMaterials: -1.3 },
+];
+
+export const commodityIndexData: CommodityIndexDataPoint[] = [
+  { month: '24-01', steel: 116.82, minerals: 186.53, nonFerrous: 104.54, energy: 154.68 },
+  { month: '24-02', steel: 116.26, minerals: 183.66, nonFerrous: 103.82, energy: 157.75 },
+  { month: '24-03', steel: 112.20, minerals: 174.53, nonFerrous: 106.13, energy: 160.18 },
+  { month: '24-04', steel: 109.63, minerals: 169.45, nonFerrous: 112.36, energy: 163.85 },
+  { month: '24-05', steel: 110.88, minerals: 180.04, nonFerrous: 119.34, energy: 160.12 },
+  { month: '24-06', steel: 108.05, minerals: 178.01, nonFerrous: 117.94, energy: 159.34 },
+  { month: '24-07', steel: 105.03, minerals: 181.60, nonFerrous: 115.39, energy: 161.41 },
+  { month: '24-08', steel: 97.14, minerals: 176.51, nonFerrous: 110.24, energy: 154.95 },
+  { month: '24-09', steel: 94.59, minerals: 170.44, nonFerrous: 111.87, energy: 146.85 },
+  { month: '24-10', steel: 105.23, minerals: 172.81, nonFerrous: 116.46, energy: 150.51 },
+  { month: '24-11', steel: 101.53, minerals: 174.00, nonFerrous: 115.53, energy: 148.27 },
+  { month: '24-12', steel: 101.30, minerals: 176.07, nonFerrous: 114.51, energy: 145.73 },
+  { month: '25-01', steel: 99.59, minerals: 172.04, nonFerrous: 113.23, energy: 149.57 },
+  { month: '25-02', steel: 99.51, minerals: 170.49, nonFerrous: 115.19, energy: 146.25 },
+  { month: '25-03', steel: 98.11, minerals: 169.87, nonFerrous: 117.99, energy: 138.47 },
+  { month: '25-04', steel: 96.65, minerals: 165.69, nonFerrous: 114.17, energy: 130.39 },
+  { month: '25-05', steel: 95.73, minerals: 164.12, nonFerrous: 114.89, energy: 126.12 },
+  { month: '25-06', steel: 93.39, minerals: 159.93, nonFerrous: 115.69, energy: 129.68 },
+  { month: '25-07', steel: 95.38, minerals: 158.54, nonFerrous: 116.58, energy: 128.03 },
+  { month: '25-08', steel: 98.29, minerals: 166.89, nonFerrous: 116.10, energy: 129.17 },
+  { month: '25-09', steel: 96.58, minerals: 169.37, nonFerrous: 116.95, energy: 130.88 },
+  { month: '25-10', steel: 95.28, minerals: 172.50, nonFerrous: 120.98, energy: 127.25 },
+  { month: '25-11', steel: 94.80, minerals: 174.60, nonFerrous: 123.00, energy: 127.60 },
+  { month: '25-12', steel: 95.40, minerals: 173.40, nonFerrous: 127.60, energy: 124.50 },
 ];
 
 export const industryPriceData: IndustryPriceDataPoint[] = [

@@ -1,21 +1,19 @@
 
 import React from 'react';
 import {
-  ComposedChart,
+  LineChart,
   Line,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
   Legend,
-  ReferenceLine
 } from 'recharts';
-import { PpiTrendDataPoint } from '../types';
+import { CommodityIndexDataPoint } from '../types';
 
 interface Props {
-  data: PpiTrendDataPoint[];
+  data: CommodityIndexDataPoint[];
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -23,29 +21,31 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue">PPI同比: {payload[0]?.value}%</p>
-        <p className="text-webank-lightBlue">生产资料PPI同比: {payload[1]?.value}%</p>
-        <p className="text-slate-500">生活资料PPI同比: {payload[2]?.value}%</p>
+        {payload.map((item: any, index: number) => (
+          <p key={index} style={{ color: item.color }}>
+            {item.name}: {item.value}
+          </p>
+        ))}
       </div>
     );
   }
   return null;
 };
 
-export const PpiTrendChart: React.FC<Props> = ({ data }) => {
+export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2024-2025年PPI及生产/生活资料PPI同比走势
+          大宗商品价格指数分项数据
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          全年PPI同比维持负增长，生产资料价格跌幅大于生活资料
+          能源与钢铁类指数回落，有色金属与矿产类表现分化
         </p>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart
+          <LineChart
             data={data}
             margin={{
               top: 10,
@@ -55,7 +55,6 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
             }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
-            <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
             
             <XAxis 
               dataKey="month" 
@@ -69,9 +68,7 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
-              domain={[-5, 2]}
-              ticks={[-5, -4, -3, -2, -1, 0, 1, 2]}
+              domain={['auto', 'auto']}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -81,33 +78,42 @@ export const PpiTrendChart: React.FC<Props> = ({ data }) => {
             />
             
             <Line
-              name="PPI同比"
+              name="钢铁类"
               type="monotone"
-              dataKey="ppi"
-              stroke="#051c2c"
-              strokeWidth={3}
-              dot={{ r: 4, fill: '#051c2c' }}
+              dataKey="steel"
+              stroke="#94a3b8"
+              strokeWidth={2}
+              dot={{ r: 2 }}
               animationDuration={1500}
             />
             <Line
-              name="生产资料PPI同比"
+              name="矿产类"
               type="monotone"
-              dataKey="productionMaterials"
+              dataKey="minerals"
               stroke="#00a9f4"
               strokeWidth={2}
-              dot={{ r: 3, fill: '#00a9f4' }}
-              animationDuration={2000}
+              dot={{ r: 2 }}
+              animationDuration={1800}
             />
             <Line
-              name="生活资料PPI同比"
+              name="有色类"
               type="monotone"
-              dataKey="livingMaterials"
-              stroke="#94a3b8"
+              dataKey="nonFerrous"
+              stroke="#051c2c"
               strokeWidth={2}
-              dot={{ r: 3, fill: '#94a3b8' }}
-              animationDuration={2000}
+              dot={{ r: 2 }}
+              animationDuration={2100}
             />
-          </ComposedChart>
+            <Line
+              name="能源类"
+              type="monotone"
+              dataKey="energy"
+              stroke="#ef4444"
+              strokeWidth={2}
+              dot={{ r: 2 }}
+              animationDuration={2400}
+            />
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>
