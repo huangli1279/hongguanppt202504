@@ -1,21 +1,21 @@
 import React from 'react';
 import { IndustryGrowthTableData } from '../types';
 import { DataTable, TableContainer } from './DataTable';
-import { createColumnsFromTimeSeries, transformToRowArray, conservativeColorizer } from '../utils/tableHelpers';
+import { createColumnsFromIndustries, transformToTransposedRowArray, conservativeColorizer } from '../utils/tableHelpers';
 
 interface InfrastructureTableProps {
   data: IndustryGrowthTableData;
 }
 
 export const InfrastructureTable: React.FC<InfrastructureTableProps> = ({ data }) => {
-  // Create columns from time series
-  const columns = createColumnsFromTimeSeries(data, '月份');
+  // Create columns from industries (Transposed)
+  const columns = createColumnsFromIndustries(data, '月份');
 
-  // Transform data and format month labels (remove year prefix)
-  const rows = transformToRowArray(data).map(row => ({
+  // Transform data to transposed rows (Time series as rows)
+  const rows = transformToTransposedRowArray(data).map(row => ({
     ...row,
-    name: typeof row.name === 'string' && row.name.length > 5
-      ? row.name.substring(2)
+    name: typeof row.name === 'string' && row.name.startsWith('2025-')
+      ? row.name.replace('2025-', '') + '月'
       : row.name
   }));
 
@@ -39,3 +39,4 @@ export const InfrastructureTable: React.FC<InfrastructureTableProps> = ({ data }
     </TableContainer>
   );
 };
+

@@ -51,6 +51,54 @@ export function transformToRowArray(data: IndustryGrowthTableData): Record<strin
 }
 
 /**
+ * Creates column definitions from industry keys (Transposed view)
+ * Columns: Date/Period + Industries
+ *
+ * @param data - Table data with industryData map
+ * @param firstColumnLabel - Label for the first column (e.g., "日期", "月份")
+ * @returns Array of column definitions
+ */
+export function createColumnsFromIndustries(
+  data: IndustryGrowthTableData,
+  firstColumnLabel: string = '日期'
+): ColumnDefinition[] {
+  const columns: ColumnDefinition[] = [
+    { key: 'name', label: firstColumnLabel, align: 'left', sticky: true, width: '120px' }
+  ];
+
+  Object.keys(data.industryData).forEach((industry) => {
+    columns.push({
+      key: industry,
+      label: industry,
+      align: 'center',
+      width: '100px'
+    });
+  });
+
+  return columns;
+}
+
+/**
+ * Transforms data to transposed row array (Time series as rows)
+ * Converts { industryName: [val1, val2] } to [{ name: period1, Ind1: val1, Ind2: val1 }, ...]
+ *
+ * @param data - Industry growth table data
+ * @returns Array of row objects
+ */
+export function transformToTransposedRowArray(data: IndustryGrowthTableData): Record<string, string | number | null>[] {
+  return data.timeSeries.map((period, idx) => {
+    const row: Record<string, string | number | null> = { name: period };
+
+    Object.entries(data.industryData).forEach(([industry, values]) => {
+      row[industry] = values[idx];
+    });
+
+    return row;
+  });
+}
+
+
+/**
  * Standard colorizer for growth rate tables
  * High growth (≥10%): Blue highlight
  * Medium growth (5-10%): Green highlight
