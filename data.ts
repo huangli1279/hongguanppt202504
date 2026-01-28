@@ -393,18 +393,17 @@ export const retailTrendData: RetailTrendDataPoint[] = [
 ];
 
 export const urbanRuralData: UrbanRuralDataPoint[] = [
-  { month: '1月', urban: 5.3, rural: 5.7 },
-  { month: '2月', urban: 5.3, rural: 5.7 },
-  { month: '3月', urban: 4.1, rural: 4.5 },
-  { month: '4月', urban: 3.7, rural: 4.1 },
-  { month: '5月', urban: 3.9, rural: 4.3 },
-  { month: '6月', urban: 3.4, rural: 3.8 },
-  { month: '7月', urban: 3.1, rural: 3.5 },
-  { month: '8月', urban: 3.3, rural: 3.7 },
-  { month: '9月', urban: 3.7, rural: 4.1 },
-  { month: '10月', urban: 2.8, rural: 3.2 },
-  { month: '11月', urban: 1.2, rural: 1.6 },
-  { month: '12月', urban: 0.7, rural: 1.7 },
+  { month: '2月', urban: 3.80, rural: 4.60 },
+  { month: '3月', urban: 4.50, rural: 4.90 },
+  { month: '4月', urban: 4.70, rural: 4.80 },
+  { month: '5月', urban: 5.10, rural: 4.90 },
+  { month: '6月', urban: 5.00, rural: 4.90 },
+  { month: '7月', urban: 4.80, rural: 4.70 },
+  { month: '8月', urban: 4.60, rural: 4.70 },
+  { month: '9月', urban: 4.40, rural: 4.60 },
+  { month: '10月', urban: 4.24, rural: 4.57 },
+  { month: '11月', urban: 3.90, rural: 4.40 },
+  { month: '12月', urban: 3.63, rural: 4.12 },
 ];
 
 // Slide 9 Data

@@ -10,21 +10,41 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  ReferenceLine
+  ReferenceLine,
+  Label
 } from 'recharts';
+import { UrbanRuralDataPoint } from '../types';
 
 const CustomizedDot = (props: any) => {
-  const { cx, cy, payload, value } = props;
-
-  if (payload && payload.month === '12月') {
+  const { cx, cy, payload, value, dataKey } = props;
+  
+  // 标注10、11、12月
+  const highlightMonths = ['10月', '11月', '12月'];
+  
+  if (payload && highlightMonths.includes(payload.month)) {
+    // 根据数据键（城镇/乡村）使用不同颜色
+    const dotColor = dataKey === 'rural' ? '#00a9f4' : '#051c2c';
+    const labelColor = payload.month === '12月' ? '#ef4444' : '#333';
+    
     return (
-      <Dot cx={cx} cy={cy} r={6} fill="#ef4444" stroke="#fff" strokeWidth={2} />
+      <g>
+        <Dot cx={cx} cy={cy} r={5} fill={dotColor} stroke="#fff" strokeWidth={2} />
+        <text
+          x={cx}
+          y={cy - 12}
+          textAnchor="middle"
+          fill={labelColor}
+          fontSize={10}
+          fontWeight="bold"
+        >
+          {value}%
+        </text>
+      </g>
     );
   }
 
   return null;
 };
-import { UrbanRuralDataPoint } from '../types';
 
 interface Props {
   data: UrbanRuralDataPoint[];
@@ -54,7 +74,7 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年城乡消费品零售额累计同比增速
+          2025年城镇与乡村社会消费品零售总额累计同比
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
           乡村市场韧性持续强于城镇，12月累计增速差距扩大
@@ -79,7 +99,8 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[0, 6]}
+              domain={[3, 5.5]}
+              ticks={[3.0, 3.5, 4.0, 4.5, 5.0, 5.5]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
