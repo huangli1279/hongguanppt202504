@@ -16,7 +16,7 @@ import {
 const CustomizedDot = (props: any) => {
   const { cx, cy, payload, value } = props;
 
-  if (payload.month === '12月') {
+  if (payload && payload.month === '12月') {
     return (
       <Dot cx={cx} cy={cy} r={6} fill="#ef4444" stroke="#fff" strokeWidth={2} />
     );

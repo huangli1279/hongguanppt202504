@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
 import { IndustryGdpQuarterlyDataPoint } from '../types';
 
 interface IndustryGdpGroupedBarChartProps {
@@ -69,10 +69,18 @@ export const IndustryGdpGroupedBarChart: React.FC<IndustryGdpGroupedBarChartProp
               iconType="rect"
               verticalAlign="bottom"
             />
-            <Bar dataKey="Q1" fill={quarterColors.Q1} radius={[4, 4, 0, 0]} />
-            <Bar dataKey="Q2" fill={quarterColors.Q2} radius={[4, 4, 0, 0]} />
-            <Bar dataKey="Q3" fill={quarterColors.Q3} radius={[4, 4, 0, 0]} />
-            <Bar dataKey="Q4" fill={quarterColors.Q4} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Q1" fill={quarterColors.Q1} radius={[4, 4, 0, 0]}>
+              <LabelList dataKey="Q1" position="top" style={{ fontSize: '8px', fill: '#333333' }} />
+            </Bar>
+            <Bar dataKey="Q2" fill={quarterColors.Q2} radius={[4, 4, 0, 0]}>
+              <LabelList dataKey="Q2" position="top" style={{ fontSize: '8px', fill: '#333333' }} />
+            </Bar>
+            <Bar dataKey="Q3" fill={quarterColors.Q3} radius={[4, 4, 0, 0]}>
+              <LabelList dataKey="Q3" position="top" style={{ fontSize: '8px', fill: '#333333' }} />
+            </Bar>
+            <Bar dataKey="Q4" fill={quarterColors.Q4} radius={[4, 4, 0, 0]}>
+              <LabelList dataKey="Q4" position="top" style={{ fontSize: '8px', fill: '#333333' }} />
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>

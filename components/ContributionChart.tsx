@@ -7,7 +7,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend
+  Legend,
+  Cell
 } from 'recharts';
 import { ContributionDataPoint } from '../types';
 
@@ -15,44 +16,64 @@ interface Props {
   data: ContributionDataPoint[];
 }
 
+// 自定义标签渲染函数
+const CustomLabel = (props: any) => {
+  const { x, y, width, height, value } = props;
+
+  // 只显示大于0.1的值，避免太小的值显示
+  if (!value || value < 0.1) return null;
+
+  return (
+    <text
+      x={x + width / 2}
+      y={y + height / 2}
+      fill="#fff"
+      textAnchor="middle"
+      dominantBaseline="middle"
+      fontSize={9}
+      fontWeight="500"
+    >
+      {value.toFixed(2)}
+    </text>
+  );
+};
+
+// 自定义Tooltip
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
+      <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p style={{ color: '#94a3b8' }}>第一产业: {payload[0].value}%</p>
-        <p style={{ color: '#00a9f4' }}>第二产业: {payload[1].value}%</p>
-        <p style={{ color: '#005c8f' }}>第三产业: {payload[2].value}%</p>
-        <div className="border-t border-slate-200 mt-1 pt-1 font-bold text-webank-blue">
-            GDP: {payload[0].payload.total}%
-        </div>
+        <p style={{ color: '#94a3b8' }}>第一产业: {payload[0]?.value?.toFixed(2)}</p>
+        <p style={{ color: '#00a9f4' }}>第二产业: {payload[1]?.value?.toFixed(2)}</p>
+        <p style={{ color: '#005c8f' }}>第三产业: {payload[2]?.value?.toFixed(2)}</p>
       </div>
     );
   }
   return null;
 };
 
+// 自定义图例
 const CustomLegend = () => {
-  const legendItems = [
-    { label: '第一产业', color: '#94a3b8' },
-    { label: '第二产业', color: '#00a9f4' },
-    { label: '第三产业', color: '#005c8f' }
+  const items = [
+    { name: '第一产业', color: '#94a3b8' },
+    { name: '第二产业', color: '#00a9f4' },
+    { name: '第三产业', color: '#005c8f' }
   ];
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '20px',
-      fontSize: '10px',
-      paddingTop: '10px'
-    }}>
-      {legendItems.map((item) => (
-        <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <svg width="8" height="8">
-            <circle cx="4" cy="4" r="4" fill={item.color} />
-          </svg>
-          <span>{item.label}</span>
+    <div className="flex justify-center gap-5 pt-2" style={{ fontSize: '10px' }}>
+      {items.map((item) => (
+        <div key={item.name} className="flex items-center gap-1">
+          <div
+            style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              backgroundColor: item.color
+            }}
+          />
+          <span>{item.name}</span>
         </div>
       ))}
     </div>
@@ -64,16 +85,15 @@ export const ContributionChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-2">
         <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          三产业GDP当季同比拉动 (2024-2025)
+          2024-2025年三产业GDP当季同比拉动数据
         </h3>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+            margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
             barCategoryGap="20%"
-            stackOffset="sign"
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <XAxis
@@ -81,18 +101,33 @@ export const ContributionChart: React.FC<Props> = ({ data }) => {
               axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
               tick={{ fill: '#666', fontSize: 10 }}
-              dy={5}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
               tick={{ fill: '#999', fontSize: 10 }}
+              domain={[0, 4]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend content={<CustomLegend />} />
-            <Bar dataKey="primary" name="第一产业" stackId="a" fill="#94a3b8" />
-            <Bar dataKey="secondary" name="第二产业" stackId="a" fill="#00a9f4" />
-            <Bar dataKey="tertiary" name="第三产业" stackId="a" fill="#005c8f" />
+            <Bar
+              dataKey="primary"
+              stackId="stack"
+              fill="#94a3b8"
+              label={<CustomLabel />}
+            />
+            <Bar
+              dataKey="secondary"
+              stackId="stack"
+              fill="#00a9f4"
+              label={<CustomLabel />}
+            />
+            <Bar
+              dataKey="tertiary"
+              stackId="stack"
+              fill="#005c8f"
+              label={<CustomLabel />}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

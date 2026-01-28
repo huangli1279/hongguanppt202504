@@ -53,24 +53,28 @@ export const IndustryGrowthChart: React.FC<Props> = ({ data }) => {
               fill="#cbd5e1"
               radius={[4, 4, 0, 0]}
               animationDuration={1500}
+              label={{ position: 'top', fontSize: 9, fill: '#666' }}
             />
             <Bar
               dataKey="2025-06"
               fill="#94a3b8"
               radius={[4, 4, 0, 0]}
               animationDuration={1500}
+              label={{ position: 'top', fontSize: 9, fill: '#666' }}
             />
             <Bar
               dataKey="2025-09"
               fill="#00a9f4"
               radius={[4, 4, 0, 0]}
               animationDuration={1500}
+              label={{ position: 'top', fontSize: 9, fill: '#666' }}
             />
             <Bar
               dataKey="2025-12"
               fill="#005c8f"
               radius={[4, 4, 0, 0]}
               animationDuration={1500}
+              label={{ position: 'top', fontSize: 9, fill: '#666' }}
             />
           </BarChart>
         </ResponsiveContainer>

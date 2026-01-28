@@ -39,29 +39,23 @@ export const SlideContent: React.FC = () => {
       </header>
 
       {/* Key Takeaways Grid */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-32">
+      <section className="grid grid-cols-3 gap-6 mb-8 h-32">
         <BulletPoint title="总量定调" icon={BarChart3} delay="100ms">
           <p>
             全年GDP达 <span className="font-bold">140.2万亿元</span>，同比增长 <span className="font-bold">5.0%</span>，成功实现全年预期目标。
           </p>
         </BulletPoint>
 
-        <BulletPoint title="季度走势“前高后低”" icon={TrendingDown} delay="200ms">
+        <BulletPoint title="季度走势'前高后低'" icon={TrendingDown} delay="200ms">
           <p>
             受基数及内需影响逐季回落：<br/>Q1 5.4% <span className="text-slate-400">→</span> Q4 4.5%。<br/>
             四季度环比增长 <span className="font-bold">1.2%</span>，动能仍具韧性。
           </p>
         </BulletPoint>
 
-        <BulletPoint title="人均水平" icon={TrendingUp} delay="300ms">
+        <BulletPoint title="价格体系分化" icon={Scale} delay="300ms">
           <p>
-            人均GDP稳步提升，国民经济顶住“供强需弱”压力，实现了质的有效提升和量的合理增长。
-          </p>
-        </BulletPoint>
-
-        <BulletPoint title="名义 vs 实际“温差”" icon={Scale} delay="400ms">
-          <p>
-            <span className="text-red-600 font-semibold">Q4GDP平减指数</span> 约 -0.7%，较Q3(-1.1%)收窄，但连续11个季度为负，CPI、PPI四季度持续回温
+            <span className="text-red-600 font-semibold">Q4GDP平减指数-0.7%</span>，较Q3(-1.1%)收窄但仍连续11季为负。<span className="font-bold">产业分化显著：</span>二产-2.02%（核心拖累），三产+0.43%（率先转正）。Q4鲜菜等食品价格回升（CPI食品分项同比+1.1%）带动第一产业平减指数相较上一季度有较大提升。依赖“反内卷”限产政策及财政发力，PPI持续修复，拉动第二产业平减指数回升。
           </p>
         </BulletPoint>
       </section>

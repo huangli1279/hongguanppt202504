@@ -1,7 +1,7 @@
 import React from 'react';
 import { IndustryGrowthChart } from './IndustryGrowthChart';
-import { ContributionChart } from './ContributionChart';
-import { industryGrowthData, contributionData } from '../data';
+import { ThreeYearContributionChart } from './ThreeYearContributionChart';
+import { industryGrowthData, threeYearContributionData } from '../data';
 import { TrendingUp, Activity, AlertTriangle } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
@@ -47,16 +47,16 @@ export const SlideContentTwo: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-6 min-h-0">
+      <section className="flex-grow grid grid-cols-3 gap-4 min-h-0">
 
-        {/* Left Column: Industry Growth Chart */}
-        <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+        {/* Industry Growth Chart - Left side, takes 2 columns */}
+        <div className="col-span-2 bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
            <IndustryGrowthChart data={industryGrowthData} />
         </div>
 
-        {/* Right Column: Contribution Chart */}
-        <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-           <ContributionChart data={contributionData} />
+        {/* Three Year Contribution Chart - Right side, takes 1 column */}
+        <div className="col-span-1 bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '700ms' }}>
+          <ThreeYearContributionChart data={threeYearContributionData} />
         </div>
 
       </section>

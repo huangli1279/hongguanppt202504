@@ -9,6 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  Label,
+  LabelList,
 } from 'recharts';
 import { CommodityIndexDataPoint } from '../types';
 
@@ -49,9 +51,9 @@ export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
             data={data}
             margin={{
               top: 10,
-              right: 10,
+              right: 35,
               left: -20,
-              bottom: 0,
+              bottom: 5,
             }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
@@ -63,6 +65,7 @@ export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
               tick={{ fill: '#666', fontSize: 9 }}
               dy={10}
               interval={1}
+              ticks={['24-01', '24-03', '24-05', '24-07', '24-09', '24-11', '25-01', '25-03', '25-05', '25-07', '25-09', '25-11', '25-12']}
             />
             <YAxis 
               axisLine={false} 
@@ -85,7 +88,24 @@ export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
               strokeWidth={2}
               dot={{ r: 2 }}
               animationDuration={1500}
-            />
+            >
+              <LabelList 
+                dataKey="steel" 
+                position="top" 
+                style={{ fontSize: '9px', fill: '#94a3b8', fontWeight: 'bold' }}
+                content={({ x, y, value, index }: any) => {
+                  // 只标注最后一个数据点（25-12）
+                  if (index === 23) {
+                    return (
+                      <text x={x} y={y} dy={-8} textAnchor="middle" fill="#94a3b8" fontSize={9} fontWeight="bold">
+                        {value}
+                      </text>
+                    );
+                  }
+                  return null;
+                }}
+              />
+            </Line>
             <Line
               name="矿产类"
               type="monotone"
@@ -94,7 +114,23 @@ export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
               strokeWidth={2}
               dot={{ r: 2 }}
               animationDuration={1800}
-            />
+            >
+              <LabelList 
+                dataKey="minerals" 
+                position="top" 
+                style={{ fontSize: '9px', fill: '#00a9f4', fontWeight: 'bold' }}
+                content={({ x, y, value, index }: any) => {
+                  if (index === 23) {
+                    return (
+                      <text x={x} y={y} dy={-8} textAnchor="middle" fill="#00a9f4" fontSize={9} fontWeight="bold">
+                        {value}
+                      </text>
+                    );
+                  }
+                  return null;
+                }}
+              />
+            </Line>
             <Line
               name="有色类"
               type="monotone"
@@ -103,7 +139,23 @@ export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
               strokeWidth={2}
               dot={{ r: 2 }}
               animationDuration={2100}
-            />
+            >
+              <LabelList 
+                dataKey="nonFerrous" 
+                position="top" 
+                style={{ fontSize: '9px', fill: '#051c2c', fontWeight: 'bold' }}
+                content={({ x, y, value, index }: any) => {
+                  if (index === 23) {
+                    return (
+                      <text x={x} y={y} dy={-8} textAnchor="middle" fill="#051c2c" fontSize={9} fontWeight="bold">
+                        {value}
+                      </text>
+                    );
+                  }
+                  return null;
+                }}
+              />
+            </Line>
             <Line
               name="能源类"
               type="monotone"
@@ -112,7 +164,23 @@ export const CommodityIndexChart: React.FC<Props> = ({ data }) => {
               strokeWidth={2}
               dot={{ r: 2 }}
               animationDuration={2400}
-            />
+            >
+              <LabelList 
+                dataKey="energy" 
+                position="top" 
+                style={{ fontSize: '9px', fill: '#ef4444', fontWeight: 'bold' }}
+                content={({ x, y, value, index }: any) => {
+                  if (index === 23) {
+                    return (
+                      <text x={x} y={y} dy={-8} textAnchor="middle" fill="#ef4444" fontSize={9} fontWeight="bold">
+                        {value}
+                      </text>
+                    );
+                  }
+                  return null;
+                }}
+              />
+            </Line>
           </LineChart>
         </ResponsiveContainer>
       </div>

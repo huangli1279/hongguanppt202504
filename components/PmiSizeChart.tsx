@@ -71,24 +71,11 @@ export const PmiSizeChart: React.FC<Props> = ({ data }) => {
               wrapperStyle={{ paddingTop: '10px' }}
               iconType="circle"
               iconSize={8}
-            />
-            <Line
-              name="大型企业"
-              type="monotone"
-              dataKey="large"
-              stroke="#051c2c"
-              strokeWidth={2}
-              dot={{ r: 3, fill: '#051c2c' }}
-              activeDot={{ r: 5 }}
-            />
-            <Line
-              name="中型企业"
-              type="monotone"
-              dataKey="medium"
-              stroke="#94a3b8"
-              strokeWidth={2}
-              dot={{ r: 3, fill: '#94a3b8' }}
-              activeDot={{ r: 5 }}
+              payload={[
+                { value: '小型企业', type: 'circle', id: 'small', color: '#ef4444' },
+                { value: '中型企业', type: 'circle', id: 'medium', color: '#94a3b8' },
+                { value: '大型企业', type: 'circle', id: 'large', color: '#051c2c' }
+              ]}
             />
             <Line
               name="小型企业"
@@ -98,6 +85,57 @@ export const PmiSizeChart: React.FC<Props> = ({ data }) => {
               strokeWidth={2}
               dot={{ r: 3, fill: '#ef4444' }}
               activeDot={{ r: 5 }}
+              label={({ x, y, stroke, value, index }: any) => {
+                const item = data[index];
+                if (item && item.month === '12') {
+                  return (
+                    <text x={x} y={y} dy={-10} fill={stroke} fontSize={12} fontWeight="bold" textAnchor="middle">
+                      {value}%
+                    </text>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Line
+              name="中型企业"
+              type="monotone"
+              dataKey="medium"
+              stroke="#94a3b8"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#94a3b8' }}
+              activeDot={{ r: 5 }}
+              label={({ x, y, stroke, value, index }: any) => {
+                const item = data[index];
+                if (item && item.month === '12') {
+                  return (
+                    <text x={x} y={y} dy={-10} fill={stroke} fontSize={12} fontWeight="bold" textAnchor="middle">
+                      {value}%
+                    </text>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Line
+              name="大型企业"
+              type="monotone"
+              dataKey="large"
+              stroke="#051c2c"
+              strokeWidth={2}
+              dot={{ r: 3, fill: '#051c2c' }}
+              activeDot={{ r: 5 }}
+              label={({ x, y, stroke, value, index }: any) => {
+                const item = data[index];
+                if (item && item.month === '12') {
+                  return (
+                    <text x={x} y={y} dy={-10} fill={stroke} fontSize={12} fontWeight="bold" textAnchor="middle">
+                      {value}%
+                    </text>
+                  );
+                }
+                return null;
+              }}
             />
           </LineChart>
         </ResponsiveContainer>

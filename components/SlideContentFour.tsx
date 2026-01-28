@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { PmiTrendChart } from './PmiTrendChart';
-import { PmiSizeChart } from './PmiSizeChart';
+import { PmiSizeLineChart } from './PmiSizeLineChart';
 import { pmiTrendData, pmiSizeTrendData } from '../data';
 import { TrendingUp, Layers, Zap, ShoppingBag } from 'lucide-react';
 
@@ -37,7 +37,7 @@ export const SlideContentFour: React.FC = () => {
       </header>
 
       {/* Top Insights Grid */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-36">
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
         <InsightBox title="景气度反转" icon={TrendingUp} delay="100ms">
           <p>
             12月PMI升至 <span className="font-bold">50.1%</span> (+0.9pct)，为4月以来首次扩张。超出市场预期 (49.2%)，显示稳增长政策效果集中显现。
@@ -46,17 +46,11 @@ export const SlideContentFour: React.FC = () => {
         
         <InsightBox title="供需同步改善" icon={Zap} delay="200ms">
            <p>
-            <span className="font-bold">生产指数 (51.7%)</span> 创近期新高；<span className="font-bold">新订单指数 (50.8%)</span> 重回荣枯线以上。供需缺口收窄，内生动力增强。
+            <span className="font-bold">生产指数 (51.7%)</span> 创近期新高；受海外节假日、关税预期下的“抢出口”及春节错位赶工影响，<span className="font-bold">新订单指数 (50.8%)</span> 重回荣枯线以上，外需短期韧性超预期，供需缺口收窄。
            </p>
         </InsightBox>
 
-        <InsightBox title="抢出口效应" icon={ShoppingBag} delay="300ms">
-           <p>
-            新出口订单回升至 49.0%。受海外节假日、关税预期下的“抢出口”及春节错位赶工影响，外需短期韧性超预期。
-           </p>
-        </InsightBox>
-
-         <InsightBox title="结构明显分化" icon={Layers} delay="400ms">
+         <InsightBox title="结构明显分化" icon={Layers} delay="300ms">
            <p>
             <span className="font-bold">大型企业 (50.8%)</span> 受益于“两重”资金落地领跑；小型企业 (48.6%) 虽有回升但仍处收缩。高技术制造业 (52.5%) 持续高景气。
            </p>
@@ -69,9 +63,9 @@ export const SlideContentFour: React.FC = () => {
          <div className="col-span-1 bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
             <PmiTrendChart data={pmiTrendData} />
          </div>
-         {/* Right Chart: Size Trend */}
-         <div className="col-span-1 bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-            <PmiSizeChart data={pmiSizeTrendData} />
+         {/* Right Chart: Size Breakdown */}
+         <div className="col-span-1 bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '700ms' }}>
+            <PmiSizeLineChart data={pmiSizeTrendData} />
          </div>
       </section>
 

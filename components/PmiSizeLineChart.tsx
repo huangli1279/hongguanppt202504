@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   LineChart,
@@ -11,10 +10,10 @@ import {
   Legend,
   ReferenceLine
 } from 'recharts';
-import { PmiTrendDataPoint } from '../types';
+import { PmiSizeTrendDataPoint } from '../types';
 
 interface Props {
-  data: PmiTrendDataPoint[];
+  data: PmiSizeTrendDataPoint[];
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -36,15 +35,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-export const PmiTrendChart: React.FC<Props> = ({ data }) => {
+export const PmiSizeLineChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年1-12月制造业PMI及核心指数走势
+          2025年大、中、小型企业制造业PMI数据
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          12月PMI重回扩张区间(50.1%)，生产指数与新订单指数同步大幅改善
+          大型企业重回扩张区间，中小企业仍处荣枯线下
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -60,7 +59,6 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             
-            {/* The 50% Expansion/Contraction Line */}
             <ReferenceLine y={50} stroke="#333" strokeDasharray="3 3" strokeWidth={1} label={{ value: '荣枯线 50%', position: 'insideRight', fill: '#666', fontSize: 10 }} />
             
             <XAxis 
@@ -74,8 +72,7 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
-              domain={[48, 53]}
-              ticks={[48, 49, 50, 51, 52, 53]}
+              domain={['auto', 'auto']}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -85,14 +82,14 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
             />
             
             <Line
-              name="制造业PMI"
+              name="小型企业"
               type="monotone"
-              dataKey="pmi"
-              stroke="#051c2c"
-              strokeWidth={3}
-              dot={{ r: 3, fill: '#051c2c' }}
-              activeDot={{ r: 5 }}
+              dataKey="small"
+              stroke="#ef4444"
+              strokeWidth={2}
+              dot={false}
               animationDuration={2000}
+              animationBegin={0}
               label={({ x, y, stroke, value, index }: any) => {
                 const item = data[index];
                 if (item && item.month === '12月') {
@@ -106,10 +103,10 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
               }}
             />
             <Line
-              name="生产指数"
+              name="中型企业"
               type="monotone"
-              dataKey="production"
-              stroke="#00a9f4"
+              dataKey="medium"
+              stroke="#94a3b8"
               strokeWidth={2}
               dot={false}
               animationDuration={2000}
@@ -127,12 +124,13 @@ export const PmiTrendChart: React.FC<Props> = ({ data }) => {
               }}
             />
             <Line
-              name="新订单指数"
+              name="大型企业"
               type="monotone"
-              dataKey="newOrders"
-              stroke="#94a3b8"
-              strokeWidth={2}
-              dot={false}
+              dataKey="large"
+              stroke="#051c2c"
+              strokeWidth={3}
+              dot={{ r: 3, fill: '#051c2c' }}
+              activeDot={{ r: 5 }}
               animationDuration={2000}
               animationBegin={600}
               label={({ x, y, stroke, value, index }: any) => {

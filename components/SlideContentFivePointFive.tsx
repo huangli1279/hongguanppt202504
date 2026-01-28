@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IndustryGrowthTableChart } from './IndustryGrowthTableChart';
+import { IndustryGrowthTableChartTransposed } from './IndustryGrowthTableChartTransposed';
 import { industryDivergenceTableData } from '../data';
 import { Rocket, TrendingDown, Wrench } from 'lucide-react';
 
@@ -59,7 +59,7 @@ export const SlideContentFivePointFive: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow flex justify-center min-h-0 pb-8">
         <div className="bg-white rounded-sm w-full h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <IndustryGrowthTableChart data={industryDivergenceTableData} />
+          <IndustryGrowthTableChartTransposed data={industryDivergenceTableData} />
         </div>
       </section>
 

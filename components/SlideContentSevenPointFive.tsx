@@ -39,7 +39,7 @@ export const SlideContentSevenPointFive: React.FC = () => {
       <section className="grid grid-cols-3 gap-4 mb-5 h-32">
          <InsightBox title="反内卷政策显效" icon={ShieldCheck} delay="100ms">
            <p>
-             重点行业产能治理与市场秩序整治成效显现。<span className="font-bold">锂离子电池</span>（环比+1.0%）、<span className="font-bold">水泥制造</span>（环比+0.5%）价格均连续3个月上涨。新能源车整车制造价格<span className="font-bold">由降转涨</span>（环比+0.1%），恶性价格战得到初步遏制。光伏产业链：10月光伏设备及元器件价格环比上涨0.6%，行业供需关系边际改善。
+             重点行业产能治理与市场秩序整治成效显现。<span className="font-bold">锂离子电池</span>（环比+1.0%）价格连续3个月上涨，恶性价格战得到初步遏制。光伏产业链：10月光伏设备及元器件价格环比上涨0.6%，行业供需关系边际改善。
            </p>
          </InsightBox>
 

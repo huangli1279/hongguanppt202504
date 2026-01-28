@@ -85,7 +85,7 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
               strokeWidth={3}
               dot={(props: any) => {
                 const { cx, cy, payload } = props;
-                if (payload.month === '2025-12') {
+                if (payload && payload.month === '2025-12') {
                   return (
                     <g key={`dot-${payload.month}`}>
                       <circle cx={cx} cy={cy} r={4} fill="#051c2c" />
@@ -115,7 +115,7 @@ export const CpiTrendChart: React.FC<Props> = ({ data }) => {
               strokeWidth={3}
               dot={(props: any) => {
                 const { cx, cy, payload } = props;
-                if (payload.month === '2025-12') {
+                if (payload && payload.month === '2025-12') {
                   return (
                     <g key={`dot-core-${payload.month}`}>
                       <circle cx={cx} cy={cy} r={4} fill="#00a9f4" />

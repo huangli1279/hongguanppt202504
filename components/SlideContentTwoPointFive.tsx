@@ -36,8 +36,8 @@ export const SlideContentTwoPointFive: React.FC = () => {
 
       {/* Top Insights Row */}
       <section className="grid grid-cols-3 gap-4 mb-4 h-28">
-        <InsightBox title="新质生产力领跑" icon={Zap} delay="100ms">
-          <p className="mb-1"><span className="font-bold text-webank-accent">信息技术服务业 (Q4: 10.7%)</span> 和 <span className="font-bold text-webank-accent">租赁商务服务业 (Q4: 12.7%)</span> 保持双位数增长，代表新质生产力的核心动能。</p>
+        <InsightBox title="信息与租赁服务业双位数高增" icon={Zap} delay="100ms">
+          <p className="mb-1">在新质生产力核心动能带动下，信息服务业全年维持高增速（Q4:10.7%）；租赁和商务服务业四季度增长12.7%，主要得益于服务消费回暖和以金融、科技为代表的高端商务活动的强劲需求拉动。</p>
         </InsightBox>
 
         <InsightBox title="制造业稳健支撑" icon={Activity} delay="200ms">

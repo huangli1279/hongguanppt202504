@@ -23,14 +23,14 @@ export const deflatorData: DeflatorDataPoint[] = [
   { period: '23Q2', primary: 1.5, secondary: -2.2, tertiary: 1.2 },
   { period: '23Q3', primary: 1.2, secondary: -2.8, tertiary: 0.9 },
   { period: '23Q4', primary: 0.8, secondary: -3.1, tertiary: 0.5 },
-  { period: '24Q1', primary: 0.5, secondary: -2.5, tertiary: 0.2 },
-  { period: '24Q2', primary: 0.9, secondary: -1.8, tertiary: 0.1 },
-  { period: '24Q3', primary: 0.4, secondary: -2.0, tertiary: -0.2 },
-  { period: '24Q4', primary: -0.1, secondary: -2.4, tertiary: -0.3 },
-  { period: '25Q1', primary: -0.3, secondary: -2.6, tertiary: -0.1 },
-  { period: '25Q2', primary: -0.5, secondary: -2.9, tertiary: 0.0 },
-  { period: '25Q3', primary: -1.0, secondary: -3.5, tertiary: -0.3 }, // Adjusted to match Q3 approx -1.1%
-  { period: '25Q4', primary: -0.6, secondary: -2.1, tertiary: 0.4 },  // Adjusted to match Q4 approx -0.7%
+  { period: '24Q1', primary: -3.58, secondary: -2.38, tertiary: -0.08 },
+  { period: '24Q2', primary: -1.78, secondary: -1.43, tertiary: -0.13 },
+  { period: '24Q3', primary: 1.25, secondary: -1.66, tertiary: -0.13 },
+  { period: '24Q4', primary: -1.05, secondary: -2.28, tertiary: 0.31 },
+  { period: '25Q1', primary: -1.24, secondary: -2.35, tertiary: 0.12 },
+  { period: '25Q2', primary: -1.41, secondary: -2.93, tertiary: -0.15 },
+  { period: '25Q3', primary: -3.85, secondary: -2.67, tertiary: 0.31 },
+  { period: '25Q4', primary: -1.12, secondary: -2.02, tertiary: 0.43 },
 ];
 
 // Slide 2 Data
@@ -42,14 +42,30 @@ export const industryGrowthData: IndustryGrowthData[] = [
 ];
 
 export const contributionData: ContributionDataPoint[] = [
-  { period: '24Q1', primary: 0.3, secondary: 2.1, tertiary: 2.9, total: 5.3 },
-  { period: '24Q2', primary: 0.2, secondary: 1.8, tertiary: 2.7, total: 4.7 },
-  { period: '24Q3', primary: 0.3, secondary: 1.7, tertiary: 2.6, total: 4.6 },
-  { period: '24Q4', primary: 0.3, secondary: 2.2, tertiary: 2.7, total: 5.2 },
-  { period: '25Q1', primary: 0.3, secondary: 2.3, tertiary: 2.8, total: 5.4 },
-  { period: '25Q2', primary: 0.2, secondary: 2.1, tertiary: 2.9, total: 5.2 },
-  { period: '25Q3', primary: 0.3, secondary: 1.8, tertiary: 2.7, total: 4.8 },
-  { period: '25Q4', primary: 0.3, secondary: 1.3, tertiary: 2.9, total: 4.5 },
+  { period: '2024-03', primary: 0.14, secondary: 2.04, tertiary: 0.94 },  // 3.12 - 0.14 - 2.04
+  { period: '2024-06', primary: 0.24, secondary: 1.98, tertiary: 0.26 },  // 2.48 - 0.24 - 1.98
+  { period: '2024-09', primary: 0.29, secondary: 1.57, tertiary: 0.88 },  // 2.74 - 0.29 - 1.57
+  { period: '2024-12', primary: 0.39, secondary: 1.81, tertiary: 1.00 },  // 3.20 - 0.39 - 1.81
+  { period: '2025-03', primary: 0.14, secondary: 2.06, tertiary: 1.00 },  // 3.20 - 0.14 - 2.06
+  { period: '2025-06', primary: 0.24, secondary: 1.78, tertiary: 1.16 },  // 3.18 - 0.24 - 1.78
+  { period: '2025-09', primary: 0.34, secondary: 1.50, tertiary: 1.13 },  // 2.97 - 0.34 - 1.50
+  { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 1.19 },  // 2.84 - 0.41 - 1.24
+];
+
+// 2023-2025 Three-Year GDP Contribution Data (三产业GDP当季同比拉动数据)
+export const threeYearContributionData: ContributionDataPoint[] = [
+  { period: '2023-03', primary: 0.15, secondary: 1.02, tertiary: 3.52 },
+  { period: '2023-06', primary: 0.24, secondary: 1.83, tertiary: 4.43 },
+  { period: '2023-09', primary: 0.36, secondary: 1.54, tertiary: 3.10 },
+  { period: '2023-12', primary: 0.42, secondary: 1.87, tertiary: 3.02 },
+  { period: '2024-03', primary: 0.14, secondary: 2.04, tertiary: 3.12 },
+  { period: '2024-06', primary: 0.24, secondary: 1.98, tertiary: 2.48 },
+  { period: '2024-09', primary: 0.29, secondary: 1.57, tertiary: 2.74 },
+  { period: '2024-12', primary: 0.39, secondary: 1.81, tertiary: 3.20 },
+  { period: '2025-03', primary: 0.14, secondary: 2.06, tertiary: 3.20 },
+  { period: '2025-06', primary: 0.24, secondary: 1.78, tertiary: 3.18 },
+  { period: '2025-09', primary: 0.34, secondary: 1.50, tertiary: 2.97 },
+  { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 2.84 },
 ];
 
 export const breakdownData: BreakdownDataPoint[] = [
@@ -133,18 +149,18 @@ export const pmiSizeData: PmiSizeDataPoint[] = [
 ];
 
 export const pmiSizeTrendData: PmiSizeTrendDataPoint[] = [
-  { month: "01", large: 49.8, medium: 49.5, small: 46.5 },
-  { month: "02", large: 52.5, medium: 49.2, small: 46.3 },
-  { month: "03", large: 51.2, medium: 49.9, small: 49.6 },
-  { month: "04", large: 49.2, medium: 48.8, small: 48.7 },
-  { month: "05", large: 50.7, medium: 47.5, small: 49.3 },
-  { month: "06", large: 51.2, medium: 48.6, small: 47.3 },
-  { month: "07", large: 50.3, medium: 49.5, small: 46.4 },
-  { month: "08", large: 50.8, medium: 49.5, small: 46.6 },
-  { month: "09", large: 51.0, medium: 49.7, small: 48.2 },
-  { month: "10", large: 49.9, medium: 48.8, small: 47.1 },
-  { month: "11", large: 50.0, medium: 48.9, small: 49.1 },
-  { month: "12", large: 51.7, medium: 49.8, small: 48.6 }
+  { month: "1月", large: 49.9, medium: 49.5, small: 46.5 },
+  { month: "2月", large: 52.5, medium: 49.2, small: 46.3 },
+  { month: "3月", large: 51.2, medium: 49.9, small: 49.6 },
+  { month: "4月", large: 49.2, medium: 48.8, small: 48.7 },
+  { month: "5月", large: 50.7, medium: 47.5, small: 49.3 },
+  { month: "6月", large: 51.2, medium: 48.6, small: 47.3 },
+  { month: "7月", large: 50.3, medium: 49.5, small: 46.4 },
+  { month: "8月", large: 50.8, medium: 48.9, small: 46.6 },
+  { month: "9月", large: 51.0, medium: 48.8, small: 48.2 },
+  { month: "10月", large: 49.9, medium: 48.7, small: 47.1 },
+  { month: "11月", large: 49.3, medium: 48.9, small: 49.1 },
+  { month: "12月", large: 50.8, medium: 49.8, small: 48.6 }
 ];
 
 // Slide 5 Data
@@ -216,7 +232,7 @@ export const industryGrowthTableData: IndustryGrowthTableData = {
 // Slide 5.5 Data (New Slide - Industry Divergence)
 
 export const industryDivergenceTableData: IndustryGrowthTableData = {
-  title: "2024-2025年规模以上工业细分行业增加值当月同比增速",
+  title: "2025年规模以上工业细分行业增加值当月同比增速",
   source: "规模以上工业增加值细分行业当月同比",
   unit: "%",
   timeSeries: ["2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"],
@@ -284,30 +300,30 @@ export const inventoryCycleData: InventoryCycleDataPoint[] = [
 
 // Slide 7 Data
 export const ppiTrendData: PpiTrendDataPoint[] = [
-  { month: '24-01', ppi: -0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-02', ppi: -0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-03', ppi: -0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-04', ppi: -0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-05', ppi: 0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-06', ppi: -0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-07', ppi: -0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-08', ppi: -0.7, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-09', ppi: -0.6, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-10', ppi: -0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-11', ppi: 0, productionMaterials: 0, livingMaterials: 0 },
-  { month: '24-12', ppi: 0, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-01', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-02', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-03', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-04', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-05', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-06', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-07', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-08', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-09', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-10', ppi: 0.2, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-11', ppi: 0.1, productionMaterials: 0, livingMaterials: 0 },
-  { month: '25-12', ppi: 0.2, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-01', ppi: -2.5, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-02', ppi: -2.7, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-03', ppi: -2.8, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-04', ppi: -2.5, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-05', ppi: -1.4, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-06', ppi: -0.8, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-07', ppi: -0.8, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-08', ppi: -1.8, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-09', ppi: -2.8, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-10', ppi: -2.9, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-11', ppi: -2.5, productionMaterials: 0, livingMaterials: 0 },
+  { month: '24-12', ppi: -2.3, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-01', ppi: -2.3, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-02', ppi: -2.2, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-03', ppi: -2.5, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-04', ppi: -2.7, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-05', ppi: -3.3, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-06', ppi: -3.6, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-07', ppi: -3.6, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-08', ppi: -2.9, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-09', ppi: -2.3, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-10', ppi: -2.1, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-11', ppi: -2.2, productionMaterials: 0, livingMaterials: 0 },
+  { month: '25-12', ppi: -1.9, productionMaterials: 0, livingMaterials: 0 },
 ];
 
 export const commodityIndexData: CommodityIndexDataPoint[] = [
@@ -346,18 +362,18 @@ export const industryPriceData: IndustryPriceDataPoint[] = [
 
 // Slide 7.5 Data (New Slide - PPI Industry Mom Details)
 export const ppiIndustryMomData: PpiIndustryMomDataPoint[] = [
-  { month: '2025-12', lithium: 1.00, solar: 1.30, electronics: 0.40, coal: -1.30, oil: 0.00, ferrousMining: 3.70, nonFerrous: 0.00, chemicals: 0.10, nonMetals: -0.10, ferrousSmelting: 0.00, generalEquip: -0.10, automotive: -0.10, electrical: 2.80 },
-  { month: '2025-11', lithium: 4.10, solar: -2.40, electronics: 0.30, coal: 0.60, oil: 2.60, ferrousMining: -0.60, nonFerrous: 0.00, chemicals: -0.50, nonMetals: -0.10, ferrousSmelting: 0.10, generalEquip: -0.20, automotive: 0.10, electrical: 2.10 },
-  { month: '2025-10', lithium: 0.20, solar: 0.60, electronics: 0.40, coal: 1.60, oil: 2.30, ferrousMining: 0.90, nonFerrous: 5.30, chemicals: -0.60, nonMetals: 0.10, ferrousSmelting: -0.70, generalEquip: -0.10, automotive: 0.00, electrical: 2.40 },
-  { month: '2025-09', lithium: 0.80, solar: 2.50, electronics: -0.10, coal: -2.00, oil: 2.60, ferrousMining: 2.50, nonFerrous: -0.40, chemicals: -0.40, nonMetals: 0.20, ferrousSmelting: -0.10, generalEquip: -0.50, automotive: -0.20, electrical: 1.20 },
-  { month: '2025-08', lithium: -0.20, solar: 2.80, electronics: -0.10, coal: -1.10, oil: 2.10, ferrousMining: 0.80, nonFerrous: -0.10, chemicals: -1.00, nonMetals: 1.90, ferrousSmelting: -0.10, generalEquip: -0.30, automotive: -0.20, electrical: 0.20 },
-  { month: '2025-07', lithium: -1.50, solar: 3.00, electronics: 0.80, coal: -1.10, oil: 0.70, ferrousMining: -0.70, nonFerrous: -1.40, chemicals: -0.30, nonMetals: -0.20, ferrousSmelting: -0.30, generalEquip: -0.40, automotive: -0.20, electrical: 0.80 },
-  { month: '2025-06', lithium: -3.40, solar: 2.60, electronics: 0.20, coal: -2.00, oil: 1.30, ferrousMining: -0.70, nonFerrous: -1.40, chemicals: -1.80, nonMetals: -0.20, ferrousSmelting: 0.20, generalEquip: -0.40, automotive: -0.20, electrical: 0.20 },
-  { month: '2025-05', lithium: -3.00, solar: -5.60, electronics: 0.10, coal: -0.90, oil: 0.80, ferrousMining: -1.20, nonFerrous: -1.00, chemicals: -1.00, nonMetals: -0.20, ferrousSmelting: 0.00, generalEquip: 0.10, automotive: -0.20, electrical: 0.10 },
-  { month: '2025-04', lithium: -3.30, solar: -3.10, electronics: 0.30, coal: -0.90, oil: 1.50, ferrousMining: -0.60, nonFerrous: 0.00, chemicals: -1.00, nonMetals: -0.20, ferrousSmelting: -0.50, generalEquip: -0.20, automotive: -0.10, electrical: 0.30 },
-  { month: '2025-03', lithium: -4.30, solar: -4.40, electronics: 0.50, coal: 0.10, oil: 0.40, ferrousMining: 0.20, nonFerrous: -0.50, chemicals: -0.50, nonMetals: -0.10, ferrousSmelting: -0.40, generalEquip: -0.70, automotive: -0.10, electrical: 0.30 },
-  { month: '2025-02', lithium: -3.30, solar: 0.30, electronics: 0.30, coal: 0.90, oil: 1.80, ferrousMining: 0.00, nonFerrous: -0.90, chemicals: -0.90, nonMetals: -0.20, ferrousSmelting: -0.30, generalEquip: 0.00, automotive: -0.10, electrical: 0.30 },
-  { month: '2025-01', lithium: -0.60, solar: 0.50, electronics: -0.40, coal: -2.20, oil: 4.50, ferrousMining: 0.40, nonFerrous: -0.20, chemicals: -0.60, nonMetals: -0.90, ferrousSmelting: -0.20, generalEquip: 0.50, automotive: -0.30, electrical: -0.40 },
+  { month: '2025-12', lithium: 1.00, solar: 1.30, electronics: 0.40, coal: -1.30, oil: 0.00, ferrousMining: 3.70, nonFerrous: 0.00, nonFerrousSmelting: 2.80, chemicals: 0.10, nonMetals: -0.10, ferrousSmelting: 0.00, generalEquip: -0.10, automotive: -0.10, electrical: 2.80 },
+  { month: '2025-11', lithium: 4.10, solar: -2.40, electronics: 0.30, coal: 0.60, oil: 2.60, ferrousMining: -0.60, nonFerrous: 0.00, nonFerrousSmelting: 2.10, chemicals: -0.50, nonMetals: -0.10, ferrousSmelting: 0.10, generalEquip: -0.20, automotive: 0.10, electrical: 2.10 },
+  { month: '2025-10', lithium: 0.20, solar: 0.60, electronics: 0.40, coal: 1.60, oil: 2.30, ferrousMining: 0.90, nonFerrous: 5.30, nonFerrousSmelting: 2.40, chemicals: -0.60, nonMetals: 0.10, ferrousSmelting: -0.70, generalEquip: -0.10, automotive: 0.00, electrical: 2.40 },
+  { month: '2025-09', lithium: 0.80, solar: 2.50, electronics: -0.10, coal: -2.00, oil: 2.60, ferrousMining: 2.50, nonFerrous: -0.40, nonFerrousSmelting: 1.20, chemicals: -0.40, nonMetals: 0.20, ferrousSmelting: -0.10, generalEquip: -0.50, automotive: -0.20, electrical: 1.20 },
+  { month: '2025-08', lithium: -0.20, solar: 2.80, electronics: -0.10, coal: -1.10, oil: 2.10, ferrousMining: 0.80, nonFerrous: -0.10, nonFerrousSmelting: 0.20, chemicals: -1.00, nonMetals: 1.90, ferrousSmelting: -0.10, generalEquip: -0.30, automotive: -0.20, electrical: 0.20 },
+  { month: '2025-07', lithium: -1.50, solar: 3.00, electronics: 0.80, coal: -1.10, oil: 0.70, ferrousMining: -0.70, nonFerrous: -1.40, nonFerrousSmelting: 0.80, chemicals: -0.30, nonMetals: -0.20, ferrousSmelting: -0.30, generalEquip: -0.40, automotive: -0.20, electrical: 0.80 },
+  { month: '2025-06', lithium: -3.40, solar: 2.60, electronics: 0.20, coal: -2.00, oil: 1.30, ferrousMining: -0.70, nonFerrous: -1.40, nonFerrousSmelting: 0.20, chemicals: -1.80, nonMetals: -0.20, ferrousSmelting: 0.20, generalEquip: -0.40, automotive: -0.20, electrical: 0.20 },
+  { month: '2025-05', lithium: -3.00, solar: -5.60, electronics: 0.10, coal: -0.90, oil: 0.80, ferrousMining: -1.20, nonFerrous: -1.00, nonFerrousSmelting: -0.10, chemicals: -1.00, nonMetals: -0.20, ferrousSmelting: 0.00, generalEquip: 0.10, automotive: -0.20, electrical: 0.10 },
+  { month: '2025-04', lithium: -3.30, solar: -3.10, electronics: 0.30, coal: -0.90, oil: 1.50, ferrousMining: -0.60, nonFerrous: 0.00, nonFerrousSmelting: 0.30, chemicals: -1.00, nonMetals: -0.20, ferrousSmelting: -0.50, generalEquip: -0.20, automotive: -0.10, electrical: 0.30 },
+  { month: '2025-03', lithium: -4.30, solar: -4.40, electronics: 0.50, coal: 0.10, oil: 0.40, ferrousMining: 0.20, nonFerrous: -0.50, nonFerrousSmelting: 0.50, chemicals: -0.50, nonMetals: -0.10, ferrousSmelting: -0.40, generalEquip: -0.70, automotive: -0.10, electrical: 0.30 },
+  { month: '2025-02', lithium: -3.30, solar: 0.30, electronics: 0.30, coal: 0.90, oil: 1.80, ferrousMining: 0.00, nonFerrous: -0.90, nonFerrousSmelting: 0.30, chemicals: -0.90, nonMetals: -0.20, ferrousSmelting: -0.30, generalEquip: 0.00, automotive: -0.10, electrical: 0.30 },
+  { month: '2025-01', lithium: -0.60, solar: 0.50, electronics: -0.40, coal: -2.20, oil: 4.50, ferrousMining: 0.40, nonFerrous: -0.20, nonFerrousSmelting: -0.40, chemicals: -0.60, nonMetals: -0.90, ferrousSmelting: -0.20, generalEquip: 0.50, automotive: -0.30, electrical: -0.40 },
 ];
 
 // Slide 8 Data

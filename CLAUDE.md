@@ -60,6 +60,54 @@ Each slide number maps to a specific component:
 3. Create a chart component in `components/` that accepts the typed data as props
 4. Import and use the chart in a content slide component
 
+### Unified Table System
+**All 10 table components now use the unified DataTable system** (`components/DataTable.tsx`):
+
+**Key Features:**
+- **Auto-adjusting row height**: Automatically reduces row height when there are many rows to avoid vertical scrollbars
+- **Responsive sizing**: Tables fill available space and adjust font size/padding based on row count
+- **Three style variants**: `default` (blue header), `bordered` (gray header), `minimal`
+- **Sticky positioning**: Sticky headers and optional sticky first column for better navigation
+- **Type-safe**: Full TypeScript support with generic data handling
+- **Custom colorizers**: Flexible cell coloring based on value thresholds
+
+**Auto Row Height Logic:**
+- Row height is dynamically calculated based on container height and data row count
+- Minimum row heights: 20px (≤15 rows), 18px (16-20 rows), 16px (>20 rows)
+- Font size auto-adjusts: 10px → 9px → 8px as rows increase
+- Cell padding auto-adjusts: py-1.5 → py-1 → py-0.5 → py-0.5 as rows increase
+- **Result**: All data fits in one screen without vertical scrolling
+
+**Creating new tables:**
+```tsx
+import { DataTable, TableContainer } from './DataTable';
+import { createColumnsFromTimeSeries, transformToRowArray } from '../utils/tableHelpers';
+
+export const MyTable: React.FC<Props> = ({ data }) => {
+  const columns = createColumnsFromTimeSeries(data, '月份');
+  const rows = transformToRowArray(data);
+
+  return (
+    <TableContainer title={data.title} unit={data.unit} source={data.source}>
+      <DataTable
+        data={rows}
+        columns={columns}
+        variant="default"
+        stickyFirstColumn
+        cellColorizer={conservativeColorizer}
+      />
+    </TableContainer>
+  );
+};
+```
+
+**Helper utilities** (`utils/tableHelpers.ts`):
+- `createColumnsFromTimeSeries()` - Generate columns from time series data
+- `transformToRowArray()` - Convert wide-format data to row arrays
+- `growthRateColorizer()` - Standard growth rate color coding
+- `conservativeColorizer()` - Conservative color coding (only extremes)
+- `cpiCategoryColorizer()` - CPI-specific color rules
+
 ### Styling & Branding
 - **Tailwind CSS** via CDN (configured in index.html)
 - **WeBank color palette** (defined in index.html Tailwind config):

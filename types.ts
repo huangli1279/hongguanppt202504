@@ -27,7 +27,6 @@ export interface ContributionDataPoint {
   primary: number;
   secondary: number;
   tertiary: number;
-  total: number;
 }
 
 export interface BreakdownDataPoint {
@@ -433,4 +432,71 @@ export interface IndustrialFinancialTableData {
     operatingProfit: number[];
     totalProfit: number[];
     investmentIncome: number[];
+}
+
+// ============================================
+// DataTable Component Types (Unified Table System)
+// ============================================
+
+/**
+ * Column definition for DataTable component
+ */
+export interface ColumnDefinition {
+  key: string;
+  label: string;
+  align?: 'left' | 'center' | 'right';
+  width?: string;
+  headerAlign?: 'left' | 'center' | 'right';
+  sticky?: boolean; // For sticky first column
+}
+
+/**
+ * Color coding result for table cells
+ */
+export interface CellColorStyle {
+  bgColor?: string;
+  textColor?: string;
+  fontWeight?: 'normal' | 'semibold' | 'bold';
+}
+
+/**
+ * Function type for custom cell colorizer
+ */
+export type CellColorizer = (value: unknown, rowIndex: number, colKey: string) => CellColorStyle;
+
+/**
+ * Table variant styles
+ */
+export type TableVariant = 'default' | 'bordered' | 'minimal';
+
+/**
+ * Legend item for table footer
+ */
+export interface TableLegendItem {
+  color: string;
+  label: string;
+}
+
+/**
+ * Props for DataTable component
+ */
+export interface DataTableProps<T = Record<string, unknown>> {
+  data: T[];
+  columns: ColumnDefinition[];
+  variant?: TableVariant;
+  minWidth?: string;
+  stickyFirstColumn?: boolean;
+  cellColorizer?: CellColorizer;
+  customHeader?: React.ReactNode; // For complex multi-level headers
+}
+
+/**
+ * Props for TableContainer component
+ */
+export interface TableContainerProps {
+  title?: string;
+  unit?: string;
+  source?: string;
+  legend?: TableLegendItem[];
+  children: React.ReactNode;
 }
