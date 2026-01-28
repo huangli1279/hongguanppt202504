@@ -22,8 +22,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-red-500 font-bold">开发投资: {payload[0].value}%</p>
-        <p className="text-slate-500">新开工面积: {payload[1].value}%</p>
+        {payload.map((entry: any, index: number) => (
+          <p key={index} style={{ color: entry.color }}>
+            {entry.name}: {entry.value}%
+          </p>
+        ))}
       </div>
     );
   }
@@ -35,10 +38,10 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          房地产开发投资 vs 新开工面积累计增速
+          2024-2025年房屋新开工面积与竣工面积累计同比变化
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          新开工面积降幅超20%，开发投资持续深跌，实物量严重收缩
+          单位：%
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -55,7 +58,7 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               axisLine={{ stroke: '#e5e7eb' }} 
               tickLine={false} 
               tick={{ fill: '#666', fontSize: 10 }}
-              interval={0}
+              interval={1}
               angle={-30}
               textAnchor="end"
               height={40}
@@ -64,8 +67,8 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
-              domain={[-30, 5]}
+              tickFormatter={(val) => `${val}`}
+              domain={[-35, 5]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -75,37 +78,33 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
             />
             
             <Line
-              name="开发投资"
+              name="房地产开发投资"
               type="monotone"
               dataKey="investment"
-              stroke="#ef4444" // Red for investment drop
+              stroke="#ef4444" // Red
               strokeWidth={3}
-              dot={{ r: 3 }}
-              label={{ 
-                position: 'top', 
-                fontSize: 9, 
-                fill: '#ef4444', 
-                offset: 10,
-                formatter: (val: number) => `${val}%`
-              }}
+              dot={false}
               animationDuration={2000}
             />
             <Line
-              name="新开工面积"
+              name="房屋新开工面积"
               type="monotone"
               dataKey="newStarts"
-              stroke="#94a3b8" // Grey for new starts
+              stroke="#94a3b8" // Grey
               strokeWidth={2}
-              label={{ 
-                position: 'bottom', 
-                fontSize: 9, 
-                fill: '#64748b', 
-                offset: 10,
-                formatter: (val: number) => `${val}%`
-              }}
-              dot={{ r: 3 }}
+              dot={false}
               animationDuration={2000}
               animationBegin={300}
+            />
+             <Line
+              name="房地产竣工面积"
+              type="monotone"
+              dataKey="completion"
+              stroke="#00a9f4" // Webank Light Blue
+              strokeWidth={2}
+              dot={false}
+              animationDuration={2000}
+              animationBegin={600}
             />
           </LineChart>
         </ResponsiveContainer>

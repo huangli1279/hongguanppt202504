@@ -2,7 +2,7 @@
 import React from 'react';
 import { RealEstateInvestmentChart } from './RealEstateInvestmentChart';
 import { RealEstatePriceChart } from './RealEstatePriceChart';
-import { realEstateInvestmentData, realEstatePriceData } from '../data';
+import { realEstateInvestmentData, realEstateMarketData } from '../data';
 import { Home, TrendingDown } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
@@ -67,7 +67,7 @@ export const SlideContentThirteen: React.FC = () => {
           <RealEstateInvestmentChart data={realEstateInvestmentData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <RealEstatePriceChart data={realEstatePriceData} />
+          <RealEstatePriceChart data={realEstateMarketData} />
         </div>
       </section>
 

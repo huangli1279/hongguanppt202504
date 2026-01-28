@@ -11,10 +11,10 @@ import {
   Legend,
   ReferenceLine
 } from 'recharts';
-import { RealEstatePriceDataPoint } from '../types';
+import { RealEstateMarketDataPoint } from '../types';
 
 interface Props {
-  data: RealEstatePriceDataPoint[];
+  data: RealEstateMarketDataPoint[];
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -22,8 +22,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue">新建商品住宅: {payload[0].value}%</p>
-        <p className="text-webank-lightBlue">二手住宅: {payload[1].value}%</p>
+        <p className="text-red-500">新建商品住宅价格指数同比: {payload[0].value}%</p>
+        <p className="text-webank-blue">二手住宅价格指数同比: {payload[1].value}%</p>
       </div>
     );
   }
@@ -35,10 +35,10 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          70个大中城市房价指数同比变化
+          2024年1月-2025年12月70个大中城市房价指数同比变化
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          新建商品住宅与二手住宅价格指数双双下行，2025年降幅有所收窄
+          单位：%
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -56,13 +56,14 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
+              interval={1} // Skip every other label if crowded
             />
             <YAxis 
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
-              domain={[-10, 1]}
+              tickFormatter={(val) => `${val}`}
+              domain={['auto', 'auto']}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -72,34 +73,34 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
             />
             
             <Line
-              name="新建商品住宅"
+              name="新建商品住宅价格指数同比"
               type="monotone"
-              dataKey="tier1"
-              stroke="#051c2c" // Dark Blue
+              dataKey="newHomePriceIndex"
+              stroke="#ef4444" // Red
               strokeWidth={3}
-              dot={{ r: 3 }}
+              dot={false}
+              label={{ 
+                position: 'top', 
+                fontSize: 9, 
+                fill: '#ef4444', 
+                offset: 10,
+                formatter: (val: number) => `${val}`
+              }}
+              animationDuration={2000}
+            />
+            <Line
+              name="二手住宅价格指数同比"
+              type="monotone"
+              dataKey="secondHandPriceIndex"
+              stroke="#051c2c" // Dark Blue
+              strokeWidth={2}
+              dot={false}
               label={{ 
                 position: 'top', 
                 fontSize: 9, 
                 fill: '#051c2c', 
                 offset: 10,
-                formatter: (val: number) => `${val}%`
-              }}
-              animationDuration={2000}
-            />
-            <Line
-              name="二手住宅"
-              type="monotone"
-              dataKey="tier2"
-              stroke="#00a9f4" // Light Blue
-              strokeWidth={2}
-              dot={{ r: 3 }}
-              label={{ 
-                position: 'bottom', 
-                fontSize: 9, 
-                fill: '#00a9f4', 
-                offset: 10,
-                formatter: (val: number) => `${val}%`
+                formatter: (val: number) => `${val}`
               }}
               animationDuration={2000}
               animationBegin={300}

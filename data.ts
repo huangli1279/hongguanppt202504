@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, MonthlyTradeGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, MonthlyTradeGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -621,44 +621,55 @@ export const faiComponentsData: FaiComponentsDataPoint[] = [
 // Slide 13 Data (Real Estate)
 
 export const realEstateInvestmentData: RealEstateInvestmentDataPoint[] = [
-  { month: '2月', investment: -9.0, newStarts: -15.5 },
-  { month: '3月', investment: -9.5, newStarts: -16.2 },
-  { month: '4月', investment: -9.8, newStarts: -16.8 },
-  { month: '5月', investment: -10.1, newStarts: -17.2 },
-  { month: '6月', investment: -10.1, newStarts: -17.5 },
-  { month: '7月', investment: -10.2, newStarts: -18.0 },
-  { month: '8月', investment: -10.2, newStarts: -18.5 },
-  { month: '9月', investment: -13.5, newStarts: -20.0 },
-  { month: '10月', investment: -15.1, newStarts: -21.5 },
-  { month: '11月', investment: -16.3, newStarts: -22.8 },
-  { month: '12月', investment: -17.2, newStarts: -20.4 }, // Updated to -20.4 as per prompt
+  { month: "2024-02", investment: -9.00, newStarts: -29.70, completion: -20.20 },
+  { month: "2024-03", investment: -9.50, newStarts: -27.80, completion: -20.70 },
+  { month: "2024-04", investment: -9.80, newStarts: -24.60, completion: -20.40 },
+  { month: "2024-05", investment: -10.10, newStarts: -24.20, completion: -20.10 },
+  { month: "2024-06", investment: -10.10, newStarts: -23.70, completion: -21.80 },
+  { month: "2024-07", investment: -10.20, newStarts: -23.20, completion: -21.80 },
+  { month: "2024-08", investment: -10.20, newStarts: -22.50, completion: -23.60 },
+  { month: "2024-09", investment: -10.10, newStarts: -22.20, completion: -24.40 },
+  { month: "2024-10", investment: -10.30, newStarts: -22.60, completion: -23.90 },
+  { month: "2024-11", investment: -10.40, newStarts: -23.00, completion: -26.20 },
+  { month: "2024-12", investment: -10.60, newStarts: -23.00, completion: -27.70 },
+  { month: "2025-02", investment: -9.80, newStarts: -29.60, completion: -15.60 },
+  { month: "2025-03", investment: -9.90, newStarts: -24.40, completion: -14.30 },
+  { month: "2025-04", investment: -10.30, newStarts: -23.80, completion: -16.90 },
+  { month: "2025-05", investment: -10.70, newStarts: -22.80, completion: -17.30 },
+  { month: "2025-06", investment: -11.20, newStarts: -20.00, completion: -14.80 },
+  { month: "2025-07", investment: -12.00, newStarts: -19.40, completion: -16.50 },
+  { month: "2025-08", investment: -12.90, newStarts: -19.50, completion: -17.00 },
+  { month: "2025-09", investment: -13.90, newStarts: -18.90, completion: -15.30 },
+  { month: "2025-10", investment: -14.70, newStarts: -19.80, completion: -16.90 },
+  { month: "2025-11", investment: -15.90, newStarts: -20.50, completion: -18.00 },
+  { month: "2025-12", investment: -17.20, newStarts: -20.40, completion: -18.10 }
 ];
 
-export const realEstatePriceData: RealEstatePriceDataPoint[] = [
-    { month: '2024-01', tier1: -1.24, tier2: -4.45, tier3: 0 },
-    { month: '2024-02', tier1: -1.90, tier2: -5.15, tier3: 0 },
-    { month: '2024-03', tier1: -2.65, tier2: -5.90, tier3: 0 },
-    { month: '2024-04', tier1: -3.51, tier2: -6.79, tier3: 0 },
-    { month: '2024-05', tier1: -4.30, tier2: -7.87, tier3: 0 },
-    { month: '2024-06', tier1: -4.93, tier2: -8.17, tier3: 0 },
-    { month: '2024-07', tier1: -5.28, tier2: -8.17, tier3: 0 },
-    { month: '2024-08', tier1: -5.69, tier2: -8.59, tier3: 0 },
-    { month: '2024-09', tier1: -6.09, tier2: -9.02, tier3: 0 },
-    { month: '2024-10', tier1: -6.22, tier2: -8.94, tier3: 0 },
-    { month: '2024-11', tier1: -6.07, tier2: -8.54, tier3: 0 },
-    { month: '2024-12', tier1: -5.73, tier2: -7.49, tier3: 0 },
-    { month: '2025-01', tier1: -5.43, tier2: -7.80, tier3: 0 },
-    { month: '2025-02', tier1: -5.22, tier2: -7.53, tier3: 0 },
-    { month: '2025-03', tier1: -4.90, tier2: -7.25, tier3: 0 },
-    { month: '2025-04', tier1: -4.55, tier2: -6.76, tier3: 0 },
-    { month: '2025-05', tier1: -4.08, tier2: -6.30, tier3: 0 },
-    { month: '2025-06', tier1: -3.69, tier2: -6.09, tier3: 0 },
-    { month: '2025-07', tier1: -3.37, tier2: -5.85, tier3: 0 },
-    { month: '2025-08', tier1: -2.95, tier2: -5.51, tier3: 0 },
-    { month: '2025-09', tier1: -2.66, tier2: -5.24, tier3: 0 },
-    { month: '2025-10', tier1: -2.60, tier2: -5.40, tier3: 0 },
-    { month: '2025-11', tier1: -2.78, tier2: -5.70, tier3: 0 },
-    { month: '2025-12', tier1: -3.05, tier2: -6.07, tier3: 0 },
+export const realEstateMarketData: RealEstateMarketDataPoint[] = [
+  { month: '2024-01', newHomePriceIndex: -1.24, secondHandPriceIndex: -4.45 },
+  { month: '2024-02', newHomePriceIndex: -1.90, secondHandPriceIndex: -5.15 },
+  { month: '2024-03', newHomePriceIndex: -2.65, secondHandPriceIndex: -5.90 },
+  { month: '2024-04', newHomePriceIndex: -3.51, secondHandPriceIndex: -6.79 },
+  { month: '2024-05', newHomePriceIndex: -4.30, secondHandPriceIndex: -7.87 },
+  { month: '2024-06', newHomePriceIndex: -4.93, secondHandPriceIndex: -8.17 },
+  { month: '2024-07', newHomePriceIndex: -5.28, secondHandPriceIndex: -8.17 },
+  { month: '2024-08', newHomePriceIndex: -5.69, secondHandPriceIndex: -8.59 },
+  { month: '2024-09', newHomePriceIndex: -6.09, secondHandPriceIndex: -9.02 },
+  { month: '2024-10', newHomePriceIndex: -6.22, secondHandPriceIndex: -8.94 },
+  { month: '2024-11', newHomePriceIndex: -6.07, secondHandPriceIndex: -8.54 },
+  { month: '2024-12', newHomePriceIndex: -5.73, secondHandPriceIndex: -7.49 },
+  { month: '2025-01', newHomePriceIndex: -5.43, secondHandPriceIndex: -7.80 },
+  { month: '2025-02', newHomePriceIndex: -5.22, secondHandPriceIndex: -7.53 },
+  { month: '2025-03', newHomePriceIndex: -4.90, secondHandPriceIndex: -7.25 },
+  { month: '2025-04', newHomePriceIndex: -4.55, secondHandPriceIndex: -6.76 },
+  { month: '2025-05', newHomePriceIndex: -4.08, secondHandPriceIndex: -6.30 },
+  { month: '2025-06', newHomePriceIndex: -3.69, secondHandPriceIndex: -6.09 },
+  { month: '2025-07', newHomePriceIndex: -3.37, secondHandPriceIndex: -5.85 },
+  { month: '2025-08', newHomePriceIndex: -2.95, secondHandPriceIndex: -5.51 },
+  { month: '2025-09', newHomePriceIndex: -2.66, secondHandPriceIndex: -5.24 },
+  { month: '2025-10', newHomePriceIndex: -2.60, secondHandPriceIndex: -5.40 },
+  { month: '2025-11', newHomePriceIndex: -2.78, secondHandPriceIndex: -5.70 },
+  { month: '2025-12', newHomePriceIndex: -3.05, secondHandPriceIndex: -6.07 },
 ];
 
 // Slide 14 Data (Infrastructure)

@@ -204,10 +204,17 @@ export interface FaiComponentsDataPoint {
     infrastructure: number;
 }
 
+export interface RealEstateMarketDataPoint {
+    month: string;
+    newHomePriceIndex: number;
+    secondHandPriceIndex: number;
+}
+
 export interface RealEstateInvestmentDataPoint {
     month: string;
     investment: number;
     newStarts: number;
+    completion?: number;
 }
 
 export interface RealEstatePriceDataPoint {
