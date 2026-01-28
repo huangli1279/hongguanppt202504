@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, MonthlyTradeGrowthDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, MonthlyTradeGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -566,6 +566,56 @@ export const investmentPillarsData: InvestmentPillarsDataPoint[] = [
   { month: '1-10月', manufacturing: 3.4, infrastructure: 0.5, realEstate: -15.1 },
   { month: '1-11月', manufacturing: 1.8, infrastructure: -0.8, realEstate: -16.3 },
   { month: '1-12月', manufacturing: 0.6, infrastructure: -1.5, realEstate: -17.2 },
+];
+
+export const privateStateInvestmentData: PrivateStateInvestmentDataPoint[] = [
+  { month: '2024-02', privateInvestment: 0.40, stateOwnedInvestment: 7.30 },
+  { month: '2024-03', privateInvestment: 0.50, stateOwnedInvestment: 7.80 },
+  { month: '2024-04', privateInvestment: 0.30, stateOwnedInvestment: 7.40 },
+  { month: '2024-05', privateInvestment: 0.10, stateOwnedInvestment: 7.10 },
+  { month: '2024-06', privateInvestment: 0.10, stateOwnedInvestment: 6.80 },
+  { month: '2024-07', privateInvestment: 0.00, stateOwnedInvestment: 6.30 },
+  { month: '2024-08', privateInvestment: -0.20, stateOwnedInvestment: 6.00 },
+  { month: '2024-09', privateInvestment: -0.20, stateOwnedInvestment: 6.10 },
+  { month: '2024-10', privateInvestment: -0.30, stateOwnedInvestment: 6.20 },
+  { month: '2024-11', privateInvestment: -0.40, stateOwnedInvestment: 6.10 },
+  { month: '2024-12', privateInvestment: -0.10, stateOwnedInvestment: 5.70 },
+  { month: '2025-02', privateInvestment: 0.00, stateOwnedInvestment: 7.00 },
+  { month: '2025-03', privateInvestment: 0.40, stateOwnedInvestment: 6.50 },
+  { month: '2025-04', privateInvestment: 0.20, stateOwnedInvestment: 6.20 },
+  { month: '2025-05', privateInvestment: 0.02, stateOwnedInvestment: 5.90 },
+  { month: '2025-06', privateInvestment: -0.60, stateOwnedInvestment: 5.00 },
+  { month: '2025-07', privateInvestment: -1.50, stateOwnedInvestment: 3.50 },
+  { month: '2025-08', privateInvestment: -2.30, stateOwnedInvestment: 2.30 },
+  { month: '2025-09', privateInvestment: -3.10, stateOwnedInvestment: 1.00 },
+  { month: '2025-10', privateInvestment: -4.50, stateOwnedInvestment: 0.10 },
+  { month: '2025-11', privateInvestment: -5.30, stateOwnedInvestment: -1.10 },
+  { month: '2025-12', privateInvestment: -6.40, stateOwnedInvestment: -2.50 },
+];
+
+export const faiComponentsData: FaiComponentsDataPoint[] = [
+  { month: '2024-02', totalInvestment: 4.20, manufacturing: 9.40, realEstate: -9.00, infrastructure: 8.95 },
+  { month: '2024-03', totalInvestment: 4.50, manufacturing: 9.90, realEstate: -9.50, infrastructure: 8.75 },
+  { month: '2024-04', totalInvestment: 4.20, manufacturing: 9.70, realEstate: -9.80, infrastructure: 7.78 },
+  { month: '2024-05', totalInvestment: 4.00, manufacturing: 9.60, realEstate: -10.10, infrastructure: 6.68 },
+  { month: '2024-06', totalInvestment: 3.90, manufacturing: 9.50, realEstate: -10.10, infrastructure: 7.70 },
+  { month: '2024-07', totalInvestment: 3.60, manufacturing: 9.30, realEstate: -10.20, infrastructure: 8.14 },
+  { month: '2024-08', totalInvestment: 3.40, manufacturing: 9.10, realEstate: -10.20, infrastructure: 7.87 },
+  { month: '2024-09', totalInvestment: 3.40, manufacturing: 9.20, realEstate: -10.10, infrastructure: 9.26 },
+  { month: '2024-10', totalInvestment: 3.40, manufacturing: 9.30, realEstate: -10.30, infrastructure: 9.35 },
+  { month: '2024-11', totalInvestment: 3.30, manufacturing: 9.30, realEstate: -10.40, infrastructure: 9.39 },
+  { month: '2024-12', totalInvestment: 3.20, manufacturing: 9.20, realEstate: -10.60, infrastructure: 9.19 },
+  { month: '2025-02', totalInvestment: 4.10, manufacturing: 9.00, realEstate: -9.80, infrastructure: 9.94 },
+  { month: '2025-03', totalInvestment: 4.20, manufacturing: 9.10, realEstate: -9.90, infrastructure: 11.50 },
+  { month: '2025-04', totalInvestment: 4.00, manufacturing: 8.80, realEstate: -10.30, infrastructure: 10.85 },
+  { month: '2025-05', totalInvestment: 3.70, manufacturing: 8.50, realEstate: -10.70, infrastructure: 10.42 },
+  { month: '2025-06', totalInvestment: 2.80, manufacturing: 7.50, realEstate: -11.20, infrastructure: 8.90 },
+  { month: '2025-07', totalInvestment: 1.60, manufacturing: 6.20, realEstate: -12.00, infrastructure: 7.29 },
+  { month: '2025-08', totalInvestment: 0.50, manufacturing: 5.10, realEstate: -12.90, infrastructure: 5.42 },
+  { month: '2025-09', totalInvestment: -0.50, manufacturing: 4.00, realEstate: -13.90, infrastructure: 3.34 },
+  { month: '2025-10', totalInvestment: -1.70, manufacturing: 2.70, realEstate: -14.70, infrastructure: 1.51 },
+  { month: '2025-11', totalInvestment: -2.60, manufacturing: 1.90, realEstate: -15.90, infrastructure: 0.13 },
+  { month: '2025-12', totalInvestment: -3.80, manufacturing: 0.60, realEstate: -17.20, infrastructure: -1.48 },
 ];
 
 // Slide 13 Data (Real Estate)

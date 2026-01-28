@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaiTrendChart } from './FaiTrendChart';
-import { InvestmentPillarsChart } from './InvestmentPillarsChart';
-import { faiTrendData, investmentPillarsData } from '../data';
+import { FaiComponentsChart } from './FaiComponentsChart';
+import { PrivateStateInvestmentChart } from './PrivateStateInvestmentChart';
+import { faiComponentsData, privateStateInvestmentData } from '../data';
 import { TrendingDown, Building, Briefcase, BarChart } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
@@ -53,22 +53,21 @@ export const SlideContentTwelve: React.FC = () => {
            </p>
          </InsightBox>
 
-         <InsightBox title="三大支柱全面降速" icon={Building} delay="200ms" alert={true}>
-           <p>
-             <span className="font-bold">房地产：</span>下降17.2%，降幅持续走阔，是最大负向拉动。<br/>
-             <span className="font-bold">基建：</span>下降1.48%，受化债制约。<br/>
-             <span className="font-bold">制造业：</span>仅微增0.6%，内需不足拖累。
-           </p>
-         </InsightBox>
+          <InsightBox title="民间投资深度负增长" icon={Building} delay="200ms" alert={true}>
+            <p>
+              <span className="font-bold">民间投资：</span>全年下降6.4%，创历史新低，反映民营企业投资意愿极度低迷。<br/>
+              <span className="font-bold">国有控股：</span>全年下降2.5%，亦转负增长。
+            </p>
+          </InsightBox>
       </section>
 
-      {/* Charts Section */}
+       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <FaiTrendChart data={faiTrendData} />
+          <FaiComponentsChart data={faiComponentsData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <InvestmentPillarsChart data={investmentPillarsData} />
+          <PrivateStateInvestmentChart data={privateStateInvestmentData} />
         </div>
       </section>
 

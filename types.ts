@@ -190,6 +190,20 @@ export interface InvestmentPillarsDataPoint {
     realEstate: number;
 }
 
+export interface PrivateStateInvestmentDataPoint {
+    month: string;
+    privateInvestment: number;
+    stateOwnedInvestment: number;
+}
+
+export interface FaiComponentsDataPoint {
+    month: string;
+    totalInvestment: number;
+    manufacturing: number;
+    realEstate: number;
+    infrastructure: number;
+}
+
 export interface RealEstateInvestmentDataPoint {
     month: string;
     investment: number;
