@@ -89,6 +89,20 @@ const App: React.FC = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
+  // Handle Keyboard Navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        setCurrentSlide(prev => (prev < TOTAL_SLIDES ? prev + 1 : 1));
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        setCurrentSlide(prev => (prev > 1 ? prev - 1 : TOTAL_SLIDES));
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Calculate visible slides for indicator (Max 3)
   const getVisibleSlides = () => {
     const maxVisible = 3;
