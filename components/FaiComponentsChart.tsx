@@ -8,7 +8,10 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  ReferenceLine
+  ReferenceLine,
+  Label,
+  LabelList,
+  ReferenceArea
 } from 'recharts';
 import { FaiComponentsDataPoint } from '../types';
 
@@ -80,7 +83,29 @@ export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
               strokeWidth={3}
               dot={false}
               animationDuration={2000}
-            />
+            >
+              <LabelList
+                dataKey="totalInvestment"
+                position="top"
+                content={({ x, y, value }: any) => {
+                  return (
+                    <g transform={`translate(${x},${y - 8})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        textAnchor="middle"
+                        fontSize="10"
+                        fontWeight="bold"
+                        fill="#051c2c"
+                        style={{ opacity: data[data.length - 1].totalInvestment === value ? 1 : 0 }}
+                      >
+                        {value}%
+                      </text>
+                    </g>
+                  );
+                }}
+              />
+            </Line>
             <Line
               name="制造业投资"
               type="monotone"
@@ -90,7 +115,29 @@ export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
               dot={false}
               animationDuration={2000}
               animationBegin={200}
-            />
+            >
+              <LabelList
+                dataKey="manufacturing"
+                position="top"
+                content={({ x, y, value }: any) => {
+                  return (
+                    <g transform={`translate(${x},${y - 8})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        textAnchor="middle"
+                        fontSize="10"
+                        fontWeight="bold"
+                        fill="#005c8f"
+                        style={{ opacity: data[data.length - 1].manufacturing === value ? 1 : 0 }}
+                      >
+                        {value}%
+                      </text>
+                    </g>
+                  );
+                }}
+              />
+            </Line>
             <Line
               name="房地产开发投资"
               type="monotone"
@@ -100,7 +147,29 @@ export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
               dot={false}
               animationDuration={2000}
               animationBegin={400}
-            />
+            >
+              <LabelList
+                dataKey="realEstate"
+                position="top"
+                content={({ x, y, value }: any) => {
+                  return (
+                    <g transform={`translate(${x},${y - 8})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        textAnchor="middle"
+                        fontSize="10"
+                        fontWeight="bold"
+                        fill="#ef4444"
+                        style={{ opacity: data[data.length - 1].realEstate === value ? 1 : 0 }}
+                      >
+                        {value}%
+                      </text>
+                    </g>
+                  );
+                }}
+              />
+            </Line>
             <Line
               name="基础设施建设投资"
               type="monotone"
@@ -110,7 +179,29 @@ export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
               dot={false}
               animationDuration={2000}
               animationBegin={600}
-            />
+            >
+              <LabelList
+                dataKey="infrastructure"
+                position="top"
+                content={({ x, y, value }: any) => {
+                  return (
+                    <g transform={`translate(${x},${y - 8})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        textAnchor="middle"
+                        fontSize="10"
+                        fontWeight="bold"
+                        fill="#94a3b8"
+                        style={{ opacity: data[data.length - 1].infrastructure === value ? 1 : 0 }}
+                      >
+                        {value}%
+                      </text>
+                    </g>
+                  );
+                }}
+              />
+            </Line>
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -8,7 +8,8 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  ReferenceLine
+  ReferenceLine,
+  LabelList
 } from 'recharts';
 import { PrivateStateInvestmentDataPoint } from '../types';
 
@@ -81,7 +82,29 @@ export const PrivateStateInvestmentChart: React.FC<Props> = ({ data }) => {
               strokeWidth={3}
               dot={false}
               animationDuration={2000}
-            />
+            >
+              <LabelList
+                dataKey="privateInvestment"
+                position="top"
+                content={({ x, y, value }: any) => {
+                  return (
+                    <g transform={`translate(${x},${y - 8})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        textAnchor="middle"
+                        fontSize="11"
+                        fontWeight="bold"
+                        fill="#005c8f"
+                        style={{ opacity: data[data.length - 1].privateInvestment === value ? 1 : 0 }}
+                      >
+                        {value}%
+                      </text>
+                    </g>
+                  );
+                }}
+              />
+            </Line>
             <Line
               name="国有控股"
               type="monotone"
@@ -91,7 +114,29 @@ export const PrivateStateInvestmentChart: React.FC<Props> = ({ data }) => {
               dot={false}
               animationDuration={2000}
               animationBegin={300}
-            />
+            >
+              <LabelList
+                dataKey="stateOwnedInvestment"
+                position="top"
+                content={({ x, y, value }: any) => {
+                  return (
+                    <g transform={`translate(${x},${y - 8})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        textAnchor="middle"
+                        fontSize="11"
+                        fontWeight="bold"
+                        fill="#94a3b8"
+                        style={{ opacity: data[data.length - 1].stateOwnedInvestment === value ? 1 : 0 }}
+                      >
+                        {value}%
+                      </text>
+                    </g>
+                  );
+                }}
+              />
+            </Line>
           </LineChart>
         </ResponsiveContainer>
       </div>

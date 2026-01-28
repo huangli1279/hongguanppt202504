@@ -49,7 +49,7 @@ export const SlideContentTwelve: React.FC = () => {
       <section className="grid grid-cols-2 gap-6 mb-8 h-36">
          <InsightBox title="总量加速下行" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             全年固定资产投资（不含农户）同比下降 <span className="font-bold">3.8%</span>。四季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。
+             全年固定资产投资（不含农户）同比下降 <span className="font-bold">3.8%</span>。四季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。固定资产投资三大支柱全面降速：房地产深度下跌（-17.2%）、基建转负（-1.48%）、制造业增速显著回落（0.6%），整体投资动能乏力。
            </p>
          </InsightBox>
 
