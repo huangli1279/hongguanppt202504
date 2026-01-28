@@ -51,7 +51,7 @@ export const AutoDealerInventoryChart: React.FC<Props> = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
             data={data}
-            margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+            margin={{ top: 10, right: 20, left: -10, bottom: 0 }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <XAxis 
@@ -59,6 +59,7 @@ export const AutoDealerInventoryChart: React.FC<Props> = ({ data }) => {
               axisLine={{ stroke: '#e5e7eb' }} 
               tickLine={false} 
               tick={{ fill: '#666', fontSize: 10 }}
+              height={20}
             />
             <YAxis 
               yAxisId="left"
@@ -67,6 +68,7 @@ export const AutoDealerInventoryChart: React.FC<Props> = ({ data }) => {
               tick={{ fill: '#666', fontSize: 10 }}
               domain={[0, 2.5]}
               ticks={[0, 0.5, 1.0, 1.5, 2.0, 2.5]}
+              width={40}
             />
             <YAxis 
               yAxisId="right"
@@ -76,12 +78,13 @@ export const AutoDealerInventoryChart: React.FC<Props> = ({ data }) => {
               tick={{ fill: '#666', fontSize: 10 }}
               domain={[-20, 60]}
               tickFormatter={(val) => `${val}%`}
+              width={45}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
-              verticalAlign="top" 
+              verticalAlign="bottom" 
               align="center" 
-              wrapperStyle={{ fontSize: '10px', paddingBottom: '10px' }}
+              wrapperStyle={{ fontSize: '10px', paddingTop: '0px', marginTop: '-5px' }}
               iconType="rect"
             />
             

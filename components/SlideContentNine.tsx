@@ -53,7 +53,7 @@ export const SlideContentNine: React.FC = () => {
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
          <InsightBox title="服务消费：半壁江山" icon={Coffee} delay="100ms" highlight={true}>
            <p>
-             全年服务零售额增长 <span className="font-bold">5.5%</span>，高于商品（3.8%）。人均服务性消费支出占比达 <span className="font-bold">46.1%</span>，兴趣点转向餐饮、旅游和线下娱乐。
+             全年服务零售额增长 <span className="font-bold">5.5%</span>，高于商品（3.8%）。人均服务性消费支出占比达 <span className="font-bold">46.1%</span>。前三季度以旧换新政策强力提振商品消费，使其增速领跑，而四季度政策效应减弱，年终文娱旅游需求爆发，增速反超商品消费。
            </p>
          </InsightBox>
 

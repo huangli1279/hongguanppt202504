@@ -18,13 +18,13 @@ import { UrbanRuralDataPoint } from '../types';
 const CustomizedDot = (props: any) => {
   const { cx, cy, payload, value, dataKey } = props;
   
-  // 标注10、11、12月
-  const highlightMonths = ['10月', '11月', '12月'];
+  // 标注2025年的10、11、12月
+  const highlightMonths = ['2025-10', '2025-11', '2025-12'];
   
   if (payload && highlightMonths.includes(payload.month)) {
     // 根据数据键（城镇/乡村）使用不同颜色
     const dotColor = dataKey === 'rural' ? '#00a9f4' : '#051c2c';
-    const labelColor = payload.month === '12月' ? '#ef4444' : '#333';
+    const labelColor = payload.month === '2025-12' ? '#ef4444' : '#333';
     
     return (
       <g>
@@ -37,7 +37,7 @@ const CustomizedDot = (props: any) => {
           fontSize={10}
           fontWeight="bold"
         >
-          {value}%
+          {value}
         </text>
       </g>
     );
@@ -57,11 +57,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((p: any, index: number) => (
           <p key={index} style={{ color: p.color }}>
-            {p.name}: {p.value}%
+            {p.name}: {p.value}
           </p>
         ))}
         <div className="mt-1 border-t border-slate-100 pt-1 text-[10px] text-slate-500">
-          差距: {(payload[1].value - payload[0].value).toFixed(1)}%
+          差距: {(payload[1].value - payload[0].value).toFixed(1)}
         </div>
       </div>
     );
@@ -74,10 +74,10 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年城镇与乡村社会消费品零售总额累计同比
+          2024-2025年城镇与乡村社会消费品零售总额累计同比
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          乡村市场韧性持续强于城镇，12月累计增速差距扩大
+          乡村市场韧性持续强于城镇，2025年12月累计增速差距扩大
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -98,7 +98,7 @@ export const UrbanRuralChart: React.FC<Props> = ({ data }) => {
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
+              tickFormatter={(val) => `${val}`}
               domain={[3, 5.5]}
               ticks={[3.0, 3.5, 4.0, 4.5, 5.0, 5.5]}
             />

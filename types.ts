@@ -143,7 +143,7 @@ export interface UrbanRuralDataPoint {
 export interface ServiceGoodsDataPoint {
   month: string;
   service: number;
-  goods: number;
+  goods: number; // 限额以上批发零售贸易业商品零售额
 }
 
 export interface DurableGoodsDataPoint {
