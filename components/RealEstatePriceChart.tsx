@@ -45,7 +45,7 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
+            margin={{ top: 20, right: 40, left: -20, bottom: 0 }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
@@ -56,7 +56,8 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
-              interval={1} // Skip every other label if crowded
+              interval={0}
+              ticks={['2024-01', '2024-05', '2024-09', '2025-01', '2025-05', '2025-09', '2025-12']}
             />
             <YAxis 
               axisLine={false} 
@@ -78,13 +79,17 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
               dataKey="newHomePriceIndex"
               stroke="#ef4444" // Red
               strokeWidth={3}
-              dot={false}
-              label={{ 
-                position: 'top', 
-                fontSize: 9, 
-                fill: '#ef4444', 
-                offset: 10,
-                formatter: (val: number) => `${val}`
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-newHome-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#ef4444" />
+                      <text x={cx} y={cy - 10} textAnchor="middle" fontSize={9} fill="#ef4444">{payload.newHomePriceIndex}%</text>
+                    </g>
+                  );
+                }
+                return <g key={`dot-newHome-${payload.month}`} />;
               }}
               animationDuration={2000}
             />
@@ -94,13 +99,17 @@ export const RealEstatePriceChart: React.FC<Props> = ({ data }) => {
               dataKey="secondHandPriceIndex"
               stroke="#051c2c" // Dark Blue
               strokeWidth={2}
-              dot={false}
-              label={{ 
-                position: 'top', 
-                fontSize: 9, 
-                fill: '#051c2c', 
-                offset: 10,
-                formatter: (val: number) => `${val}`
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-secondHand-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#051c2c" />
+                      <text x={cx} y={cy - 10} textAnchor="middle" fontSize={9} fill="#051c2c">{payload.secondHandPriceIndex}%</text>
+                    </g>
+                  );
+                }
+                return <g key={`dot-secondHand-${payload.month}`} />;
               }}
               animationDuration={2000}
               animationBegin={300}

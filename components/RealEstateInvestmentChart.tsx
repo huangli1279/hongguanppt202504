@@ -48,7 +48,7 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
+            margin={{ top: 20, right: 60, left: -20, bottom: 0 }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
@@ -58,10 +58,8 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               axisLine={{ stroke: '#e5e7eb' }} 
               tickLine={false} 
               tick={{ fill: '#666', fontSize: 10 }}
-              interval={1}
-              angle={-30}
-              textAnchor="end"
-              height={40}
+              interval={0}
+              ticks={['2024-02', '2024-06', '2024-10', '2025-02', '2025-06', '2025-10', '2025-12']}
             />
             <YAxis 
               axisLine={false} 
@@ -83,7 +81,18 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               dataKey="investment"
               stroke="#ef4444" // Red
               strokeWidth={3}
-              dot={false}
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-investment-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#ef4444" />
+                      <text x={cx + 8} y={cy + 4} textAnchor="start" fontSize={9} fill="#ef4444">{payload.investment}%</text>
+                    </g>
+                  );
+                }
+                return <g key={`dot-investment-${payload.month}`} />;
+              }}
               animationDuration={2000}
             />
             <Line
@@ -92,7 +101,18 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               dataKey="newStarts"
               stroke="#94a3b8" // Grey
               strokeWidth={2}
-              dot={false}
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-newStarts-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#94a3b8" />
+                      <text x={cx + 8} y={cy + 4} textAnchor="start" fontSize={9} fill="#94a3b8">{payload.newStarts}%</text>
+                    </g>
+                  );
+                }
+                return <g key={`dot-newStarts-${payload.month}`} />;
+              }}
               animationDuration={2000}
               animationBegin={300}
             />
@@ -102,7 +122,18 @@ export const RealEstateInvestmentChart: React.FC<Props> = ({ data }) => {
               dataKey="completion"
               stroke="#00a9f4" // Webank Light Blue
               strokeWidth={2}
-              dot={false}
+              dot={(props: any) => {
+                const { cx, cy, payload } = props;
+                if (payload.month === '2025-12') {
+                  return (
+                    <g key={`dot-completion-${payload.month}`}>
+                      <circle cx={cx} cy={cy} r={4} fill="#00a9f4" />
+                      <text x={cx + 8} y={cy + 4} textAnchor="start" fontSize={9} fill="#00a9f4">{payload.completion}%</text>
+                    </g>
+                  );
+                }
+                return <g key={`dot-completion-${payload.month}`} />;
+              }}
               animationDuration={2000}
               animationBegin={600}
             />
