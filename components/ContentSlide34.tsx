@@ -1,10 +1,9 @@
 
-
 import React from 'react';
-import { DataTable, TableContainer } from './DataTable';
-import { loanBreakdownData } from '../data';
-import { Wallet, TrendingDown, PiggyBank, ArrowRightLeft } from 'lucide-react';
-import { ColumnDefinition } from '../types';
+import { M1M2ScissorsChart } from './M1M2ScissorsChart';
+import { M1RealEstateCorrelationChart } from './M1RealEstateCorrelationChart';
+import { moneySupplyData, m1M2ScissorsTrendData } from '../data';
+import { Split, AlertOctagon, Landmark, Briefcase } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -31,70 +30,53 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const ContentSlide38: React.FC = () => {
-  const columns: ColumnDefinition[] = [
-    { key: 'period', label: '时间', sticky: true },
-    { key: 'household', label: '住户贷款', align: 'right' },
-    { key: 'enterprise', label: '企业贷款', align: 'right' },
-    { key: 'bill', label: '票据融资', align: 'right' },
-    { key: 'nonBank', label: '非银行业金融机构贷款', align: 'right' }
-  ];
-
+export const ContentSlide34: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-500"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            部门行为：居民资产负债表监测
+            货币供应：M1与M2剪刀差极度走阔
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          12月居民贷款罕见净偿还916亿元，<span className="text-webank-subtext">避险情绪驱动存款回流银行体系</span>
+          12月M1增速滑落至3.8%，剪刀差扩至4.7%警示资金"定期化"
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="主动去杠杆" icon={TrendingDown} alert={true} delay="100ms">
+         <InsightBox title="剪刀差创新高" icon={Split} alert={true} delay="100ms">
            <p>
-             12月居民贷款罕见减少 <span className="font-bold">916亿元</span>，同比多减4416亿元。短期贷款减少1023亿元（消费疲软），中长期贷款仅增100亿元（地产销售低迷及提前还贷）。收入预期不稳下，居民缩表意愿加剧。
+             M2同比增速在12月超预期反弹至 8.5%（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 3.8%。两者剪刀差由三季度的1.2%迅速扩大至年末的 4.7%，创年内新高。
            </p>
          </InsightBox>
 
-         <InsightBox title="预防性储蓄" icon={PiggyBank} highlight={true} delay="200ms">
+         <InsightBox title="基数压制与绝对量" icon={AlertOctagon} delay="200ms">
            <p>
-             资产端倾向保守，12月居民存款大增 <span className="font-bold">2.58万亿元</span>，同比多增3900亿元。全年累计增加14.64万亿元，资金回流定期存款趋势未改，风险偏好持续处于低位。
+             2024年下半年M1统计口径修订后数据上修，叠加当时化债资金集中投放，导致2025年Q4面临极高基数压制。若剔除基数，12月M1环比增加约2.6万亿，绝对量表现尚可。
            </p>
          </InsightBox>
 
-         <InsightBox title="存款搬家退潮" icon={ArrowRightLeft} delay="300ms">
+         <InsightBox title="资金定期化" icon={Landmark} delay="300ms">
            <p>
-             相比10月受股市大涨驱动的“存款搬家”，12月非银存款 <span className="font-bold">减少 3300亿元</span>。随着股市震荡及年末银行考核压力，资金流向逆转，重新回流银行表内，M2增速因此受益。
+             在低通胀与资产价格波动环境下，企业与居民风险偏好下降，倾向于将活期资金转为定期存款或理财以锁定收益，导致M1向M2内部的迁移。
            </p>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
-          <TableContainer
-            title="2024-2025年人民币贷款分项数据序列"
-            unit="亿元"
-            source="人民银行"
-          >
-            <DataTable
-              data={loanBreakdownData}
-              columns={columns}
-              variant="bordered"
-              stickyFirstColumn
-              minRowHeight={8}
-            />
-          </TableContainer>
+      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <M1M2ScissorsChart data={moneySupplyData} />
+        </div>
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+          <M1RealEstateCorrelationChart data={m1M2ScissorsTrendData} />
         </div>
       </section>
 

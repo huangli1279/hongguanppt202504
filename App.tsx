@@ -27,9 +27,9 @@ import { ContentSlide28 } from './components/ContentSlide28';
 import { ContentSlide29 } from './components/ContentSlide29';
 import { ContentSlide30 } from './components/ContentSlide30';
 import { ContentSlide32 } from './components/ContentSlide32';
+import { ContentSlide34 } from './components/ContentSlide34';
+import { ContentSlide35 } from './components/ContentSlide35';
 import { ContentSlide36 } from './components/ContentSlide36';
-import { ContentSlide37 } from './components/ContentSlide37';
-import { ContentSlide38 } from './components/ContentSlide38';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
@@ -192,9 +192,9 @@ const App: React.FC = () => {
         {currentSlide === 33 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides */}
-        {currentSlide === 34 && <ContentSlide36 />}
-        {currentSlide === 35 && <ContentSlide37 />}
-        {currentSlide === 36 && <ContentSlide38 />}
+        {currentSlide === 34 && <ContentSlide34 />}
+        {currentSlide === 35 && <ContentSlide35 />}
+        {currentSlide === 36 && <ContentSlide36 />}
 
         {/* Thank You Slide */}
         {currentSlide === 37 && <ThankYouSlide />}

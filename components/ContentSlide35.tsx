@@ -31,7 +31,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const ContentSlide37: React.FC = () => {
+export const ContentSlide35: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
@@ -54,13 +54,13 @@ export const ContentSlide37: React.FC = () => {
       <section className="grid grid-cols-2 gap-6 mb-8 h-36">
          <InsightBox title="社融：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             12月新增社融 2.21万亿元（同比少增6457亿），存量增速降至 8.3%，核心在于2024年同期“2万亿隐债置换”导致政府债基数异常偏高。
+             12月新增社融 2.21万亿元（同比少增6457亿），存量增速降至 8.3%，核心在于2024年同期"2万亿隐债置换"导致政府债基数异常偏高。
            </p>
          </InsightBox>
 
          <InsightBox title="企业中长贷：由负转正" icon={Briefcase} highlight={true} delay="200ms">
            <p>
-             12月政府债净融资（0.7万亿）同比大幅少增 1.07万亿元，但受5000亿新型政策性金融工具落地、重大项目开工及银行年末「冲量」三重驱动，12月企业中长期贷款新增 3300亿元（同比多增2900亿），结束“五连降”强势反弹。
+             12月政府债净融资（0.7万亿）同比大幅少增 1.07万亿元，但受5000亿新型政策性金融工具落地、重大项目开工及银行年末「冲量」三重驱动，12月企业中长期贷款新增 3300亿元（同比多增2900亿），结束"五连降"强势反弹。
            </p>
          </InsightBox>
       </section>
