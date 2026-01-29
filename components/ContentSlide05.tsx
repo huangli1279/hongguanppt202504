@@ -47,15 +47,15 @@ export const ContentSlide05: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-3 gap-4 min-h-0">
+      <section className="flex-grow grid grid-cols-2 gap-4 min-h-0">
 
-        {/* Industry Growth Chart - Left side, takes 2 columns */}
-        <div className="col-span-2 bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+        {/* Industry Growth Chart - Left side */}
+        <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
            <IndustryGrowthChart data={industryGrowthData} />
         </div>
 
-        {/* Three Year Contribution Chart - Right side, takes 1 column */}
-        <div className="col-span-1 bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '700ms' }}>
+        {/* Three Year Contribution Chart - Right side */}
+        <div className="bg-white border border-slate-100 p-2 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '700ms' }}>
           <ThreeYearContributionChart data={threeYearContributionData} />
         </div>
 

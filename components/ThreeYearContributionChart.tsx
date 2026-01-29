@@ -22,44 +22,63 @@ export const ThreeYearContributionChart: React.FC<ThreeYearContributionChartProp
 
   return (
     <div className="w-full h-full flex flex-col">
-      {/* Title and metadata */}
-      <div className="mb-2 px-2">
-        <h3 className="text-xs font-bold text-webank-blue">2023-2025年三产业GDP当季同比拉动</h3>
-        <p className="text-[9px] text-slate-500">单位: 百分点 | 数据来源: GDP数据</p>
+      {/* Title - matching left chart style */}
+      <div className="mb-2">
+        <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+          2023-2025年三产业GDP当季同比拉动
+        </h3>
       </div>
 
       {/* Chart */}
-      <ResponsiveContainer width="100%" height="85%">
-        <BarChart
-          data={transformedData}
-          margin={{ top: 5, right: 10, left: -10, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis
-            dataKey="period"
-            tick={{ fontSize: 9, fill: '#666' }}
-            angle={-45}
-            textAnchor="end"
-            height={40}
-          />
-          <YAxis
-            tick={{ fontSize: 9, fill: '#666' }}
-            label={{ value: '百分点', angle: -90, position: 'insideLeft', fontSize: 9, fill: '#666' }}
-            domain={[0, 'dataMax']}
-          />
-          <Tooltip
-            contentStyle={{ fontSize: 10, backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #ccc' }}
-            formatter={(value: number) => value.toFixed(2)}
-          />
-          <Legend
-            wrapperStyle={{ fontSize: 9 }}
-            iconType="square"
-          />
-          <Bar dataKey="第一产业" stackId="a" fill="#82ca9d" name="第一产业" />
-          <Bar dataKey="第二产业" stackId="a" fill="#ffa726" name="第二产业" />
-          <Bar dataKey="第三产业" stackId="a" fill="#42a5f5" name="第三产业" />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="flex-grow min-h-0">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={transformedData}
+            margin={{ top: 15, right: 30, left: 10, bottom: 10 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis
+              dataKey="period"
+              tick={{ fontSize: 11, fill: '#666' }}
+              axisLine={{ stroke: '#cbd5e1' }}
+            />
+            <YAxis
+              tick={{ fontSize: 11, fill: '#666' }}
+              axisLine={{ stroke: '#cbd5e1' }}
+              label={{ value: '百分点', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: '#666' } }}
+              domain={[0, 'dataMax']}
+            />
+            <Tooltip
+              contentStyle={{ fontSize: '11px', border: '1px solid #e2e8f0', borderRadius: '4px' }}
+              formatter={(value: number) => value.toFixed(2)}
+            />
+            <Legend
+              wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }}
+            />
+            <Bar 
+              dataKey="第一产业" 
+              stackId="a" 
+              fill="#cbd5e1" 
+              name="第一产业"
+              animationDuration={1500}
+            />
+            <Bar 
+              dataKey="第二产业" 
+              stackId="a" 
+              fill="#00a9f4" 
+              name="第二产业"
+              animationDuration={1500}
+            />
+            <Bar 
+              dataKey="第三产业" 
+              stackId="a" 
+              fill="#005c8f" 
+              name="第三产业"
+              animationDuration={1500}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
