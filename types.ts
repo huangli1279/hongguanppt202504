@@ -469,6 +469,14 @@ export interface HouseholdLoanStructureDataPoint {
     total: number;
 }
 
+export interface LoanBreakdownDataPoint extends Record<string, unknown> {
+    period: string;
+    household: number;
+    enterprise: number;
+    bill: number;
+    nonBank: number;
+}
+
 export interface AutoDealerInventoryDataPoint {
     month: string;
     year2024: number;

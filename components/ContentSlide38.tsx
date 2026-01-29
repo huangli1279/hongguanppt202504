@@ -1,10 +1,10 @@
 
 
 import React from 'react';
-import { HouseholdLoanChart } from './HouseholdLoanChart';
-import { DepositFlowChart } from './DepositFlowChart';
-import { householdLoanStructureData, depositFlowData } from '../data';
+import { DataTable, TableContainer } from './DataTable';
+import { loanBreakdownData } from '../data';
 import { Wallet, TrendingDown, PiggyBank, ArrowRightLeft } from 'lucide-react';
+import { ColumnDefinition } from '../types';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -32,6 +32,14 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
 };
 
 export const ContentSlide38: React.FC = () => {
+  const columns: ColumnDefinition[] = [
+    { key: 'period', label: '时间', sticky: true },
+    { key: 'household', label: '住户贷款', align: 'right' },
+    { key: 'enterprise', label: '企业贷款', align: 'right' },
+    { key: 'bill', label: '票据融资', align: 'right' },
+    { key: 'nonBank', label: '非银行业金融机构贷款', align: 'right' }
+  ];
+
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
@@ -72,12 +80,21 @@ export const ContentSlide38: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <HouseholdLoanChart data={householdLoanStructureData} />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <DepositFlowChart data={depositFlowData} />
+      <section className="flex-grow min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
+          <TableContainer
+            title="2024-2025年人民币贷款分项数据序列"
+            unit="亿元"
+            source="人民银行"
+          >
+            <DataTable
+              data={loanBreakdownData}
+              columns={columns}
+              variant="bordered"
+              stickyFirstColumn
+              minRowHeight={8}
+            />
+          </TableContainer>
         </div>
       </section>
 

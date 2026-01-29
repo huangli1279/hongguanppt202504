@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxRevenueDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint, ConsumerConfidenceDataPoint, ResidentIncomeExpenditureDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxRevenueDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint, ConsumerConfidenceDataPoint, ResidentIncomeExpenditureDataPoint, LoanBreakdownDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -1318,6 +1318,28 @@ export const depositFlowData: DepositFlowDataPoint[] = [
   { month: '10月', household: -5000, nonBank: 10000 },
   { month: '11月', household: 8000, nonBank: 3000 },
   { month: '12月', household: 25800, nonBank: -3300 },
+];
+
+export const loanBreakdownData: LoanBreakdownDataPoint[] = [
+  { period: '2024-06', household: 815642, enterprise: 1501967, bill: 128060, nonBank: 11649 },
+  { period: '2024-07', household: 813522, enterprise: 1497736, bill: 133647, nonBank: 13706 },
+  { period: '2024-08', household: 815485, enterprise: 1500787, bill: 139097, nonBank: 12350 },
+  { period: '2024-09', household: 820427, enterprise: 1514938, bill: 139784, nonBank: 9647 },
+  { period: '2024-10', household: 822025, enterprise: 1514786, bill: 141478, nonBank: 10747 },
+  { period: '2024-11', household: 824720, enterprise: 1516757, bill: 142680, nonBank: 10046 },
+  { period: '2024-12', household: 828297, enterprise: 1517025, bill: 147195, nonBank: 10615 },
+  { period: '2025-01', household: 832736, enterprise: 1568562, bill: 142046, nonBank: 8607 },
+  { period: '2025-02', household: 828845, enterprise: 1578962, bill: 143739, nonBank: 11451 },
+  { period: '2025-03', household: 838698, enterprise: 1607362, bill: 141753, nonBank: 9749 },
+  { period: '2025-04', household: 833482, enterprise: 1613462, bill: 150094, nonBank: 11383 },
+  { period: '2025-05', household: 834022, enterprise: 1618762, bill: 150840, nonBank: 11972 },
+  { period: '2025-06', household: 839998, enterprise: 1636462, bill: 146731, nonBank: 10946 },
+  { period: '2025-07', household: 835105, enterprise: 1637062, bill: 155442, nonBank: 12972 },
+  { period: '2025-08', household: 835408, enterprise: 1642962, bill: 155973, nonBank: 11842 },
+  { period: '2025-09', household: 839298, enterprise: 1655162, bill: 151947, nonBank: 9494 },
+  { period: '2025-10', household: 835694, enterprise: 1658662, bill: 156953, nonBank: 10430 },
+  { period: '2025-11', household: 833631, enterprise: 1664762, bill: 160295, nonBank: 10283 },
+  { period: '2025-12', household: 832715, enterprise: 1675462, bill: 163795, nonBank: 9512 },
 ];
 
 export const autoDealerInventoryData: AutoDealerInventoryDataPoint[] = [
