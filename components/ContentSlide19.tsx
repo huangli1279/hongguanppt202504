@@ -1,15 +1,18 @@
 
 import React from 'react';
-import { Q4ExportGrowthChart } from './Q4ExportGrowthChart';
-import { MonthlyTradeGrowthChart } from './MonthlyTradeGrowthChart';
-import { q4ExportGrowthData, monthlyTradeGrowthData } from '../data';
-import { Globe, TrendingUp } from 'lucide-react';
+import { TrendingUp, ShoppingBag, BarChart3, Activity, Wallet } from 'lucide-react';
+import { CpiTrendChart } from './CpiTrendChart';
+import { CpiDetailedTable } from './CpiDetailedTable';
+import { cpiTrendData } from '../data';
 
-const InsightBox = ({ title, children, icon: Icon, delay, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, highlight?: boolean }) => {
+const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
     
-    if (highlight) {
+    if (alert) {
+        borderColor = 'border-red-500';
+        iconColor = 'text-red-600';
+    } else if (highlight) {
         borderColor = 'border-webank-lightBlue';
         iconColor = 'text-webank-lightBlue';
     }
@@ -32,55 +35,52 @@ export const ContentSlide19: React.FC = () => {
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            外贸进出口监测
+            物价压力与消费倾向分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          2025年全年保持增长再创新高，Q4出口增速超预期回升至6.6%。
+          CPI 0.8% 创年内新高难掩核心需求偏弱，<span className="text-webank-accent">Q4 消费倾向转淡凸显避险情绪</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-4 h-36">
-         <InsightBox title="全年外贸成绩与贡献" icon={Globe} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-44">
+         <InsightBox title="CPI 运行特征解析" icon={TrendingUp} delay="100ms" highlight={true}>
            <p>
-             2025年全年货物进出口总额45.47万亿，增长3.8%，其中，出口26.99万亿元，增长6.1%；进口18.48万亿元，增长0.5%，规模再创新高。
+             2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第四季度走势强劲，12月CPI回升至0.8%，但核心CPI仍显“温和”，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
            </p>
          </InsightBox>
 
-         <InsightBox title="Q4出口波动解析" icon={TrendingUp} delay="200ms" highlight={true}>
+         <InsightBox title="消费倾向解析" icon={ShoppingBag} delay="200ms">
            <p>
-             受去年同期高基数（台风后补偿性出货）等影响，<span className="font-bold">10月出口同比下降 1.1%</span>，为年内首次转负。<span className="font-bold">12月因集成电路、自动数据处理设备等电子类产品进入补库周期</span>和企业为对冲 2026 年初关税不确定性及避开春节假期，<span className="font-bold">出口加速至 6.6%</span>。
+             四季度CPI主要受鲜菜季节性减产与全球金价避险（其他用品和服务维持高增）上涨驱动，消费品“以旧换新”等提振消费政策持续显效，推动了家用器具等消费品的需求与价格
            </p>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow flex gap-6 min-h-0 px-8">
-        {/* Left: Monthly Trade Growth Chart */}
-        <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '400ms' }}>
-          <MonthlyTradeGrowthChart data={monthlyTradeGrowthData} />
+      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <CpiTrendChart data={cpiTrendData} />
         </div>
-
-        {/* Right: Q4 Export Growth Chart */}
-        <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <Q4ExportGrowthChart data={q4ExportGrowthData} />
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+          <CpiDetailedTable />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        
+        <span>19</span>
       </footer>
 
-      {/* Animation Styles Reuse */}
+      {/* Animation Styles */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

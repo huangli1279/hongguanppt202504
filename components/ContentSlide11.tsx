@@ -1,14 +1,13 @@
 
 import React from 'react';
-import { RetailTrendChart } from './RetailTrendChart';
-import { ServiceGoodsGapChart } from './ServiceGoodsGapChart';
-import { retailTrendData, serviceGoodsData } from '../data';
-import { TrendingDown, CalendarClock } from 'lucide-react';
+import { IndustryGrowthTableChartTransposed } from './IndustryGrowthTableChartTransposed';
+import { industryDivergenceTableData } from '../data';
+import { Rocket, TrendingDown, Wrench } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => (
-  <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${alert ? 'border-red-500' : 'border-webank-blue'} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
-    <div className={`flex items-center gap-2 mb-2 ${alert ? 'text-red-600' : 'text-webank-blue'}`}>
-      <Icon size={18} className={alert ? "" : "text-webank-accent"}/>
+const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
+  <div className="flex flex-col h-full p-4 bg-slate-50 border-t-2 border-webank-blue opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: delay }}>
+    <div className="flex items-center gap-2 mb-2 text-webank-blue">
+      <Icon size={18} className="text-webank-accent"/>
       <h4 className="font-bold text-sm uppercase">{title}</h4>
     </div>
     <div className="text-xs text-webank-text leading-relaxed">
@@ -25,39 +24,42 @@ export const ContentSlide11: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
-      <header className="mb-6 animate-fade-in">
+      <header className="mb-3 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            消费市场监测
+            新旧动能分化分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          2025年社零增长3.7%，服务消费韧性显著强于商品零售
+          工业分化加剧：<span className="text-webank-accent">装备制造与高技术领跑，传统行业拖累明显</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="服务消费韧性凸显" icon={TrendingDown} alert={true} delay="100ms">
-           <p>
-             2025 年全年社零总额增长 <span className="font-bold">3.7%</span>，规模首破 50 万亿元；服务零售额全年累计增长<span className="font-bold">5.5%</span>，始终快于商品零售，且增速在下半年持续增长
-           </p>
-         </InsightBox>
+      <section className="grid grid-cols-3 gap-4 mb-12 min-h-[120px]">
+         <InsightBox title="装备制造：强支撑" icon={Wrench} delay="100ms">
+          <p>
+            装备制造业整体保持稳健。铁路船舶<span className="font-bold">(12月+9.2%)</span>、通用设备<span className="font-bold">(+7.5%)</span>等行业表现出色，虽然部分行业如电气机械<span className="font-bold">(+4.3%)</span>增速有所回落，但支撑作用依然稳固。
+          </p>
+        </InsightBox>
 
-         <InsightBox title={`"促销平移"透支内需`} icon={CalendarClock} delay="200ms">
-           <p>
-             受"双十一"错位（10月透支11月）及去年同期高基数（24年Q4疫情后补偿消费及初期政策刺激）影响，四季度社零当月同比增速呈现明显的下行趋势，12 月创下近三年非极端波动期的最低值，复苏斜率明显放缓
-           </p>
-         </InsightBox>
+        <InsightBox title="高技术制造：回升向好" icon={Rocket} delay="200ms">
+          <p>
+            12月高技术制造业增长<span className="font-bold text-green-600">11.0%</span>，维持高位运行。汽车制造业增加值增长<span className="font-bold">8.3%</span>，电子设备制造业增长<span className="font-bold">11.8%</span>，展现出强劲的增长动能。
+          </p>
+        </InsightBox>
+
+        <InsightBox title="传统行业：边际改善" icon={TrendingDown} delay="300ms">
+          <p>
+            传统行业年末出现回暖；<span className="font-bold">医药制造业(12月+7.0%)、橡胶和塑料制品业(+4.2%)</span>较前期均有明显改善，行业间的分化态势呈现修复迹象。
+          </p>
+        </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ServiceGoodsGapChart data={serviceGoodsData} />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <RetailTrendChart data={retailTrendData} />
+      <section className="flex-grow flex justify-center min-h-0 pb-8">
+        <div className="bg-white rounded-sm w-full h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <IndustryGrowthTableChartTransposed data={industryDivergenceTableData} />
         </div>
       </section>
 

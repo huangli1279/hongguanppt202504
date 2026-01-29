@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { TierOneCityRetailChart } from './TierOneCityRetailChart';
-import { UrbanRuralChart } from './UrbanRuralChart';
-import { tierOneCityRetailData, urbanRuralData } from '../data';
-import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
+import { M1M2ScissorsChart } from './M1M2ScissorsChart';
+import { M1RealEstateCorrelationChart } from './M1RealEstateCorrelationChart';
+import { moneySupplyData, m1RealEstateData } from '../data';
+import { Split, AlertOctagon, Landmark, Briefcase } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,39 +30,42 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const ContentSlide17: React.FC = () => {
+export const ContentSlide36: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-500"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            商品与服务结构分析
+            货币供应：M1与M2剪刀差极度走阔
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          一线分化北京强力反弹，乡村消费韧性优于城镇
+          12月M1增速滑落至3.8%创新低，<span className="text-webank-accent">M2-M1剪刀差扩至4.7%警示资金"定期化"</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="一线城市社零分化，四季度北京强力反弹" icon={Coffee} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="剪刀差：活钱变死钱" icon={Split} alert={true} delay="100ms">
            <p>
-             2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长<span className="font-bold">39.5%</span>，新能源汽车增长<span className="font-bold">13.2%</span>）；
+             M2维持在 <span className="font-bold">8.5%</span> 的相对高位，但M1大幅下行至 <span className="font-bold">3.8%</span>。剪刀差走阔意味着企业和居民更倾向于将资金以定期存款形式沉淀（资金定期化），而非用于即期交易或投资。
            </p>
          </InsightBox>
 
-         <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
-           <p className="mb-2">
-             全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
-           </p>
+         <InsightBox title="核心拖累：地产链" icon={AlertOctagon} delay="200ms">
            <p>
-             <span className="font-bold">逻辑深挖：</span>以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
+             M1的主要派生渠道之一是房地产销售（居民存款转化为房企活期存款）。受商品房销售深跌影响，这一货币传导链条严重受阻，导致M1读数持续承压。
+           </p>
+         </InsightBox>
+
+         <InsightBox title="活性不足：避险情绪" icon={Landmark} delay="300ms">
+           <p>
+             企业扩产意愿低迷（对应固投减速）与居民预防性储蓄（对应理财回表）共同作用，导致货币乘数效应减弱。金融体系内“不缺钱”，但实体经济中“钱不转”。
            </p>
          </InsightBox>
       </section>
@@ -70,10 +73,10 @@ export const ContentSlide17: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TierOneCityRetailChart data={tierOneCityRetailData} />
+          <M1M2ScissorsChart data={moneySupplyData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <UrbanRuralChart data={urbanRuralData} />
+          <M1RealEstateCorrelationChart data={m1RealEstateData} />
         </div>
       </section>
 

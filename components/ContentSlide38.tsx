@@ -1,16 +1,21 @@
-import React from 'react';
-import { FaiComponentsChart } from './FaiComponentsChart';
-import { PrivateStateInvestmentChart } from './PrivateStateInvestmentChart';
-import { faiComponentsData, privateStateInvestmentData } from '../data';
-import { TrendingDown, Building, Briefcase, BarChart } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
+
+import React from 'react';
+import { HouseholdLoanChart } from './HouseholdLoanChart';
+import { DepositFlowChart } from './DepositFlowChart';
+import { householdLoanStructureData, depositFlowData } from '../data';
+import { Wallet, TrendingDown, PiggyBank, ArrowRightLeft } from 'lucide-react';
+
+const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
     
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
+    } else if (highlight) {
+        borderColor = 'border-webank-lightBlue';
+        iconColor = 'text-webank-lightBlue';
     }
 
     return (
@@ -26,48 +31,53 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: stri
     );
 };
 
-export const ContentSlide15: React.FC = () => {
+export const ContentSlide38: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-red-800"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            固定资产投资分析
+            部门行为：居民资产负债表监测
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          2025年固投全年下降3.8%，<span className="text-webank-subtext">房地产深跌与基建乏力导致"稳增长"缺口</span>
+          12月居民贷款罕见净偿还916亿元，<span className="text-webank-subtext">避险情绪驱动存款回流银行体系</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="总量加速下行" icon={TrendingDown} alert={true} delay="100ms">
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="主动去杠杆" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             全年固定资产投资（不含农户）同比下降 <span className="font-bold">3.8%</span>。四季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。固定资产投资三大支柱全面降速：房地产深度下跌（-17.2%）、基建转负（-1.48%）、制造业增速显著回落（0.6%），整体投资动能乏力。
+             12月居民贷款罕见减少 <span className="font-bold">916亿元</span>，同比多减4416亿元。短期贷款减少1023亿元（消费疲软），中长期贷款仅增100亿元（地产销售低迷及提前还贷）。收入预期不稳下，居民缩表意愿加剧。
            </p>
          </InsightBox>
 
-          <InsightBox title="民间投资深度负增长" icon={Building} delay="200ms" alert={true}>
-            <p>
-              <span className="font-bold">民间投资：</span>全年下降6.4%，创历史新低，反映民营企业投资意愿极度低迷。<br/>
-              <span className="font-bold">国有控股：</span>全年下降2.5%，亦转负增长。
-            </p>
-          </InsightBox>
+         <InsightBox title="预防性储蓄" icon={PiggyBank} highlight={true} delay="200ms">
+           <p>
+             资产端倾向保守，12月居民存款大增 <span className="font-bold">2.58万亿元</span>，同比多增3900亿元。全年累计增加14.64万亿元，资金回流定期存款趋势未改，风险偏好持续处于低位。
+           </p>
+         </InsightBox>
+
+         <InsightBox title="存款搬家退潮" icon={ArrowRightLeft} delay="300ms">
+           <p>
+             相比10月受股市大涨驱动的“存款搬家”，12月非银存款 <span className="font-bold">减少 3300亿元</span>。随着股市震荡及年末银行考核压力，资金流向逆转，重新回流银行表内，M2增速因此受益。
+           </p>
+         </InsightBox>
       </section>
 
-       {/* Charts Section */}
+      {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <FaiComponentsChart data={faiComponentsData} />
+          <HouseholdLoanChart data={householdLoanStructureData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <PrivateStateInvestmentChart data={privateStateInvestmentData} />
+          <DepositFlowChart data={depositFlowData} />
         </div>
       </section>
 

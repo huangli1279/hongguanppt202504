@@ -1,9 +1,10 @@
 
+
 import React from 'react';
-import { TierOneCityRetailChart } from './TierOneCityRetailChart';
-import { UrbanRuralChart } from './UrbanRuralChart';
-import { tierOneCityRetailData, urbanRuralData } from '../data';
-import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
+import { TsfDecContributionChart } from './TsfDecContributionChart';
+import { CorpLoanTrendChart } from './CorpLoanTrendChart';
+import { tsfDecContributionData, corpLoanTrendData } from '../data';
+import { Landmark, TrendingDown, Briefcase, BarChart2 } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,39 +31,42 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const ContentSlide17: React.FC = () => {
+export const ContentSlide37: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-700"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            商品与服务结构分析
+            社融与信贷：政府债错位致社融降速
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          一线分化北京强力反弹，乡村消费韧性优于城镇
+          12月社融存量增速回落至8.3%，政府债高基数是核心拖累，<span className="text-webank-accent">企业信贷现积极信号</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="一线城市社零分化，四季度北京强力反弹" icon={Coffee} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="社融总量：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长<span className="font-bold">39.5%</span>，新能源汽车增长<span className="font-bold">13.2%</span>）；
+             12月新增社融 <span className="font-bold">2.21万亿元</span>，同比少增6457亿元；存量增速回落至 <span className="font-bold">8.3%</span>。主要受2024年末2万亿隐债置换债券集中发行带来的高基数影响，12月政府债净融资仅0.7万亿，同比大幅少增1.07万亿元。
            </p>
          </InsightBox>
 
-         <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
-           <p className="mb-2">
-             全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
-           </p>
+         <InsightBox title="企业贷：积极信号" icon={Briefcase} highlight={true} delay="200ms">
            <p>
-             <span className="font-bold">逻辑深挖：</span>以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
+             12月企业中长期贷款新增 <span className="font-bold">3300亿元</span>，同比多增2900亿元，结束了连续5个月的同比少增。得益于5000亿新型政策性金融工具投放后的配套融资需求释放，以及银行年末冲量。
+           </p>
+         </InsightBox>
+
+         <InsightBox title="直接融资：环境改善" icon={BarChart2} delay="300ms">
+           <p>
+             12月企业债券融资同比多增 <span className="font-bold">1683亿元</span>。受益于化债背景下城投再融资环境改善及产业债发行回暖，直接融资渠道功能有所修复。
            </p>
          </InsightBox>
       </section>
@@ -70,10 +74,10 @@ export const ContentSlide17: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TierOneCityRetailChart data={tierOneCityRetailData} />
+          <TsfDecContributionChart data={tsfDecContributionData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <UrbanRuralChart data={urbanRuralData} />
+          <CorpLoanTrendChart data={corpLoanTrendData} />
         </div>
       </section>
 

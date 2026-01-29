@@ -1,14 +1,12 @@
 
 import React from 'react';
-import { EquipmentVsConstructionLineChart } from './EquipmentVsConstructionLineChart';
-import { EquipmentInvestmentTable } from './EquipmentInvestmentTable';
-import { equipmentVsConstructionTrendData, equipmentInvestmentTableData } from '../data';
-import { RefreshCcw, HardHat, Rocket, AlertCircle } from 'lucide-react';
+import { Smartphone, AlertCircle } from 'lucide-react';
+import { RetailCategoryTable } from './RetailCategoryTable';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
-
+    
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
@@ -18,12 +16,12 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     }
 
     return (
-        <div className={`flex flex-col h-full p-3 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
-            <div className={`flex items-center gap-2 mb-1.5 ${iconColor}`}>
-                <Icon size={16} />
-                <h4 className="font-bold text-xs uppercase">{title}</h4>
+        <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
+            <div className={`flex items-center gap-2 mb-2 ${iconColor}`}>
+                <Icon size={18} />
+                <h4 className="font-bold text-sm uppercase">{title}</h4>
             </div>
-            <div className="text-[11px] text-webank-text leading-snug">
+            <div className="text-xs text-webank-text leading-relaxed">
                 {children}
             </div>
         </div>
@@ -32,67 +30,52 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
 
 export const ContentSlide18: React.FC = () => {
   return (
-    <div className="w-full h-full bg-white flex flex-col overflow-hidden relative">
-
+    <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
+      
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
 
-      {/* Header - Fixed height */}
-      <header className="flex-shrink-0 px-8 pt-6 pb-2 animate-fade-in">
-         <div className="flex justify-between items-end mb-1">
-          <span className="text-[11px] font-bold text-webank-subtext uppercase tracking-widest">
-            制造业投资结构深度洞察
+      {/* Header */}
+      <header className="mb-6 animate-fade-in">
+         <div className="flex justify-between items-end mb-2">
+          <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
+            细分品类与政策成效分析
           </span>
         </div>
-        <h1 className="text-xl font-serif font-bold text-webank-blue leading-tight">
-          设备购置投资高增11.8%，<span className="text-webank-subtext">企业"反内卷"导致产能扩张意愿降温</span>
+        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+          通讯器材全年高增20.9%领跑市场，家电与汽车消费年底承压
         </h1>
       </header>
 
-      {/* Insight Section - Fixed height */}
-      <section className="flex-shrink-0 px-8 pb-3 grid grid-cols-4 gap-3 h-[110px]">
-         <InsightBox title="存量更新驱动" icon={RefreshCcw} highlight={true} delay="100ms">
+      {/* Insight Section */}
+      <section className="grid grid-cols-2 gap-6 mb-8 h-40">
+         <InsightBox title="通讯器材增速领跑，家电家具受补贴退坡放缓" icon={Smartphone} delay="100ms" highlight={true}>
            <p>
-             全年设备工器具购置投资增长 <span className="font-bold">11.8%</span>，拉动全部投资增长1.8pct。在"两新"政策引导下，制造业投资主要由存量设备技改驱动，而非新建产能。
+             2025全年通讯器材类以 20.86% 的累计增速领跑大盘，这主要受益于 “以旧换新”对中高端机型（占比达 72.5%）的精准补贴；体育娱乐用品全年正增长，12月累计达 15.70%，折射居民对健康投资与精神消费的持续热衷；家用电器（12月跌至11.0%）、家具类（12月跌至14.62%）受四季度补贴退坡影响。
            </p>
          </InsightBox>
 
-         <InsightBox title="扩厂意愿收缩" icon={HardHat} alert={true} delay="200ms">
+         <InsightBox title="家电汽车：透支休克" icon={AlertCircle} delay="300ms" alert={true}>
            <p>
-             与设备高增形成鲜明对比，建筑安装工程投资（代表厂房扩建）全年 <span className="font-bold">下降 8.4%</span>。企业在"反内卷"政策下，对单纯扩大产能的资本开支变得极为谨慎。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="高技术引领" icon={Rocket} delay="300ms">
-           <p>
-             <span className="font-bold">航空航天 (+17.5%)</span> 投资领跑。新质生产力相关领域资金流入加速，投资结构持续优化。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="传统行业承压" icon={AlertCircle} alert={true} delay="400ms">
-           <p>
-             受产能过剩影响，部分中游装备及下游消费品制造投资意愿减弱。<span className="font-bold">电气机械</span> 投资（-10.3%）出现显著负增长，行业进入深度去产能周期。
+             受房地产下行周期拖累的影响，相关行业普遍承压：建筑及装潢材料类累计同比跌至 -2.67%，汽车行业受补贴退坡和市场内卷影响，全年以-1.5%的增长收尾。
            </p>
          </InsightBox>
       </section>
 
-      {/* Charts Section - Flex grow with proper constraints */}
-      <section className="flex-1 px-8 pb-8 grid grid-cols-2 gap-4 min-h-0">
+      {/* Charts Section */}
+      <section className="flex-grow flex flex-col min-h-0">
         <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <EquipmentVsConstructionLineChart data={equipmentVsConstructionTrendData} />
-        </div>
-        <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <EquipmentInvestmentTable data={equipmentInvestmentTableData} />
+          <RetailCategoryTable />
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="absolute bottom-2 left-8 right-8 border-t border-slate-200 pt-1 flex justify-between text-[10px] text-slate-400">
+      <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-
+        <span>18</span>
       </footer>
 
-      {/* Animation Styles Reuse */}
+      {/* Animation Styles */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

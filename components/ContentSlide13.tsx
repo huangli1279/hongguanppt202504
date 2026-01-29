@@ -1,81 +1,74 @@
 
 import React from 'react';
-import { Smartphone, AlertCircle } from 'lucide-react';
-import { RetailCategoryTable } from './RetailCategoryTable';
+import { PpiTrendChart } from './PpiTrendChart';
+import { CommodityIndexChart } from './CommodityIndexChart';
+import { ppiTrendData, commodityIndexData } from '../data';
+import { TrendingUp, ShieldCheck, Globe, Zap } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
-    let borderColor = 'border-webank-blue';
-    let iconColor = 'text-webank-blue';
-    
-    if (alert) {
-        borderColor = 'border-red-500';
-        iconColor = 'text-red-600';
-    } else if (highlight) {
-        borderColor = 'border-webank-lightBlue';
-        iconColor = 'text-webank-lightBlue';
-    }
-
-    return (
-        <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
-            <div className={`flex items-center gap-2 mb-2 ${iconColor}`}>
-                <Icon size={18} />
-                <h4 className="font-bold text-sm uppercase">{title}</h4>
-            </div>
-            <div className="text-xs text-webank-text leading-relaxed">
-                {children}
-            </div>
-        </div>
-    );
-};
+const InsightBox = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
+  <div className="flex flex-col h-full p-4 bg-slate-50 border-t-2 border-webank-blue opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: delay }}>
+    <div className="flex items-center gap-2 mb-2 text-webank-blue">
+      <Icon size={18} className="text-webank-accent"/>
+      <h4 className="font-bold text-sm uppercase">{title}</h4>
+    </div>
+    <div className="text-xs text-webank-text leading-relaxed">
+      {children}
+    </div>
+  </div>
+);
 
 export const ContentSlide13: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            细分品类与政策成效分析
+            价格与通胀监测
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          通讯器材全年高增20.9%领跑市场，家电与汽车消费年底承压
+          PPI环比连续三个月上涨，<span className="text-webank-accent">大宗商品价格走势出现结构性分化</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-40">
-         <InsightBox title="通讯器材增速领跑，家电家具受补贴退坡放缓" icon={Smartphone} delay="100ms" highlight={true}>
-           <p>
-             2025全年通讯器材类以 20.86% 的累计增速领跑大盘，这主要受益于 “以旧换新”对中高端机型（占比达 72.5%）的精准补贴；体育娱乐用品全年正增长，12月累计达 15.70%，折射居民对健康投资与精神消费的持续热衷；家用电器（12月跌至11.0%）、家具类（12月跌至14.62%）受四季度补贴退坡影响。
-           </p>
+      <section className="grid grid-cols-2 gap-6 mb-8 min-h-[144px]">
+         <InsightBox title="PPI：价格弹性边际修复" icon={TrendingUp} delay="100ms">
+           <div className="text-[10.5px] leading-relaxed">
+             12月PPI环比上涨 <span className="font-bold text-webank-blue">0.2%</span>，连续第3个月维持正增长，同比降幅收窄至 -1.9%。工业品价格通缩压力显著缓解，中下游企业定价权逐步回归，利润空间边际改善。
+           </div>
          </InsightBox>
 
-         <InsightBox title="家电汽车：透支休克" icon={AlertCircle} delay="300ms" alert={true}>
-           <p>
-             受房地产下行周期拖累的影响，相关行业普遍承压：建筑及装潢材料类累计同比跌至 -2.67%，汽车行业受补贴退坡和市场内卷影响，全年以-1.5%的增长收尾。
-           </p>
+         <InsightBox title="大宗商品：宏观割裂下的两极分化" icon={Globe} delay="300ms">
+           <div className="space-y-2 text-[10.5px]">
+             <p><span className="font-bold text-webank-blue">避险与供需错配推升金属：</span>地缘博弈激发的强避险情绪，叠加AI算力与电网升级带来的结构性短缺，推动贵金属和有色金属（金、银、铜）创下历史新高。</p>
+             <p><span className="font-bold text-webank-blue">供应过剩压制能源：</span>传统的化石能源因产能释放过快及全球制造业需求复苏不均，价格中枢显著下移。</p>
+           </div>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow flex flex-col min-h-0">
-        <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <RetailCategoryTable />
+      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <PpiTrendChart data={ppiTrendData} />
+        </div>
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+          <CommodityIndexChart data={commodityIndexData} />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>18</span>
+        
       </footer>
 
-      {/* Animation Styles */}
+      {/* Animation Styles Reuse */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

@@ -1,14 +1,13 @@
-
 import React from 'react';
-import { TrendingUp, Users, AlertTriangle, Wallet } from 'lucide-react';
-import { ConsumerConfidenceTrendChart } from './ConsumerConfidenceTrendChart';
-import { ResidentIncomeExpenditureChart } from './ResidentIncomeExpenditureChart';
-import { consumerConfidenceData, residentIncomeExpenditureData } from '../data';
+import { LandRevenueChart } from './LandRevenueChart';
+import { SpecialBondChart } from './SpecialBondChart';
+import { landRevenueData, specialBondData } from '../data';
+import { Building2, TrendingDown, Coins, Zap } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
-
+    
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
@@ -30,36 +29,42 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const ContentSlide14A: React.FC = () => {
+export const ContentSlide34: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
-
+      
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-500"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            收入与信心分析
+            土地与债务：财政平衡术
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          人均可支配收入实际增长5.0%，<span className="text-webank-accent">消费者信心指数回升但就业依旧承压</span>
+          土地出让收入降幅扩大至10.7%，<span className="text-webank-lightBlue">新增专项债发行进度超100%力保支出</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-44">
-         <InsightBox title="收入与就业预期分化制约消费者信心回暖" icon={TrendingUp} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="土地市场：核心拖累" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             消费者信心指数（从86.4升至90.3）的温和回升，主要由收入预期和消费意愿支撑，但被就业预期严重拖累，新兴领域（AI、低空经济）需求旺盛，传统行业需求减弱。
+             1-11月国有土地使用权出让收入同比 <span className="font-bold">下降 10.7%</span>，降幅较前值 (-7.4%) 显著扩大。房企拿地意愿低迷，土拍热度仅集中在核心城市优质地块，地方政府“钱袋子”持续承压。
            </p>
          </InsightBox>
 
-         <InsightBox title="收入增速超越消费，居民储蓄倾向依然显著" icon={Wallet} delay="200ms" alert={true}>
+         <InsightBox title="政府债：强力对冲" icon={Coins} highlight={true} delay="200ms">
            <p>
-             2025年人均可支配收入实际增长5.0%，但居民人均消费支出实际增长4.4%，低于收入增速；显示在资产价格波动（房价/股市）背景下，居民预防性储蓄心理依然较强。
+             为弥补缺口，专项债发行在Q4再度提速。截至11月末，新增专项债发行进度达 <span className="font-bold">101.3%</span>（含盘活结存限额）。资金加速落地支撑11月政府性基金支出转正 (+2.8%)。
+           </p>
+         </InsightBox>
+
+         <InsightBox title="支出效应：存在时滞" icon={Zap} delay="300ms">
+           <p>
+             5000亿政策性金融工具已投放完毕，主要投向基建与“两重”项目。但受冬季施工受限及项目储备不足影响，资金转化为实物工作量存在一定时滞，稳增长效果或延后至明年Q1。
            </p>
          </InsightBox>
       </section>
@@ -67,20 +72,20 @@ export const ContentSlide14A: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ConsumerConfidenceTrendChart data={consumerConfidenceData} />
+          <LandRevenueChart data={landRevenueData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <ResidentIncomeExpenditureChart data={residentIncomeExpenditureData} />
+          <SpecialBondChart data={specialBondData} />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>20</span>
+        
       </footer>
 
-      {/* Animation Styles */}
+      {/* Animation Styles Reuse */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

@@ -3,42 +3,42 @@ import React, { useEffect, useState, useRef } from 'react';
 import { CoverSlide } from './components/CoverSlide';
 import { TableOfContentsSlide } from './components/TableOfContentsSlide';
 import { SectionTransitionSlide } from './components/SectionTransitionSlide';
-import { ContentSlide01 } from './components/ContentSlide01';
-import { ContentSlide02 } from './components/ContentSlide02';
-import { ContentSlide03 } from './components/ContentSlide03';
 import { ContentSlide04 } from './components/ContentSlide04';
 import { ContentSlide05 } from './components/ContentSlide05';
 import { ContentSlide06 } from './components/ContentSlide06';
 import { ContentSlide07 } from './components/ContentSlide07';
-import { ContentSlide08 } from './components/ContentSlide08';
 import { ContentSlide09 } from './components/ContentSlide09';
 import { ContentSlide10 } from './components/ContentSlide10';
 import { ContentSlide11 } from './components/ContentSlide11';
 import { ContentSlide12 } from './components/ContentSlide12';
 import { ContentSlide13 } from './components/ContentSlide13';
 import { ContentSlide14 } from './components/ContentSlide14';
-import { ContentSlide14A } from './components/ContentSlide14A';
-import { ContentSlide15 } from './components/ContentSlide15';
 import { ContentSlide16 } from './components/ContentSlide16';
 import { ContentSlide17 } from './components/ContentSlide17';
 import { ContentSlide18 } from './components/ContentSlide18';
 import { ContentSlide19 } from './components/ContentSlide19';
 import { ContentSlide20 } from './components/ContentSlide20';
-import { ContentSlide21 } from './components/ContentSlide21';
 import { ContentSlide22 } from './components/ContentSlide22';
 import { ContentSlide23 } from './components/ContentSlide23';
 import { ContentSlide24 } from './components/ContentSlide24';
 import { ContentSlide25 } from './components/ContentSlide25';
-import { ContentSlide26 } from './components/ContentSlide26';
 import { ContentSlide27 } from './components/ContentSlide27';
 import { ContentSlide28 } from './components/ContentSlide28';
+import { ContentSlide29 } from './components/ContentSlide29';
+import { ContentSlide30 } from './components/ContentSlide30';
+import { ContentSlide32 } from './components/ContentSlide32';
+import { ContentSlide33 } from './components/ContentSlide33';
+import { ContentSlide34 } from './components/ContentSlide34';
+import { ContentSlide36 } from './components/ContentSlide36';
+import { ContentSlide37 } from './components/ContentSlide37';
+import { ContentSlide38 } from './components/ContentSlide38';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 39; // Added ContentSlide14A between CPI and Investment sections
+  const TOTAL_SLIDES = 39;
 
   // Function to handle scaling based on window size to maintain 16:9 visualization
   const handleResize = () => {
@@ -142,63 +142,63 @@ const App: React.FC = () => {
         {currentSlide === 1 && <CoverSlide />}
         {currentSlide === 2 && <TableOfContentsSlide />}
         {currentSlide === 3 && <SectionTransitionSlide id="01" title="GDP 分析" subtitle="定基调，找温差" />}
-        {currentSlide === 4 && <ContentSlide01 />}
-        {currentSlide === 5 && <ContentSlide02 />}
-        {currentSlide === 6 && <ContentSlide03 />}
-        {currentSlide === 7 && <ContentSlide04 />}
+        {currentSlide === 4 && <ContentSlide04 />}
+        {currentSlide === 5 && <ContentSlide05 />}
+        {currentSlide === 6 && <ContentSlide06 />}
+        {currentSlide === 7 && <ContentSlide07 />}
 
         {/* Transition Slide 2: Production */}
         {currentSlide === 8 && <SectionTransitionSlide id="02" title="生产端分析" subtitle="看景气，看利润" />}
 
-        {currentSlide === 9 && <ContentSlide05 />}
-        {currentSlide === 10 && <ContentSlide06 />}
-        {currentSlide === 11 && <ContentSlide07 />}
-        {currentSlide === 12 && <ContentSlide08 />}
-        {currentSlide === 13 && <ContentSlide09 />}
-        {currentSlide === 14 && <ContentSlide10 />}
+        {currentSlide === 9 && <ContentSlide09 />}
+        {currentSlide === 10 && <ContentSlide10 />}
+        {currentSlide === 11 && <ContentSlide11 />}
+        {currentSlide === 12 && <ContentSlide12 />}
+        {currentSlide === 13 && <ContentSlide13 />}
+        {currentSlide === 14 && <ContentSlide14 />}
 
         {/* Transition Slide 3: Consumption */}
         {currentSlide === 15 && <SectionTransitionSlide id="03" title="消费分析" subtitle="看意愿，看结构" />}
 
-        {currentSlide === 16 && <ContentSlide11 />}
-        {currentSlide === 17 && <ContentSlide12 />}
-        {currentSlide === 18 && <ContentSlide13 />}
-        {currentSlide === 19 && <ContentSlide14 />}
-        {currentSlide === 20 && <ContentSlide14A />}
+        {currentSlide === 16 && <ContentSlide16 />}
+        {currentSlide === 17 && <ContentSlide17 />}
+        {currentSlide === 18 && <ContentSlide18 />}
+        {currentSlide === 19 && <ContentSlide19 />}
+        {currentSlide === 20 && <ContentSlide20 />}
 
         {/* Transition Slide 4: Investment */}
         {currentSlide === 21 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
 
         {/* Investment Slides */}
-        {currentSlide === 22 && <ContentSlide15 />}
-        {currentSlide === 23 && <ContentSlide16 />}
-        {currentSlide === 24 && <ContentSlide17 />}
-        {currentSlide === 25 && <ContentSlide18 />}
+        {currentSlide === 22 && <ContentSlide22 />}
+        {currentSlide === 23 && <ContentSlide23 />}
+        {currentSlide === 24 && <ContentSlide24 />}
+        {currentSlide === 25 && <ContentSlide25 />}
 
         {/* Transition Slide 5: Trade */}
         {currentSlide === 26 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
 
         {/* Trade Slides */}
-        {currentSlide === 27 && <ContentSlide19 />}
-        {currentSlide === 28 && <ContentSlide20 />}
-        {currentSlide === 29 && <ContentSlide21 />}
-        {currentSlide === 30 && <ContentSlide22 />}
+        {currentSlide === 27 && <ContentSlide27 />}
+        {currentSlide === 28 && <ContentSlide28 />}
+        {currentSlide === 29 && <ContentSlide29 />}
+        {currentSlide === 30 && <ContentSlide30 />}
 
         {/* Transition Slide 6: Fiscal */}
         {currentSlide === 31 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
 
         {/* Fiscal Slides */}
-        {currentSlide === 32 && <ContentSlide23 />}
-        {currentSlide === 33 && <ContentSlide24 />}
-        {currentSlide === 34 && <ContentSlide25 />}
+        {currentSlide === 32 && <ContentSlide32 />}
+        {currentSlide === 33 && <ContentSlide33 />}
+        {currentSlide === 34 && <ContentSlide34 />}
 
         {/* NEW Transition Slide 7: Financial */}
         {currentSlide === 35 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides */}
-        {currentSlide === 36 && <ContentSlide26 />}
-        {currentSlide === 37 && <ContentSlide27 />}
-        {currentSlide === 38 && <ContentSlide28 />}
+        {currentSlide === 36 && <ContentSlide36 />}
+        {currentSlide === 37 && <ContentSlide37 />}
+        {currentSlide === 38 && <ContentSlide38 />}
 
         {/* Thank You Slide */}
         {currentSlide === 39 && <ThankYouSlide />}

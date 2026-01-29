@@ -1,10 +1,10 @@
-
-
 import React from 'react';
-import { HouseholdLoanChart } from './HouseholdLoanChart';
-import { DepositFlowChart } from './DepositFlowChart';
-import { householdLoanStructureData, depositFlowData } from '../data';
-import { Wallet, TrendingDown, PiggyBank, ArrowRightLeft } from 'lucide-react';
+import { KeyExportGrowthChart } from './KeyExportGrowthChart';
+import { ComputingExportGrowthChart } from './ComputingExportGrowthChart';
+import { MechElecExportGrowthChart } from './MechElecExportGrowthChart';
+import { ExportContributionChart } from './ExportContributionChart';
+import { exportItemGrowthData, exportContributionData, computingExportGrowthData, mechElecExportGrowthData } from '../data';
+import { Zap, Smartphone, Shirt, Layers } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -42,31 +42,25 @@ export const ContentSlide28: React.FC = () => {
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            部门行为：居民资产负债表监测
+            产品结构深度洞察：科技制造领跑
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          12月居民贷款罕见净偿还916亿元，<span className="text-webank-subtext">避险情绪驱动存款回流银行体系</span>
+          科技制造领跑，汽车与半导体产业链爆发，机电产品拉动出口增长
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="主动去杠杆" icon={TrendingDown} alert={true} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-4 h-40">
+         <InsightBox title="机电产品与汽车：竞争力持续兑现" icon={Layers} highlight={true} delay="100ms">
            <p>
-             12月居民贷款罕见减少 <span className="font-bold">916亿元</span>，同比多减4416亿元。短期贷款减少1023亿元（消费疲软），中长期贷款仅增100亿元（地产销售低迷及提前还贷）。收入预期不稳下，居民缩表意愿加剧。
+             12月机电产品出口同比增长 <span className="font-bold">12.1%</span>，对出口增速拉动作用显著。其中汽车12月出口同比大增 <span className="font-bold">71.7%</span>，全年保持高景气。2025 年中国插混（PHEV）与纯电（BEV）车型在东南亚及中东市场的占有率大幅抬升，抵消了部分地区的贸易壁垒影响，显示中国车企在全球市场的竞争力持续兑现。
            </p>
          </InsightBox>
 
-         <InsightBox title="预防性储蓄" icon={PiggyBank} highlight={true} delay="200ms">
+         <InsightBox title="集成电路：电子周期上行与AI驱动" icon={Zap} highlight={true} delay="200ms">
            <p>
-             资产端倾向保守，12月居民存款大增 <span className="font-bold">2.58万亿元</span>，同比多增3900亿元。全年累计增加14.64万亿元，资金回流定期存款趋势未改，风险偏好持续处于低位。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="存款搬家退潮" icon={ArrowRightLeft} delay="300ms">
-           <p>
-             相比10月受股市大涨驱动的“存款搬家”，12月非银存款 <span className="font-bold">减少 3300亿元</span>。随着股市震荡及年末银行考核压力，资金流向逆转，重新回流银行表内，M2增速因此受益。
+             受全球 AI 换机潮（AI 手机、AI PC）及数据中心算力芯片需求爆发驱动，集成电路出口倍增，电子周期进入上行通道。集成电路12月出口金额大增 <span className="font-bold">47.7%</span>，量价齐升特征明显。
            </p>
          </InsightBox>
       </section>
@@ -74,10 +68,10 @@ export const ContentSlide28: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <HouseholdLoanChart data={householdLoanStructureData} />
+          <MechElecExportGrowthChart data={mechElecExportGrowthData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <DepositFlowChart data={depositFlowData} />
+          <ComputingExportGrowthChart data={computingExportGrowthData} />
         </div>
       </section>
 

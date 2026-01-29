@@ -1,19 +1,15 @@
 
-
 import React from 'react';
-import { TsfDecContributionChart } from './TsfDecContributionChart';
-import { CorpLoanTrendChart } from './CorpLoanTrendChart';
-import { tsfDecContributionData, corpLoanTrendData } from '../data';
-import { Landmark, TrendingDown, Briefcase, BarChart2 } from 'lucide-react';
+import { Q4ExportGrowthChart } from './Q4ExportGrowthChart';
+import { MonthlyTradeGrowthChart } from './MonthlyTradeGrowthChart';
+import { q4ExportGrowthData, monthlyTradeGrowthData } from '../data';
+import { Globe, TrendingUp } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
+const InsightBox = ({ title, children, icon: Icon, delay, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
     
-    if (alert) {
-        borderColor = 'border-red-500';
-        iconColor = 'text-red-600';
-    } else if (highlight) {
+    if (highlight) {
         borderColor = 'border-webank-lightBlue';
         iconColor = 'text-webank-lightBlue';
     }
@@ -36,48 +32,45 @@ export const ContentSlide27: React.FC = () => {
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-700"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            社融与信贷：政府债错位致社融降速
+            外贸进出口监测
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          12月社融存量增速回落至8.3%，政府债高基数是核心拖累，<span className="text-webank-accent">企业信贷现积极信号</span>
+          2025年全年保持增长再创新高，Q4出口增速超预期回升至6.6%。
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="社融总量：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-4 h-36">
+         <InsightBox title="全年外贸成绩与贡献" icon={Globe} delay="100ms">
            <p>
-             12月新增社融 <span className="font-bold">2.21万亿元</span>，同比少增6457亿元；存量增速回落至 <span className="font-bold">8.3%</span>。主要受2024年末2万亿隐债置换债券集中发行带来的高基数影响，12月政府债净融资仅0.7万亿，同比大幅少增1.07万亿元。
+             2025年全年货物进出口总额45.47万亿，增长3.8%，其中，出口26.99万亿元，增长6.1%；进口18.48万亿元，增长0.5%，规模再创新高。
            </p>
          </InsightBox>
 
-         <InsightBox title="企业贷：积极信号" icon={Briefcase} highlight={true} delay="200ms">
+         <InsightBox title="Q4出口波动解析" icon={TrendingUp} delay="200ms" highlight={true}>
            <p>
-             12月企业中长期贷款新增 <span className="font-bold">3300亿元</span>，同比多增2900亿元，结束了连续5个月的同比少增。得益于5000亿新型政策性金融工具投放后的配套融资需求释放，以及银行年末冲量。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="直接融资：环境改善" icon={BarChart2} delay="300ms">
-           <p>
-             12月企业债券融资同比多增 <span className="font-bold">1683亿元</span>。受益于化债背景下城投再融资环境改善及产业债发行回暖，直接融资渠道功能有所修复。
+             受去年同期高基数（台风后补偿性出货）等影响，<span className="font-bold">10月出口同比下降 1.1%</span>，为年内首次转负。<span className="font-bold">12月因集成电路、自动数据处理设备等电子类产品进入补库周期</span>和企业为对冲 2026 年初关税不确定性及避开春节假期，<span className="font-bold">出口加速至 6.6%</span>。
            </p>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TsfDecContributionChart data={tsfDecContributionData} />
+      <section className="flex-grow flex gap-6 min-h-0 px-8">
+        {/* Left: Monthly Trade Growth Chart */}
+        <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '400ms' }}>
+          <MonthlyTradeGrowthChart data={monthlyTradeGrowthData} />
         </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <CorpLoanTrendChart data={corpLoanTrendData} />
+
+        {/* Right: Q4 Export Growth Chart */}
+        <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <Q4ExportGrowthChart data={q4ExportGrowthData} />
         </div>
       </section>
 

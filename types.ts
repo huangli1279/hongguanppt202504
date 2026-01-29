@@ -348,9 +348,13 @@ export interface ComputingExportGrowthDataPoint {
 
 export interface MechElecExportGrowthDataPoint {
     month: string;
-    auto: number;
+    auto?: number;
     ic: number;
-    total: number;
+    total?: number;
+    mech: number;
+    agri: number;
+    highTech: number;
+    clothing: number;
 }
 
 export interface ExportGrowthByRegionDataPoint {
@@ -367,8 +371,8 @@ export interface ExportShareDataPoint {
 
 export interface BroadFiscalTrendDataPoint {
     month: string;
-    income: number;
-    expenditure: number;
+    income: number | null;
+    expenditure: number | null;
 }
 
 export interface FiscalLedgerGrowthDataPoint {

@@ -1,79 +1,59 @@
 
 import React from 'react';
-import { TierOneCityRetailChart } from './TierOneCityRetailChart';
-import { UrbanRuralChart } from './UrbanRuralChart';
-import { tierOneCityRetailData, urbanRuralData } from '../data';
-import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
+import { IndustrialFinancialTable } from './IndustrialFinancialTable';
+import { industrialFinancialTableData } from '../data';
+import { TrendingDown, BarChart4 } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
-    let borderColor = 'border-webank-blue';
-    let iconColor = 'text-webank-blue';
-    
-    if (alert) {
-        borderColor = 'border-red-500';
-        iconColor = 'text-red-600';
-    } else if (highlight) {
-        borderColor = 'border-webank-lightBlue';
-        iconColor = 'text-webank-lightBlue';
-    }
-
-    return (
-        <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
-            <div className={`flex items-center gap-2 mb-2 ${iconColor}`}>
-                <Icon size={18} />
-                <h4 className="font-bold text-sm uppercase">{title}</h4>
-            </div>
-            <div className="text-xs text-webank-text leading-relaxed">
-                {children}
-            </div>
-        </div>
-    );
-};
+const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => (
+  <div className={`flex flex-col h-full p-5 bg-slate-50 border-t-4 ${alert ? 'border-red-500' : 'border-webank-blue'} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
+    <div className={`flex items-center gap-2 mb-3 ${alert ? 'text-red-600' : 'text-webank-blue'}`}>
+      <Icon size={20} />
+      <h4 className="font-bold text-sm uppercase">{title}</h4>
+    </div>
+    <div className="text-xs text-webank-text leading-relaxed">
+      {children}
+    </div>
+  </div>
+);
 
 export const ContentSlide12: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-800"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            商品与服务结构分析
+            企业效益监测
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          一线分化北京强力反弹，乡村消费韧性优于城镇
+          11月工企利润因投资收益基数重挫13.1%，<span className="text-webank-subtext">剔除后实际经营效益呈"弱修复"</span>
         </h1>
       </header>
 
-      {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="一线城市社零分化，四季度北京强力反弹" icon={Coffee} delay="100ms" highlight={true}>
+      {/* Insight Grid */}
+      <section className="grid grid-cols-2 gap-6 mb-8 h-40 w-full">
+         <InsightBox title="利润读数剧烈波动" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长<span className="font-bold">39.5%</span>，新能源汽车增长<span className="font-bold">13.2%</span>）；
+             11月规上工业企业利润同比 <span className="font-bold">下降 13.1%</span>，降幅较10月大幅扩大（-5.5%）。全年累计增速收窄至0.1%，主要受非经营性因素扰动。
            </p>
          </InsightBox>
 
-         <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
-           <p className="mb-2">
-             全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
-           </p>
+         <InsightBox title="核心归因：投资收益错位" icon={BarChart4} delay="200ms">
            <p>
-             <span className="font-bold">逻辑深挖：</span>以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
+             前期股市上涨带来的高基数导致“其他损益”贡献大幅转负。若剔除此因素，<span className="font-bold">实际经营利润增速为 -6.7%</span>，较上月回升5.1个百分点，内生获利能力边际改善。
            </p>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TierOneCityRetailChart data={tierOneCityRetailData} />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <UrbanRuralChart data={urbanRuralData} />
+      <section className="flex-grow flex justify-center min-h-0 mb-10">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards w-full" style={{ animationDelay: '500ms' }}>
+          <IndustrialFinancialTable data={industrialFinancialTableData} />
         </div>
       </section>
 

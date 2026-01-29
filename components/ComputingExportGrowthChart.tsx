@@ -8,7 +8,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  ReferenceLine
+  ReferenceLine,
+  LabelList
 } from 'recharts';
 import { ComputingExportGrowthDataPoint } from '../types';
 
@@ -33,6 +34,26 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
+const renderCustomLabel = (props: any) => {
+  const { x, y, value, index, dataLength } = props;
+  // Only show label for the last data point (2025-12)
+  if (index === dataLength - 1) {
+    return (
+      <text
+        x={x}
+        y={y - 8}
+        fill={props.fill || '#333'}
+        fontSize={10}
+        fontWeight="bold"
+        textAnchor="middle"
+      >
+        {value}%
+      </text>
+    );
+  }
+  return null;
+};
+
 export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
@@ -48,52 +69,63 @@ export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+            margin={{ top: 20, right: 10, left: -20, bottom: 0 }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-            <XAxis 
-              dataKey="month" 
+            <XAxis
+              dataKey="month"
               tick={{ fontSize: 9, fill: '#666' }}
               axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
-              interval={2}
+              interval="preserveStartEnd"
+              minTickGap={20}
             />
-            <YAxis 
+            <YAxis
               tick={{ fontSize: 9, fill: '#999' }}
               axisLine={false}
               tickLine={false}
               domain={[0, 40]}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Legend 
-              verticalAlign="top" 
-              align="right" 
+            <Legend
+              verticalAlign="top"
+              align="right"
               iconType="circle"
               iconSize={8}
               wrapperStyle={{ fontSize: '10px', top: -10 }}
             />
             <ReferenceLine y={0} stroke="#666" />
-            
-            <Line 
-              name="自动数据处理设备(含服务器)" 
-              type="monotone" 
-              dataKey="server" 
-              stroke="#005c8f" 
+
+            <Line
+              name="自动数据处理设备(含服务器)"
+              type="monotone"
+              dataKey="server"
+              stroke="#005c8f"
               strokeWidth={2.5}
               dot={{ r: 2, fill: '#005c8f' }}
               activeDot={{ r: 4, strokeWidth: 0 }}
               animationDuration={1500}
-            />
-            <Line 
-              name="半导体制造设备及零部件" 
-              type="monotone" 
-              dataKey="semiconductor" 
-              stroke="#00a9f4" 
+            >
+              <LabelList
+                dataKey="server"
+                content={(props) => renderCustomLabel({ ...props, dataLength: data.length, fill: '#005c8f' })}
+              />
+            </Line>
+            <Line
+              name="半导体制造设备及零部件"
+              type="monotone"
+              dataKey="semiconductor"
+              stroke="#00a9f4"
               strokeWidth={2.5}
               dot={{ r: 2, fill: '#00a9f4' }}
               activeDot={{ r: 4, strokeWidth: 0 }}
               animationDuration={1500}
-            />
+            >
+              <LabelList
+                dataKey="semiconductor"
+                content={(props) => renderCustomLabel({ ...props, dataLength: data.length, fill: '#00a9f4' })}
+              />
+            </Line>
           </LineChart>
         </ResponsiveContainer>
       </div>
