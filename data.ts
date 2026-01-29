@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint, ConsumerConfidenceDataPoint, ResidentIncomeExpenditureDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxRevenueDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint, ConsumerConfidenceDataPoint, ResidentIncomeExpenditureDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -1019,28 +1019,27 @@ export const exportShareMigrationData: ExportShareMigrationDataPoint[] = [
 
 // Slide 19 Data
 export const broadFiscalTrendData: BroadFiscalTrendDataPoint[] = [
-  { month: "2024-02", income: -2.3, expenditure: null },
-  { month: "2024-03", income: -2.3, expenditure: 2.9 },
-  { month: "2024-04", income: -2.7, expenditure: 3.5 },
-  { month: "2024-05", income: -2.8, expenditure: 3.4 },
-  { month: "2024-06", income: -2.8, expenditure: 2.0 },
-  { month: "2024-07", income: -2.6, expenditure: 2.5 },
-  { month: "2024-08", income: -2.6, expenditure: 1.5 },
-  { month: "2024-09", income: -2.2, expenditure: 2.0 },
-  { month: "2024-10", income: -1.3, expenditure: 2.7 },
-  { month: "2024-11", income: -0.6, expenditure: 2.8 },
-  { month: "2024-12", income: 1.3, expenditure: 3.6 },
-  { month: "2025-02", income: -1.6, expenditure: 3.4 },
-  { month: "2025-03", income: -1.1, expenditure: 4.2 },
-  { month: "2025-04", income: -0.4, expenditure: 4.6 },
-  { month: "2025-05", income: -0.3, expenditure: 4.2 },
-  { month: "2025-06", income: -0.3, expenditure: 3.4 },
-  { month: "2025-07", income: 0.1, expenditure: 3.4 },
-  { month: "2025-08", income: 0.3, expenditure: 3.1 },
-  { month: "2025-09", income: 0.5, expenditure: 3.1 },
-  { month: "2025-10", income: 0.8, expenditure: 2.0 },
-  { month: "2025-11", income: 0.8, expenditure: 1.4 },
-  { month: "2025-12", income: null, expenditure: null },
+  { month: "2024-02", taxRevenue: -4.00, nonTaxRevenue: 8.60, total: -2.30 },
+  { month: "2024-03", taxRevenue: -4.90, nonTaxRevenue: 10.10, total: -2.30 },
+  { month: "2024-04", taxRevenue: -4.90, nonTaxRevenue: 9.40, total: -2.70 },
+  { month: "2024-05", taxRevenue: -5.10, nonTaxRevenue: 10.30, total: -2.80 },
+  { month: "2024-06", taxRevenue: -5.60, nonTaxRevenue: 11.70, total: -2.80 },
+  { month: "2024-07", taxRevenue: -5.40, nonTaxRevenue: 12.00, total: -2.60 },
+  { month: "2024-08", taxRevenue: -5.30, nonTaxRevenue: 11.70, total: -2.60 },
+  { month: "2024-09", taxRevenue: -5.30, nonTaxRevenue: 13.50, total: -2.20 },
+  { month: "2024-10", taxRevenue: -4.50, nonTaxRevenue: 15.30, total: -1.30 },
+  { month: "2024-11", taxRevenue: -3.90, nonTaxRevenue: 17.00, total: -0.60 },
+  { month: "2024-12", taxRevenue: -3.40, nonTaxRevenue: 25.40, total: 1.30 },
+  { month: "2025-02", taxRevenue: -3.90, nonTaxRevenue: 11.00, total: -1.60 },
+  { month: "2025-03", taxRevenue: -3.50, nonTaxRevenue: 8.80, total: -1.10 },
+  { month: "2025-04", taxRevenue: -2.10, nonTaxRevenue: 7.70, total: -0.40 },
+  { month: "2025-05", taxRevenue: -1.60, nonTaxRevenue: 6.20, total: -0.30 },
+  { month: "2025-06", taxRevenue: -1.20, nonTaxRevenue: 3.70, total: -0.30 },
+  { month: "2025-07", taxRevenue: -0.30, nonTaxRevenue: 2.00, total: 0.10 },
+  { month: "2025-08", taxRevenue: 0.02, nonTaxRevenue: 1.50, total: 0.30 },
+  { month: "2025-09", taxRevenue: 0.70, nonTaxRevenue: -0.40, total: 0.50 },
+  { month: "2025-10", taxRevenue: 1.70, nonTaxRevenue: -3.10, total: 0.80 },
+  { month: "2025-11", taxRevenue: 1.80, nonTaxRevenue: -3.70, total: 0.80 },
 ];
 
 export const fiscalLedgerGrowthData: FiscalLedgerGrowthDataPoint[] = [
@@ -1203,3 +1202,16 @@ export const cpiEightCategoriesData: IndustryGrowthTableData = {
     "其他用品及服务": [2.6, 1.2, 0.9, 1.3, -0.3, 0.5, 0.0, -0.1, -0.2, -0.5, 0.2, 0.3, -0.5, -0.6, 1.1]
   }
 };
+
+export const taxRevenueDetailData: TaxRevenueDataPoint[] = [
+  { taxType: "国内增值税", amount: 63629, growth: 3.9 },
+  { taxType: "企业所得税", amount: 40234, growth: 1.7 },
+  { taxType: "个人所得税", amount: 14689, growth: 11.5 },
+  { taxType: "国内消费税", amount: 15639, growth: 2.5 },
+  { taxType: "进口环节税收", amount: 16520, growth: -4.7 },
+  { taxType: "印花税", amount: 4044, growth: 27.0 },
+  { taxType: "证券交易印花税", amount: 1855, growth: 70.7 },
+  { taxType: "房地产相关税收", amount: 13977, growth: null },
+  { taxType: "车辆购置税", amount: 1814, growth: -17.4 }
+];
+

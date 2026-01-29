@@ -371,8 +371,9 @@ export interface ExportShareDataPoint {
 
 export interface BroadFiscalTrendDataPoint {
     month: string;
-    income: number | null;
-    expenditure: number | null;
+    taxRevenue: number | null;
+    nonTaxRevenue: number | null;
+    total: number | null;
 }
 
 export interface FiscalLedgerGrowthDataPoint {
@@ -381,7 +382,14 @@ export interface FiscalLedgerGrowthDataPoint {
     ledger2: number;
 }
 
+export interface TaxRevenueDataPoint {
+  taxType: string;
+  amount: number;
+  growth: number | null;
+}
+
 export interface TaxCategoryDataPoint {
+
     category: string;
     value: number;
     highlight?: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  AreaChart,
-  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -18,17 +18,16 @@ interface Props {
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
-    const expPayload = payload.find((p: any) => p.name === '国家财政支出累计增长');
-    const incPayload = payload.find((p: any) => p.name === '国家财政收入累计增长');
+    const taxPayload = payload.find((p: any) => p.name === '税收收入');
+    const nonTaxPayload = payload.find((p: any) => p.name === '非税收入');
+    const totalPayload = payload.find((p: any) => p.name === '合计');
     
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue font-bold">国家财政支出累计增长: {expPayload ? expPayload.value : '-'}%</p>
-        <p className="text-webank-lightBlue">国家财政收入累计增长: {incPayload ? incPayload.value : '-'}%</p>
-        <div className="mt-1 border-t border-slate-100 pt-1 text-[10px] text-slate-500">
-           支出斜率放缓
-        </div>
+        <p className="text-webank-blue font-bold">合计: {totalPayload ? totalPayload.value : '-'}%</p>
+        <p className="text-webank-lightBlue">税收收入: {taxPayload ? taxPayload.value : '-'}%</p>
+        <p className="text-red-500">非税收入: {nonTaxPayload ? nonTaxPayload.value : '-'}%</p>
       </div>
     );
   }
@@ -40,24 +39,18 @@ export const BroadFiscalTrendChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2024-2025年国家财政收支累计同比增长
+          2024-2025年一般公共预算收入累计同比变化
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          广义支出增速回落至4.5%，收入端受土地市场拖累转负
+          税收收入持续负增长，非税收入维持高位支撑
         </p>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <LineChart
             data={data}
             margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
           >
-             <defs>
-              <linearGradient id="colorExp" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#051c2c" stopOpacity={0.1}/>
-                <stop offset="95%" stopColor="#051c2c" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
             
@@ -81,28 +74,37 @@ export const BroadFiscalTrendChart: React.FC<Props> = ({ data }) => {
                 iconSize={8} 
             />
             
-            <Area
-              name="国家财政支出累计增长"
+            <Line
+              name="合计"
               type="monotone"
-              dataKey="expenditure"
+              dataKey="total"
               stroke="#051c2c"
-              fill="url(#colorExp)"
               strokeWidth={3}
               dot={{ r: 3, fill: '#051c2c' }}
               animationDuration={2000}
             />
-             <Area
-              name="国家财政收入累计增长"
+            <Line
+              name="税收收入"
               type="monotone"
-              dataKey="income"
+              dataKey="taxRevenue"
               stroke="#00a9f4"
-              fill="transparent"
               strokeWidth={3}
               dot={false}
               animationDuration={2000}
               animationBegin={300}
             />
-          </AreaChart>
+            <Line
+              name="非税收入"
+              type="monotone"
+              dataKey="nonTaxRevenue"
+              stroke="#ef4444"
+              strokeWidth={3}
+              strokeDasharray="5 5"
+              dot={false}
+              animationDuration={2000}
+              animationBegin={600}
+            />
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

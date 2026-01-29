@@ -1,8 +1,8 @@
 import React from 'react';
 import { BroadFiscalTrendChart } from './BroadFiscalTrendChart';
-import { FiscalLedgerGrowthChart } from './FiscalLedgerGrowthChart';
-import { broadFiscalTrendData, fiscalLedgerGrowthData } from '../data';
-import { Landmark, TrendingDown, Scale, AlertTriangle } from 'lucide-react';
+import { TaxRevenueTable } from './TaxRevenueTable';
+import { broadFiscalTrendData, taxRevenueDetailData } from '../data';
+import { Landmark, TrendingDown, AlertTriangle } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -44,27 +44,21 @@ export const ContentSlide32: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          1-11月广义财政支出增速回落至4.5%，<span className="text-webank-subtext">受政策前置与收入约束双重挤压</span>
+          1-11月全年公共预算收入同比增长0.8%，税收收入增速由负转正
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="总量特征：扩张放缓" icon={Landmark} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
+         <InsightBox title="收入结构优化，恢复质量提升" icon={Landmark} delay="100ms">
            <p>
-             1-11月广义财政收入同比微降 <span className="font-bold">0.2%</span>，广义支出增长 <span className="font-bold">4.5%</span>（较前值5.2%回落）。财政脉冲力度在四季度边际减弱。
+             2025年全国一般公共预算收入呈现逐步恢复的态势。其中，税收收入自二季度起持续改善，而非税收入的增速则显著回落，从上半年的+3.7%大幅回落至-3.7%。
            </p>
          </InsightBox>
 
-         <InsightBox title="节奏分析：前高后低" icon={TrendingDown} alert={true} delay="200ms">
+         <InsightBox title="主体税种稳健，印花税高增" icon={TrendingDown} alert={true} delay="200ms">
            <p>
-             上半年政策积极靠前发力透支了额度，叠加去年同期高基数，Q4支出受限。10月单月广义一本账支出曾一度出现 <span className="font-bold">-9.8%</span> 的负增长。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="收支剪刀差收窄" icon={Scale} delay="300ms">
-           <p>
-             受土地出让收入大幅下滑影响，“二本账”收入约束明显。财政逆周期扩张的资金来源面临挑战，收支增速差自三季度以来持续收窄。
+             国内增值税增速3.9%直接反映了工商业生产和销售活动的活跃度在提升。企业所得税增长1.7%则显示企业盈利状况在波动中有所改善，个人所得税持续高速增长（前11月+11.5%）。
            </p>
          </InsightBox>
       </section>
@@ -75,7 +69,7 @@ export const ContentSlide32: React.FC = () => {
           <BroadFiscalTrendChart data={broadFiscalTrendData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <FiscalLedgerGrowthChart data={fiscalLedgerGrowthData} />
+          <TaxRevenueTable data={taxRevenueDetailData} />
         </div>
       </section>
 
