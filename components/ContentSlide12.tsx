@@ -45,15 +45,15 @@ export const ContentSlide12: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          服务消费贡献近半壁江山，乡村消费增速持续快于城镇
+          一线分化北京强力反弹，乡村消费韧性优于城镇
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-2 gap-6 mb-8 h-36">
-         <InsightBox title="服务消费：半壁江山" icon={Coffee} delay="100ms" highlight={true}>
+         <InsightBox title="一线城市社零分化，四季度北京强力反弹" icon={Coffee} delay="100ms" highlight={true}>
            <p>
-             2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平，但服务消费成为新引擎（信息、文化娱乐、旅游等）；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长<span className="font-bold">39.5%</span>，新能源汽车增长<span className="font-bold">13.2%</span>）；
+             2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长<span className="font-bold">39.5%</span>，新能源汽车增长<span className="font-bold">13.2%</span>）；
            </p>
          </InsightBox>
 

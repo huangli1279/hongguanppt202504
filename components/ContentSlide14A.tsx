@@ -1,14 +1,14 @@
 
 import React from 'react';
-import { TrendingUp, ShoppingBag, BarChart3, Activity, Wallet } from 'lucide-react';
-import { CpiTrendChart } from './CpiTrendChart';
-import { CpiDetailedTable } from './CpiDetailedTable';
-import { cpiTrendData } from '../data';
+import { TrendingUp, Users, AlertTriangle, Wallet } from 'lucide-react';
+import { ConsumerConfidenceTrendChart } from './ConsumerConfidenceTrendChart';
+import { ResidentIncomeExpenditureChart } from './ResidentIncomeExpenditureChart';
+import { consumerConfidenceData, residentIncomeExpenditureData } from '../data';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
-    
+
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
@@ -30,10 +30,10 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const ContentSlide14: React.FC = () => {
+export const ContentSlide14A: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
-      
+
       {/* Top Decoration */}
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
 
@@ -41,25 +41,25 @@ export const ContentSlide14: React.FC = () => {
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            物价压力与消费倾向分析
+            收入与信心分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          CPI 0.8% 创年内新高难掩核心需求偏弱，<span className="text-webank-accent">Q4 消费倾向转淡凸显避险情绪</span>
+          人均可支配收入实际增长5.0%，<span className="text-webank-accent">消费者信心指数回升但就业依旧承压</span>
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-2 gap-6 mb-8 h-44">
-         <InsightBox title="CPI 运行特征解析" icon={TrendingUp} delay="100ms" highlight={true}>
+         <InsightBox title="收入与就业预期分化制约消费者信心回暖" icon={TrendingUp} delay="100ms" highlight={true}>
            <p>
-             2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第四季度走势强劲，12月CPI回升至0.8%，但核心CPI仍显“温和”，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
+             消费者信心指数（从86.4升至90.3）的温和回升，主要由收入预期和消费意愿支撑，但被就业预期严重拖累，新兴领域（AI、低空经济）需求旺盛，传统行业需求减弱。
            </p>
          </InsightBox>
 
-         <InsightBox title="消费倾向解析" icon={ShoppingBag} delay="200ms">
+         <InsightBox title="收入增速超越消费，居民储蓄倾向依然显著" icon={Wallet} delay="200ms" alert={true}>
            <p>
-             四季度CPI主要受鲜菜季节性减产与全球金价避险（其他用品和服务维持高增）上涨驱动，消费品“以旧换新”等提振消费政策持续显效，推动了家用器具等消费品的需求与价格
+             2025年人均可支配收入实际增长5.0%，但居民人均消费支出实际增长4.4%，低于收入增速；显示在资产价格波动（房价/股市）背景下，居民预防性储蓄心理依然较强。
            </p>
          </InsightBox>
       </section>
@@ -67,17 +67,17 @@ export const ContentSlide14: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <CpiTrendChart data={cpiTrendData} />
+          <ConsumerConfidenceTrendChart data={consumerConfidenceData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <CpiDetailedTable />
+          <ResidentIncomeExpenditureChart data={residentIncomeExpenditureData} />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>19</span>
+        <span>20</span>
       </footer>
 
       {/* Animation Styles */}

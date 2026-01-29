@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint, ConsumerConfidenceDataPoint, ResidentIncomeExpenditureDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -526,6 +526,52 @@ export const consumptionPropensityData: ConsumptionPropensityDataPoint[] = [
   { period: "2025-Q2", value: 67.4 },
   { period: "2025-Q3", value: 69.5 },
   { period: "2025-Q4", value: 72.7 },
+];
+
+// Consumer Confidence and Income Data (New Slide)
+export const consumerConfidenceData: ConsumerConfidenceDataPoint[] = [
+  { month: '2024-01', confidence: 88.9, income: 95.7, employment: 78.2, consumption: 92.9 },
+  { month: '2024-02', confidence: 89.1, income: 96.0, employment: 80.1, consumption: 91.2 },
+  { month: '2024-03', confidence: 89.4, income: 96.9, employment: 78.6, consumption: 92.7 },
+  { month: '2024-04', confidence: 88.2, income: 95.0, employment: 77.0, consumption: 92.8 },
+  { month: '2024-05', confidence: 86.4, income: 93.2, employment: 74.0, consumption: 91.9 },
+  { month: '2024-06', confidence: 86.2, income: 93.8, employment: 71.8, consumption: 93.0 },
+  { month: '2024-07', confidence: 86.0, income: 94.4, employment: 71.6, consumption: 92.0 },
+  { month: '2024-08', confidence: 85.8, income: 94.2, employment: 71.5, consumption: 91.5 },
+  { month: '2024-09', confidence: 85.7, income: 93.9, employment: 71.3, consumption: 92.0 },
+  { month: '2024-10', confidence: 86.9, income: 94.3, employment: 73.3, consumption: 93.1 },
+  { month: '2024-11', confidence: 86.2, income: 94.1, employment: 71.4, consumption: 93.0 },
+  { month: '2024-12', confidence: 86.4, income: 94.0, employment: 72.5, consumption: 92.7 },
+  { month: '2025-01', confidence: 87.5, income: 95.4, employment: 72.9, consumption: 94.4 },
+  { month: '2025-02', confidence: 88.4, income: 96.5, employment: 74.0, consumption: 94.6 },
+  { month: '2025-03', confidence: 87.5, income: 95.5, employment: 72.4, consumption: 94.6 },
+  { month: '2025-04', confidence: 87.8, income: 94.8, employment: 72.5, consumption: 96.1 },
+  { month: '2025-05', confidence: 88.0, income: 96.6, employment: 71.4, consumption: 95.9 },
+  { month: '2025-06', confidence: 87.9, income: 96.1, employment: 70.6, consumption: 96.9 },
+  { month: '2025-07', confidence: 89.0, income: 98.1, employment: 72.8, consumption: 96.2 },
+  { month: '2025-08', confidence: 89.2, income: 98.0, employment: 74.9, consumption: 94.7 },
+  { month: '2025-09', confidence: 89.6, income: 97.8, employment: 72.4, consumption: 98.6 },
+  { month: '2025-10', confidence: 89.4, income: 96.7, employment: 75.9, consumption: 95.5 },
+  { month: '2025-11', confidence: 90.3, income: 98.5, employment: 76.7, consumption: 95.8 },
+];
+
+export const residentIncomeExpenditureData: ResidentIncomeExpenditureDataPoint[] = [
+  { period: '2022-03', disposableIncome: 5.10, wageIncome: 6.60, businessIncome: 5.40, propertyIncome: 6.10, transferIncome: 6.30, consumptionExpenditure: 5.70 },
+  { period: '2022-06', disposableIncome: 3.00, wageIncome: 4.70, businessIncome: 3.20, propertyIncome: 5.20, transferIncome: 5.60, consumptionExpenditure: 0.80 },
+  { period: '2022-09', disposableIncome: 3.20, wageIncome: 5.10, businessIncome: 5.20, propertyIncome: 5.80, transferIncome: 5.60, consumptionExpenditure: 1.50 },
+  { period: '2022-12', disposableIncome: 2.90, wageIncome: 4.90, businessIncome: 4.80, propertyIncome: 4.90, transferIncome: 5.50, consumptionExpenditure: -0.20 },
+  { period: '2023-03', disposableIncome: 3.80, wageIncome: 5.00, businessIncome: 5.80, propertyIncome: 4.10, transferIncome: 5.10, consumptionExpenditure: 4.00 },
+  { period: '2023-06', disposableIncome: 5.80, wageIncome: 6.80, businessIncome: 7.00, propertyIncome: 4.70, transferIncome: 6.10, consumptionExpenditure: 7.60 },
+  { period: '2023-09', disposableIncome: 5.90, wageIncome: 6.80, businessIncome: 6.70, propertyIncome: 3.70, transferIncome: 5.80, consumptionExpenditure: 8.80 },
+  { period: '2023-12', disposableIncome: 6.10, wageIncome: 7.10, businessIncome: 6.00, propertyIncome: 4.20, transferIncome: 5.40, consumptionExpenditure: 9.00 },
+  { period: '2024-03', disposableIncome: 6.20, wageIncome: 6.80, businessIncome: 6.80, propertyIncome: 3.20, transferIncome: 4.80, consumptionExpenditure: 8.30 },
+  { period: '2024-06', disposableIncome: 5.30, wageIncome: 5.75, businessIncome: 6.41, propertyIncome: 2.14, transferIncome: 5.00, consumptionExpenditure: 6.70 },
+  { period: '2024-09', disposableIncome: 4.90, wageIncome: 5.70, businessIncome: 6.40, propertyIncome: 1.20, transferIncome: 4.90, consumptionExpenditure: 5.30 },
+  { period: '2024-12', disposableIncome: 5.10, wageIncome: 5.80, businessIncome: 5.60, propertyIncome: 2.20, transferIncome: 5.30, consumptionExpenditure: 5.10 },
+  { period: '2025-03', disposableIncome: 5.60, wageIncome: 5.93, businessIncome: 5.71, propertyIncome: 2.73, transferIncome: 5.50, consumptionExpenditure: 5.30 },
+  { period: '2025-06', disposableIncome: 5.40, wageIncome: 5.70, businessIncome: 5.30, propertyIncome: 2.50, transferIncome: 5.60, consumptionExpenditure: 5.30 },
+  { period: '2025-09', disposableIncome: 5.20, wageIncome: 5.40, businessIncome: 5.30, propertyIncome: 1.70, transferIncome: 5.30, consumptionExpenditure: 4.70 },
+  { period: '2025-12', disposableIncome: 5.00, wageIncome: 5.30, businessIncome: 5.00, propertyIncome: 1.60, transferIncome: 5.70, consumptionExpenditure: 4.40 },
 ];
 
 export const cpiContributionData: CpiContributionDataPoint[] = [

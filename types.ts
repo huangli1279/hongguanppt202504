@@ -1,5 +1,7 @@
 
 
+import React from 'react';
+
 export interface GdpDataPoint {
   period: string;
   value: number;
@@ -255,6 +257,24 @@ export interface EquipmentVsConstructionTrendDataPoint {
 export interface ConsumptionPropensityDataPoint {
   period: string;
   value: number;
+}
+
+export interface ConsumerConfidenceDataPoint {
+  month: string;
+  confidence: number;
+  income: number;
+  employment: number;
+  consumption: number;
+}
+
+export interface ResidentIncomeExpenditureDataPoint {
+  period: string;
+  disposableIncome: number;
+  wageIncome: number;
+  businessIncome: number;
+  propertyIncome: number;
+  transferIncome: number;
+  consumptionExpenditure: number;
 }
 
 export interface IndustryGrowthTableData {

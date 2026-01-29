@@ -35,6 +35,50 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
+const CustomLegend = ({ payload }: any) => {
+  if (!payload || !payload.length) return null;
+
+  // 定义自定义的图例顺序
+  const customOrder = [
+    '固定资产投资',
+    '制造业投资',
+    '基础设施建设投资',
+    '房地产开发投资'
+  ];
+
+  // 根据自定义顺序重新排列payload
+  const sortedPayload = customOrder
+    .map(name => payload.find((item: any) => item.value === name))
+    .filter(Boolean);
+
+  return (
+    <ul style={{
+      listStyle: 'none',
+      padding: 0,
+      paddingTop: '10px',
+      display: 'flex',
+      justifyContent: 'center',
+      margin: 0
+    }}>
+      {sortedPayload.map((entry: any, index: number) => (
+        <li
+          key={`legend-item-${index}`}
+          style={{
+            marginRight: index < sortedPayload.length - 1 ? '20px' : '0',
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
+          <svg width="8" height="8" style={{ marginRight: '5px' }}>
+            <circle cx="4" cy="4" r="4" fill={entry.color} />
+          </svg>
+          <span style={{ fontSize: '12px', color: '#666' }}>{entry.value}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
@@ -59,7 +103,7 @@ export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
               axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
               tick={{ fill: '#666', fontSize: 9 }}
-              interval={1}
+              ticks={['2024-02', '2024-04', '2024-06', '2024-08', '2024-10', '2024-12', '2025-02', '2025-04', '2025-06', '2025-08', '2025-10', '2025-12']}
               dy={10}
             />
             <YAxis
@@ -70,11 +114,7 @@ export const FaiComponentsChart: React.FC<Props> = ({ data }) => {
               domain={['auto', 'auto']}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Legend
-              wrapperStyle={{ paddingTop: '10px' }}
-              iconType="circle"
-              iconSize={8}
-            />
+            <Legend content={<CustomLegend />} />
             <Line
               name="固定资产投资"
               type="monotone"

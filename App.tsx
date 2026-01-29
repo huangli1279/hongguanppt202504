@@ -17,6 +17,7 @@ import { ContentSlide11 } from './components/ContentSlide11';
 import { ContentSlide12 } from './components/ContentSlide12';
 import { ContentSlide13 } from './components/ContentSlide13';
 import { ContentSlide14 } from './components/ContentSlide14';
+import { ContentSlide14A } from './components/ContentSlide14A';
 import { ContentSlide15 } from './components/ContentSlide15';
 import { ContentSlide16 } from './components/ContentSlide16';
 import { ContentSlide17 } from './components/ContentSlide17';
@@ -37,7 +38,7 @@ const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 38; // Reduced after removing old position 28
+  const TOTAL_SLIDES = 39; // Added ContentSlide14A between CPI and Investment sections
 
   // Function to handle scaling based on window size to maintain 16:9 visualization
   const handleResize = () => {
@@ -163,43 +164,44 @@ const App: React.FC = () => {
         {currentSlide === 17 && <ContentSlide12 />}
         {currentSlide === 18 && <ContentSlide13 />}
         {currentSlide === 19 && <ContentSlide14 />}
+        {currentSlide === 20 && <ContentSlide14A />}
 
         {/* Transition Slide 4: Investment */}
-        {currentSlide === 20 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
+        {currentSlide === 21 && <SectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
 
         {/* Investment Slides */}
-        {currentSlide === 21 && <ContentSlide15 />}
-        {currentSlide === 22 && <ContentSlide16 />}
-        {currentSlide === 23 && <ContentSlide17 />}
-        {currentSlide === 24 && <ContentSlide18 />}
+        {currentSlide === 22 && <ContentSlide15 />}
+        {currentSlide === 23 && <ContentSlide16 />}
+        {currentSlide === 24 && <ContentSlide17 />}
+        {currentSlide === 25 && <ContentSlide18 />}
 
         {/* Transition Slide 5: Trade */}
-        {currentSlide === 25 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 26 && <SectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
 
         {/* Trade Slides */}
-        {currentSlide === 26 && <ContentSlide19 />}
-        {currentSlide === 27 && <ContentSlide20 />}
-        {currentSlide === 28 && <ContentSlide21 />}
-        {currentSlide === 29 && <ContentSlide22 />}
+        {currentSlide === 27 && <ContentSlide19 />}
+        {currentSlide === 28 && <ContentSlide20 />}
+        {currentSlide === 29 && <ContentSlide21 />}
+        {currentSlide === 30 && <ContentSlide22 />}
 
         {/* Transition Slide 6: Fiscal */}
-        {currentSlide === 30 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 31 && <SectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
 
         {/* Fiscal Slides */}
-        {currentSlide === 31 && <ContentSlide23 />}
-        {currentSlide === 32 && <ContentSlide24 />}
-        {currentSlide === 33 && <ContentSlide25 />}
+        {currentSlide === 32 && <ContentSlide23 />}
+        {currentSlide === 33 && <ContentSlide24 />}
+        {currentSlide === 34 && <ContentSlide25 />}
 
         {/* NEW Transition Slide 7: Financial */}
-        {currentSlide === 34 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 35 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides */}
-        {currentSlide === 35 && <ContentSlide26 />}
-        {currentSlide === 36 && <ContentSlide27 />}
-        {currentSlide === 37 && <ContentSlide28 />}
+        {currentSlide === 36 && <ContentSlide26 />}
+        {currentSlide === 37 && <ContentSlide27 />}
+        {currentSlide === 38 && <ContentSlide28 />}
 
         {/* Thank You Slide */}
-        {currentSlide === 38 && <ThankYouSlide />}
+        {currentSlide === 39 && <ThankYouSlide />}
       </div>
 
       {/* Visual Indicators (Vertical, Right Side, Non-interactive) */}

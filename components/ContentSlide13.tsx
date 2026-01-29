@@ -1,9 +1,7 @@
 
 import React from 'react';
-import { Smartphone, Zap, ShoppingBag, TrendingUp, AlertCircle, BarChart3 } from 'lucide-react';
+import { Smartphone, AlertCircle } from 'lucide-react';
 import { RetailCategoryTable } from './RetailCategoryTable';
-import { AutoDealerInventoryChart } from './AutoDealerInventoryChart';
-import { autoDealerInventoryData } from '../data';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -50,33 +48,24 @@ export const ContentSlide13: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-40">
-         <InsightBox title="通讯器材：最强引擎" icon={Smartphone} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-2 gap-6 mb-8 h-40">
+         <InsightBox title="通讯器材增速领跑，家电家具受补贴退坡放缓" icon={Smartphone} delay="100ms" highlight={true}>
            <p>
-             政策“红包”与AI技术红利共振。2025年通讯器材零售额累计同比增长 <span className="font-bold text-webank-lightBlue">20.9%</span>。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="以旧换新：降维打击" icon={Zap} delay="200ms">
-           <p>
-             商务部数据显示中高端手机补贴占比为 <span className="font-bold">72.5%</span>，通过“政府补贴+厂方让利”实现精准收割。AI手机渗透率提升，IDC预计2026年中国新一代AI手机出货量将达 <span className="font-bold">1.47亿台</span>，同比增长31.6%，占据整体市场的 <span className="font-bold">53%</span>。
+             2025全年通讯器材类以 20.86% 的累计增速领跑大盘，这主要受益于 “以旧换新”对中高端机型（占比达 72.5%）的精准补贴；体育娱乐用品全年正增长，12月累计达 15.70%，折射居民对健康投资与精神消费的持续热衷；家用电器（12月跌至11.0%）、家具类（12月跌至14.62%）受四季度补贴退坡影响。
            </p>
          </InsightBox>
 
          <InsightBox title="家电汽车：透支休克" icon={AlertCircle} delay="300ms" alert={true}>
            <p>
-             边际递减效应显现：家电类零售同比转负（12月 <span className="font-bold">-18.7%</span>），反映出存量收割后的补偿性回落。12月汽车经销商库存系数 <span className="font-bold">1.31</span>，仍高于合理区间。
+             受房地产下行周期拖累的影响，相关行业普遍承压：建筑及装潢材料类累计同比跌至 -2.67%，汽车行业受补贴退坡和市场内卷影响，全年以-1.5%的增长收尾。
            </p>
          </InsightBox>
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+      <section className="flex-grow flex flex-col min-h-0">
+        <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <RetailCategoryTable />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <AutoDealerInventoryChart data={autoDealerInventoryData} />
         </div>
       </section>
 
