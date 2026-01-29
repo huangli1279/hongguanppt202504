@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { RetailTrendChart } from './RetailTrendChart';
-import { UrbanRuralChart } from './UrbanRuralChart';
-import { retailTrendData, urbanRuralData } from '../data';
+import { ServiceGoodsGapChart } from './ServiceGoodsGapChart';
+import { retailTrendData, serviceGoodsData } from '../data';
 import { TrendingDown, CalendarClock, ShoppingBag } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => (
@@ -17,7 +17,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: stri
   </div>
 );
 
-export const SlideContentEight: React.FC = () => {
+export const ContentSlide11: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
@@ -60,10 +60,10 @@ export const SlideContentEight: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <RetailTrendChart data={retailTrendData} />
+          <ServiceGoodsGapChart data={serviceGoodsData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <UrbanRuralChart data={urbanRuralData} />
+          <RetailTrendChart data={retailTrendData} />
         </div>
       </section>
 

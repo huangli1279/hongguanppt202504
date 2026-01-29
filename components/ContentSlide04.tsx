@@ -25,7 +25,7 @@ const InsightColumn = ({ title, highlight, children, icon: Icon, type, delay }: 
     );
 };
 
-export const SlideContentThree: React.FC = () => {
+export const ContentSlide04: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       

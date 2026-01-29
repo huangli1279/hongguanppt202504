@@ -1,20 +1,16 @@
-
 import React from 'react';
-import { Smartphone, Zap, ShoppingBag, TrendingUp, AlertCircle, BarChart3 } from 'lucide-react';
-import { RetailCategoryTable } from './RetailCategoryTable';
-import { AutoDealerInventoryChart } from './AutoDealerInventoryChart';
-import { autoDealerInventoryData } from '../data';
+import { FaiComponentsChart } from './FaiComponentsChart';
+import { PrivateStateInvestmentChart } from './PrivateStateInvestmentChart';
+import { faiComponentsData, privateStateInvestmentData } from '../data';
+import { TrendingDown, Building, Briefcase, BarChart } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
+const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
     
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
-    } else if (highlight) {
-        borderColor = 'border-webank-lightBlue';
-        iconColor = 'text-webank-lightBlue';
     }
 
     return (
@@ -30,63 +26,58 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentEighteen: React.FC = () => {
+export const ContentSlide15: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-red-800"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            细分品类与政策成效分析
+            固定资产投资分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          通讯器材全年高增20.9%领跑市场，家电与汽车消费年底承压
+          2025年固投全年下降3.8%，<span className="text-webank-subtext">房地产深跌与基建乏力导致"稳增长"缺口</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-40">
-         <InsightBox title="通讯器材：最强引擎" icon={Smartphone} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
+         <InsightBox title="总量加速下行" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             政策“红包”与AI技术红利共振。2025年通讯器材零售额累计同比增长 <span className="font-bold text-webank-lightBlue">20.9%</span>。
+             全年固定资产投资（不含农户）同比下降 <span className="font-bold">3.8%</span>。四季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。固定资产投资三大支柱全面降速：房地产深度下跌（-17.2%）、基建转负（-1.48%）、制造业增速显著回落（0.6%），整体投资动能乏力。
            </p>
          </InsightBox>
 
-         <InsightBox title="以旧换新：降维打击" icon={Zap} delay="200ms">
-           <p>
-             商务部数据显示中高端手机补贴占比为 <span className="font-bold">72.5%</span>，通过“政府补贴+厂方让利”实现精准收割。AI手机渗透率提升，IDC预计2026年中国新一代AI手机出货量将达 <span className="font-bold">1.47亿台</span>，同比增长31.6%，占据整体市场的 <span className="font-bold">53%</span>。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="家电汽车：透支休克" icon={AlertCircle} delay="300ms" alert={true}>
-           <p>
-             边际递减效应显现：家电类零售同比转负（12月 <span className="font-bold">-18.7%</span>），反映出存量收割后的补偿性回落。12月汽车经销商库存系数 <span className="font-bold">1.31</span>，仍高于合理区间。
-           </p>
-         </InsightBox>
+          <InsightBox title="民间投资深度负增长" icon={Building} delay="200ms" alert={true}>
+            <p>
+              <span className="font-bold">民间投资：</span>全年下降6.4%，创历史新低，反映民营企业投资意愿极度低迷。<br/>
+              <span className="font-bold">国有控股：</span>全年下降2.5%，亦转负增长。
+            </p>
+          </InsightBox>
       </section>
 
-      {/* Charts Section */}
+       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <RetailCategoryTable />
+          <FaiComponentsChart data={faiComponentsData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <AutoDealerInventoryChart data={autoDealerInventoryData} />
+          <PrivateStateInvestmentChart data={privateStateInvestmentData} />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>18</span>
+        
       </footer>
 
-      {/* Animation Styles */}
+      {/* Animation Styles Reuse */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

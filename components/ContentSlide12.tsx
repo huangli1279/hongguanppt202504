@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { TrendingUp, ShoppingBag, AlertCircle, BarChart3, Activity, Wallet } from 'lucide-react';
-import { CpiTrendChart } from './CpiTrendChart';
-import { ConsumptionPropensityChart } from './ConsumptionPropensityChart';
-import { cpiTrendData, consumptionPropensityData } from '../data';
+import { ServiceGoodsGapChart } from './ServiceGoodsGapChart';
+import { UrbanRuralChart } from './UrbanRuralChart';
+import { serviceGoodsData, urbanRuralData } from '../data';
+import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,7 +30,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentEighteen_Added: React.FC = () => {
+export const ContentSlide12: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
@@ -41,31 +41,31 @@ export const SlideContentEighteen_Added: React.FC = () => {
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            物价压力与消费倾向分析
+            商品与服务结构分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          CPI 0.8% 创年内新高难掩核心需求偏弱，<span className="text-webank-accent">Q4 消费倾向转淡凸显避险情绪</span>
+          服务消费贡献近半壁江山，乡村消费增速持续快于城镇
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-44">
-         <InsightBox title="CPI 结构分析" icon={TrendingUp} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="服务消费：半壁江山" icon={Coffee} delay="100ms" highlight={true}>
            <p>
-             <span className="font-bold">成本推动型上涨：</span>12月CPI回升至0.8%，主要受鲜菜季节性减产与全球金价避险上涨驱动。同比涨幅虽创2023年3月以来新高，但剔除食品与能源后，<span className="font-bold">核心CPI仍显“温和”</span>，反映出耐用品市场（如家电、服装）仍处于价格博弈期，居民对非必需品的消费弹性极低。
+             全年服务零售额增长 <span className="font-bold">5.5%</span>，高于商品（3.8%）。人均服务性消费支出占比达 <span className="font-bold">46.1%</span>。前三季度以旧换新政策强力提振商品消费，使其增速领跑，而四季度政策效应减弱，年终文娱旅游需求爆发，增速反超商品消费。
            </p>
          </InsightBox>
 
-         <InsightBox title="消费倾向解析" icon={ShoppingBag} delay="200ms">
+         <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
            <p>
-             <span className="font-bold">“信心错位”：</span>全年人均收入实际增长5.0%，但消费倾向下降至72.7%。收入增长并未完全转化为支出意愿，反映出居民对未来收入预期的波动性担忧。
+             全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
            </p>
          </InsightBox>
 
-         <InsightBox title="深度洞察" icon={AlertCircle} delay="300ms" alert={true}>
+         <InsightBox title="逻辑深挖：政策时滞" icon={TrendingUp} delay="300ms">
            <p>
-             <span className="font-bold">预防性储蓄增强：</span>居民消费支出增速（4.4%）持续低于收入增速，显示出预防性储蓄意愿在Q4显著增强。金价暴涨带动CPI的同时，也侧面印证了居民资金流向<span className="font-bold">避险资产</span>而非实物消费。
+             以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
            </p>
          </InsightBox>
       </section>
@@ -73,20 +73,20 @@ export const SlideContentEighteen_Added: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <CpiTrendChart data={cpiTrendData} />
+          <ServiceGoodsGapChart data={serviceGoodsData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <ConsumptionPropensityChart data={consumptionPropensityData} />
+          <UrbanRuralChart data={urbanRuralData} />
         </div>
       </section>
 
       {/* Footer */}
       <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        <span>19</span>
+        
       </footer>
 
-      {/* Animation Styles */}
+      {/* Animation Styles Reuse */}
       <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

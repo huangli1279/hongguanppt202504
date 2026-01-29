@@ -1,9 +1,9 @@
 
+
 import React from 'react';
-import { ServiceGoodsGapChart } from './ServiceGoodsGapChart';
-import { UrbanRuralChart } from './UrbanRuralChart';
-import { serviceGoodsData, urbanRuralData } from '../data';
-import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
+import { InfrastructureTable } from './InfrastructureTable';
+import { infrastructureGrowthTableData } from '../data';
+import { TrendingDown, Zap, Clock, Landmark } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,53 +30,50 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentNine: React.FC = () => {
+export const ContentSlide17: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-600"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            商品与服务结构分析
+            基建投资专项分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          服务消费贡献近半壁江山，乡村消费增速持续快于城镇
+          基建投资全年下降1.48%，<span className="text-webank-subtext">债务化解与项目断档导致实物工作量落地受阻</span>
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="服务消费：半壁江山" icon={Coffee} delay="100ms" highlight={true}>
+         <InsightBox title="化债约束与挤出效应" icon={Landmark} alert={true} delay="100ms">
            <p>
-             全年服务零售额增长 <span className="font-bold">5.5%</span>，高于商品（3.8%）。人均服务性消费支出占比达 <span className="font-bold">46.1%</span>。前三季度以旧换新政策强力提振商品消费，使其增速领跑，而四季度政策效应减弱，年终文娱旅游需求爆发，增速反超商品消费。
+             受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显“挤出”。12月单月基建投资估算同比下降约 <span className="font-bold">12.2%-16%</span>，资金到位率偏低制约施工进度。
            </p>
          </InsightBox>
 
-         <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
+         <InsightBox title="结构分化：能源托底" icon={Zap} highlight={true} delay="200ms">
            <p>
-             全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
+             <span className="font-bold">电热气水</span> 投资全年增长 <span className="font-bold">9.1%</span>，受益于能源保供与绿色转型强力支持。相比之下，<span className="font-bold">水利环境公用设施</span> 投资全年下降8.4%，12月单月更是深跌26.6%，成为主要拖累。
            </p>
          </InsightBox>
 
-         <InsightBox title="逻辑深挖：政策时滞" icon={TrendingUp} delay="300ms">
+         <InsightBox title="政策时滞" icon={Clock} delay="300ms">
            <p>
-             以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
+             尽管10月投放了5000亿新型政策性金融工具，但受北方冬季施工受限及项目前期准备周期影响，四季度实物工作量尚未充分释放，政策效果存在滞后性。
            </p>
          </InsightBox>
       </section>
 
-      {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ServiceGoodsGapChart data={serviceGoodsData} />
-        </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <UrbanRuralChart data={urbanRuralData} />
+      {/* Table Section */}
+      <section className="flex-grow min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
+          <InfrastructureTable data={infrastructureGrowthTableData} />
         </div>
       </section>
 

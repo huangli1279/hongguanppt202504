@@ -1,9 +1,10 @@
 
+
 import React from 'react';
-import { TaxCategoryChart } from './TaxCategoryChart';
-import { VatVsProductionChart } from './VatVsProductionChart';
-import { taxCategoryData, vatVsProductionData } from '../data';
-import { TrendingDown, Percent, Wallet, AlertCircle } from 'lucide-react';
+import { TsfDecContributionChart } from './TsfDecContributionChart';
+import { CorpLoanTrendChart } from './CorpLoanTrendChart';
+import { tsfDecContributionData, corpLoanTrendData } from '../data';
+import { Landmark, TrendingDown, Briefcase, BarChart2 } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,43 +31,42 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentTwenty: React.FC = () => {
+export const ContentSlide27: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-600"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-700"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            税收分析：结构性分化
+            社融与信贷：政府债错位致社融降速
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          生产端走弱拖累税收修复斜率，<span className="text-webank-lightBlue">证券印花税与个税受政策扰动维持高增</span>
+          12月社融存量增速回落至8.3%，政府债高基数是核心拖累，<span className="text-webank-accent">企业信贷现积极信号</span>
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="总量修复遇阻" icon={TrendingDown} alert={true} delay="100ms">
+         <InsightBox title="社融总量：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             1-11月税收收入累计增长 <span className="font-bold">1.8%</span>，修复进程延续。但11月单月增速由10月的8.6%大幅回落至 <span className="font-bold">2.8%</span>。工业生产走弱及PPI负增严重制约了增值税和企业所得税（11月单月-5.2%）的增长。
+             12月新增社融 <span className="font-bold">2.21万亿元</span>，同比少增6457亿元；存量增速回落至 <span className="font-bold">8.3%</span>。主要受2024年末2万亿隐债置换债券集中发行带来的高基数影响，12月政府债净融资仅0.7万亿，同比大幅少增1.07万亿元。
            </p>
          </InsightBox>
 
-         <InsightBox title="非基本面亮点" icon={Percent} highlight={true} delay="200ms">
+         <InsightBox title="企业贷：积极信号" icon={Briefcase} highlight={true} delay="200ms">
            <p>
-             <span className="font-bold">证券印花税 (+70.7%)</span>：资本市场活跃度提升显著拉动。<br/>
-             <span className="font-bold">个税 (+11.5%)</span>：主要源于加强互联网平台税收征管及股东减持，而非居民收入实质性大幅改善。
+             12月企业中长期贷款新增 <span className="font-bold">3300亿元</span>，同比多增2900亿元，结束了连续5个月的同比少增。得益于5000亿新型政策性金融工具投放后的配套融资需求释放，以及银行年末冲量。
            </p>
          </InsightBox>
 
-         <InsightBox title="非税空间收窄" icon={AlertCircle} delay="300ms">
+         <InsightBox title="直接融资：环境改善" icon={BarChart2} delay="300ms">
            <p>
-             1-11月非税收入同比 <span className="font-bold">下降 3.7%</span>，远低于过去五年平均水平。表明地方政府通过“罚没收入”等非税手段弥补财力的空间已大幅收窄，财政紧平衡压力加剧。
+             12月企业债券融资同比多增 <span className="font-bold">1683亿元</span>。受益于化债背景下城投再融资环境改善及产业债发行回暖，直接融资渠道功能有所修复。
            </p>
          </InsightBox>
       </section>
@@ -74,10 +74,10 @@ export const SlideContentTwenty: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TaxCategoryChart data={taxCategoryData} />
+          <TsfDecContributionChart data={tsfDecContributionData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <VatVsProductionChart data={vatVsProductionData} />
+          <CorpLoanTrendChart data={corpLoanTrendData} />
         </div>
       </section>
 

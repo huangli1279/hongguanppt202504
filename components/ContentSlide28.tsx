@@ -1,9 +1,10 @@
 
+
 import React from 'react';
-import { CpiTrendChart } from './CpiTrendChart';
-import { CpiContributionChart } from './CpiContributionChart';
-import { cpiTrendData, cpiContributionData } from '../data';
-import { Coins, Carrot, Home, Activity } from 'lucide-react';
+import { HouseholdLoanChart } from './HouseholdLoanChart';
+import { DepositFlowChart } from './DepositFlowChart';
+import { householdLoanStructureData, depositFlowData } from '../data';
+import { Wallet, TrendingDown, PiggyBank, ArrowRightLeft } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,48 +31,42 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentTen: React.FC = () => {
+export const ContentSlide28: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-800"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            物价与通胀深度分析
+            部门行为：居民资产负债表监测
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          12月CPI回升至0.8%主要受鲜菜与金价驱动，<span className="text-webank-subtext">核心需求内生动力依然不强</span>
+          12月居民贷款罕见净偿还916亿元，<span className="text-webank-subtext">避险情绪驱动存款回流银行体系</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-36">
-         <InsightBox title="结构性回暖" icon={Activity} delay="100ms" highlight={true}>
+      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+         <InsightBox title="主动去杠杆" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             12月CPI同比上涨 <span className="font-bold">0.8%</span>（前值0.7%），创2023年3月以来新高。但涨幅主要由供给侧扰动（天气）与外部输入（金价）贡献。
+             12月居民贷款罕见减少 <span className="font-bold">916亿元</span>，同比多减4416亿元。短期贷款减少1023亿元（消费疲软），中长期贷款仅增100亿元（地产销售低迷及提前还贷）。收入预期不稳下，居民缩表意愿加剧。
            </p>
          </InsightBox>
 
-         <InsightBox title="金价效应" icon={Coins} delay="200ms">
+         <InsightBox title="预防性储蓄" icon={PiggyBank} highlight={true} delay="200ms">
            <p>
-             金饰品价格同比大涨 <span className="font-bold">68.5%</span>。据测算，金价上涨对核心CPI的贡献高达 <span className="font-bold">0.54%</span>。剔除黄金后，实际核心通胀仅为0.6%。
+             资产端倾向保守，12月居民存款大增 <span className="font-bold">2.58万亿元</span>，同比多增3900亿元。全年累计增加14.64万亿元，资金回流定期存款趋势未改，风险偏好持续处于低位。
            </p>
          </InsightBox>
 
-         <InsightBox title="“菜篮子”冲击" icon={Carrot} delay="300ms">
+         <InsightBox title="存款搬家退潮" icon={ArrowRightLeft} delay="300ms">
            <p>
-             受寒潮雨雪天气影响，<span className="font-bold">鲜菜 (+18.2%)</span> 与鲜果 (+4.4%) 价格飙升，成为CPI转正的另一大核心推手。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="居住需求疲软" icon={Home} delay="400ms" alert={true}>
-           <p>
-             房租价格同比下降 <span className="font-bold">0.3%</span>，降幅进一步走阔。居住类消费持续降级，反映房地产市场调整压力向租赁市场传导。
+             相比10月受股市大涨驱动的“存款搬家”，12月非银存款 <span className="font-bold">减少 3300亿元</span>。随着股市震荡及年末银行考核压力，资金流向逆转，重新回流银行表内，M2增速因此受益。
            </p>
          </InsightBox>
       </section>
@@ -79,10 +74,10 @@ export const SlideContentTen: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <CpiTrendChart data={cpiTrendData} />
+          <HouseholdLoanChart data={householdLoanStructureData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <CpiContributionChart data={cpiContributionData} />
+          <DepositFlowChart data={depositFlowData} />
         </div>
       </section>
 

@@ -1,21 +1,17 @@
 
-
 import React from 'react';
-import { TsfDecContributionChart } from './TsfDecContributionChart';
-import { CorpLoanTrendChart } from './CorpLoanTrendChart';
-import { tsfDecContributionData, corpLoanTrendData } from '../data';
-import { Landmark, TrendingDown, Briefcase, BarChart2 } from 'lucide-react';
+import { RealEstateInvestmentChart } from './RealEstateInvestmentChart';
+import { RealEstatePriceChart } from './RealEstatePriceChart';
+import { realEstateInvestmentData, realEstateMarketData } from '../data';
+import { Home, TrendingDown } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
+const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
     
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
-    } else if (highlight) {
-        borderColor = 'border-webank-lightBlue';
-        iconColor = 'text-webank-lightBlue';
     }
 
     return (
@@ -31,42 +27,36 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentTwentyThree: React.FC = () => {
+export const ContentSlide16: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-700"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-red-700"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            社融与信贷：政府债错位致社融降速
+            房地产市场深度分析
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          12月社融存量增速回落至8.3%，政府债高基数是核心拖累，<span className="text-webank-accent">企业信贷现积极信号</span>
+          房地产开发投资重挫17.2%，<span className="text-webank-subtext">新开工面积腰斩式下跌制约后续实物量</span>
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="社融总量：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
+         <InsightBox title="投资端深度出清" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             12月新增社融 <span className="font-bold">2.21万亿元</span>，同比少增6457亿元；存量增速回落至 <span className="font-bold">8.3%</span>。主要受2024年末2万亿隐债置换债券集中发行带来的高基数影响，12月政府债净融资仅0.7万亿，同比大幅少增1.07万亿元。
+             全年开发投资下降 <span className="font-bold">17.2%</span>。房屋新开工面积下降 <span className="font-bold">20.4%</span>，竣工面积下降18.1%。先行指标剧烈收缩，意味着未来1-2年建安投资仍面临巨大压力。
            </p>
          </InsightBox>
 
-         <InsightBox title="企业贷：积极信号" icon={Briefcase} highlight={true} delay="200ms">
+         <InsightBox title="房价指数：持续调整" icon={Home} delay="200ms" alert={true}>
            <p>
-             12月企业中长期贷款新增 <span className="font-bold">3300亿元</span>，同比多增2900亿元，结束了连续5个月的同比少增。得益于5000亿新型政策性金融工具投放后的配套融资需求释放，以及银行年末冲量。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="直接融资：环境改善" icon={BarChart2} delay="300ms">
-           <p>
-             12月企业债券融资同比多增 <span className="font-bold">1683亿元</span>。受益于化债背景下城投再融资环境改善及产业债发行回暖，直接融资渠道功能有所修复。
+             70个大中城市房价指数维持下行态势。12月新建商品住宅价格同比下降 <span className="font-bold">3.05%</span>，二手住宅价格同比下降 <span className="font-bold">6.07%</span>。市场筑底过程仍在延续，价格修复斜率依然偏平。
            </p>
          </InsightBox>
       </section>
@@ -74,10 +64,10 @@ export const SlideContentTwentyThree: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TsfDecContributionChart data={tsfDecContributionData} />
+          <RealEstateInvestmentChart data={realEstateInvestmentData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <CorpLoanTrendChart data={corpLoanTrendData} />
+          <RealEstatePriceChart data={realEstateMarketData} />
         </div>
       </section>
 

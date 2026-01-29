@@ -8,7 +8,7 @@ import { RefreshCcw, HardHat, Rocket, AlertCircle } from 'lucide-react';
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
-    
+
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
@@ -18,48 +18,48 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     }
 
     return (
-        <div className={`flex flex-col h-full p-4 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
-            <div className={`flex items-center gap-2 mb-2 ${iconColor}`}>
-                <Icon size={18} />
-                <h4 className="font-bold text-sm uppercase">{title}</h4>
+        <div className={`flex flex-col h-full p-3 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
+            <div className={`flex items-center gap-2 mb-1.5 ${iconColor}`}>
+                <Icon size={16} />
+                <h4 className="font-bold text-xs uppercase">{title}</h4>
             </div>
-            <div className="text-xs text-webank-text leading-relaxed">
+            <div className="text-[11px] text-webank-text leading-snug">
                 {children}
             </div>
         </div>
     );
 };
 
-export const SlideContentFifteen: React.FC = () => {
+export const ContentSlide18: React.FC = () => {
   return (
-    <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
-      
+    <div className="w-full h-full bg-white flex flex-col overflow-hidden relative">
+
       {/* Top Decoration */}
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
-      {/* Header */}
-      <header className="mb-6 animate-fade-in">
-         <div className="flex justify-between items-end mb-2">
-          <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
+      {/* Header - Fixed height */}
+      <header className="flex-shrink-0 px-8 pt-6 pb-2 animate-fade-in">
+         <div className="flex justify-between items-end mb-1">
+          <span className="text-[11px] font-bold text-webank-subtext uppercase tracking-widest">
             制造业投资结构深度洞察
           </span>
         </div>
-        <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
+        <h1 className="text-xl font-serif font-bold text-webank-blue leading-tight">
           设备购置投资高增11.8%，<span className="text-webank-subtext">企业"反内卷"导致产能扩张意愿降温</span>
         </h1>
       </header>
 
-      {/* Insight Section */}
-      <section className="grid grid-cols-4 gap-6 mb-8 h-36">
+      {/* Insight Section - Fixed height */}
+      <section className="flex-shrink-0 px-8 pb-3 grid grid-cols-4 gap-3 h-[110px]">
          <InsightBox title="存量更新驱动" icon={RefreshCcw} highlight={true} delay="100ms">
            <p>
-             全年设备工器具购置投资增长 <span className="font-bold">11.8%</span>，拉动全部投资增长1.8pct。在“两新”政策引导下，制造业投资主要由存量设备技改驱动，而非新建产能。
+             全年设备工器具购置投资增长 <span className="font-bold">11.8%</span>，拉动全部投资增长1.8pct。在"两新"政策引导下，制造业投资主要由存量设备技改驱动，而非新建产能。
            </p>
          </InsightBox>
 
          <InsightBox title="扩厂意愿收缩" icon={HardHat} alert={true} delay="200ms">
            <p>
-             与设备高增形成鲜明对比，建筑安装工程投资（代表厂房扩建）全年 <span className="font-bold">下降 8.4%</span>。企业在“反内卷”政策下，对单纯扩大产能的资本开支变得极为谨慎。
+             与设备高增形成鲜明对比，建筑安装工程投资（代表厂房扩建）全年 <span className="font-bold">下降 8.4%</span>。企业在"反内卷"政策下，对单纯扩大产能的资本开支变得极为谨慎。
            </p>
          </InsightBox>
 
@@ -76,20 +76,20 @@ export const SlideContentFifteen: React.FC = () => {
          </InsightBox>
       </section>
 
-      {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+      {/* Charts Section - Flex grow with proper constraints */}
+      <section className="flex-1 px-8 pb-8 grid grid-cols-2 gap-4 min-h-0">
+        <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <EquipmentVsConstructionLineChart data={equipmentVsConstructionTrendData} />
         </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+        <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
           <EquipmentInvestmentTable data={equipmentInvestmentTableData} />
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
+      <footer className="absolute bottom-2 left-8 right-8 border-t border-slate-200 pt-1 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
-        
+
       </footer>
 
       {/* Animation Styles Reuse */}

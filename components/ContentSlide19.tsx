@@ -27,7 +27,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, highlight }: { title: 
     );
 };
 
-export const SlideContentSixteen: React.FC = () => {
+export const ContentSlide19: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
@@ -42,7 +42,7 @@ export const SlideContentSixteen: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          Q4出口增速"先抑后扬"，<span className="text-webank-accent">12月超预期回升至6.6%圆满收官，扭转10月探底颓势</span>
+          2025年全年保持增长再创新高，Q4出口增速超预期回升至6.6%。
         </h1>
       </header>
 
@@ -50,7 +50,7 @@ export const SlideContentSixteen: React.FC = () => {
       <section className="grid grid-cols-2 gap-6 mb-4 h-36">
          <InsightBox title="全年外贸成绩与贡献" icon={Globe} delay="100ms">
            <p>
-             2025年全年货物进出口总额（人民币计价）增长<span className="font-bold">3.8%</span>，其中出口增长 <span className="font-bold">6.1%</span>。贸易顺差规模扩大，<span className="font-bold">12月贸易差额达1141.4亿美元</span>，净出口对经济增长贡献率保持高位（全年<span className="font-bold">32.7%</span>），有效对冲了国内耐用品消费的疲软压力。
+             2025年全年货物进出口总额45.47万亿，增长3.8%，其中，出口26.99万亿元，增长6.1%；进口18.48万亿元，增长0.5%，规模再创新高。
            </p>
          </InsightBox>
 
@@ -62,11 +62,14 @@ export const SlideContentSixteen: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+      <section className="flex-grow flex gap-6 min-h-0 px-8">
+        {/* Left: Q4 Export Growth Chart */}
+        <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '400ms' }}>
           <Q4ExportGrowthChart data={q4ExportGrowthData} />
         </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+
+        {/* Right: Monthly Trade Growth Chart */}
+        <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <MonthlyTradeGrowthChart data={monthlyTradeGrowthData} />
         </div>
       </section>

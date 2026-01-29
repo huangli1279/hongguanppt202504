@@ -1,9 +1,8 @@
-
-
 import React from 'react';
-import { InfrastructureTable } from './InfrastructureTable';
-import { infrastructureGrowthTableData } from '../data';
-import { TrendingDown, Zap, Clock, Landmark } from 'lucide-react';
+import { LandRevenueChart } from './LandRevenueChart';
+import { SpecialBondChart } from './SpecialBondChart';
+import { landRevenueData, specialBondData } from '../data';
+import { Building2, TrendingDown, Coins, Zap } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -30,50 +29,53 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     );
 };
 
-export const SlideContentFourteen: React.FC = () => {
+export const ContentSlide25: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-600"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-slate-500"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            基建投资专项分析
+            土地与债务：财政平衡术
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          基建投资全年下降1.48%，<span className="text-webank-subtext">债务化解与项目断档导致实物工作量落地受阻</span>
+          土地出让收入降幅扩大至10.7%，<span className="text-webank-lightBlue">新增专项债发行进度超100%力保支出</span>
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="化债约束与挤出效应" icon={Landmark} alert={true} delay="100ms">
+         <InsightBox title="土地市场：核心拖累" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显“挤出”。12月单月基建投资估算同比下降约 <span className="font-bold">12.2%-16%</span>，资金到位率偏低制约施工进度。
+             1-11月国有土地使用权出让收入同比 <span className="font-bold">下降 10.7%</span>，降幅较前值 (-7.4%) 显著扩大。房企拿地意愿低迷，土拍热度仅集中在核心城市优质地块，地方政府“钱袋子”持续承压。
            </p>
          </InsightBox>
 
-         <InsightBox title="结构分化：能源托底" icon={Zap} highlight={true} delay="200ms">
+         <InsightBox title="政府债：强力对冲" icon={Coins} highlight={true} delay="200ms">
            <p>
-             <span className="font-bold">电热气水</span> 投资全年增长 <span className="font-bold">9.1%</span>，受益于能源保供与绿色转型强力支持。相比之下，<span className="font-bold">水利环境公用设施</span> 投资全年下降8.4%，12月单月更是深跌26.6%，成为主要拖累。
+             为弥补缺口，专项债发行在Q4再度提速。截至11月末，新增专项债发行进度达 <span className="font-bold">101.3%</span>（含盘活结存限额）。资金加速落地支撑11月政府性基金支出转正 (+2.8%)。
            </p>
          </InsightBox>
 
-         <InsightBox title="政策时滞" icon={Clock} delay="300ms">
+         <InsightBox title="支出效应：存在时滞" icon={Zap} delay="300ms">
            <p>
-             尽管10月投放了5000亿新型政策性金融工具，但受北方冬季施工受限及项目前期准备周期影响，四季度实物工作量尚未充分释放，政策效果存在滞后性。
+             5000亿政策性金融工具已投放完毕，主要投向基建与“两重”项目。但受冬季施工受限及项目储备不足影响，资金转化为实物工作量存在一定时滞，稳增长效果或延后至明年Q1。
            </p>
          </InsightBox>
       </section>
 
-      {/* Table Section */}
-      <section className="flex-grow min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
-          <InfrastructureTable data={infrastructureGrowthTableData} />
+      {/* Charts Section */}
+      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <LandRevenueChart data={landRevenueData} />
+        </div>
+        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+          <SpecialBondChart data={specialBondData} />
         </div>
       </section>
 

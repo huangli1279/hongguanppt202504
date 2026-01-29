@@ -1,16 +1,21 @@
 import React from 'react';
-import { ConfidenceChart } from './ConfidenceChart';
-import { IncomeSourceChart } from './IncomeSourceChart';
-import { confidenceData, incomeSourceData } from '../data';
-import { Users, TrendingDown, ShoppingBag, Wallet } from 'lucide-react';
+import { KeyExportGrowthChart } from './KeyExportGrowthChart';
+import { ComputingExportGrowthChart } from './ComputingExportGrowthChart';
+import { MechElecExportGrowthChart } from './MechElecExportGrowthChart';
+import { ExportContributionChart } from './ExportContributionChart';
+import { exportItemGrowthData, exportContributionData, computingExportGrowthData, mechElecExportGrowthData } from '../data';
+import { Zap, Smartphone, Shirt, Layers } from 'lucide-react';
 
-const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean }) => {
+const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
     let iconColor = 'text-webank-blue';
     
     if (alert) {
         borderColor = 'border-red-500';
         iconColor = 'text-red-600';
+    } else if (highlight) {
+        borderColor = 'border-webank-lightBlue';
+        iconColor = 'text-webank-lightBlue';
     }
 
     return (
@@ -26,44 +31,36 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: stri
     );
 };
 
-export const SlideContentEleven: React.FC = () => {
+export const ContentSlide20: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
       {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-800"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
       <header className="mb-6 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
-            居民信心与财富效应
+            产品结构深度洞察：科技制造领跑
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          居民收入信心弱于就业信心，"宏微观温差"源于<span className="text-webank-subtext">资产价值缩水与预防性储蓄</span>
+          科技制造领跑，汽车与半导体产业链爆发，机电产品拉动出口增长的主导地位巩固
         </h1>
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="信心指数分化" icon={Users} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-4 h-40">
+         <InsightBox title="机电产品与汽车：竞争力持续兑现" icon={Layers} highlight={true} delay="100ms">
            <p>
-             CMF数据显示，消费者对于“就业”的信心相对稳定，但对于“收入”的乐观程度有所下降。虽然名义收入增速（5.0%）与GDP同步，但<span className="font-bold">财产净收入</span>增长滞后，制约了中高收入群体的购买力。
+             12月机电产品出口同比增长 <span className="font-bold">12.1%</span>，对出口增速拉动作用显著。其中汽车12月出口同比大增 <span className="font-bold">71.7%</span>，全年保持高景气。2025 年中国插混（PHEV）与纯电（BEV）车型在东南亚及中东市场的占有率大幅抬升，抵消了部分地区的贸易壁垒影响，显示中国车企在全球市场的竞争力持续兑现。
            </p>
          </InsightBox>
 
-         <InsightBox title="财富效应逆转" icon={TrendingDown} delay="200ms" alert={true}>
+         <InsightBox title="集成电路：电子周期上行与AI驱动" icon={Zap} highlight={true} delay="200ms">
            <p>
-             <span className="font-bold">房产：</span>70城二手房价格持续下跌（一线城市12月同比-5.8%），引发中产阶级资产负债表受损（“财富收缩效应”）。<br/>
-             <span className="font-bold">金融资产：</span>理财收益率下行，居民缺乏稳定财产性收入来源。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="消费行为变迁" icon={ShoppingBag} delay="300ms">
-           <p>
-             <span className="font-bold">服务消费：</span>呈现“量增价平”特征，旅游出行增长快于人均支出，体现“花小钱买快乐”心态。<br/>
-             <span className="font-bold">必选强于可选：</span>粮油食品（+9.3%）稳健，可选消费在促销季后迅速回落。
+             受全球 AI 换机潮（AI 手机、AI PC）及数据中心算力芯片需求爆发驱动，集成电路出口倍增，电子周期进入上行通道。集成电路12月出口金额大增 <span className="font-bold">47.7%</span>，量价齐升特征明显。
            </p>
          </InsightBox>
       </section>
@@ -71,10 +68,10 @@ export const SlideContentEleven: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ConfidenceChart data={confidenceData} />
+          <ComputingExportGrowthChart data={computingExportGrowthData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <IncomeSourceChart data={incomeSourceData} />
+          <MechElecExportGrowthChart data={mechElecExportGrowthData} />
         </div>
       </section>
 

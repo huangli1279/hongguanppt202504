@@ -16,7 +16,7 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert }: { title: stri
   </div>
 );
 
-export const SlideContentSix: React.FC = () => {
+export const ContentSlide08: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
       
