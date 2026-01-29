@@ -20,7 +20,8 @@ export function DataTable<T extends Record<string, unknown>>({
   minWidth,
   stickyFirstColumn = false,
   cellColorizer,
-  customHeader
+  customHeader,
+  minRowHeight = 8
 }: DataTableProps<T>) {
   const tableRef = React.useRef<HTMLDivElement>(null);
   const [rowHeight, setRowHeight] = React.useState<string | undefined>(undefined);
@@ -30,44 +31,56 @@ export function DataTable<T extends Record<string, unknown>>({
     const calculateRowHeight = () => {
       if (!tableRef.current || data.length === 0) return;
 
-      // Use requestAnimationFrame to ensure DOM is fully rendered
       requestAnimationFrame(() => {
-        if (!tableRef.current) return;
+        requestAnimationFrame(() => {
+          if (!tableRef.current) return;
 
-        const containerHeight = tableRef.current.clientHeight;
+          const containerHeight = tableRef.current.clientHeight;
+          const theadElement = tableRef.current.querySelector('thead');
 
-        // Try to get actual header height from DOM
-        const theadElement = tableRef.current.querySelector('thead');
-        const headerHeight = theadElement ? theadElement.offsetHeight : (customHeader ? 60 : 36);
+          if (!theadElement || containerHeight === 0) {
+            // Retry if not ready
+            setTimeout(calculateRowHeight, 50);
+            return;
+          }
 
-        // Account for borders (1px per row + 1px for each cell border)
-        const borderBuffer = data.length * 2;
-        const availableHeight = containerHeight - headerHeight - borderBuffer;
+          const headerHeight = theadElement.clientHeight;
+          const availableHeight = containerHeight - headerHeight;
 
-        if (availableHeight > 0) {
-          const calculatedHeight = availableHeight / data.length;
+          if (availableHeight > 0) {
+            // Distribute available height evenly across all rows
+            const calculatedHeight = Math.floor(availableHeight / data.length);
 
-          // Set minimum row height to maintain readability
-          // Smaller minimum for tables with many rows
-          const minHeight = data.length > 20 ? 16 : data.length > 15 ? 18 : 20;
-          const finalHeight = Math.max(calculatedHeight, minHeight);
+            // Apply configurable minimum row height
+            const finalHeight = Math.max(calculatedHeight, minRowHeight);
 
-          setRowHeight(`${finalHeight}px`);
-        }
+            setRowHeight(`${finalHeight}px`);
+          }
+        });
       });
     };
 
-    // Initial calculation with delay to ensure container is sized
-    const timer = setTimeout(calculateRowHeight, 100);
+    // Multiple calculation attempts to ensure accuracy
+    const timer1 = setTimeout(calculateRowHeight, 0);
+    const timer2 = setTimeout(calculateRowHeight, 100);
+    const timer3 = setTimeout(calculateRowHeight, 300);
 
-    // Recalculate on window resize
-    window.addEventListener('resize', calculateRowHeight);
+    // Use ResizeObserver for more reliable container size tracking
+    let resizeObserver: ResizeObserver | null = null;
+    if (tableRef.current) {
+      resizeObserver = new ResizeObserver(calculateRowHeight);
+      resizeObserver.observe(tableRef.current);
+    }
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', calculateRowHeight);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
     };
-  }, [data.length, customHeader]);
+  }, [data.length, customHeader, minRowHeight]);
 
   // Variant style mappings
   const getHeaderStyles = (variant: TableVariant): string => {
@@ -99,22 +112,25 @@ export function DataTable<T extends Record<string, unknown>>({
 
   // Calculate cell padding and font size based on row height
   const getCellPadding = (): string => {
-    if (!rowHeight) return 'px-2 py-1.5';
+    if (!rowHeight) return 'px-2 py-1';
 
     const heightNum = parseFloat(rowHeight);
-    if (heightNum < 20) return 'px-1.5 py-0.5';
-    if (heightNum < 24) return 'px-2 py-0.5';
-    if (heightNum < 28) return 'px-2 py-1';
-    return 'px-2 py-1.5';
+    if (heightNum <= 15) return 'px-1.5 py-0.5';
+    if (heightNum <= 20) return 'px-2 py-1';
+    if (heightNum <= 28) return 'px-2 py-1.5';
+    if (heightNum <= 35) return 'px-3 py-2';
+    return 'px-3 py-2.5';
   };
 
   const getFontSize = (): string => {
-    if (!rowHeight) return 'text-[10px]';
+    if (!rowHeight) return 'text-[9px]';
 
     const heightNum = parseFloat(rowHeight);
-    if (heightNum < 18) return 'text-[8px]';
-    if (heightNum < 22) return 'text-[9px]';
-    return 'text-[10px]';
+    if (heightNum <= 15) return 'text-[8px]';
+    if (heightNum <= 20) return 'text-[9px]';
+    if (heightNum <= 28) return 'text-[10px]';
+    if (heightNum <= 35) return 'text-[11px]';
+    return 'text-xs';
   };
 
   const cellPadding = getCellPadding();
@@ -123,10 +139,10 @@ export function DataTable<T extends Record<string, unknown>>({
   return (
     <div
       ref={tableRef}
-      className="flex-grow overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
+      className="w-full h-full overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
       style={{ minWidth }}
     >
-      <table className={cn('w-full h-full border-collapse', fontSize, minWidth && `min-w-[${minWidth}]`)}>
+      <table className={cn('w-full h-full border-collapse table-fixed', fontSize, minWidth && `min-w-[${minWidth}]`)}>
         <thead className="sticky top-0 z-20">
           {customHeader ? (
             customHeader
@@ -136,7 +152,7 @@ export function DataTable<T extends Record<string, unknown>>({
                 <th
                   key={col.key}
                   className={cn(
-                    'px-2 py-2 font-semibold border',
+                    'px-2 py-1 font-semibold border',
                     borderStyles,
                     col.align === 'right' ? 'text-right' : col.align === 'center' ? 'text-center' : 'text-left',
                     stickyFirstColumn && idx === 0 && 'sticky left-0 z-10',

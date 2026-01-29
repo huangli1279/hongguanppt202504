@@ -63,14 +63,14 @@ export const ContentSlide19: React.FC = () => {
 
       {/* Charts Section */}
       <section className="flex-grow flex gap-6 min-h-0 px-8">
-        {/* Left: Q4 Export Growth Chart */}
+        {/* Left: Monthly Trade Growth Chart */}
         <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '400ms' }}>
-          <Q4ExportGrowthChart data={q4ExportGrowthData} />
+          <MonthlyTradeGrowthChart data={monthlyTradeGrowthData} />
         </div>
 
-        {/* Right: Monthly Trade Growth Chart */}
+        {/* Right: Q4 Export Growth Chart */}
         <div className="w-1/2 h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <MonthlyTradeGrowthChart data={monthlyTradeGrowthData} />
+          <Q4ExportGrowthChart data={q4ExportGrowthData} />
         </div>
       </section>
 

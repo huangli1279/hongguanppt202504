@@ -47,51 +47,30 @@ export const ContentSlide21: React.FC = () => {
       </header>
 
       {/* Content Sections */}
-      <div className="flex-grow flex flex-col gap-6 overflow-hidden">
-        <div className="grid grid-cols-2 gap-8 h-48 shrink-0">
-          {/* Left Column: Growth Items */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 mb-1">
-              <TrendingUp className="text-emerald-500" size={20} />
-              <h2 className="text-lg font-bold text-webank-blue">进口增长项：算力红利与战略补库</h2>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4 h-full">
-              <InsightBox title="集成电路（IC）" icon={Cpu} highlight={true} delay="100ms">
-                <p>
-                  12月进口同比回升至 <span className="font-bold text-webank-lightBlue">12.6%</span>。受 AI 服务器及终端换机潮驱动，高端存储芯片补库显著。
-                </p>
-              </InsightBox>
+      <div className="flex-grow flex flex-col gap-4 overflow-hidden">
+        {/* Insight Cards - Compact */}
+        <div className="grid grid-cols-3 gap-6 h-32 shrink-0">
+          <InsightBox title="集成电路（IC）" icon={Cpu} highlight={true} delay="100ms">
+            <p>
+              12月进口同比回升至 <span className="font-bold text-webank-lightBlue">12.6%</span>。受 AI 服务器及终端换机潮驱动，高端存储芯片补库显著。
+            </p>
+          </InsightBox>
 
-              <InsightBox title="半导体设备" icon={Factory} highlight={true} delay="200ms">
-                <p>
-                  12月进口保持 <span className="font-bold text-webank-lightBlue">22.4%</span> 高增。反映国内晶圆厂在自主可控背景下的战略收储。
-                </p>
-              </InsightBox>
-            </div>
-          </div>
+          <InsightBox title="半导体设备" icon={Factory} highlight={true} delay="200ms">
+            <p>
+              全年维持增长，12月增长22.4%，反映国内芯片厂在自主可控背景下的战略扩张。
+            </p>
+          </InsightBox>
 
-          {/* Right Column: Drag Items */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 mb-1">
-              <TrendingDown className="text-red-500" size={20} />
-              <h2 className="text-lg font-bold text-webank-blue">进口拖累项：地产下行与信心收缩</h2>
-            </div>
-
-            <div className="h-full">
-              <InsightBox title="铁矿砂及其精矿" icon={Building2} alert={true} delay="300ms">
-                <div className="flex flex-col gap-2">
-                  <p>
-                    12月进口同比录得 <span className="font-bold text-red-600">-3.5%</span>。主要受国内地产开工端持续低迷影响，上游采购意愿降至冰点。
-                  </p>
-                </div>
-              </InsightBox>
-            </div>
-          </div>
+          <InsightBox title="铁矿砂及其精矿" icon={Building2} alert={true} delay="300ms">
+            <p>
+              12月进口同比录得 <span className="font-bold text-red-600">-3.5%</span>。主要受国内地产开工端持续低迷影响，上游采购意愿降至冰点。
+            </p>
+          </InsightBox>
         </div>
 
-        {/* Bottom Section: Table */}
-        <div className="flex-grow min-h-0 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+        {/* Table Section */}
+        <div className="flex-grow min-h-0 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '400ms' }}>
           <ImportCoreCommoditiesTable />
         </div>
       </div>

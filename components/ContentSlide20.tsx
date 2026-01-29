@@ -46,7 +46,7 @@ export const ContentSlide20: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          科技制造领跑，汽车与半导体产业链爆发，机电产品拉动出口增长的主导地位巩固
+          科技制造领跑，汽车与半导体产业链爆发，机电产品拉动出口增长
         </h1>
       </header>
 
@@ -68,10 +68,10 @@ export const ContentSlide20: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ComputingExportGrowthChart data={computingExportGrowthData} />
+          <MechElecExportGrowthChart data={mechElecExportGrowthData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <MechElecExportGrowthChart data={mechElecExportGrowthData} />
+          <ComputingExportGrowthChart data={computingExportGrowthData} />
         </div>
       </section>
 

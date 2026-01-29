@@ -540,6 +540,7 @@ export interface DataTableProps<T = Record<string, unknown>> {
   stickyFirstColumn?: boolean;
   cellColorizer?: CellColorizer;
   customHeader?: React.ReactNode; // For complex multi-level headers
+  minRowHeight?: number; // Minimum row height in pixels (default: 8)
 }
 
 /**
