@@ -80,7 +80,7 @@ export const BroadFiscalTrendChart: React.FC<Props> = ({ data }) => {
               dataKey="total"
               stroke="#051c2c"
               strokeWidth={3}
-              dot={{ r: 3, fill: '#051c2c' }}
+              dot={false}
               animationDuration={2000}
             />
             <Line
@@ -99,7 +99,6 @@ export const BroadFiscalTrendChart: React.FC<Props> = ({ data }) => {
               dataKey="nonTaxRevenue"
               stroke="#ef4444"
               strokeWidth={3}
-              strokeDasharray="5 5"
               dot={false}
               animationDuration={2000}
               animationBegin={600}

@@ -56,11 +56,11 @@ export const ContentSlide32: React.FC = () => {
            </p>
          </InsightBox>
 
-         <InsightBox title="主体税种稳健，印花税高增" icon={TrendingDown} alert={true} delay="200ms">
-           <p>
-             国内增值税增速3.9%直接反映了工商业生产和销售活动的活跃度在提升。企业所得税增长1.7%则显示企业盈利状况在波动中有所改善，个人所得税持续高速增长（前11月+11.5%）。
-           </p>
-         </InsightBox>
+          <InsightBox title="主体税种稳健，印花税高增" icon={TrendingDown} alert={true} delay="200ms">
+            <p>
+              国内增值税增速3.9%直接反映了工商业生产和销售活动的活跃度在提升，因加强互联网平台税收征管及股东减持带动个人所得税增长（前11月+11.5%），资本市场活跃度提升显著拉动证券印花税 (+70.7%)。
+            </p>
+          </InsightBox>
       </section>
 
       {/* Charts Section */}
