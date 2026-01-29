@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, TierOneCityRetailDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -450,6 +450,31 @@ export const serviceGoodsData: ServiceGoodsDataPoint[] = [
   { month: '2025-10', total: 4.30, service: 5.3, goods: 4.4 },
   { month: '2025-11', total: 4.00, service: 5.4, goods: 4.1 },
   { month: '2025-12', total: 3.69, service: 5.5, goods: 3.76 },
+];
+
+export const tierOneCityRetailData: TierOneCityRetailDataPoint[] = [
+  { month: '2024-02', guangzhou: 6.50, shenzhen: 5.63, beijing: 2.60, shanghai: 1.90 },
+  { month: '2024-03', guangzhou: 3.50, shenzhen: 4.30, beijing: -0.10, shanghai: 0.10 },
+  { month: '2024-04', guangzhou: 2.50, shenzhen: 2.30, beijing: -0.20, shanghai: -1.30 },
+  { month: '2024-05', guangzhou: 2.00, shenzhen: 1.78, beijing: 1.00, shanghai: -0.70 },
+  { month: '2024-06', guangzhou: 0.00, shenzhen: 1.00, beijing: -0.30, shanghai: -2.30 },
+  { month: '2024-07', guangzhou: -0.30, shenzhen: 1.17, beijing: -0.80, shanghai: -2.80 },
+  { month: '2024-08', guangzhou: -0.50, shenzhen: 1.07, beijing: -0.93, shanghai: -3.30 },
+  { month: '2024-09', guangzhou: 0.10, shenzhen: 0.67, beijing: -1.60, shanghai: -3.40 },
+  { month: '2024-10', guangzhou: 0.50, shenzhen: 0.96, beijing: -1.30, shanghai: -2.00 },
+  { month: '2024-11', guangzhou: 0.30, shenzhen: 1.51, beijing: -2.80, shanghai: -3.10 },
+  { month: '2024-12', guangzhou: 0.00, shenzhen: 1.08, beijing: -2.70, shanghai: -3.10 },
+  { month: '2025-02', guangzhou: 1.20, shenzhen: 1.66, beijing: -0.10, shanghai: -1.00 },
+  { month: '2025-03', guangzhou: 3.50, shenzhen: 3.05, beijing: -3.30, shanghai: -1.10 },
+  { month: '2025-04', guangzhou: 4.00, shenzhen: 3.66, beijing: -3.70, shanghai: -0.30 },
+  { month: '2025-05', guangzhou: 5.10, shenzhen: 4.66, beijing: -3.10, shanghai: 1.40 },
+  { month: '2025-06', guangzhou: 5.90, shenzhen: 3.47, beijing: -3.80, shanghai: 1.70 },
+  { month: '2025-07', guangzhou: 5.40, shenzhen: 3.60, beijing: -4.20, shanghai: 2.50 },
+  { month: '2025-08', guangzhou: 4.90, shenzhen: 3.83, beijing: -5.10, shanghai: 3.70 },
+  { month: '2025-09', guangzhou: 4.10, shenzhen: 3.63, beijing: -5.10, shanghai: 4.30 },
+  { month: '2025-10', guangzhou: 3.80, shenzhen: 4.02, beijing: -3.20, shanghai: 4.80 },
+  { month: '2025-11', guangzhou: 4.20, shenzhen: 2.77, beijing: -3.10, shanghai: 5.00 },
+  { month: '2025-12', guangzhou: null, shenzhen: null, beijing: -2.90, shanghai: 4.60 },
 ];
 
 export const durableGoodsData: DurableGoodsDataPoint[] = [

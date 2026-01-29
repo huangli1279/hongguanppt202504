@@ -10,28 +10,38 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  Area
+  ReferenceLine
 } from 'recharts';
-import { ServiceGoodsDataPoint } from '../types';
+import { TierOneCityRetailDataPoint } from '../types';
 
-const CustomizedDot = (props: any) => {
-  const { cx, cy, payload, value, dataKey } = props;
+// 创建一个高阶函数来传递 data
+const createCustomizedDot = (data: TierOneCityRetailDataPoint[]) => (props: any) => {
+  const { cx, cy, value, dataKey, index } = props;
 
-  // 标注2025年10、11、12月
-  const highlightMonths = ['2025-10', '2025-11', '2025-12'];
+  // 只标注每条线的最后一个非null数据点
+  // 找到该数据系列的最后一个非null值的索引
+  const findLastNonNullIndex = (dataKey: string) => {
+    for (let i = data.length - 1; i >= 0; i--) {
+      if (data[i][dataKey] !== null) {
+        return i;
+      }
+    }
+    return -1;
+  };
 
-  if (payload && highlightMonths.includes(payload.month)) {
+  const lastIndex = findLastNonNullIndex(dataKey);
+
+  if (index === lastIndex && value !== null) {
     // 根据数据键使用不同颜色
-    let dotColor = '#005c8f';
-    if (dataKey === 'service') dotColor = '#f59e0b';
-    if (dataKey === 'goods') dotColor = '#64748b';
+    let dotColor = '#f59e0b'; // 广州
+    if (dataKey === 'shenzhen') dotColor = '#00a9f4';
+    if (dataKey === 'beijing') dotColor = '#64748b';
+    if (dataKey === 'shanghai') dotColor = '#005c8f';
 
-    const labelColor = payload.month === '2025-12' ? '#ef4444' : '#333';
-
-    // 标签位置：total在中间，service在上方，goods在下方
+    // 标签位置调整
     let labelY = cy - 12;
-    if (dataKey === 'service') labelY = cy - 20;
-    if (dataKey === 'goods') labelY = cy + 16;
+    if (dataKey === 'guangzhou') labelY = cy - 20;
+    if (dataKey === 'beijing') labelY = cy + 16;
 
     return (
       <g>
@@ -40,7 +50,7 @@ const CustomizedDot = (props: any) => {
           x={cx}
           y={labelY}
           textAnchor="middle"
-          fill={labelColor}
+          fill="#333"
           fontSize={10}
           fontWeight="bold"
         >
@@ -54,7 +64,7 @@ const CustomizedDot = (props: any) => {
 };
 
 interface Props {
-  data: ServiceGoodsDataPoint[];
+  data: TierOneCityRetailDataPoint[];
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -62,9 +72,13 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue">社零总额: {payload[0].value}%</p>
-        <p className="text-webank-accent">服务零售: {payload[1].value}%</p>
-        <p className="text-slate-500">商品零售: {payload[2].value}%</p>
+        {payload.map((p: any, index: number) => (
+          p.value !== null && (
+            <p key={index} style={{ color: p.color }}>
+              {p.name}: {p.value}%
+            </p>
+          )
+        ))}
       </div>
     );
   }
@@ -74,8 +88,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 const renderCustomLegend = (props: any) => {
   const { payload } = props;
   
-  // 重新排列图例顺序：社零总额、服务零售额、商品零售额
-  const legendOrder = ['社零总额', '服务零售额', '商品零售额'];
+  // 重新排列图例顺序：上海、广州、深圳、北京
+  const legendOrder = ['上海', '广州', '深圳', '北京'];
   const sortedPayload = [...payload].sort((a, b) => {
     return legendOrder.indexOf(a.value) - legendOrder.indexOf(b.value);
   });
@@ -98,15 +112,17 @@ const renderCustomLegend = (props: any) => {
   );
 };
 
-export const ServiceGoodsGapChart: React.FC<Props> = ({ data }) => {
+export const TierOneCityRetailChart: React.FC<Props> = ({ data }) => {
+  const CustomizedDot = createCustomizedDot(data);
+  
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2024-2025年全国社零总额及服务/商品零售累计同比走势
+          2024-2025年一线城市社会消费品零售总额累计同比变化
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          服务零售增速领先，商品零售增速与社零总额趋同
+          单位: %
         </p>
       </div>
       <div className="flex-grow min-h-0">
@@ -128,7 +144,7 @@ export const ServiceGoodsGapChart: React.FC<Props> = ({ data }) => {
               tickLine={false}
               tick={{ fill: '#999', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[0, 13]}
+              domain={[-6, 7]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -138,34 +154,50 @@ export const ServiceGoodsGapChart: React.FC<Props> = ({ data }) => {
                 iconSize={8} 
             />
             
+            <ReferenceLine y={0} stroke="#999" strokeDasharray="3 3" />
+            
             <Line
-              name="社零总额"
+              name="广州"
               type="monotone"
-              dataKey="total"
-              stroke="#005c8f"
-              strokeWidth={3}
-              dot={<CustomizedDot />}
-              animationDuration={2000}
-            />
-            <Line
-              name="服务零售额"
-              type="monotone"
-              dataKey="service"
+              dataKey="guangzhou"
               stroke="#f59e0b"
               strokeWidth={3}
               dot={<CustomizedDot />}
+              connectNulls
+              animationDuration={2000}
+            />
+            <Line
+              name="深圳"
+              type="monotone"
+              dataKey="shenzhen"
+              stroke="#00a9f4"
+              strokeWidth={3}
+              dot={<CustomizedDot />}
+              connectNulls
               animationDuration={2000}
               animationBegin={300}
             />
             <Line
-              name="商品零售额"
+              name="北京"
               type="monotone"
-              dataKey="goods"
+              dataKey="beijing"
               stroke="#64748b"
               strokeWidth={3}
               dot={<CustomizedDot />}
+              connectNulls
               animationDuration={2000}
               animationBegin={600}
+            />
+            <Line
+              name="上海"
+              type="monotone"
+              dataKey="shanghai"
+              stroke="#005c8f"
+              strokeWidth={3}
+              dot={<CustomizedDot />}
+              connectNulls
+              animationDuration={2000}
+              animationBegin={900}
             />
           </LineChart>
         </ResponsiveContainer>

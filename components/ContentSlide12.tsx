@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { ServiceGoodsGapChart } from './ServiceGoodsGapChart';
+import { TierOneCityRetailChart } from './TierOneCityRetailChart';
 import { UrbanRuralChart } from './UrbanRuralChart';
-import { serviceGoodsData, urbanRuralData } from '../data';
+import { tierOneCityRetailData, urbanRuralData } from '../data';
 import { Coffee, Smartphone, Home, AlertOctagon, Map, TrendingUp } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
@@ -50,22 +50,19 @@ export const ContentSlide12: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
          <InsightBox title="服务消费：半壁江山" icon={Coffee} delay="100ms" highlight={true}>
            <p>
-             全年服务零售额增长 <span className="font-bold">5.5%</span>，高于商品（3.8%）。人均服务性消费支出占比达 <span className="font-bold">46.1%</span>。前三季度以旧换新政策强力提振商品消费，使其增速领跑，而四季度政策效应减弱，年终文娱旅游需求爆发，增速反超商品消费。
+             2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平，但服务消费成为新引擎（信息、文化娱乐、旅游等）；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长<span className="font-bold">39.5%</span>，新能源汽车增长<span className="font-bold">13.2%</span>）；
            </p>
          </InsightBox>
 
          <InsightBox title="乡村 vs 城镇：韧性对标" icon={Map} delay="200ms" alert={true}>
-           <p>
+           <p className="mb-2">
              全年乡村增长 <span className="font-bold">4.1%</span> 领跑。12 月城镇受大促透支及高基数压制降至 <span className="font-bold">0.7%</span>，而乡村凭借 <span className="font-bold">1.7%</span> 的增速构筑了年末缓冲垫。
            </p>
-         </InsightBox>
-
-         <InsightBox title="逻辑深挖：政策时滞" icon={TrendingUp} delay="300ms">
            <p>
-             以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
+             <span className="font-bold">逻辑深挖：</span>以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的“下半场”。乡村凭借“基建红利”沉降，展现出更强的增长后劲。
            </p>
          </InsightBox>
       </section>
@@ -73,7 +70,7 @@ export const ContentSlide12: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <ServiceGoodsGapChart data={serviceGoodsData} />
+          <TierOneCityRetailChart data={tierOneCityRetailData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
           <UrbanRuralChart data={urbanRuralData} />

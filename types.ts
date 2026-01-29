@@ -147,6 +147,14 @@ export interface ServiceGoodsDataPoint {
   goods: number; // 商品零售额累计同比
 }
 
+export interface TierOneCityRetailDataPoint {
+  month: string;
+  guangzhou: number | null;
+  shenzhen: number | null;
+  beijing: number | null;
+  shanghai: number | null;
+}
+
 export interface DurableGoodsDataPoint {
   category: string;
   nov: number;
