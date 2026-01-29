@@ -36,8 +36,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 export const ExportShareMigrationChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="mb-2">
-        <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+      <div className="mb-1.5">
+        <h3 className="text-[10px] font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-0.5">
           2024-2025年中国出口市场份额迁移对比
         </h3>
       </div>
@@ -45,44 +45,44 @@ export const ExportShareMigrationChart: React.FC<Props> = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: 20, right: 10, left: -20, bottom: 0 }}
+            margin={{ top: 15, right: 10, left: -20, bottom: 0 }}
             barGap={4}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-            <XAxis 
-              dataKey="name" 
+            <XAxis
+              dataKey="name"
               axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
               tick={{ fill: '#666', fontSize: 9 }}
             />
-            <YAxis 
+            <YAxis
               axisLine={false}
               tickLine={false}
               tick={{ fill: '#666', fontSize: 9 }}
               domain={[0, 50]}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Legend 
-              verticalAlign="top" 
-              align="right" 
+            <Legend
+              verticalAlign="top"
+              align="right"
               iconType="rect"
               iconSize={8}
-              wrapperStyle={{ fontSize: '9px', paddingBottom: '10px' }}
+              wrapperStyle={{ fontSize: '8px', paddingBottom: '5px' }}
             />
-            <Bar 
-              dataKey="share2024" 
-              name="2024年份额" 
-              fill="#cbd5e1" 
-              radius={[2, 2, 0, 0]} 
-              barSize={20}
+            <Bar
+              dataKey="share2024"
+              name="2024年份额"
+              fill="#cbd5e1"
+              radius={[2, 2, 0, 0]}
+              barSize={18}
             >
-              <LabelList dataKey="share2024" position="top" style={{ fontSize: '9px', fill: '#64748b', fontWeight: 'bold' }} />
+              <LabelList dataKey="share2024" position="top" style={{ fontSize: '8px', fill: '#64748b', fontWeight: 'bold' }} />
             </Bar>
-            <Bar 
-              dataKey="share2025" 
-              name="2025年份额" 
-              radius={[2, 2, 0, 0]} 
-              barSize={20}
+            <Bar
+              dataKey="share2025"
+              name="2025年份额"
+              radius={[2, 2, 0, 0]}
+              barSize={18}
             >
               {data.map((entry, index) => {
                 let color = '#005c8f'; // Default blue
@@ -90,12 +90,12 @@ export const ExportShareMigrationChart: React.FC<Props> = ({ data }) => {
                 if (entry.name.includes('新兴市场')) color = '#00a9f4'; // Light blue for EM growth
                 return <Cell key={`cell-${index}`} fill={color} />;
               })}
-              <LabelList dataKey="share2025" position="top" style={{ fontSize: '9px', fill: '#334155', fontWeight: 'bold' }} />
+              <LabelList dataKey="share2025" position="top" style={{ fontSize: '8px', fill: '#334155', fontWeight: 'bold' }} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-2 grid grid-cols-2 gap-2">
+      <div className="mt-1.5 grid grid-cols-2 gap-2 shrink-0">
         <div className="bg-emerald-50 p-1.5 rounded border border-emerald-100 flex flex-col">
           <span className="text-[9px] font-bold text-emerald-700">东盟亮点</span>
           <span className="text-[8px] text-emerald-600 leading-tight">上升 1.3 pct，稳居第一大贸易伙伴</span>

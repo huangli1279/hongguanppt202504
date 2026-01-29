@@ -73,11 +73,11 @@ const CustomLegend = (props: any) => {
   );
 };
 
-// 自定义标签渲染函数，只在12月显示
+// 自定义标签渲染函数，只在最后一个数据点显示
 const renderCustomLabel = (props: any) => {
   const { x, y, value, index, stroke } = props;
-  // 只在最后一个数据点（12月，index = 10）显示标签
-  if (index === 10) {
+  // 只在最后一个数据点（2025-12，index = 21）显示标签
+  if (index === 21) {
     return (
       <text
         x={x}
@@ -99,7 +99,7 @@ export const MonthlyTradeGrowthChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-3">
         <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          2025年进出口贸易累计同比走势
+          2024-2025年进出口贸易累计同比走势
         </h3>
         <p className="text-[10px] text-webank-subtext mt-1">
           单位：%

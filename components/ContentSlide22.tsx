@@ -1,6 +1,6 @@
 import React from 'react';
-import { TrendingUp, TrendingDown, Globe, Landmark, Ship } from 'lucide-react';
-import { RegionalExportTrendChart } from './RegionalExportTrendChart';
+import { Landmark, Ship } from 'lucide-react';
+import { RegionalExportTrendTable } from './RegionalExportTrendTable';
 import { ExportShareMigrationChart } from './ExportShareMigrationChart';
 import { regionalExportTrendData, exportShareMigrationData } from '../data';
 
@@ -17,12 +17,12 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
     }
 
     return (
-        <div className={`flex flex-col h-full p-5 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
-            <div className={`flex items-center gap-2 mb-3 ${iconColor}`}>
-                <Icon size={20} />
-                <h4 className="font-bold text-sm uppercase tracking-wider">{title}</h4>
+        <div className={`flex flex-col h-full p-3 bg-slate-50 border-t-2 ${borderColor} opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
+            <div className={`flex items-center gap-2 mb-2 ${iconColor}`}>
+                <Icon size={18} />
+                <h4 className="font-bold text-xs uppercase tracking-wider">{title}</h4>
             </div>
-            <div className="text-sm text-webank-text leading-relaxed">
+            <div className="text-xs text-webank-text leading-relaxed">
                 {children}
             </div>
         </div>
@@ -37,8 +37,8 @@ export const ContentSlide22: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header */}
-      <header className="mb-8 animate-fade-in">
-         <div className="flex justify-between items-end mb-2">
+      <header className="mb-4 animate-fade-in">
+         <div className="flex justify-between items-end mb-1">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             贸易伙伴结构分析：出口市场的冷热温差
           </span>
@@ -49,53 +49,29 @@ export const ContentSlide22: React.FC = () => {
       </header>
 
       {/* Content Sections */}
-      <div className="flex-grow flex flex-col gap-6 overflow-hidden">
-        <div className="grid grid-cols-2 gap-8 h-40 shrink-0">
-          {/* Left Column: US Market */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 mb-1">
-              <TrendingDown className="text-red-500" size={20} />
-              <h2 className="text-lg font-bold text-webank-blue">美国市场：关税滞后效应显现</h2>
-            </div>
-            
-            <div className="h-full">
-              <InsightBox title="对美出口深跌" icon={Landmark} alert={true} delay="100ms">
-                <p>
-                  12月对美出口同比下降 <span className="font-bold text-red-600">30.0%</span>（11月为-28.6%）。受前期关税政策滞后及高基数影响，拖累整体出口约 <span className="font-bold text-red-600">4.4</span> 个百分点。
-                </p>
-              </InsightBox>
-            </div>
-          </div>
+      <div className="flex-grow flex flex-col gap-4 overflow-hidden">
+        <div className="grid grid-cols-2 gap-4 h-28 shrink-0">
+          {/* US Market Card */}
+          <InsightBox title="对美出口深跌，非美区域整体增长" icon={Landmark} alert={true} delay="100ms">
+            <p>
+              25年全年对美出口同比持续下跌，12月对美出口同比下降 30.0%。受前期关税政策滞后及高基数影响，拖累整体出口约 4.4 个百分点；对非美区域整体增长 12.8%。其中东盟增长 11.1%，非洲高增 21.8%。
+            </p>
+          </InsightBox>
 
-          {/* Right Column: Non-US Markets */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 mb-1">
-              <TrendingUp className="text-emerald-500" size={20} />
-              <h2 className="text-lg font-bold text-webank-blue">非美市场：新兴市场工业化驱动</h2>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 h-full">
-              <InsightBox title="东盟与非洲" icon={Globe} highlight={true} delay="200ms">
-                <p>
-                  对非美区域整体增长 <span className="font-bold text-webank-lightBlue">12.8%</span>。其中东盟增长 <span className="font-bold text-webank-lightBlue">11.1%</span>，非洲高增 <span className="font-bold text-webank-lightBlue">21.8%</span>。
-                </p>
-              </InsightBox>
-
-              <InsightBox title="中间品需求" icon={Ship} highlight={true} delay="300ms">
-                <p>
-                  新兴市场工业化进程提速，对我国<span className="font-bold text-webank-lightBlue">中间品和生产资料</span>需求旺盛，有效对冲美欧市场波动。
-                </p>
-              </InsightBox>
-            </div>
-          </div>
+          {/* Intermediate Goods Card */}
+          <InsightBox title="中间品需求" icon={Ship} highlight={true} delay="200ms">
+            <p>
+              新兴市场工业化进程提速，对我国<span className="font-bold text-webank-lightBlue">中间品和生产资料</span>需求旺盛，有效对冲美欧市场波动。
+            </p>
+          </InsightBox>
         </div>
 
-        {/* Bottom Section: Two Charts */}
-        <div className="flex-grow grid grid-cols-2 gap-8 min-h-0 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <div className="h-full bg-slate-50 p-5 rounded-lg border border-slate-100">
-            <RegionalExportTrendChart data={regionalExportTrendData} />
+        {/* Bottom Section: Table and Chart */}
+        <div className="flex-grow grid grid-cols-2 gap-4 min-h-0 opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
+          <div className="h-full bg-slate-50 p-4 rounded-lg border border-slate-100">
+            <RegionalExportTrendTable data={regionalExportTrendData} />
           </div>
-          <div className="h-full bg-slate-50 p-5 rounded-lg border border-slate-100">
+          <div className="h-full bg-slate-50 p-4 rounded-lg border border-slate-100">
             <ExportShareMigrationChart data={exportShareMigrationData} />
           </div>
         </div>
