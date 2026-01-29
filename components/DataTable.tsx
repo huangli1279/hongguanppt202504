@@ -142,7 +142,7 @@ export function DataTable<T extends Record<string, unknown>>({
       className="w-full h-full overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
       style={{ minWidth }}
     >
-      <table className={cn('w-full h-full border-collapse table-fixed', fontSize, minWidth && `min-w-[${minWidth}]`)}>
+      <table className={cn('w-full border-collapse table-fixed', fontSize, minWidth && `min-w-[${minWidth}]`)}>
         <thead className="sticky top-0 z-20">
           {customHeader ? (
             customHeader
@@ -218,14 +218,15 @@ interface TableContainerProps {
   unit?: string;
   source?: string;
   legend?: Array<{ color: string; label: string }>;
+  inlineLegend?: Array<{ color: string; label: string }>;
   children: React.ReactNode;
 }
 
-export const TableContainer: React.FC<TableContainerProps> = ({ title, unit, source, legend, children }) => {
+export const TableContainer: React.FC<TableContainerProps> = ({ title, unit, source, legend, inlineLegend, children }) => {
   return (
     <div className="w-full h-full flex flex-col">
       {/* Title Section */}
-      {(title || unit || source) && (
+      {(title || unit || source || inlineLegend) && (
         <div className="flex-shrink-0 mb-1 flex items-baseline justify-between border-b border-slate-300 pb-0.5">
           {title && (
             <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide">
@@ -233,6 +234,12 @@ export const TableContainer: React.FC<TableContainerProps> = ({ title, unit, sou
             </h3>
           )}
           <div className="flex items-baseline gap-3 text-[9px] text-slate-500">
+            {inlineLegend && inlineLegend.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-1">
+                <div className={cn('w-3 h-3 rounded', item.color)} />
+                <span>{item.label}</span>
+              </div>
+            ))}
             {unit && <span>单位: {unit}</span>}
             {source && <span>数据来源: {source}</span>}
           </div>
@@ -240,7 +247,9 @@ export const TableContainer: React.FC<TableContainerProps> = ({ title, unit, sou
       )}
 
       {/* Table Section - Takes remaining space */}
-      {children}
+      <div className="flex-grow min-h-0 overflow-hidden">
+        {children}
+      </div>
 
       {/* Legend Section */}
       {legend && legend.length > 0 && (

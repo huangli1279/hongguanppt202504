@@ -48,7 +48,7 @@ export const ContentSlide18: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-2 gap-6 mb-8 h-40">
+      <section className="grid grid-cols-2 gap-6 mb-6 h-32">
          <InsightBox title="通讯器材增速领跑，家电家具受补贴退坡放缓" icon={Smartphone} delay="100ms" highlight={true}>
            <p>
              2025全年通讯器材类以 20.86% 的累计增速领跑大盘，这主要受益于 “以旧换新”对中高端机型（占比达 72.5%）的精准补贴；体育娱乐用品全年正增长，12月累计达 15.70%，折射居民对健康投资与精神消费的持续热衷；家用电器（12月跌至11.0%）、家具类（12月跌至14.62%）受四季度补贴退坡影响。
@@ -63,7 +63,7 @@ export const ContentSlide18: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow flex flex-col min-h-0">
+      <section className="flex-grow flex flex-col min-h-0 pb-6">
         <div className="bg-white rounded-sm h-full opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
           <RetailCategoryTable />
         </div>

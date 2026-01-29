@@ -101,7 +101,7 @@ export const RetailCategoryTable: React.FC = () => {
       title="2025年分商品零售类值累计同比走势"
       unit="%"
       source="国家统计局"
-      legend={[
+      inlineLegend={[
         { color: 'bg-blue-50', label: '增速 ≥ 10%' },
         { color: 'bg-red-50', label: '负增长' }
       ]}
