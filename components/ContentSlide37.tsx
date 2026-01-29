@@ -4,7 +4,7 @@ import React from 'react';
 import { TsfDecContributionChart } from './TsfDecContributionChart';
 import { CorpLoanTrendChart } from './CorpLoanTrendChart';
 import { tsfDecContributionData, corpLoanTrendData } from '../data';
-import { Landmark, TrendingDown, Briefcase, BarChart2 } from 'lucide-react';
+import { Landmark, TrendingDown, Briefcase } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
     let borderColor = 'border-webank-blue';
@@ -51,22 +51,16 @@ export const ContentSlide37: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="社融总量：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-8 h-36">
+         <InsightBox title="社融：高基数拖累" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             12月新增社融 <span className="font-bold">2.21万亿元</span>，同比少增6457亿元；存量增速回落至 <span className="font-bold">8.3%</span>。主要受2024年末2万亿隐债置换债券集中发行带来的高基数影响，12月政府债净融资仅0.7万亿，同比大幅少增1.07万亿元。
+             12月新增社融 2.21万亿元（同比少增6457亿），存量增速降至 8.3%，核心在于2024年同期“2万亿隐债置换”导致政府债基数异常偏高。
            </p>
          </InsightBox>
 
-         <InsightBox title="企业贷：积极信号" icon={Briefcase} highlight={true} delay="200ms">
+         <InsightBox title="企业中长贷：由负转正" icon={Briefcase} highlight={true} delay="200ms">
            <p>
-             12月企业中长期贷款新增 <span className="font-bold">3300亿元</span>，同比多增2900亿元，结束了连续5个月的同比少增。得益于5000亿新型政策性金融工具投放后的配套融资需求释放，以及银行年末冲量。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="直接融资：环境改善" icon={BarChart2} delay="300ms">
-           <p>
-             12月企业债券融资同比多增 <span className="font-bold">1683亿元</span>。受益于化债背景下城投再融资环境改善及产业债发行回暖，直接融资渠道功能有所修复。
+             12月政府债净融资（0.7万亿）同比大幅少增 1.07万亿元，但受5000亿新型政策性金融工具落地、重大项目开工及银行年末「冲量」三重驱动，12月企业中长期贷款新增 3300亿元（同比多增2900亿），结束“五连降”强势反弹。
            </p>
          </InsightBox>
       </section>
@@ -74,10 +68,10 @@ export const ContentSlide37: React.FC = () => {
       {/* Charts Section */}
       <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '500ms' }}>
-          <TsfDecContributionChart data={tsfDecContributionData} />
+          <CorpLoanTrendChart data={corpLoanTrendData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <CorpLoanTrendChart data={corpLoanTrendData} />
+          <TsfDecContributionChart data={tsfDecContributionData} />
         </div>
       </section>
 

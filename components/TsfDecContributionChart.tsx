@@ -37,7 +37,7 @@ export const TsfDecContributionChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          12月新增社融规模分项同比多增/少增贡献拆解 (亿元)
+          2025年新增社融规模分项同比多增/少增贡献拆解 (亿元)
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
           政府债少增逾万亿是核心拖累，企业信贷与债券融资形成正向支撑
