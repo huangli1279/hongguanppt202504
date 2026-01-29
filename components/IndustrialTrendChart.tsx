@@ -63,16 +63,7 @@ export const IndustrialTrendChart: React.FC<Props> = ({ data }) => {
               yAxisId="left"
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#00a9f4', fontSize: 10, fontWeight: 600 }}
-              domain={['auto', 'auto']}
-              tickFormatter={(val) => `${val}%`}
-            />
-            <YAxis 
-              yAxisId="right"
-              orientation="right"
-              axisLine={false} 
-              tickLine={false} 
-              tick={{ fill: '#ef4444', fontSize: 10, fontWeight: 600 }}
+              tick={{ fill: '#666', fontSize: 10, fontWeight: 600 }}
               domain={['auto', 'auto']}
               tickFormatter={(val) => `${val}%`}
             />
@@ -94,7 +85,7 @@ export const IndustrialTrendChart: React.FC<Props> = ({ data }) => {
             </Line>
 
             <Line 
-              yAxisId="right"
+              yAxisId="left"
               type="monotone"
               dataKey="exportYoy" 
               name="出口交货值:当月同比" 
