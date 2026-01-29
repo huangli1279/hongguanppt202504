@@ -342,9 +342,13 @@ export interface ExportContributionDataPoint {
 
 export interface ComputingExportGrowthDataPoint {
     month: string;
-    server: number;
-    semiconductor: number;
+    server: number | null;
+    semiconductor: number | null;
+    mechanical: number | null;
+    phone: number | null;
+    auto: number | null;
 }
+
 
 export interface MechElecExportGrowthDataPoint {
     month: string;
@@ -403,7 +407,9 @@ export interface VatVsProductionDataPoint {
 
 export interface LandRevenueDataPoint {
     month: string;
-    value: number;
+    total: number;
+    central: number;
+    local: number;
 }
 
 export interface SpecialBondDataPoint {

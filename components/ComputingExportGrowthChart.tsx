@@ -62,8 +62,9 @@ export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
           2024-2025年算力相关硬件出口同比增速
         </h3>
         <p className="text-[10px] text-webank-subtext mt-1">
-          单位: % | 自动数据处理设备(含服务器)与半导体设备出口显著提速
+          单位: % | 重点高技术制造产品出口累计同比增速对比
         </p>
+
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
@@ -84,7 +85,7 @@ export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
               tick={{ fontSize: 9, fill: '#999' }}
               axisLine={false}
               tickLine={false}
-              domain={[0, 40]}
+              domain={[-30, 40]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
@@ -97,7 +98,7 @@ export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
             <ReferenceLine y={0} stroke="#666" />
 
             <Line
-              name="自动数据处理设备(含服务器)"
+              name="自动数据处理设备"
               type="monotone"
               dataKey="server"
               stroke="#005c8f"
@@ -112,7 +113,7 @@ export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
               />
             </Line>
             <Line
-              name="半导体制造设备及零部件"
+              name="二极管及半导体"
               type="monotone"
               dataKey="semiconductor"
               stroke="#00a9f4"
@@ -126,6 +127,52 @@ export const ComputingExportGrowthChart: React.FC<Props> = ({ data }) => {
                 content={(props) => renderCustomLabel({ ...props, dataLength: data.length, fill: '#00a9f4' })}
               />
             </Line>
+            <Line
+              name="通用机械设备"
+              type="monotone"
+              dataKey="mechanical"
+              stroke="#8b5cf6"
+              strokeWidth={2}
+              dot={{ r: 2, fill: '#8b5cf6' }}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+              animationDuration={1500}
+            >
+              <LabelList
+                dataKey="mechanical"
+                content={(props) => renderCustomLabel({ ...props, dataLength: data.length, fill: '#8b5cf6' })}
+              />
+            </Line>
+            <Line
+              name="手机"
+              type="monotone"
+              dataKey="phone"
+              stroke="#ef4444"
+              strokeWidth={2}
+              dot={{ r: 2, fill: '#ef4444' }}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+              animationDuration={1500}
+            >
+              <LabelList
+                dataKey="phone"
+                content={(props) => renderCustomLabel({ ...props, dataLength: data.length, fill: '#ef4444' })}
+              />
+            </Line>
+            <Line
+              name="汽车"
+              type="monotone"
+              dataKey="auto"
+              stroke="#10b981"
+              strokeWidth={2}
+              dot={{ r: 2, fill: '#10b981' }}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+              animationDuration={1500}
+            >
+              <LabelList
+                dataKey="auto"
+                content={(props) => renderCustomLabel({ ...props, dataLength: data.length, fill: '#10b981' })}
+              />
+            </Line>
+
           </LineChart>
         </ResponsiveContainer>
       </div>

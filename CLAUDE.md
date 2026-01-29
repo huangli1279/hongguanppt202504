@@ -1,3 +1,2 @@
 - Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 - 禁止自行启动开发服务器
-- 通过页数定位幻灯片时，需要以 App.tsx 中的 currentSlide 为准

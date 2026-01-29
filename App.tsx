@@ -27,7 +27,6 @@ import { ContentSlide28 } from './components/ContentSlide28';
 import { ContentSlide29 } from './components/ContentSlide29';
 import { ContentSlide30 } from './components/ContentSlide30';
 import { ContentSlide32 } from './components/ContentSlide32';
-import { ContentSlide34 } from './components/ContentSlide34';
 import { ContentSlide36 } from './components/ContentSlide36';
 import { ContentSlide37 } from './components/ContentSlide37';
 import { ContentSlide38 } from './components/ContentSlide38';
@@ -37,7 +36,7 @@ const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 38;
+  const TOTAL_SLIDES = 37;
 
   // Function to handle scaling based on window size to maintain 16:9 visualization
   const handleResize = () => {
@@ -188,18 +187,17 @@ const App: React.FC = () => {
 
         {/* Fiscal Slides */}
         {currentSlide === 32 && <ContentSlide32 />}
-        {currentSlide === 33 && <ContentSlide34 />}
 
         {/* NEW Transition Slide 7: Financial */}
-        {currentSlide === 34 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 33 && <SectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
 
         {/* Financial Slides */}
-        {currentSlide === 35 && <ContentSlide36 />}
-        {currentSlide === 36 && <ContentSlide37 />}
-        {currentSlide === 37 && <ContentSlide38 />}
+        {currentSlide === 34 && <ContentSlide36 />}
+        {currentSlide === 35 && <ContentSlide37 />}
+        {currentSlide === 36 && <ContentSlide38 />}
 
         {/* Thank You Slide */}
-        {currentSlide === 38 && <ThankYouSlide />}
+        {currentSlide === 37 && <ThankYouSlide />}
       </div>
 
       {/* Visual Indicators (Vertical, Right Side, Non-interactive) */}
