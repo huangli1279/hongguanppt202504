@@ -8,16 +8,14 @@ interface InfrastructureTableProps {
 }
 
 export const InfrastructureTable: React.FC<InfrastructureTableProps> = ({ data }) => {
-  // Create columns from industries (Transposed)
-  const columns = createColumnsFromIndustries(data, '月份');
+  // Create columns from industries (Transposed) - remove fixed widths for auto-fit
+  const columns = createColumnsFromIndustries(data, '月份').map(col => ({
+    ...col,
+    width: undefined // Remove fixed width to allow auto-sizing
+  }));
 
   // Transform data to transposed rows (Time series as rows)
-  const rows = transformToTransposedRowArray(data).map(row => ({
-    ...row,
-    name: typeof row.name === 'string' && row.name.startsWith('2025-')
-      ? row.name.replace('2025-', '') + '月'
-      : row.name
-  }));
+  const rows = transformToTransposedRowArray(data);
 
   return (
     <TableContainer

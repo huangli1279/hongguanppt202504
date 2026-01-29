@@ -38,7 +38,7 @@ export const ContentSlide24: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-2 bg-slate-600"></div>
 
       {/* Header */}
-      <header className="mb-6 animate-fade-in">
+      <header className="mb-4 animate-fade-in">
          <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             基建投资专项分析
@@ -50,7 +50,7 @@ export const ContentSlide24: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
+      <section className="grid grid-cols-3 gap-6 mb-4 h-32">
          <InsightBox title="化债约束与挤出效应" icon={Landmark} alert={true} delay="100ms">
            <p>
              受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显“挤出”。12月单月基建投资估算同比下降约 <span className="font-bold">12.2%-16%</span>，资金到位率偏低制约施工进度。
@@ -71,7 +71,7 @@ export const ContentSlide24: React.FC = () => {
       </section>
 
       {/* Table Section */}
-      <section className="flex-grow min-h-0">
+      <section className="flex-grow min-h-0 overflow-hidden">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
           <InfrastructureTable data={infrastructureGrowthTableData} />
         </div>
