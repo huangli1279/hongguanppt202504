@@ -26,12 +26,6 @@ export const CoverSlide: React.FC = () => {
           分析报告
         </h1>
 
-        {/* Subtitle */}
-        <div className="w-24 h-1 bg-webank-lightBlue mb-8"></div>
-        <h2 className="text-2xl font-light text-slate-300 max-w-2xl leading-relaxed">
-          GDP实现5.0%增长圆满收官“十四五”<br/>
-          结构性分化与动能转换深度复盘
-        </h2>
       </div>
 
       {/* Footer / Date */}

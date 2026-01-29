@@ -1,0 +1,232 @@
+// 货币和信贷数据 (Slide 22-24)
+
+import {
+  MoneySupplyDataPoint,
+  M1RealEstateDataPoint,
+  TsfTrendDataPoint,
+  LoanStructureDataPoint,
+  TsfContributionDataPoint,
+  CorpLoanTrendDataPoint,
+  HouseholdLoanStructureDataPoint,
+  DepositFlowDataPoint,
+  LoanBreakdownDataPoint,
+} from '../types';
+
+// Slide 22 Data (Money Supply)
+export const moneySupplyData: MoneySupplyDataPoint[] = [
+  { month: '2022-01', m1: -1.9, m2: 9.8, gap: 11.7 },
+  { month: '2022-02', m1: 4.7, m2: 9.2, gap: 4.5 },
+  { month: '2022-03', m1: 4.7, m2: 9.7, gap: 5.0 },
+  { month: '2022-04', m1: 5.1, m2: 10.5, gap: 5.4 },
+  { month: '2022-05', m1: 4.6, m2: 11.1, gap: 6.5 },
+  { month: '2022-06', m1: 5.8, m2: 11.4, gap: 5.6 },
+  { month: '2022-07', m1: 6.7, m2: 12.0, gap: 5.3 },
+  { month: '2022-08', m1: 6.1, m2: 12.2, gap: 6.1 },
+  { month: '2022-09', m1: 6.4, m2: 12.1, gap: 5.7 },
+  { month: '2022-10', m1: 5.8, m2: 11.8, gap: 6.0 },
+  { month: '2022-11', m1: 4.6, m2: 12.4, gap: 7.8 },
+  { month: '2022-12', m1: 3.7, m2: 11.8, gap: 8.1 },
+  { month: '2023-01', m1: 6.7, m2: 12.6, gap: 5.9 },
+  { month: '2023-02', m1: 5.8, m2: 12.9, gap: 7.1 },
+  { month: '2023-03', m1: 5.1, m2: 12.7, gap: 7.6 },
+  { month: '2023-04', m1: 5.3, m2: 12.4, gap: 7.1 },
+  { month: '2023-05', m1: 4.7, m2: 11.6, gap: 6.9 },
+  { month: '2023-06', m1: 3.1, m2: 11.3, gap: 8.2 },
+  { month: '2023-07', m1: 2.3, m2: 10.7, gap: 8.4 },
+  { month: '2023-08', m1: 2.2, m2: 10.6, gap: 8.4 },
+  { month: '2023-09', m1: 2.1, m2: 10.3, gap: 8.2 },
+  { month: '2023-10', m1: 1.9, m2: 10.3, gap: 8.4 },
+  { month: '2023-11', m1: 1.3, m2: 10.0, gap: 8.7 },
+  { month: '2023-12', m1: 1.3, m2: 9.7, gap: 8.4 },
+  { month: '2024-01', m1: 3.3, m2: 8.7, gap: 5.4 },
+  { month: '2024-02', m1: 2.6, m2: 8.7, gap: 6.1 },
+  { month: '2024-03', m1: 2.3, m2: 8.3, gap: 6.0 },
+  { month: '2024-04', m1: 0.6, m2: 7.2, gap: 6.6 },
+  { month: '2024-05', m1: -0.8, m2: 7.0, gap: 7.8 },
+  { month: '2024-06', m1: -1.7, m2: 6.2, gap: 7.9 },
+  { month: '2024-07', m1: -2.6, m2: 6.3, gap: 8.9 },
+  { month: '2024-08', m1: -3.0, m2: 6.3, gap: 9.3 },
+  { month: '2024-09', m1: -3.3, m2: 6.8, gap: 10.1 },
+  { month: '2024-10', m1: -2.3, m2: 7.5, gap: 9.8 },
+  { month: '2024-11', m1: -0.7, m2: 7.1, gap: 7.8 },
+  { month: '2024-12', m1: 1.2, m2: 7.3, gap: 6.1 },
+  { month: '2025-01', m1: 0.4, m2: 7.0, gap: 6.6 },
+  { month: '2025-02', m1: 0.1, m2: 7.0, gap: 6.9 },
+  { month: '2025-03', m1: 1.6, m2: 7.0, gap: 5.4 },
+  { month: '2025-04', m1: 1.5, m2: 8.0, gap: 6.5 },
+  { month: '2025-05', m1: 2.3, m2: 7.9, gap: 5.6 },
+  { month: '2025-06', m1: 4.6, m2: 8.3, gap: 3.7 },
+  { month: '2025-07', m1: 5.6, m2: 8.8, gap: 3.2 },
+  { month: '2025-08', m1: 6.0, m2: 8.8, gap: 2.8 },
+  { month: '2025-09', m1: 7.2, m2: 8.4, gap: 1.2 },
+  { month: '2025-10', m1: 6.2, m2: 8.2, gap: 2.0 },
+  { month: '2025-11', m1: 4.9, m2: 8.0, gap: 3.1 },
+  { month: '2025-12', m1: 3.8, m2: 8.5, gap: 4.7 },
+];
+
+export const m1RealEstateData: M1RealEstateDataPoint[] = [
+  { month: '9月', m1: 7.2, realEstateSales: -12.5 },
+  { month: '10月', m1: 6.0, realEstateSales: -15.2 },
+  { month: '11月', m1: 4.8, realEstateSales: -18.6 },
+  { month: '12月', m1: 3.8, realEstateSales: -20.4 },
+];
+
+
+export const m1M2ScissorsTrendData = [
+  { month: '2022-01', value: -11.7 },
+  { month: '2022-02', value: -4.5 },
+  { month: '2022-03', value: -5.0 },
+  { month: '2022-04', value: -5.4 },
+  { month: '2022-05', value: -6.5 },
+  { month: '2022-06', value: -5.6 },
+  { month: '2022-07', value: -5.3 },
+  { month: '2022-08', value: -6.1 },
+  { month: '2022-09', value: -5.7 },
+  { month: '2022-10', value: -6.0 },
+  { month: '2022-11', value: -7.8 },
+  { month: '2022-12', value: -8.1 },
+  { month: '2023-01', value: -5.9 },
+  { month: '2023-02', value: -7.1 },
+  { month: '2023-03', value: -7.6 },
+  { month: '2023-04', value: -7.1 },
+  { month: '2023-05', value: -6.9 },
+  { month: '2023-06', value: -8.2 },
+  { month: '2023-07', value: -8.4 },
+  { month: '2023-08', value: -8.4 },
+  { month: '2023-09', value: -8.2 },
+  { month: '2023-10', value: -8.4 },
+  { month: '2023-11', value: -8.7 },
+  { month: '2023-12', value: -8.4 },
+  { month: '2024-01', value: -5.4 },
+  { month: '2024-02', value: -6.1 },
+  { month: '2024-03', value: -6.0 },
+  { month: '2024-04', value: -6.6 },
+  { month: '2024-05', value: -7.8 },
+  { month: '2024-06', value: -7.9 },
+  { month: '2024-07', value: -8.9 },
+  { month: '2024-08', value: -9.3 },
+  { month: '2024-09', value: -10.1 },
+  { month: '2024-10', value: -9.8 },
+  { month: '2024-11', value: -7.8 },
+  { month: '2024-12', value: -6.1 },
+  { month: '2025-01', value: -6.6 },
+  { month: '2025-02', value: -6.9 },
+  { month: '2025-03', value: -5.4 },
+  { month: '2025-04', value: -6.5 },
+  { month: '2025-05', value: -5.6 },
+  { month: '2025-06', value: -3.7 },
+  { month: '2025-07', value: -3.2 },
+  { month: '2025-08', value: -2.8 },
+  { month: '2025-09', value: -1.2 },
+  { month: '2025-10', value: -2.0 },
+  { month: '2025-11', value: -3.1 },
+  { month: '2025-12', value: -4.7 }
+];
+
+// Slide 23 Data (Social Financing & Credit)
+
+export const tsfTrendData: TsfTrendDataPoint[] = [
+  { month: '12月', growth: 8.3, newTsf: 2.21 },
+];
+
+export const loanStructureData: LoanStructureDataPoint[] = [
+  { sector: 'Corp', value: 0, type: 'corporate', fill: '#000' }
+];
+
+// NEW DATA FOR UPDATED SLIDE 23
+
+export const tsfDecContributionData: TsfContributionDataPoint[] = [
+  { category: '政府债券', value: -10700, fill: '#ef4444' },
+  { category: '企业中长贷', value: 2900, fill: '#005c8f' },
+  { category: '企业债券', value: 1683, fill: '#00a9f4' },
+  { category: '其他', value: -340, fill: '#94a3b8' },
+  { category: '社融总计', value: -6457, fill: '#333333', isTotal: true },
+];
+
+export const corpLoanTrendData: CorpLoanTrendDataPoint[] = [
+  { month: '2022-01', value: 10.5, isPositive: true },
+  { month: '2022-02', value: 10.2, isPositive: true },
+  { month: '2022-03', value: 10.5, isPositive: true },
+  { month: '2022-04', value: 10.2, isPositive: true },
+  { month: '2022-05', value: 10.5, isPositive: true },
+  { month: '2022-06', value: 10.8, isPositive: true },
+  { month: '2022-07', value: 10.7, isPositive: true },
+  { month: '2022-08', value: 10.5, isPositive: true },
+  { month: '2022-09', value: 10.6, isPositive: true },
+  { month: '2022-10', value: 10.3, isPositive: true },
+  { month: '2022-11', value: 10.0, isPositive: true },
+  { month: '2022-12', value: 9.6, isPositive: true },
+  { month: '2023-01', value: 9.4, isPositive: true },
+  { month: '2023-02', value: 9.9, isPositive: true },
+  { month: '2023-03', value: 10.0, isPositive: true },
+  { month: '2023-04', value: 10.0, isPositive: true },
+  { month: '2023-05', value: 9.5, isPositive: true },
+  { month: '2023-06', value: 9.0, isPositive: true },
+  { month: '2023-07', value: 8.9, isPositive: true },
+  { month: '2023-08', value: 9.0, isPositive: true },
+  { month: '2023-09', value: 9.0, isPositive: true },
+  { month: '2023-10', value: 9.3, isPositive: true },
+  { month: '2023-11', value: 9.4, isPositive: true },
+  { month: '2023-12', value: 9.5, isPositive: true },
+  { month: '2024-01', value: 9.5, isPositive: true },
+  { month: '2024-02', value: 9.0, isPositive: true },
+  { month: '2024-03', value: 8.7, isPositive: true },
+  { month: '2024-04', value: 8.3, isPositive: true },
+  { month: '2024-05', value: 8.4, isPositive: true },
+  { month: '2024-06', value: 8.1, isPositive: true },
+  { month: '2024-07', value: 8.2, isPositive: true },
+  { month: '2024-08', value: 8.1, isPositive: true },
+  { month: '2024-09', value: 8.0, isPositive: true },
+  { month: '2024-10', value: 7.8, isPositive: true },
+  { month: '2024-11', value: 7.8, isPositive: true },
+  { month: '2024-12', value: 8.0, isPositive: true },
+  { month: '2025-01', value: 8.0, isPositive: true },
+  { month: '2025-02', value: 8.2, isPositive: true },
+  { month: '2025-03', value: 8.4, isPositive: true },
+  { month: '2025-04', value: 8.7, isPositive: true },
+  { month: '2025-05', value: 8.7, isPositive: true },
+  { month: '2025-06', value: 8.9, isPositive: true },
+  { month: '2025-07', value: 9.0, isPositive: true },
+  { month: '2025-08', value: 8.8, isPositive: true },
+  { month: '2025-09', value: 8.7, isPositive: true },
+  { month: '2025-10', value: 8.5, isPositive: true },
+  { month: '2025-11', value: 8.5, isPositive: true },
+  { month: '2025-12', value: 8.3, isPositive: true },
+];
+
+
+// Slide 24 Data
+
+export const householdLoanStructureData: HouseholdLoanStructureDataPoint[] = [
+  { year: '2023年12月', shortTerm: 500, mediumLongTerm: 1500, total: 2000 },
+  { year: '2024年12月', shortTerm: 1000, mediumLongTerm: 2500, total: 3500 },
+  { year: '2025年12月', shortTerm: -1023, mediumLongTerm: 107, total: -916 },
+];
+
+export const depositFlowData: DepositFlowDataPoint[] = [
+  { month: '10月', household: -5000, nonBank: 10000 },
+  { month: '11月', household: 8000, nonBank: 3000 },
+  { month: '12月', household: 25800, nonBank: -3300 },
+];
+
+export const loanBreakdownData: LoanBreakdownDataPoint[] = [
+  { period: '2024-06', household: 815642, enterprise: 1501967, bill: 128060, nonBank: 11649 },
+  { period: '2024-07', household: 813522, enterprise: 1497736, bill: 133647, nonBank: 13706 },
+  { period: '2024-08', household: 815485, enterprise: 1500787, bill: 139097, nonBank: 12350 },
+  { period: '2024-09', household: 820427, enterprise: 1514938, bill: 139784, nonBank: 9647 },
+  { period: '2024-10', household: 822025, enterprise: 1514786, bill: 141478, nonBank: 10747 },
+  { period: '2024-11', household: 824720, enterprise: 1516757, bill: 142680, nonBank: 10046 },
+  { period: '2024-12', household: 828297, enterprise: 1517025, bill: 147195, nonBank: 10615 },
+  { period: '2025-01', household: 832736, enterprise: 1568562, bill: 142046, nonBank: 8607 },
+  { period: '2025-02', household: 828845, enterprise: 1578962, bill: 143739, nonBank: 11451 },
+  { period: '2025-03', household: 838698, enterprise: 1607362, bill: 141753, nonBank: 9749 },
+  { period: '2025-04', household: 833482, enterprise: 1613462, bill: 150094, nonBank: 11383 },
+  { period: '2025-05', household: 834022, enterprise: 1618762, bill: 150840, nonBank: 11972 },
+  { period: '2025-06', household: 839998, enterprise: 1636462, bill: 146731, nonBank: 10946 },
+  { period: '2025-07', household: 835105, enterprise: 1637062, bill: 155442, nonBank: 12972 },
+  { period: '2025-08', household: 835408, enterprise: 1642962, bill: 155973, nonBank: 11842 },
+  { period: '2025-09', household: 839298, enterprise: 1655162, bill: 151947, nonBank: 9494 },
+  { period: '2025-10', household: 835694, enterprise: 1658662, bill: 156953, nonBank: 10430 },
+  { period: '2025-11', household: 833631, enterprise: 1664762, bill: 160295, nonBank: 10283 },
+  { period: '2025-12', household: 832715, enterprise: 1675462, bill: 163795, nonBank: 9512 },
+];
