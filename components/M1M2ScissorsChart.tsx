@@ -8,8 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
-  LabelList
+  Legend
 } from 'recharts';
 import { MoneySupplyDataPoint } from '../types';
 
@@ -64,7 +63,6 @@ export const M1M2ScissorsChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#999', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[0, 10]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -79,33 +77,19 @@ export const M1M2ScissorsChart: React.FC<Props> = ({ data }) => {
               dataKey="m2"
               stroke="#051c2c"
               strokeWidth={3}
-              dot={{ r: 4, fill: '#051c2c' }}
+              dot={false}
               animationDuration={2000}
-            >
-                 <LabelList 
-                  dataKey="m2" 
-                  position="top" 
-                  formatter={(val: number) => `${val}%`}
-                  style={{ fill: '#051c2c', fontSize: '10px', fontWeight: 'bold' }}
-                />
-            </Line>
+            />
             <Line
               name="M1同比"
               type="monotone"
               dataKey="m1"
               stroke="#00a9f4"
               strokeWidth={3}
-              dot={{ r: 4, fill: '#00a9f4' }}
+              dot={false}
               animationDuration={2000}
               animationBegin={300}
-            >
-                 <LabelList 
-                  dataKey="m1" 
-                  position="bottom" 
-                  formatter={(val: number) => `${val}%`}
-                  style={{ fill: '#00a9f4', fontSize: '10px', fontWeight: 'bold' }}
-                />
-            </Line>
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>

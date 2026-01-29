@@ -1,9 +1,8 @@
 
 import React from 'react';
 import {
-  ComposedChart,
+  LineChart,
   Line,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -12,10 +11,10 @@ import {
   Legend,
   ReferenceLine
 } from 'recharts';
-import { M1RealEstateDataPoint } from '../types';
+import { M1M2ScissorsTrendDataPoint } from '../types';
 
 interface Props {
-  data: M1RealEstateDataPoint[];
+  data: M1M2ScissorsTrendDataPoint[];
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -23,8 +22,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-lightBlue font-bold">M1增速: {payload[0].value}%</p>
-        <p className="text-slate-500">地产销售面积: {payload[1].value}%</p>
+        <p className="text-webank-lightBlue font-bold">M1-M2剪刀差: {payload[0].value}%</p>
       </div>
     );
   }
@@ -36,17 +34,17 @@ export const M1RealEstateCorrelationChart: React.FC<Props> = ({ data }) => {
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          M1增速与30大中城市商品房成交面积增速关联
+          2022-2025年中国货币供应量(M1/M2)剪刀差走势
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          地产销售低迷显著拖累货币派生能力
+          同比增速单位为%
         </p>
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart
+          <LineChart
             data={data}
-            margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
+            margin={{ top: 20, right: 30, left: -20, bottom: 0 }}
           >
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
@@ -57,23 +55,14 @@ export const M1RealEstateCorrelationChart: React.FC<Props> = ({ data }) => {
               tickLine={false} 
               tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
+              tickFormatter={(value) => value.endsWith('-01') ? value : value.slice(5)}
             />
             <YAxis 
-              yAxisId="left"
               axisLine={false} 
               tickLine={false} 
               tick={{ fill: '#00a9f4', fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[0, 10]}
-            />
-             <YAxis 
-              yAxisId="right"
-              orientation="right"
-              axisLine={false} 
-              tickLine={false} 
-              tick={{ fill: '#94a3b8', fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
-              domain={[-25, 0]}
+              domain={[-12, 0]}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
@@ -83,26 +72,15 @@ export const M1RealEstateCorrelationChart: React.FC<Props> = ({ data }) => {
             />
             
             <Line
-              yAxisId="left"
-              name="M1增速"
+              name="M1-M2剪刀差"
               type="monotone"
-              dataKey="m1"
+              dataKey="value"
               stroke="#00a9f4"
               strokeWidth={3}
-              dot={{ r: 4, fill: '#00a9f4' }}
+              dot={false}
               animationDuration={2000}
             />
-             <Bar
-              yAxisId="right"
-              name="地产成交面积增速"
-              dataKey="realEstateSales"
-              fill="#94a3b8"
-              barSize={20}
-              radius={[2, 2, 0, 0]}
-              animationDuration={1500}
-              fillOpacity={0.6}
-            />
-          </ComposedChart>
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

@@ -431,6 +431,11 @@ export interface M1RealEstateDataPoint {
     realEstateSales: number;
 }
 
+export interface M1M2ScissorsTrendDataPoint {
+    month: string;
+    value: number;
+}
+
 export interface TsfTrendDataPoint {
     month: string;
     growth: number;
@@ -484,6 +489,7 @@ export interface RegionalExportTrendDataPoint {
     asean: number;
     africa: number;
     eu: number;
+    latinAmerica: number;
 }
 
 export interface ExportShareMigrationDataPoint {

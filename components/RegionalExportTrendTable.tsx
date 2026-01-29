@@ -14,9 +14,11 @@ const transformDataForTable = (data: RegionalExportTrendDataPoint[]) => {
     us: item.us,
     asean: item.asean,
     africa: item.africa,
-    eu: item.eu
+    eu: item.eu,
+    latinAmerica: item.latinAmerica
   }));
 };
+
 
 // Cell colorizer for positive/negative values
 const cellColorizer = (value: unknown, rowIdx: number, colKey: string) => {
@@ -43,12 +45,13 @@ export const RegionalExportTrendTable: React.FC<Props> = ({ data }) => {
   const tableData = transformDataForTable(data);
 
   const columns = [
-    { key: 'month', label: '月份', width: '15%', align: 'center' as const },
-    { key: 'total', label: '出口总值', width: '17%', align: 'center' as const },
-    { key: 'us', label: '对美出口', width: '17%', align: 'center' as const },
-    { key: 'asean', label: '对东盟出口', width: '17%', align: 'center' as const },
-    { key: 'africa', label: '对非洲出口', width: '17%', align: 'center' as const },
-    { key: 'eu', label: '对欧盟出口', width: '17%', align: 'center' as const }
+    { key: 'month', label: '月份', width: '10%', align: 'center' as const },
+    { key: 'total', label: '出口总值', width: '15%', align: 'center' as const },
+    { key: 'us', label: '对美', width: '15%', align: 'center' as const },
+    { key: 'asean', label: '对东盟', width: '15%', align: 'center' as const },
+    { key: 'africa', label: '对非洲', width: '15%', align: 'center' as const },
+    { key: 'eu', label: '对欧盟', width: '15%', align: 'center' as const },
+    { key: 'latinAmerica', label: '对拉美', width: '15%', align: 'center' as const }
   ];
 
   return (

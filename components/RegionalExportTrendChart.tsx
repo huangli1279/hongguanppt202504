@@ -147,6 +147,15 @@ export const RegionalExportTrendChart: React.FC<Props> = ({ data }) => {
               dot={{ r: 2 }}
               activeDot={{ r: 4 }}
             />
+            <Line 
+              type="monotone" 
+              dataKey="latinAmerica" 
+              name="对拉美出口" 
+              stroke="#fb923c" 
+              strokeWidth={2} 
+              dot={{ r: 2 }}
+              activeDot={{ r: 4 }}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>

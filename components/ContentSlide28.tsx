@@ -52,15 +52,15 @@ export const ContentSlide28: React.FC = () => {
 
       {/* Insight Section */}
       <section className="grid grid-cols-2 gap-6 mb-4 h-40">
-         <InsightBox title="机电产品与汽车：竞争力持续兑现" icon={Layers} highlight={true} delay="100ms">
+         <InsightBox title="机电出口占比创新高，高技术驱动结构升级" icon={Layers} highlight={true} delay="100ms">
            <p>
-             12月机电产品出口同比增长 <span className="font-bold">12.1%</span>，对出口增速拉动作用显著。其中汽车12月出口同比大增 <span className="font-bold">71.7%</span>，全年保持高景气。2025 年中国插混（PHEV）与纯电（BEV）车型在东南亚及中东市场的占有率大幅抬升，抵消了部分地区的贸易壁垒影响，显示中国车企在全球市场的竞争力持续兑现。
+             机电产品制造稳步领跑，全年出口占比已提升至60.9%的历史高位，累计同比增长26.8%。高技术与集成电路作为结构升级的“双引擎”在年末迎来爆发，充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。
            </p>
          </InsightBox>
 
-         <InsightBox title="集成电路：电子周期上行与AI驱动" icon={Zap} highlight={true} delay="200ms">
+         <InsightBox title="劳密产品表现疲软，传统产业加速向高端让位" icon={Zap} highlight={true} delay="200ms">
            <p>
-             受全球 AI 换机潮（AI 手机、AI PC）及数据中心算力芯片需求爆发驱动，集成电路出口倍增，电子周期进入上行通道。集成电路12月出口金额大增 <span className="font-bold">47.7%</span>，量价齐升特征明显。
+             劳动密集型产品表现疲软，服装累计同比-5%，显示出传统支柱产业在存量博弈与产业链外迁压力下正加速向高端装备制造让位。
            </p>
          </InsightBox>
       </section>

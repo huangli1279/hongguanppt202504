@@ -2,7 +2,7 @@
 import React from 'react';
 import { M1M2ScissorsChart } from './M1M2ScissorsChart';
 import { M1RealEstateCorrelationChart } from './M1RealEstateCorrelationChart';
-import { moneySupplyData, m1RealEstateData } from '../data';
+import { moneySupplyData, m1M2ScissorsTrendData } from '../data';
 import { Split, AlertOctagon, Landmark, Briefcase } from 'lucide-react';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
@@ -45,27 +45,27 @@ export const ContentSlide36: React.FC = () => {
           </span>
         </div>
         <h1 className="text-3xl font-serif font-bold text-webank-blue leading-tight">
-          12月M1增速滑落至3.8%创新低，<span className="text-webank-accent">M2-M1剪刀差扩至4.7%警示资金"定期化"</span>
+          12月M1增速滑落至3.8%，剪刀差扩至4.7%警示资金"定期化"
         </h1>
       </header>
 
       {/* Insight Section */}
       <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="剪刀差：活钱变死钱" icon={Split} alert={true} delay="100ms">
+         <InsightBox title="剪刀差创新高" icon={Split} alert={true} delay="100ms">
            <p>
-             M2维持在 <span className="font-bold">8.5%</span> 的相对高位，但M1大幅下行至 <span className="font-bold">3.8%</span>。剪刀差走阔意味着企业和居民更倾向于将资金以定期存款形式沉淀（资金定期化），而非用于即期交易或投资。
+             M2同比增速在12月超预期反弹至 8.5%（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 3.8%。两者剪刀差由三季度的1.2%迅速扩大至年末的 4.7%，创年内新高。
            </p>
          </InsightBox>
 
-         <InsightBox title="核心拖累：地产链" icon={AlertOctagon} delay="200ms">
+         <InsightBox title="基数压制与绝对量" icon={AlertOctagon} delay="200ms">
            <p>
-             M1的主要派生渠道之一是房地产销售（居民存款转化为房企活期存款）。受商品房销售深跌影响，这一货币传导链条严重受阻，导致M1读数持续承压。
+             2024年下半年M1统计口径修订后数据上修，叠加当时化债资金集中投放，导致2025年Q4面临极高基数压制。若剔除基数，12月M1环比增加约2.6万亿，绝对量表现尚可。
            </p>
          </InsightBox>
 
-         <InsightBox title="活性不足：避险情绪" icon={Landmark} delay="300ms">
+         <InsightBox title="资金定期化" icon={Landmark} delay="300ms">
            <p>
-             企业扩产意愿低迷（对应固投减速）与居民预防性储蓄（对应理财回表）共同作用，导致货币乘数效应减弱。金融体系内“不缺钱”，但实体经济中“钱不转”。
+             在低通胀与资产价格波动环境下，企业与居民风险偏好下降，倾向于将活期资金转为定期存款或理财以锁定收益，导致M1向M2内部的迁移。
            </p>
          </InsightBox>
       </section>
@@ -76,7 +76,7 @@ export const ContentSlide36: React.FC = () => {
           <M1M2ScissorsChart data={moneySupplyData} />
         </div>
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
-          <M1RealEstateCorrelationChart data={m1RealEstateData} />
+          <M1RealEstateCorrelationChart data={m1M2ScissorsTrendData} />
         </div>
       </section>
 
