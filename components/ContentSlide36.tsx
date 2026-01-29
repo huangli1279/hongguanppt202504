@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { DataTable, TableContainer } from './DataTable';
-import { loanBreakdownData } from '../data';
-import { Wallet, TrendingDown, PiggyBank, ArrowRightLeft } from 'lucide-react';
+import { loanBreakdownData as allLoanBreakdownData } from '../data';
+import { Wallet, TrendingDown, PiggyBank } from 'lucide-react';
 import { ColumnDefinition } from '../types';
 
 const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { title: string, children?: React.ReactNode, icon: any, delay: string, alert?: boolean, highlight?: boolean }) => {
@@ -32,6 +32,9 @@ const InsightBox = ({ title, children, icon: Icon, delay, alert, highlight }: { 
 };
 
 export const ContentSlide36: React.FC = () => {
+  // 仅筛选2025年数据
+  const loanBreakdownData = allLoanBreakdownData.filter(d => d.period.startsWith('2025'));
+  
   const columns: ColumnDefinition[] = [
     { key: 'period', label: '时间', sticky: true },
     { key: 'household', label: '住户贷款', align: 'right' },
@@ -59,22 +62,16 @@ export const ContentSlide36: React.FC = () => {
       </header>
 
       {/* Insight Section */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-36">
-         <InsightBox title="主动去杠杆" icon={TrendingDown} alert={true} delay="100ms">
+      <section className="grid grid-cols-2 gap-6 mb-6 flex-shrink-0">
+         <InsightBox title="企业扩表 居民缩表" icon={TrendingDown} alert={true} delay="100ms">
            <p>
-             12月居民贷款罕见减少 <span className="font-bold">916亿元</span>，同比多减4416亿元。短期贷款减少1023亿元（消费疲软），中长期贷款仅增100亿元（地产销售低迷及提前还贷）。收入预期不稳下，居民缩表意愿加剧。
+             企业贷款稳步增长，由年初156.9万亿元扩张至年末167.5万亿元。住户贷款全年"原地踏步"，四季度出现逐月萎缩态势（10月：83.6万亿到12月：83.3万亿），主要受房地产销售持续低迷及"提前还贷潮"拖累，导致居民端实质性缩表。
            </p>
          </InsightBox>
 
-         <InsightBox title="预防性储蓄" icon={PiggyBank} highlight={true} delay="200ms">
+         <InsightBox title="信用收缩" icon={PiggyBank} highlight={true} delay="200ms">
            <p>
-             资产端倾向保守，12月居民存款大增 <span className="font-bold">2.58万亿元</span>，同比多增3900亿元。全年累计增加14.64万亿元，资金回流定期存款趋势未改，风险偏好持续处于低位。
-           </p>
-         </InsightBox>
-
-         <InsightBox title="存款搬家退潮" icon={ArrowRightLeft} delay="300ms">
-           <p>
-             相比10月受股市大涨驱动的"存款搬家"，12月非银存款 <span className="font-bold">减少 3300亿元</span>。随着股市震荡及年末银行考核压力，资金流向逆转，重新回流银行表内，M2增速因此受益。
+             企业端微弱的回升难掩整体需求枯竭，总增量断崖式下跌 80% 表明金融体系已从"宽货币"陷入"信用收缩"的冰点，反映出实体经济内生性融资意愿极度低迷。
            </p>
          </InsightBox>
       </section>
@@ -83,7 +80,7 @@ export const ContentSlide36: React.FC = () => {
       <section className="flex-grow min-h-0">
         <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards h-full" style={{ animationDelay: '500ms' }}>
           <TableContainer
-            title="2024-2025年人民币贷款分项数据序列"
+            title="2025年人民币贷款分项数据序列"
             unit="亿元"
             source="人民银行"
           >
@@ -92,7 +89,7 @@ export const ContentSlide36: React.FC = () => {
               columns={columns}
               variant="bordered"
               stickyFirstColumn
-              minRowHeight={8}
+              minRowHeight={28}
             />
           </TableContainer>
         </div>

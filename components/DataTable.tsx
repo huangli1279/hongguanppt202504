@@ -139,7 +139,7 @@ export function DataTable<T extends Record<string, unknown>>({
   return (
     <div
       ref={tableRef}
-      className="w-full h-full overflow-hidden scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
+      className="w-full h-full overflow-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
       style={{ minWidth }}
     >
       <table className={cn('w-full border-collapse', fontSize, minWidth && `min-w-[${minWidth}]`)}>
