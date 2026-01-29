@@ -3,7 +3,7 @@
 
 
 
-import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, MonthlyTradeGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint } from './types';
+import { GdpDataPoint, DeflatorDataPoint, IndustryGrowthData, ContributionDataPoint, BreakdownDataPoint, DemandStructureData, ThreeCarriagesContributionDataPoint, GrowthIndicatorData, PmiTrendDataPoint, PmiSizeDataPoint, PmiSizeTrendDataPoint, IndustrialTrendDataPoint, KeyIndustryDataPoint, ProfitBridgeDataPoint, InventoryCycleDataPoint, PpiTrendDataPoint, CommodityIndexDataPoint, IndustryPriceDataPoint, PpiIndustryMomDataPoint, RetailTrendDataPoint, UrbanRuralDataPoint, ServiceGoodsDataPoint, DurableGoodsDataPoint, CpiTrendDataPoint, CpiContributionDataPoint, ConfidenceDataPoint, IncomeSourceDataPoint, FaiTrendDataPoint, InvestmentPillarsDataPoint, PrivateStateInvestmentDataPoint, RealEstateInvestmentDataPoint, RealEstatePriceDataPoint, RealEstateMarketDataPoint, InfrastructureSectorDataPoint, InvestmentStructureDataPoint, IndustryGdpQuarterlyDataPoint, HighTechInvestmentDataPoint, TradeTrendDataPoint, TradeSurplusDataPoint, ExportItemGrowthDataPoint, ExportContributionDataPoint, ExportGrowthByRegionDataPoint, ExportShareDataPoint, BroadFiscalTrendDataPoint, FiscalLedgerGrowthDataPoint, TaxCategoryDataPoint, VatVsProductionDataPoint, LandRevenueDataPoint, SpecialBondDataPoint, MoneySupplyDataPoint, M1RealEstateDataPoint, TsfTrendDataPoint, LoanStructureDataPoint, TsfContributionDataPoint, CorpLoanTrendDataPoint, HouseholdLoanStructureDataPoint, DepositFlowDataPoint, IndustrialFinancialTableData, IndustryGrowthTableData, EquipmentVsConstructionTrendDataPoint, Q4ExportGrowthDataPoint, ConsumptionPropensityDataPoint, FaiComponentsDataPoint, ComputingExportGrowthDataPoint, MechElecExportGrowthDataPoint, RegionalExportTrendDataPoint, ExportShareMigrationDataPoint, AutoDealerInventoryDataPoint, MonthlyTradeGrowthDataPoint } from './types';
 
 // Slide 1 Data
 
@@ -378,18 +378,26 @@ export const ppiIndustryMomData: PpiIndustryMomDataPoint[] = [
 
 // Slide 8 Data
 export const retailTrendData: RetailTrendDataPoint[] = [
-  { month: '1月', value: 5.5 },
-  { month: '2月', value: 5.5 }, // Combined Jan-Feb often reported together, splitting for viz
-  { month: '3月', value: 4.2 },
-  { month: '4月', value: 3.8 },
-  { month: '5月', value: 4.0 },
-  { month: '6月', value: 3.5 },
-  { month: '7月', value: 3.2 },
-  { month: '8月', value: 3.4 },
-  { month: '9月', value: 3.8 },
-  { month: '10月', value: 2.9, highlight: true },
-  { month: '11月', value: 1.3, highlight: true },
-  { month: '12月', value: 0.9, highlight: true },
+  { month: '2024-03', value: 3.10 },
+  { month: '2024-04', value: 2.30 },
+  { month: '2024-05', value: 3.70 },
+  { month: '2024-06', value: 2.00 },
+  { month: '2024-07', value: 2.70 },
+  { month: '2024-08', value: 2.10 },
+  { month: '2024-09', value: 3.20 },
+  { month: '2024-10', value: 4.80 },
+  { month: '2024-11', value: 3.00 },
+  { month: '2024-12', value: 3.70 },
+  { month: '2025-03', value: 5.90 },
+  { month: '2025-04', value: 5.10 },
+  { month: '2025-05', value: 6.40 },
+  { month: '2025-06', value: 4.80 },
+  { month: '2025-07', value: 3.70 },
+  { month: '2025-08', value: 3.40 },
+  { month: '2025-09', value: 3.00 },
+  { month: '2025-10', value: 2.90, highlight: true },
+  { month: '2025-11', value: 1.30, highlight: true },
+  { month: '2025-12', value: 0.86, highlight: true },
 ];
 
 export const urbanRuralData: UrbanRuralDataPoint[] = [
@@ -420,28 +428,28 @@ export const urbanRuralData: UrbanRuralDataPoint[] = [
 // Slide 9 Data
 
 export const serviceGoodsData: ServiceGoodsDataPoint[] = [
-  { month: '2024-02', service: 12.30, goods: 6.20 },
-  { month: '2024-03', service: 10.00, goods: 4.90 },
-  { month: '2024-04', service: 8.40, goods: 4.00 },
-  { month: '2024-05', service: 7.90, goods: 3.90 },
-  { month: '2024-06', service: 7.50, goods: 2.90 },
-  { month: '2024-07', service: 7.20, goods: 2.50 },
-  { month: '2024-08', service: 6.90, goods: 2.10 },
-  { month: '2024-09', service: 6.70, goods: 2.20 },
-  { month: '2024-10', service: 6.50, goods: 2.70 },
-  { month: '2024-11', service: 6.40, goods: 2.50 },
-  { month: '2024-12', service: 6.20, goods: 2.70 },
-  { month: '2025-02', service: 4.90, goods: 4.40 },
-  { month: '2025-03', service: 5.00, goods: 5.80 },
-  { month: '2025-04', service: 5.10, goods: 6.00 },
-  { month: '2025-05', service: 5.20, goods: 6.40 },
-  { month: '2025-06', service: 5.30, goods: 6.30 },
-  { month: '2025-07', service: 5.20, goods: 5.80 },
-  { month: '2025-08', service: 5.10, goods: 5.40 },
-  { month: '2025-09', service: 5.20, goods: 5.10 },
-  { month: '2025-10', service: 5.30, goods: 4.70 },
-  { month: '2025-11', service: 5.40, goods: 4.00 },
-  { month: '2025-12', service: 5.50, goods: 3.36 },
+  { month: '2024-02', total: 5.50, service: 12.3, goods: 4.6 },
+  { month: '2024-03', total: 4.70, service: 10.0, goods: 4.0 },
+  { month: '2024-04', total: 4.10, service: 8.4, goods: 3.5 },
+  { month: '2024-05', total: 4.10, service: 7.9, goods: 3.5 },
+  { month: '2024-06', total: 3.70, service: 7.5, goods: 3.2 },
+  { month: '2024-07', total: 3.50, service: 7.2, goods: 3.1 },
+  { month: '2024-08', total: 3.40, service: 6.9, goods: 3.0 },
+  { month: '2024-09', total: 3.30, service: 6.7, goods: 3.0 },
+  { month: '2024-10', total: 3.50, service: 6.5, goods: 3.2 },
+  { month: '2024-11', total: 3.50, service: 6.4, goods: 3.2 },
+  { month: '2024-12', total: 3.50, service: 6.2, goods: 3.2 },
+  { month: '2025-02', total: 4.00, service: 4.9, goods: 3.9 },
+  { month: '2025-03', total: 4.60, service: 5.0, goods: 4.6 },
+  { month: '2025-04', total: 4.70, service: 5.1, goods: 4.7 },
+  { month: '2025-05', total: 5.00, service: 5.2, goods: 5.1 },
+  { month: '2025-06', total: 5.00, service: 5.3, goods: 5.1 },
+  { month: '2025-07', total: 4.80, service: 5.2, goods: 4.9 },
+  { month: '2025-08', total: 4.60, service: 5.1, goods: 4.8 },
+  { month: '2025-09', total: 4.50, service: 5.2, goods: 4.6 },
+  { month: '2025-10', total: 4.30, service: 5.3, goods: 4.4 },
+  { month: '2025-11', total: 4.00, service: 5.4, goods: 4.1 },
+  { month: '2025-12', total: 3.69, service: 5.5, goods: 3.76 },
 ];
 
 export const durableGoodsData: DurableGoodsDataPoint[] = [
@@ -761,27 +769,37 @@ export const tradeTrendData: TradeTrendDataPoint[] = [
 ];
 
 export const q4ExportGrowthData: Q4ExportGrowthDataPoint[] = [
-  { period: '24-10', value: 12.7 },
-  { period: '24-11', value: 6.7 },
-  { period: '24-12', value: 2.3 },
-  { period: '25-10', value: -1.1, annotation: '基数陷阱：受24年台风后补偿性高位影响' },
-  { period: '25-11', value: 5.9 },
-  { period: '25-12', value: 6.6, annotation: '超预期：抢出口+电子周期共振' },
+  {
+    month: '10月',
+    '2024': 12.7,
+    '2025': -1.1,
+    annotation2025: '基数陷阱：受24年台风后补偿性高位影响'
+  },
+  {
+    month: '11月',
+    '2024': 6.7,
+    '2025': 5.9
+  },
+  {
+    month: '12月',
+    '2024': 2.3,
+    '2025': 6.6,
+    annotation2025: '超预期：抢出口+电子周期共振'
+  },
 ];
 
 export const monthlyTradeGrowthData: MonthlyTradeGrowthDataPoint[] = [
-  { month: '2025-01', export: 8.2, import: 15.4, total: 11.3 },
-  { month: '2025-02', export: 10.6, import: -1.3, total: 4.9 },
-  { month: '2025-03', export: -3.8, import: 2.0, total: -1.3 },
-  { month: '2025-04', export: 0.9, import: 12.2, total: 5.5 },
-  { month: '2025-05', export: 11.2, import: 5.2, total: 8.6 },
-  { month: '2025-06', export: 10.7, import: -0.6, total: 5.8 },
-  { month: '2025-07', export: 6.5, import: 6.6, total: 6.5 },
-  { month: '2025-08', export: 8.4, import: 0.0, total: 4.8 },
-  { month: '2025-09', export: 1.6, import: 0.7, total: 1.2 },
-  { month: '2025-10', export: -1.1, import: -1.2, total: -1.1 },
-  { month: '2025-11', export: 1.2, import: -0.6, total: 0.4 },
-  { month: '2025-12', export: 6.6, import: 1.1, total: 4.2 },
+  { month: '02月', totalTrade: -1.2, import: -7.2, export: 3.3 },
+  { month: '03月', totalTrade: 1.3, import: -5.8, export: 6.7 },
+  { month: '04月', totalTrade: 2.4, import: -4.1, export: 7.4 },
+  { month: '05月', totalTrade: 2.4, import: -3.7, export: 7.1 },
+  { month: '06月', totalTrade: 2.9, import: -2.7, export: 7.1 },
+  { month: '07月', totalTrade: 3.5, import: -1.6, export: 7.2 },
+  { month: '08月', totalTrade: 3.5, import: -1.1, export: 6.9 },
+  { month: '09月', totalTrade: 4.0, import: -0.1, export: 7.0 },
+  { month: '10月', totalTrade: 3.6, import: 0.0, export: 6.2 },
+  { month: '11月', totalTrade: 3.6, import: 0.2, export: 6.2 },
+  { month: '12月', totalTrade: 3.8, import: 0.5, export: 6.1 },
 ];
 
 export const tradeSurplusData: TradeSurplusDataPoint[] = [

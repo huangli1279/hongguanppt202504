@@ -210,9 +210,9 @@ export const TableContainer: React.FC<TableContainerProps> = ({ title, unit, sou
     <div className="w-full h-full flex flex-col">
       {/* Title Section */}
       {(title || unit || source) && (
-        <div className="flex-shrink-0 mb-2 flex items-baseline justify-between border-b border-slate-300 pb-1">
+        <div className="flex-shrink-0 mb-1 flex items-baseline justify-between border-b border-slate-300 pb-0.5">
           {title && (
-            <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide">
+            <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide">
               {title}
             </h3>
           )}
@@ -228,7 +228,7 @@ export const TableContainer: React.FC<TableContainerProps> = ({ title, unit, sou
 
       {/* Legend Section */}
       {legend && legend.length > 0 && (
-        <div className="flex-shrink-0 mt-1 flex justify-end items-center gap-3 text-[9px] text-slate-600">
+        <div className="flex-shrink-0 mt-0.5 flex justify-end items-center gap-3 text-[9px] text-slate-600">
           {legend.map((item, idx) => (
             <div key={idx} className="flex items-center gap-1">
               <div className={cn('w-3 h-3 rounded', item.color)} />

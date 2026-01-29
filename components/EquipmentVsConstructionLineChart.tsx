@@ -36,11 +36,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 export const EquipmentVsConstructionLineChart: React.FC<Props> = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="mb-4">
-        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+      <div className="mb-2 flex-shrink-0">
+        <h3 className="text-xs font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           设备投资与建筑工程投资增速对比
         </h3>
-        <p className="text-xs text-webank-subtext mt-1">
+        <p className="text-[10px] text-webank-subtext mt-0.5">
           设备更新驱动投资增长，建筑工程投资持续下行
         </p>
       </div>

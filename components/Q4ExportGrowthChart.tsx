@@ -8,7 +8,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Cell,
   ReferenceLine,
   LabelList
 } from 'recharts';
@@ -24,9 +23,16 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-white p-2 border border-slate-200 shadow-lg text-xs font-sans">
         <p className="font-bold text-webank-blue mb-1">{label}</p>
-        <p className="text-webank-blue font-bold">出口同比增速: {payload[0].value}%</p>
-        {dataPoint.annotation && (
-          <p className="text-red-600 text-[10px] mt-1 italic">{dataPoint.annotation}</p>
+        {payload.map((item: any, index: number) => (
+          <p key={index} style={{ color: item.color }} className="font-bold">
+            {item.name}: {item.value}%
+          </p>
+        ))}
+        {dataPoint.annotation2024 && (
+          <p className="text-red-600 text-[10px] mt-1 italic">2024: {dataPoint.annotation2024}</p>
+        )}
+        {dataPoint.annotation2025 && (
+          <p className="text-red-600 text-[10px] mt-1 italic">2025: {dataPoint.annotation2025}</p>
         )}
       </div>
     );
@@ -54,10 +60,10 @@ export const Q4ExportGrowthChart: React.FC<Props> = ({ data }) => {
             <CartesianGrid vertical={false} stroke="#e5e7eb" strokeDasharray="3 3" />
             <ReferenceLine y={0} stroke="#333" strokeWidth={1} />
             
-            <XAxis 
-              dataKey="period" 
-              axisLine={{ stroke: '#e5e7eb' }} 
-              tickLine={false} 
+            <XAxis
+              dataKey="month"
+              axisLine={{ stroke: '#e5e7eb' }}
+              tickLine={false}
               tick={{ fill: '#666', fontSize: 10 }}
               dy={10}
             />
@@ -70,22 +76,33 @@ export const Q4ExportGrowthChart: React.FC<Props> = ({ data }) => {
             />
             <Tooltip content={<CustomTooltip />} />
             
-            <Bar 
-              dataKey="value" 
-              name="出口同比增速"
+            <Bar
+              dataKey="2024"
+              name="2024年"
+              fill="#051c2c"
               radius={[2, 2, 0, 0]}
               animationDuration={1500}
             >
-              {data.map((entry, index) => (
-                <Cell 
-                  key={`cell-${index}`} 
-                  fill={entry.period.includes('25') ? '#00a9f4' : '#051c2c'} 
-                />
-              ))}
-              <LabelList 
-                dataKey="value" 
-                position="top" 
-                fill="#333" 
+              <LabelList
+                dataKey="2024"
+                position="top"
+                fill="#333"
+                fontSize={10}
+                fontWeight="bold"
+                formatter={(value: number) => `${value}%`}
+              />
+            </Bar>
+            <Bar
+              dataKey="2025"
+              name="2025年"
+              fill="#00a9f4"
+              radius={[2, 2, 0, 0]}
+              animationDuration={1500}
+            >
+              <LabelList
+                dataKey="2025"
+                position="top"
+                fill="#333"
                 fontSize={10}
                 fontWeight="bold"
                 formatter={(value: number) => `${value}%`}

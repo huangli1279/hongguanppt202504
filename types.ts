@@ -142,8 +142,9 @@ export interface UrbanRuralDataPoint {
 
 export interface ServiceGoodsDataPoint {
   month: string;
-  service: number;
-  goods: number; // 限额以上批发零售贸易业商品零售额
+  total: number; // 社会消费品零售总额累计同比
+  service: number; // 服务零售额累计同比
+  goods: number; // 商品零售额累计同比
 }
 
 export interface DurableGoodsDataPoint {
@@ -280,21 +281,23 @@ export interface TradeTrendDataPoint {
 }
 
 export interface Q4ExportGrowthDataPoint {
-    period: string;
-    value: number;
-    annotation?: string;
+    month: string;
+    '2024': number;
+    '2025': number;
+    annotation2024?: string;
+    annotation2025?: string;
+}
+
+export interface MonthlyTradeGrowthDataPoint {
+    month: string;
+    totalTrade: number;
+    import: number;
+    export: number;
 }
 
 export interface TradeSurplusDataPoint {
     year: string;
     value: number;
-}
-
-export interface MonthlyTradeGrowthDataPoint {
-    month: string;
-    export: number;
-    import: number;
-    total: number;
 }
 
 export interface ExportItemGrowthDataPoint {
