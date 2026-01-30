@@ -7,7 +7,7 @@ interface Props {
   subtitle: string;
 }
 
-export const SectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle }) => {
+export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle }) => {
   return (
     <div className="w-full h-full bg-[#051c2c] flex flex-col justify-center items-center relative overflow-hidden text-white">
       {/* Background Decor */}

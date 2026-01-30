@@ -92,7 +92,7 @@ npm run preview  # Preview production build
 
 ## Development Guidelines
 
-- **必须复用已存在的Base Components** - Always reuse existing base components (`BaseContentSlide`, `BaseLineChart`, `BaseCard`, `ChartContainer`) for consistency
+- **必须复用已存在的Base Components** - Always reuse existing base components (`BaseContentSlide`, `BaseLineChart`, `BaseCard`, `ChartContainer`, etc.) for consistency
 - Data should be centralized in `data/` directory, not inline in components
 - Chart colors should use WeBank brand palette
 - Maintain 1280x720 slide dimensions

@@ -13,6 +13,18 @@ export const gdpTrendData: GdpDataPoint[] = [
   { period: '2025-12', value: 4.5, nominal: 3.85 },
 ];
 
+// GDP贡献率数据（三大需求）
+export const gdpContributionData = [
+  { period: '2024-03', consumption: 76.50, investment: 9.20, netExport: 14.30 },
+  { period: '2024-06', consumption: 50.50, investment: 38.40, netExport: 11.10 },
+  { period: '2024-09', consumption: 32.60, investment: 22.80, netExport: 44.50 },
+  { period: '2024-12', consumption: 32.10, investment: 22.10, netExport: 45.80 },
+  { period: '2025-03', consumption: 50.10, investment: 4.70, netExport: 45.20 },
+  { period: '2025-06', consumption: 51.00, investment: 24.20, netExport: 24.80 },
+  { period: '2025-09', consumption: 54.10, investment: 15.90, netExport: 30.00 },
+  { period: '2025-12', consumption: 52.90, investment: 16.00, netExport: 31.10 },
+];
+
 export const deflatorData: DeflatorDataPoint[] = [
   { period: '2023-03', primary: 2.1, secondary: -1.5, tertiary: 1.8 },
   { period: '2023-06', primary: 1.5, secondary: -2.2, tertiary: 1.2 },

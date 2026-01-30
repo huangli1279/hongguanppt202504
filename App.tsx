@@ -1,17 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { CoverSlide } from './components/CoverSlide';
 import { TableOfContentsSlide } from './components/TableOfContentsSlide';
-import { SectionTransitionSlide } from './components/SectionTransitionSlide';
+import { BaseSectionTransitionSlide } from './components/BaseSectionTransitionSlide';
 import { ContentSlide04 } from './components/ContentSlide04';
 import { ContentSlide05 } from './components/ContentSlide05';
 import { ContentSlide06 } from './components/ContentSlide06';
+import { ContentSlide07 } from './components/ContentSlide07';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 7;
+  const TOTAL_SLIDES = 8;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -91,11 +92,12 @@ const App: React.FC = () => {
       >
         {currentSlide === 1 && <CoverSlide />}
         {currentSlide === 2 && <TableOfContentsSlide />}
-        {currentSlide === 3 && <SectionTransitionSlide id="01" title="GDP 分析" subtitle="定基调，找温差" />}
+        {currentSlide === 3 && <BaseSectionTransitionSlide id="01" title="GDP 分析" subtitle="定基调，找温差" />}
         {currentSlide === 4 && <ContentSlide04 />}
         {currentSlide === 5 && <ContentSlide05 />}
         {currentSlide === 6 && <ContentSlide06 />}
-        {currentSlide === 7 && <ThankYouSlide />}
+        {currentSlide === 7 && <ContentSlide07 />}
+        {currentSlide === 8 && <ThankYouSlide />}
       </div>
 
       <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50 select-none pointer-events-none">
