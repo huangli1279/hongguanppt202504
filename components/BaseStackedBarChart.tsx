@@ -108,7 +108,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
   referenceLineY = 0,
   legendOrder,
   barSize = 24,
-  showLabels = false
+  showLabels = true
 }) => {
   return (
     <div className="w-full h-full flex flex-col">

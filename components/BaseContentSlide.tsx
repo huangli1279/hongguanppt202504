@@ -51,9 +51,9 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue" />
 
       {/* Header Section */}
-      <header className="mb-10 animate-fade-in">
+      <header className="mb-6 animate-fade-in">
         {subtitle && (
-          <div className="flex justify-between items-end mb-2">
+          <div className="flex justify-between items-end mb-1">
             <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
               {subtitle}
             </span>
@@ -71,14 +71,14 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
         <>
           {/* Cards Section */}
           {cards && (
-            <section className={cn('grid gap-6 mb-10', cardGridClass)}>
+            <section className={cn('grid gap-4 mb-6', cardGridClass)}>
               {cards}
             </section>
           )}
 
           {/* Charts Section */}
           {charts && (
-            <section className={cn('flex-1 grid gap-10 min-h-0', chartGridClass)}>
+            <section className={cn('flex-1 grid gap-6 min-h-0', chartGridClass)}>
               {charts}
             </section>
           )}

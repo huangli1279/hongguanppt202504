@@ -105,7 +105,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   referenceLineY = 0,
   legendOrder,
   barSize = 16,
-  showLabels = false
+  showLabels = true
 }) => {
   return (
     <div className="w-full h-full flex flex-col">
