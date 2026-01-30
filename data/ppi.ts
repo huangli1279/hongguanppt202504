@@ -5,6 +5,41 @@ export interface PpiDataPoint {
   ppiYoy: number;
 }
 
+// PPI 分行业环比数据点
+export interface PpiIndustryMomDataPoint {
+  period: string;
+  lithiumBattery: number | null;       // 锂离子电池制造
+  photovoltaic: number | null;         // 光伏设备及元器件制造
+  computerComm: number | null;         // 计算机、通信和其他电子设备制造业
+  coalMining: number | null;           // 煤炭开采和洗选业
+  oilGas: number | null;               // 石油和天然气开采业
+  ferrousMining: number | null;        // 黑色金属矿采选业
+  nonFerrousMining: number | null;     // 有色金属矿采选业
+  nonFerrousSmelting: number | null;   // 有色金属冶炼和压延加工业
+  ferrousSmelting: number | null;      // 黑色金属冶炼和压延加工业
+  chemicalFiber: number | null;        // 化学纤维制造业
+  nonMetalMineral: number | null;      // 非金属矿物制品业
+  generalEquipment: number | null;     // 通用设备制造业
+  automobile: number | null;           // 汽车制造业
+  electricalMachinery: number | null;  // 电气机械和器材制造业
+}
+
+// PPI 分行业环比数据 (2025年)
+export const ppiIndustryMomData: PpiIndustryMomDataPoint[] = [
+  { period: '2025-01', lithiumBattery: -0.6, photovoltaic: 0.5, computerComm: -0.3, coalMining: -2.2, oilGas: 4.5, ferrousMining: -0.4, nonFerrousMining: 0.4, nonFerrousSmelting: -0.4, ferrousSmelting: -0.9, chemicalFiber: -0.4, nonMetalMineral: -0.6, generalEquipment: -0.2, automobile: 0.5, electricalMachinery: -0.2 },
+  { period: '2025-02', lithiumBattery: null, photovoltaic: null, computerComm: 0, coalMining: -3.3, oilGas: 0.3, ferrousMining: 0.9, nonFerrousMining: 1.8, nonFerrousSmelting: 0.3, ferrousSmelting: -0.2, chemicalFiber: 0.1, nonMetalMineral: -0.9, generalEquipment: -0.3, automobile: -0.1, electricalMachinery: -0.1 },
+  { period: '2025-03', lithiumBattery: null, photovoltaic: null, computerComm: -0.7, coalMining: -4.3, oilGas: -4.4, ferrousMining: 0.1, nonFerrousMining: 0.4, nonFerrousSmelting: 0.5, ferrousSmelting: -0.5, chemicalFiber: -0.6, nonMetalMineral: -0.5, generalEquipment: -0.1, automobile: -0.4, electricalMachinery: -0.1 },
+  { period: '2025-04', lithiumBattery: null, photovoltaic: null, computerComm: -0.2, coalMining: -3.3, oilGas: -3.1, ferrousMining: -0.9, nonFerrousMining: 1.5, nonFerrousSmelting: 0.3, ferrousSmelting: -1.0, chemicalFiber: -2.0, nonMetalMineral: 0, generalEquipment: -0.2, automobile: -0.5, electricalMachinery: -0.1 },
+  { period: '2025-05', lithiumBattery: null, photovoltaic: null, computerComm: 0.1, coalMining: -3.0, oilGas: -5.6, ferrousMining: -0.9, nonFerrousMining: 0.8, nonFerrousSmelting: -0.1, ferrousSmelting: -1.0, chemicalFiber: -1.3, nonMetalMineral: -1.0, generalEquipment: -0.2, automobile: 0, electricalMachinery: -0.2 },
+  { period: '2025-06', lithiumBattery: null, photovoltaic: null, computerComm: -0.4, coalMining: -3.4, oilGas: 2.6, ferrousMining: -2.0, nonFerrousMining: 1.3, nonFerrousSmelting: 0.2, ferrousSmelting: -1.8, chemicalFiber: 0.1, nonMetalMineral: -1.4, generalEquipment: -0.2, automobile: 0.2, electricalMachinery: -0.2 },
+  { period: '2025-07', lithiumBattery: null, photovoltaic: null, computerComm: -0.4, coalMining: -1.5, oilGas: 3.0, ferrousMining: -1.1, nonFerrousMining: 0.7, nonFerrousSmelting: 0.8, ferrousSmelting: -0.3, chemicalFiber: -0.7, nonMetalMineral: -1.4, generalEquipment: -0.2, automobile: -0.3, electricalMachinery: -0.2 },
+  { period: '2025-08', lithiumBattery: null, photovoltaic: -0.2, computerComm: -0.2, coalMining: 2.8, oilGas: -1.1, ferrousMining: 2.1, nonFerrousMining: 0.8, nonFerrousSmelting: 0.2, ferrousSmelting: 1.9, chemicalFiber: -0.6, nonMetalMineral: -1.0, generalEquipment: -0.1, automobile: -0.3, electricalMachinery: -0.1 },
+  { period: '2025-09', lithiumBattery: null, photovoltaic: 0.8, computerComm: -0.2, coalMining: 2.5, oilGas: -2.0, ferrousMining: 2.6, nonFerrousMining: 2.5, nonFerrousSmelting: 1.2, ferrousSmelting: 0.2, chemicalFiber: -0.2, nonMetalMineral: -0.4, generalEquipment: -0.1, automobile: -0.5, electricalMachinery: -0.1 },
+  { period: '2025-10', lithiumBattery: 0.2, photovoltaic: 0.6, computerComm: 0.1, coalMining: 1.6, oilGas: -2.3, ferrousMining: 0.9, nonFerrousMining: 5.3, nonFerrousSmelting: 2.4, ferrousSmelting: -0.7, chemicalFiber: -0.7, nonMetalMineral: 0.1, generalEquipment: -0.1, automobile: -0.2, electricalMachinery: 0 },
+  { period: '2025-11', lithiumBattery: null, photovoltaic: null, computerComm: 0.1, coalMining: 4.1, oilGas: -2.4, ferrousMining: 0.6, nonFerrousMining: 2.6, nonFerrousSmelting: 2.1, ferrousSmelting: -0.5, chemicalFiber: -0.3, nonMetalMineral: 0, generalEquipment: -0.1, automobile: -0.1, electricalMachinery: 0.3 },
+  { period: '2025-12', lithiumBattery: 1.0, photovoltaic: null, computerComm: -0.1, coalMining: 1.3, oilGas: -1.3, ferrousMining: 0, nonFerrousMining: 3.7, nonFerrousSmelting: 2.8, ferrousSmelting: -0.1, chemicalFiber: -0.4, nonMetalMineral: 0.1, generalEquipment: 0, automobile: -0.1, electricalMachinery: 0.4 },
+];
+
 export interface CommodityPriceDataPoint {
   period: string;
   energy: number;      // 能源类

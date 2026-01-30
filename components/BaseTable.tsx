@@ -120,13 +120,13 @@ export const BaseTable: React.FC<BaseTableProps> = ({
         <div className="flex-1 flex flex-col min-h-0 text-xs">
           {/* Header */}
           <div 
-            className="flex flex-shrink-0"
+            className="flex flex-shrink-0 items-center"
             style={{ backgroundColor: headerBgColor }}
           >
             {columns.map((col, colIndex) => (
               <div
                 key={col.key}
-                className={`px-3 py-2 font-semibold text-center flex-1 ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
+                className={`px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
                 style={{ color: headerTextColor }}
               >
                 {col.title}
@@ -188,10 +188,11 @@ export const BaseTable: React.FC<BaseTableProps> = ({
               {columns.map((col, colIndex) => (
                 <th
                   key={col.key}
-                  className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
+                  className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
                   style={{ 
                     color: headerTextColor,
-                    width: col.width || 'auto'
+                    width: col.width || 'auto',
+                    verticalAlign: 'middle'
                   }}
                 >
                   {col.title}
