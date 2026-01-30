@@ -5,3 +5,5 @@ export { industryGrowthData, industryContributionData, industryContributionData2
 export type { IndustryGrowthDataPoint, IndustryContributionDataPoint, IndustryByQuarterDataPoint, DetailedIndustryDataPoint, IndustrialProductionDataPoint, IndustrialDifferentiationDataPoint } from './industry';
 export { pmiTrendData, pmiByEnterpriseSizeData } from './pmi';
 export type { PmiDataPoint, PmiByEnterpriseSize } from './pmi';
+export { industrialProfitData } from './profit';
+export type { IndustrialProfitDataPoint } from './profit';
