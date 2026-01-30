@@ -20,7 +20,7 @@ export interface LineConfig {
   labelPosition?: 'top' | 'bottom';
 }
 
-export interface LineChartBaseProps {
+export interface BaseLineChartProps {
   data: any[];
   title: string;
   subtitle?: string;
@@ -90,7 +90,7 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
   );
 };
 
-export const LineChartBase: React.FC<LineChartBaseProps> = ({
+export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   data,
   title,
   subtitle,

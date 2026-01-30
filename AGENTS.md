@@ -1,2 +1,3 @@
 - Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 - 禁止自行启动开发服务器
+- 必须复用已存在的Base Components

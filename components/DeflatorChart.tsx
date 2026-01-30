@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChartBase } from './LineChartBase';
+import { BaseLineChart } from './BaseLineChart';
 import { DeflatorDataPoint } from '../types';
 
 interface Props {
@@ -11,7 +11,7 @@ export const DeflatorChart: React.FC<Props> = ({ data }) => {
   const filteredData = data.filter(item => !item.period.startsWith('2023'));
 
   return (
-    <LineChartBase
+    <BaseLineChart
       data={filteredData}
       title="三产业GDP平减指数同比增速 (2024-2025)"
       subtitle="第二产业平减指数持续处于负值区间，拖累整体名义增速"

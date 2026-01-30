@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChartBase } from './LineChartBase';
+import { BaseLineChart } from './BaseLineChart';
 import { GdpDataPoint } from '../types';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 
 export const GdpTrendChart: React.FC<Props> = ({ data }) => {
   return (
-    <LineChartBase
+    <BaseLineChart
       data={data}
       title="2024Q1-2025Q4季度GDP当季同比增速走势图"
       subtitle="单位：%"
