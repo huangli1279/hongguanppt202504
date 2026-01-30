@@ -7,3 +7,5 @@ export { pmiTrendData, pmiByEnterpriseSizeData } from './pmi';
 export type { PmiDataPoint, PmiByEnterpriseSize } from './pmi';
 export { industrialProfitData } from './profit';
 export type { IndustrialProfitDataPoint } from './profit';
+export { ppiYoyData, commodityPriceData } from './ppi';
+export type { PpiDataPoint, CommodityPriceDataPoint } from './ppi';

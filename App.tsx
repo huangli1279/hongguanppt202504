@@ -10,13 +10,14 @@ import { ContentSlide09 } from './components/ContentSlide09';
 import { ContentSlide10 } from './components/ContentSlide10';
 import { ContentSlide11 } from './components/ContentSlide11';
 import { ContentSlide12 } from './components/ContentSlide12';
+import { ContentSlide13 } from './components/ContentSlide13';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 13;
+  const TOTAL_SLIDES = 14;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -106,7 +107,8 @@ const App: React.FC = () => {
         {currentSlide === 10 && <ContentSlide10 />}
         {currentSlide === 11 && <ContentSlide11 />}
         {currentSlide === 12 && <ContentSlide12 />}
-        {currentSlide === 13 && <ThankYouSlide />}
+        {currentSlide === 13 && <ContentSlide13 />}
+        {currentSlide === 14 && <ThankYouSlide />}
       </div>
 
       <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50 select-none pointer-events-none">
