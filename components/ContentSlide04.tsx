@@ -4,7 +4,7 @@ import React from 'react';
 import { GdpTrendChart } from './GdpTrendChart';
 import { DeflatorChart } from './DeflatorChart';
 import { gdpTrendData, deflatorData } from '../data';
-import { TrendingDown, TrendingUp, BarChart3, Scale } from 'lucide-react';
+import { TrendingDown, BarChart3, Scale } from 'lucide-react';
 
 const BulletPoint = ({ title, children, icon: Icon, delay }: { title: string, children?: React.ReactNode, icon: any, delay: string }) => (
   <div className={`flex flex-col gap-2 p-4 bg-slate-50 border-l-4 border-webank-accent/20 hover:border-webank-accent transition-all duration-700 ease-out opacity-0 animate-fade-in-up fill-mode-forwards`} style={{ animationDelay: delay }}>
@@ -26,7 +26,7 @@ export const ContentSlide04: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue"></div>
 
       {/* Header Section */}
-      <header className="mb-8 animate-fade-in">
+      <header className="mb-10 animate-fade-in">
         <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">
             2025年度宏观经济报告
@@ -39,7 +39,7 @@ export const ContentSlide04: React.FC = () => {
       </header>
 
       {/* Key Takeaways Grid */}
-      <section className="grid grid-cols-3 gap-6 mb-8 h-32">
+      <section className="grid grid-cols-3 gap-6 mb-10">
         <BulletPoint title="总量定调" icon={BarChart3} delay="100ms">
           <p>
             全年GDP达 <span className="font-bold">140.2万亿元</span>，同比增长 <span className="font-bold">5.0%</span>，成功实现全年预期目标。
@@ -61,11 +61,11 @@ export const ContentSlide04: React.FC = () => {
       </section>
 
       {/* Charts Section */}
-      <section className="flex-grow grid grid-cols-2 gap-10 min-h-0">
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
+      <section className="flex-1 grid grid-cols-2 gap-10 min-h-0">
+        <div className="h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '600ms' }}>
           <GdpTrendChart data={gdpTrendData} />
         </div>
-        <div className="bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '800ms' }}>
+        <div className="h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards" style={{ animationDelay: '800ms' }}>
           <DeflatorChart data={deflatorData} />
         </div>
       </section>
