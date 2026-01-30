@@ -65,6 +65,39 @@ export const industryContributionData2024: IndustryContributionDataPoint[] = [
   { period: '2025-12', primaryContrib: 0.41, secondaryContrib: 1.24, tertiaryContrib: 2.84 },
 ];
 
+// 工业生产数据 - 规模以上工业增加值与出口交货值
+export interface IndustrialProductionDataPoint {
+  period: string;
+  industrialOutput: number | null;  // 规模以上工业增加值:当月同比 (%)
+  exportDelivery: number | null;    // 出口交货值:当月同比 (%)
+}
+
+export const industrialProductionData: IndustrialProductionDataPoint[] = [
+  { period: '2024-01', industrialOutput: 26.30, exportDelivery: null },
+  { period: '2024-02', industrialOutput: -12.70, exportDelivery: null },
+  { period: '2024-03', industrialOutput: 4.50, exportDelivery: 1.40 },
+  { period: '2024-04', industrialOutput: 6.70, exportDelivery: 7.30 },
+  { period: '2024-05', industrialOutput: 5.60, exportDelivery: 4.60 },
+  { period: '2024-06', industrialOutput: 5.30, exportDelivery: 3.80 },
+  { period: '2024-07', industrialOutput: 5.10, exportDelivery: 6.40 },
+  { period: '2024-08', industrialOutput: 4.50, exportDelivery: 6.40 },
+  { period: '2024-09', industrialOutput: 5.40, exportDelivery: 3.40 },
+  { period: '2024-10', industrialOutput: 5.30, exportDelivery: 3.70 },
+  { period: '2024-11', industrialOutput: 5.40, exportDelivery: 7.40 },
+  { period: '2024-12', industrialOutput: 6.20, exportDelivery: 8.80 },
+  { period: '2025-02', industrialOutput: 31.02, exportDelivery: null },
+  { period: '2025-03', industrialOutput: 7.70, exportDelivery: 7.70 },
+  { period: '2025-04', industrialOutput: 6.10, exportDelivery: 0.90 },
+  { period: '2025-05', industrialOutput: 5.80, exportDelivery: 0.60 },
+  { period: '2025-06', industrialOutput: 6.80, exportDelivery: 4.00 },
+  { period: '2025-07', industrialOutput: 5.70, exportDelivery: 0.80 },
+  { period: '2025-08', industrialOutput: 5.20, exportDelivery: -0.40 },
+  { period: '2025-09', industrialOutput: 6.50, exportDelivery: 3.80 },
+  { period: '2025-10', industrialOutput: 4.90, exportDelivery: -2.10 },
+  { period: '2025-11', industrialOutput: 4.80, exportDelivery: -0.10 },
+  { period: '2025-12', industrialOutput: 5.20, exportDelivery: 3.20 },
+];
+
 // 2025年一二三产业细分行业GDP当季同比数据 (%)
 export interface DetailedIndustryDataPoint {
   industry: string;

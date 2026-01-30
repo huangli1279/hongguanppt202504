@@ -31,6 +31,8 @@ export interface BaseLineChartProps {
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
+  /** X轴刻度数量，默认6 */
+  xAxisTickCount?: number;
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -100,7 +102,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   showYAxis = false,
   showReferenceLine = false,
   referenceLineY = 0,
-  legendOrder
+  legendOrder,
+  xAxisTickCount = 6
 }) => {
   // 自定义标签渲染，仅显示最后一个数据点的值，放在右侧
   const renderCustomLabel = (props: any, color: string) => {
@@ -139,12 +142,11 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tick={{ fill: uiColors.tick, fontSize: 10 }}
               dy={10}
               ticks={(() => {
-                if (data.length <= 8) return data.map(d => d.period);
+                if (data.length <= xAxisTickCount) return data.map(d => d.period);
                 // 计算等差间隔：确保首尾必显示，中间等分
-                const tickCount = 6; // 目标显示6个刻度（含首尾）
-                const step = (data.length - 1) / (tickCount - 1);
+                const step = (data.length - 1) / (xAxisTickCount - 1);
                 const ticks: string[] = [];
-                for (let i = 0; i < tickCount; i++) {
+                for (let i = 0; i < xAxisTickCount; i++) {
                   const idx = Math.round(i * step);
                   ticks.push(data[idx].period);
                 }
