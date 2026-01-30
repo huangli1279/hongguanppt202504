@@ -1,6 +1,7 @@
 import React from 'react';
 import { BaseLineChart } from './BaseLineChart';
 import { GdpDataPoint } from '../types';
+import { chartColors } from '@/utils/chartColors';
 
 interface Props {
   data: GdpDataPoint[];
@@ -16,8 +17,8 @@ export const GdpTrendChart: React.FC<Props> = ({ data }) => {
       showYAxis={true}
       legendOrder={['GDP现价', 'GDP不变价']}
       lines={[
-        { dataKey: 'value', name: 'GDP不变价', color: '#005c8f', strokeWidth: 2, labelPosition: 'top' },
-        { dataKey: 'nominal', name: 'GDP现价', color: '#ef4444', strokeWidth: 2, labelPosition: 'bottom' }
+        { dataKey: 'value', name: 'GDP不变价', color: chartColors.primary, strokeWidth: 2, labelPosition: 'top' },
+        { dataKey: 'nominal', name: 'GDP现价', color: chartColors.negative, strokeWidth: 2, labelPosition: 'bottom' }
       ]}
     />
   );

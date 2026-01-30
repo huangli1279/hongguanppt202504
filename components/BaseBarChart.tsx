@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -13,34 +13,36 @@ import {
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
 
-export interface LineConfig {
+export interface BarConfig {
   dataKey: string;
   name: string;
   color: string;
-  strokeWidth?: number;
-  labelPosition?: 'top' | 'bottom';
+  stackId?: string;
 }
 
-export interface BaseLineChartProps {
+export interface BaseBarChartProps {
   data: any[];
   title: string;
   subtitle?: string;
-  lines: LineConfig[];
+  bars: BarConfig[];
+  xAxisKey?: string;
   yAxisDomain?: [number, number];
   showYAxis?: boolean;
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
+  barSize?: number;
+  showLabels?: boolean;
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label, unit = '%' }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}%
+            {entry.name}: {entry.value}{unit}
           </p>
         ))}
       </div>
@@ -91,29 +93,20 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
   );
 };
 
-export const BaseLineChart: React.FC<BaseLineChartProps> = ({
+export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   data,
   title,
   subtitle,
-  lines,
+  bars,
+  xAxisKey = 'period',
   yAxisDomain = [0, 8],
   showYAxis = false,
   showReferenceLine = false,
   referenceLineY = 0,
-  legendOrder
+  legendOrder,
+  barSize = 16,
+  showLabels = false
 }) => {
-  // 自定义标签渲染，仅显示最后一个数据点的值，放在右侧
-  const renderCustomLabel = (props: any, color: string) => {
-    const { x, y, value, index } = props;
-    const isLast = index === data.length - 1;
-    if (!isLast) return null;
-    return (
-      <text x={x + 8} y={y} dy={4} fill={color} fontSize={10} fontWeight={600} textAnchor="start">
-        {value}
-      </text>
-    );
-  };
-
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
@@ -126,14 +119,15 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <BarChart
             data={data}
-            margin={{ top: 20, right: 50, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: 20, right: 30, left: showYAxis ? -20 : 20, bottom: 5 }}
+            barSize={barSize}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
             {showReferenceLine && <ReferenceLine y={referenceLineY} stroke={uiColors.tick} strokeWidth={1} />}
             <XAxis
-              dataKey="period"
+              dataKey={xAxisKey}
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}
               tickLine={false}
               tick={{ fill: uiColors.tick, fontSize: 10 }}
@@ -142,35 +136,38 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
             />
             <YAxis
               hide={!showYAxis}
-              domain={yAxisDomain}
+              domain={yAxisDomain ?? ['auto', 'auto']}
               axisLine={false}
               tickLine={false}
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
             />
-            <Tooltip content={<CustomTooltip />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            <Tooltip content={<CustomTooltip unit="%" />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
-            {lines.map((line, index) => (
-              <Line
-                key={line.dataKey}
-                name={line.name}
-                type="monotone"
-                dataKey={line.dataKey}
-                stroke={line.color}
-                strokeWidth={line.strokeWidth || 2}
-                dot={false}
+            {bars.map((bar, index) => (
+              <Bar
+                key={bar.dataKey}
+                name={bar.name}
+                dataKey={bar.dataKey}
+                fill={bar.color}
+                stackId={bar.stackId}
                 animationDuration={1500}
                 animationBegin={index * 200}
+                radius={bar.stackId ? 0 : [2, 2, 0, 0]}
               >
-                <LabelList
-                  dataKey={line.dataKey}
-                  position={line.labelPosition || 'top'}
-                  content={(props) => renderCustomLabel(props, line.color)}
-                />
-              </Line>
+                {showLabels && (
+                  <LabelList
+                    dataKey={bar.dataKey}
+                    position="top"
+                    fill={bar.color}
+                    fontSize={9}
+                    fontWeight={600}
+                  />
+                )}
+              </Bar>
             ))}
-          </LineChart>
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>
