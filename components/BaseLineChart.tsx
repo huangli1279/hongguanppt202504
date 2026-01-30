@@ -138,7 +138,18 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tickLine={false}
               tick={{ fill: uiColors.tick, fontSize: 10 }}
               dy={10}
-              interval={0}
+              ticks={(() => {
+                if (data.length <= 8) return data.map(d => d.period);
+                // 计算等差间隔：确保首尾必显示，中间等分
+                const tickCount = 6; // 目标显示6个刻度（含首尾）
+                const step = (data.length - 1) / (tickCount - 1);
+                const ticks: string[] = [];
+                for (let i = 0; i < tickCount; i++) {
+                  const idx = Math.round(i * step);
+                  ticks.push(data[idx].period);
+                }
+                return ticks;
+              })()}
             />
             <YAxis
               hide={!showYAxis}
