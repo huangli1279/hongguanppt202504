@@ -33,3 +33,5 @@ export { exportProductTrendData, exportEquipmentTrendData } from './exportProduc
 export type { ExportProductDataPoint, ExportEquipmentDataPoint } from './exportProducts';
 export { importProductTrendData } from './importProducts';
 export type { ImportProductDataPoint } from './importProducts';
+export { exportRegionTrendData, exportCompositionData } from './exportRegion';
+export type { ExportRegionTrendDataPoint, ExportCompositionDataPoint } from './exportRegion';
