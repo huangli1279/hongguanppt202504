@@ -52,9 +52,9 @@ export const ContentSlide19: React.FC = () => {
       title="CPI 0.8% 创年内新高难掩核心需求偏弱，Q4 消费倾向转淡凸显避险情绪"
       cardColumns={2}
     >
-      <div className="flex flex-col h-full gap-3">
+      <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="CPI 运行特征解析" delay="200ms" variant="accent">
             <p>
               2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第四季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
