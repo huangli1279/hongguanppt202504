@@ -25,3 +25,5 @@ export { realEstateInvestmentData, housePriceIndexData } from './realEstate';
 export type { RealEstateInvestmentDataPoint, HousePriceIndexDataPoint } from './realEstate';
 export { infrastructureInvestmentData } from './infrastructureInvestment';
 export type { InfrastructureInvestmentDataPoint } from './infrastructureInvestment';
+export { equipmentInvestmentData, manufacturingInvestmentData } from './equipmentInvestment';
+export type { EquipmentInvestmentDataPoint, ManufacturingInvestmentDataPoint } from './equipmentInvestment';
