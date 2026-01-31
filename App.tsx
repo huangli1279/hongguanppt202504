@@ -17,14 +17,14 @@ import { ContentSlide17 } from './components/ContentSlide17';
 import { ContentSlide18 } from './components/ContentSlide18';
 import { ContentSlide19 } from './components/ContentSlide19';
 import { ContentSlide20 } from './components/ContentSlide20';
-import { ContentSlide21 } from './components/ContentSlide21';
+import { ContentSlide22 } from './components/ContentSlide22';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 22;
+  const TOTAL_SLIDES = 23;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -122,8 +122,9 @@ const App: React.FC = () => {
         {currentSlide === 18 && <ContentSlide18 />}
         {currentSlide === 19 && <ContentSlide19 />}
         {currentSlide === 20 && <ContentSlide20 />}
-        {currentSlide === 21 && <ContentSlide21 />}
-        {currentSlide === 22 && <ThankYouSlide />}
+        {currentSlide === 21 && <BaseSectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
+        {currentSlide === 22 && <ContentSlide22 />}
+        {currentSlide === 23 && <ThankYouSlide />}
       </div>
 
       <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50 select-none pointer-events-none">

@@ -5,7 +5,7 @@ import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { fixedAssetInvestmentData, privateInvestmentData } from '@/data/fixedAssetInvestment';
 import { chartColors, seriesColors } from '@/utils/chartColors';
 
-export const ContentSlide21: React.FC = () => {
+export const ContentSlide22: React.FC = () => {
   // 固定资产投资关键分项折线图配置
   const investmentLineConfigs: LineConfig[] = [
     { dataKey: 'fixedAsset', name: '固定资产投资', color: chartColors.primary, strokeWidth: 2.5 },
