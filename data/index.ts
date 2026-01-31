@@ -13,3 +13,5 @@ export { retailTrendData, retailMonthlyData } from './retail';
 export type { RetailTrendDataPoint, RetailMonthlyDataPoint } from './retail';
 export { cityRetailData, urbanRuralRetailData } from './cityRetail';
 export type { CityRetailDataPoint, UrbanRuralRetailDataPoint } from './cityRetail';
+export { industryRetailData } from './industryRetail';
+export type { IndustryRetailDataPoint } from './industryRetail';
