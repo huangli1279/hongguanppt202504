@@ -47,8 +47,8 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
 
   return (
     <div className={cn('w-full h-full bg-white flex flex-col p-12 overflow-hidden relative', className)}>
-      {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue" />
+      {/* Top Decoration with animation */}
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue animate-top-line" />
 
       {/* Header Section */}
       <header className="mb-6 animate-fade-in">
@@ -108,11 +108,19 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
           from { opacity: 0; }
           to { opacity: 1; }
         }
+        @keyframes topLine {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
         .animate-fade-in-up {
           animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .animate-fade-in {
           animation: fadeIn 1s ease-out forwards;
+        }
+        .animate-top-line {
+          animation: topLine 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          transform-origin: left;
         }
         .fill-mode-forwards {
           animation-fill-mode: forwards;
