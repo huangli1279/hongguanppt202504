@@ -9,3 +9,5 @@ export { industrialProfitData } from './profit';
 export type { IndustrialProfitDataPoint } from './profit';
 export { ppiYoyData, commodityPriceData, ppiIndustryMomData } from './ppi';
 export type { PpiDataPoint, CommodityPriceDataPoint, PpiIndustryMomDataPoint } from './ppi';
+export { retailTrendData, retailMonthlyData } from './retail';
+export type { RetailTrendDataPoint, RetailMonthlyDataPoint } from './retail';
