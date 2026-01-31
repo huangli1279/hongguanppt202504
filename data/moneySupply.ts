@@ -1,0 +1,119 @@
+/**
+ * 货币供应量数据 (M1/M2)
+ * 数据来源：中国人民银行
+ */
+
+export interface MoneySupplyDataPoint {
+  period: string;
+  m1: number;
+  m2: number;
+}
+
+export interface MoneySupplyScissorDataPoint {
+  period: string;
+  scissor: number;
+}
+
+// M1/M2同比增速数据 (2022-2025)
+export const moneySupplyData: MoneySupplyDataPoint[] = [
+  { period: '2022-01', m1: -1.9, m2: 9.8 },
+  { period: '2022-02', m1: 4.7, m2: 9.2 },
+  { period: '2022-03', m1: 4.7, m2: 9.7 },
+  { period: '2022-04', m1: 5.1, m2: 10.5 },
+  { period: '2022-05', m1: 4.6, m2: 11.1 },
+  { period: '2022-06', m1: 5.8, m2: 11.4 },
+  { period: '2022-07', m1: 6.7, m2: 12.0 },
+  { period: '2022-08', m1: 6.1, m2: 12.2 },
+  { period: '2022-09', m1: 6.4, m2: 12.1 },
+  { period: '2022-10', m1: 5.8, m2: 11.8 },
+  { period: '2022-11', m1: 4.6, m2: 12.4 },
+  { period: '2022-12', m1: 3.7, m2: 11.8 },
+  { period: '2023-01', m1: 6.7, m2: 12.6 },
+  { period: '2023-02', m1: 5.8, m2: 12.9 },
+  { period: '2023-03', m1: 5.1, m2: 12.7 },
+  { period: '2023-04', m1: 5.3, m2: 12.4 },
+  { period: '2023-05', m1: 4.7, m2: 11.6 },
+  { period: '2023-06', m1: 3.1, m2: 11.3 },
+  { period: '2023-07', m1: 2.3, m2: 10.7 },
+  { period: '2023-08', m1: 2.2, m2: 10.6 },
+  { period: '2023-09', m1: 2.1, m2: 10.3 },
+  { period: '2023-10', m1: 1.9, m2: 10.3 },
+  { period: '2023-11', m1: 1.3, m2: 10.0 },
+  { period: '2023-12', m1: 1.3, m2: 9.7 },
+  { period: '2024-01', m1: 3.3, m2: 8.7 },
+  { period: '2024-02', m1: 2.6, m2: 8.7 },
+  { period: '2024-03', m1: 2.3, m2: 8.3 },
+  { period: '2024-04', m1: 0.6, m2: 7.2 },
+  { period: '2024-05', m1: -0.8, m2: 7.0 },
+  { period: '2024-06', m1: -1.7, m2: 6.2 },
+  { period: '2024-07', m1: -2.6, m2: 6.3 },
+  { period: '2024-08', m1: -3.0, m2: 6.3 },
+  { period: '2024-09', m1: -3.3, m2: 6.8 },
+  { period: '2024-10', m1: -2.3, m2: 7.5 },
+  { period: '2024-11', m1: -0.7, m2: 7.1 },
+  { period: '2024-12', m1: 1.2, m2: 7.3 },
+  { period: '2025-01', m1: 0.4, m2: 7.0 },
+  { period: '2025-02', m1: 0.1, m2: 7.0 },
+  { period: '2025-03', m1: 1.6, m2: 7.0 },
+  { period: '2025-04', m1: 1.5, m2: 8.0 },
+  { period: '2025-05', m1: 2.3, m2: 7.9 },
+  { period: '2025-06', m1: 4.6, m2: 8.3 },
+  { period: '2025-07', m1: 5.6, m2: 8.8 },
+  { period: '2025-08', m1: 6.0, m2: 8.8 },
+  { period: '2025-09', m1: 7.2, m2: 8.4 },
+  { period: '2025-10', m1: 6.2, m2: 8.2 },
+  { period: '2025-11', m1: 4.9, m2: 8.0 },
+  { period: '2025-12', m1: 3.8, m2: 8.5 },
+];
+
+// M1-M2剪刀差数据 (2022-2025)
+export const moneySupplyScissorData: MoneySupplyScissorDataPoint[] = [
+  { period: '2022-01', scissor: -11.7 },
+  { period: '2022-02', scissor: -4.5 },
+  { period: '2022-03', scissor: -5.0 },
+  { period: '2022-04', scissor: -5.4 },
+  { period: '2022-05', scissor: -6.5 },
+  { period: '2022-06', scissor: -5.6 },
+  { period: '2022-07', scissor: -5.3 },
+  { period: '2022-08', scissor: -6.1 },
+  { period: '2022-09', scissor: -5.7 },
+  { period: '2022-10', scissor: -6.0 },
+  { period: '2022-11', scissor: -7.8 },
+  { period: '2022-12', scissor: -8.1 },
+  { period: '2023-01', scissor: -5.9 },
+  { period: '2023-02', scissor: -7.1 },
+  { period: '2023-03', scissor: -7.6 },
+  { period: '2023-04', scissor: -7.1 },
+  { period: '2023-05', scissor: -6.9 },
+  { period: '2023-06', scissor: -8.2 },
+  { period: '2023-07', scissor: -8.4 },
+  { period: '2023-08', scissor: -8.4 },
+  { period: '2023-09', scissor: -8.2 },
+  { period: '2023-10', scissor: -8.4 },
+  { period: '2023-11', scissor: -8.7 },
+  { period: '2023-12', scissor: -8.4 },
+  { period: '2024-01', scissor: -5.4 },
+  { period: '2024-02', scissor: -6.1 },
+  { period: '2024-03', scissor: -6.0 },
+  { period: '2024-04', scissor: -6.6 },
+  { period: '2024-05', scissor: -7.8 },
+  { period: '2024-06', scissor: -7.9 },
+  { period: '2024-07', scissor: -8.9 },
+  { period: '2024-08', scissor: -9.3 },
+  { period: '2024-09', scissor: -10.1 },
+  { period: '2024-10', scissor: -9.8 },
+  { period: '2024-11', scissor: -7.8 },
+  { period: '2024-12', scissor: -6.1 },
+  { period: '2025-01', scissor: -6.6 },
+  { period: '2025-02', scissor: -6.9 },
+  { period: '2025-03', scissor: -5.4 },
+  { period: '2025-04', scissor: -6.5 },
+  { period: '2025-05', scissor: -5.6 },
+  { period: '2025-06', scissor: -3.7 },
+  { period: '2025-07', scissor: -3.2 },
+  { period: '2025-08', scissor: -2.8 },
+  { period: '2025-09', scissor: -1.2 },
+  { period: '2025-10', scissor: -2.0 },
+  { period: '2025-11', scissor: -3.1 },
+  { period: '2025-12', scissor: -4.7 },
+];

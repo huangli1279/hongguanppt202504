@@ -26,13 +26,14 @@ import { ContentSlide28 } from './components/ContentSlide28';
 import { ContentSlide29 } from './components/ContentSlide29';
 import { ContentSlide30 } from './components/ContentSlide30';
 import { ContentSlide32 } from './components/ContentSlide32';
+import { ContentSlide33 } from './components/ContentSlide33';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 33;
+  const TOTAL_SLIDES = 34;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -142,7 +143,8 @@ const App: React.FC = () => {
         {currentSlide === 30 && <ContentSlide30 />}
         {currentSlide === 31 && <BaseSectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
         {currentSlide === 32 && <ContentSlide32 />}
-        {currentSlide === 33 && <ThankYouSlide />}
+        {currentSlide === 33 && <ContentSlide33 />}
+        {currentSlide === 34 && <ThankYouSlide />}
       </div>
 
       <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50 select-none pointer-events-none">

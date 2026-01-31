@@ -37,3 +37,5 @@ export { exportRegionTrendData, exportCompositionData } from './exportRegion';
 export type { ExportRegionTrendDataPoint, ExportCompositionDataPoint } from './exportRegion';
 export { fiscalRevenueTrendData, taxCategoryData } from './fiscalRevenue';
 export type { FiscalRevenueTrendDataPoint, TaxCategoryDataPoint } from './fiscalRevenue';
+export { moneySupplyData, moneySupplyScissorData } from './moneySupply';
+export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneySupply';
