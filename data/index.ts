@@ -21,3 +21,7 @@ export { consumerConfidenceData, incomeExpenditureData } from './consumerConfide
 export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint } from './consumerConfidence';
 export { fixedAssetInvestmentData, privateInvestmentData } from './fixedAssetInvestment';
 export type { FixedAssetInvestmentDataPoint, PrivateInvestmentDataPoint } from './fixedAssetInvestment';
+export { realEstateInvestmentData, housePriceIndexData } from './realEstate';
+export type { RealEstateInvestmentDataPoint, HousePriceIndexDataPoint } from './realEstate';
+export { infrastructureInvestmentData } from './infrastructureInvestment';
+export type { InfrastructureInvestmentDataPoint } from './infrastructureInvestment';
