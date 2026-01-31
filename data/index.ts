@@ -40,3 +40,5 @@ export type { FiscalRevenueTrendDataPoint, TaxCategoryDataPoint } from './fiscal
 export { moneySupplyData, moneySupplyScissorData } from './moneySupply';
 export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneySupply';
 export { socialFinancingGrowthData, socialFinancingStructureData } from './socialFinancing';
+export { loanData, loanTableData, loanChartData } from './loanData';
+export type { LoanDataPoint } from './loanData';
