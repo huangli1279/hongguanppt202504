@@ -152,8 +152,9 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 dataKey={bar.dataKey}
                 fill={bar.color}
                 stackId={bar.stackId}
-                animationDuration={500}
+                animationDuration={800}
                 animationBegin={0}
+                animationEasing="ease-out"
                 radius={bar.stackId ? 0 : [2, 2, 0, 0]}
               >
                 {showLabels && (

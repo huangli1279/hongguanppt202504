@@ -154,8 +154,9 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
                 dataKey={bar.dataKey}
                 fill={bar.color}
                 stackId="stack"
-                animationDuration={500}
+                animationDuration={800}
                 animationBegin={0}
+                animationEasing="ease-out"
               >
                 {showLabels && (
                   <LabelList
