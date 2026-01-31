@@ -32,7 +32,7 @@ export const ContentSlide25: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-4 flex-shrink-0">
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="存量更新驱动" delay="200ms" variant="accent">
             <p>
               全年设备工器具购置投资增长<span className="text-green-600 font-semibold">11.8%</span>，拉动全部投资增长1.8pct。在"两新"政策引导下，制造业投资主要由存量设备技改驱动，而非新建产能。

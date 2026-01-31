@@ -27,3 +27,5 @@ export { infrastructureInvestmentData } from './infrastructureInvestment';
 export type { InfrastructureInvestmentDataPoint } from './infrastructureInvestment';
 export { equipmentInvestmentData, manufacturingInvestmentData } from './equipmentInvestment';
 export type { EquipmentInvestmentDataPoint, ManufacturingInvestmentDataPoint } from './equipmentInvestment';
+export { foreignTradeTrendData, q4ExportCompareData } from './foreignTrade';
+export type { ForeignTradeTrendDataPoint, Q4ExportCompareDataPoint } from './foreignTrade';
