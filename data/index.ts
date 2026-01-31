@@ -19,3 +19,5 @@ export { cpiTrendData, cpiCategoryData } from './cpi';
 export type { CpiTrendDataPoint, CpiCategoryDataPoint } from './cpi';
 export { consumerConfidenceData, incomeExpenditureData } from './consumerConfidence';
 export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint } from './consumerConfidence';
+export { fixedAssetInvestmentData, privateInvestmentData } from './fixedAssetInvestment';
+export type { FixedAssetInvestmentDataPoint, PrivateInvestmentDataPoint } from './fixedAssetInvestment';
