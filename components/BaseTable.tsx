@@ -71,18 +71,18 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     if (typeof value === 'number') {
       const str = value.toString();
       if (str.length === 8) {
-        return `${str.slice(2, 4)}-${str.slice(4, 6)}`;
+        return `${str.slice(2, 4)}${str.slice(4, 6)}`;
       }
     }
     if (typeof value === 'string') {
       if (/^\d{4}-\d{2}$/.test(value)) {
-        return `${value.slice(2, 4)}-${value.slice(5, 7)}`;
+        return `${value.slice(2, 4)}${value.slice(5, 7)}`;
       }
       if (/^\d{8}$/.test(value)) {
-        return `${value.slice(2, 4)}-${value.slice(4, 6)}`;
+        return `${value.slice(2, 4)}${value.slice(4, 6)}`;
       }
       if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-        return `${value.slice(2, 4)}-${value.slice(5, 7)}`;
+        return `${value.slice(2, 4)}${value.slice(5, 7)}`;
       }
     }
     return String(value);

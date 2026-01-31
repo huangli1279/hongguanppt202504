@@ -15,3 +15,5 @@ export { cityRetailData, urbanRuralRetailData } from './cityRetail';
 export type { CityRetailDataPoint, UrbanRuralRetailDataPoint } from './cityRetail';
 export { industryRetailData } from './industryRetail';
 export type { IndustryRetailDataPoint } from './industryRetail';
+export { cpiTrendData, cpiCategoryData } from './cpi';
+export type { CpiTrendDataPoint, CpiCategoryDataPoint } from './cpi';
