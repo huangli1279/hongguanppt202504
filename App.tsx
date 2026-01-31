@@ -83,24 +83,6 @@ const App: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const getVisibleSlides = () => {
-    const maxVisible = 3;
-    if (TOTAL_SLIDES <= maxVisible) {
-      return Array.from({ length: TOTAL_SLIDES }, (_, i) => i + 1);
-    }
-    let start = Math.max(1, currentSlide - Math.floor(maxVisible / 2));
-    let end = start + maxVisible - 1;
-    if (end > TOTAL_SLIDES) {
-      end = TOTAL_SLIDES;
-      start = Math.max(1, end - maxVisible + 1);
-    }
-    const slides = [];
-    for (let i = start; i <= end; i++) {
-      slides.push(i);
-    }
-    return slides;
-  };
-
   return (
     <div className="flex items-center justify-center min-h-screen w-full bg-[#f0f0f0] relative overflow-hidden">
       <div 
@@ -150,26 +132,15 @@ const App: React.FC = () => {
         {currentSlide === 35 && <ContentSlide35 />}
         {currentSlide === 36 && <ContentSlide36 />}
         {currentSlide === 37 && <ThankYouSlide />}
+
+        <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
+          <span className="font-serif text-webank-blue font-medium text-sm">
+            {String(currentSlide).padStart(2, '0')}
+          </span>
+        </div>
       </div>
 
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50 select-none pointer-events-none">
-        {getVisibleSlides().map((slide) => (
-          <div key={slide} className="flex items-center gap-3 justify-end h-8 transition-all duration-500">
-            <span className={`font-serif transition-all duration-500 ${
-              currentSlide === slide 
-                ? 'text-webank-blue font-bold text-lg translate-x-0 opacity-100' 
-                : 'text-slate-400 font-medium text-xs translate-x-1 opacity-60'
-            }`}>
-              {String(slide).padStart(2, '0')}
-            </span>
-            <div className={`w-1 rounded-full transition-all duration-500 ${
-              currentSlide === slide 
-                ? 'h-8 bg-webank-blue shadow-lg' 
-                : 'h-1.5 bg-slate-300'
-            }`} />
-          </div>
-        ))}
-      </div>
+
     </div>
   );
 };
