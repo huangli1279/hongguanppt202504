@@ -35,3 +35,5 @@ export { importProductTrendData } from './importProducts';
 export type { ImportProductDataPoint } from './importProducts';
 export { exportRegionTrendData, exportCompositionData } from './exportRegion';
 export type { ExportRegionTrendDataPoint, ExportCompositionDataPoint } from './exportRegion';
+export { fiscalRevenueTrendData, taxCategoryData } from './fiscalRevenue';
+export type { FiscalRevenueTrendDataPoint, TaxCategoryDataPoint } from './fiscalRevenue';
