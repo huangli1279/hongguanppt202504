@@ -5,7 +5,7 @@ import { BaseCard } from './BaseCard';
 import { moneySupplyData, moneySupplyScissorData } from '@/data/moneySupply';
 import { chartColors } from '@/utils/chartColors';
 
-export const ContentSlide33: React.FC = () => {
+export const ContentSlide34: React.FC = () => {
   return (
     <BaseContentSlide
       title={'12月M1增速滑落至3.8%，剪刀差扩至4.7%警示资金"定期化"'}
