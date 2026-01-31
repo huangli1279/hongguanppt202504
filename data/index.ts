@@ -31,3 +31,5 @@ export { foreignTradeTrendData, q4ExportCompareData } from './foreignTrade';
 export type { ForeignTradeTrendDataPoint, Q4ExportCompareDataPoint } from './foreignTrade';
 export { exportProductTrendData, exportEquipmentTrendData } from './exportProducts';
 export type { ExportProductDataPoint, ExportEquipmentDataPoint } from './exportProducts';
+export { importProductTrendData } from './importProducts';
+export type { ImportProductDataPoint } from './importProducts';
