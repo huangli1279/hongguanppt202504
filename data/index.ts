@@ -11,3 +11,5 @@ export { ppiYoyData, commodityPriceData, ppiIndustryMomData } from './ppi';
 export type { PpiDataPoint, CommodityPriceDataPoint, PpiIndustryMomDataPoint } from './ppi';
 export { retailTrendData, retailMonthlyData } from './retail';
 export type { RetailTrendDataPoint, RetailMonthlyDataPoint } from './retail';
+export { cityRetailData, urbanRuralRetailData } from './cityRetail';
+export type { CityRetailDataPoint, UrbanRuralRetailDataPoint } from './cityRetail';

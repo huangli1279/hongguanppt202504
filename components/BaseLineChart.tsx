@@ -105,11 +105,22 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   legendOrder,
   xAxisTickCount = 6
 }) => {
-  // 自定义标签渲染，仅显示最后一个数据点的值，放在右侧
-  const renderCustomLabel = (props: any, color: string) => {
+  // 自定义标签渲染，显示最后一个有效数据点的值，放在右侧
+  const renderCustomLabel = (props: any, color: string, dataKey: string) => {
     const { x, y, value, index } = props;
-    const isLast = index === data.length - 1;
-    if (!isLast) return null;
+    
+    // 找到该系列最后一个非空值的索引
+    let lastValidIndex = -1;
+    for (let i = data.length - 1; i >= 0; i--) {
+      if (data[i][dataKey] != null) {
+        lastValidIndex = i;
+        break;
+      }
+    }
+    
+    // 只在最后一个有效数据点显示标签
+    if (index !== lastValidIndex || value == null) return null;
+    
     return (
       <text x={x + 8} y={y} dy={4} fill={color} fontSize={10} fontWeight={600} textAnchor="start">
         {value}
@@ -179,7 +190,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                 <LabelList
                   dataKey={line.dataKey}
                   position={line.labelPosition || 'top'}
-                  content={(props) => renderCustomLabel(props, line.color)}
+                  content={(props) => renderCustomLabel(props, line.color, line.dataKey)}
                 />
               </Line>
             ))}
