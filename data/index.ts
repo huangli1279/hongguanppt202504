@@ -39,3 +39,4 @@ export { fiscalRevenueTrendData, taxCategoryData } from './fiscalRevenue';
 export type { FiscalRevenueTrendDataPoint, TaxCategoryDataPoint } from './fiscalRevenue';
 export { moneySupplyData, moneySupplyScissorData } from './moneySupply';
 export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneySupply';
+export { socialFinancingGrowthData, socialFinancingStructureData } from './socialFinancing';
