@@ -16,7 +16,6 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   title,
   children,
   icon: Icon,
-  delay = '0ms',
   className,
   variant = 'default',
   animated = true,
@@ -35,7 +34,6 @@ export const BaseCard: React.FC<BaseCardProps> = ({
         animated && 'opacity-0 animate-fade-in-up fill-mode-forwards',
         className
       )}
-      style={{ animationDelay: animated ? delay : undefined }}
     >
       <div className="flex items-center gap-2 text-webank-accent">
         {Icon && <Icon size={18} />}

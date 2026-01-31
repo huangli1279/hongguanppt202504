@@ -184,8 +184,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                 stroke={line.color}
                 strokeWidth={line.strokeWidth || 2}
                 dot={false}
-                animationDuration={1500}
-                animationBegin={index * 200}
+                animationDuration={500}
+                animationBegin={0}
               >
                 <LabelList
                   dataKey={line.dataKey}
