@@ -23,7 +23,7 @@ export interface BaseContentSlideProps {
 }
 
 export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
-  subtitle = '2025年度宏观经济报告',
+  subtitle = '2025年第四季度宏观经济报告',
   title,
   cards,
   charts,
