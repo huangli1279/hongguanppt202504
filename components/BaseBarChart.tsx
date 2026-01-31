@@ -33,6 +33,7 @@ export interface BaseBarChartProps {
   legendOrder?: string[];
   barSize?: number;
   showLabels?: boolean;
+  unit?: string;
 }
 
 const CustomTooltip = ({ active, payload, label, unit = '%' }: any) => {
@@ -105,7 +106,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   referenceLineY = 0,
   legendOrder,
   barSize = 16,
-  showLabels = true
+  showLabels = true,
+  unit = '%'
 }) => {
   return (
     <div className="w-full h-full flex flex-col">
@@ -142,7 +144,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
             />
-            <Tooltip content={<CustomTooltip unit="%" />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
             {bars.map((bar, index) => (

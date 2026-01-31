@@ -44,15 +44,16 @@ export const ContentSlide35: React.FC = () => {
               subtitle="单位：亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'q25', name: '25Q4', color: chartColors.primary },
                 { dataKey: 'q24', name: '24Q4', color: chartColors.grey400 },
+                { dataKey: 'q25', name: '25Q4', color: chartColors.primary },
               ]}
               yAxisDomain={[-10000, 45000]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
               barSize={12}
-              legendOrder={['25Q4', '24Q4']}
+              legendOrder={['24Q4', '25Q4']}
+              unit="亿元"
             />
           </ChartContainer>
         </div>
