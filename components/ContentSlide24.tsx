@@ -26,7 +26,7 @@ export const ContentSlide24: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-4 flex-shrink-0">
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="化债约束与挤出效应" delay="200ms" variant="accent">
             <p>
               受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="text-red-500 font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
