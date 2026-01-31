@@ -68,7 +68,7 @@ export const ContentSlide19: React.FC = () => {
         </div>
 
         {/* 图表和表格区域 */}
-        <div className="flex-1 grid grid-cols-5 gap-4 min-h-0">
+        <div className="flex-1 grid grid-cols-5 gap-6 min-h-0">
           {/* 折线图 - 占2列 */}
           <ChartContainer delay="600ms" className="col-span-2">
             <BaseLineChart

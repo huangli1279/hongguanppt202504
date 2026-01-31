@@ -28,9 +28,9 @@ export const ContentSlide20: React.FC = () => {
       title="人均可支配收入实际增长5.0%，消费者信心指数回升但就业依旧承压"
       cardColumns={2}
     >
-      <div className="flex flex-col h-full gap-3">
+      <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="收入与就业预期分化制约消费者信心回暖" delay="200ms" variant="accent">
             <p>
               消费者信心指数（从<span className="text-webank-accent font-semibold">86.4</span>升至<span className="text-emerald-600 font-semibold">90.3</span>）的温和回升，主要由收入预期和消费意愿支撑，但被<span className="text-red-500 font-semibold">就业预期严重拖累</span>，新兴领域（AI、低空经济）需求旺盛，传统行业需求减弱。
@@ -44,7 +44,7 @@ export const ContentSlide20: React.FC = () => {
         </div>
 
         {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
           {/* 消费者信心指数折线图 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
