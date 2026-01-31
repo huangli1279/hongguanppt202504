@@ -6,7 +6,7 @@ import { BaseBarChart, BarConfig } from './BaseBarChart';
 import { foreignTradeTrendData, q4ExportCompareData } from '@/data/foreignTrade';
 import { getSeriesColor } from '@/utils/chartColors';
 
-export const ContentSlide26: React.FC = () => {
+export const ContentSlide27: React.FC = () => {
   // 折线图配置
   const lineConfigs: LineConfig[] = [
     { dataKey: 'exports', name: '出口累计同比', color: getSeriesColor(0), strokeWidth: 2.5 },
