@@ -1,12 +1,15 @@
 import React from 'react';
-import { GdpTrendChart } from './GdpTrendChart';
-import { DeflatorChart } from './DeflatorChart';
+import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { gdpTrendData, deflatorData } from '../data';
+import { chartColors } from '@/utils/chartColors';
 import { TrendingDown, BarChart3, Scale } from 'lucide-react';
 
 export const ContentSlide04: React.FC = () => {
+  // 平减指数数据：过滤只保留24年和25年
+  const filteredDeflatorData = deflatorData.filter(item => !item.period.startsWith('2023'));
+
   return (
     <BaseContentSlide
       title={
@@ -40,10 +43,35 @@ export const ContentSlide04: React.FC = () => {
       charts={
         <>
           <ChartContainer delay="600ms">
-            <GdpTrendChart data={gdpTrendData} />
+            <BaseLineChart
+              data={gdpTrendData}
+              title="2024Q1-2025Q4季度GDP当季同比增速走势图"
+              subtitle="单位：%"
+              yAxisDomain={[0, 8]}
+              showYAxis={true}
+              legendOrder={['GDP现价', 'GDP不变价']}
+              lines={[
+                { dataKey: 'value', name: 'GDP不变价', color: chartColors.primary, strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'nominal', name: 'GDP现价', color: chartColors.negative, strokeWidth: 2, labelPosition: 'bottom' }
+              ]}
+            />
           </ChartContainer>
           <ChartContainer delay="800ms">
-            <DeflatorChart data={deflatorData} />
+            <BaseLineChart
+              data={filteredDeflatorData}
+              title="三产业GDP平减指数同比增速 (2024-2025)"
+              subtitle="第二产业平减指数持续处于负值区间，拖累整体名义增速"
+              yAxisDomain={[-6, 6]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['第一产业', '第二产业', '第三产业']}
+              lines={[
+                { dataKey: 'primary', name: '第一产业', color: chartColors.neutral, strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'secondary', name: '第二产业', color: chartColors.negative, strokeWidth: 2, labelPosition: 'bottom' },
+                { dataKey: 'tertiary', name: '第三产业', color: chartColors.primary, strokeWidth: 2, labelPosition: 'top' }
+              ]}
+            />
           </ChartContainer>
         </>
       }
