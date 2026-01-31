@@ -6,7 +6,7 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { fiscalRevenueTrendData, taxCategoryData } from '@/data/fiscalRevenue';
 import { chartColors } from '@/utils/chartColors';
 
-export const ContentSlide31: React.FC = () => {
+export const ContentSlide32: React.FC = () => {
   // 折线图配置
   const lines: LineConfig[] = [
     { dataKey: 'taxRevenue', name: '税收收入', color: chartColors.primary, strokeWidth: 2 },
