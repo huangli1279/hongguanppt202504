@@ -10,9 +10,9 @@ export const ContentSlide33: React.FC = () => {
     <BaseContentSlide
       title={'12月M1增速滑落至3.8%，剪刀差扩至4.7%警示资金"定期化"'}
     >
-      <div className="flex flex-col h-full gap-4">
+      <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="剪刀差创新高" delay="200ms">
             M2同比增速在12月超预期反弹至 <span className="font-bold text-webank-blue">8.5%</span>（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 <span className="font-bold text-webank-blue">3.8%</span>。两者剪刀差由三季度的1.2%迅速扩大至年末的 <span className="font-bold text-red-500">4.7%</span>，创年内新高。
           </BaseCard>

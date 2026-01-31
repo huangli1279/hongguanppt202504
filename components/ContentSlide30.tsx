@@ -31,7 +31,7 @@ export const ContentSlide30: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="对美出口深跌，非美区域整体增长" delay="200ms" variant="accent">
             <p>
               25年全年对美出口同比持续下跌，12月对美出口同比下降<span className="text-green-600 font-semibold"> 30.0%</span>。受前期关税政策滞后及高基数影响，拖累整体出口约 4.4 个百分点；对非美区域整体增长<span className="text-red-500 font-semibold"> 12.8%</span>。其中东盟增长<span className="text-red-500 font-semibold"> 11.1%</span>，非洲高增<span className="text-red-500 font-semibold"> 21.8%</span>。

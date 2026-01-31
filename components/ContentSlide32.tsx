@@ -37,7 +37,7 @@ export const ContentSlide32: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="收入结构优化，恢复质量提升" delay="200ms" variant="accent">
             <p>
               2025年全国一般公共预算收入呈现逐步恢复的态势。其中，税收收入自二季度起持续改善，而非税收入的增速则显著回落，从上半年的<span className="text-red-500 font-semibold">+3.7%</span>大幅回落至<span className="text-green-600 font-semibold">-3.7%</span>。
