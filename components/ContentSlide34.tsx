@@ -13,7 +13,7 @@ export const ContentSlide34: React.FC = () => {
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="剪刀差创新高" delay="200ms">
+          <BaseCard title="剪刀差创新高" delay="200ms" variant="accent">
             M2同比增速在12月超预期反弹至 <span className="font-bold text-webank-blue">8.5%</span>（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 <span className="font-bold text-webank-blue">3.8%</span>。两者剪刀差由三季度的1.2%迅速扩大至年末的 <span className="font-bold text-red-500">4.7%</span>，创年内新高。
           </BaseCard>
           <BaseCard title="基数压制与绝对量" delay="400ms">
@@ -33,7 +33,7 @@ export const ContentSlide34: React.FC = () => {
               subtitle="同比增速单位为%"
               lines={[
                 { dataKey: 'm1', name: 'M1(货币)', color: chartColors.primary, strokeWidth: 2 },
-                { dataKey: 'm2', name: 'M2(货币和准货币)', color: '#ef4444', strokeWidth: 2 },
+                { dataKey: 'm2', name: 'M2(货币和准货币)', color: chartColors.negative, strokeWidth: 2 },
               ]}
               yAxisDomain={[-5, 15]}
               showYAxis={true}

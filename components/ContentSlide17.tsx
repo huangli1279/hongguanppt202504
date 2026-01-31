@@ -36,7 +36,7 @@ export const ContentSlide17: React.FC = () => {
                 { dataKey: 'guangzhou', name: '广州', color: chartColors.primary, strokeWidth: 2.5 },
                 { dataKey: 'shenzhen', name: '深圳', color: seriesColors[1] },
                 { dataKey: 'shanghai', name: '上海', color: seriesColors[2] },
-                { dataKey: 'beijing', name: '北京', color: '#ef4444', strokeWidth: 2.5 },
+                { dataKey: 'beijing', name: '北京', color: chartColors.negative, strokeWidth: 2.5 },
               ]}
               yAxisDomain={[-6, 8]}
               showYAxis={true}

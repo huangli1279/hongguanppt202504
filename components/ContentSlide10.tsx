@@ -2,8 +2,7 @@ import React from 'react';
 import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { industrialProductionData } from '../data';
-import { TrendingUp, Cpu, Ship } from 'lucide-react';
+import { industrialProductionData } from '@/data/industry';
 import { chartColors, seriesColors } from '@/utils/chartColors';
 
 // 过滤掉春节异常值，保持yyyy-mm格式
@@ -26,19 +25,19 @@ export const ContentSlide10: React.FC = () => {
       }
       cards={
         <>
-          <BaseCard title="总量运行：年末翘尾" icon={TrendingUp} delay="100ms">
+          <BaseCard title="总量运行：年末翘尾" delay="200ms" variant="accent">
             <p>
               Q4增速呈"先抑后扬"，12月反弹至 <span className="font-bold">5.2%</span>。全年增长 <span className="font-bold">5.9%</span>，高于GDP增速(5.0%)。12月季调环比增长0.49%，边际动能增强。
             </p>
           </BaseCard>
 
-          <BaseCard title="结构分化：新质生产力领跑" icon={Cpu} delay="200ms">
+          <BaseCard title="结构分化：新质生产力领跑" delay="400ms">
             <p>
               12月高技术制造业增长 <span className="font-bold">11.0%</span>。电子(+11.8%)、汽车(+8.3%)领跑；集成电路(<span className="font-bold">+33.7%</span>)、机器人(<span className="font-bold">+28.0%</span>)爆发。传统行业如粗钢(-10.3%)、水泥(-6.6%)受限。
             </p>
           </BaseCard>
 
-          <BaseCard title="驱动归因：外需拉动增强" icon={Ship} delay="300ms">
+          <BaseCard title="驱动归因：外需拉动增强" delay="600ms">
             <p>
               12月出口交货值增长 <span className="font-bold">3.2%</span>(前值-0.1%)，设备更新政策支撑装备制造业(全年+9.2%)，政策效应持续显现。
             </p>
@@ -46,7 +45,7 @@ export const ContentSlide10: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms" className="col-span-2">
+        <ChartContainer delay="800ms" className="col-span-2">
           <BaseLineChart
             data={chartData}
             title="规模以上工业增加值与出口交货值同比增速"

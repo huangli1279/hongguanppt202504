@@ -15,10 +15,11 @@ export const chartColors = {
   senary: '#334155',     // 更深石板灰 - 第六系列
   
   // 语义色 - 低饱和度
-  positive: '#005c8f',   // 深蓝 - 正向/主要
-  negative: '#ef4444',   // 红色 - 负向/下降（保留用于强调）
+  positive: '#10b981',   // 绿色 - 正向/增长
+  negative: '#ef4444',   // 红色 - 负向/下降
   neutral: '#94a3b8',    // 中性灰 - 参考线
   warning: '#78716c',    // 暖灰 - 注意
+  accent: '#005c8f',     // 强调色 - 与 primary 一致
   
   // 灰度色
   grey100: '#f1f5f9',

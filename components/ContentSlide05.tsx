@@ -3,8 +3,7 @@ import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseBarChart } from './BaseBarChart';
 import { BaseStackedBarChart } from './BaseStackedBarChart';
-import { industryGrowthByIndustryData, industryContributionData2024 } from '@/data';
-import { TrendingUp, TrendingDown } from 'lucide-react';
+import { industryGrowthByIndustryData, industryContributionData2024 } from '@/data/industry';
 import { quarterColors, industryColors } from '@/utils/chartColors';
 
 export const ContentSlide05: React.FC = () => {
@@ -19,13 +18,13 @@ export const ContentSlide05: React.FC = () => {
       cardColumns={2}
       cards={
         <>
-          <BaseCard title="三产拉动分化" icon={TrendingUp} delay="100ms">
+          <BaseCard title="三产拉动分化" delay="200ms" variant="accent">
             <p>
               <span className="font-bold text-webank-accent">第三产业 (5.2%)</span>: 核心支撑。信息技术 (<span className="text-green-600">+11.1%</span>) 与租赁商务服务 (<span className="text-green-600">+10.3%</span>) 领跑，现代服务业增势强劲。
             </p>
           </BaseCard>
 
-          <BaseCard title="第二产业明显回落" icon={TrendingDown} delay="200ms">
+          <BaseCard title="第二产业明显回落" delay="400ms">
             <p>
               <span className="font-bold">第二产业 (3.4%)</span>: 虽然12月工业回升，但受房地产投资深跌 (<span className="text-red-600">-17.2%</span>) 影响，建筑业及上游原材料严重拖累整体表现。
             </p>
@@ -34,7 +33,7 @@ export const ContentSlide05: React.FC = () => {
       }
       charts={
         <>
-          <ChartContainer delay="400ms">
+          <ChartContainer delay="600ms">
             <BaseBarChart
               data={industryGrowthByIndustryData}
               title="2025年三产业GDP增加值当季同比增速"
@@ -52,7 +51,7 @@ export const ContentSlide05: React.FC = () => {
               showLabels
             />
           </ChartContainer>
-          <ChartContainer delay="600ms">
+          <ChartContainer delay="800ms">
             <BaseStackedBarChart
               data={industryContributionData2024}
               title="2024-2025年三产业GDP当季同比拉动数据"

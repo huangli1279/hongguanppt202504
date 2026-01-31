@@ -9,14 +9,14 @@ export const ContentSlide23: React.FC = () => {
   // 房地产开发投资折线图配置
   const investmentLineConfigs: LineConfig[] = [
     { dataKey: 'realEstateInvestment', name: '房地产开发投资', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'newConstruction', name: '房屋新开工面积', color: '#ef4444', strokeWidth: 2 },
+    { dataKey: 'newConstruction', name: '房屋新开工面积', color: chartColors.negative, strokeWidth: 2 },
     { dataKey: 'completion', name: '房地产竣工面积', color: seriesColors[1], strokeWidth: 2 },
   ];
 
   // 房价指数折线图配置
   const priceLineConfigs: LineConfig[] = [
     { dataKey: 'newHousePrice', name: '新建商品住宅价格指数同比', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'secondHandPrice', name: '二手住宅价格指数同比', color: '#ef4444', strokeWidth: 2 },
+    { dataKey: 'secondHandPrice', name: '二手住宅价格指数同比', color: chartColors.negative, strokeWidth: 2 },
   ];
 
   return (

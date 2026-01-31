@@ -9,8 +9,8 @@ export const ContentSlide22: React.FC = () => {
   // 固定资产投资关键分项折线图配置
   const investmentLineConfigs: LineConfig[] = [
     { dataKey: 'fixedAsset', name: '固定资产投资', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'manufacturing', name: '制造业投资', color: '#10b981', strokeWidth: 2 },
-    { dataKey: 'realEstate', name: '房地产开发投资', color: '#ef4444', strokeWidth: 2 },
+    { dataKey: 'manufacturing', name: '制造业投资', color: chartColors.positive, strokeWidth: 2 },
+    { dataKey: 'realEstate', name: '房地产开发投资', color: chartColors.negative, strokeWidth: 2 },
     { dataKey: 'infrastructure', name: '基础设施建设投资', color: seriesColors[1], strokeWidth: 2 },
   ];
 

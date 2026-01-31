@@ -10,7 +10,7 @@ export const ContentSlide19: React.FC = () => {
   // 折线图配置
   const lineConfigs: LineConfig[] = [
     { dataKey: 'cpi', name: 'CPI:当月同比', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'coreCpi', name: '核心CPI:当月同比', color: '#ef4444', strokeWidth: 2 },
+    { dataKey: 'coreCpi', name: '核心CPI:当月同比', color: chartColors.negative, strokeWidth: 2 },
   ];
 
   // 表格数据转换

@@ -14,7 +14,7 @@ export const ContentSlide35: React.FC = () => {
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="社融：高基数拖累" delay="200ms">
+          <BaseCard title="社融：高基数拖累" delay="200ms" variant="accent">
             12月新增社融 <span className="font-bold text-webank-blue">2.21万亿元</span>（同比少增6457亿），存量增速降至 <span className="font-bold text-webank-blue">8.3%</span>，核心在于2024年同期"2万亿隐债置换"导致政府债基数异常偏高。
           </BaseCard>
           <BaseCard title="企业中长贷：由负转正" delay="400ms">
