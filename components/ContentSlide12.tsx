@@ -5,21 +5,13 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { industrialProfitData } from '../data';
 import { TrendingDown, Calculator } from 'lucide-react';
 
-// 格式化数值：保留2位小数
-const formatValue = (value: number) => value.toFixed(2);
-
-// 数值渲染函数
-const renderValue = (value: number) => {
-  return <span className="text-slate-600">{formatValue(value)}</span>;
-};
-
 const columns: ColumnConfig[] = [
   { key: 'time', title: '月份', width: '70px', align: 'left' },
-  { key: 'revenue', title: '营业收入', width: '90px', align: 'right', render: renderValue },
-  { key: 'cost', title: '营业成本', width: '90px', align: 'right', render: renderValue },
-  { key: 'operatingProfit', title: '营业利润', width: '80px', align: 'right', render: renderValue },
-  { key: 'totalProfit', title: '利润总额', width: '80px', align: 'right', render: renderValue },
-  { key: 'investmentIncome', title: '投资收益', width: '80px', align: 'right', render: renderValue },
+  { key: 'revenue', title: '营业收入', width: '90px', align: 'right' },
+  { key: 'cost', title: '营业成本', width: '90px', align: 'right' },
+  { key: 'operatingProfit', title: '营业利润', width: '80px', align: 'right' },
+  { key: 'totalProfit', title: '利润总额', width: '80px', align: 'right' },
+  { key: 'investmentIncome', title: '投资收益', width: '80px', align: 'right' },
 ];
 
 export const ContentSlide12: React.FC = () => {
@@ -54,7 +46,7 @@ export const ContentSlide12: React.FC = () => {
             columns={columns}
             title="规模以上工业企业主要财务指标（累计值）"
             subtitle="单位：亿元"
-            rowHeight="compact"
+            rowHeight="auto"
             stickyHeader={true}
             dateColumn="time"
           />

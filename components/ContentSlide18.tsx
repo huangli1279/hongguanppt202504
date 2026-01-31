@@ -24,8 +24,8 @@ export const ContentSlide18: React.FC = () => {
 
   const columns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'communication', title: '通讯器材', align: 'center', render: (v) => <span className="text-red-500 font-semibold">{v}</span> },
-    { key: 'sportsEntertainment', title: '体育娱乐', align: 'center', render: (v) => <span className="text-emerald-600 font-medium">{v}</span> },
+    { key: 'communication', title: '通讯器材', align: 'center' },
+    { key: 'sportsEntertainment', title: '体育娱乐', align: 'center' },
     { key: 'cultureOffice', title: '文化办公', align: 'center' },
     { key: 'furniture', title: '家具', align: 'center' },
     { key: 'homeAppliances', title: '家电音像', align: 'center' },
@@ -34,8 +34,8 @@ export const ContentSlide18: React.FC = () => {
     { key: 'dailyNecessities', title: '日用品', align: 'center' },
     { key: 'clothing', title: '服装鞋帽', align: 'center' },
     { key: 'medicine', title: '中西药品', align: 'center' },
-    { key: 'buildingMaterials', title: '建材装潢', align: 'center', render: (v) => <span className={v < 0 ? 'text-red-500' : ''}>{v}</span> },
-    { key: 'automobile', title: '汽车', align: 'center', render: (v) => <span className={v < 0 ? 'text-red-500' : ''}>{v}</span> },
+    { key: 'buildingMaterials', title: '建材装潢', align: 'center' },
+    { key: 'automobile', title: '汽车', align: 'center' },
   ];
 
   return (
@@ -67,9 +67,7 @@ export const ContentSlide18: React.FC = () => {
             columns={columns}
             dateColumn="period"
             rowHeight="auto"
-            striped={true}
-            highlightRows={[10]}
-            highlightColor="rgba(0, 169, 244, 0.08)"
+            stickyHeader={true}
           />
         </ChartContainer>
       </div>

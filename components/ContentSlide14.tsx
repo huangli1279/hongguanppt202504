@@ -5,31 +5,23 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { ppiIndustryMomData } from '../data';
 import { Shield, Globe, BarChart3 } from 'lucide-react';
 
-// 数值渲染函数：正值绿色，负值红色，null显示为"-"
-const renderValue = (value: number | null) => {
-  if (value === null) return <span className="text-slate-400">-</span>;
-  const color = value > 0 ? 'text-green-600' : value < 0 ? 'text-red-500' : 'text-slate-600';
-  const prefix = value > 0 ? '+' : '';
-  return <span className={color}>{prefix}{value.toFixed(1)}</span>;
-};
-
 // 表格列配置 - 全部14个行业
 const columns: ColumnConfig[] = [
   { key: 'period', title: '月份', width: '45px', align: 'center' },
-  { key: 'lithiumBattery', title: '锂电池', width: '45px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'photovoltaic', title: '光伏', width: '40px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'electricalMachinery', title: '电气机械', width: '50px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'computerComm', title: '计算机通信', width: '60px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'coalMining', title: '煤炭', width: '40px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'oilGas', title: '油气', width: '40px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'ferrousMining', title: '黑色矿', width: '45px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'nonFerrousMining', title: '有色矿', width: '45px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'nonFerrousSmelting', title: '有色冶炼', width: '50px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'ferrousSmelting', title: '黑色冶炼', width: '50px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'chemicalFiber', title: '化纤', width: '40px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'nonMetalMineral', title: '非金属矿', width: '50px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'generalEquipment', title: '通用设备', width: '50px', align: 'right', render: (v) => renderValue(v) },
-  { key: 'automobile', title: '汽车', width: '40px', align: 'right', render: (v) => renderValue(v) },
+  { key: 'lithiumBattery', title: '锂电池', width: '45px', align: 'right' },
+  { key: 'photovoltaic', title: '光伏', width: '40px', align: 'right' },
+  { key: 'electricalMachinery', title: '电气机械', width: '50px', align: 'right' },
+  { key: 'computerComm', title: '计算机通信', width: '60px', align: 'right' },
+  { key: 'coalMining', title: '煤炭', width: '40px', align: 'right' },
+  { key: 'oilGas', title: '油气', width: '40px', align: 'right' },
+  { key: 'ferrousMining', title: '黑色矿', width: '45px', align: 'right' },
+  { key: 'nonFerrousMining', title: '有色矿', width: '45px', align: 'right' },
+  { key: 'nonFerrousSmelting', title: '有色冶炼', width: '50px', align: 'right' },
+  { key: 'ferrousSmelting', title: '黑色冶炼', width: '50px', align: 'right' },
+  { key: 'chemicalFiber', title: '化纤', width: '40px', align: 'right' },
+  { key: 'nonMetalMineral', title: '非金属矿', width: '50px', align: 'right' },
+  { key: 'generalEquipment', title: '通用设备', width: '50px', align: 'right' },
+  { key: 'automobile', title: '汽车', width: '40px', align: 'right' },
 ];
 
 export const ContentSlide14: React.FC = () => {
@@ -74,8 +66,6 @@ export const ContentSlide14: React.FC = () => {
             rowHeight="auto"
             stickyHeader={true}
             dateColumn="period"
-            highlightRows={[11]}
-            highlightColor="rgba(0, 169, 244, 0.15)"
           />
         </ChartContainer>
       }

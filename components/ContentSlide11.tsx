@@ -17,16 +17,6 @@ const tableData = months.map((month) => {
   return row;
 });
 
-// 数值渲染函数：根据值着色
-const renderValue = (value: number | null) => {
-  if (value === null) return <span className="text-slate-300">-</span>;
-  const color = value >= 8 ? 'text-green-600 font-semibold' 
-    : value >= 5 ? 'text-green-500' 
-    : value >= 0 ? 'text-slate-600' 
-    : 'text-red-500 font-semibold';
-  return <span className={color}>{value.toFixed(1)}</span>;
-};
-
 // 简化行业名称
 const shortNames: Record<string, string> = {
   '煤炭开采和洗选业': '煤炭开采',
@@ -59,7 +49,6 @@ const columns: ColumnConfig[] = [
     title: shortNames[item.indicator] || item.indicator,
     width: '52px',
     align: 'right' as const,
-    render: renderValue,
   })),
 ];
 
@@ -100,7 +89,7 @@ export const ContentSlide11: React.FC = () => {
             columns={columns}
             title="规模以上工业增加值：各行业当月同比增速"
             subtitle="单位：%"
-            rowHeight="compact"
+            rowHeight="auto"
             stickyHeader={true}
             dateColumn="month"
           />

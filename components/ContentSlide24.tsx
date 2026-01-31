@@ -53,8 +53,7 @@ export const ContentSlide24: React.FC = () => {
             subtitle="数据来源：国家统计局 | 单位：%"
             dateColumn="period"
             rowHeight="auto"
-            highlightRows={[10]}
-            highlightColor="rgba(239, 68, 68, 0.1)"
+            stickyHeader={true}
           />
         </ChartContainer>
       </div>

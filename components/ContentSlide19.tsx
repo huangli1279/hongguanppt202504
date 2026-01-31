@@ -33,18 +33,18 @@ export const ContentSlide19: React.FC = () => {
   // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'grain', title: '粮食', align: 'center', render: (v) => <span className={v < 0 ? 'text-red-500' : ''}>{v}</span> },
-    { key: 'edibleOil', title: '食用油', align: 'center', render: (v) => <span className={v < 0 ? 'text-red-500' : ''}>{v}</span> },
-    { key: 'freshVegetables', title: '鲜菜', align: 'center', render: (v) => <span className={v > 10 ? 'text-emerald-600 font-semibold' : v < -10 ? 'text-red-500' : ''}>{v}</span> },
-    { key: 'pork', title: '猪肉', align: 'center', render: (v) => <span className={v < -10 ? 'text-red-500' : v > 10 ? 'text-emerald-600' : ''}>{v}</span> },
+    { key: 'grain', title: '粮食', align: 'center' },
+    { key: 'edibleOil', title: '食用油', align: 'center' },
+    { key: 'freshVegetables', title: '鲜菜', align: 'center' },
+    { key: 'pork', title: '猪肉', align: 'center' },
     { key: 'freshFruit', title: '鲜果', align: 'center' },
-    { key: 'transportation', title: '交通工具', align: 'center', render: (v) => <span className={v < 0 ? 'text-red-500' : ''}>{v}</span> },
+    { key: 'transportation', title: '交通工具', align: 'center' },
     { key: 'livingServices', title: '生活用品', align: 'center' },
     { key: 'clothing', title: '衣着', align: 'center' },
     { key: 'education', title: '教育娱乐', align: 'center' },
     { key: 'healthcare', title: '医疗保健', align: 'center' },
-    { key: 'otherGoods', title: '其他用品', align: 'center', render: (v) => <span className="text-emerald-600 font-semibold">{v}</span> },
-    { key: 'homeAppliances', title: '家用器具', align: 'center', render: (v) => <span className={v > 4 ? 'text-emerald-600 font-medium' : v < 0 ? 'text-red-500' : ''}>{v}</span> },
+    { key: 'otherGoods', title: '其他用品', align: 'center' },
+    { key: 'homeAppliances', title: '家用器具', align: 'center' },
   ];
 
   return (
@@ -94,9 +94,7 @@ export const ContentSlide19: React.FC = () => {
               columns={columns}
               dateColumn="period"
               rowHeight="auto"
-              striped={true}
-              highlightRows={[10, 11]}
-              highlightColor="rgba(0, 169, 244, 0.08)"
+              stickyHeader={true}
             />
           </ChartContainer>
         </div>

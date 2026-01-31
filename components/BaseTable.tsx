@@ -32,6 +32,8 @@ export interface BaseTableProps {
   highlightColor?: string;
   /** 日期列的key，自动格式化为yy-mm */
   dateColumn?: string;
+  /** 是否启用数值自动着色（正值红色，负值绿色，null显示"-"） */
+  colorizeNumbers?: boolean;
 }
 
 const rowHeightClasses = {
@@ -54,7 +56,8 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   stickyHeader = false,
   highlightRows = [],
   highlightColor = 'rgba(0, 169, 244, 0.1)',
-  dateColumn
+  dateColumn,
+  colorizeNumbers = true
 }) => {
   const isAuto = rowHeight === 'auto';
 
@@ -88,13 +91,67 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     return String(value);
   };
 
+  // 收集所有数值并计算分位数阈值
+  const allNumbers = React.useMemo(() => {
+    if (!colorizeNumbers) return { p20: 0, p80: 0 };
+    
+    const nums: number[] = [];
+    data.forEach(row => {
+      columns.forEach(col => {
+        if (col.key !== dateColumn && !col.render) {
+          const val = row[col.key];
+          if (typeof val === 'number' && !isNaN(val)) {
+            nums.push(val);
+          }
+        }
+      });
+    });
+    
+    if (nums.length === 0) return { p20: 0, p80: 0 };
+    
+    nums.sort((a, b) => a - b);
+    const p20Index = Math.floor(nums.length * 0.2);
+    const p80Index = Math.floor(nums.length * 0.8);
+    
+    return {
+      p20: nums[p20Index],
+      p80: nums[p80Index]
+    };
+  }, [data, columns, dateColumn, colorizeNumbers]);
+
+  // 数值着色渲染：前20%红色，后20%绿色，其他正常
+  const renderColorizedNumber = (value: any): React.ReactNode => {
+    if (value === null || value === undefined) {
+      return <span className="text-slate-400">-</span>;
+    }
+    const num = typeof value === 'number' ? value : parseFloat(value);
+    if (isNaN(num)) {
+      return value;
+    }
+    
+    const formatted = num.toFixed(1);
+    
+    if (num >= allNumbers.p80) {
+      return <span className="text-red-500">{formatted}</span>;
+    } else if (num <= allNumbers.p20) {
+      return <span className="text-green-600">{formatted}</span>;
+    }
+    return <span className="text-slate-600">{formatted}</span>;
+  };
+
   const getCellValue = (row: any, col: ColumnConfig, index: number) => {
     const value = row[col.key];
+    // 优先使用自定义render
     if (col.render) {
       return col.render(value, row, index);
     }
+    // 日期列格式化
     if (dateColumn && col.key === dateColumn) {
       return formatDate(value);
+    }
+    // 数值自动着色（非日期列的数值）
+    if (colorizeNumbers && typeof value === 'number') {
+      return renderColorizedNumber(value);
     }
     return value;
   };
