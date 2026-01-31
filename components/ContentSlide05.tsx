@@ -65,6 +65,7 @@ export const ContentSlide05: React.FC = () => {
               barSize={20}
               showYAxis
               showLabels
+              unit="百分点"
             />
           </ChartContainer>
         </>

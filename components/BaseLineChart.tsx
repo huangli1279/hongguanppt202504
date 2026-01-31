@@ -33,16 +33,18 @@ export interface BaseLineChartProps {
   legendOrder?: string[];
   /** X轴刻度数量，默认6 */
   xAxisTickCount?: number;
+  /** tooltip单位，默认% */
+  unit?: string;
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label, unit = '%' }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}%
+            {entry.name}: {entry.value}{unit}
           </p>
         ))}
       </div>
@@ -103,7 +105,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
-  xAxisTickCount = 6
+  xAxisTickCount = 6,
+  unit = '%'
 }) => {
   // 自定义标签渲染，显示最后一个有效数据点的值，放在右侧
   const renderCustomLabel = (props: any, color: string, dataKey: string) => {
@@ -172,7 +175,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
               tickFormatter={(val) => `${val}%`}
             />
-            <Tooltip content={<CustomTooltip />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
             {lines.map((line, index) => (

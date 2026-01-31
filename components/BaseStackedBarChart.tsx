@@ -32,9 +32,10 @@ export interface BaseStackedBarChartProps {
   legendOrder?: string[];
   barSize?: number;
   showLabels?: boolean;
+  unit?: string;
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label, unit = '' }: any) => {
   if (active && payload && payload.length) {
     const total = payload.reduce((sum: number, entry: any) => sum + entry.value, 0);
     return (
@@ -42,11 +43,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}
+            {entry.name}: {entry.value}{unit}
           </p>
         ))}
         <p className="font-bold border-t border-slate-200 mt-1 pt-1">
-          合计: {total.toFixed(2)}
+          合计: {total.toFixed(2)}{unit}
         </p>
       </div>
     );
@@ -108,7 +109,8 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
   referenceLineY = 0,
   legendOrder,
   barSize = 24,
-  showLabels = true
+  showLabels = true,
+  unit = ''
 }) => {
   return (
     <div className="w-full h-full flex flex-col">
@@ -144,7 +146,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
               tickLine={false}
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
             />
-            <Tooltip content={<CustomTooltip />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
             {bars.map((bar, index) => (

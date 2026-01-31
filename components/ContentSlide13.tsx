@@ -70,6 +70,7 @@ export const ContentSlide13: React.FC = () => {
               showYAxis={true}
               legendOrder={['能源类', '矿产类', '有色类', '钢铁类']}
               xAxisTickCount={6}
+              unit=""
             />
           </ChartContainer>
         </>
