@@ -17,3 +17,5 @@ export { industryRetailData } from './industryRetail';
 export type { IndustryRetailDataPoint } from './industryRetail';
 export { cpiTrendData, cpiCategoryData } from './cpi';
 export type { CpiTrendDataPoint, CpiCategoryDataPoint } from './cpi';
+export { consumerConfidenceData, incomeExpenditureData } from './consumerConfidence';
+export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint } from './consumerConfidence';
