@@ -5,7 +5,7 @@ import { BaseCard } from './BaseCard';
 import { retailTrendData, retailMonthlyData } from '@/data/retail';
 import { chartColors } from '@/utils/chartColors';
 
-export const ContentSlide15: React.FC = () => {
+export const ContentSlide16: React.FC = () => {
   return (
     <BaseContentSlide
       title="2025年社零增长3.7%，服务消费韧性显著强于商品零售"
