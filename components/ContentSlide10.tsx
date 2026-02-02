@@ -19,27 +19,27 @@ export const ContentSlide10: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          Q4工业生产呈现"V型"修复，
-          <span className="text-webank-accent">12月增速回升至5.2%受出口与高技术双轮驱动</span>
+          2025年规上工业增加值增长5.9%，
+          <span className="text-webank-accent">结构优化升级，增速小幅回升</span>
         </>
       }
       cards={
         <>
-          <BaseCard title="总量运行：年末翘尾" delay="200ms" variant="accent">
+          <BaseCard title="全年增速平稳回升" delay="200ms" variant="accent">
             <p>
-              Q4增速呈"先抑后扬"，12月反弹至 <span className="font-bold">5.2%</span>。全年增长 <span className="font-bold">5.9%</span>，高于GDP增速(5.0%)。12月季调环比增长0.49%，边际动能增强。
+              2025年全国规上工业增加值增长 <span className="font-bold">5.9%</span>，较上年加快0.1个百分点，Q4增速呈"先抑后扬"，12月反弹至 <span className="font-bold">5.2%</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="结构分化：新质生产力领跑" delay="400ms">
+          <BaseCard title="设备更新政策支撑新质生产力" delay="400ms">
             <p>
-              12月高技术制造业增长 <span className="font-bold">11.0%</span>。电子(+11.8%)、汽车(+8.3%)领跑；集成电路(<span className="font-bold">+33.7%</span>)、机器人(<span className="font-bold">+28.0%</span>)爆发。传统行业如粗钢(-10.3%)、水泥(-6.6%)受限。
+              制造业是核心动力：2025年制造业增加值增长 <span className="font-bold">6.4%</span>，采矿业增长5.6%，设备更新政策支撑装备制造业增加<span className="font-bold">9.2%</span>，占规上工业比重提升至36.8%（较上年提高2.2个百分点），其中汽车、电子行业增速分别达<span className="font-bold">11.5%</span>和<span className="font-bold">10.6%</span>。
             </p>
           </BaseCard>
 
           <BaseCard title="驱动归因：外需拉动增强" delay="600ms">
             <p>
-              12月出口交货值增长 <span className="font-bold">3.2%</span>(前值-0.1%)，设备更新政策支撑装备制造业(全年+9.2%)，政策效应持续显现。
+              规模以上工业企业出口交货值 <span className="font-bold">15.8万亿元</span>，全年同比增长<span className="font-bold">2.2%</span>，12月出口交货值增长 <span className="font-bold">3.2%</span>(前值-0.1%)，政策效应持续显现。
             </p>
           </BaseCard>
         </>
