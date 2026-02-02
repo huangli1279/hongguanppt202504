@@ -16,11 +16,11 @@ export const ContentSlide34: React.FC = () => {
           <BaseCard title="剪刀差创新高" delay="200ms" variant="accent">
             M2同比增速在12月超预期反弹至 <span className="font-bold text-webank-blue">8.5%</span>（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 <span className="font-bold text-webank-blue">3.8%</span>。两者剪刀差由三季度的1.2%迅速扩大至年末的 <span className="font-bold text-red-500">4.7%</span>，创年内新高。
           </BaseCard>
-          <BaseCard title="基数压制与绝对量" delay="400ms">
-            2024年下半年M1统计口径修订后数据上修，叠加当时化债资金集中投放，导致2025年Q4面临极高基数压制。若剔除基数，12月M1环比增加约<span className="font-bold text-webank-blue">2.6万亿</span>，绝对量表现尚可。
+          <BaseCard title="M1四季度受高基数压制" delay="400ms">
+            2024年下半年M1统计口径修订后数据上修，24Q4财政部发行“2万亿置换债”，相关资金注入企业后形成大量活期存款，导致2025年Q4面临极高基数压制。若剔除基数影响，12月M1环比增加约<span className="font-bold text-webank-blue">2.6万亿</span>，绝对量表现尚可。
           </BaseCard>
-          <BaseCard title="资金定期化" delay="600ms">
-            在低通胀与资产价格波动环境下，企业与居民风险偏好下降，倾向于将活期资金转为定期存款或理财以锁定收益，导致M1向M2内部的迁移。
+          <BaseCard title="M2走势分析" delay="600ms">
+            在低利率和资产荒的大环境下，金融机构为了增厚收益、响应政策，将更多资金配置到了企业、政府债券上。这笔钱经过实体循环后，变成了企业和居民的存款，从而推高了以存款为主要构成的M2。
           </BaseCard>
         </div>
 
