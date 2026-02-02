@@ -7,6 +7,8 @@ export interface ColumnConfig {
   width?: string | number;
   align?: 'left' | 'center' | 'right';
   render?: (value: any, row: any, index: number) => React.ReactNode;
+  /** 子列，用于二级表头 */
+  children?: ColumnConfig[];
 }
 
 export interface BaseTableProps {
@@ -43,6 +45,41 @@ const rowHeightClasses = {
   auto: '' // auto模式不使用固定padding
 };
 
+// 判断是否使用二级表头
+const hasGroupedColumns = (columns: ColumnConfig[]): boolean => {
+  return columns.some(col => col.children && col.children.length > 0);
+};
+
+// 获取所有叶子节点列（用于渲染数据单元格）
+const getLeafColumns = (columns: ColumnConfig[]): ColumnConfig[] => {
+  const leafs: ColumnConfig[] = [];
+  columns.forEach(col => {
+    if (col.children && col.children.length > 0) {
+      leafs.push(...getLeafColumns(col.children));
+    } else {
+      leafs.push(col);
+    }
+  });
+  return leafs;
+};
+
+// 计算分组边界位置（返回应该显示边框的叶子列索引集合）
+const getGroupBoundaries = (columns: ColumnConfig[]): Set<number> => {
+  const boundaries = new Set<number>();
+  let leafIndex = 0;
+
+  columns.forEach((col, groupIndex) => {
+    const childCount = col.children?.length || 1;
+    leafIndex += childCount;
+    // 在每个分组后添加边界（除了最后一个分组）
+    if (groupIndex < columns.length - 1) {
+      boundaries.add(leafIndex - 1); // 该分组最后一个子列的索引
+    }
+  });
+
+  return boundaries;
+};
+
 export const BaseTable: React.FC<BaseTableProps> = ({
   data,
   columns,
@@ -60,6 +97,9 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   colorizeNumbers = true
 }) => {
   const isAuto = rowHeight === 'auto';
+  const isGrouped = hasGroupedColumns(columns);
+  const leafColumns = isGrouped ? getLeafColumns(columns) : columns;
+  const groupBoundaries = isGrouped ? getGroupBoundaries(columns) : new Set<number>();
 
   const getAlignment = (align?: string) => {
     switch (align) {
@@ -94,10 +134,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   // 收集所有数值并计算分位数阈值
   const allNumbers = React.useMemo(() => {
     if (!colorizeNumbers) return { p20: 0, p80: 0 };
-    
+
     const nums: number[] = [];
     data.forEach(row => {
-      columns.forEach(col => {
+      leafColumns.forEach(col => {
         if (col.key !== dateColumn && !col.render) {
           const val = row[col.key];
           if (typeof val === 'number' && !isNaN(val)) {
@@ -106,18 +146,18 @@ export const BaseTable: React.FC<BaseTableProps> = ({
         }
       });
     });
-    
+
     if (nums.length === 0) return { p20: 0, p80: 0 };
-    
+
     nums.sort((a, b) => a - b);
     const p20Index = Math.floor(nums.length * 0.2);
     const p80Index = Math.floor(nums.length * 0.8);
-    
+
     return {
       p20: nums[p20Index],
       p80: nums[p80Index]
     };
-  }, [data, columns, dateColumn, colorizeNumbers]);
+  }, [data, leafColumns, dateColumn, colorizeNumbers]);
 
   // 数值着色渲染：前20%红色，后20%绿色，其他正常
   const renderColorizedNumber = (value: any): React.ReactNode => {
@@ -176,41 +216,100 @@ export const BaseTable: React.FC<BaseTableProps> = ({
         )}
         <div className="flex-1 flex flex-col min-h-0 text-xs">
           {/* Header */}
-          <div 
-            className="flex flex-shrink-0 items-center"
-            style={{ backgroundColor: headerBgColor }}
-          >
-            {columns.map((col, colIndex) => (
+          {isGrouped ? (
+            // 二级表头模式 - 使用 Grid 布局确保对齐
+            <>
+              {/* 第一行：分组表头 */}
               <div
-                key={col.key}
-                className={`px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
-                style={{ color: headerTextColor }}
+                className="grid flex-shrink-0"
+                style={{
+                  backgroundColor: headerBgColor,
+                  gridTemplateColumns: `repeat(${leafColumns.length}, 1fr)`
+                }}
               >
-                {col.title}
+                {columns.map((col, groupIndex) => {
+                  const childCount = col.children?.length || 1;
+                  const showBorder = groupIndex < columns.length - 1;
+                  return (
+                    <div
+                      key={col.key}
+                      className={`px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showBorder ? 'border-r border-slate-400/30' : ''}`}
+                      style={{
+                        color: headerTextColor,
+                        gridColumn: `span ${childCount}`
+                      }}
+                    >
+                      {col.title}
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
+              {/* 第二行：子列表头 */}
+              <div
+                className="grid flex-shrink-0 border-t border-slate-400/30"
+                style={{
+                  backgroundColor: headerBgColor,
+                  gridTemplateColumns: `repeat(${leafColumns.length}, 1fr)`
+                }}
+              >
+                {leafColumns.map((col, colIndex) => {
+                  const isGroupBoundary = groupBoundaries.has(colIndex);
+                  return (
+                    <div
+                      key={col.key}
+                      className={`px-3 py-1.5 font-semibold text-center flex items-center justify-center ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`}
+                      style={{ color: headerTextColor }}
+                    >
+                      {col.title}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            // 单级表头模式
+            <div
+              className="flex flex-shrink-0 items-center"
+              style={{ backgroundColor: headerBgColor }}
+            >
+              {columns.map((col, colIndex) => (
+                <div
+                  key={col.key}
+                  className={`px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
+                  style={{ color: headerTextColor }}
+                >
+                  {col.title}
+                </div>
+              ))}
+            </div>
+          )}
           {/* Body - flex-1 让它填满剩余空间 */}
           <div className="flex-1 flex flex-col min-h-0">
             {data.map((row, rowIndex) => {
               const highlighted = isHighlighted(rowIndex);
               const stripedBg = striped && rowIndex % 2 === 1 ? 'bg-slate-50' : 'bg-white';
-              
+
               return (
                 <div
                   key={rowIndex}
-                  className={`flex flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg}`}
-                  style={highlighted ? { backgroundColor: highlightColor } : undefined}
+                  className={`${isGrouped ? 'grid' : 'flex'} flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg}`}
+                  style={{
+                    ...(highlighted ? { backgroundColor: highlightColor } : undefined),
+                    ...(isGrouped ? { gridTemplateColumns: `repeat(${leafColumns.length}, 1fr)` } : {})
+                  }}
                 >
-                  {columns.map((col, colIndex) => (
-                    <div
-                      key={col.key}
-                      className={`px-3 ${getAlignment(col.align)} flex-1 ${colIndex < columns.length - 1 ? 'border-r border-slate-200' : ''}`}
-                      style={{ color: uiColors.tick }}
-                    >
-                      {getCellValue(row, col, rowIndex)}
-                    </div>
-                  ))}
+                  {leafColumns.map((col, colIndex) => {
+                    const isGroupBoundary = isGrouped && groupBoundaries.has(colIndex);
+                    return (
+                      <div
+                        key={col.key}
+                        className={`px-3 ${getAlignment(col.align)} ${isGrouped ? '' : 'flex-1'} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`}
+                        style={{ color: uiColors.tick }}
+                      >
+                        {getCellValue(row, col, rowIndex)}
+                      </div>
+                    );
+                  })}
                 </div>
               );
             })}
@@ -236,42 +335,91 @@ export const BaseTable: React.FC<BaseTableProps> = ({
         </div>
       )}
       <div className="flex-grow min-h-0 overflow-auto">
-        <table 
+        <table
           className={`w-full text-xs ${bordered ? 'border border-slate-200' : ''}`}
           style={{ tableLayout: 'fixed' }}
         >
           <thead className={stickyHeader ? 'sticky top-0 z-10' : ''}>
-            <tr style={{ backgroundColor: headerBgColor }}>
-              {columns.map((col, colIndex) => (
-                <th
-                  key={col.key}
-                  className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
-                  style={{ 
-                    color: headerTextColor,
-                    width: col.width || 'auto',
-                    verticalAlign: 'middle'
-                  }}
-                >
-                  {col.title}
-                </th>
-              ))}
-            </tr>
+            {isGrouped ? (
+              // 二级表头模式
+              <>
+                {/* 第一行：分组表头（在分组边界显示边框） */}
+                <tr style={{ backgroundColor: headerBgColor }}>
+                  {columns.map((col, groupIndex) => {
+                    const childCount = col.children?.length || 1;
+                    const hasChildren = col.children && col.children.length > 0;
+                    const showBorder = groupIndex < columns.length - 1;
+                    return (
+                      <th
+                        key={col.key}
+                        colSpan={childCount}
+                        rowSpan={hasChildren ? 1 : 2}
+                        className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${showBorder ? 'border-r border-slate-400/30' : ''}`}
+                        style={{
+                          color: headerTextColor,
+                          width: col.width || 'auto',
+                          verticalAlign: 'middle'
+                        }}
+                      >
+                        {col.title}
+                      </th>
+                    );
+                  })}
+                </tr>
+                {/* 第二行：子列表头（在分组边界显示边框） */}
+                <tr style={{ backgroundColor: headerBgColor }} className="border-t border-slate-400/30">
+                  {leafColumns.map((col, colIndex) => {
+                    const isGroupBoundary = groupBoundaries.has(colIndex);
+                    return (
+                      <th
+                        key={col.key}
+                        className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`}
+                        style={{
+                          color: headerTextColor,
+                          width: col.width || 'auto',
+                          verticalAlign: 'middle'
+                        }}
+                      >
+                        {col.title}
+                      </th>
+                    );
+                  })}
+                </tr>
+              </>
+            ) : (
+              // 单级表头模式
+              <tr style={{ backgroundColor: headerBgColor }}>
+                {columns.map((col, colIndex) => (
+                  <th
+                    key={col.key}
+                    className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
+                    style={{
+                      color: headerTextColor,
+                      width: col.width || 'auto',
+                      verticalAlign: 'middle'
+                    }}
+                  >
+                    {col.title}
+                  </th>
+                ))}
+              </tr>
+            )}
           </thead>
           <tbody>
             {data.map((row, rowIndex) => {
               const highlighted = isHighlighted(rowIndex);
               const stripedBg = striped && rowIndex % 2 === 1 ? 'bg-slate-50' : 'bg-white';
-              
+
               return (
                 <tr
                   key={rowIndex}
                   className={`${highlighted ? '' : stripedBg} transition-colors hover:bg-slate-100`}
                   style={highlighted ? { backgroundColor: highlightColor } : undefined}
                 >
-                  {columns.map((col, colIndex) => (
+                  {leafColumns.map((col, colIndex) => (
                     <td
                       key={col.key}
-                      className={`${rowHeightClasses[rowHeight]} px-3 ${getAlignment(col.align)} ${bordered ? 'border border-slate-200' : 'border-b border-slate-100'} ${colIndex < columns.length - 1 ? 'border-r border-slate-200' : ''}`}
+                      className={`${rowHeightClasses[rowHeight]} px-3 ${getAlignment(col.align)} ${bordered ? 'border border-slate-200' : 'border-b border-slate-100'} ${colIndex < leafColumns.length - 1 ? 'border-r border-slate-200' : ''}`}
                       style={{ color: uiColors.tick }}
                     >
                       {getCellValue(row, col, rowIndex)}
