@@ -16,24 +16,19 @@ const columns: ColumnConfig[] = [
 export const ContentSlide12: React.FC = () => {
   return (
     <BaseContentSlide
-      title={
-        <>
-          11月工企利润因投资收益基数重挫13.1%，
-          <span className="text-webank-accent">剔除后实际经营效益呈"弱修复"</span>
-        </>
-      }
+      title="2025年企业效益：投资收益掩盖主业亏损，行业表现呈现两极分化"
       cardColumns={2}
       cards={
         <>
-          <BaseCard title="利润读数剧烈波动" delay="200ms" variant="accent">
-            <p>
-              11月规上工业企业利润同比<span className="font-bold text-red-600">下降13.1%</span>，降幅较10月大幅扩大（-5.5%）。全年累计增速收窄至<span className="font-bold">0.1%</span>，主要受非经营性因素扰动。
+          <BaseCard title="账面利润回正掩盖主营业务的实际下滑" delay="200ms" variant="accent">
+            <p className="text-sm leading-relaxed">
+              2025年工业企业利润全年实现<span className="font-bold">0.6%</span>的微幅增长，较2024年（下降2.3%）实现转正；四季度利润增速由10-11月的负增长转为12月的<span className="font-bold">5.3%</span>，增速回升主要得益于投资收益等非经营性损益的集中入账（贡献率高达<span className="font-bold">17.4个百分点</span>）。若剔除此因素，内生利润实际同比<span className="font-bold">下降12.9%</span>，且降幅较上月走阔，叠加营收与毛利的双重下滑，反映出企业主营业务盈利能力依然疲弱。
             </p>
           </BaseCard>
 
-          <BaseCard title="核心归因：投资收益错位" delay="400ms">
-            <p>
-              前期股市上涨带来的高基数导致"其他损益"贡献大幅转负。若剔除此因素，实际经营利润增速为<span className="font-bold">-6.7%</span>，较上月回升<span className="font-bold text-green-600">5.1个百分点</span>，内生获利能力边际改善。
+          <BaseCard title="高技术制造支撑大局，传统采矿与消费品制造拖累严重" delay="400ms">
+            <p className="text-sm leading-relaxed">
+              高技术制造业（全年增长<span className="font-bold">13.3%</span>）与装备制造业（全年增长<span className="font-bold">7.7%</span>）凭借高增长（如集成电路、航空航天）成为利润修复的核心支撑，反观采矿业受价格波动影响大幅拖累整体表现，消费品制造亦受制于需求疲软而复苏缓慢。当前企业仍处于被动库存调整阶段，周转效率提升有限，未来企业效益的实质性改善，仍需依赖从“投资收益支撑”向“主营业务修复”的逻辑切换。
             </p>
           </BaseCard>
         </>
@@ -43,7 +38,7 @@ export const ContentSlide12: React.FC = () => {
           <BaseTable
             data={industrialProfitData}
             columns={columns}
-            title="规模以上工业企业主要财务指标（累计值）"
+            title="2025年工业企业主要财务指标月度数据"
             subtitle="单位：亿元"
             rowHeight="auto"
             stickyHeader={true}

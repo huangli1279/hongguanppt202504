@@ -21,7 +21,7 @@ export const ContentSlide23: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="房地产开发投资重挫17.2%，新开工面积腰斩式下跌制约后续实物量"
+      title="房地产开发投资下降17.2%，新开工面积下跌20.4%"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">

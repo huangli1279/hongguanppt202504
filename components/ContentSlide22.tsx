@@ -22,7 +22,7 @@ export const ContentSlide22: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="2025年固投全年下降3.8%，房地产深跌与基建乏力导致「稳增长」缺口"
+      title="2025年固投全年下降3.8%，房地产深跌与基建乏力拖累整体投资"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">

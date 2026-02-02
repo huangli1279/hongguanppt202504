@@ -21,7 +21,7 @@ export const ContentSlide24: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="基建投资全年下降1.48%，债务化解与项目断档导致实物工作量落地受阻"
+      title="基建投资全年下降1.48%，财政约束与战略转型驱动行业分化"
       cardColumns={3}
     >
       <div className="flex flex-col h-full">
@@ -32,14 +32,14 @@ export const ContentSlide24: React.FC = () => {
               受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="text-red-500 font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
             </p>
           </BaseCard>
-          <BaseCard title="结构分化：能源托底" delay="400ms">
+          <BaseCard title="高度依赖地方财政的传统领域成为主要拖累" delay="400ms">
             <p>
-              电热气水投资全年增长<span className="text-green-600 font-semibold">9.1%</span>，受益于能源保供与绿色转型强力支持。相比之下，水利环境公用设施投资全年下降<span className="text-red-500 font-semibold">8.4%</span>，12月单月更是深跌<span className="text-red-500 font-semibold">26.6%</span>，成为主要拖累。
+              严重依赖地方财政和土地收入的水利环境公用设施投资、道路运输业全年增速持续下降，成为主要拖累。
             </p>
           </BaseCard>
-          <BaseCard title="政策时滞" delay="600ms">
+          <BaseCard title="符合国家长期战略的领域逆势高增" delay="600ms">
             <p>
-              尽管10月投放了5000亿新型政策性金融工具，但受北方冬季施工受限及项目前期准备周期影响，四季度实物工作量尚未充分释放，政策效果存在滞后性。
+              与传统领域形成鲜明对比的是，服务于长期国家战略的领域实现强劲增长，电热气水投资全年增长<span className="text-green-600 font-semibold">9.1%</span>，管道运输业全年增长<span className="text-green-600 font-semibold">36%</span>。
             </p>
           </BaseCard>
         </div>
