@@ -2,8 +2,7 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
-import { BaseBarChart, BarConfig } from './BaseBarChart';
-import { foreignTradeTrendData, q4ExportCompareData, foreignTradeMonthlyUsdData } from '@/data/foreignTrade';
+import { foreignTradeTrendData, foreignTradeMonthlyUsdData, foreignTradeMonthlyValuesData } from '@/data/foreignTrade';
 import { getSeriesColor } from '@/utils/chartColors';
 
 export const ContentSlide27: React.FC = () => {
@@ -13,10 +12,11 @@ export const ContentSlide27: React.FC = () => {
     { dataKey: 'imports', name: '进口当月同比', color: getSeriesColor(2), strokeWidth: 2 },
   ];
 
-  // 柱状图配置
-  const barConfigs: BarConfig[] = [
-    { dataKey: 'y2024', name: '2024年', color: getSeriesColor(1) },
-    { dataKey: 'y2025', name: '2025年', color: getSeriesColor(0) },
+  // 柱状图配置 - 已替换为折线图
+  const lineConfigsValues: LineConfig[] = [
+    { dataKey: 'total', name: '进出口总值', color: getSeriesColor(1), strokeWidth: 2 },
+    { dataKey: 'exports', name: '出口当月值', color: getSeriesColor(0), strokeWidth: 2.5 },
+    { dataKey: 'imports', name: '进口当月值', color: getSeriesColor(2), strokeWidth: 2 },
   ];
 
   return (
@@ -45,7 +45,7 @@ export const ContentSlide27: React.FC = () => {
             <BaseLineChart
               data={foreignTradeMonthlyUsdData}
               title="进出口总值(美元计价):当月同比"
-              subtitle="数据来源：海关总署 | 单位：%"
+              subtitle="数据来源：国家统计局 | 单位：%"
               lines={lineConfigs}
               showYAxis={true}
               showReferenceLine={true}
@@ -55,18 +55,19 @@ export const ContentSlide27: React.FC = () => {
             />
           </ChartContainer>
           <ChartContainer delay="800ms">
-            <BaseBarChart
-              data={q4ExportCompareData}
-              title="2024-2025年Q4出口增速同比对比"
-              subtitle={'2025年Q4呈现"先抑后扬"V型反转 | 单位：%'}
-              bars={barConfigs}
-              xAxisKey="month"
-              yAxisDomain={[-5, 15]}
+            <BaseLineChart
+              data={foreignTradeMonthlyValuesData}
+              title="进出口总值(美元计价):当月值"
+              subtitle="单位：亿美元"
+              lines={lineConfigsValues}
+              xAxisTickCount={10}
+              yAxisDomain={['auto', 'auto']}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['2024年', '2025年']}
-              barSize={28}
+              legendOrder={['进出口总值', '出口当月值', '进口当月值']}
+              unit=""
+              yAxisTickFormatter={(val) => `${val}`}
             />
           </ChartContainer>
         </div>

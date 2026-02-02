@@ -35,6 +35,8 @@ export interface BaseLineChartProps {
   xAxisTickCount?: number;
   /** tooltip单位，默认% */
   unit?: string;
+  /** Y轴刻度格式化函数 */
+  yAxisTickFormatter?: (value: any) => string;
 }
 
 const CustomTooltip = ({ active, payload, label, unit = '%' }: any) => {
@@ -106,7 +108,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   referenceLineY = 0,
   legendOrder,
   xAxisTickCount = 6,
-  unit = '%'
+  unit = '%',
+  yAxisTickFormatter
 }) => {
   // 自定义标签渲染，显示最后一个有效数据点的值，放在右侧
   const renderCustomLabel = (props: any, color: string, dataKey: string) => {
@@ -173,7 +176,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               axisLine={false}
               tickLine={false}
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
+              tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
             />
             <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />

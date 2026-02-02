@@ -26,7 +26,7 @@ export const ContentSlide07: React.FC = () => {
 
           <BaseCard title="投资：明显拖累" delay="400ms">
             <p>
-              <span className="font-bold text-red-600">16.0%</span> 贡献率，Q4资本形成总额贡献率仅16.0%。受<span className="font-bold">房地产开发投资</span> (<span className="text-red-600">-17.2%</span>) 深度调整影响，全年固投下降3.8%，制造业投资仅维持微增。
+              <span className="font-bold text-red-600">16.0%</span> 贡献率，Q4投资总额贡献率仅16.0%。受<span className="font-bold">房地产开发投资</span> (<span className="text-red-600">-17.2%</span>) 深度调整影响，全年固投下降3.8%，制造业投资仅维持微增。
             </p>
           </BaseCard>
 
