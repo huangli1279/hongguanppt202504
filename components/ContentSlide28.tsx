@@ -34,12 +34,12 @@ export const ContentSlide28: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="机电出口占比创新高，高技术驱动结构升级" delay="200ms" variant="accent">
             <p>
-              机电产品制造稳步领跑，全年出口占比已提升至<span className="text-webank-blue font-semibold">60.9%</span>的历史高位，累计同比增长<span className="text-green-600 font-semibold">26.8%</span>。高技术与集成电路作为结构升级的"双引擎"在年末迎来爆发，充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。
+              机电产品制造稳步领跑，全年出口占比已提升至<span className="text-webank-blue font-semibold">60.9%</span>的历史高位，累计同比增长<span className="text-webank-blue font-semibold">26.8%</span>。高技术产品全年出口5.25万亿元，增长<span className="text-webank-blue font-semibold">13.2%</span>，占比19.4%（较24年提升1.2%），充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。“新三样”、风力发电机组等绿色产品出口分别增长<span className="text-webank-blue font-semibold">27.1%</span>和<span className="text-webank-blue font-semibold">48.7%</span>。自主品牌产品出口增长<span className="text-webank-blue font-semibold">12.9%</span>，占比提升1.4个百分点。
             </p>
           </BaseCard>
           <BaseCard title="劳密产品表现疲软，传统产业加速向高端让位" delay="400ms">
             <p>
-              劳动密集型产品表现疲软，服装累计同比<span className="text-red-500 font-semibold">-5%</span>，显示出传统支柱产业在存量博弈与产业链外迁压力下正加速向高端装备制造让位。
+              劳动密集型产品表现疲软，服装负增长趋势逐渐凸显，2025年累计同比<span className="text-red-500 font-semibold">-5%</span>，显示出传统支柱产业在存量博弈与产业链外迁压力下正加速向高端装备制造让位。
             </p>
           </BaseCard>
         </div>
@@ -63,8 +63,8 @@ export const ContentSlide28: React.FC = () => {
           <ChartContainer delay="800ms">
             <BaseLineChart
               data={exportEquipmentTrendData}
-              title="装备制造出口累计同比走势"
-              subtitle="汽车与半导体产业链年末强势反弹 | 单位：%"
+              title="机电产品出口累计同比走势"
+              subtitle="单位：%"
               lines={equipmentLineConfigs}
               yAxisDomain={[-30, 35]}
               showYAxis={true}
