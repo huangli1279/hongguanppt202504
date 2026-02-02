@@ -179,6 +179,7 @@ export const ContentSlide12: React.FC = () => {
             rowHeight="auto"
             stickyHeader={true}
             dateColumn="month"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       }

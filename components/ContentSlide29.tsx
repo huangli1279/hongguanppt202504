@@ -64,7 +64,7 @@ export const ContentSlide29: React.FC = () => {
             <BaseLineChart
               data={exportEquipmentTrendData}
               title="机电产品出口累计同比走势"
-              subtitle="单位：%"
+              subtitle="数据来源：海关总署 | 单位：%"
               lines={equipmentLineConfigs}
               yAxisDomain={[-30, 35]}
               showYAxis={true}

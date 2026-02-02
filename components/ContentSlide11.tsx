@@ -49,7 +49,7 @@ export const ContentSlide11: React.FC = () => {
           <BaseLineChart
             data={chartData}
             title="规模以上工业增加值与出口交货值同比增速"
-            subtitle="单位：%"
+            subtitle="数据来源：国家统计局 | 单位：%"
             lines={[
               { dataKey: 'industrialOutput', name: '规模以上工业增加值', color: chartColors.primary, strokeWidth: 2.5 },
               { dataKey: 'exportDelivery', name: '出口交货值', color: seriesColors[1] },

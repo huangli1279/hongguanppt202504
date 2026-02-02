@@ -30,7 +30,7 @@ export const ContentSlide36: React.FC = () => {
             <BaseLineChart
               data={moneySupplyData}
               title="2022-2025年中国货币供应量(M1/M2)同比"
-              subtitle="同比增速单位为%"
+              subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
                 { dataKey: 'm1', name: 'M1(货币)', color: chartColors.primary, strokeWidth: 2 },
                 { dataKey: 'm2', name: 'M2(货币和准货币)', color: chartColors.negative, strokeWidth: 2 },
@@ -47,7 +47,7 @@ export const ContentSlide36: React.FC = () => {
             <BaseLineChart
               data={moneySupplyScissorData}
               title="2022-2025年中国货币供应量剪刀差走势"
-              subtitle="同比增速单位为%"
+              subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
                 { dataKey: 'scissor', name: 'M1-M2剪刀差', color: chartColors.primary, strokeWidth: 2 },
               ]}

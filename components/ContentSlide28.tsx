@@ -63,7 +63,7 @@ export const ContentSlide28: React.FC = () => {
             <BaseLineChart
               data={foreignTradeMonthlyValuesData}
               title="进出口总值(美元计价):当月值"
-              subtitle="单位：亿美元"
+              subtitle="数据来源：海关总署 | 单位：亿美元"
               lines={lineConfigsValues}
               xAxisTickCount={10}
               yAxisDomain={['auto', 'auto']}

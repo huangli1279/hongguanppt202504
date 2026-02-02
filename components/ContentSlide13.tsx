@@ -43,6 +43,7 @@ export const ContentSlide13: React.FC = () => {
             rowHeight="auto"
             stickyHeader={true}
             dateColumn="time"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       }

@@ -57,7 +57,7 @@ export const ContentSlide10: React.FC = () => {
             <BaseLineChart
               data={pmiChartData}
               title="制造业PMI及分项指数"
-              subtitle="单位：%"
+              subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'pmi', name: '制造业PMI', color: chartColors.primary, strokeWidth: 2.5 },
                 { dataKey: 'production', name: '生产', color: seriesColors[1] },
@@ -74,7 +74,7 @@ export const ContentSlide10: React.FC = () => {
             <BaseLineChart
               data={enterpriseSizeChartData}
               title="不同规模企业PMI"
-              subtitle="单位：%"
+              subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'large', name: '大型企业', color: chartColors.primary, strokeWidth: 2.5 },
                 { dataKey: 'medium', name: '中型企业', color: seriesColors[1] },

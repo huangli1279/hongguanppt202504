@@ -47,7 +47,7 @@ export const ContentSlide04: React.FC = () => {
             <BaseLineChart
               data={gdpTrendData}
               title="2024Q1-2025Q4季度GDP当季同比增速走势图"
-              subtitle="单位：%"
+              subtitle="数据来源：国家统计局 | 单位：%"
               yAxisDomain={[0, 8]}
               showYAxis={true}
               legendOrder={['GDP现价', 'GDP不变价']}

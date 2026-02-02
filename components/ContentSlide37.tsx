@@ -28,7 +28,7 @@ export const ContentSlide37: React.FC = () => {
             <BaseLineChart
               data={socialFinancingGrowthData}
               title="2024-2025年社融存量规模同比增速"
-              subtitle="单位：%"
+              subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
                 { dataKey: 'growth', name: '社融存量同比增速', color: chartColors.primary, strokeWidth: 2 },
               ]}
@@ -41,7 +41,7 @@ export const ContentSlide37: React.FC = () => {
             <BaseBarChart
               data={socialFinancingStructureData}
               title="社融增量结构对比（25Q4 vs 24Q4）"
-              subtitle="单位：亿元"
+              subtitle="数据来源：中国人民银行 | 单位：亿元"
               xAxisKey="category"
               bars={[
                 { dataKey: 'q24', name: '24Q4', color: chartColors.grey400 },

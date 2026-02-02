@@ -65,6 +65,7 @@ export const ContentSlide15: React.FC = () => {
             rowHeight="auto"
             stickyHeader={true}
             dateColumn="period"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       }

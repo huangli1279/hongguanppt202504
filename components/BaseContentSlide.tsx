@@ -135,12 +135,13 @@ export const ChartContainer: React.FC<{
   children: React.ReactNode;
   delay?: string;
   className?: string;
-}> = ({ children, className }) => (
+}> = ({ children, delay = '0ms', className }) => (
   <div
     className={cn(
       'h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards',
       className
     )}
+    style={{ animationDelay: delay }}
   >
     {children}
   </div>
