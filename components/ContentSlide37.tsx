@@ -17,8 +17,8 @@ export const ContentSlide37: React.FC = () => {
           <BaseCard title="社融：高基数拖累" delay="200ms" variant="accent">
             12月新增社融 <span className="font-bold text-webank-blue">2.21万亿元</span>（同比少增6457亿），存量增速降至 <span className="font-bold text-webank-blue">8.3%</span>，核心在于2024年同期"2万亿隐债置换"导致政府债基数异常偏高。
           </BaseCard>
-          <BaseCard title="企业中长贷：由负转正" delay="400ms">
-            12月政府债净融资（0.7万亿）同比大幅少增 <span className="font-bold text-red-500">1.07万亿元</span>，但受5000亿新型政策性金融工具落地、重大项目开工及银行年末「冲量」三重驱动，12月企业中长期贷款新增 <span className="font-bold text-webank-blue">3300亿元</span>（同比多增2900亿），结束"五连降"强势反弹。
+          <BaseCard title="社融结构：政府债回落，企业债放量" delay="400ms">
+            受24年隐债置换影响，Q4季度政府债净融资（2.38万亿）同比大幅少增 <span className="font-bold text-red-500">1.74万亿元</span>。人民币贷款同比少增0.28万亿，企业债券（0.82万亿）同比多增 <span className="font-bold text-webank-blue">0.5万亿</span>，表明在贷款利率管控和融资结构优化调整的背景下，优质企业通过债券市场筹措资金的意愿提高。
           </BaseCard>
         </div>
 
