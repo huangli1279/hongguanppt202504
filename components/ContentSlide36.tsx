@@ -8,7 +8,7 @@ import { chartColors } from '@/utils/chartColors';
 export const ContentSlide36: React.FC = () => {
   return (
     <BaseContentSlide
-      title={'12月M1增速滑落至3.8%，剪刀差扩至4.7%警示资金"定期化"'}
+      title={'12月M1增速滑落至3.8%，剪刀差扩至4.7%'}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
