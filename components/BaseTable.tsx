@@ -234,7 +234,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                 className="grid flex-shrink-0"
                 style={{
                   backgroundColor: headerBgColor,
-                  gridTemplateColumns: `repeat(${leafColumns.length}, 1fr)`
+                  gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))`
                 }}
               >
                 {columns.map((col, groupIndex) => {
@@ -243,7 +243,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   return (
                     <div
                       key={col.key}
-                      className={`px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showBorder ? 'border-r border-slate-400/30' : ''}`}
+                      className={`min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showBorder ? 'border-r border-slate-400/30' : ''}`}
                       style={{
                         color: headerTextColor,
                         gridColumn: `span ${childCount}`,
@@ -260,7 +260,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                 className="grid flex-shrink-0 border-t border-slate-400/30"
                 style={{
                   backgroundColor: headerBgColor,
-                  gridTemplateColumns: `repeat(${leafColumns.length}, 1fr)`
+                  gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))`
                 }}
               >
                 {leafColumns.map((col, colIndex) => {
@@ -268,7 +268,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   return (
                     <div
                       key={col.key}
-                      className={`px-3 py-1.5 font-semibold text-center flex items-center justify-center ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`}
+                      className={`min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`}
                       style={{
                         color: headerTextColor,
                         ...(col.highlight ? { backgroundColor: highlightColumnColor } : undefined)
@@ -312,7 +312,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   className={`${isGrouped ? 'grid' : 'flex'} flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg}`}
                   style={{
                     ...(highlighted ? { backgroundColor: highlightColor } : undefined),
-                    ...(isGrouped ? { gridTemplateColumns: `repeat(${leafColumns.length}, 1fr)` } : {})
+                    ...(isGrouped ? { gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))` } : {})
                   }}
                 >
                   {leafColumns.map((col, colIndex) => {
@@ -320,7 +320,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                     return (
                       <div
                         key={col.key}
-                        className={`px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGrouped ? '' : 'flex-1'} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`}
+                        className={`min-w-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGrouped ? '' : 'flex-1'} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`}
                         style={{
                           color: uiColors.tick,
                           ...(!highlighted && isColumnHighlighted(col)

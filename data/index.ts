@@ -44,3 +44,5 @@ export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneyS
 export { socialFinancingGrowthData, socialFinancingStructureData } from './socialFinancing';
 export { loanData, loanTableData, loanChartData } from './loanData';
 export type { LoanDataPoint } from './loanData';
+export { depositData } from './depositData';
+export type { DepositDataPoint } from './depositData';
