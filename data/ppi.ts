@@ -76,6 +76,36 @@ export const ppiYoyData: PpiDataPoint[] = [
   { period: '2025-12', ppiYoy: -1.90 },
 ];
 
+// PPI 月度同比明细数据
+export interface PpiMonthlyDetailDataPoint {
+  period: string;
+  ppiYoy: number;
+  productionMaterials: number;
+  mining: number;
+  rawMaterials: number;
+  processing: number;
+  livingGoods: number;
+  food: number;
+  clothing: number;
+  dailyUse: number;
+  durableGoods: number;
+}
+
+export const ppiMonthlyDetailData: PpiMonthlyDetailDataPoint[] = [
+  { period: '2025-01', ppiYoy: -2.3, productionMaterials: -2.6, mining: -4.9, rawMaterials: -1.9, processing: -2.7, livingGoods: -1.2, food: -1.4, clothing: -0.1, dailyUse: 0.5, durableGoods: -2.6 },
+  { period: '2025-02', ppiYoy: -2.2, productionMaterials: -2.5, mining: -6.3, rawMaterials: -1.5, processing: -2.7, livingGoods: -1.2, food: -1.6, clothing: -0.2, dailyUse: 0.9, durableGoods: -2.5 },
+  { period: '2025-03', ppiYoy: -2.5, productionMaterials: -2.8, mining: -8.3, rawMaterials: -2.4, processing: -2.6, livingGoods: -1.5, food: -1.4, clothing: -0.3, dailyUse: 0.7, durableGoods: -3.4 },
+  { period: '2025-04', ppiYoy: -2.7, productionMaterials: -3.1, mining: -9.4, rawMaterials: -3.6, processing: -2.3, livingGoods: -1.6, food: -1.4, clothing: -0.1, dailyUse: 0.6, durableGoods: -3.7 },
+  { period: '2025-05', ppiYoy: -3.3, productionMaterials: -4.0, mining: -11.9, rawMaterials: -5.4, processing: -2.8, livingGoods: -1.4, food: -1.4, clothing: 0.0, dailyUse: 0.6, durableGoods: -3.3 },
+  { period: '2025-06', ppiYoy: -3.6, productionMaterials: -4.4, mining: -13.2, rawMaterials: -5.5, processing: -3.2, livingGoods: -1.4, food: -2.0, clothing: 0.1, dailyUse: 0.8, durableGoods: -2.7 },
+  { period: '2025-07', ppiYoy: -3.6, productionMaterials: -4.3, mining: -14.0, rawMaterials: -5.4, processing: -3.1, livingGoods: -1.6, food: -1.8, clothing: -0.1, dailyUse: 0.6, durableGoods: -3.5 },
+  { period: '2025-08', ppiYoy: -2.9, productionMaterials: -3.2, mining: -11.5, rawMaterials: -4.1, processing: -2.2, livingGoods: -1.7, food: -1.7, clothing: 0.0, dailyUse: 0.4, durableGoods: -3.7 },
+  { period: '2025-09', ppiYoy: -2.3, productionMaterials: -2.4, mining: -9.0, rawMaterials: -2.9, processing: -1.7, livingGoods: -1.7, food: -1.7, clothing: -0.3, dailyUse: 0.7, durableGoods: -3.9 },
+  { period: '2025-10', ppiYoy: -2.1, productionMaterials: -2.4, mining: -7.8, rawMaterials: -2.5, processing: -1.9, livingGoods: -1.4, food: -1.6, clothing: -0.3, dailyUse: 1.0, durableGoods: -3.2 },
+  { period: '2025-11', ppiYoy: -2.2, productionMaterials: -2.4, mining: -6.1, rawMaterials: -2.9, processing: -1.9, livingGoods: -1.5, food: -1.5, clothing: -0.3, dailyUse: 1.1, durableGoods: -3.6 },
+  { period: '2025-12', ppiYoy: -1.9, productionMaterials: -2.1, mining: -4.7, rawMaterials: -2.6, processing: -1.6, livingGoods: -1.3, food: -1.5, clothing: -0.1, dailyUse: 1.4, durableGoods: -3.5 },
+];
+
 // 大宗商品价格指数数据
 export const commodityPriceData: CommodityPriceDataPoint[] = [
   { period: '2024-01', energy: 154.68, nonFerrous: 104.54, mineral: 186.53, steel: 116.82 },
