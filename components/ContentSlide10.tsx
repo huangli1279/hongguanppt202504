@@ -2,64 +2,92 @@ import React from 'react';
 import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { industrialProductionData } from '@/data/industry';
+import { pmiTrendData, pmiByEnterpriseSizeData } from '@/data/pmi';
 import { chartColors, seriesColors } from '@/utils/chartColors';
 
-// 过滤掉春节异常值，保持yyyy-mm格式
-const chartData = industrialProductionData
-  .filter(d => !['2024-01', '2024-02', '2025-02'].includes(d.period))
-  .map(d => ({
-    period: d.period,
-    industrialOutput: d.industrialOutput,
-    exportDelivery: d.exportDelivery,
-  }));
+// 转换PMI趋势数据为图表格式
+const pmiChartData = pmiTrendData.map(d => ({
+  period: d.period,
+  pmi: d.pmi,
+  production: d.production,
+  newOrders: d.newOrders,
+}));
+
+// 转换企业规模PMI数据为图表格式
+const enterpriseSizeChartData = pmiByEnterpriseSizeData.map(d => ({
+  period: d.period,
+  small: d.small,
+  medium: d.medium,
+  large: d.large,
+}));
 
 export const ContentSlide10: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
-          2025年规上工业增加值增长5.9%，
-          <span className="text-webank-accent">结构优化升级，增速小幅回升</span>
+          12月制造业PMI录得50.1%实现景气反转，
+          <span className="text-webank-accent">政策发力与"抢出口"效应驱动产需双升</span>
         </>
       }
       cards={
         <>
-          <BaseCard title="全年增速平稳回升" delay="200ms" variant="accent">
+          <BaseCard title="景气度反转" delay="200ms" variant="accent">
             <p>
-              2025年全国规上工业增加值增长 <span className="font-bold">5.9%</span>，较上年加快0.1个百分点，Q4增速呈"先抑后扬"，12月反弹至 <span className="font-bold">5.2%</span>。
+              12月PMI升至 <span className="font-bold">50.1%</span> (+0.9pct)，为4月以来首次扩张。超出市场预期 (49.2%)，显示稳增长政策效果集中显现。
             </p>
           </BaseCard>
 
-          <BaseCard title="设备更新政策支撑新质生产力" delay="400ms">
+          <BaseCard title="供需同步改善" delay="400ms">
             <p>
-              制造业是核心动力：2025年制造业增加值增长 <span className="font-bold">6.4%</span>，采矿业增长5.6%，设备更新政策支撑装备制造业增加<span className="font-bold">9.2%</span>，占规上工业比重提升至36.8%（较上年提高2.2个百分点），其中汽车、电子行业增速分别达<span className="font-bold">11.5%</span>和<span className="font-bold">10.6%</span>。
+              生产指数 (<span className="font-bold">51.7%</span>) 创近期新高；受海外节假日、关税预期下的"抢出口"及春节错位赶工影响，新订单指数 (<span className="font-bold">50.8%</span>) 重回荣枯线以上，外需短期韧性超预期，供需缺口收窄。
             </p>
           </BaseCard>
 
-          <BaseCard title="驱动归因：外需拉动增强" delay="600ms">
+          <BaseCard title="结构明显分化" delay="600ms">
             <p>
-              规模以上工业企业出口交货值 <span className="font-bold">15.8万亿元</span>，全年同比增长<span className="font-bold">2.2%</span>，12月出口交货值增长 <span className="font-bold">3.2%</span>(前值-0.1%)，政策效应持续显现。
+              大型企业 (<span className="font-bold">50.8%</span>) 受益于"两重"资金落地领跑；小型企业 (<span className="font-bold">48.6%</span>) 虽有回升但仍处收缩。高技术制造业 (<span className="font-bold">52.5%</span>) 持续高景气。
             </p>
           </BaseCard>
         </>
       }
       charts={
-        <ChartContainer delay="800ms" className="col-span-2">
-          <BaseLineChart
-            data={chartData}
-            title="规模以上工业增加值与出口交货值同比增速"
-            subtitle="单位：%"
-            lines={[
-              { dataKey: 'industrialOutput', name: '规模以上工业增加值', color: chartColors.primary, strokeWidth: 2.5 },
-              { dataKey: 'exportDelivery', name: '出口交货值', color: seriesColors[1] },
-            ]}
-            yAxisDomain={[-2, 10]}
-            showYAxis={true}
-            legendOrder={['规模以上工业增加值', '出口交货值']}
-            xAxisTickCount={12}
-          />
-        </ChartContainer>
+        <>
+          <ChartContainer delay="800ms">
+            <BaseLineChart
+              data={pmiChartData}
+              title="制造业PMI及分项指数"
+              subtitle="单位：%"
+              lines={[
+                { dataKey: 'pmi', name: '制造业PMI', color: chartColors.primary, strokeWidth: 2.5 },
+                { dataKey: 'production', name: '生产', color: seriesColors[1] },
+                { dataKey: 'newOrders', name: '新订单', color: seriesColors[2] },
+              ]}
+              yAxisDomain={[46, 56]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={50}
+              legendOrder={['制造业PMI', '生产', '新订单']}
+            />
+          </ChartContainer>
+          <ChartContainer delay="1000ms">
+            <BaseLineChart
+              data={enterpriseSizeChartData}
+              title="不同规模企业PMI"
+              subtitle="单位：%"
+              lines={[
+                { dataKey: 'large', name: '大型企业', color: chartColors.primary, strokeWidth: 2.5 },
+                { dataKey: 'medium', name: '中型企业', color: seriesColors[1] },
+                { dataKey: 'small', name: '小型企业', color: seriesColors[2] },
+              ]}
+              yAxisDomain={[44, 54]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={50}
+              legendOrder={['大型企业', '中型企业', '小型企业']}
+            />
+          </ChartContainer>
+        </>
       }
     />
   );

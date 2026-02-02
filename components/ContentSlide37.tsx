@@ -1,97 +1,59 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
+import { BaseLineChart } from './BaseLineChart';
+import { BaseBarChart } from './BaseBarChart';
 import { BaseCard } from './BaseCard';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { loanData } from '@/data/loanData';
-import { depositData } from '@/data/depositData';
+import { socialFinancingGrowthData, socialFinancingStructureData } from '@/data/socialFinancing';
+import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide37: React.FC = () => {
-  const loanTableData = loanData.map(item => ({
-    period: item.period,
-    householdLoan: item.householdLoan,
-    enterpriseLoan: item.enterpriseLoan,
-    billFinancing: item.billFinancing,
-    nonBankLoan: item.nonBankLoan,
-  }));
-
-  const loanColumns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
-    { key: 'householdLoan', title: '住户贷款', align: 'right', render: (v) => v.toLocaleString() },
-    { key: 'enterpriseLoan', title: '企业贷款', align: 'right', render: (v) => v.toLocaleString() },
-    { key: 'billFinancing', title: '票据融资', align: 'right', render: (v) => v.toLocaleString() },
-    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: (v) => v.toLocaleString() },
-  ];
-
-  const depositTableData = depositData;
-
-  const formatBalance = (value: number) =>
-    value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-
-  const formatIncrease = (value: number) => value.toLocaleString();
-
-  const depositColumns: ColumnConfig[] = [
-    { key: 'period', title: '月份', align: 'center' },
-    {
-      key: 'group-balance',
-      title: '人民币存款余额',
-      children: [
-        { key: 'balanceTotal', title: '总额', align: 'right', render: formatBalance },
-        { key: 'balanceHousehold', title: '住户', align: 'right', render: formatBalance },
-        { key: 'balanceNonFinancial', title: '非金融企业', align: 'right', render: formatBalance },
-        { key: 'balanceFiscal', title: '财政', align: 'right', render: formatBalance },
-      ],
-    },
-    {
-      key: 'group-increase',
-      title: '当月增加',
-      children: [
-        { key: 'increaseTotal', title: '总额', align: 'right', render: formatIncrease },
-        { key: 'increaseHousehold', title: '住户', align: 'right', render: formatIncrease },
-        { key: 'increaseNonFinancial', title: '非金融企业', align: 'right', render: formatIncrease },
-        { key: 'increaseFiscal', title: '财政', align: 'right', render: formatIncrease },
-      ],
-    },
-  ];
-
   return (
     <BaseContentSlide
-      title="12月居民贷款罕见净偿还916亿元，避险情绪驱动存款回流银行体系"
+      title={'12月社融存量增速回落至8.3%，政府债高基数是核心拖累，企业信贷现积极信号'}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="企业扩表 居民缩表" delay="200ms" variant="accent">
-            企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，四季度出现逐月萎缩态势（10月：83.6万亿到12月：83.3万亿），主要受房地产销售持续低迷及"提前还贷潮"拖累，导致居民端实质性缩表。
+          <BaseCard title="社融：高基数拖累" delay="200ms" variant="accent">
+            12月新增社融 <span className="font-bold text-webank-blue">2.21万亿元</span>（同比少增6457亿），存量增速降至 <span className="font-bold text-webank-blue">8.3%</span>，核心在于2024年同期"2万亿隐债置换"导致政府债基数异常偏高。
           </BaseCard>
-          <BaseCard title="人民币存款余额新增26.4万亿，住户存款为增长主力" delay="400ms">
-            2025年人民币存款余额同比增长8.7%。住户存款全年新增14.64万亿元 ，占比54.6%。10月住户存款减少1.1万亿，大规模定存到期后主要选择提前还房贷，或选择安全性等同于存款且收益率略高的国债。
+          <BaseCard title="企业中长贷：由负转正" delay="400ms">
+            12月政府债净融资（0.7万亿）同比大幅少增 <span className="font-bold text-red-500">1.07万亿元</span>，但受5000亿新型政策性金融工具落地、重大项目开工及银行年末「冲量」三重驱动，12月企业中长期贷款新增 <span className="font-bold text-webank-blue">3300亿元</span>（同比多增2900亿），结束"五连降"强势反弹。
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <div className="flex gap-4 flex-1 min-h-0 -ml-6">
-          <ChartContainer delay="600ms" className="w-[42%] min-h-0 flex-shrink-0">
-            <BaseTable
-              data={loanTableData}
-              columns={loanColumns}
-              title="2024-2025年人民币贷款分项数据序列"
-              subtitle="单位：亿元"
-              rowHeight="auto"
-              stickyHeader={true}
-              colorizeNumbers={false}
-              dateColumn="period"
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={socialFinancingGrowthData}
+              title="2024-2025年社融存量规模同比增速"
+              subtitle="单位：%"
+              lines={[
+                { dataKey: 'growth', name: '社融存量同比增速', color: chartColors.primary, strokeWidth: 2 },
+              ]}
+              yAxisDomain={[7, 10]}
+              showYAxis={true}
+              xAxisTickCount={8}
             />
           </ChartContainer>
-          <ChartContainer delay="700ms" className="flex-1 min-h-0">
-            <BaseTable
-              data={depositTableData}
-              columns={depositColumns}
-              title="人民币存款余额及增加额统计 2025"
+          <ChartContainer delay="800ms">
+            <BaseBarChart
+              data={socialFinancingStructureData}
+              title="社融增量结构对比（25Q4 vs 24Q4）"
               subtitle="单位：亿元"
-              rowHeight="auto"
-              stickyHeader={true}
-              colorizeNumbers={false}
-              dateColumn="period"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'q24', name: '24Q4', color: chartColors.grey400 },
+                { dataKey: 'q25', name: '25Q4', color: chartColors.primary },
+              ]}
+              yAxisDomain={[-10000, 45000]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              barSize={12}
+              legendOrder={['24Q4', '25Q4']}
+              unit="亿元"
             />
           </ChartContainer>
         </div>

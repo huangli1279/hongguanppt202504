@@ -1,102 +1,68 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
+import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { industryRetailData } from '@/data/industryRetail';
+import { cityRetailData, urbanRuralRetailData } from '@/data/cityRetail';
+import { chartColors, seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide18: React.FC = () => {
-  // 转换数据为表格格式
-  const tableData = industryRetailData.map(item => ({
-    period: item.period,
-    grainOilFood: item.grainOilFood,
-    dailyNecessities: item.dailyNecessities,
-    medicine: item.medicine,
-    clothing: item.clothing,
-    jewelry: item.jewelry,
-    sportsEntertainment: item.sportsEntertainment,
-    cultureOffice: item.cultureOffice,
-    furniture: item.furniture,
-    homeAppliances: item.homeAppliances,
-    buildingMaterials: item.buildingMaterials,
-    automobile: item.automobile,
-    communication: item.communication,
-    petroleumProducts: item.petroleumProducts,
-  }));
-
-  const columns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
-    {
-      key: 'group-essential',
-      title: '必选类',
-      children: [
-        { key: 'grainOilFood', title: '粮油食品', align: 'center' },
-        { key: 'dailyNecessities', title: '日用品', align: 'center' },
-        { key: 'medicine', title: '中西药品', align: 'center' },
-      ],
-    },
-    {
-      key: 'group-optional',
-      title: '可选类',
-      children: [
-        { key: 'clothing', title: '服装鞋帽', align: 'center' },
-        { key: 'jewelry', title: '金银珠宝', align: 'center' },
-        { key: 'sportsEntertainment', title: '体育娱乐', align: 'center' },
-        { key: 'cultureOffice', title: '文化办公', align: 'center', highlight: true },
-      ],
-    },
-    {
-      key: 'group-real-estate',
-      title: '房地产相关类',
-      children: [
-        { key: 'furniture', title: '家具', align: 'center', highlight: true },
-        { key: 'homeAppliances', title: '家电音像', align: 'center', highlight: true },
-        { key: 'buildingMaterials', title: '建材装潢', align: 'center' },
-      ],
-    },
-    {
-      key: 'group-other',
-      title: '其他类',
-      children: [
-        { key: 'automobile', title: '汽车', align: 'center', highlight: true },
-        { key: 'communication', title: '通讯器材', align: 'center', highlight: true },
-        { key: 'petroleumProducts', title: '石油及制品', align: 'center' },
-      ],
-    },
-  ];
-
   return (
     <BaseContentSlide
-      title="“以旧换新”产品多数稳定增长，汽车与石油消费年底承压"
+      title="一线分化北京强力反弹，乡村消费韧性优于城镇"
       cardColumns={2}
-    >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="通讯器材增速领跑，家电家具受补贴退坡放缓" delay="200ms" variant="accent">
+      chartColumns={2}
+      cards={
+        <>
+          <BaseCard title="一线城市社零分化，四季度北京强力反弹" delay="200ms" variant="accent">
             <p>
-              2025全年通讯器材类以 <span className="text-red-500 font-semibold">20.86%</span> 的累计增速领跑大盘，这主要受益于 "以旧换新"对中高端机型的精准补贴（占总机型 72.5%）；体育娱乐用品全年正增长，12月累计达 <span className="text-emerald-600 font-semibold">15.70%</span>，折射居民对健康投资与精神消费的持续热衷；家用电器（12月跌至11.0%）、家具类（12月跌至14.62%）受四季度补贴退坡影响，下半年增速持续下降。
+              2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但四季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长39.5%，新能源汽车增长13.2%）
             </p>
           </BaseCard>
-          <BaseCard title="石油建材、汽车行业负增长收尾" delay="400ms">
+          <BaseCard title="乡村 vs 城镇：韧性对标" delay="400ms">
             <p>
-              石油及制品类消费受油价下行与新能源替代双重挤压，全年增速呈现单边下行态势（年初 0.9% -&gt; 年底 -5.72%）。受房地产下行周期的影响，建筑及装潢材料类累计同比跌至 <span className="text-red-500 font-semibold">-2.67%</span>，汽车行业受补贴退坡和市场内卷影响，全年以 <span className="text-red-500 font-semibold">-1.5%</span> 的增长收尾。
+              全年乡村增长 4.1% 领跑。12 月城镇受大促透支及高基数压制降至 0.7%，而乡村凭借 1.7% 的增速构筑了年末缓冲垫。逻辑深挖：以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的"下半场"。乡村凭借"基建红利"沉降，展现出更强的增长后劲
             </p>
           </BaseCard>
-        </div>
-
-        {/* 表格区域 */}
-        <ChartContainer delay="600ms" className="flex-1 min-h-0">
-          <BaseTable
-            title="2025年全国分行业零售累计同比数据"
-            subtitle="数据来源：国家统计局 | 单位：%"
-            data={tableData}
-            columns={columns}
-            dateColumn="period"
-            rowHeight="auto"
-            stickyHeader={true}
-          />
-        </ChartContainer>
-      </div>
-    </BaseContentSlide>
+        </>
+      }
+      charts={
+        <>
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              title="2024-2025年一线城市社会消费品零售总额累计同比变化"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              data={cityRetailData}
+              lines={[
+                { dataKey: 'guangzhou', name: '广州', color: chartColors.primary, strokeWidth: 2.5 },
+                { dataKey: 'shenzhen', name: '深圳', color: seriesColors[1] },
+                { dataKey: 'shanghai', name: '上海', color: seriesColors[2] },
+                { dataKey: 'beijing', name: '北京', color: chartColors.negative, strokeWidth: 2.5 },
+              ]}
+              yAxisDomain={[-6, 8]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['广州', '深圳', '上海', '北京']}
+              xAxisTickCount={6}
+            />
+          </ChartContainer>
+          <ChartContainer delay="800ms">
+            <BaseLineChart
+              title="2024-2025年城镇与乡村社会消费品零售总额累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              data={urbanRuralRetailData}
+              lines={[
+                { dataKey: 'rural', name: '社会消费品零售总额:乡村', color: chartColors.primary, strokeWidth: 2.5 },
+                { dataKey: 'urban', name: '社会消费品零售总额:城镇', color: seriesColors[1] },
+              ]}
+              yAxisDomain={[2, 7]}
+              showYAxis={true}
+              legendOrder={['社会消费品零售总额:乡村', '社会消费品零售总额:城镇']}
+              xAxisTickCount={6}
+            />
+          </ChartContainer>
+        </>
+      }
+    />
   );
 };

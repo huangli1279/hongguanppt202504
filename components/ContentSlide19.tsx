@@ -1,103 +1,101 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
-import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseTable, ColumnConfig } from './BaseTable';
-import { cpiTrendData, cpiCategoryData } from '@/data/cpi';
-import { chartColors } from '@/utils/chartColors';
+import { industryRetailData } from '@/data/industryRetail';
 
 export const ContentSlide19: React.FC = () => {
-  // 折线图配置
-  const lineConfigs: LineConfig[] = [
-    { dataKey: 'cpi', name: 'CPI:当月同比', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'coreCpi', name: '核心CPI:当月同比', color: chartColors.negative, strokeWidth: 2 },
-  ];
-
-  // 表格数据转换
-  const tableData = cpiCategoryData.map(item => ({
+  // 转换数据为表格格式
+  const tableData = industryRetailData.map(item => ({
     period: item.period,
-    grain: item.grain,
-    edibleOil: item.edibleOil,
-    freshVegetables: item.freshVegetables,
-    pork: item.pork,
-    freshFruit: item.freshFruit,
-    transportation: item.transportation,
-    livingServices: item.livingServices,
+    grainOilFood: item.grainOilFood,
+    dailyNecessities: item.dailyNecessities,
+    medicine: item.medicine,
     clothing: item.clothing,
-    education: item.education,
-    healthcare: item.healthcare,
-    otherGoods: item.otherGoods,
+    jewelry: item.jewelry,
+    sportsEntertainment: item.sportsEntertainment,
+    cultureOffice: item.cultureOffice,
+    furniture: item.furniture,
     homeAppliances: item.homeAppliances,
+    buildingMaterials: item.buildingMaterials,
+    automobile: item.automobile,
+    communication: item.communication,
+    petroleumProducts: item.petroleumProducts,
   }));
 
-  // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'grain', title: '粮食', align: 'center' },
-    { key: 'edibleOil', title: '食用油', align: 'center' },
-    { key: 'freshVegetables', title: '鲜菜', align: 'center' },
-    { key: 'pork', title: '猪肉', align: 'center' },
-    { key: 'freshFruit', title: '鲜果', align: 'center' },
-    { key: 'transportation', title: '交通工具', align: 'center' },
-    { key: 'livingServices', title: '生活用品', align: 'center' },
-    { key: 'clothing', title: '衣着', align: 'center' },
-    { key: 'education', title: '教育娱乐', align: 'center' },
-    { key: 'healthcare', title: '医疗保健', align: 'center' },
-    { key: 'otherGoods', title: '其他用品', align: 'center' },
-    { key: 'homeAppliances', title: '家用器具', align: 'center' },
+    {
+      key: 'group-essential',
+      title: '必选类',
+      children: [
+        { key: 'grainOilFood', title: '粮油食品', align: 'center' },
+        { key: 'dailyNecessities', title: '日用品', align: 'center' },
+        { key: 'medicine', title: '中西药品', align: 'center' },
+      ],
+    },
+    {
+      key: 'group-optional',
+      title: '可选类',
+      children: [
+        { key: 'clothing', title: '服装鞋帽', align: 'center' },
+        { key: 'jewelry', title: '金银珠宝', align: 'center' },
+        { key: 'sportsEntertainment', title: '体育娱乐', align: 'center' },
+        { key: 'cultureOffice', title: '文化办公', align: 'center', highlight: true },
+      ],
+    },
+    {
+      key: 'group-real-estate',
+      title: '房地产相关类',
+      children: [
+        { key: 'furniture', title: '家具', align: 'center', highlight: true },
+        { key: 'homeAppliances', title: '家电音像', align: 'center', highlight: true },
+        { key: 'buildingMaterials', title: '建材装潢', align: 'center' },
+      ],
+    },
+    {
+      key: 'group-other',
+      title: '其他类',
+      children: [
+        { key: 'automobile', title: '汽车', align: 'center', highlight: true },
+        { key: 'communication', title: '通讯器材', align: 'center', highlight: true },
+        { key: 'petroleumProducts', title: '石油及制品', align: 'center' },
+      ],
+    },
   ];
 
   return (
     <BaseContentSlide
-      title="CPI 0.8% 创年内新高难掩核心需求偏弱，Q4 消费倾向转淡凸显避险情绪"
+      title="“以旧换新”产品多数稳定增长，汽车与石油消费年底承压"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="CPI 运行特征解析" delay="200ms" variant="accent">
+          <BaseCard title="通讯器材增速领跑，家电家具受补贴退坡放缓" delay="200ms" variant="accent">
             <p>
-              2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第四季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
+              2025全年通讯器材类以 <span className="text-red-500 font-semibold">20.86%</span> 的累计增速领跑大盘，这主要受益于 "以旧换新"对中高端机型的精准补贴（占总机型 72.5%）；体育娱乐用品全年正增长，12月累计达 <span className="text-emerald-600 font-semibold">15.70%</span>，折射居民对健康投资与精神消费的持续热衷；家用电器（12月跌至11.0%）、家具类（12月跌至14.62%）受四季度补贴退坡影响，下半年增速持续下降。
             </p>
           </BaseCard>
-          <BaseCard title="消费倾向解析" delay="400ms">
+          <BaseCard title="石油建材、汽车行业负增长收尾" delay="400ms">
             <p>
-              四季度CPI主要受鲜菜季节性减产与全球金价避险（其他用品和服务维持高增）上涨驱动，消费品"以旧换新"等提振消费政策持续显效，推动了家用器具等消费品的需求与价格。
+              石油及制品类消费受油价下行与新能源替代双重挤压，全年增速呈现单边下行态势（年初 0.9% -&gt; 年底 -5.72%）。受房地产下行周期的影响，建筑及装潢材料类累计同比跌至 <span className="text-red-500 font-semibold">-2.67%</span>，汽车行业受补贴退坡和市场内卷影响，全年以 <span className="text-red-500 font-semibold">-1.5%</span> 的增长收尾。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表和表格区域 */}
-        <div className="flex-1 grid grid-cols-5 gap-6 min-h-0">
-          {/* 折线图 - 占2列 */}
-          <ChartContainer delay="600ms" className="col-span-2">
-            <BaseLineChart
-              data={cpiTrendData}
-              title="2024-2025年全国CPI及核心CPI当月同比走势"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={lineConfigs}
-              yAxisDomain={[-2, 2]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['CPI:当月同比', '核心CPI:当月同比']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-
-          {/* 表格 - 占3列 */}
-          <ChartContainer delay="800ms" className="col-span-3">
-            <BaseTable
-              title="2025年主要商品与服务类别CPI当月同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              data={tableData}
-              columns={columns}
-              dateColumn="period"
-              rowHeight="auto"
-              stickyHeader={true}
-            />
-          </ChartContainer>
-        </div>
+        {/* 表格区域 */}
+        <ChartContainer delay="600ms" className="flex-1 min-h-0">
+          <BaseTable
+            title="2025年全国分行业零售累计同比数据"
+            subtitle="数据来源：国家统计局 | 单位：%"
+            data={tableData}
+            columns={columns}
+            dateColumn="period"
+            rowHeight="auto"
+            stickyHeader={true}
+          />
+        </ChartContainer>
       </div>
     </BaseContentSlide>
   );

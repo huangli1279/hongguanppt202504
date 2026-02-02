@@ -1,60 +1,59 @@
 import React from 'react';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { BaseStackedBarChart } from './BaseStackedBarChart';
-import { gdpContributionData } from '@/data/gdp';
-import { chartColors } from '@/utils/chartColors';
+import { BaseTable, ColumnConfig } from './BaseTable';
+import { provinceGdpDataTop15, provinceGdpDataRest } from '@/data/provinceGdp';
+
+const tableColumns: ColumnConfig[] = [
+  { key: 'province', title: '省份', align: 'center' },
+  { key: 'gdp', title: 'GDP', align: 'center' },
+  { key: 'growth', title: '增速', align: 'center' },
+];
 
 export const ContentSlide07: React.FC = () => {
   return (
     <BaseContentSlide
-      title={
-        <>
-          净出口Q4贡献率升至31.1%有效对冲内需缺口，
-          <span className="text-webank-accent">投资贡献率仅16%</span>
-        </>
-      }
-      cardColumns={3}
-      chartColumns={1}
+      title="2025年各省市GDP：新兴产业与高技术制造双轮驱动"
+      cardColumns={2}
+      chartColumns={2}
       cards={
         <>
-          <BaseCard title="外需：强力支撑" delay="200ms" variant="accent">
+          <BaseCard title="第一梯队保持引领" delay="200ms" variant="accent">
             <p>
-              <span className="font-bold text-green-600">31.1%</span> 贡献率，全年出口增长 <span className="text-green-600">6.1%</span>。外贸韧性极大缓解了内需不足压力，Q4净出口对增长贡献率达31.1%，呈现典型的<span className="font-bold">"外需好于内需"</span>特征。
+              <span className="font-bold">广东省</span>经济总量达<span className="text-webank-accent font-bold">14.58万亿元</span>，连续37年位居全国首位，但增速面临压力；<span className="font-bold">江苏省</span>总量14.24万亿元，得益于新兴产业加快发展；<span className="font-bold">山东省</span>首次突破<span className="text-green-600 font-bold">10万亿元</span>，成为北方地区首个进入十万亿级规模的省份。新能源汽车领域，山东2025年产量突破150万辆，占全国比重提升至12%以上，增速连续三年超过30%。
             </p>
           </BaseCard>
 
-          <BaseCard title="投资：明显拖累" delay="400ms">
+          <BaseCard title="产业升级成效显著" delay="400ms">
             <p>
-              <span className="font-bold text-red-600">16.0%</span> 贡献率，Q4投资总额贡献率仅16.0%。受<span className="font-bold">房地产开发投资</span> (<span className="text-red-600">-17.2%</span>) 深度调整影响，全年固投下降3.8%，制造业投资仅维持微增。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="消费：压舱石" delay="600ms">
-            <p>
-              <span className="font-bold text-webank-accent">52.9%</span> 贡献率，虽然社零增速放缓，但以旧换新及服务需求释放带动<span className="font-bold">服务消费</span> (<span className="text-green-600">+5.5%</span>) 占比提升，最终消费支出贡献率维持在50%以上，发挥基础性作用。
+              多地<span className="font-bold">高技术制造业</span>成为主要增长点。<span className="font-bold">江苏</span>高新技术产业产值占规上工业比重达<span className="text-green-600 font-bold">52.1%</span>，比上年提高1.4个百分点；规上高技术制造业增加值同比增长<span className="text-green-600">11.9%</span>，拉动全部规上工业增长2.8个百分点。<span className="font-bold">安徽省</span>规上工业增加值增速达<span className="text-green-600 font-bold">9.4%</span>。
             </p>
           </BaseCard>
         </>
       }
       charts={
-        <ChartContainer delay="800ms">
-          <BaseStackedBarChart
-            data={gdpContributionData}
-            title="2024-2025年GDP当季同比贡献率：三大需求"
-            subtitle="单位: %"
-            bars={[
-              { dataKey: 'consumption', name: '最终消费支出', color: chartColors.accent },
-              { dataKey: 'investment', name: '资本形成总额', color: chartColors.negative },
-              { dataKey: 'netExport', name: '货物和服务净出口', color: chartColors.positive },
-            ]}
-            legendOrder={['最终消费支出', '资本形成总额', '货物和服务净出口']}
-            barSize={28}
-            yAxisDomain={[0, 100]}
-            showYAxis
-            showLabels
-          />
-        </ChartContainer>
+        <>
+          <ChartContainer delay="600ms">
+            <BaseTable
+              data={provinceGdpDataTop15}
+              columns={tableColumns}
+              title="2025年各省份GDP及增速（前15）"
+              subtitle="单位: GDP-万亿, 增速-%"
+              rowHeight="auto"
+              colorizeNumbers={false}
+            />
+          </ChartContainer>
+          <ChartContainer delay="800ms">
+            <BaseTable
+              data={provinceGdpDataRest}
+              columns={tableColumns}
+              title="2025年31省份GDP及增速（续）"
+              subtitle="单位: GDP-万亿, 增速-%"
+              rowHeight="auto"
+              colorizeNumbers={false}
+            />
+          </ChartContainer>
+        </>
       }
     />
   );
