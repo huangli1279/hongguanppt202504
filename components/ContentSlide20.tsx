@@ -33,7 +33,7 @@ export const ContentSlide20: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="收入与就业预期分化制约消费者信心回暖" delay="200ms" variant="accent">
             <p>
-              消费者信心指数（从<span className="text-webank-accent font-semibold">86.4</span>升至<span className="text-emerald-600 font-semibold">90.3</span>）的温和回升，主要由收入预期和消费意愿支撑，但被<span className="text-red-500 font-semibold">就业预期严重拖累</span>，新兴领域（AI、低空经济）需求旺盛，传统行业需求减弱。
+              消费者信心指数（从<span className="text-webank-accent font-semibold">86.4</span>升至<span className="text-emerald-600 font-semibold">90.3</span>）的温和回升，主要由收入预期和消费意愿支撑，就业预期虽有回暖趋势，但主要受相关领域就业前景影响：新兴领域（AI、低空经济），中长期的就业结构性问题仍然存在。
             </p>
           </BaseCard>
           <BaseCard title="收入增速超越消费，居民储蓄倾向依然显著" delay="400ms">
