@@ -46,3 +46,36 @@ export const q4ExportCompareData: Q4ExportCompareDataPoint[] = [
   { month: '11月', y2024: 6.7, y2025: 5.9 },
   { month: '12月', y2024: 2.3, y2025: 6.6 },
 ];
+
+export interface ForeignTradeMonthlyUsdDataPoint {
+  period: string;
+  imports: number;
+  exports: number;
+}
+
+export const foreignTradeMonthlyUsdData: ForeignTradeMonthlyUsdDataPoint[] = [
+  { period: '2024-01', imports: 15.57, exports: 7.67 },
+  { period: '2024-02', imports: -8.11, exports: 6.24 },
+  { period: '2024-03', imports: -2.14, exports: -7.71 },
+  { period: '2024-04', imports: 8.28, exports: 1.26 },
+  { period: '2024-05', imports: 2.06, exports: 7.36 },
+  { period: '2024-06', imports: -2.63, exports: 8.42 },
+  { period: '2024-07', imports: 6.64, exports: 6.93 },
+  { period: '2024-08', imports: 0.03, exports: 8.6 },
+  { period: '2024-09', imports: 0.13, exports: 2.33 },
+  { period: '2024-10', imports: -2.38, exports: 12.64 },
+  { period: '2024-11', imports: -4.03, exports: 6.58 },
+  { period: '2024-12', imports: 0.84, exports: 10.67 },
+  { period: '2025-01', imports: -16.3, exports: 5.9 },
+  { period: '2025-02', imports: 1.6, exports: -3.1 },
+  { period: '2025-03', imports: -4.3, exports: 12.2 },
+  { period: '2025-04', imports: -0.3, exports: 8.0 },
+  { period: '2025-05', imports: -3.3, exports: 4.6 },
+  { period: '2025-06', imports: 1.2, exports: 5.8 },
+  { period: '2025-07', imports: 4.2, exports: 7.1 },
+  { period: '2025-08', imports: 1.4, exports: 4.3 },
+  { period: '2025-09', imports: 7.4, exports: 8.2 },
+  { period: '2025-10', imports: 0.9, exports: -1.2 },
+  { period: '2025-11', imports: 1.9, exports: 5.9 },
+  { period: '2025-12', imports: 5.7, exports: 6.6 },
+];

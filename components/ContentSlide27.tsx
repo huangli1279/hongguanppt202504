@@ -3,15 +3,14 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseBarChart, BarConfig } from './BaseBarChart';
-import { foreignTradeTrendData, q4ExportCompareData } from '@/data/foreignTrade';
+import { foreignTradeTrendData, q4ExportCompareData, foreignTradeMonthlyUsdData } from '@/data/foreignTrade';
 import { getSeriesColor } from '@/utils/chartColors';
 
 export const ContentSlide27: React.FC = () => {
   // 折线图配置
   const lineConfigs: LineConfig[] = [
-    { dataKey: 'exports', name: '出口累计同比', color: getSeriesColor(0), strokeWidth: 2.5 },
-    { dataKey: 'totalTrade', name: '进出口总值累计同比', color: getSeriesColor(1), strokeWidth: 2 },
-    { dataKey: 'imports', name: '进口累计同比', color: getSeriesColor(2), strokeWidth: 2 },
+    { dataKey: 'exports', name: '出口当月同比', color: getSeriesColor(0), strokeWidth: 2.5 },
+    { dataKey: 'imports', name: '进口当月同比', color: getSeriesColor(2), strokeWidth: 2 },
   ];
 
   // 柱状图配置
@@ -44,16 +43,15 @@ export const ContentSlide27: React.FC = () => {
         <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={foreignTradeTrendData}
-              title="进出口总值累计同比走势"
+              data={foreignTradeMonthlyUsdData}
+              title="进出口总值(美元计价):当月同比"
               subtitle="数据来源：海关总署 | 单位：%"
               lines={lineConfigs}
-              yAxisDomain={[-20, 20]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['出口累计同比', '进出口总值累计同比', '进口累计同比']}
-              xAxisTickCount={8}
+              legendOrder={['出口当月同比', '进口当月同比']}
+              xAxisTickCount={10}
             />
           </ChartContainer>
           <ChartContainer delay="800ms">
