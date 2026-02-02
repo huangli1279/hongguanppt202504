@@ -15,10 +15,10 @@ export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitl
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#002f52] opacity-0 transform -skew-x-12 translate-x-32 animate-bg-slide-in"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-[#00a9f4] opacity-0 rounded-tr-full animate-bg-expand"></div>
       
-      {/* Animated pulsing circles - infinite loop */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border border-webank-lightBlue/15 rounded-full animate-ring-pulse"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-webank-lightBlue/10 rounded-full animate-ring-pulse-delayed"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-webank-lightBlue/5 rounded-full animate-ring-pulse-delayed-2"></div>
+      {/* Animated pulsing circles - infinite loop (使用百分比尺寸自适应) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] aspect-square border border-webank-lightBlue/15 rounded-full animate-ring-pulse"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] aspect-square border border-webank-lightBlue/10 rounded-full animate-ring-pulse-delayed"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square border border-webank-lightBlue/5 rounded-full animate-ring-pulse-delayed-2"></div>
       
       {/* Floating particles - infinite loop */}
       <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-webank-lightBlue/30 rounded-full animate-float-1"></div>
@@ -66,7 +66,7 @@ export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitl
         }
         @keyframes lineExpandCenter {
           from { width: 0; opacity: 0; }
-          to { width: 80px; opacity: 1; }
+          to { width: 6%; opacity: 1; }
         }
         @keyframes topLine {
           from { transform: scaleX(0); }
