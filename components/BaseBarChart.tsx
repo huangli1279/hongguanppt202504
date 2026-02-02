@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   BarChart,
+  ComposedChart,
   Bar,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -20,30 +22,45 @@ export interface BarConfig {
   stackId?: string;
 }
 
+export interface BarLineConfig {
+  dataKey: string;
+  name: string;
+  color: string;
+  strokeWidth?: number;
+  yAxisId?: 'left' | 'right';
+  unit?: string;
+}
+
 export interface BaseBarChartProps {
   data: any[];
   title: string;
   subtitle?: string;
   bars: BarConfig[];
+  lines?: BarLineConfig[];
   xAxisKey?: string;
   yAxisDomain?: [number, number];
   showYAxis?: boolean;
+  yAxisTickFormatter?: (value: any) => string;
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
   barSize?: number;
   showLabels?: boolean;
   unit?: string;
+  showLineYAxis?: boolean;
+  lineAxisDomain?: [number, number];
+  lineUnit?: string;
+  lineYAxisTickFormatter?: (value: any) => string;
 }
 
-const CustomTooltip = ({ active, payload, label, unit = '%' }: any) => {
+const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%' }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}{unit}
+            {entry.name}: {entry.value}{unitByKey?.[entry.dataKey] ?? defaultUnit}
           </p>
         ))}
       </div>
@@ -99,16 +116,35 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   title,
   subtitle,
   bars,
+  lines,
   xAxisKey = 'period',
   yAxisDomain = [0, 8],
   showYAxis = false,
+  yAxisTickFormatter,
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
   barSize = 16,
   showLabels = true,
-  unit = '%'
+  unit = '%',
+  showLineYAxis = false,
+  lineAxisDomain,
+  lineUnit = '%',
+  lineYAxisTickFormatter
 }) => {
+  const hasLines = !!lines && lines.length > 0;
+  const ChartComponent = hasLines ? ComposedChart : BarChart;
+  const unitByKey = bars.reduce<Record<string, string>>((acc, bar) => {
+    acc[bar.dataKey] = unit;
+    return acc;
+  }, {});
+  if (hasLines && lines) {
+    lines.forEach((line) => {
+      unitByKey[line.dataKey] = line.unit ?? lineUnit;
+    });
+  }
+  const barAxisId = hasLines ? 'left' : undefined;
+  const lineAxisId = 'right';
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
@@ -121,7 +157,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart
+          <ChartComponent
             data={data}
             margin={{ top: 20, right: 30, left: showYAxis ? -20 : 20, bottom: 5 }}
             barSize={barSize}
@@ -142,9 +178,22 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               axisLine={false}
               tickLine={false}
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
-              tickFormatter={(val) => `${val}%`}
+              tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
+              yAxisId={barAxisId}
             />
-            <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            {hasLines && (
+              <YAxis
+                yAxisId={lineAxisId}
+                orientation="right"
+                domain={lineAxisDomain ?? ['auto', 'auto']}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+                tickFormatter={lineYAxisTickFormatter || ((val) => `${val}${lineUnit}`)}
+                hide={!showLineYAxis}
+              />
+            )}
+            <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
             {bars.map((bar, index) => (
@@ -154,6 +203,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 dataKey={bar.dataKey}
                 fill={bar.color}
                 stackId={bar.stackId}
+                yAxisId={barAxisId}
                 animationDuration={800}
                 animationBegin={0}
                 animationEasing="ease-out"
@@ -170,7 +220,23 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 )}
               </Bar>
             ))}
-          </BarChart>
+            {hasLines &&
+              lines?.map((line) => (
+                <Line
+                  key={line.dataKey}
+                  name={line.name}
+                  type="monotone"
+                  dataKey={line.dataKey}
+                  stroke={line.color}
+                  strokeWidth={line.strokeWidth || 2}
+                  dot={false}
+                  yAxisId={line.yAxisId || lineAxisId}
+                  animationDuration={800}
+                  animationBegin={0}
+                  animationEasing="ease-out"
+                />
+              ))}
+          </ChartComponent>
         </ResponsiveContainer>
       </div>
     </div>

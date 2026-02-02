@@ -37,6 +37,8 @@ export { exportRegionTrendData, exportCompositionData } from './exportRegion';
 export type { ExportRegionTrendDataPoint, ExportCompositionDataPoint } from './exportRegion';
 export { fiscalRevenueTrendData, taxCategoryData } from './fiscalRevenue';
 export type { FiscalRevenueTrendDataPoint, TaxCategoryDataPoint } from './fiscalRevenue';
+export { governmentFundRevenueData, landSaleRevenueShareData } from './governmentFund';
+export type { GovernmentFundRevenueDataPoint, LandSaleRevenueShareDataPoint } from './governmentFund';
 export { moneySupplyData, moneySupplyScissorData } from './moneySupply';
 export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneySupply';
 export { socialFinancingGrowthData, socialFinancingStructureData } from './socialFinancing';
