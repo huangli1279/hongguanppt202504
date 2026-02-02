@@ -11,7 +11,7 @@ export const ContentSlide07: React.FC = () => {
       title={
         <>
           净出口Q4贡献率升至31.1%有效对冲内需缺口，
-          <span className="text-webank-accent">资本形成贡献率仅16%</span>
+          <span className="text-webank-accent">投资贡献率仅16%</span>
         </>
       }
       cardColumns={3}
