@@ -5,18 +5,37 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { infrastructureInvestmentData } from '@/data/infrastructureInvestment';
 
 export const ContentSlide24: React.FC = () => {
-  // 表格列配置
+  // 二级表头列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '日期', align: 'center' },
-    { key: 'electricityGasWater', title: '电热气水', align: 'center' },
-    { key: 'transportation', title: '交通仓储', align: 'center' },
-    { key: 'infoTech', title: '信息技术', align: 'center' },
-    { key: 'waterEnvironment', title: '水利环境', align: 'center' },
-    { key: 'ferrousMetal', title: '黑色金属', align: 'center' },
-    { key: 'nonFerrousMetal', title: '有色金属', align: 'center' },
-    { key: 'nonMetalMineral', title: '非金属矿', align: 'center' },
-    { key: 'generalEquipment', title: '通用设备', align: 'center' },
-    { key: 'electricalMachinery', title: '电气机械', align: 'center' },
+    {
+      key: 'transport',
+      title: '交通运输、仓储和邮政业',
+      children: [
+        { key: 'transportTotal', title: '合计', align: 'center' },
+        { key: 'railway', title: '铁路运输', align: 'center' },
+        { key: 'road', title: '道路运输', align: 'center' },
+        { key: 'pipeline', title: '管道运输', align: 'center' },
+      ],
+    },
+    {
+      key: 'waterEnv',
+      title: '水利、环境和公共设施管理业',
+      children: [
+        { key: 'waterEnvTotal', title: '合计', align: 'center' },
+        { key: 'ecoProtection', title: '生态环境', align: 'center' },
+        { key: 'publicFacility', title: '公共设施', align: 'center' },
+      ],
+    },
+    {
+      key: 'electricity',
+      title: '电力、热力、燃气及水的生产和供应业',
+      children: [
+        { key: 'electricityTotal', title: '合计', align: 'center' },
+        { key: 'gas', title: '燃气', align: 'center' },
+        { key: 'waterSupply', title: '水生产', align: 'center' },
+      ],
+    },
   ];
 
   return (
@@ -49,7 +68,7 @@ export const ContentSlide24: React.FC = () => {
           <BaseTable
             data={infrastructureInvestmentData}
             columns={columns}
-            title="2025年固定资产投资分行业累计同比变化"
+            title="2025年基础设施建设相关行业固定资产投资累计增长数据"
             subtitle="数据来源：国家统计局 | 单位：%"
             dateColumn="period"
             rowHeight="auto"
