@@ -25,6 +25,18 @@ export const gdpContributionData = [
   { period: '2025-12', consumption: 52.90, investment: 16.00, netExport: 31.10 },
 ];
 
+// 三大产业GDP占比数据
+export const gdpIndustryShareData = [
+  { period: '2024-03', primary: 3.77, secondary: 35.44, tertiary: 60.79 },
+  { period: '2024-06', primary: 4.82, secondary: 36.71, tertiary: 58.47 },
+  { period: '2024-09', primary: 5.90, secondary: 36.45, tertiary: 57.65 },
+  { period: '2024-12', primary: 6.80, secondary: 36.37, tertiary: 56.83 },
+  { period: '2025-03', primary: 3.68, secondary: 35.03, tertiary: 61.29 },
+  { period: '2025-06', primary: 4.73, secondary: 36.11, tertiary: 59.16 },
+  { period: '2025-09', primary: 5.74, secondary: 35.79, tertiary: 58.48 },
+  { period: '2025-12', primary: 6.66, secondary: 35.64, tertiary: 57.70 },
+];
+
 export const deflatorData: DeflatorDataPoint[] = [
   { period: '2023-03', primary: 2.1, secondary: -1.5, tertiary: 1.8 },
   { period: '2023-06', primary: 1.5, secondary: -2.2, tertiary: 1.2 },
