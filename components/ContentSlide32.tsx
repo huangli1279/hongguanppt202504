@@ -17,7 +17,7 @@ export const ContentSlide32: React.FC = () => {
   // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'taxType', title: '税种', align: 'left' },
-    { key: 'amount', title: '1-11月金额(亿元)', align: 'right', render: (val) => val.toLocaleString() },
+    { key: 'amount', title: '税额(亿元)', align: 'right', render: (val) => val.toLocaleString() },
     { 
       key: 'growth', 
       title: '累计增速(%)', 
@@ -32,20 +32,20 @@ export const ContentSlide32: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>1-11月全年公共预算收入同比增长0.8%，税收收入增速由负转正</>}
+      title={<>全年公共预算收入同比下降-1.7%，税收收入小幅增长，非税因高基数大幅下降</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="收入结构优化，恢复质量提升" delay="200ms" variant="accent">
+          <BaseCard title="税收结构改善" delay="200ms" variant="accent">
             <p>
-              2025年全国一般公共预算收入呈现逐步恢复的态势。其中，税收收入自二季度起持续改善，而非税收入的增速则显著回落，从上半年的<span className="text-red-500 font-semibold">+3.7%</span>大幅回落至<span className="text-green-600 font-semibold">-3.7%</span>。
+              在总收入微降的背景下，税收收入增速由负转正（<span className="text-red-500 font-semibold">+0.8%</span>），好于整体收入，而非税收入因2024年存在一次性、大规模的国有资本经营收入上缴，形成了极高的比较基数（<span className="text-green-600 font-semibold">-11.3%</span>），两者走势形成鲜明反差，同时税收占比提升。
             </p>
           </BaseCard>
           <BaseCard title="主体税种稳健，印花税高增" delay="400ms">
             <p>
-              国内增值税增速<span className="text-red-500 font-semibold">3.9%</span>直接反映了工商业生产和销售活动的活跃度在提升，因加强互联网平台税收征管及股东减持带动个人所得税增长（前11月<span className="text-red-500 font-semibold">+11.5%</span>），资本市场活跃度提升显著拉动证券印花税（<span className="text-red-500 font-semibold">+70.7%</span>）。
+              因加强互联网平台税收征管及股东减持带动个人所得税大幅改善（<span className="text-red-500 font-semibold">+11.5%</span>），资本市场活跃度提升显著拉动证券印花税（<span className="text-red-500 font-semibold">+70.7%</span>），增值税（<span className="text-red-500 font-semibold">+3.4%</span>）和企业所得税（<span className="text-red-500 font-semibold">+1%</span>）随工业生产边际改善而回升。
             </p>
           </BaseCard>
         </div>
@@ -73,7 +73,7 @@ export const ContentSlide32: React.FC = () => {
             <BaseTable
               data={taxCategoryData}
               columns={columns}
-              title="2025年1-11月主要税种累计完成情况"
+              title="2025年主要税种累计完成情况"
               subtitle="数据来源：财政部 | 单位：亿元、%"
               rowHeight="auto"
               striped={true}

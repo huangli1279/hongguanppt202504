@@ -36,17 +36,19 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2025-09', taxRevenue: 0.70, nonTaxRevenue: -0.40, total: 0.50 },
   { period: '2025-10', taxRevenue: 1.70, nonTaxRevenue: -3.10, total: 0.80 },
   { period: '2025-11', taxRevenue: 1.80, nonTaxRevenue: -3.70, total: 0.80 },
+  { period: '2025-12', taxRevenue: 0.80, nonTaxRevenue: -11.30, total: -1.70 },
 ];
 
-// 2025年1-11月主要税种累计完成情况
+// 2025年主要税种累计完成情况
 export const taxCategoryData: TaxCategoryDataPoint[] = [
-  { taxType: '国内增值税', amount: 63629, growth: 3.9 },
-  { taxType: '企业所得税', amount: 40234, growth: 1.7 },
-  { taxType: '个人所得税', amount: 14689, growth: 11.5 },
-  { taxType: '国内消费税', amount: 15639, growth: 2.5 },
-  { taxType: '进口环节税收', amount: 16520, growth: -4.7 },
-  { taxType: '印花税', amount: 4044, growth: 27.0 },
-  { taxType: '证券交易印花税', amount: 1855, growth: 70.7 },
-  { taxType: '房地产相关税收', amount: 13977, growth: null },
-  { taxType: '车辆购置税', amount: 1814, growth: -17.4 },
+  { taxType: '国内增值税', amount: 68947, growth: 3.4 },
+  { taxType: '企业所得税', amount: 41304, growth: 1.0 },
+  { taxType: '个人所得税', amount: 16187, growth: 11.5 },
+  { taxType: '国内消费税', amount: 16857, growth: 2.0 },
+  { taxType: '进口货物增值税、消费税', amount: 18263, growth: -4.8 },
+  { taxType: '印花税', amount: 4270, growth: 24.1 },
+  { taxType: '证券交易印花税', amount: 2035, growth: 57.8 },
+  { taxType: '契税', amount: 4440, growth: -14.1 },
+  { taxType: '土地增值税', amount: 4102, growth: -15.7 },
+  { taxType: '车辆购置税', amount: 1972, growth: -18.8 },
 ];
