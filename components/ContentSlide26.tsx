@@ -74,6 +74,7 @@ export const ContentSlide26: React.FC = () => {
               dateColumn="period"
               rowHeight="auto"
               stickyHeader={true}
+              colorizeNumbers={false}
             />
           </ChartContainer>
         </div>

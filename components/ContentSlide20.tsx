@@ -95,6 +95,7 @@ export const ContentSlide20: React.FC = () => {
               dateColumn="period"
               rowHeight="auto"
               stickyHeader={true}
+              colorizeNumbers={false}
             />
           </ChartContainer>
         </div>
