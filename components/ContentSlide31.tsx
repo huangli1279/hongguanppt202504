@@ -10,12 +10,12 @@ export const ContentSlide31: React.FC = () => {
   // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '月份', align: 'center' },
-    { key: 'totalExport', title: '出口总值', align: 'center' },
-    { key: 'toUS', title: '对美', align: 'center' },
-    { key: 'toASEAN', title: '对东盟', align: 'center' },
-    { key: 'toAfrica', title: '对非洲', align: 'center' },
-    { key: 'toEU', title: '对欧盟', align: 'center' },
-    { key: 'toLatinAmerica', title: '对拉美', align: 'center' },
+    { key: 'totalExport', title: '出口总值', align: 'right' },
+    { key: 'toUS', title: '对美', align: 'right' },
+    { key: 'toASEAN', title: '对东盟', align: 'right' },
+    { key: 'toAfrica', title: '对非洲', align: 'right' },
+    { key: 'toEU', title: '对欧盟', align: 'right' },
+    { key: 'toLatinAmerica', title: '对拉美', align: 'right' },
   ];
 
   // 柱状图配置
@@ -53,9 +53,7 @@ export const ContentSlide31: React.FC = () => {
               columns={columns}
               title="出口区域同比走势"
               subtitle="数据来源：海关总署 | 单位：%"
-              rowHeight="auto"
               striped={true}
-              colorizeNumbers={true}
               dateColumn="period"
               highlightRows={[11]}
             />

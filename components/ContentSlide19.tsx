@@ -24,26 +24,26 @@ export const ContentSlide19: React.FC = () => {
       key: 'group-trade-in',
       title: '以旧换新类',
       children: [
-        { key: 'cultureOffice', title: '文化办公', align: 'center' },
-        { key: 'furniture', title: '家具', align: 'center' },
-        { key: 'homeAppliances', title: '家电音像', align: 'center' },
-        { key: 'automobile', title: '汽车', align: 'center' },
-        { key: 'communication', title: '通讯器材', align: 'center' },
+        { key: 'cultureOffice', title: '文化办公', align: 'right' },
+        { key: 'furniture', title: '家具', align: 'right' },
+        { key: 'homeAppliances', title: '家电音像', align: 'right' },
+        { key: 'automobile', title: '汽车', align: 'right' },
+        { key: 'communication', title: '通讯器材', align: 'right' },
       ],
     },
     {
       key: 'group-optional',
       title: '可选类',
       children: [
-        { key: 'jewelry', title: '金银珠宝', align: 'center' },
-        { key: 'sportsEntertainment', title: '体育娱乐', align: 'center' },
+        { key: 'jewelry', title: '金银珠宝', align: 'right' },
+        { key: 'sportsEntertainment', title: '体育娱乐', align: 'right' },
       ],
     },
     {
       key: 'group-energy',
       title: '能源类',
       children: [
-        { key: 'petroleumProducts', title: '石油及制品', align: 'center' },
+        { key: 'petroleumProducts', title: '石油及制品', align: 'right' },
       ],
     },
   ];
@@ -76,9 +76,6 @@ export const ContentSlide19: React.FC = () => {
             data={tableData}
             columns={columns}
             dateColumn="period"
-            colorizeNumbers={true}
-            rowHeight="auto"
-            stickyHeader={true}
           />
         </ChartContainer>
       </div>

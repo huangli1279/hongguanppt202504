@@ -74,8 +74,6 @@ export const ContentSlide30: React.FC = () => {
               rowHeight="dense"
               striped={true}
               bordered={true}
-              colorizeNumbers={true}
-              stickyHeader={true}
             />
           </ChartContainer>
         </div>

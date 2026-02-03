@@ -33,18 +33,18 @@ export const ContentSlide20: React.FC = () => {
   // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'grain', title: '粮食', align: 'center' },
-    { key: 'edibleOil', title: '食用油', align: 'center' },
-    { key: 'freshVegetables', title: '鲜菜', align: 'center' },
-    { key: 'pork', title: '猪肉', align: 'center' },
-    { key: 'freshFruit', title: '鲜果', align: 'center' },
-    { key: 'transportation', title: '交通工具', align: 'center' },
-    { key: 'livingServices', title: '生活用品', align: 'center' },
-    { key: 'clothing', title: '衣着', align: 'center' },
-    { key: 'education', title: '教育娱乐', align: 'center' },
-    { key: 'healthcare', title: '医疗保健', align: 'center' },
-    { key: 'otherGoods', title: '金饰品', align: 'center' },
-    { key: 'homeAppliances', title: '家用器具', align: 'center' },
+    { key: 'grain', title: '粮食', align: 'right' },
+    { key: 'edibleOil', title: '食用油', align: 'right' },
+    { key: 'freshVegetables', title: '鲜菜', align: 'right' },
+    { key: 'pork', title: '猪肉', align: 'right' },
+    { key: 'freshFruit', title: '鲜果', align: 'right' },
+    { key: 'transportation', title: '交通工具', align: 'right' },
+    { key: 'livingServices', title: '生活用品', align: 'right' },
+    { key: 'clothing', title: '衣着', align: 'right' },
+    { key: 'education', title: '教育娱乐', align: 'right' },
+    { key: 'healthcare', title: '医疗保健', align: 'right' },
+    { key: 'otherGoods', title: '金饰品', align: 'right' },
+    { key: 'homeAppliances', title: '家用器具', align: 'right' },
   ];
 
   return (
@@ -93,9 +93,6 @@ export const ContentSlide20: React.FC = () => {
               data={tableData}
               columns={columns}
               dateColumn="period"
-              rowHeight="auto"
-              stickyHeader={true}
-              colorizeNumbers={true}
             />
           </ChartContainer>
         </div>

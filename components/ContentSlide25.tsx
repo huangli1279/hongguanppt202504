@@ -12,28 +12,28 @@ export const ContentSlide25: React.FC = () => {
       key: 'transport',
       title: '交通运输、仓储和邮政业',
       children: [
-        { key: 'transportTotal', title: '合计', align: 'center' },
-        { key: 'railway', title: '铁路运输', align: 'center' },
-        { key: 'road', title: '道路运输', align: 'center' },
-        { key: 'pipeline', title: '管道运输', align: 'center' },
+        { key: 'transportTotal', title: '合计', align: 'right' },
+        { key: 'railway', title: '铁路运输', align: 'right' },
+        { key: 'road', title: '道路运输', align: 'right' },
+        { key: 'pipeline', title: '管道运输', align: 'right' },
       ],
     },
     {
       key: 'waterEnv',
       title: '水利、环境和公共设施管理业',
       children: [
-        { key: 'waterEnvTotal', title: '合计', align: 'center' },
-        { key: 'ecoProtection', title: '生态环境', align: 'center' },
-        { key: 'publicFacility', title: '公共设施', align: 'center' },
+        { key: 'waterEnvTotal', title: '合计', align: 'right' },
+        { key: 'ecoProtection', title: '生态环境', align: 'right' },
+        { key: 'publicFacility', title: '公共设施', align: 'right' },
       ],
     },
     {
       key: 'electricity',
       title: '电力、热力、燃气及水的生产和供应业',
       children: [
-        { key: 'electricityTotal', title: '合计', align: 'center' },
-        { key: 'gas', title: '燃气', align: 'center' },
-        { key: 'waterSupply', title: '水生产', align: 'center' },
+        { key: 'electricityTotal', title: '合计', align: 'right' },
+        { key: 'gas', title: '燃气', align: 'right' },
+        { key: 'waterSupply', title: '水生产', align: 'right' },
       ],
     },
   ];
@@ -71,9 +71,6 @@ export const ContentSlide25: React.FC = () => {
             title="2025年基础设施建设相关行业固定资产投资累计增长数据"
             subtitle="数据来源：国家统计局 | 单位：%"
             dateColumn="period"
-            colorizeNumbers={true}
-            rowHeight="auto"
-            stickyHeader={true}
           />
         </ChartContainer>
       </div>

@@ -16,13 +16,13 @@ export const ContentSlide26: React.FC = () => {
   // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '月份', align: 'center' },
-    { key: 'generalEquipment', title: '通用设备', align: 'center' },
-    { key: 'specialEquipment', title: '专用设备', align: 'center' },
-    { key: 'electricalMachinery', title: '电气机械', align: 'center' },
-    { key: 'electronicEquipment', title: '电子设备', align: 'center' },
-    { key: 'autoManufacturing', title: '汽车制造', align: 'center' },
-    { key: 'railwayAerospace', title: '铁路航天', align: 'center' },
-    { key: 'metalRepair', title: '金属机械修理', align: 'center' },
+    { key: 'generalEquipment', title: '通用设备', align: 'right' },
+    { key: 'specialEquipment', title: '专用设备', align: 'right' },
+    { key: 'electricalMachinery', title: '电气机械', align: 'right' },
+    { key: 'electronicEquipment', title: '电子设备', align: 'right' },
+    { key: 'autoManufacturing', title: '汽车制造', align: 'right' },
+    { key: 'railwayAerospace', title: '铁路航天', align: 'right' },
+    { key: 'metalRepair', title: '金属机械修理', align: 'right' },
   ];
 
   return (
@@ -72,9 +72,6 @@ export const ContentSlide26: React.FC = () => {
               title="2025年制造业分行业投资累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               dateColumn="period"
-              rowHeight="auto"
-              stickyHeader={true}
-              colorizeNumbers={true}
             />
           </ChartContainer>
         </div>

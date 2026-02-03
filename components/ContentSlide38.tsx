@@ -42,8 +42,6 @@ export const ContentSlide38: React.FC = () => {
               columns={loanColumns}
               title="2024-2025年人民币贷款分项数据序列"
               subtitle="单位：亿元"
-              rowHeight="auto"
-              stickyHeader={true}
               colorizeNumbers={false}
               dateColumn="period"
               getRowClassName={(row) =>

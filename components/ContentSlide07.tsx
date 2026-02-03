@@ -56,20 +56,20 @@ const renderGrowthValue = (value: unknown): React.ReactNode => {
 };
 
 const tableColumns: ColumnConfig[] = [
-  { 
-    key: 'province', 
-    title: '省份', 
-    align: 'center'
+  {
+    key: 'province',
+    title: '省份',
+    align: 'left'
   },
-  { 
-    key: 'gdp', 
-    title: 'GDP', 
-    align: 'center',
+  {
+    key: 'gdp',
+    title: 'GDP',
+    align: 'right',
   },
-  { 
-    key: 'growth', 
-    title: '增速', 
-    align: 'center',
+  {
+    key: 'growth',
+    title: '增速',
+    align: 'right',
     render: value => renderGrowthValue(value)
   },
 ];
@@ -116,7 +116,6 @@ export const ContentSlide07: React.FC = () => {
               columns={tableColumns}
               title="2025年各省份GDP及增速（前15）"
               subtitle="单位: GDP-万亿, 增速-%"
-              rowHeight="auto"
               colorizeNumbers={false}
             />
           </ChartContainer>
@@ -126,7 +125,6 @@ export const ContentSlide07: React.FC = () => {
               columns={tableColumns}
               title="2025年31省份GDP及增速（续）"
               subtitle="单位: GDP-万亿, 增速-%"
-              rowHeight="auto"
               colorizeNumbers={false}
             />
           </ChartContainer>

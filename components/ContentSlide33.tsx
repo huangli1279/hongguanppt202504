@@ -70,9 +70,7 @@ export const ContentSlide33: React.FC = () => {
               columns={columns}
               title="2025年主要税种累计完成情况"
               subtitle="数据来源：财政部 | 单位：亿元、%"
-              rowHeight="auto"
               striped={true}
-              colorizeNumbers={true}
               highlightRows={[5, 6]}
             />
           </ChartContainer>

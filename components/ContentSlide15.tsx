@@ -62,10 +62,7 @@ export const ContentSlide15: React.FC = () => {
             columns={columns}
             title="工业生产者出厂价格指数（PPI）分行业环比数据"
             subtitle="单位：%"
-            rowHeight="auto"
-            stickyHeader={true}
             dateColumn="period"
-            colorizeNumbers={true}
           />
         </ChartContainer>
       }

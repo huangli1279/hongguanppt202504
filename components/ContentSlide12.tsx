@@ -175,10 +175,7 @@ export const ContentSlide12: React.FC = () => {
             columns={columns}
             title="2025年规模以上工业细分行业增加值当月同比增速"
             subtitle="单位：%"
-            rowHeight="auto"
-            stickyHeader={true}
             dateColumn="month"
-            colorizeNumbers={true}
           />
         </ChartContainer>
       }

@@ -62,8 +62,6 @@ export const ContentSlide39: React.FC = () => {
               columns={depositColumns}
               title="人民币存款余额及增加额统计 2025"
               subtitle="单位：亿元"
-              rowHeight="auto"
-              stickyHeader={true}
               colorizeNumbers={false}
               dateColumn="period"
             />

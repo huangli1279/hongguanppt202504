@@ -40,10 +40,7 @@ export const ContentSlide13: React.FC = () => {
             columns={columns}
             title="2025年工业企业主要财务指标月度数据"
             subtitle="单位：亿元"
-            rowHeight="auto"
-            stickyHeader={true}
             dateColumn="time"
-            colorizeNumbers={true}
           />
         </ChartContainer>
       }
