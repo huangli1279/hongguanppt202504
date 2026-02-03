@@ -11,6 +11,10 @@ export interface ColumnConfig {
   children?: ColumnConfig[];
   /** 是否高亮列 */
   highlight?: boolean;
+  /** 自定义红色着色阈值 */
+  redThreshold?: number;
+  /** 自定义绿色着色阈值 */
+  greenThreshold?: number;
 }
 
 export interface BaseTableProps {
@@ -169,7 +173,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   }, [data, leafColumns, dateColumn, colorizeNumbers]);
 
   // 数值着色渲染：前20%红色，后20%绿色，其他正常
-  const renderColorizedNumber = (value: any): React.ReactNode => {
+  const renderColorizedNumber = (value: any, customRed?: number, customGreen?: number): React.ReactNode => {
     if (value === null || value === undefined) {
       return <span className="text-slate-400">-</span>;
     }
@@ -179,10 +183,12 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     }
     
     const formatted = num.toFixed(1);
+    const redLimit = customRed ?? allNumbers.p80;
+    const greenLimit = customGreen ?? allNumbers.p20;
     
-    if (num >= allNumbers.p80) {
+    if (num >= redLimit) {
       return <span className="text-red-500">{formatted}</span>;
-    } else if (num <= allNumbers.p20) {
+    } else if (num <= greenLimit) {
       return <span className="text-green-600">{formatted}</span>;
     }
     return <span className="text-slate-600">{formatted}</span>;
@@ -201,7 +207,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     // 数值处理（非日期列的数值）
     if (typeof value === 'number') {
       if (colorizeNumbers) {
-        return renderColorizedNumber(value);
+        return renderColorizedNumber(value, col.redThreshold, col.greenThreshold);
       }
       return value.toFixed(1);
     }

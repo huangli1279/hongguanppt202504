@@ -8,57 +8,41 @@ export const ContentSlide19: React.FC = () => {
   // 转换数据为表格格式
   const tableData = industryRetailData.map(item => ({
     period: item.period,
-    grainOilFood: item.grainOilFood,
-    dailyNecessities: item.dailyNecessities,
-    medicine: item.medicine,
-    clothing: item.clothing,
-    jewelry: item.jewelry,
-    sportsEntertainment: item.sportsEntertainment,
     cultureOffice: item.cultureOffice,
     furniture: item.furniture,
     homeAppliances: item.homeAppliances,
-    buildingMaterials: item.buildingMaterials,
     automobile: item.automobile,
     communication: item.communication,
+    jewelry: item.jewelry,
+    sportsEntertainment: item.sportsEntertainment,
     petroleumProducts: item.petroleumProducts,
   }));
 
   const columns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
     {
-      key: 'group-essential',
-      title: '必选类',
+      key: 'group-trade-in',
+      title: '以旧换新类',
       children: [
-        { key: 'grainOilFood', title: '粮油食品', align: 'center' },
-        { key: 'dailyNecessities', title: '日用品', align: 'center' },
-        { key: 'medicine', title: '中西药品', align: 'center' },
+        { key: 'cultureOffice', title: '文化办公', align: 'center' },
+        { key: 'furniture', title: '家具', align: 'center' },
+        { key: 'homeAppliances', title: '家电音像', align: 'center' },
+        { key: 'automobile', title: '汽车', align: 'center' },
+        { key: 'communication', title: '通讯器材', align: 'center' },
       ],
     },
     {
       key: 'group-optional',
       title: '可选类',
       children: [
-        { key: 'clothing', title: '服装鞋帽', align: 'center' },
         { key: 'jewelry', title: '金银珠宝', align: 'center' },
         { key: 'sportsEntertainment', title: '体育娱乐', align: 'center' },
-        { key: 'cultureOffice', title: '文化办公', align: 'center', highlight: true },
       ],
     },
     {
-      key: 'group-real-estate',
-      title: '房地产相关类',
+      key: 'group-energy',
+      title: '能源类',
       children: [
-        { key: 'furniture', title: '家具', align: 'center', highlight: true },
-        { key: 'homeAppliances', title: '家电音像', align: 'center', highlight: true },
-        { key: 'buildingMaterials', title: '建材装潢', align: 'center' },
-      ],
-    },
-    {
-      key: 'group-other',
-      title: '其他类',
-      children: [
-        { key: 'automobile', title: '汽车', align: 'center', highlight: true },
-        { key: 'communication', title: '通讯器材', align: 'center', highlight: true },
         { key: 'petroleumProducts', title: '石油及制品', align: 'center' },
       ],
     },
@@ -87,12 +71,7 @@ export const ContentSlide19: React.FC = () => {
         {/* 表格区域 */}
         <ChartContainer delay="600ms" className="flex-1 min-h-0">
           <BaseTable
-            title={
-              <>
-                2025年全国分行业零售累计同比数据
-                <span className="text-webank-lightBlue ml-1">(蓝色为以旧换新相关产品)</span>
-              </>
-            }
+            title="2025年全国分行业零售累计同比数据"
             subtitle="数据来源：国家统计局 | 单位：%"
             data={tableData}
             columns={columns}
