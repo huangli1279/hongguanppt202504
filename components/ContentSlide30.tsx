@@ -25,7 +25,7 @@ export const ContentSlide30: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="集成电路（IC）" delay="200ms" variant="accent">
             <p>
-              12月进口同比回升至<span className="text-red-500 font-semibold"> 12.6%</span>。受 AI 服务器及终端换机潮驱动，高端存储芯片补库显著。半导体设备全年维持增长，12月增长<span className="text-red-500 font-semibold">22.4%</span>，反映国内芯片厂在自主可控背景下的战略扩张。
+              12月进口同比回升至<span className="text-red-500 font-semibold"> 16.58%</span>。受 AI 服务器及终端换机潮驱动，高端存储芯片补库显著。半导体设备12月同比录得<span className="text-green-600 font-semibold">-2.70%</span>，反映在前期高增后出现阶段性回调，但全年战略扩张态势依然稳固。
             </p>
           </BaseCard>
           <BaseCard title="铁矿砂及其精矿" delay="400ms">
