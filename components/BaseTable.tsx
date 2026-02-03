@@ -1,5 +1,6 @@
 import React from 'react';
 import { uiColors } from '@/utils/chartColors';
+import { cn } from '@/utils/cn';
 
 export interface ColumnConfig {
   key: string;
@@ -22,6 +23,14 @@ export interface BaseTableProps {
   columns: ColumnConfig[];
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
+  /** 标题区自定义类名 */
+  titleBlockClassName?: string;
+  /** 副标题自定义类名 */
+  subtitleClassName?: string;
+  /** 表格自定义类名 */
+  tableClassName?: string;
+  /** 单元格自定义类名 */
+  cellClassName?: string;
   /** 是否显示斑马纹 */
   striped?: boolean;
   /** 是否显示边框 */
@@ -96,6 +105,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   columns,
   title,
   subtitle,
+  titleBlockClassName,
+  subtitleClassName,
+  tableClassName,
+  cellClassName,
   striped = true,
   bordered = false,
   headerBgColor = '#051c2c',
@@ -238,14 +251,16 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     return (
       <div className="w-full h-full flex flex-col">
         {(title || subtitle) && (
-          <div className="mb-2 flex-shrink-0">
+          <div className={cn('mb-1 flex-shrink-0', titleBlockClassName)}>
             {title && (
               <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
                 {title}
               </h3>
             )}
             {subtitle && (
-              <p className="text-xs text-webank-subtext mt-1">{subtitle}</p>
+              <p className={cn('text-xs text-webank-subtext mt-1', subtitleClassName)}>
+                {subtitle}
+              </p>
             )}
           </div>
         )}
@@ -268,7 +283,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   return (
                     <div
                       key={col.key}
-                      className={`min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showBorder ? 'border-r border-slate-400/30' : ''}`}
+                      className={cn(
+                        `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showBorder ? 'border-r border-slate-400/30' : ''}`,
+                        cellClassName
+                      )}
                       style={{
                         color: headerTextColor,
                         gridColumn: `span ${childCount}`,
@@ -293,7 +311,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   return (
                     <div
                       key={col.key}
-                      className={`min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`}
+                      className={cn(
+                        `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`,
+                        cellClassName
+                      )}
                       style={{
                         color: headerTextColor,
                         ...(col.highlight ? { backgroundColor: highlightColumnColor } : undefined)
@@ -314,7 +335,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
               {columns.map((col, colIndex) => (
                 <div
                   key={col.key}
-                  className={`px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
+                  className={cn(
+                    `px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`,
+                    cellClassName
+                  )}
                   style={{
                     color: headerTextColor,
                     ...(col.highlight ? { backgroundColor: highlightColumnColor } : undefined)
@@ -346,7 +370,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                     return (
                       <div
                         key={col.key}
-                        className={`min-w-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGrouped ? '' : 'flex-1'} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`}
+                        className={cn(
+                          `min-w-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGrouped ? '' : 'flex-1'} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`,
+                          cellClassName
+                        )}
                         style={{
                           color: uiColors.tick,
                           ...(!highlighted && isColumnHighlighted(col)
@@ -371,20 +398,25 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   return (
     <div className="w-full h-full flex flex-col">
       {(title || subtitle) && (
-        <div className="mb-4 flex-shrink-0">
+        <div className={cn('mb-2 flex-shrink-0', titleBlockClassName)}>
           {title && (
             <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
               {title}
             </h3>
           )}
           {subtitle && (
-            <p className="text-xs text-webank-subtext mt-1">{subtitle}</p>
+            <p className={cn('text-xs text-webank-subtext mt-1', subtitleClassName)}>
+              {subtitle}
+            </p>
           )}
         </div>
       )}
       <div className="flex-1 overflow-auto">
         <table
-          className={`w-full border-collapse ${rowHeight === 'dense' ? 'text-[10px]' : 'text-xs'} ${bordered ? 'border border-slate-200' : ''}`}
+          className={cn(
+            `w-full border-collapse ${rowHeight === 'dense' ? 'text-[10px]' : 'text-xs'} ${bordered ? 'border border-slate-200' : ''}`,
+            tableClassName
+          )}
           style={{ tableLayout: 'fixed' }}
         >
           <thead className={stickyHeader ? 'sticky top-0 z-10' : ''}>
@@ -402,7 +434,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                         key={col.key}
                         colSpan={childCount}
                         rowSpan={hasChildren ? 1 : 2}
-                        className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${showBorder ? 'border-r border-slate-400/30' : ''}`}
+                        className={cn(
+                          `${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${showBorder ? 'border-r border-slate-400/30' : ''}`,
+                          cellClassName
+                        )}
                         style={{
                           color: headerTextColor,
                           width: col.width || 'auto',
@@ -422,7 +457,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                     return (
                       <th
                         key={col.key}
-                        className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`}
+                        className={cn(
+                          `${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`,
+                          cellClassName
+                        )}
                         style={{
                           color: headerTextColor,
                           width: col.width || 'auto',
@@ -442,7 +480,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                 {columns.map((col, colIndex) => (
                   <th
                     key={col.key}
-                    className={`${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`}
+                    className={cn(
+                      `${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`,
+                      cellClassName
+                    )}
                     style={{
                       color: headerTextColor,
                       width: col.width || 'auto',
@@ -471,7 +512,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   {leafColumns.map((col, colIndex) => (
                     <td
                       key={col.key}
-                      className={`${rowHeightClasses[rowHeight]} px-3 ${getAlignment(col.align)} ${bordered ? 'border border-slate-200' : 'border-b border-slate-100'} ${colIndex < leafColumns.length - 1 ? 'border-r border-slate-200' : ''}`}
+                      className={cn(
+                        `${rowHeightClasses[rowHeight]} px-3 ${getAlignment(col.align)} ${bordered ? 'border border-slate-200' : 'border-b border-slate-100'} ${colIndex < leafColumns.length - 1 ? 'border-r border-slate-200' : ''}`,
+                        cellClassName
+                      )}
                       style={{
                         color: uiColors.tick,
                         ...(!highlighted && isColumnHighlighted(col)

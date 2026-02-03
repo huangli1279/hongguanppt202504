@@ -31,39 +31,37 @@ export const ContentSlide29: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>机电出口占比创新高，劳密产品表现疲软，高技术驱动结构升级</>}
+      title="机电出口占比创新高，劳密产品表现疲软，高技术驱动结构升级"
       cardColumns={2}
-      className="p-8"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-3 mb-1 flex-shrink-0">
-          <BaseCard delay="100ms" variant="accent" title="机电产品制造稳步领跑，全年出口占比提升至60.9%的历史高位" className="p-2 gap-1">
-            <p className="text-[11px] leading-normal">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard delay="200ms" variant="accent" title="机电产品制造稳步领跑，全年出口占比提升至60.9%的历史高位">
+            <p>
               机电产品全年累计同比增长<span className="text-webank-blue font-semibold">8.4%</span>，其中集成电路（<span className="text-red-500 font-semibold">26.8%</span>），"新三样"（电动载人汽车、锂电池、太阳能电池）（<span className="text-red-500 font-semibold">27.1%</span>）和船舶（<span className="text-red-500 font-semibold">26.7%</span>）贡献巨大；高新技术产品全年增长<span className="text-webank-blue font-semibold">7.5%</span>，充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。
             </p>
           </BaseCard>
-          <BaseCard delay="200ms" variant="default" title="劳动密集型产业下跌明显" className="p-2 gap-1">
-            <p className="text-[11px] leading-normal">
+          <BaseCard delay="400ms" title="劳动密集型产业下跌明显">
+            <p>
               衣服（全年<span className="text-green-600 font-semibold">-5.0%</span>），箱包（全年<span className="text-green-600 font-semibold">-13.5%</span>），玩具（全年<span className="text-green-600 font-semibold">-12.7%</span>）和鞋靴（全年<span className="text-green-600 font-semibold">-11.3%</span>）等劳动密集型产业均下跌，体现传统支柱产业在存量博弈与产业链外迁压力下正向高端装备制造让位。
             </p>
           </BaseCard>
         </div>
 
         {/* 表格区域 */}
-        <div className="flex-1 min-h-0 overflow-hidden">
-          <ChartContainer delay="600ms" className="h-full">
-            <BaseTable
-              data={exportTableData}
-              columns={columns}
-              title="主要商品出口额统计"
-              subtitle="数据来源：海关总署 | 单位：百万美元"
-              rowHeight="dense"
-              striped={true}
-              bordered={true}
-            />
-          </ChartContainer>
-        </div>
+        <ChartContainer delay="800ms" className="flex-1 min-h-0">
+          <BaseTable
+            data={exportTableData}
+            columns={columns}
+            title="主要商品出口额统计"
+            subtitle="数据来源：海关总署 | 单位：百万美元"
+            rowHeight="auto"
+            titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"
+            subtitleClassName="mt-0 text-[clamp(8px,1vh,10px)]"
+            cellClassName="py-[clamp(0px,0.2vh,2px)] text-[clamp(7px,1vh,9px)] leading-tight"
+          />
+        </ChartContainer>
       </div>
     </BaseContentSlide>
   );

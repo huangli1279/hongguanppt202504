@@ -18,6 +18,8 @@ export interface BaseContentSlideProps {
   chartColumns?: 1 | 2 | 3;
   /** 自定义类名 */
   className?: string;
+  /** 标题区自定义类名 */
+  headerClassName?: string;
   /** 子元素（完全自定义内容区域） */
   children?: React.ReactNode;
 }
@@ -31,6 +33,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
   cardColumns = 3,
   chartColumns = 2,
   className,
+  headerClassName,
   children,
 }) => {
   const cardGridClass = {
@@ -51,7 +54,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue animate-top-line" />
 
       {/* Header Section */}
-      <header className="mb-6 animate-fade-in">
+      <header className={cn('mb-6 animate-fade-in', headerClassName)}>
         {subtitle && (
           <div className="flex justify-between items-end mb-1">
             <span className="text-xs font-bold text-webank-subtext uppercase tracking-widest">

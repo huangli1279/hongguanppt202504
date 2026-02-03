@@ -72,8 +72,10 @@ export const ContentSlide30: React.FC = () => {
               title="主要进口商品统计"
               subtitle="单位：百万美元，同比：%"
               rowHeight="dense"
-              striped={true}
-              bordered={true}
+              titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
+              subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
+              tableClassName="text-[clamp(7px,0.9vh,9px)] leading-[1.05]"
+              cellClassName="py-[clamp(0px,0.12vh,1px)] text-[clamp(7px,0.9vh,9px)] leading-[1.05]"
             />
           </ChartContainer>
         </div>
