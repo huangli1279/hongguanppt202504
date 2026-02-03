@@ -31,6 +31,8 @@ export { foreignTradeTrendData, q4ExportCompareData, foreignTradeMonthlyUsdData 
 export type { ForeignTradeTrendDataPoint, Q4ExportCompareDataPoint, ForeignTradeMonthlyUsdDataPoint } from './foreignTrade';
 export { exportProductTrendData, exportEquipmentTrendData } from './exportProducts';
 export type { ExportProductDataPoint, ExportEquipmentDataPoint } from './exportProducts';
+export { exportTableData } from './exportTableData';
+export type { ExportTableItem } from './exportTableData';
 export { importProductTrendData } from './importProducts';
 export type { ImportProductDataPoint } from './importProducts';
 export { exportRegionTrendData, exportCompositionData } from './exportRegion';

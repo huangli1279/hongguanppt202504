@@ -1,79 +1,128 @@
 import React from 'react';
-import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
+import { BaseContentSlide } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
-import { BaseLineChart, LineConfig } from './BaseLineChart';
-import { exportProductTrendData, exportEquipmentTrendData } from '@/data/exportProducts';
-import { getSeriesColor } from '@/utils/chartColors';
+import { BaseTable, ColumnConfig } from './BaseTable';
+import { exportTableData, ExportTableItem } from '@/data';
 
 export const ContentSlide29: React.FC = () => {
-  // 第一张折线图配置：产品结构
-  const productLineConfigs: LineConfig[] = [
-    { dataKey: 'electromechanical', name: '机电产品', color: getSeriesColor(0), strokeWidth: 2.5 },
-    { dataKey: 'integratedCircuit', name: '集成电路', color: getSeriesColor(1), strokeWidth: 2 },
-    { dataKey: 'highTech', name: '高技术产品', color: getSeriesColor(2), strokeWidth: 2 },
-    { dataKey: 'agriculture', name: '农产品', color: getSeriesColor(3), strokeWidth: 2 },
-    { dataKey: 'clothing', name: '服装', color: getSeriesColor(4), strokeWidth: 2 },
-  ];
+  // 表格渲染辅助函数
+  const renderYoy = (val: number | null) => {
+    if (val === null) return <span className="text-slate-300">-</span>;
+    // 只有涨幅或降幅超过 5% 时才标色（正红负绿）
+    const isSignificant = Math.abs(val) > 5;
+    const color = isSignificant 
+      ? (val > 0 ? 'text-red-500' : 'text-green-600') 
+      : 'text-slate-600';
+    return <span className={`${color} font-medium`}>{val > 0 ? `+${val.toFixed(1)}` : val.toFixed(1)}</span>;
+  };
 
-  // 第二张折线图配置：装备制造
-  const equipmentLineConfigs: LineConfig[] = [
-    { dataKey: 'automobile', name: '汽车', color: getSeriesColor(0), strokeWidth: 2.5 },
-    { dataKey: 'generalMachinery', name: '通用机械', color: getSeriesColor(1), strokeWidth: 2 },
-    { dataKey: 'dataProcessing', name: '数据处理设备', color: getSeriesColor(2), strokeWidth: 2 },
-    { dataKey: 'semiconductor', name: '半导体', color: getSeriesColor(3), strokeWidth: 2 },
-    { dataKey: 'mobile', name: '手机', color: getSeriesColor(4), strokeWidth: 2 },
+  const columns: ColumnConfig[] = [
+    {
+      key: 'name',
+      title: '商品名称',
+      width: '24%',
+      align: 'left',
+      render: (value, row: ExportTableItem) => (
+        <div 
+          className="truncate text-[9px] leading-none"
+          style={{ 
+            paddingLeft: `${row.level * 8}px`, 
+            fontWeight: row.isCategory ? '700' : '400',
+            color: row.isCategory ? '#051c2c' : '#475569'
+          }}
+        >
+          {value}
+        </div>
+      )
+    },
+    {
+      key: 'dec',
+      title: '12月',
+      width: '10%',
+      children: [
+        { 
+          key: 'decAmount', 
+          title: '金额', 
+          align: 'right',
+          render: (val) => <span className="text-[9px] leading-none">{val?.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) || <span className="text-slate-300">-</span>}</span>
+        }
+      ]
+    },
+    {
+      key: 'total',
+      title: '1至12月累计',
+      width: '14%',
+      children: [
+        { 
+          key: 'totalAmount', 
+          title: '金额', 
+          align: 'right',
+          render: (val) => <span className="text-[9px] leading-none">{val?.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) || <span className="text-slate-300">-</span>}</span>
+        }
+      ]
+    },
+    {
+      key: 'yoy12',
+      title: '1-12月累计比去年同期±%',
+      width: '26%',
+      children: [
+        { key: 'yoy12Qty', title: '数量', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> },
+        { key: 'yoy12Amt', title: '金额', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> }
+      ]
+    },
+    {
+      key: 'yoy6',
+      title: '1-6月累计比去年同期±%',
+      width: '26%',
+      children: [
+        { key: 'yoy6Qty', title: '数量', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> },
+        { key: 'yoy6Amt', title: '金额', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> }
+      ]
+    }
   ];
 
   return (
     <BaseContentSlide
-      title={<>科技制造领跑，汽车与半导体产业链爆发，机电产品拉动出口增长</>}
+      title={<>机电出口占比创新高，劳密产品表现疲软，高技术驱动结构升级</>}
       cardColumns={2}
     >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="机电出口占比创新高，高技术驱动结构升级" delay="200ms" variant="accent">
-            <p>
-              机电产品制造稳步领跑，全年出口占比已提升至<span className="text-webank-blue font-semibold">60.9%</span>的历史高位，累计同比增长<span className="text-webank-blue font-semibold">26.8%</span>。高技术产品全年出口5.25万亿元，增长<span className="text-webank-blue font-semibold">13.2%</span>，占比19.4%（较24年提升1.2%），充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。“新三样”、风力发电机组等绿色产品出口分别增长<span className="text-webank-blue font-semibold">27.1%</span>和<span className="text-webank-blue font-semibold">48.7%</span>。自主品牌产品出口增长<span className="text-webank-blue font-semibold">12.9%</span>，占比提升1.4个百分点。
-            </p>
-          </BaseCard>
-          <BaseCard title="劳密产品表现疲软，传统产业加速向高端让位" delay="400ms">
-            <p>
-              劳动密集型产品表现疲软，服装负增长趋势逐渐凸显，2025年累计同比<span className="text-red-500 font-semibold">-5%</span>，显示出传统支柱产业在存量博弈与产业链外迁压力下正加速向高端装备制造让位。
+      <div className="flex flex-col h-full overflow-hidden -mt-4">
+        {/* 核心结论区域 */}
+        <div className="mb-2 flex-shrink-0">
+          <BaseCard 
+            delay="100ms" 
+            variant="accent"
+          >
+            <p className="text-xs leading-relaxed">
+              机电产品制造稳步领跑，全年出口占比提升至<span className="text-webank-blue font-semibold">60.9%</span>的历史高位，全年累计同比增长<span className="text-webank-blue font-semibold">8.4%</span>，集成电路（<span className="text-red-500 font-semibold">26.8%</span>），汽车（<span className="text-red-500 font-semibold">21.4%</span>）和船舶（<span className="text-red-500 font-semibold">26.7%</span>）贡献巨大。高新技术产品全年增长<span className="text-webank-blue font-semibold">7.5%</span>，充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。“新三样”（电动载人汽车、锂电池、太阳能电池）出口增长<span className="text-webank-blue font-semibold">27.1%</span>，自主品牌产品出口增长<span className="text-webank-blue font-semibold">12.9%</span>，占比提升1.4%。劳动密集型产业下跌明显，衣服（<span className="text-green-600 font-semibold">-5.0%</span>），箱包（<span className="text-green-600 font-semibold">-13.5%</span>）和鞋靴（<span className="text-green-600 font-semibold">-11.3%</span>），体现传统支柱产业在存量博弈与产业链外迁压力下正向高端装备制造让位。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={exportProductTrendData}
-              title="主要出口产品累计同比走势"
-              subtitle="数据来源：海关总署 | 单位：%"
-              lines={productLineConfigs}
-              yAxisDomain={[-10, 30]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['机电产品', '集成电路', '高技术产品', '农产品', '服装']}
-              xAxisTickCount={8}
+        {/* 表格区域 */}
+        <div className="flex-1 min-h-0 bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+          <div className="px-2 py-0.5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 h-6">
+            <div className="flex items-center gap-2">
+              <h3 className="text-[10.5px] font-bold text-webank-blue">主要商品出口额统计</h3>
+              <span className="text-[8.5px] text-slate-400">数据来源：海关总署</span>
+            </div>
+            <div className="text-[8.5px] text-slate-500 font-medium">单位：百万美元</div>
+          </div>
+          <div className="flex-1 overflow-hidden">
+            <BaseTable 
+              data={exportTableData}
+              columns={columns}
+              rowHeight="auto"
+              striped={true}
+              bordered={true}
+              colorizeNumbers={false}
             />
-          </ChartContainer>
-          <ChartContainer delay="800ms">
-            <BaseLineChart
-              data={exportEquipmentTrendData}
-              title="机电产品出口累计同比走势"
-              subtitle="数据来源：海关总署 | 单位：%"
-              lines={equipmentLineConfigs}
-              yAxisDomain={[-30, 35]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['汽车', '通用机械', '数据处理设备', '半导体', '手机']}
-              xAxisTickCount={8}
-            />
-          </ChartContainer>
+          </div>
+          <div className="px-2 py-0 bg-slate-50 border-t border-slate-100 flex items-center h-4">
+            <p className="text-[8px] text-slate-400 leading-tight truncate">
+              注：1. “农产品*”“机电产品*”和“高新技术产品*”包括本表中已列名的有关商品，提请数据使用者注意。
+            </p>
+          </div>
         </div>
       </div>
     </BaseContentSlide>
