@@ -23,8 +23,8 @@ export interface LineConfig {
 
 export interface BaseLineChartProps {
   data: any[];
-  title: string;
-  subtitle?: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   lines: LineConfig[];
   yAxisDomain?: [number, number];
   showYAxis?: boolean;

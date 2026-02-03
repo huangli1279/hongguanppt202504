@@ -14,9 +14,9 @@ export const ContentSlide28: React.FC = () => {
 
   // 柱状图配置 - 已替换为折线图
   const lineConfigsValues: LineConfig[] = [
-    { dataKey: 'total', name: '进出口总值', color: getSeriesColor(1), strokeWidth: 2 },
     { dataKey: 'exports', name: '出口当月值', color: getSeriesColor(0), strokeWidth: 2.5 },
     { dataKey: 'imports', name: '进口当月值', color: getSeriesColor(2), strokeWidth: 2 },
+    { dataKey: 'surplus', name: '贸易顺差', color: getSeriesColor(4), strokeWidth: 2 },
   ];
 
   return (
@@ -39,7 +39,7 @@ export const ContentSlide28: React.FC = () => {
           </BaseCard>
           <BaseCard title="贸易顺差再创历史新高" delay="600ms">
             <p>
-              2025年12月单月贸易顺差达<span className="text-webank-blue font-semibold">1141亿美元</span>，全年累计顺差约为 <span className="text-webank-blue font-semibold">1.19万亿美元</span>，续创历史新高。这既彰显了中国制造业在全球滞胀环境下的供给优势，也反映了国内正处于“去杠杆”阶段，对能源、大宗商品等进口需求受到抑制。
+              2025年12月单月贸易顺差达<span className="text-webank-blue font-semibold">1141亿美元</span>，创月度新高。全年累计顺差约为 <span className="text-webank-blue font-semibold">1.19万亿美元</span>，续创历史新高。这既彰显了中国制造业在全球滞胀环境下的供给优势，也反映了国内正处于“去杠杆”阶段，对能源、大宗商品等进口需求受到抑制。
             </p>
           </BaseCard>
         </div>
@@ -62,7 +62,7 @@ export const ContentSlide28: React.FC = () => {
           <ChartContainer delay="800ms">
             <BaseLineChart
               data={foreignTradeMonthlyValuesData}
-              title="进出口总值(美元计价):当月值"
+              title="海关进出口总值及贸易顺差:当月值"
               subtitle="数据来源：海关总署 | 单位：亿美元"
               lines={lineConfigsValues}
               xAxisTickCount={10}
@@ -70,7 +70,7 @@ export const ContentSlide28: React.FC = () => {
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['进出口总值', '出口当月值', '进口当月值']}
+              legendOrder={['出口当月值', '进口当月值', '贸易顺差']}
               unit=""
               yAxisTickFormatter={(val) => `${val}`}
             />

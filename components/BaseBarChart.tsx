@@ -33,8 +33,8 @@ export interface BarLineConfig {
 
 export interface BaseBarChartProps {
   data: any[];
-  title: string;
-  subtitle?: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   bars: BarConfig[];
   lines?: BarLineConfig[];
   xAxisKey?: string;
@@ -134,10 +134,10 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
-  const unitByKey = bars.reduce<Record<string, string>>((acc, bar) => {
+  const unitByKey = bars.reduce((acc, bar) => {
     acc[bar.dataKey] = unit;
     return acc;
-  }, {});
+  }, {} as Record<string, string>);
   if (hasLines && lines) {
     lines.forEach((line) => {
       unitByKey[line.dataKey] = line.unit ?? lineUnit;

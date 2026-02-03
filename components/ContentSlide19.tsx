@@ -87,7 +87,12 @@ export const ContentSlide19: React.FC = () => {
         {/* 表格区域 */}
         <ChartContainer delay="600ms" className="flex-1 min-h-0">
           <BaseTable
-            title="2025年全国分行业零售累计同比数据"
+            title={
+              <>
+                2025年全国分行业零售累计同比数据
+                <span className="text-webank-lightBlue ml-1">(蓝色为以旧换新相关产品)</span>
+              </>
+            }
             subtitle="数据来源：国家统计局 | 单位：%"
             data={tableData}
             columns={columns}

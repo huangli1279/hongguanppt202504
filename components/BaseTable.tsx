@@ -16,8 +16,8 @@ export interface ColumnConfig {
 export interface BaseTableProps {
   data: any[];
   columns: ColumnConfig[];
-  title?: string;
-  subtitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
   /** 是否显示斑马纹 */
   striped?: boolean;
   /** 是否显示边框 */
@@ -198,9 +198,17 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     if (dateColumn && col.key === dateColumn) {
       return formatDate(value);
     }
-    // 数值自动着色（非日期列的数值）
-    if (colorizeNumbers && typeof value === 'number') {
-      return renderColorizedNumber(value);
+    // 数值处理（非日期列的数值）
+    if (typeof value === 'number') {
+      if (colorizeNumbers) {
+        return renderColorizedNumber(value);
+      }
+      return value.toFixed(1);
+    }
+
+    // 处理空值
+    if (value === null || value === undefined) {
+      return <span className="text-slate-400">-</span>;
     }
     return value;
   };

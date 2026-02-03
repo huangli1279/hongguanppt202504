@@ -21,8 +21,8 @@ export interface StackedBarConfig {
 
 export interface BaseStackedBarChartProps {
   data: any[];
-  title: string;
-  subtitle?: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   bars: StackedBarConfig[];
   xAxisKey?: string;
   yAxisDomain?: [number, number];
