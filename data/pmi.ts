@@ -40,6 +40,7 @@ export const pmiTrendData: PmiDataPoint[] = [
   { period: '2025-10', pmi: 49.0, production: 49.7, newOrders: 48.8 },
   { period: '2025-11', pmi: 49.2, production: 50.0, newOrders: 49.2 },
   { period: '2025-12', pmi: 50.1, production: 51.7, newOrders: 50.8 },
+  { period: '2026-01', pmi: 49.3, production: 50.6, newOrders: 49.2 },
 ];
 
 // 按企业规模分类的PMI数据
@@ -68,4 +69,5 @@ export const pmiByEnterpriseSizeData: PmiByEnterpriseSize[] = [
   { period: '2025-10', small: 47.1, medium: 48.7, large: 49.9 },
   { period: '2025-11', small: 49.1, medium: 48.9, large: 49.3 },
   { period: '2025-12', small: 48.6, medium: 49.8, large: 50.8 },
+  { period: '2026-01', small: 47.4, medium: 48.7, large: 50.3 },
 ];

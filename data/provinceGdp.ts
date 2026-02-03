@@ -27,7 +27,7 @@ export const provinceGdpDataRest = [
   { province: '山西', gdp: 2.55, growth: '4.0%' },
   { province: '贵州', gdp: 2.36, growth: '4.9%' },
   { province: '新疆', gdp: 2.15, growth: '5.5%' },
-  { province: '天津', gdp: 1.85, growth: '4.8%' },
+  { province: '天津', gdp: 1.85, growth: '4.9%' },
   { province: '黑龙江', gdp: 1.69, growth: '4.2%' },
   { province: '吉林', gdp: 1.50, growth: '5.0%' },
   { province: '甘肃', gdp: 1.37, growth: '5.8%' },

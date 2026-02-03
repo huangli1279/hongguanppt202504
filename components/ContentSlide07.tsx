@@ -5,9 +5,43 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { provinceGdpDataTop15, provinceGdpDataRest } from '@/data/provinceGdp';
 
 const tableColumns: ColumnConfig[] = [
-  { key: 'province', title: '省份', align: 'center' },
-  { key: 'gdp', title: 'GDP', align: 'center' },
-  { key: 'growth', title: '增速', align: 'center' },
+  { 
+    key: 'province', 
+    title: '省份', 
+    align: 'center',
+    render: (value, row) => {
+      const isTarget = value === '江苏' || value === '山东';
+      const num = parseFloat(row.growth);
+      const isLowGrowth = !isNaN(num) && num < 5.0;
+      
+      let className = '';
+      if (isTarget) className = 'text-red-600 font-bold';
+      else if (isLowGrowth) className = 'text-green-600 font-bold';
+      
+      return <span className={className}>{value}</span>;
+    }
+  },
+  { 
+    key: 'gdp', 
+    title: 'GDP', 
+    align: 'center',
+  },
+  { 
+    key: 'growth', 
+    title: '增速', 
+    align: 'center',
+    render: (value, row) => {
+      const isTarget = row.province === '江苏' || row.province === '山东';
+      const num = parseFloat(value);
+      const isLowGrowth = !isNaN(num) && num < 5.0;
+      
+      let className = '';
+      if (isTarget) className = 'text-red-600 font-bold';
+      else if (isLowGrowth) className = 'text-green-600 font-bold';
+      
+      return <span className={className}>{value}</span>;
+    }
+  },
 ];
 
 export const ContentSlide07: React.FC = () => {
@@ -18,16 +52,29 @@ export const ContentSlide07: React.FC = () => {
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="第一梯队保持引领" delay="200ms" variant="accent">
-            <p>
-              <span className="font-bold">广东省</span>经济总量达<span className="text-webank-accent font-bold">14.58万亿元</span>，连续37年位居全国首位，但增速面临压力；<span className="font-bold">江苏省</span>总量14.24万亿元，得益于新兴产业加快发展；<span className="font-bold">山东省</span>首次突破<span className="text-green-600 font-bold">10万亿元</span>，成为北方地区首个进入十万亿级规模的省份。新能源汽车领域，山东2025年产量突破150万辆，占全国比重提升至12%以上，增速连续三年超过30%。
-            </p>
+          <BaseCard title="传统产业拖累" delay="200ms" variant="accent">
+            <div className="space-y-2">
+              <p>
+                <span className="font-bold">广东省</span>2025年GDP增速<span className="text-webank-accent font-bold">3.9%</span>，主要受传统支柱产业（房地产、传统制造业）深度调整影响。
+              </p>
+              <p>
+                <span className="font-bold">海南省</span>高度依赖旅游业和免税消费，工业基础薄弱，受消费下行影响GDP增速低于全国（<span className="text-webank-accent font-bold">4%</span>）。
+              </p>
+              <p>
+                <span className="font-bold">天津市</span>GDP增速<span className="text-webank-accent font-bold">4.9%</span>，主要因石化产业比重高，新兴产业占比低。
+              </p>
+            </div>
           </BaseCard>
 
-          <BaseCard title="产业升级成效显著" delay="400ms">
-            <p>
-              多地<span className="font-bold">高技术制造业</span>成为主要增长点。<span className="font-bold">江苏</span>高新技术产业产值占规上工业比重达<span className="text-green-600 font-bold">52.1%</span>，比上年提高1.4个百分点；规上高技术制造业增加值同比增长<span className="text-green-600">11.9%</span>，拉动全部规上工业增长2.8个百分点。<span className="font-bold">安徽省</span>规上工业增加值增速达<span className="text-green-600 font-bold">9.4%</span>。
-            </p>
+          <BaseCard title="高新产业带动经济" delay="400ms">
+            <div className="space-y-2">
+              <p>
+                <span className="font-bold">山东省</span>GDP总量首次突破<span className="text-green-600 font-bold">10万亿元</span>，新能源汽车产业链带动整体GDP增长，2025年产量突破150万辆，占全国比重提升至12%以上，位列第二。
+              </p>
+              <p>
+                <span className="font-bold">江苏省</span>高新技术产业产值占规上工业比重达<span className="text-green-600 font-bold">52.1%</span>，规上高技术制造业增加值大增<span className="text-green-600 font-bold">11.9%</span>，拉动全部规上工业增长2.8个百分点，新能源、集成电路等产业规模位居全国首位。
+              </p>
+            </div>
           </BaseCard>
         </>
       }
