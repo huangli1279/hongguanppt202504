@@ -3,7 +3,6 @@ import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseStackedBarChart } from './BaseStackedBarChart';
 import { gdpContributionData } from '@/data/gdp';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide08: React.FC = () => {
   return (
@@ -44,9 +43,9 @@ export const ContentSlide08: React.FC = () => {
             title="2024-2025年GDP当季同比贡献率：三大需求"
             subtitle="单位: %"
             bars={[
-              { dataKey: 'consumption', name: '最终消费支出', color: chartColors.accent },
-              { dataKey: 'investment', name: '资本形成总额', color: chartColors.negative },
-              { dataKey: 'netExport', name: '货物和服务净出口', color: chartColors.positive },
+              { dataKey: 'consumption', name: '最终消费支出'},
+              { dataKey: 'investment', name: '资本形成总额'},
+              { dataKey: 'netExport', name: '货物和服务净出口'},
             ]}
             legendOrder={['最终消费支出', '资本形成总额', '货物和服务净出口']}
             barSize={28}

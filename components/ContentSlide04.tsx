@@ -4,7 +4,6 @@ import { BaseStackedBarChart } from './BaseStackedBarChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { gdpTrendData, deflatorData, gdpIndustryValueData } from '@/data/gdp';
-import { chartColors, industryColors } from '@/utils/chartColors';
 
 export const ContentSlide04: React.FC = () => {
   // 平减指数数据：过滤只保留24年和25年
@@ -52,8 +51,8 @@ export const ContentSlide04: React.FC = () => {
               showYAxis={true}
               legendOrder={['GDP现价', 'GDP不变价']}
               lines={[
-                { dataKey: 'value', name: 'GDP不变价', color: chartColors.primary, strokeWidth: 2, labelPosition: 'top' },
-                { dataKey: 'nominal', name: 'GDP现价', color: chartColors.negative, strokeWidth: 2, labelPosition: 'bottom' }
+                { dataKey: 'value', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom' }
               ]}
             />
           </ChartContainer>
@@ -68,9 +67,9 @@ export const ContentSlide04: React.FC = () => {
               referenceLineY={0}
               legendOrder={['第一产业', '第二产业', '第三产业']}
               lines={[
-                { dataKey: 'primary', name: '第一产业', color: chartColors.neutral, strokeWidth: 2, labelPosition: 'top' },
-                { dataKey: 'secondary', name: '第二产业', color: chartColors.negative, strokeWidth: 2, labelPosition: 'bottom' },
-                { dataKey: 'tertiary', name: '第三产业', color: chartColors.primary, strokeWidth: 2, labelPosition: 'top' }
+                { dataKey: 'primary', name: '第一产业', strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'secondary', name: '第二产业', strokeWidth: 2, labelPosition: 'bottom' },
+                { dataKey: 'tertiary', name: '第三产业', strokeWidth: 2, labelPosition: 'top' }
               ]}
             />
           </ChartContainer>
@@ -86,9 +85,9 @@ export const ContentSlide04: React.FC = () => {
               legendOrder={['第一产业', '第二产业', '第三产业']}
               valueFormatter={(val: number) => val.toFixed(2)}
               bars={[
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary }
+                { dataKey: 'primary', name: '第一产业'},
+                { dataKey: 'secondary', name: '第二产业'},
+                { dataKey: 'tertiary', name: '第三产业'}
               ]}
             />
           </ChartContainer>

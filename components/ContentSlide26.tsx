@@ -4,13 +4,12 @@ import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseTable, ColumnConfig } from './BaseTable';
 import { equipmentInvestmentData, manufacturingInvestmentData } from '@/data/equipmentInvestment';
-import { getSeriesColor } from '@/utils/chartColors';
 
 export const ContentSlide26: React.FC = () => {
   // 折线图配置
   const lineConfigs: LineConfig[] = [
-    { dataKey: 'equipmentPurchase', name: '设备工器具购置', color: getSeriesColor(0), strokeWidth: 2.5 },
-    { dataKey: 'constructionInstall', name: '建筑安装工程', color: getSeriesColor(1), strokeWidth: 2.5 },
+    { dataKey: 'equipmentPurchase', name: '设备工器具购置', strokeWidth: 2.5 },
+    { dataKey: 'constructionInstall', name: '建筑安装工程', strokeWidth: 2.5 },
   ];
 
   // 表格列配置

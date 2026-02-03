@@ -16,7 +16,7 @@ import { uiColors, getSeriesColor } from '@/utils/chartColors';
 export interface LineConfig {
   dataKey: string;
   name: string;
-  color: string;
+  color?: string;
   strokeWidth?: number;
   labelPosition?: 'top' | 'bottom';
 }
@@ -181,26 +181,29 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
             <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
-            {lines.map((line, index) => (
-              <Line
-                key={line.dataKey}
-                name={line.name}
-                type="monotone"
-                dataKey={line.dataKey}
-                stroke={line.color}
-                strokeWidth={line.strokeWidth || 2}
-                dot={false}
-                animationDuration={800}
-                animationBegin={0}
-                animationEasing="ease-out"
-              >
-                <LabelList
+            {lines.map((line, index) => {
+              const lineColor = line.color ?? getSeriesColor(index);
+              return (
+                <Line
+                  key={line.dataKey}
+                  name={line.name}
+                  type="monotone"
                   dataKey={line.dataKey}
-                  position={line.labelPosition || 'top'}
-                  content={(props) => renderCustomLabel(props, line.color, line.dataKey)}
-                />
-              </Line>
-            ))}
+                  stroke={lineColor}
+                  strokeWidth={line.strokeWidth || 2}
+                  dot={false}
+                  animationDuration={800}
+                  animationBegin={0}
+                  animationEasing="ease-out"
+                >
+                  <LabelList
+                    dataKey={line.dataKey}
+                    position={line.labelPosition || 'top'}
+                    content={(props) => renderCustomLabel(props, lineColor, line.dataKey)}
+                  />
+                </Line>
+              );
+            })}
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -1,7 +1,7 @@
 /**
  * 统一的图表配色方案
  * 所有 Base 组件共用此配色，确保视觉一致性
- * 风格：沉稳、专业、低饱和度
+ * 风格：统一品牌配色，强调可区分度
  */
 
 // 主色板 - 用于图表系列数据
@@ -30,14 +30,15 @@ export const chartColors = {
   grey600: '#475569',
 } as const;
 
-// 预设的系列色数组（用于多系列图表）- 沉稳渐变
+// 预设的系列色数组（用于多系列图表）- 统一配色方案
 export const seriesColors = [
-  '#005c8f',  // 深蓝
-  '#64748b',  // 石板灰
-  '#78716c',  // 暖灰
-  '#475569',  // 深石板灰
-  '#94a3b8',  // 浅灰
-  '#334155',  // 更深灰
+  '#B85E5B', // muted red (slightly lighter)
+  '#4A79AA', // muted blue (slightly lighter)
+  '#5C9A8A', // muted teal (slightly lighter)
+  '#C09A4A', // muted amber (slightly lighter)
+  '#8B7BA8', // muted violet (slightly lighter)
+  '#8CB27A', // muted green (slightly lighter)
+  '#8A8A8A', // neutral gray (slightly lighter)
 ] as const;
 
 // 季度对比色（Q1-Q4）- 沉稳色调

@@ -3,24 +3,23 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { consumerConfidenceData, incomeExpenditureData } from '@/data/consumerConfidence';
-import { chartColors, seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide21: React.FC = () => {
   // 消费者信心指数折线图配置
   const confidenceLineConfigs: LineConfig[] = [
-    { dataKey: 'confidence', name: '消费者信心指数', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'income', name: '收入预期', color: chartColors.positive, strokeWidth: 2 },
-    { dataKey: 'employment', name: '就业预期', color: chartColors.negative, strokeWidth: 2 },
-    { dataKey: 'consumption', name: '消费意愿', color: seriesColors[1], strokeWidth: 2 },
+    { dataKey: 'confidence', name: '消费者信心指数', strokeWidth: 2.5 },
+    { dataKey: 'income', name: '收入预期', strokeWidth: 2 },
+    { dataKey: 'employment', name: '就业预期', strokeWidth: 2 },
+    { dataKey: 'consumption', name: '消费意愿', strokeWidth: 2 },
   ];
 
   // 收入与消费支出折线图配置
   const incomeLineConfigs: LineConfig[] = [
-    { dataKey: 'incomeReal', name: '可支配收入', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'consumptionReal', name: '消费支出', color: chartColors.negative, strokeWidth: 2 },
-    { dataKey: 'wageIncome', name: '工资性收入', color: seriesColors[1], strokeWidth: 1.5 },
-    { dataKey: 'operatingIncome', name: '经营净收入', color: seriesColors[2], strokeWidth: 1.5 },
-    { dataKey: 'propertyIncome', name: '财产净收入', color: seriesColors[4], strokeWidth: 1.5 },
+    { dataKey: 'incomeReal', name: '可支配收入', strokeWidth: 2.5 },
+    { dataKey: 'consumptionReal', name: '消费支出', strokeWidth: 2 },
+    { dataKey: 'wageIncome', name: '工资性收入', strokeWidth: 1.5 },
+    { dataKey: 'operatingIncome', name: '经营净收入', strokeWidth: 1.5 },
+    { dataKey: 'propertyIncome', name: '财产净收入', strokeWidth: 1.5 },
   ];
 
   return (

@@ -4,24 +4,22 @@ import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseBarChart, BarConfig, BarLineConfig } from './BaseBarChart';
 import { governmentFundRevenueData, landSaleRevenueShareData } from '@/data/governmentFund';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide34: React.FC = () => {
   const lines: LineConfig[] = [
-    { dataKey: 'national', name: '全国', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'local', name: '地方', color: chartColors.secondary, strokeWidth: 2 },
-    { dataKey: 'central', name: '中央', color: chartColors.tertiary, strokeWidth: 2 },
+    { dataKey: 'national', name: '全国', strokeWidth: 2.5 },
+    { dataKey: 'local', name: '地方', strokeWidth: 2 },
+    { dataKey: 'central', name: '中央', strokeWidth: 2 },
   ];
 
   const bars: BarConfig[] = [
-    { dataKey: 'landSaleRevenue', name: '国有土地使用权出让收入', color: chartColors.primary },
+    { dataKey: 'landSaleRevenue', name: '国有土地使用权出让收入'},
   ];
 
   const landShareLine: BarLineConfig[] = [
     {
       dataKey: 'landShare',
       name: '土地出让占地方政府基金收入占比',
-      color: chartColors.tertiary,
       strokeWidth: 2,
     },
   ];

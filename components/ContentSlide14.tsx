@@ -3,20 +3,19 @@ import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { ppiYoyData, commodityPriceData } from '@/data/ppi';
-import { chartColors } from '@/utils/chartColors';
 
 const ppiLines: LineConfig[] = [
-  { dataKey: 'ppiYoy', name: 'PPI当月同比', color: chartColors.primary, strokeWidth: 2.5 },
-  { dataKey: 'productionMaterialsYoy', name: '生产资料PPI当月同比', color: chartColors.secondary, strokeWidth: 2 },
-  { dataKey: 'livingGoodsYoy', name: '生活资料PPI当月同比', color: chartColors.tertiary, strokeWidth: 2 },
+  { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5 },
+  { dataKey: 'productionMaterialsYoy', name: '生产资料PPI当月同比', strokeWidth: 2 },
+  { dataKey: 'livingGoodsYoy', name: '生活资料PPI当月同比', strokeWidth: 2 },
 ];
 
 // 大宗商品折线图配置
 const commodityLines: LineConfig[] = [
-  { dataKey: 'energy', name: '能源类', color: chartColors.primary, strokeWidth: 2 },
-  { dataKey: 'nonFerrous', name: '有色类', color: chartColors.negative, strokeWidth: 2 },
-  { dataKey: 'mineral', name: '矿产类', color: chartColors.tertiary, strokeWidth: 2 },
-  { dataKey: 'steel', name: '钢铁类', color: chartColors.secondary, strokeWidth: 2 },
+  { dataKey: 'energy', name: '能源类', strokeWidth: 2 },
+  { dataKey: 'nonFerrous', name: '有色类', strokeWidth: 2 },
+  { dataKey: 'mineral', name: '矿产类', strokeWidth: 2 },
+  { dataKey: 'steel', name: '钢铁类', strokeWidth: 2 },
 ];
 
 

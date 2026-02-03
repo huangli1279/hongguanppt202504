@@ -3,7 +3,6 @@ import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseBarChart } from './BaseBarChart';
 import { detailedIndustryGrowthData } from '@/data/industry';
-import { quarterColors } from '@/utils/chartColors';
 
 export const ContentSlide06: React.FC = () => {
   return (
@@ -44,10 +43,10 @@ export const ContentSlide06: React.FC = () => {
             subtitle="单位: %"
             xAxisKey="industry"
             bars={[
-              { dataKey: '2025-03', name: '2025-03', color: quarterColors.Q1 },
-              { dataKey: '2025-06', name: '2025-06', color: quarterColors.Q2 },
-              { dataKey: '2025-09', name: '2025-09', color: quarterColors.Q3 },
-              { dataKey: '2025-12', name: '2025-12', color: quarterColors.Q4 },
+              { dataKey: '2025-03', name: '2025-03'},
+              { dataKey: '2025-06', name: '2025-06'},
+              { dataKey: '2025-09', name: '2025-09'},
+              { dataKey: '2025-12', name: '2025-12'},
             ]}
             legendOrder={['2025-03', '2025-06', '2025-09', '2025-12']}
             barSize={12}

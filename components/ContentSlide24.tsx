@@ -3,20 +3,19 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { realEstateInvestmentData, housePriceIndexData } from '@/data/realEstate';
-import { chartColors, seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide24: React.FC = () => {
   // 房地产开发投资折线图配置
   const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'realEstateInvestment', name: '房地产开发投资', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'newConstruction', name: '房屋新开工面积', color: chartColors.negative, strokeWidth: 2 },
-    { dataKey: 'completion', name: '房地产竣工面积', color: seriesColors[1], strokeWidth: 2 },
+    { dataKey: 'realEstateInvestment', name: '房地产开发投资', strokeWidth: 2.5 },
+    { dataKey: 'newConstruction', name: '房屋新开工面积', strokeWidth: 2 },
+    { dataKey: 'completion', name: '房地产竣工面积', strokeWidth: 2 },
   ];
 
   // 房价指数折线图配置
   const priceLineConfigs: LineConfig[] = [
-    { dataKey: 'newHousePrice', name: '新建商品住宅价格指数同比', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'secondHandPrice', name: '二手住宅价格指数同比', color: chartColors.negative, strokeWidth: 2 },
+    { dataKey: 'newHousePrice', name: '新建商品住宅价格指数同比', strokeWidth: 2.5 },
+    { dataKey: 'secondHandPrice', name: '二手住宅价格指数同比', strokeWidth: 2 },
   ];
 
   return (

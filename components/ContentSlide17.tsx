@@ -3,7 +3,6 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { retailTrendData, retailMonthlyData } from '@/data/retail';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide17: React.FC = () => {
   return (
@@ -33,9 +32,9 @@ export const ContentSlide17: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               data={retailTrendData}
               lines={[
-                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', color: chartColors.primary, strokeWidth: 2.5 },
-                { dataKey: 'totalRetail', name: '社会消费品零售总额:累计同比', color: chartColors.secondary },
-                { dataKey: 'goodsRetail', name: '商品零售额:累计同比', color: chartColors.tertiary },
+                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
+                { dataKey: 'totalRetail', name: '社会消费品零售总额:累计同比'},
+                { dataKey: 'goodsRetail', name: '商品零售额:累计同比'},
               ]}
               yAxisDomain={[0, 14]}
               showYAxis={true}
@@ -49,7 +48,7 @@ export const ContentSlide17: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               data={retailMonthlyData}
               lines={[
-                { dataKey: 'monthlyYoy', name: '社会消费品零售总额:当月同比', color: chartColors.primary, strokeWidth: 2.5 },
+                { dataKey: 'monthlyYoy', name: '社会消费品零售总额:当月同比', strokeWidth: 2.5 },
               ]}
               yAxisDomain={[0, 8]}
               showYAxis={true}

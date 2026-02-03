@@ -3,20 +3,19 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { foreignTradeTrendData, foreignTradeMonthlyUsdData, foreignTradeMonthlyValuesData } from '@/data/foreignTrade';
-import { getSeriesColor } from '@/utils/chartColors';
 
 export const ContentSlide28: React.FC = () => {
   // 折线图配置
   const lineConfigs: LineConfig[] = [
-    { dataKey: 'exports', name: '出口当月同比', color: getSeriesColor(0), strokeWidth: 2.5 },
-    { dataKey: 'imports', name: '进口当月同比', color: getSeriesColor(2), strokeWidth: 2 },
+    { dataKey: 'exports', name: '出口当月同比', strokeWidth: 2.5 },
+    { dataKey: 'imports', name: '进口当月同比', strokeWidth: 2 },
   ];
 
   // 柱状图配置 - 已替换为折线图
   const lineConfigsValues: LineConfig[] = [
-    { dataKey: 'exports', name: '出口当月值', color: getSeriesColor(0), strokeWidth: 2.5 },
-    { dataKey: 'imports', name: '进口当月值', color: getSeriesColor(2), strokeWidth: 2 },
-    { dataKey: 'surplus', name: '贸易顺差', color: getSeriesColor(4), strokeWidth: 2 },
+    { dataKey: 'exports', name: '出口当月值', strokeWidth: 2.5 },
+    { dataKey: 'imports', name: '进口当月值', strokeWidth: 2 },
+    { dataKey: 'surplus', name: '贸易顺差', strokeWidth: 2 },
   ];
 
   return (

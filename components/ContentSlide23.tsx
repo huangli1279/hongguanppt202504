@@ -3,21 +3,20 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { fixedAssetInvestmentData, privateInvestmentData } from '@/data/fixedAssetInvestment';
-import { chartColors, seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide23: React.FC = () => {
   // 固定资产投资关键分项折线图配置
   const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'fixedAsset', name: '固定资产投资', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'manufacturing', name: '制造业投资', color: chartColors.positive, strokeWidth: 2 },
-    { dataKey: 'realEstate', name: '房地产开发投资', color: chartColors.negative, strokeWidth: 2 },
-    { dataKey: 'infrastructure', name: '基础设施建设投资', color: seriesColors[1], strokeWidth: 2 },
+    { dataKey: 'fixedAsset', name: '固定资产投资', strokeWidth: 2.5 },
+    { dataKey: 'manufacturing', name: '制造业投资', strokeWidth: 2 },
+    { dataKey: 'realEstate', name: '房地产开发投资', strokeWidth: 2 },
+    { dataKey: 'infrastructure', name: '基础设施建设投资', strokeWidth: 2 },
   ];
 
   // 民间投资与国有控股投资折线图配置
   const privateLineConfigs: LineConfig[] = [
-    { dataKey: 'privateInvestment', name: '民间固定资产投资', color: chartColors.primary, strokeWidth: 2.5 },
-    { dataKey: 'stateOwned', name: '国有及国有控股资产投资', color: seriesColors[1], strokeWidth: 2 },
+    { dataKey: 'privateInvestment', name: '民间固定资产投资', strokeWidth: 2.5 },
+    { dataKey: 'stateOwned', name: '国有及国有控股资产投资', strokeWidth: 2 },
   ];
 
   return (

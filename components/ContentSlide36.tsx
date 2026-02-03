@@ -3,7 +3,6 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { moneySupplyData, moneySupplyScissorData } from '@/data/moneySupply';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide36: React.FC = () => {
   return (
@@ -32,8 +31,8 @@ export const ContentSlide36: React.FC = () => {
               title="2022-2025年中国货币供应量(M1/M2)同比"
               subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
-                { dataKey: 'm1', name: 'M1(货币)', color: chartColors.primary, strokeWidth: 2 },
-                { dataKey: 'm2', name: 'M2(货币和准货币)', color: chartColors.negative, strokeWidth: 2 },
+                { dataKey: 'm1', name: 'M1(货币)', strokeWidth: 2 },
+                { dataKey: 'm2', name: 'M2(货币和准货币)', strokeWidth: 2 },
               ]}
               yAxisDomain={[-5, 15]}
               showYAxis={true}
@@ -49,7 +48,7 @@ export const ContentSlide36: React.FC = () => {
               title="2022-2025年中国货币供应量剪刀差走势"
               subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
-                { dataKey: 'scissor', name: 'M1-M2剪刀差', color: chartColors.primary, strokeWidth: 2 },
+                { dataKey: 'scissor', name: 'M1-M2剪刀差', strokeWidth: 2 },
               ]}
               yAxisDomain={[-12, 0]}
               showYAxis={true}

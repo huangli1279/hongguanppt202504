@@ -16,7 +16,7 @@ import { uiColors, getSeriesColor } from '@/utils/chartColors';
 export interface StackedBarConfig {
   dataKey: string;
   name: string;
-  color: string;
+  color?: string;
 }
 
 export interface BaseStackedBarChartProps {
@@ -172,29 +172,32 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
             />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
-            {bars.map((bar, index) => (
-              <Bar
-                key={bar.dataKey}
-                name={bar.name}
-                dataKey={bar.dataKey}
-                fill={bar.color}
-                stackId="stack"
-                animationDuration={800}
-                animationBegin={0}
-                animationEasing="ease-out"
-              >
-                {showLabels && (
-                  <LabelList
-                    dataKey={bar.dataKey}
-                    position="inside"
-                    fill="#fff"
-                    fontSize={8}
-                    fontWeight={600}
-                    formatter={valueFormatter}
-                  />
-                )}
-              </Bar>
-            ))}
+            {bars.map((bar, index) => {
+              const barColor = bar.color ?? getSeriesColor(index);
+              return (
+                <Bar
+                  key={bar.dataKey}
+                  name={bar.name}
+                  dataKey={bar.dataKey}
+                  fill={barColor}
+                  stackId="stack"
+                  animationDuration={800}
+                  animationBegin={0}
+                  animationEasing="ease-out"
+                >
+                  {showLabels && (
+                    <LabelList
+                      dataKey={bar.dataKey}
+                      position="inside"
+                      fill="#fff"
+                      fontSize={8}
+                      fontWeight={600}
+                      formatter={valueFormatter}
+                    />
+                  )}
+                </Bar>
+              );
+            })}
           </BarChart>
         </ResponsiveContainer>
       </div>

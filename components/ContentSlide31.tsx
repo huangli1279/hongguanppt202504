@@ -4,7 +4,6 @@ import { BaseCard } from './BaseCard';
 import { BaseTable, ColumnConfig } from './BaseTable';
 import { BaseBarChart, BarConfig } from './BaseBarChart';
 import { exportRegionTrendData, exportCompositionData } from '@/data/exportRegion';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide31: React.FC = () => {
   // 表格列配置
@@ -20,8 +19,8 @@ export const ContentSlide31: React.FC = () => {
 
   // 柱状图配置
   const bars: BarConfig[] = [
-    { dataKey: 'y2024', name: '2024年', color: chartColors.secondary },
-    { dataKey: 'y2025', name: '2025年', color: chartColors.primary },
+    { dataKey: 'y2024', name: '2024年'},
+    { dataKey: 'y2025', name: '2025年'},
   ];
 
   return (

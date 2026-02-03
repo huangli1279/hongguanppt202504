@@ -3,7 +3,6 @@ import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { industrialProductionData } from '@/data/industry';
-import { chartColors, seriesColors } from '@/utils/chartColors';
 
 // 过滤掉春节异常值，保持yyyy-mm格式
 const chartData = industrialProductionData
@@ -51,8 +50,8 @@ export const ContentSlide11: React.FC = () => {
             title="规模以上工业增加值与出口交货值同比增速"
             subtitle="数据来源：国家统计局 | 单位：%"
             lines={[
-              { dataKey: 'industrialOutput', name: '规模以上工业增加值', color: chartColors.primary, strokeWidth: 2.5 },
-              { dataKey: 'exportDelivery', name: '出口交货值', color: seriesColors[1] },
+              { dataKey: 'industrialOutput', name: '规模以上工业增加值', strokeWidth: 2.5 },
+              { dataKey: 'exportDelivery', name: '出口交货值'},
             ]}
             yAxisDomain={[-2, 10]}
             showYAxis={true}

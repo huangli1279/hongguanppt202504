@@ -4,7 +4,6 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseBarChart } from './BaseBarChart';
 import { BaseStackedBarChart } from './BaseStackedBarChart';
 import { industryGrowthByIndustryData, industryContributionData2024 } from '@/data/industry';
-import { quarterColors, industryColors } from '@/utils/chartColors';
 
 export const ContentSlide05: React.FC = () => {
   return (
@@ -40,10 +39,10 @@ export const ContentSlide05: React.FC = () => {
               subtitle="单位: %"
               xAxisKey="industry"
               bars={[
-                { dataKey: '2025-03', name: '2025-03', color: quarterColors.Q1 },
-                { dataKey: '2025-06', name: '2025-06', color: quarterColors.Q2 },
-                { dataKey: '2025-09', name: '2025-09', color: quarterColors.Q3 },
-                { dataKey: '2025-12', name: '2025-12', color: quarterColors.Q4 },
+                { dataKey: '2025-03', name: '2025-03'},
+                { dataKey: '2025-06', name: '2025-06'},
+                { dataKey: '2025-09', name: '2025-09'},
+                { dataKey: '2025-12', name: '2025-12'},
               ]}
               legendOrder={['2025-03', '2025-06', '2025-09', '2025-12']}
               barSize={16}
@@ -57,9 +56,9 @@ export const ContentSlide05: React.FC = () => {
               title="2024-2025年三产业GDP当季同比拉动数据"
               subtitle="单位: 百分点"
               bars={[
-                { dataKey: 'primaryContrib', name: '第一产业拉动', color: industryColors.primary },
-                { dataKey: 'secondaryContrib', name: '第二产业拉动', color: industryColors.secondary },
-                { dataKey: 'tertiaryContrib', name: '第三产业拉动', color: industryColors.tertiary },
+                { dataKey: 'primaryContrib', name: '第一产业拉动'},
+                { dataKey: 'secondaryContrib', name: '第二产业拉动'},
+                { dataKey: 'tertiaryContrib', name: '第三产业拉动'},
               ]}
               legendOrder={['第一产业拉动', '第二产业拉动', '第三产业拉动']}
               barSize={20}

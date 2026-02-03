@@ -18,14 +18,14 @@ import { uiColors, getSeriesColor } from '@/utils/chartColors';
 export interface BarConfig {
   dataKey: string;
   name: string;
-  color: string;
+  color?: string;
   stackId?: string;
 }
 
 export interface BarLineConfig {
   dataKey: string;
   name: string;
-  color: string;
+  color?: string;
   strokeWidth?: number;
   yAxisId?: 'left' | 'right';
   unit?: string;
@@ -196,46 +196,52 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
             <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
-            {bars.map((bar, index) => (
-              <Bar
-                key={bar.dataKey}
-                name={bar.name}
-                dataKey={bar.dataKey}
-                fill={bar.color}
-                stackId={bar.stackId}
-                yAxisId={barAxisId}
-                animationDuration={800}
-                animationBegin={0}
-                animationEasing="ease-out"
-                radius={bar.stackId ? 0 : [2, 2, 0, 0]}
-              >
-                {showLabels && (
-                  <LabelList
-                    dataKey={bar.dataKey}
-                    position="top"
-                    fill={bar.color}
-                    fontSize={9}
-                    fontWeight={600}
-                  />
-                )}
-              </Bar>
-            ))}
-            {hasLines &&
-              lines?.map((line) => (
-                <Line
-                  key={line.dataKey}
-                  name={line.name}
-                  type="monotone"
-                  dataKey={line.dataKey}
-                  stroke={line.color}
-                  strokeWidth={line.strokeWidth || 2}
-                  dot={false}
-                  yAxisId={line.yAxisId || lineAxisId}
+            {bars.map((bar, index) => {
+              const barColor = bar.color ?? getSeriesColor(index);
+              return (
+                <Bar
+                  key={bar.dataKey}
+                  name={bar.name}
+                  dataKey={bar.dataKey}
+                  fill={barColor}
+                  stackId={bar.stackId}
+                  yAxisId={barAxisId}
                   animationDuration={800}
                   animationBegin={0}
                   animationEasing="ease-out"
-                />
-              ))}
+                  radius={bar.stackId ? 0 : [2, 2, 0, 0]}
+                >
+                  {showLabels && (
+                    <LabelList
+                      dataKey={bar.dataKey}
+                      position="top"
+                      fill={barColor}
+                      fontSize={9}
+                      fontWeight={600}
+                    />
+                  )}
+                </Bar>
+              );
+            })}
+            {hasLines &&
+              lines?.map((line, index) => {
+                const lineColor = line.color ?? getSeriesColor(index + bars.length);
+                return (
+                  <Line
+                    key={line.dataKey}
+                    name={line.name}
+                    type="monotone"
+                    dataKey={line.dataKey}
+                    stroke={lineColor}
+                    strokeWidth={line.strokeWidth || 2}
+                    dot={false}
+                    yAxisId={line.yAxisId || lineAxisId}
+                    animationDuration={800}
+                    animationBegin={0}
+                    animationEasing="ease-out"
+                  />
+                );
+              })}
           </ChartComponent>
         </ResponsiveContainer>
       </div>

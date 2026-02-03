@@ -3,7 +3,6 @@ import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { pmiTrendData, pmiByEnterpriseSizeData } from '@/data/pmi';
-import { chartColors, seriesColors } from '@/utils/chartColors';
 
 // 转换PMI趋势数据为图表格式
 const pmiChartData = pmiTrendData.map(d => ({
@@ -49,9 +48,9 @@ export const ContentSlide10: React.FC = () => {
               title="制造业PMI及分项指数"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'pmi', name: '制造业PMI', color: chartColors.primary, strokeWidth: 2.5 },
-                { dataKey: 'production', name: '生产', color: seriesColors[1] },
-                { dataKey: 'newOrders', name: '新订单', color: seriesColors[2] },
+                { dataKey: 'pmi', name: '制造业PMI', strokeWidth: 2.5 },
+                { dataKey: 'production', name: '生产'},
+                { dataKey: 'newOrders', name: '新订单'},
               ]}
               yAxisDomain={[46, 56]}
               showYAxis={true}
@@ -66,9 +65,9 @@ export const ContentSlide10: React.FC = () => {
               title="不同规模企业PMI"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'large', name: '大型企业', color: chartColors.primary, strokeWidth: 2.5 },
-                { dataKey: 'medium', name: '中型企业', color: seriesColors[1] },
-                { dataKey: 'small', name: '小型企业', color: seriesColors[2] },
+                { dataKey: 'large', name: '大型企业', strokeWidth: 2.5 },
+                { dataKey: 'medium', name: '中型企业'},
+                { dataKey: 'small', name: '小型企业'},
               ]}
               yAxisDomain={[44, 54]}
               showYAxis={true}

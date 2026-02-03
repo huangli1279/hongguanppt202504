@@ -4,7 +4,6 @@ import { BaseLineChart } from './BaseLineChart';
 import { BaseBarChart } from './BaseBarChart';
 import { BaseCard } from './BaseCard';
 import { socialFinancingGrowthData, socialFinancingStructureData } from '@/data/socialFinancing';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide37: React.FC = () => {
   return (
@@ -30,7 +29,7 @@ export const ContentSlide37: React.FC = () => {
               title="2024-2025年社融存量规模同比增速"
               subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
-                { dataKey: 'growth', name: '社融存量同比增速', color: chartColors.primary, strokeWidth: 2 },
+                { dataKey: 'growth', name: '社融存量同比增速', strokeWidth: 2 },
               ]}
               yAxisDomain={[7, 10]}
               showYAxis={true}
@@ -44,8 +43,8 @@ export const ContentSlide37: React.FC = () => {
               subtitle="数据来源：中国人民银行 | 单位：亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'q24', name: '24Q4', color: chartColors.grey400 },
-                { dataKey: 'q25', name: '25Q4', color: chartColors.primary },
+                { dataKey: 'q24', name: '24Q4'},
+                { dataKey: 'q25', name: '25Q4'},
               ]}
               yAxisDomain={[-10000, 45000]}
               showYAxis={true}

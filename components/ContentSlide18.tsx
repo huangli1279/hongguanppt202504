@@ -3,7 +3,6 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
 import { cityRetailData, urbanRuralRetailData } from '@/data/cityRetail';
-import { chartColors, seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide18: React.FC = () => {
   return (
@@ -33,10 +32,10 @@ export const ContentSlide18: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               data={cityRetailData}
               lines={[
-                { dataKey: 'guangzhou', name: '广州', color: chartColors.primary, strokeWidth: 2.5 },
-                { dataKey: 'shenzhen', name: '深圳', color: seriesColors[1] },
-                { dataKey: 'shanghai', name: '上海', color: seriesColors[2] },
-                { dataKey: 'beijing', name: '北京', color: chartColors.negative, strokeWidth: 2.5 },
+                { dataKey: 'guangzhou', name: '广州', strokeWidth: 2.5 },
+                { dataKey: 'shenzhen', name: '深圳'},
+                { dataKey: 'shanghai', name: '上海'},
+                { dataKey: 'beijing', name: '北京', strokeWidth: 2.5 },
               ]}
               yAxisDomain={[-6, 8]}
               showYAxis={true}
@@ -52,8 +51,8 @@ export const ContentSlide18: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               data={urbanRuralRetailData}
               lines={[
-                { dataKey: 'rural', name: '社会消费品零售总额:乡村', color: chartColors.primary, strokeWidth: 2.5 },
-                { dataKey: 'urban', name: '社会消费品零售总额:城镇', color: seriesColors[1] },
+                { dataKey: 'rural', name: '社会消费品零售总额:乡村', strokeWidth: 2.5 },
+                { dataKey: 'urban', name: '社会消费品零售总额:城镇'},
               ]}
               yAxisDomain={[2, 7]}
               showYAxis={true}

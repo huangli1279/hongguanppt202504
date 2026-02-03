@@ -4,14 +4,13 @@ import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseTable, ColumnConfig } from './BaseTable';
 import { fiscalRevenueTrendData, taxCategoryData } from '@/data/fiscalRevenue';
-import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide33: React.FC = () => {
   // 折线图配置
   const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', color: chartColors.primary, strokeWidth: 2 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', color: chartColors.secondary, strokeWidth: 2 },
-    { dataKey: 'total', name: '合计', color: chartColors.tertiary, strokeWidth: 2.5 },
+    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2 },
+    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2 },
+    { dataKey: 'total', name: '合计', strokeWidth: 2.5 },
   ];
 
   // 表格列配置
