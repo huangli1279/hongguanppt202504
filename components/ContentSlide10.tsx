@@ -24,29 +24,19 @@ const enterpriseSizeChartData = pmiByEnterpriseSizeData.map(d => ({
 export const ContentSlide10: React.FC = () => {
   return (
     <BaseContentSlide
-      title={
-        <>
-          12月制造业PMI录得50.1%实现景气反转，
-          <span className="text-webank-accent">政策发力与"抢出口"效应驱动产需双升</span>
-        </>
-      }
+      title="1月制造业PMI49.3%，重回收缩区间"
+      cardColumns={2}
       cards={
         <>
-          <BaseCard title="景气度反转" delay="200ms" variant="accent">
+          <BaseCard title="春节效应前置" delay="200ms" variant="accent">
             <p>
-              12月PMI升至 <span className="font-bold">50.1%</span> (+0.9pct)，为4月以来首次扩张。超出市场预期 (49.2%)，显示稳增长政策效果集中显现。
+              12月PMI因"抢出口"及春节错位赶工影响出现超季节性反弹（达50.1%），1月PMI受春节劳动密集型行业工人返乡和上月基数影响回落幅度较大。
             </p>
           </BaseCard>
 
-          <BaseCard title="供需同步改善" delay="400ms">
+          <BaseCard title="结构明显分化" delay="400ms">
             <p>
-              生产指数 (<span className="font-bold">51.7%</span>) 创近期新高；受海外节假日、关税预期下的"抢出口"及春节错位赶工影响，新订单指数 (<span className="font-bold">50.8%</span>) 重回荣枯线以上，外需短期韧性超预期，供需缺口收窄。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="结构明显分化" delay="600ms">
-            <p>
-              大型企业 (<span className="font-bold">50.8%</span>) 受益于"两重"资金落地领跑；小型企业 (<span className="font-bold">48.6%</span>) 虽有回升但仍处收缩。高技术制造业 (<span className="font-bold">52.5%</span>) 持续高景气。
+              大型企业 (<span className="font-bold">50.3%</span>) 受益于"两重"政策仍保持在扩张区间，中小型企业均位于收缩区间且低于临界值，但高技术制造业 (<span className="font-bold">52%</span>) 连续两个月持续高景气。
             </p>
           </BaseCard>
         </>

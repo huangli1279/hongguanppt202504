@@ -60,9 +60,9 @@ export const ContentSlide20: React.FC = () => {
               2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第四季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
             </p>
           </BaseCard>
-          <BaseCard title="消费倾向解析" delay="400ms">
+          <BaseCard title="CPI结构性分化显著" delay="400ms">
             <p>
-              四季度CPI主要受鲜菜季节性减产与全球金价避险（其他用品和服务维持高增）上涨驱动，消费品"以旧换新"等提振消费政策持续显效，推动了家用器具等消费品的需求与价格。
+              四季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金价属其他用品类）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。相反，猪肉CPI下半年转负深跌，养殖户恐慌性的加速出栏，叠加消费端缺乏强劲反弹为主要原因。
             </p>
           </BaseCard>
         </div>
