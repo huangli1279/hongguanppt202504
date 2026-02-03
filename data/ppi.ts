@@ -3,6 +3,8 @@
 export interface PpiDataPoint {
   period: string;
   ppiYoy: number;
+  productionMaterialsYoy: number;
+  livingGoodsYoy: number;
 }
 
 // PPI 分行业环比数据点
@@ -50,30 +52,30 @@ export interface CommodityPriceDataPoint {
 
 // PPI 同比数据
 export const ppiYoyData: PpiDataPoint[] = [
-  { period: '2024-01', ppiYoy: -2.50 },
-  { period: '2024-02', ppiYoy: -2.70 },
-  { period: '2024-03', ppiYoy: -2.80 },
-  { period: '2024-04', ppiYoy: -2.50 },
-  { period: '2024-05', ppiYoy: -1.40 },
-  { period: '2024-06', ppiYoy: -0.80 },
-  { period: '2024-07', ppiYoy: -0.80 },
-  { period: '2024-08', ppiYoy: -1.80 },
-  { period: '2024-09', ppiYoy: -2.80 },
-  { period: '2024-10', ppiYoy: -2.90 },
-  { period: '2024-11', ppiYoy: -2.50 },
-  { period: '2024-12', ppiYoy: -2.30 },
-  { period: '2025-01', ppiYoy: -2.30 },
-  { period: '2025-02', ppiYoy: -2.20 },
-  { period: '2025-03', ppiYoy: -2.50 },
-  { period: '2025-04', ppiYoy: -2.70 },
-  { period: '2025-05', ppiYoy: -3.30 },
-  { period: '2025-06', ppiYoy: -3.60 },
-  { period: '2025-07', ppiYoy: -3.60 },
-  { period: '2025-08', ppiYoy: -2.90 },
-  { period: '2025-09', ppiYoy: -2.30 },
-  { period: '2025-10', ppiYoy: -2.10 },
-  { period: '2025-11', ppiYoy: -2.20 },
-  { period: '2025-12', ppiYoy: -1.90 },
+  { period: '2024-01', ppiYoy: -2.5, productionMaterialsYoy: -3.0, livingGoodsYoy: -1.1 },
+  { period: '2024-02', ppiYoy: -2.7, productionMaterialsYoy: -3.4, livingGoodsYoy: -0.9 },
+  { period: '2024-03', ppiYoy: -2.8, productionMaterialsYoy: -3.5, livingGoodsYoy: -1.0 },
+  { period: '2024-04', ppiYoy: -2.5, productionMaterialsYoy: -3.1, livingGoodsYoy: -0.9 },
+  { period: '2024-05', ppiYoy: -1.4, productionMaterialsYoy: -1.6, livingGoodsYoy: -0.8 },
+  { period: '2024-06', ppiYoy: -0.8, productionMaterialsYoy: -0.8, livingGoodsYoy: -0.8 },
+  { period: '2024-07', ppiYoy: -0.8, productionMaterialsYoy: -0.7, livingGoodsYoy: -1.0 },
+  { period: '2024-08', ppiYoy: -1.8, productionMaterialsYoy: -2.0, livingGoodsYoy: -1.1 },
+  { period: '2024-09', ppiYoy: -2.8, productionMaterialsYoy: -3.3, livingGoodsYoy: -1.3 },
+  { period: '2024-10', ppiYoy: -2.9, productionMaterialsYoy: -3.3, livingGoodsYoy: -1.6 },
+  { period: '2024-11', ppiYoy: -2.5, productionMaterialsYoy: -2.9, livingGoodsYoy: -1.4 },
+  { period: '2024-12', ppiYoy: -2.3, productionMaterialsYoy: -2.6, livingGoodsYoy: -1.4 },
+  { period: '2025-01', ppiYoy: -2.3, productionMaterialsYoy: -2.6, livingGoodsYoy: -1.2 },
+  { period: '2025-02', ppiYoy: -2.2, productionMaterialsYoy: -2.5, livingGoodsYoy: -1.2 },
+  { period: '2025-03', ppiYoy: -2.5, productionMaterialsYoy: -2.8, livingGoodsYoy: -1.5 },
+  { period: '2025-04', ppiYoy: -2.7, productionMaterialsYoy: -3.1, livingGoodsYoy: -1.6 },
+  { period: '2025-05', ppiYoy: -3.3, productionMaterialsYoy: -4.0, livingGoodsYoy: -1.4 },
+  { period: '2025-06', ppiYoy: -3.6, productionMaterialsYoy: -4.4, livingGoodsYoy: -1.4 },
+  { period: '2025-07', ppiYoy: -3.6, productionMaterialsYoy: -4.3, livingGoodsYoy: -1.6 },
+  { period: '2025-08', ppiYoy: -2.9, productionMaterialsYoy: -3.2, livingGoodsYoy: -1.7 },
+  { period: '2025-09', ppiYoy: -2.3, productionMaterialsYoy: -2.4, livingGoodsYoy: -1.7 },
+  { period: '2025-10', ppiYoy: -2.1, productionMaterialsYoy: -2.4, livingGoodsYoy: -1.4 },
+  { period: '2025-11', ppiYoy: -2.2, productionMaterialsYoy: -2.4, livingGoodsYoy: -1.5 },
+  { period: '2025-12', ppiYoy: -1.9, productionMaterialsYoy: -2.1, livingGoodsYoy: -1.3 },
 ];
 
 // PPI 月度同比明细数据
