@@ -17,16 +17,11 @@ export const ContentSlide33: React.FC = () => {
   // 表格列配置
   const columns: ColumnConfig[] = [
     { key: 'taxType', title: '税种', align: 'left' },
-    { key: 'amount', title: '税额(亿元)', align: 'right', render: (val) => val.toLocaleString() },
+    { key: 'amount', title: '税额(亿元)', align: 'right' },
     { 
       key: 'growth', 
       title: '累计增速(%)', 
-      align: 'right',
-      render: (val) => {
-        if (val === null) return <span className="text-slate-400">-</span>;
-        const color = val > 10 ? 'text-red-500' : val < 0 ? 'text-green-600' : 'text-slate-600';
-        return <span className={color}>{val.toFixed(1)}</span>;
-      }
+      align: 'right'
     },
   ];
 
@@ -77,7 +72,7 @@ export const ContentSlide33: React.FC = () => {
               subtitle="数据来源：财政部 | 单位：亿元、%"
               rowHeight="auto"
               striped={true}
-              colorizeNumbers={false}
+              colorizeNumbers={true}
               highlightRows={[5, 6]}
             />
           </ChartContainer>

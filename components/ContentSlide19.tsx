@@ -97,7 +97,7 @@ export const ContentSlide19: React.FC = () => {
             data={tableData}
             columns={columns}
             dateColumn="period"
-            colorizeNumbers={false}
+            colorizeNumbers={true}
             rowHeight="auto"
             stickyHeader={true}
           />

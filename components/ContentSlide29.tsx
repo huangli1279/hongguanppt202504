@@ -5,17 +5,6 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { exportTableData, ExportTableItem } from '@/data';
 
 export const ContentSlide29: React.FC = () => {
-  // 表格渲染辅助函数
-  const renderYoy = (val: number | null) => {
-    if (val === null) return <span className="text-slate-300">-</span>;
-    // 只有涨幅或降幅超过 5% 时才标色（正红负绿）
-    const isSignificant = Math.abs(val) > 5;
-    const color = isSignificant 
-      ? (val > 0 ? 'text-red-500' : 'text-green-600') 
-      : 'text-slate-600';
-    return <span className={`${color} font-medium`}>{val > 0 ? `+${val.toFixed(1)}` : val.toFixed(1)}</span>;
-  };
-
   const columns: ColumnConfig[] = [
     {
       key: 'name',
@@ -43,8 +32,7 @@ export const ContentSlide29: React.FC = () => {
         { 
           key: 'decAmount', 
           title: '金额', 
-          align: 'right',
-          render: (val) => <span className="text-[9px] leading-none">{val?.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) || <span className="text-slate-300">-</span>}</span>
+          align: 'right'
         }
       ]
     },
@@ -56,8 +44,7 @@ export const ContentSlide29: React.FC = () => {
         { 
           key: 'totalAmount', 
           title: '金额', 
-          align: 'right',
-          render: (val) => <span className="text-[9px] leading-none">{val?.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) || <span className="text-slate-300">-</span>}</span>
+          align: 'right'
         }
       ]
     },
@@ -66,8 +53,8 @@ export const ContentSlide29: React.FC = () => {
       title: '1-12月累计比去年同期±%',
       width: '26%',
       children: [
-        { key: 'yoy12Qty', title: '数量', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> },
-        { key: 'yoy12Amt', title: '金额', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> }
+        { key: 'yoy12Qty', title: '数量', align: 'right' },
+        { key: 'yoy12Amt', title: '金额', align: 'right' }
       ]
     },
     {
@@ -75,8 +62,8 @@ export const ContentSlide29: React.FC = () => {
       title: '1-6月累计比去年同期±%',
       width: '26%',
       children: [
-        { key: 'yoy6Qty', title: '数量', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> },
-        { key: 'yoy6Amt', title: '金额', align: 'right', render: (val) => <span className="text-[9px] leading-none">{renderYoy(val)}</span> }
+        { key: 'yoy6Qty', title: '数量', align: 'right' },
+        { key: 'yoy6Amt', title: '金额', align: 'right' }
       ]
     }
   ];
@@ -115,7 +102,7 @@ export const ContentSlide29: React.FC = () => {
               rowHeight="auto"
               striped={true}
               bordered={true}
-              colorizeNumbers={false}
+              colorizeNumbers={true}
             />
           </div>
           <div className="px-2 py-0 bg-slate-50 border-t border-slate-100 flex items-center h-4">

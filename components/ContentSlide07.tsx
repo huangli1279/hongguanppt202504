@@ -4,22 +4,62 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseTable, ColumnConfig } from './BaseTable';
 import { provinceGdpDataTop15, provinceGdpDataRest } from '@/data/provinceGdp';
 
+const extractGrowthNumber = (value: unknown): number | null => {
+  if (value === null || value === undefined) return null;
+  if (typeof value === 'number' && !Number.isNaN(value)) return value;
+  const parsed = parseFloat(String(value).replace('%', ''));
+  return Number.isNaN(parsed) ? null : parsed;
+};
+
+const getGrowthThresholds = (rows: Array<{ growth?: unknown }>) => {
+  const values = rows
+    .map(row => extractGrowthNumber(row.growth))
+    .filter((num): num is number => num !== null);
+
+  if (values.length === 0) {
+    return { p20: 0, p80: 0, count: 0 };
+  }
+
+  values.sort((a, b) => a - b);
+  const p20Index = Math.floor(values.length * 0.2);
+  const p80Index = Math.floor(values.length * 0.8);
+
+  return {
+    p20: values[p20Index],
+    p80: values[p80Index],
+    count: values.length
+  };
+};
+
+const growthThresholds = getGrowthThresholds([
+  ...provinceGdpDataTop15,
+  ...provinceGdpDataRest
+]);
+
+const renderGrowthValue = (value: unknown): React.ReactNode => {
+  const num = extractGrowthNumber(value);
+  if (num === null) {
+    return <span className="text-slate-400">-</span>;
+  }
+
+  const formatted = `${num.toFixed(1)}%`;
+  if (growthThresholds.count === 0) {
+    return <span className="text-slate-600">{formatted}</span>;
+  }
+  if (num >= growthThresholds.p80) {
+    return <span className="text-red-500">{formatted}</span>;
+  }
+  if (num <= growthThresholds.p20) {
+    return <span className="text-green-600">{formatted}</span>;
+  }
+  return <span className="text-slate-600">{formatted}</span>;
+};
+
 const tableColumns: ColumnConfig[] = [
   { 
     key: 'province', 
     title: '省份', 
-    align: 'center',
-    render: (value, row) => {
-      const isTarget = value === '江苏' || value === '山东';
-      const num = parseFloat(row.growth);
-      const isLowGrowth = !isNaN(num) && num < 5.0;
-      
-      let className = '';
-      if (isTarget) className = 'text-red-600 font-bold';
-      else if (isLowGrowth) className = 'text-green-600 font-bold';
-      
-      return <span className={className}>{value}</span>;
-    }
+    align: 'center'
   },
   { 
     key: 'gdp', 
@@ -30,17 +70,7 @@ const tableColumns: ColumnConfig[] = [
     key: 'growth', 
     title: '增速', 
     align: 'center',
-    render: (value, row) => {
-      const isTarget = row.province === '江苏' || row.province === '山东';
-      const num = parseFloat(value);
-      const isLowGrowth = !isNaN(num) && num < 5.0;
-      
-      let className = '';
-      if (isTarget) className = 'text-red-600 font-bold';
-      else if (isLowGrowth) className = 'text-green-600 font-bold';
-      
-      return <span className={className}>{value}</span>;
-    }
+    render: value => renderGrowthValue(value)
   },
 ];
 

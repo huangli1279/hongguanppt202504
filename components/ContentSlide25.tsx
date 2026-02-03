@@ -71,7 +71,7 @@ export const ContentSlide25: React.FC = () => {
             title="2025年基础设施建设相关行业固定资产投资累计增长数据"
             subtitle="数据来源：国家统计局 | 单位：%"
             dateColumn="period"
-            colorizeNumbers={false}
+            colorizeNumbers={true}
             rowHeight="auto"
             stickyHeader={true}
           />
