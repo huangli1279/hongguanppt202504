@@ -151,19 +151,19 @@ export const ContentSlide12: React.FC = () => {
         <>
           <BaseCard title="装备制造：强支撑" delay="200ms" variant="accent">
             <p>
-              装备制造业整体保持稳健。铁路船舶(12月<span className="font-bold">+9.2%</span>)、通用设备(<span className="font-bold">+7.5%</span>)等行业表现出色，虽然部分行业如电气机械(+4.3%)增速有所回落，但支撑作用依然稳固。
+              装备制造业整体保持稳健。汽车(<span className="font-bold">+8.3%</span>)、通用设备(<span className="font-bold">+7.5%</span>)表现出色，电气机械(<span className="font-bold">+4.3%</span>)增速有所回落。
             </p>
           </BaseCard>
 
           <BaseCard title="高技术制造：回升向好" delay="400ms">
             <p>
-              12月高技术制造业增长<span className="font-bold">11.0%</span>，维持高位运行。汽车制造业增加值增长<span className="font-bold">8.3%</span>，电子设备制造业增长<span className="font-bold">11.8%</span>，展现出强劲的增长动能。
+              12月高技术制造业增长<span className="font-bold">11.0%</span>，维持高位运行。电子设备制造业增长<span className="font-bold">11.8%</span>，铁路船舶增长<span className="font-bold">9.2%</span>，展现出强劲的增长动能。
             </p>
           </BaseCard>
 
           <BaseCard title="传统行业：边际改善" delay="600ms">
             <p>
-              传统行业年末出现回暖；医药制造业(12月<span className="font-bold">+7.0%</span>)、橡胶和塑料制品业(<span className="font-bold">+4.2%</span>)较前期均有明显改善，行业间的分化态势呈现修复迹象。
+              传统行业年末出现回暖；橡胶和塑料制品业(12月<span className="font-bold">+4.2%</span>)、化学制品(<span className="font-bold">+8%</span>)较前期有明显改善。
             </p>
           </BaseCard>
         </>

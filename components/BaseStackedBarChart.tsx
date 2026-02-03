@@ -34,21 +34,24 @@ export interface BaseStackedBarChartProps {
   showLabels?: boolean;
   unit?: string;
   xAxisInterval?: number;
+  valueFormatter?: (value: number) => string;
 }
 
-const CustomTooltip = ({ active, payload, label, unit = '' }: any) => {
+const CustomTooltip = ({ active, payload, label, unit = '', valueFormatter }: any) => {
   if (active && payload && payload.length) {
     const total = payload.reduce((sum: number, entry: any) => sum + entry.value, 0);
+    const formatValue = (val: number) => valueFormatter ? valueFormatter(val) : val;
+    
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}{unit}
+            {entry.name}: {formatValue(entry.value)}{unit}
           </p>
         ))}
         <p className="font-bold border-t border-slate-200 mt-1 pt-1">
-          合计: {total.toFixed(2)}{unit}
+          合计: {formatValue(total)}{unit}
         </p>
       </div>
     );
@@ -112,7 +115,8 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
   barSize = 24,
   showLabels = true,
   unit = '',
-  xAxisInterval = 2
+  xAxisInterval = 2,
+  valueFormatter
 }) => {
   const totalTicks = data.length;
   const renderCustomTick = (props: any) => {
@@ -162,7 +166,10 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
               tickLine={false}
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
             />
-            <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            <Tooltip 
+              content={<CustomTooltip unit={unit} valueFormatter={valueFormatter} />} 
+              cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} 
+            />
             <Legend content={<CustomLegend legendOrder={legendOrder} />} />
             
             {bars.map((bar, index) => (
@@ -183,6 +190,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
                     fill="#fff"
                     fontSize={8}
                     fontWeight={600}
+                    formatter={valueFormatter}
                   />
                 )}
               </Bar>

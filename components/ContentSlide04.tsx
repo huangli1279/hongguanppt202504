@@ -3,7 +3,7 @@ import { BaseLineChart } from './BaseLineChart';
 import { BaseStackedBarChart } from './BaseStackedBarChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { gdpTrendData, deflatorData, gdpIndustryShareData } from '@/data/gdp';
+import { gdpTrendData, deflatorData, gdpIndustryValueData } from '@/data/gdp';
 import { chartColors, industryColors } from '@/utils/chartColors';
 
 export const ContentSlide04: React.FC = () => {
@@ -76,14 +76,15 @@ export const ContentSlide04: React.FC = () => {
           </ChartContainer>
           <ChartContainer delay="1200ms">
             <BaseStackedBarChart
-              data={gdpIndustryShareData}
-              title="2024-2025年三大产业GDP占比"
-              subtitle="单位：万亿"
-              yAxisDomain={[0, 110]}
+              data={gdpIndustryValueData}
+              title="2024-2025年三大产业GDP当季值"
+              subtitle="单位：万亿元"
+              yAxisDomain={[0, 45]}
               showYAxis={true}
-              unit="%"
+              unit="万亿"
               barSize={20}
               legendOrder={['第一产业', '第二产业', '第三产业']}
+              valueFormatter={(val: number) => val.toFixed(2)}
               bars={[
                 { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
                 { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },

@@ -33,7 +33,7 @@ export const ContentSlide11: React.FC = () => {
 
           <BaseCard title="设备更新政策支撑新质生产力" delay="400ms">
             <p>
-              制造业是核心动力：2025年制造业增加值增长 <span className="font-bold">6.4%</span>，采矿业增长5.6%，设备更新政策支撑装备制造业增加<span className="font-bold">9.2%</span>，占规上工业比重提升至36.8%（较上年提高2.2个百分点），其中汽车、电子行业增速分别达<span className="font-bold">11.5%</span>和<span className="font-bold">10.6%</span>。
+              制造业是核心动力：设备更新政策支撑装备制造业规上工业增加值增长<span className="font-bold">9.2%</span>，占规上工业比重提升至<span className="font-bold">36.8%</span>（较上年提高2.2个百分点），其中汽车、电子行业增速分别达<span className="font-bold">11.5%</span>和<span className="font-bold">10.6%</span>。
             </p>
           </BaseCard>
 

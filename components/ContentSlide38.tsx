@@ -24,13 +24,13 @@ export const ContentSlide38: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="12月居民贷款罕见净偿还916亿元，避险情绪驱动存款回流银行体系"
+      title="12月居民贷款罕见净偿还916亿元，住户贷款全年原地踏步"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="企业扩表 居民缩表" delay="200ms" variant="accent">
-            企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，四季度出现逐月萎缩态势（10月：83.6万亿到12月：83.3万亿），主要受房地产销售持续低迷及"提前还贷潮"拖累，导致居民端实质性缩表。
+            企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，四季度出现了逐月萎缩态势（10月83.6万亿到12月83.3万亿），主要受房地产销售持续低迷及"提前还贷潮"拖累，导致居民端实质性缩表。
           </BaseCard>
         </div>
 
@@ -44,8 +44,11 @@ export const ContentSlide38: React.FC = () => {
               subtitle="单位：亿元"
               rowHeight="auto"
               stickyHeader={true}
-              colorizeNumbers={true}
+              colorizeNumbers={false}
               dateColumn="period"
+              getRowClassName={(row) =>
+                ['2025-10', '2025-11', '2025-12'].includes(row.period) ? 'font-bold text-webank-blue' : ''
+              }
             />
           </ChartContainer>
         </div>

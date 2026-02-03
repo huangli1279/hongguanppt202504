@@ -37,6 +37,18 @@ export const gdpIndustryShareData = [
   { period: '2025-12', primary: 6.66, secondary: 35.64, tertiary: 57.70 },
 ];
 
+// 三大产业GDP当季值数据
+export const gdpIndustryValueData = [
+  { period: '2024-03', primary: 1.1538, secondary: 10.9846, tertiary: 17.4915 },
+  { period: '2024-06', primary: 1.9122, secondary: 12.6684, tertiary: 17.4731 },
+  { period: '2024-09', primary: 2.7073, secondary: 12.4832, tertiary: 18.1005 },
+  { period: '2024-12', primary: 3.4050, secondary: 13.5595, tertiary: 20.4081 },
+  { period: '2025-03', primary: 1.1713, secondary: 11.1903, tertiary: 19.5142 },
+  { period: '2025-06', primary: 1.9459, secondary: 12.7147, tertiary: 19.5172 },
+  { period: '2025-09', primary: 2.6889, secondary: 12.4970, tertiary: 20.2641 },
+  { period: '2025-12', primary: 3.5160, secondary: 13.6803, tertiary: 21.5948 },
+];
+
 export const deflatorData: DeflatorDataPoint[] = [
   { period: '2023-03', primary: 2.1, secondary: -1.5, tertiary: 1.8 },
   { period: '2023-06', primary: 1.5, secondary: -2.2, tertiary: 1.2 },

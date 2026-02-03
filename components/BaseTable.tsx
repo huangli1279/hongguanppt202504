@@ -30,8 +30,8 @@ export interface BaseTableProps {
   headerBgColor?: string;
   /** 表头文字颜色 */
   headerTextColor?: string;
-  /** 行高模式: compact | default | relaxed | auto (自适应容器高度) */
-  rowHeight?: 'compact' | 'default' | 'relaxed' | 'auto';
+  /** 行高模式: compact | default | relaxed | auto (自适应容器高度) | dense (极简紧凑) */
+  rowHeight?: 'compact' | 'default' | 'relaxed' | 'auto' | 'dense';
   /** 是否固定表头 */
   stickyHeader?: boolean;
   /** 高亮行索引 */
@@ -44,9 +44,12 @@ export interface BaseTableProps {
   dateColumn?: string;
   /** 是否启用数值自动着色（正值红色，负值绿色，null显示"-"） */
   colorizeNumbers?: boolean;
+  /** 自定义行类名 */
+  getRowClassName?: (row: any, index: number) => string;
 }
 
 const rowHeightClasses = {
+  dense: 'py-0.5 text-[10px]',
   compact: 'py-1.5',
   default: 'py-2.5',
   relaxed: 'py-4',
@@ -103,7 +106,8 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   highlightColor = 'rgba(0, 169, 244, 0.1)',
   highlightColumnColor = 'rgba(0, 169, 244, 0.12)',
   dateColumn,
-  colorizeNumbers = true
+  colorizeNumbers = true,
+  getRowClassName
 }) => {
   const isAuto = rowHeight === 'auto';
   const isGrouped = hasGroupedColumns(columns);
@@ -172,6 +176,13 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     };
   }, [data, leafColumns, dateColumn, colorizeNumbers]);
 
+  const formatNumber = (num: number): string => {
+    return num.toLocaleString('en-US', {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    });
+  };
+
   // 数值着色渲染：前20%红色，后20%绿色，其他正常
   const renderColorizedNumber = (value: any, customRed?: number, customGreen?: number): React.ReactNode => {
     if (value === null || value === undefined) {
@@ -182,7 +193,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
       return value;
     }
     
-    const formatted = num.toFixed(1);
+    const formatted = formatNumber(num);
     const redLimit = customRed ?? allNumbers.p80;
     const greenLimit = customGreen ?? allNumbers.p20;
     
@@ -209,7 +220,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
       if (colorizeNumbers) {
         return renderColorizedNumber(value, col.redThreshold, col.greenThreshold);
       }
-      return value.toFixed(1);
+      return formatNumber(value);
     }
 
     // 处理空值
@@ -319,11 +330,12 @@ export const BaseTable: React.FC<BaseTableProps> = ({
             {data.map((row, rowIndex) => {
               const highlighted = isHighlighted(rowIndex);
               const stripedBg = striped && rowIndex % 2 === 1 ? 'bg-slate-50' : 'bg-white';
+              const customRowClass = getRowClassName ? getRowClassName(row, rowIndex) : '';
 
               return (
                 <div
                   key={rowIndex}
-                  className={`${isGrouped ? 'grid' : 'flex'} flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg}`}
+                  className={`${isGrouped ? 'grid' : 'flex'} flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg} ${customRowClass}`}
                   style={{
                     ...(highlighted ? { backgroundColor: highlightColor } : undefined),
                     ...(isGrouped ? { gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))` } : {})
@@ -370,9 +382,9 @@ export const BaseTable: React.FC<BaseTableProps> = ({
           )}
         </div>
       )}
-      <div className="flex-grow min-h-0 overflow-auto">
+      <div className="flex-1 overflow-auto">
         <table
-          className={`w-full text-xs ${bordered ? 'border border-slate-200' : ''}`}
+          className={`w-full border-collapse ${rowHeight === 'dense' ? 'text-[10px]' : 'text-xs'} ${bordered ? 'border border-slate-200' : ''}`}
           style={{ tableLayout: 'fixed' }}
         >
           <thead className={stickyHeader ? 'sticky top-0 z-10' : ''}>
@@ -448,11 +460,12 @@ export const BaseTable: React.FC<BaseTableProps> = ({
             {data.map((row, rowIndex) => {
               const highlighted = isHighlighted(rowIndex);
               const stripedBg = striped && rowIndex % 2 === 1 ? 'bg-slate-50' : 'bg-white';
+              const customRowClass = getRowClassName ? getRowClassName(row, rowIndex) : '';
 
               return (
                 <tr
                   key={rowIndex}
-                  className={`${highlighted ? '' : stripedBg} transition-colors hover:bg-slate-100`}
+                  className={`${highlighted ? '' : stripedBg} transition-colors hover:bg-slate-100 ${customRowClass}`}
                   style={highlighted ? { backgroundColor: highlightColor } : undefined}
                 >
                   {leafColumns.map((col, colIndex) => (

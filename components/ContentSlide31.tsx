@@ -37,9 +37,9 @@ export const ContentSlide31: React.FC = () => {
               25年全年对美出口同比持续下跌，12月对美出口同比下降<span className="text-green-600 font-semibold"> 30.0%</span>。受前期关税政策滞后及高基数影响，拖累整体出口约 4.4 个百分点；对非美区域整体增长<span className="text-red-500 font-semibold"> 12.8%</span>。其中东盟增长<span className="text-red-500 font-semibold"> 11.1%</span>，非洲高增<span className="text-red-500 font-semibold"> 21.8%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="中间品需求" delay="400ms">
+          <BaseCard title="美国占比大幅下降，欧盟非洲占比增加" delay="400ms">
             <p>
-              新兴市场工业化进程提速，对我国中间品（集成电路、机电零部件等）和生产资料需求旺盛。产业链将中间品出口到这些“跳板国”，在当地进行简单组装，再转出口到美国/欧洲 ，以此规避关税壁垒，有效对冲美欧市场波动。
+              美国25年出口占比降低3.6%，东盟增加1.2%，非洲增加1%。新兴市场工业化进程提速，对我国中间品（集成电路、机电零部件等）和生产资料需求旺盛。产业链将中间品出口到这些“跳板国”，在当地进行简单组装，再转出口到美国/欧洲 ，以此规避关税壁垒，有效对冲美欧市场波动。
             </p>
           </BaseCard>
         </div>
