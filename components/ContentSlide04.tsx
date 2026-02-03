@@ -33,9 +33,9 @@ export const ContentSlide04: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="价格体系分化" delay="600ms">
+          <BaseCard title="平减指数回升" delay="600ms">
             <p>
-              <span className="text-red-600 font-semibold">Q4GDP平减指数-0.7%</span>，较Q3(-1.1%)收窄但仍连续11季为负。<span className="font-bold">产业分化显著：</span>二产-2.02%（核心拖累），三产+0.43%（率先转正）。Q4鲜菜等食品价格回升（CPI食品分项同比+1.1%）带动第一产业平减指数相较上一季度有较大提升。依赖"反内卷"限产政策及财政发力，PPI持续修复，拉动第二产业平减指数回升。
+              <span className="text-red-600 font-semibold">Q4GDP平减指数-0.7%</span>，较Q3(-1.1%)收窄但仍连续11季为负。三产+0.43%（率先转正）。Q4鲜菜等食品价格回升（CPI食品分项同比+1.1%）带动第一产业平减指数相较上一季度有较大提升。依赖"反内卷"限产政策及财政发力，PPI持续修复，拉动第二产业平减指数收窄至-2.02%。
             </p>
           </BaseCard>
         </>

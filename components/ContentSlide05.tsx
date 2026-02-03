@@ -11,8 +11,8 @@ export const ContentSlide05: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          结构性分析：产业分化
-          <span className="text-webank-accent">第三产业Q4增长5.2%支撑稳健，工业受建筑业拖累放缓</span>
+          产业分化：
+          <span className="text-webank-accent">第三产业Q4增长5.2%支撑稳健，建筑业拖累第二产业</span>
         </>
       }
       cardColumns={2}
