@@ -144,8 +144,7 @@ export const ContentSlide12: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          工业分化加剧：装备制造与高技术领跑，
-          <span className="text-webank-accent">传统行业拖累明显</span>
+          装备制造与高技术领跑，传统行业有所回暖
         </>
       }
       cards={
