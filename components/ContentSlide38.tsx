@@ -24,7 +24,7 @@ export const ContentSlide38: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="12月居民贷款罕见净偿还916亿元，住户贷款全年原地踏步"
+      title="四季度居民贷款规模下降，住户贷款全年原地踏步"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}

@@ -10,11 +10,11 @@ export const ContentSlide31: React.FC = () => {
   const columns: ColumnConfig[] = [
     { key: 'period', title: '月份', align: 'center' },
     { key: 'totalExport', title: '出口总值', align: 'right' },
-    { key: 'toUS', title: '对美', align: 'right' },
-    { key: 'toASEAN', title: '对东盟', align: 'right' },
-    { key: 'toAfrica', title: '对非洲', align: 'right' },
-    { key: 'toEU', title: '对欧盟', align: 'right' },
-    { key: 'toLatinAmerica', title: '对拉美', align: 'right' },
+    { key: 'toUS', title: '美国', align: 'right' },
+    { key: 'toASEAN', title: '东盟', align: 'right' },
+    { key: 'toAfrica', title: '非洲', align: 'right' },
+    { key: 'toEU', title: '欧盟', align: 'right' },
+    { key: 'toLatinAmerica', title: '拉美', align: 'right' },
   ];
 
   // 柱状图配置
@@ -31,14 +31,14 @@ export const ContentSlide31: React.FC = () => {
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="对美出口深跌，非美区域整体增长" delay="200ms" variant="accent">
+          <BaseCard title="关税与高基数双重承压，对美出口显著下滑" delay="200ms" variant="accent">
             <p>
-              25年全年对美出口同比持续下跌，12月对美出口同比下降<span className="text-green-600 font-semibold"> 30.0%</span>。受前期关税政策滞后及高基数影响，拖累整体出口约 4.4 个百分点；对非美区域整体增长<span className="text-red-500 font-semibold"> 12.8%</span>。其中东盟增长<span className="text-red-500 font-semibold"> 11.1%</span>，非洲高增<span className="text-red-500 font-semibold"> 21.8%</span>。
+              25年受前期关税政策滞后及高基数影响，对美出口当月同比持续下跌，12月降至<span className="text-green-600 font-semibold"> 30.0%</span>，拖累当月整体出口约<span className="text-green-600 font-semibold"> 4.4%</span>。全年对美出口同比<span className="text-green-600 font-semibold"> -20.0%</span>，全年占比由 14.7% 降至 <span className="text-green-600 font-semibold">11.1%</span>，下降 3.6%。
             </p>
           </BaseCard>
-          <BaseCard title="美国占比大幅下降，欧盟非洲占比增加" delay="400ms">
+          <BaseCard title="非美市场表现强劲，“一带一路”出口占比过半" delay="400ms">
             <p>
-              美国25年出口占比降低3.6%，东盟增加1.2%，非洲增加1%。新兴市场工业化进程提速，对我国中间品（集成电路、机电零部件等）和生产资料需求旺盛。产业链将中间品出口到这些“跳板国”，在当地进行简单组装，再转出口到美国/欧洲 ，以此规避关税壁垒，有效对冲美欧市场波动。
+              25年对非美区域出口整体增长<span className="text-red-500 font-semibold"> 10%</span>，其中东盟增长<span className="text-red-500 font-semibold"> 13.4%</span>，非洲高增<span className="text-red-500 font-semibold"> 25.8%</span>。共建“一带一路”国家全年累计增速<span className="text-red-500 font-semibold"> 10.6%</span>，出口总值占比达<span className="text-red-500 font-semibold"> 50.7%</span>。新兴市场工业化进程提速，对我国中间品（集成电路、零部件等）和生产资料需求旺盛。产业链将中间品出口到“跳板国”，进行简单组装再转出口到欧美，以此规避关税壁垒，对冲欧美市场波动。
             </p>
           </BaseCard>
         </div>
