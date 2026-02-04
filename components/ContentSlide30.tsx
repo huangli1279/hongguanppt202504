@@ -88,7 +88,7 @@ export const ContentSlide30: React.FC = () => {
           </BaseCard>
           <BaseCard title="大宗商品呈现“价格红利”，汽车进口大幅下跌" delay="400ms">
             <p>
-              受全球大宗价格回落影响，原油（数量<span className="text-red-500 font-semibold">+4.4%</span>，金额<span className="text-green-500 font-semibold">-8.8%</span>）、铁矿砂（数量<span className="text-red-500 font-semibold">+1.8%</span>，金额<span className="text-green-500 font-semibold">-7.1%</span>）及大豆（数量<span className="text-red-500 font-semibold">+6.5%</span>，金额<span className="text-green-500 font-semibold">-4.6%</span>）均呈“量增价跌”态势，有效降低了国内原材料输入成本；煤炭与天然气呈现量价双降。汽车产业进口替代效应加速兑现，整车（金额<span className="text-green-500 font-semibold">-39.7%</span>）与零部件（金额<span className="text-green-500 font-semibold">-21.4%</span>）大幅回落，反映国产新能源车企统治力增强。
+              受全球大宗价格回落影响，原油（数量<span className="text-red-500 font-semibold">+4.4%</span>，金额<span className="text-green-500 font-semibold">-8.8%</span>）、大豆（数量<span className="text-red-500 font-semibold">+6.5%</span>，金额<span className="text-green-500 font-semibold">-4.6%</span>）均呈“量增价跌”态势，降低了国内原材料输入成本；煤炭与天然气呈现量价双降。汽车产业进口替代效应加速兑现，整车（金额<span className="text-green-500 font-semibold">-39.7%</span>）与零部件（金额<span className="text-green-500 font-semibold">-21.4%</span>）大幅回落，反映国产新能源车企统治力增强。
             </p>
           </BaseCard>
         </div>

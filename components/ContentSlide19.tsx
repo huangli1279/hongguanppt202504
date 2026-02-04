@@ -101,12 +101,12 @@ export const ContentSlide19: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="补贴效果显著，体育珠宝体现居民关注" delay="200ms" variant="accent">
             <p>
-              通讯器材类以全年 <span className="text-red-500 font-semibold">20.86%</span> 的累计增速领跑大盘，主要受益于对中高端机型的精准补贴（占总机型 72.5%）；家用电器（全年增速 <span className="text-emerald-600 font-semibold">11.0%</span>）、家具类（全年增速 <span className="text-emerald-600 font-semibold">14.62%</span>）受四季度补贴退坡影响，增速持续下降。体育娱乐用品全年 <span className="text-emerald-600 font-semibold">15.70%</span>，折射居民对健康投资与精神消费的持续热衷；金银珠宝类（全年 <span className="text-emerald-600 font-semibold">12.8%</span>）受金价高位运行与居民避险需求驱动，保持两位数增长。
+              通讯器材类以全年 <span className="text-red-500 font-semibold">20.86%</span> 的累计增速领跑大盘，主要受益于对中高端机型的精准补贴（占总机型 72.5%）；家用电器（ <span className="text-emerald-600 font-semibold">11.0%</span>）、家具类（ <span className="text-emerald-600 font-semibold">14.62%</span>）受四季度补贴退坡影响，增速持续下降。体育娱乐用品全年 <span className="text-emerald-600 font-semibold">15.70%</span>，折射居民对健康投资与精神消费的持续热衷；金银珠宝类（<span className="text-emerald-600 font-semibold">12.8%</span>）受金价高位运行与居民避险需求驱动，保持两位数增长。
             </p>
           </BaseCard>
           <BaseCard title="石油、汽车均以负增长收尾" delay="400ms">
             <p>
-              石油及制品类受油价下行与新能源替代双重挤压，全年增速呈现单边下行态势（年初 0.9% -&gt; 年底 <span className="text-red-500 font-semibold">-5.72%</span>）。汽车行业前三季度累计增速 <span className="text-emerald-600 font-semibold">0.8%</span>，但受补贴退坡和市场内卷影响，全年以 <span className="text-red-500 font-semibold">-1.5%</span> 的增长收尾。
+              石油及制品类受油价下行与新能源替代双重挤压，全年增速呈现单边下行态势（年初 0.9% -&gt; 年底 <span className="text-red-500 font-semibold">-5.72%</span>）。汽车行业前三季度增速 <span className="text-emerald-600 font-semibold">0.8%</span>，但受补贴退坡和市场内卷影响，全年增速以 <span className="text-red-500 font-semibold">-1.5%</span> 收尾。
             </p>
           </BaseCard>
         </div>

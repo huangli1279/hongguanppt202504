@@ -28,12 +28,12 @@ export const ContentSlide28: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="出口端：韧性与“抢跑”并存" delay="200ms" variant="accent">
             <p>
-              2025年全年出口总值达<span className="text-webank-blue font-semibold">3.77万亿美元</span>，同比增加<span className="text-green-600 font-semibold">5.5%</span>。受去年同期高基数（台风后补偿性出货）影响，10月出口同比下降<span className="text-red-500 font-semibold">1.1%</span>，为年内首次转负。12月出口同比回升至<span className="text-green-600 font-semibold">6.6%</span>，显著超市场预期，主要源于2026年关税及退税政策调整前的 “抢出口”效应。
+              2025年全年出口总值达<span className="text-webank-blue font-semibold">3.77万亿美元</span>，同比增加<span className="text-green-600 font-semibold">5.5%</span>。受去年同期高基数（台风后补偿性出货）影响，10月出口同比下降<span className="text-red-500 font-semibold">1.1%</span>，为年内首次转负。12月出口同比回升至<span className="text-green-600 font-semibold">6.6%</span>，主要源于2026年关税及退税政策调整前的<span className="font-semibold">“抢出口”效应</span>。
             </p>
           </BaseCard>
           <BaseCard title="进口端：内需结构性修复" delay="400ms">
             <p>
-              2025年全年进口总值<span className="text-webank-blue font-semibold">2.58万亿美元</span>，与去年<span className="text-slate-500 font-semibold">持平</span>。12月同比大幅回升至<span className="text-green-600 font-semibold">5.7%</span>，主要受春节错位带来的节前备货需求释放、国际大宗商品价格波动，以及国内半导体等硬科技产业在地缘政治焦虑下加速 “战略性补库”的驱动。
+              2025年全年进口总值<span className="text-webank-blue font-semibold">2.58万亿美元</span>，与去年<span className="text-slate-500 font-semibold">持平</span>。12月同比大幅回升至<span className="text-green-600 font-semibold">5.7%</span>，主要由于春节错位带来的节前备货需求释放和半导体等硬科技产业在地缘政治焦虑下加速<span className="font-semibold">“战略性补库”</span>的驱动。
             </p>
           </BaseCard>
           <BaseCard title="贸易顺差再创历史新高" delay="600ms">
