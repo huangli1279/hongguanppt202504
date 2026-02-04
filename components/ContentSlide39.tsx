@@ -22,6 +22,7 @@ export const ContentSlide39: React.FC = () => {
         { key: 'balanceHousehold', title: '住户', align: 'right' },
         { key: 'balanceNonFinancial', title: '非金融企业', align: 'right' },
         { key: 'balanceFiscal', title: '财政', align: 'right' },
+        { key: 'balanceFin', title: '非银金融机构', align: 'right' },
       ],
     },
     {
@@ -32,20 +33,20 @@ export const ContentSlide39: React.FC = () => {
         { key: 'increaseHousehold', title: '住户', align: 'right', render: renderIncrease },
         { key: 'increaseNonFinancial', title: '非金融企业', align: 'right', render: renderIncrease },
         { key: 'increaseFiscal', title: '财政', align: 'right', render: renderIncrease },
+        { key: 'increaseFin', title: '非银金融机构', align: 'right', render: renderIncrease },
       ],
     },
   ];
 
   return (
     <BaseContentSlide
-      title="存款总额增速回升，住户存款同比多增，企业存款增长乏力"
+      title="全年存款总额增速回升，住户存款增量同比持平，企业同比多增2.6万亿"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="住户存款为增长主力" delay="400ms">
-            12月末，人民币存款余额同比增速为8.7%，较11月末提升1个百分点，12月当月新增人民币存款1.68万亿元，同比多增3.08万亿；
-            12月住户存款新增2.58万亿，同比多增3900亿，非金融企业存款同比少增5857亿，企业资金活化程度不足
+          <BaseCard delay="400ms">
+            2025年人民币存款总额增加26.39万亿，较24年的17.99万亿增加46.7%。其中住户存款增加14.6万亿（24年14.2万亿），非银金融机构增加6.4万亿（24年约2.7万亿），非金融企业增加2.2万亿（24年-0.4万亿），财政增加0.7万亿（24年-0.2万亿）。
           </BaseCard>
         </div>
 

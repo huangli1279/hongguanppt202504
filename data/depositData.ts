@@ -4,13 +4,16 @@ export interface DepositDataPoint {
   balanceHousehold: number;
   balanceNonFinancial: number;
   balanceFiscal: number;
+  balanceFin: number;
   increaseTotal: number;
   increaseHousehold: number;
   increaseNonFinancial: number;
   increaseFiscal: number;
+  increaseFin: number;
 }
 
 const periods = [
+  '2024-12',
   '2025-01',
   '2025-02',
   '2025-03',
@@ -26,6 +29,7 @@ const periods = [
 ];
 
 const balanceTotal = [
+  3022537.95,
   3065512.47,
   3109697.9,
   3152232.44,
@@ -41,6 +45,7 @@ const balanceTotal = [
 ];
 
 const balanceHousehold = [
+  1512509.36,
   1567675.44,
   1573761.53,
   1604706.8,
@@ -56,6 +61,7 @@ const balanceHousehold = [
 ];
 
 const balanceNonFinancial = [
+  783649.1,
   780426.68,
   771491.53,
   799857.08,
@@ -71,6 +77,7 @@ const balanceNonFinancial = [
 ];
 
 const balanceFiscal = [
+  55812.16,
   59562.94,
   72116.15,
   64428.49,
@@ -85,7 +92,24 @@ const balanceFiscal = [
   62817.62
 ];
 
+const balanceFin = [
+  281865,
+  270772,
+  299058,
+  284994,
+  300704,
+  312604,
+  307404,
+  328804,
+  340604,
+  330004,
+  348504,
+  349304,
+  346004
+];
+
 const increaseTotal = [
+  -14000,
   43200,
   44200,
   42500,
@@ -101,6 +125,7 @@ const increaseTotal = [
 ];
 
 const increaseHousehold = [
+  21900,
   55200,
   6100,
   30900,
@@ -116,6 +141,7 @@ const increaseHousehold = [
 ];
 
 const increaseNonFinancial = [
+  18057,
   -2060,
   -8940,
   28400,
@@ -131,6 +157,7 @@ const increaseNonFinancial = [
 ];
 
 const increaseFiscal = [
+  -16725,
   3324,
   12576,
   -7710,
@@ -145,14 +172,34 @@ const increaseFiscal = [
   -13821
 ];
 
+const increaseFin = [
+  -31700,
+  -11100,
+  28300,
+  -14110,
+  15710,
+  11900,
+  -5200,
+  21400,
+  11800,
+  -10600,
+  18500,
+  800,
+  -3300
+];
+
+
+
 export const depositData: DepositDataPoint[] = periods.map((period, index) => ({
   period,
   balanceTotal: balanceTotal[index],
   balanceHousehold: balanceHousehold[index],
   balanceNonFinancial: balanceNonFinancial[index],
   balanceFiscal: balanceFiscal[index],
+  balanceFin: balanceFin[index],
   increaseTotal: increaseTotal[index],
   increaseHousehold: increaseHousehold[index],
   increaseNonFinancial: increaseNonFinancial[index],
-  increaseFiscal: increaseFiscal[index]
+  increaseFiscal: increaseFiscal[index],
+  increaseFin: increaseFin[index],
 }));

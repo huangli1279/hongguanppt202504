@@ -3,7 +3,7 @@ import { LucideIcon } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 export interface BaseCardProps {
-  title: string;
+  title?: string;
   children?: React.ReactNode;
   icon?: LucideIcon;
   delay?: string;
@@ -37,10 +37,12 @@ export const BaseCard: React.FC<BaseCardProps> = ({
       )}
       style={animated ? { animationDelay: delay } : undefined}
     >
-      <div className="flex items-center gap-2 text-webank-accent">
-        {Icon && <Icon size={18} />}
-        <h4 className="font-bold text-webank-blue text-sm uppercase">{title}</h4>
-      </div>
+      {(title || Icon) && (
+        <div className="flex items-center gap-2 text-webank-accent">
+          {Icon && <Icon size={18} />}
+          {title && <h4 className="font-bold text-webank-blue text-sm uppercase">{title}</h4>}
+        </div>
+      )}
       <div className="text-xs text-webank-text leading-relaxed">
         {children}
       </div>
