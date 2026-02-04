@@ -1,24 +1,27 @@
-// 工业企业利润数据
-// 数据来源：用户提供 (单月值)
+// 工业企业利润分项当月同比增加值
+// 数据来源：用户提供
+// 利润 = 营收 - 成本 - 费用 + 投资收益 + 其它收益
 
 export interface IndustrialProfitDataPoint {
-  time: string;
-  revenue: number;        // 营业收入_单月值_亿元
-  cost: number;           // 营业成本_单月值_亿元
-  operatingProfit: number; // 营业利润_单月值_亿元
-  totalProfit: number;    // 利润总额_单月值_亿元
-  investmentIncome: number; // 投资收益_单月值_亿元
+  time: string;           // 日期 (格式 "2502" 代表 "2025年2月")
+  totalProfit: number;    // 利润_亿元
+  revenue: number;        // 营收_亿元
+  cost: number;           // 成本_亿元
+  revenueMinusCost: number; // 营收 - 成本_亿元
+  expenses: number;       // 费用(不含研发费用)_亿元
+  investmentIncome: number; // 投资收益_亿元
 }
 
 export const industrialProfitData: IndustrialProfitDataPoint[] = [
-  { time: '2025-03', revenue: 120450.70, cost: 103369.90, operatingProfit: 5854.10, totalProfit: 5983.70, investmentIncome: 589.70 },
-  { time: '2025-04', revenue: 113023.40, cost: 97227.90, operatingProfit: 5909.10, totalProfit: 6096.60, investmentIncome: 635.40 },
-  { time: '2025-05', revenue: 113176.90, cost: 97197.50, operatingProfit: 5971.10, totalProfit: 6033.70, investmentIncome: 1019.30 },
-  { time: '2025-06', revenue: 120195.70, cost: 102399.10, operatingProfit: 7043.30, totalProfit: 7160.70, investmentIncome: 1838.60 },
-  { time: '2025-07', revenue: 112911.40, cost: 96518.70, operatingProfit: 5716.50, totalProfit: 5674.20, investmentIncome: 743.30 },
-  { time: '2025-08', revenue: 115528.60, cost: 98918.70, operatingProfit: 6608.00, totalProfit: 6726.20, investmentIncome: 1255.30 },
-  { time: '2025-09', revenue: 124614.80, cost: 106466.20, operatingProfit: 6690.40, totalProfit: 6770.90, investmentIncome: 930.30 },
-  { time: '2025-10', revenue: 112845.90, cost: 96594.30, operatingProfit: 5635.90, totalProfit: 5770.90, investmentIncome: 753.90 },
-  { time: '2025-11', revenue: 119702.50, cost: 101652.10, operatingProfit: 6666.80, totalProfit: 6765.70, investmentIncome: 574.80 },
-  { time: '2025-12', revenue: 139585.50, cost: 114452.00, operatingProfit: 7515.60, totalProfit: 7713.50, investmentIncome: 2587.10 },
+  { time: '2502', totalProfit: -27, revenue: 5417.8, cost: 4830.4, revenueMinusCost: 587.4, expenses: 22.8, investmentIncome: -154.8 },
+  { time: '2503', totalProfit: 146.4, revenue: 5009.9, cost: 4605.1, revenueMinusCost: 404.8, expenses: -80.5, investmentIncome: -237.8 },
+  { time: '2504', totalProfit: 176.4, revenue: 2945.8, cost: 2820.2, revenueMinusCost: 125.6, expenses: -233.1, investmentIncome: 66.8 },
+  { time: '2505', totalProfit: -602.9, revenue: 1235.8, cost: 1532.6, revenueMinusCost: -296.8, expenses: 76.5, investmentIncome: -91.2 },
+  { time: '2506', totalProfit: -318.9, revenue: 1456.6, cost: 1652.3, revenueMinusCost: -195.7, expenses: 46.7, investmentIncome: 229.7 },
+  { time: '2507', totalProfit: -86, revenue: 1212.2, cost: 1161.6, revenueMinusCost: 50.6, expenses: -1, investmentIncome: -51.9 },
+  { time: '2508', totalProfit: 1151.2, revenue: 2481.1, cost: 1929.8, revenueMinusCost: 551.3, expenses: -87.7, investmentIncome: 502.1 },
+  { time: '2509', totalProfit: 1209.4, revenue: 3850.9, cost: 3417.3, revenueMinusCost: 433.6, expenses: -619.7, investmentIncome: 264 },
+  { time: '2510', totalProfit: -557.9, revenue: -3774.7, cost: -3078.9, revenueMinusCost: -695.8, expenses: 99.9, investmentIncome: 277.1 },
+  { time: '2511', totalProfit: -1011.7, revenue: -11.6, cost: 294.3, revenueMinusCost: -305.9, expenses: 262.1, investmentIncome: -341.8 },
+  { time: '2512', totalProfit: 391.5, revenue: -4067.7, cost: -3460.8, revenueMinusCost: -606.9, expenses: 151.6, investmentIncome: 542.3 },
 ];
