@@ -33,8 +33,8 @@ export const ContentSlide17: React.FC = () => {
               data={retailTrendData}
               lines={[
                 { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
-                { dataKey: 'totalRetail', name: '社会消费品零售总额:累计同比'},
-                { dataKey: 'goodsRetail', name: '商品零售额:累计同比'},
+                { dataKey: 'totalRetail', name: '社会消费品零售总额:累计同比', labelDY: 12 },
+                { dataKey: 'goodsRetail', name: '商品零售额:累计同比', labelDY: -5 },
               ]}
               yAxisDomain={[0, 14]}
               showYAxis={true}
