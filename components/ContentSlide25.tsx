@@ -5,6 +5,14 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { infrastructureInvestmentData } from '@/data/infrastructureInvestment';
 
 export const ContentSlide25: React.FC = () => {
+  const formatValue = (value: any) => {
+    if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+    if (typeof value === 'number') {
+      return value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    }
+    return value;
+  };
+
   // 二级表头列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '日期', align: 'center' },
@@ -15,7 +23,12 @@ export const ContentSlide25: React.FC = () => {
         { key: 'transportTotal', title: '合计', align: 'right' },
         { key: 'railway', title: '铁路运输', align: 'right' },
         { key: 'road', title: '道路运输', align: 'right' },
-        { key: 'pipeline', title: '管道运输', align: 'right' },
+        { 
+          key: 'pipeline', 
+          title: '管道运输', 
+          align: 'right',
+          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
+        },
       ],
     },
     {
@@ -23,8 +36,30 @@ export const ContentSlide25: React.FC = () => {
       title: '水利、环境和公共设施管理业',
       children: [
         { key: 'waterEnvTotal', title: '合计', align: 'right' },
-        { key: 'ecoProtection', title: '生态环境', align: 'right' },
-        { key: 'publicFacility', title: '公共设施', align: 'right' },
+        { 
+          key: 'ecoProtection', 
+          title: '生态环境', 
+          align: 'right',
+          render: (val) => {
+            const formatted = formatValue(val);
+            if (typeof val === 'number' && val < 0) {
+              return <span className="text-green-600">{formatted}</span>;
+            }
+            return formatted;
+          }
+        },
+        { 
+          key: 'publicFacility', 
+          title: '公共设施', 
+          align: 'right',
+          render: (val) => {
+            const formatted = formatValue(val);
+            if (typeof val === 'number' && val < 0) {
+              return <span className="text-green-600">{formatted}</span>;
+            }
+            return formatted;
+          }
+        },
       ],
     },
     {
@@ -48,7 +83,7 @@ export const ContentSlide25: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="化债约束与挤出效应" delay="200ms" variant="accent">
             <p>
-              受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="text-red-500 font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
+              受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
             </p>
           </BaseCard>
           <BaseCard title="高度依赖地方财政的传统领域成为主要拖累" delay="400ms">
@@ -58,7 +93,7 @@ export const ContentSlide25: React.FC = () => {
           </BaseCard>
           <BaseCard title="符合国家长期战略的领域逆势高增" delay="600ms">
             <p>
-              与传统领域形成鲜明对比的是，服务于长期国家战略的领域实现强劲增长，电热气水投资全年增长<span className="text-green-600 font-semibold">9.1%</span>，管道运输业全年增长<span className="text-green-600 font-semibold">36%</span>。
+              与传统领域形成鲜明对比的是，服务于长期国家战略的领域实现强劲增长，电热气水投资全年增长<span className="font-semibold">9.1%</span>，管道运输业全年增长<span className="font-semibold">36%</span>。
             </p>
           </BaseCard>
         </div>
@@ -71,6 +106,7 @@ export const ContentSlide25: React.FC = () => {
             title="2025年基础设施建设相关行业固定资产投资累计增长数据"
             subtitle="数据来源：国家统计局 | 单位：%"
             dateColumn="period"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       </div>

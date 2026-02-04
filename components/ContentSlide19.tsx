@@ -25,10 +25,45 @@ export const ContentSlide19: React.FC = () => {
       title: '以旧换新类',
       children: [
         { key: 'cultureOffice', title: '文化办公', align: 'right' },
-        { key: 'furniture', title: '家具', align: 'right' },
-        { key: 'homeAppliances', title: '家电音像', align: 'right' },
-        { key: 'automobile', title: '汽车', align: 'right' },
-        { key: 'communication', title: '通讯器材', align: 'right' },
+        { 
+          key: 'furniture', 
+          title: '家具', 
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+          }
+        },
+        { 
+          key: 'homeAppliances', 
+          title: '家电音像', 
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+          }
+        },
+        { 
+          key: 'automobile', 
+          title: '汽车', 
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-green-600" : ""}>{formatted}</span>;
+          }
+        },
+        { 
+          key: 'communication', 
+          title: '通讯器材', 
+          align: 'right',
+          render: (val: any) => {
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className="text-red-500">{formatted}</span>;
+          }
+        },
       ],
     },
     {
@@ -43,7 +78,15 @@ export const ContentSlide19: React.FC = () => {
       key: 'group-energy',
       title: '能源类',
       children: [
-        { key: 'petroleumProducts', title: '石油及制品', align: 'right' },
+        { 
+          key: 'petroleumProducts', 
+          title: '石油及制品', 
+          align: 'right',
+          render: (val: any) => {
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className="text-green-600">{formatted}</span>;
+          }
+        },
       ],
     },
   ];
@@ -76,6 +119,7 @@ export const ContentSlide19: React.FC = () => {
             data={tableData}
             columns={columns}
             dateColumn="period"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       </div>
