@@ -72,33 +72,33 @@ const MetricBadge: React.FC<MetricBadgeProps> = ({ label, value, trend, delay })
 
 export const EconomicForecast2026Slide: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-white via-[#f7fbff] to-webank-grey flex flex-col relative overflow-hidden text-webank-text">
+    <div className="w-full h-full bg-white flex flex-col relative overflow-hidden text-webank-text">
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-webank-lightBlue/20 transform -skew-x-12 translate-x-20 animate-bg-slide-in"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-webank-accent/20 rounded-tr-full animate-bg-expand"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#002f52] transform -skew-x-12 translate-x-20 animate-bg-slide-in"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[#005c8f] rounded-tr-full animate-bg-expand"></div>
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: 'linear-gradient(rgba(5,28,44,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(5,28,44,.08) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(0,169,244,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,169,244,.15) 1px, transparent 1px)',
         backgroundSize: '40px 40px'
       }}></div>
 
       {/* Top decoration */}
-      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-webank-lightBlue via-emerald-400 to-webank-lightBlue animate-top-line"></div>
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#00a9f4] via-[#005c8f] to-[#00a9f4] animate-top-line"></div>
 
       {/* Content Container */}
       <div className="flex-1 flex flex-col px-12 pt-7 pb-12 z-10">
         {/* Header */}
         <header className="mb-5 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-bold text-webank-accent uppercase tracking-widest">
+            <span className="text-xs font-bold text-[#00a9f4] uppercase tracking-widest">
               2026年展望
             </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-webank-lightBlue/50 to-transparent"></span>
+            <span className="h-px flex-1 bg-gradient-to-r from-[#00a9f4]/60 to-transparent"></span>
           </div>
-          <h1 className="text-3xl font-serif font-bold leading-tight">
-            <span className="text-webank-blue">2026年中国经济预测：</span>
-            <span className="text-webank-accent">破局与重塑，迈向"新稳态"</span>
+          <h1 className="text-3xl font-serif font-bold leading-tight text-[#051c2c]">
+            <span>2026年中国经济预测：</span>
+            <span className="text-[#00a9f4]">破局与重塑，迈向"新稳态"</span>
           </h1>
         </header>
 
@@ -113,7 +113,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
           </div>
           <div className="col-span-5">
             <div
-              className="h-full py-3 px-4 bg-gradient-to-r from-webank-lightBlue/10 via-emerald-400/10 to-webank-lightBlue/10 rounded-lg border border-webank-lightBlue/20 opacity-0 animate-fade-in flex items-center"
+              className="h-full py-3 px-4 bg-white rounded-lg border border-webank-lightBlue/20 opacity-0 animate-fade-in flex items-center"
               style={{ animationDelay: '0.8s' }}
             >
               <p className="text-xs text-slate-600 leading-snug">
