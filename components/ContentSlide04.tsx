@@ -13,7 +13,7 @@ export const ContentSlide04: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          2025年GDP实现5.0%增长收官"十四五"，
+          2025年GDP实现5.0%增长，
           <span className="text-webank-accent">四季度增速回落至4.5%</span>
         </>
       }
