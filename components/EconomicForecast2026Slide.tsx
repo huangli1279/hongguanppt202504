@@ -7,9 +7,17 @@ interface ForecastCardProps {
   children: React.ReactNode;
   delay: string;
   variant?: 'positive' | 'neutral' | 'warning';
+  className?: string;
 }
 
-const ForecastCard: React.FC<ForecastCardProps> = ({ title, icon, children, delay, variant = 'neutral' }) => {
+const ForecastCard: React.FC<ForecastCardProps> = ({
+  title,
+  icon,
+  children,
+  delay,
+  variant = 'neutral',
+  className = '',
+}) => {
   const variantStyles = {
     positive: 'border-emerald-200 bg-emerald-50',
     neutral: 'border-webank-lightBlue/30 bg-white',
@@ -18,14 +26,14 @@ const ForecastCard: React.FC<ForecastCardProps> = ({ title, icon, children, dela
 
   return (
     <div
-      className={`rounded-lg border ${variantStyles[variant]} p-4 shadow-sm opacity-0 animate-fade-in-up`}
+      className={`rounded-lg border ${variantStyles[variant]} p-3 shadow-sm opacity-0 animate-fade-in-up ${className}`}
       style={{ animationDelay: delay }}
     >
       <div className="flex items-center gap-2 mb-2">
         <span className="text-webank-accent">{icon}</span>
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide">{title}</h3>
       </div>
-      <div className="text-xs text-slate-600 leading-relaxed">{children}</div>
+      <div className="text-xs text-slate-600 leading-snug">{children}</div>
     </div>
   );
 };
@@ -94,37 +102,72 @@ export const EconomicForecast2026Slide: React.FC = () => {
           </h1>
         </header>
 
-        {/* Key Metrics Row */}
-        <div className="grid grid-cols-5 gap-4 mb-6">
-          <MetricBadge label="GDP增速预测" value="4.5%" trend="stable" delay="0.3s" />
-          <MetricBadge label="固投增速" value="3.5%" trend="up" delay="0.4s" />
-          <MetricBadge label="社零增速" value="4.5%" trend="up" delay="0.5s" />
-          <MetricBadge label="出口增速" value="3-5%" trend="down" delay="0.6s" />
-          <MetricBadge label="CPI中枢" value="0.7-1%" trend="up" delay="0.7s" />
+        {/* Key Metrics + Keywords */}
+        <div className="grid grid-cols-12 gap-4 mb-4">
+          <div className="col-span-7 grid grid-cols-5 gap-3">
+            <MetricBadge label="GDP增速预测" value="4.5%" trend="stable" delay="0.3s" />
+            <MetricBadge label="固投增速" value="3.5%" trend="up" delay="0.4s" />
+            <MetricBadge label="社零增速" value="4.5%" trend="up" delay="0.5s" />
+            <MetricBadge label="出口增速" value="3-5%" trend="down" delay="0.6s" />
+            <MetricBadge label="CPI中枢" value="0.7-1%" trend="up" delay="0.7s" />
+          </div>
+          <div className="col-span-5">
+            <div
+              className="h-full py-3 px-4 bg-gradient-to-r from-webank-lightBlue/10 via-emerald-400/10 to-webank-lightBlue/10 rounded-lg border border-webank-lightBlue/20 opacity-0 animate-fade-in flex items-center"
+              style={{ animationDelay: '0.8s' }}
+            >
+              <p className="text-xs text-slate-600 leading-snug">
+                <span className="text-webank-accent font-semibold">2026年关键词：</span>
+                <span className="text-webank-blue">"温差收敛"</span> — 不仅关注实际GDP能否保5，更关注
+                <span className="text-emerald-600 font-semibold">名义GDP能否回升</span>。
+                随着"反内卷"带来的价格修复和"十五五"新基建启动，企业盈利和居民收入体感将比2025年有明显改善。
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Main Content Grid */}
-        <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
-          {/* Column 1: Core Outlook */}
-          <div className="flex flex-col gap-4">
-            <ForecastCard
-              title="核心定调"
-              icon={<Target size={16} />}
-              delay="0.5s"
-              variant="positive"
-            >
-              <p className="mb-2">
-                <span className="text-emerald-600 font-semibold">周期切换</span>：从"前高后低、供强需弱"转向
-                <span className="text-webank-blue font-medium">"前低后高、内需修复"</span>
-              </p>
-              <p className="mb-2">
-                <span className="text-emerald-600 font-semibold">GDP平减指数有望转正</span>，名义GDP增速将反超实际GDP增速，企业利润与居民收入体感显著改善
-              </p>
-              <p>
-                <span className="text-slate-500">核心驱动：</span>"十五五"重大项目开工 + "两新"政策接续 + 出口结构性韧性
-              </p>
-            </ForecastCard>
+        <div className="flex-1 grid grid-cols-12 gap-3 min-h-0">
+          {/* Row 1 */}
+          <ForecastCard
+            className="col-span-8 row-start-1"
+            title="核心定调"
+            icon={<Target size={16} />}
+            delay="0.5s"
+            variant="positive"
+          >
+            <p className="mb-2">
+              <span className="text-emerald-600 font-semibold">周期切换</span>：从"前高后低、供强需弱"转向
+              <span className="text-webank-blue font-medium">"前低后高、内需修复"</span>
+            </p>
+            <p className="mb-2">
+              <span className="text-emerald-600 font-semibold">GDP平减指数有望转正</span>，名义GDP增速将反超实际GDP增速，企业利润与居民收入体感显著改善
+            </p>
+            <p>
+              <span className="text-slate-500">核心驱动：</span>"十五五"重大项目开工 + "两新"政策接续 + 出口结构性韧性
+            </p>
+          </ForecastCard>
 
+          <ForecastCard
+            className="col-span-4 row-start-1"
+            title="政策组合拳"
+            icon={<Target size={16} />}
+            delay="0.7s"
+            variant="neutral"
+          >
+            <p className="mb-2">
+              <span className="text-webank-accent font-semibold">财政更积极</span>：赤字率预计提升至4.0%-4.2%，投向从基建转向"民生+基建"并重
+            </p>
+            <p className="mb-2">
+              <span className="text-webank-accent font-semibold">货币适度宽松</span>：预计1-2次降准（50BP）和10-20BP政策利率下调
+            </p>
+            <p>
+              <span className="text-slate-500">结构性工具</span>：再贷款支持科技创新、绿色金融及民营企业
+            </p>
+          </ForecastCard>
+
+          {/* Row 2 */}
+          <div className="col-span-8 row-start-2 grid grid-cols-2 gap-3">
             <ForecastCard
               title="投资端：基建扛旗"
               icon={<TrendingUp size={16} />}
@@ -141,10 +184,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
                 <span className="text-webank-blue font-medium">房地产跌幅收窄</span>：预计从-17.2%显著收窄，对经济拖累边际减弱
               </p>
             </ForecastCard>
-          </div>
 
-          {/* Column 2: Consumption & Export */}
-          <div className="flex flex-col gap-4">
             <ForecastCard
               title="消费端：温和修复"
               icon={<Lightbulb size={16} />}
@@ -161,7 +201,25 @@ export const EconomicForecast2026Slide: React.FC = () => {
                 资产价格企稳有望改善居民财产性收入，进而提升消费倾向
               </p>
             </ForecastCard>
+          </div>
 
+          <ForecastCard
+            className="col-span-4 row-start-2"
+            title="潜在风险"
+            icon={<AlertTriangle size={16} />}
+            delay="0.9s"
+            variant="warning"
+          >
+            <p className="mb-2">
+              <span className="text-amber-600 font-semibold">外部冲击</span>：关税政策超预期落地，对出口链造成短期扰动
+            </p>
+            <p>
+              <span className="text-amber-600 font-semibold">地产尾部</span>：房价未能止跌企稳，居民资产负债表修复受阻
+            </p>
+          </ForecastCard>
+
+          {/* Row 3 */}
+          <div className="col-span-8 row-start-3 grid grid-cols-2 gap-3">
             <ForecastCard
               title="出口端：韧性犹存"
               icon={<ArrowRight size={16} />}
@@ -197,74 +255,29 @@ export const EconomicForecast2026Slide: React.FC = () => {
             </ForecastCard>
           </div>
 
-          {/* Column 3: Policy & Risks */}
-          <div className="flex flex-col gap-4">
-            <ForecastCard
-              title="政策组合拳"
-              icon={<Target size={16} />}
-              delay="0.7s"
-              variant="neutral"
-            >
-              <p className="mb-2">
-                <span className="text-webank-accent font-semibold">财政更积极</span>：赤字率预计提升至4.0%-4.2%，投向从基建转向"民生+基建"并重
-              </p>
-              <p className="mb-2">
-                <span className="text-webank-accent font-semibold">货币适度宽松</span>：预计1-2次降准（50BP）和10-20BP政策利率下调
-              </p>
-              <p>
-                <span className="text-slate-500">结构性工具</span>：再贷款支持科技创新、绿色金融及民营企业
-              </p>
-            </ForecastCard>
-
-            <ForecastCard
-              title="潜在风险"
-              icon={<AlertTriangle size={16} />}
-              delay="0.9s"
-              variant="warning"
-            >
-              <p className="mb-2">
-                <span className="text-amber-600 font-semibold">外部冲击</span>：关税政策超预期落地，对出口链造成短期扰动
-              </p>
-              <p>
-                <span className="text-amber-600 font-semibold">地产尾部</span>：房价未能止跌企稳，居民资产负债表修复受阻
-              </p>
-            </ForecastCard>
-
-            <ForecastCard
-              title="IMF展望"
-              icon={<Lightbulb size={16} />}
-              delay="1.0s"
-              variant="positive"
-            >
-              <p className="mb-2">
-                IMF将2026年增速预测<span className="text-emerald-600 font-semibold">上调至4.5%</span>（上调0.3pct）
-              </p>
-              <p className="mb-2">
-                中国仍是全球增长重要贡献者，贡献率约<span className="text-webank-blue font-medium">30%</span>
-              </p>
-              <p>
-                关键转型：从"投资+出口"切换至<span className="text-webank-accent">"消费+服务"</span>
-              </p>
-            </ForecastCard>
-          </div>
+          <ForecastCard
+            className="col-span-4 row-start-3"
+            title="IMF展望"
+            icon={<Lightbulb size={16} />}
+            delay="1.0s"
+            variant="positive"
+          >
+            <p className="mb-2">
+              IMF将2026年增速预测<span className="text-emerald-600 font-semibold">上调至4.5%</span>（上调0.3pct）
+            </p>
+            <p className="mb-2">
+              中国仍是全球增长重要贡献者，贡献率约<span className="text-webank-blue font-medium">30%</span>
+            </p>
+            <p>
+              关键转型：从"投资+出口"切换至<span className="text-webank-accent">"消费+服务"</span>
+            </p>
+          </ForecastCard>
         </div>
 
-        {/* Bottom Summary */}
-        <div
-          className="mt-4 py-3 px-4 bg-gradient-to-r from-webank-lightBlue/10 via-emerald-400/10 to-webank-lightBlue/10 rounded-lg border border-webank-lightBlue/20 opacity-0 animate-fade-in"
-          style={{ animationDelay: '1.1s' }}
-        >
-          <p className="text-xs text-center text-slate-600">
-            <span className="text-webank-accent font-semibold">2026年关键词：</span>
-            <span className="text-webank-blue">"温差收敛"</span> — 不仅关注实际GDP能否保5，更关注
-            <span className="text-emerald-600 font-semibold">名义GDP能否回升</span>。
-            随着"反内卷"带来的价格修复和"十五五"新基建启动，企业盈利和居民收入体感将比2025年有明显改善。
-          </p>
-        </div>
       </div>
 
       {/* Footer */}
-      <footer className="absolute bottom-3 left-12 right-12 flex justify-between text-[9px] text-slate-500">
+      <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-[10px] text-slate-400">
         <span>个金管理部-数据管理室</span>
         <span>数据来源：CMF预测、中金公司、招银研究、国泰君安、银河证券、IMF</span>
       </footer>
