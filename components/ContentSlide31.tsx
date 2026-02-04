@@ -25,7 +25,7 @@ export const ContentSlide31: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>对美出口降幅扩大至30%，非美市场表现依旧强劲</>}
+      title={<>12月对美出口降幅扩大至30%，非美市场表现依旧强劲</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -50,7 +50,7 @@ export const ContentSlide31: React.FC = () => {
             <BaseTable
               data={exportRegionTrendData}
               columns={columns}
-              title="出口区域同比走势"
+              title="2025年出口区域当月同比走势"
               subtitle="数据来源：海关总署 | 单位：%"
               striped={true}
               dateColumn="period"

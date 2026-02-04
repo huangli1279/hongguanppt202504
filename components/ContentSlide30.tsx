@@ -68,7 +68,7 @@ export const ContentSlide30: React.FC = () => {
             data={importStatisticsData}
             columns={columns}
             title="主要进口商品统计"
-            subtitle="单位：百万美元，同比：%"
+            subtitle="金额单位：百万美元，同比：%"
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"
             subtitleClassName="mt-0 text-[clamp(8px,1vh,10px)]"

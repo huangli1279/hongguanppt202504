@@ -48,15 +48,16 @@ export const ContentSlide10: React.FC = () => {
               title="制造业PMI及分项指数"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'pmi', name: '制造业PMI', strokeWidth: 2.5 },
+                { dataKey: 'pmi', name: '制造业PMI', strokeWidth: 2.5, pointOffsets: { '2025-12': 18 } },
                 { dataKey: 'production', name: '生产'},
-                { dataKey: 'newOrders', name: '新订单'},
+                { dataKey: 'newOrders', name: '新订单', labelDY: 12, pointOffsets: { '2025-12': -10 } },
               ]}
               yAxisDomain={[46, 56]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={50}
               legendOrder={['制造业PMI', '生产', '新订单']}
+              highlightPeriods={['2025-12']}
             />
           </ChartContainer>
           <ChartContainer delay="1000ms">
@@ -74,6 +75,7 @@ export const ContentSlide10: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={50}
               legendOrder={['大型企业', '中型企业', '小型企业']}
+              highlightPeriods={['2025-12']}
             />
           </ChartContainer>
         </>

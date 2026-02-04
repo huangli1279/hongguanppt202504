@@ -19,6 +19,10 @@ export interface LineConfig {
   color?: string;
   strokeWidth?: number;
   labelPosition?: 'top' | 'bottom';
+  /** 数值标签的垂直偏移 */
+  labelDY?: number;
+  /** 特定周期的数值标签偏移，key为period字符串 */
+  pointOffsets?: { [key: string]: number };
 }
 
 export interface BaseLineChartProps {
@@ -31,6 +35,8 @@ export interface BaseLineChartProps {
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
+  /** 额外需要显示数值标签的周期 */
+  highlightPeriods?: string[];
   /** X轴刻度数量，默认6 */
   xAxisTickCount?: number;
   /** tooltip单位，默认% */
@@ -107,12 +113,13 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
+  highlightPeriods = [],
   xAxisTickCount = 6,
   unit = '%',
   yAxisTickFormatter
 }) => {
   // 自定义标签渲染，显示最后一个有效数据点的值，放在右侧
-  const renderCustomLabel = (props: any, color: string, dataKey: string) => {
+  const renderCustomLabel = (props: any, color: string, dataKey: string, line: LineConfig) => {
     const { x, y, value, index } = props;
     
     // 找到该系列最后一个非空值的索引
@@ -124,11 +131,31 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
       }
     }
     
-    // 只在最后一个有效数据点显示标签
-    if (index !== lastValidIndex || value == null) return null;
+    // 只在最后一个有效数据点或指定的 highlightPeriods 显示标签
+    const isLastPoint = index === lastValidIndex;
+    const period = data[index]?.period;
+    const isHighlighted = highlightPeriods.includes(period);
+    
+    if ((!isLastPoint && !isHighlighted) || value == null) return null;
+
+    // 优先级：特定点偏移 > 线全局偏移 > 默认偏移
+    let finalDY = isLastPoint ? 4 : -10;
+    if (line.pointOffsets && line.pointOffsets[period] !== undefined) {
+      finalDY = line.pointOffsets[period];
+    } else if (line.labelDY !== undefined) {
+      finalDY = line.labelDY;
+    }
     
     return (
-      <text x={x + 8} y={y} dy={4} fill={color} fontSize={10} fontWeight={600} textAnchor="start">
+      <text 
+        x={isLastPoint ? x + 8 : x} 
+        y={y} 
+        dy={finalDY} 
+        fill={color} 
+        fontSize={10} 
+        fontWeight={600} 
+        textAnchor={isLastPoint ? "start" : "middle"}
+      >
         {value}
       </text>
     );
@@ -183,6 +210,16 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
             
             {lines.map((line, index) => {
               const lineColor = line.color ?? getSeriesColor(index);
+              
+              // 找到该系列最后一个非空值的索引
+              let lastValidIndex = -1;
+              for (let i = data.length - 1; i >= 0; i--) {
+                if (data[i][line.dataKey] != null) {
+                  lastValidIndex = i;
+                  break;
+                }
+              }
+
               return (
                 <Line
                   key={line.dataKey}
@@ -191,7 +228,26 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                   dataKey={line.dataKey}
                   stroke={lineColor}
                   strokeWidth={line.strokeWidth || 2}
-                  dot={false}
+                  dot={(props: any) => {
+                    const { cx, cy, index: dotIndex, payload } = props;
+                    const isLastPoint = dotIndex === lastValidIndex;
+                    const isHighlighted = highlightPeriods.includes(payload.period);
+                    
+                    if (isLastPoint || isHighlighted) {
+                      return (
+                        <circle 
+                          key={`dot-${line.dataKey}-${dotIndex}`}
+                          cx={cx} 
+                          cy={cy} 
+                          r={isLastPoint ? 3.5 : 3} 
+                          fill={lineColor} 
+                          stroke="white" 
+                          strokeWidth={1.5} 
+                        />
+                      );
+                    }
+                    return null as any;
+                  }}
                   animationDuration={800}
                   animationBegin={0}
                   animationEasing="ease-out"
@@ -199,7 +255,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                   <LabelList
                     dataKey={line.dataKey}
                     position={line.labelPosition || 'top'}
-                    content={(props) => renderCustomLabel(props, lineColor, line.dataKey)}
+                    content={(props) => renderCustomLabel(props, lineColor, line.dataKey, line)}
                   />
                 </Line>
               );

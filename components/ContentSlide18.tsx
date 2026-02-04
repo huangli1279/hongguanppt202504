@@ -7,7 +7,7 @@ import { cityRetailData, urbanRuralRetailData } from '@/data/cityRetail';
 export const ContentSlide18: React.FC = () => {
   return (
     <BaseContentSlide
-      title="一线分化北京强力反弹，乡村消费韧性优于城镇"
+      title="一线分化北京反弹，乡村消费韧性优于城镇"
       cardColumns={2}
       chartColumns={2}
       cards={

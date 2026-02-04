@@ -48,7 +48,7 @@ export const ContentSlide20: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="CPI 0.8% 创年内新高难掩核心需求偏弱，Q4 消费倾向转淡凸显避险情绪"
+      title="CPI四季度持续回升，主要受鲜菜季节性减产与金价上涨驱动"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -61,7 +61,7 @@ export const ContentSlide20: React.FC = () => {
           </BaseCard>
           <BaseCard title="CPI结构性分化显著" delay="400ms">
             <p>
-              四季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金饰品CPI全年维持高增）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。相反，猪肉CPI下半年转负深跌，养殖户恐慌性加速出栏，叠加消费端缺乏强劲反弹为主要原因。
+              四季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金饰品CPI全年维持高增）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。
             </p>
           </BaseCard>
         </div>
