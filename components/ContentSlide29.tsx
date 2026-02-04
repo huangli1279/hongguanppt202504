@@ -62,7 +62,7 @@ export const ContentSlide29: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard delay="200ms" variant="accent" title="机电产品制造稳步领跑，全年出口占比提升至60.9%的历史高位">
             <p>
               机电产品全年累计同比增长<span className="text-webank-blue font-semibold">8.4%</span>，其中集成电路（<span className="text-red-500 font-semibold">26.8%</span>），"新三样"（电动载人汽车、锂电池、太阳能电池）（<span className="text-red-500 font-semibold">27.1%</span>）和船舶（<span className="text-red-500 font-semibold">26.7%</span>）贡献巨大；高新技术产品全年增长<span className="text-webank-blue font-semibold">7.5%</span>，充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。
@@ -83,9 +83,10 @@ export const ContentSlide29: React.FC = () => {
             title="2025年主要出口商品统计"
             subtitle="数据来源：海关总署 | 金额单位：百万美元"
             rowHeight="auto"
-            titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"
-            subtitleClassName="mt-0 text-[clamp(8px,1vh,10px)]"
-            cellClassName="py-[clamp(2px,0.5vh,6px)] text-[clamp(10px,1.2vh,14px)] leading-tight"
+            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
+            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
+            headerCellClassName="py-1 text-[clamp(10px,1.2vh,13px)]"
+            cellClassName="py-0 text-[clamp(9px,1vh,12px)] leading-tight"
           />
         </ChartContainer>
       </div>

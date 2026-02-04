@@ -33,6 +33,8 @@ export interface BaseTableProps {
   tableClassName?: string;
   /** 单元格自定义类名 */
   cellClassName?: string;
+  /** 表头单元格自定义类名 */
+  headerCellClassName?: string;
   /** 是否显示斑马纹 */
   striped?: boolean;
   /** 是否显示边框 */
@@ -113,6 +115,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   subtitleClassName,
   tableClassName,
   cellClassName,
+  headerCellClassName,
   striped = true,
   bordered = false,
   headerBgColor = '#051c2c',
@@ -296,7 +299,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                       <div
                         className={cn(
                           `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showGroupBorder ? 'border-r border-slate-400/30' : ''}`,
-                          cellClassName
+                          headerCellClassName || cellClassName
                         )}
                         style={{
                           color: headerTextColor,
@@ -317,7 +320,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                             key={child.key}
                             className={cn(
                               `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showChildBorder ? 'border-r border-slate-400/30' : ''}`,
-                              cellClassName
+                              headerCellClassName || cellClassName
                             )}
                             style={{
                               color: headerTextColor,
@@ -339,7 +342,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                       key={col.key}
                       className={cn(
                         `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showGroupBorder ? 'border-r border-slate-400/30' : ''}`,
-                        cellClassName
+                        headerCellClassName || cellClassName
                       )}
                       style={{
                         color: headerTextColor,
@@ -365,7 +368,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                   key={col.key}
                   className={cn(
                     `px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`,
-                    cellClassName
+                    headerCellClassName || cellClassName
                   )}
                   style={{
                     color: headerTextColor,
@@ -464,7 +467,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                         rowSpan={hasChildren ? 1 : 2}
                         className={cn(
                           `${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${showBorder ? 'border-r border-slate-400/30' : ''}`,
-                          cellClassName
+                          headerCellClassName || cellClassName
                         )}
                         style={{
                           color: headerTextColor,
@@ -487,7 +490,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                         key={col.key}
                         className={cn(
                           `${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`,
-                          cellClassName
+                          headerCellClassName || cellClassName
                         )}
                         style={{
                           color: headerTextColor,
@@ -510,7 +513,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                     key={col.key}
                     className={cn(
                       `${rowHeightClasses[rowHeight]} px-3 font-semibold text-center align-middle ${bordered ? 'border border-slate-300' : ''} ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`,
-                      cellClassName
+                      headerCellClassName || cellClassName
                     )}
                     style={{
                       color: headerTextColor,
