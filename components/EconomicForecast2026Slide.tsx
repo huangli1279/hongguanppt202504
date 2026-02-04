@@ -26,10 +26,10 @@ const ForecastCard: React.FC<ForecastCardProps> = ({
 
   return (
     <div
-      className={`rounded-lg border ${variantStyles[variant]} p-3 shadow-sm opacity-0 animate-fade-in-up ${className}`}
+      className={`rounded-lg border ${variantStyles[variant]} p-2.5 shadow-sm opacity-0 animate-fade-in-up ${className}`}
       style={{ animationDelay: delay }}
     >
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center gap-2 mb-1.5">
         <span className="text-webank-accent">{icon}</span>
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide">{title}</h3>
       </div>
@@ -54,11 +54,11 @@ const MetricBadge: React.FC<MetricBadgeProps> = ({ label, value, trend, delay })
 
   return (
     <div
-      className="flex flex-col items-center p-3 bg-white rounded-lg border border-slate-200/80 shadow-sm opacity-0 animate-scale-in"
+      className="flex flex-col items-center p-2.5 bg-white rounded-lg border border-slate-200/80 shadow-sm opacity-0 animate-scale-in"
       style={{ animationDelay: delay }}
     >
       <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">{label}</span>
-      <span className="text-2xl font-bold text-webank-blue">{value}</span>
+      <span className="text-xl font-bold text-webank-blue">{value}</span>
       {trend && (
         <span className={`text-xs ${trendColors[trend]} flex items-center gap-1 mt-1`}>
           {trend === 'up' && <TrendingUp size={12} />}
@@ -87,9 +87,9 @@ export const EconomicForecast2026Slide: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-webank-lightBlue via-emerald-400 to-webank-lightBlue animate-top-line"></div>
 
       {/* Content Container */}
-      <div className="flex-1 flex flex-col px-12 py-8 z-10">
+      <div className="flex-1 flex flex-col px-12 pt-7 pb-12 z-10">
         {/* Header */}
-        <header className="mb-6 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <header className="mb-5 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs font-bold text-webank-accent uppercase tracking-widest">
               2026年展望
@@ -103,8 +103,8 @@ export const EconomicForecast2026Slide: React.FC = () => {
         </header>
 
         {/* Key Metrics + Keywords */}
-        <div className="grid grid-cols-12 gap-4 mb-4">
-          <div className="col-span-7 grid grid-cols-5 gap-3">
+        <div className="grid grid-cols-12 gap-3 mb-3">
+          <div className="col-span-7 grid grid-cols-5 gap-2.5">
             <MetricBadge label="GDP增速预测" value="4.5%" trend="stable" delay="0.3s" />
             <MetricBadge label="固投增速" value="3.5%" trend="up" delay="0.4s" />
             <MetricBadge label="社零增速" value="4.5%" trend="up" delay="0.5s" />
@@ -127,7 +127,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="flex-1 grid grid-cols-12 gap-3 min-h-0">
+        <div className="flex-1 grid grid-cols-12 gap-2 min-h-0">
           {/* Row 1 */}
           <ForecastCard
             className="col-span-8 row-start-1"
@@ -167,7 +167,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
           </ForecastCard>
 
           {/* Row 2 */}
-          <div className="col-span-8 row-start-2 grid grid-cols-2 gap-3">
+          <div className="col-span-8 row-start-2 grid grid-cols-2 gap-2">
             <ForecastCard
               title="投资端：基建扛旗"
               icon={<TrendingUp size={16} />}
@@ -219,7 +219,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
           </ForecastCard>
 
           {/* Row 3 */}
-          <div className="col-span-8 row-start-3 grid grid-cols-2 gap-3">
+          <div className="col-span-8 row-start-3 grid grid-cols-2 gap-2">
             <ForecastCard
               title="出口端：韧性犹存"
               icon={<ArrowRight size={16} />}
