@@ -7,11 +7,13 @@ export interface ColumnConfig {
   title: string;
   width?: string | number;
   align?: 'left' | 'center' | 'right';
-  render?: (value: any, row: any, index: number) => React.ReactNode;
+  render?: (value: any, row: any, index: number, defaultRender?: (value: any) => React.ReactNode) => React.ReactNode;
   /** 子列，用于二级表头 */
   children?: ColumnConfig[];
   /** 是否高亮列 */
   highlight?: boolean;
+  /** 是否包含在数值统计中（即使有render函数） */
+  includeInStats?: boolean;
   /** 自定义红色着色阈值 */
   redThreshold?: number;
   /** 自定义绿色着色阈值 */
@@ -171,7 +173,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     const nums: number[] = [];
     data.forEach(row => {
       leafColumns.forEach(col => {
-        if (col.key !== dateColumn && !col.render) {
+        if (col.key !== dateColumn && (!col.render || col.includeInStats)) {
           const val = row[col.key];
           if (typeof val === 'number' && !isNaN(val)) {
             nums.push(val);
@@ -221,12 +223,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     return <span className="text-slate-600">{formatted}</span>;
   };
 
-  const getCellValue = (row: any, col: ColumnConfig, index: number) => {
-    const value = row[col.key];
-    // 优先使用自定义render
-    if (col.render) {
-      return col.render(value, row, index);
-    }
+  const renderDefault = (value: any, col: ColumnConfig) => {
     // 日期列格式化
     if (dateColumn && col.key === dateColumn) {
       return formatDate(value);
@@ -244,6 +241,15 @@ export const BaseTable: React.FC<BaseTableProps> = ({
       return <span className="text-slate-400">-</span>;
     }
     return value;
+  };
+
+  const getCellValue = (row: any, col: ColumnConfig, index: number) => {
+    const value = row[col.key];
+    // 优先使用自定义render
+    if (col.render) {
+      return col.render(value, row, index, (v) => renderDefault(v, col));
+    }
+    return renderDefault(value, col);
   };
 
   const isHighlighted = (index: number) => highlightRows.includes(index);

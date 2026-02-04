@@ -22,7 +22,33 @@ export const ContentSlide29: React.FC = () => {
       }
     },
     { key: 'decAmount', title: '12月金额', align: 'right' },
-    { key: 'totalAmount', title: '1-12月累计金额', align: 'right' },
+    {
+      key: 'totalAmount',
+      title: '1-12月累计金额',
+      align: 'right',
+      includeInStats: true,
+      render: (value, row: ExportTableItem, index, defaultRender) => {
+        // 特殊处理：指定行强制红色，且不加粗
+        const redRows = ['农产品*', '机电产品*', '高新技术产品*'];
+        if (redRows.includes(row.name)) {
+          const formatted = typeof value === 'number'
+            ? value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            : value;
+          return <span className="text-red-500 font-normal">{formatted}</span>;
+        }
+        
+        // 集成电路保留自动着色（红/绿）
+        if (row.name === '集成电路' && defaultRender) {
+          return defaultRender(value);
+        }
+
+        // 其他行显示为黑色
+        const formatted = typeof value === 'number'
+          ? value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+          : value;
+        return <span className="text-black">{formatted}</span>;
+      }
+    },
     { key: 'yoy12Qty', title: '1-12月数量累计同比', align: 'right', redThreshold: 10 },
     { key: 'yoy12Amt', title: '1-12月金额累计同比', align: 'right', redThreshold: 10 },
     { key: 'yoy6Qty', title: '1-6月数量累计同比', align: 'right' },

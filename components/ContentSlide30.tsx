@@ -36,8 +36,40 @@ export const ContentSlide30: React.FC = () => {
         return <div className={cn(padding, isBold && "font-bold text-webank-blue")}>{val}</div>;
       }
     },
-    { key: 'decAmount', title: '12月金额', align: 'right' },
-    { key: 'yearTotalAmount', title: '1-12月累计金额', align: 'right' },
+    {
+      key: 'decAmount',
+      title: '12月金额',
+      align: 'right',
+      render: (val: any, row: any) => {
+        const redItems = ['农产品*', '原油', '机电产品*', '高新技术产品*'];
+        const isRed = redItems.includes(row.product);
+
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        const formatted = val.toLocaleString('en-US', {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1
+        });
+        return <span className={isRed ? "text-red-500" : "text-black"}>{formatted}</span>;
+      }
+    },
+    {
+      key: 'yearTotalAmount',
+      title: '1-12月累计金额',
+      align: 'right',
+      render: (val: any, row: any) => {
+        const redItems = ['农产品*', '机电产品*', '高新技术产品*', '集成电路'];
+        const isRed = redItems.includes(row.product);
+
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+
+        const formatted = val.toLocaleString('en-US', {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1
+        });
+
+        return <span className={isRed ? "text-red-500" : "text-black"}>{formatted}</span>;
+      }
+    },
     { key: 'yearQtyYoY', title: '1-12月数量累计同比', align: 'right' },
     { key: 'yearAmountYoY', title: '1-12月金额累计同比', align: 'right' },
   ];
