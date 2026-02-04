@@ -43,7 +43,7 @@ export const ContentSlide38: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="全年存款总额增速回升，住户存款增量同比持平，企业同比多增2.6万亿"
+      title="全年人民币存款增加 26.4 万亿，住户存款增加 14.6 万亿"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
