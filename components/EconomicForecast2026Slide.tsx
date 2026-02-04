@@ -19,9 +19,9 @@ const ForecastCard: React.FC<ForecastCardProps> = ({
   className = '',
 }) => {
   const variantStyles = {
-    positive: 'border-emerald-200 bg-emerald-50',
-    neutral: 'border-webank-lightBlue/30 bg-white',
-    warning: 'border-amber-200 bg-amber-50',
+    positive: 'border-[#7cccf2] bg-[#e6f4ff]',
+    neutral: 'border-[#9bb8cc] bg-[#f2f7fb]',
+    warning: 'border-[#6aa4c6] bg-[#e8f1f7]',
   };
 
   return (
@@ -74,8 +74,8 @@ export const EconomicForecast2026Slide: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col relative overflow-hidden text-webank-text">
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#002f52] transform -skew-x-12 translate-x-20 animate-bg-slide-in"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[#005c8f] rounded-tr-full animate-bg-expand"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#1a4a6a] transform -skew-x-12 translate-x-20 animate-bg-slide-in"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[#2a6f96] rounded-tr-full animate-bg-expand"></div>
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-5" style={{
