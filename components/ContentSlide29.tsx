@@ -70,7 +70,7 @@ export const ContentSlide29: React.FC = () => {
           </BaseCard>
           <BaseCard delay="400ms" title="劳动密集型产业下跌明显">
             <p>
-              衣服（全年<span className="text-green-600 font-semibold">-5.0%</span>），箱包（全年<span className="text-green-600 font-semibold">-13.5%</span>），玩具（全年<span className="text-green-600 font-semibold">-12.7%</span>）和鞋靴（全年<span className="text-green-600 font-semibold">-11.3%</span>）等劳动密集型产业均下跌，体现传统支柱产业在存量博弈与产业链外迁压力下正向高端装备制造让位。
+              衣服（全年<span className="text-green-600 font-semibold">-5.0%</span>），箱包（全年<span className="text-green-600 font-semibold">-13.5%</span>）和鞋靴（全年<span className="text-green-600 font-semibold">-11.3%</span>）等劳动密集型产业均下跌，体现传统支柱产业在存量博弈与产业链外迁压力下正向高端装备制造让位。
             </p>
           </BaseCard>
         </div>
@@ -85,7 +85,7 @@ export const ContentSlide29: React.FC = () => {
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"
             subtitleClassName="mt-0 text-[clamp(8px,1vh,10px)]"
-            cellClassName="py-[clamp(0px,0.2vh,2px)] text-[clamp(7px,1vh,9px)] leading-tight"
+            cellClassName="py-[clamp(2px,0.5vh,6px)] text-[clamp(10px,1.2vh,14px)] leading-tight"
           />
         </ChartContainer>
       </div>

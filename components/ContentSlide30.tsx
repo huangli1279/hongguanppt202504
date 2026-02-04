@@ -16,7 +16,6 @@ export const ContentSlide30: React.FC = () => {
       render: (val: string) => {
         const level1Items = [
           '肉类 (包括杂碎)',
-          '干鲜瓜果及坚果',
           '粮食',
           '自动数据处理设备及其零部件',
           '二极管及类似半导体器件',
@@ -97,14 +96,14 @@ export const ContentSlide30: React.FC = () => {
         {/* 表格区域 */}
         <ChartContainer delay="800ms" className="flex-1 min-h-0">
           <BaseTable
-            data={importStatisticsData}
+            data={importStatisticsData.filter(item => !['干鲜瓜果及坚果', '铜矿砂及其精矿', '钢材'].includes(item.product))}
             columns={columns}
             title="2025年主要进口商品统计"
             subtitle="金额单位：百万美元，同比：%"
             rowHeight="auto"
-            titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"
-            subtitleClassName="mt-0 text-[clamp(8px,1vh,10px)]"
-            cellClassName="py-[clamp(0px,0.2vh,2px)] text-[clamp(7px,1vh,9px)] leading-tight"
+            titleBlockClassName="mb-[clamp(4px,0.6vh,8px)]"
+            subtitleClassName="mt-0 text-[clamp(10px,1.2vh,12px)]"
+            cellClassName="py-[clamp(2px,0.4vh,4px)] text-[clamp(9px,1.2vh,11px)] leading-tight"
           />
         </ChartContainer>
       </div>
