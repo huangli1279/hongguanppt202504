@@ -13,7 +13,9 @@ export const ContentSlide36: React.FC = () => {
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="" delay="200ms" variant="accent">
-            M2同比增速在12月超预期反弹至 <span className="font-bold text-webank-blue">8.5%</span>（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 <span className="font-bold text-webank-blue">3.8%</span>。两者剪刀差由三季度的1.2%迅速扩大至年末的 <span className="font-bold text-red-500">4.7%</span>。主要是由于24Q4财政部发行“<span className="font-bold text-webank-blue">2万亿</span>置换债”，相关资金注入企业后形成大量活期存款，导致2025年Q4面临高基数压制；而25年化债发行“前置”，支撑上半年M1与经济同步增长，却导致年末M1增速缺乏改善动力。
+            <p>
+              M2同比增速在12月超预期反弹至 <span className="font-bold text-webank-blue">8.5%</span>（11月为8.0%），而M1同比增速从9月的7.2%一路下滑至12月的 <span className="font-bold text-webank-blue">3.8%</span>。两者剪刀差由三季度的1.2%迅速扩大至年末的 <span className="font-bold text-red-500">4.7%</span>。主要是由于24Q4财政部发行“<span className="font-bold text-webank-blue">2万亿</span>置换债”，相关资金注入企业后形成大量活期存款，导致2025年Q4面临高基数压制；而25年化债发行“前置”，支撑上半年M1与经济同步增长，却导致年末M1增速缺乏改善动力。
+            </p>
           </BaseCard>
         </div>
 

@@ -33,10 +33,14 @@ export const ContentSlide34: React.FC = () => {
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="广义收入降幅收窄" delay="200ms" variant="accent">
-            2025年全年政府性基金收入 <span className="font-bold text-webank-blue">5.77万亿</span>（同比下降 <span className="font-bold text-green-600">7%</span>），中央基金收入 <span className="font-bold text-webank-blue">0.5万亿</span>，地方基金收入 <span className="font-bold text-webank-blue">5.2万亿</span>（同比下降 <span className="font-bold text-green-600">8%</span>），降幅收窄。
+            <p>
+              2025年全年政府性基金收入 <span className="font-bold text-webank-blue">5.77万亿</span>（同比下降 <span className="font-bold text-green-600">7%</span>），中央基金收入 <span className="font-bold text-webank-blue">0.5万亿</span>，地方基金收入 <span className="font-bold text-webank-blue">5.2万亿</span>（同比下降 <span className="font-bold text-green-600">8%</span>），降幅收窄。
+            </p>
           </BaseCard>
           <BaseCard title="土地市场下行趋于缓和" delay="400ms">
-            核心土地出让收入为 <span className="font-bold text-webank-blue">4.15万亿元</span>，同比下降 <span className="font-bold text-green-600">14.7%</span>，降幅有所收敛。
+            <p>
+              核心土地出让收入为 <span className="font-bold text-webank-blue">4.15万亿元</span>，同比下降 <span className="font-bold text-green-600">14.7%</span>，降幅有所收敛。
+            </p>
           </BaseCard>
         </div>
 
