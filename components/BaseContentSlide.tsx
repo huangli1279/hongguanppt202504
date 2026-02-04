@@ -144,7 +144,7 @@ export const ChartContainer: React.FC<{
       'h-full bg-white rounded-sm opacity-0 animate-fade-in-up fill-mode-forwards',
       className
     )}
-    style={{ animationDelay: delay }}
+    style={{ animationDelay: '0ms' }}
   >
     {children}
   </div>

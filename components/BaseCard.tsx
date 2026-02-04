@@ -35,7 +35,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
         animated && 'opacity-0 animate-fade-in-up fill-mode-forwards',
         className
       )}
-      style={animated ? { animationDelay: delay } : undefined}
+      style={animated ? { animationDelay: '0ms' } : undefined}
     >
       {(title || Icon) && (
         <div className="flex items-center gap-2 text-webank-accent">
