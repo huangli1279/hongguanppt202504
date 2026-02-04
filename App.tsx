@@ -118,7 +118,7 @@ const App: React.FC = () => {
         {currentSlide === 19 && <ContentSlide19 />}
         {currentSlide === 20 && <ContentSlide20 />}
         {currentSlide === 21 && <ContentSlide21 />}
-        {currentSlide === 22 && <BaseSectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看基建托底" />}
+        {currentSlide === 22 && <BaseSectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看设备更新" />}
         {currentSlide === 23 && <ContentSlide23 />}
         {currentSlide === 24 && <ContentSlide24 />}
         {currentSlide === 25 && <ContentSlide25 />}

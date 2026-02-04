@@ -6,7 +6,7 @@ const contents = [
   { id: '01', title: 'GDP 分析：定基调，找温差', icon: BarChart3, desc: '名义与实际增速“温差”显现，价格传导待疏通' },
   { id: '02', title: '生产端分析：看景气，看利润', icon: Zap, desc: 'PMI景气分化，PPI降幅收窄，企业利润承压' },
   { id: '03', title: '消费分析：看意愿，看结构', icon: ShoppingCart, desc: '服务消费强于商品，核心CPI低位运行，居民信心待振' },
-  { id: '04', title: '投资分析：看地产拖累，看基建托底', icon: HardHat, desc: '地产开发投资深跌形成拖累，基建与制造业投资发挥支撑' },
+  { id: '04', title: '投资分析：看地产拖累，看设备更新', icon: HardHat, desc: '地产开发投资深跌形成拖累，基建与制造业投资发挥支撑' },
   { id: '05', title: '进出口分析：看韧性，看抢跑', icon: Globe, desc: '“抢出口”效应支撑增速，出口结构向新兴市场优化' },
   { id: '06', title: '财政分析：看钱袋子', icon: Landmark, desc: '土地出让收入下滑制约财力，广义财政收支紧平衡' },
   { id: '07', title: '金融数据分析：看资金活性', icon: Activity, desc: 'M1-M2剪刀差走阔，资金活化不足，信贷结构分化' },
