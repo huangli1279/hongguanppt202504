@@ -9,8 +9,7 @@ export const ContentSlide08: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          净出口Q4贡献率升至31.1%有效对冲内需缺口，
-          <span className="text-webank-accent">投资贡献率仅16%</span>
+          投资明显拖累整体，消费贡献率优于去年，保持稳定
         </>
       }
       cardColumns={3}
@@ -19,13 +18,13 @@ export const ContentSlide08: React.FC = () => {
         <>
           <BaseCard title="外需：强力支撑" delay="200ms" variant="accent">
             <p>
-              全年出口增长 <span className="text-green-600">6.1%</span>。外贸韧性极大缓解了内需不足压力。
+              全年出口增长 <span className="text-green-600">6.1%</span>。外贸韧性缓解内需不足压力。
             </p>
           </BaseCard>
 
           <BaseCard title="投资：明显拖累" delay="400ms">
             <p>
-              受<span className="font-bold">房地产开发投资</span> (<span className="text-red-600">-17.2%</span>) 深度调整影响，全年固投增速下降3.8%。
+              受<span className="font-bold">房地产开发投资</span> (<span className="text-red-600">-17.2%</span>) 深度调整影响，全年固投增速<span className="text-red-600">下降3.8%</span>。
             </p>
           </BaseCard>
 
