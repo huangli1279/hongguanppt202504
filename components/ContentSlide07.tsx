@@ -11,48 +11,37 @@ const extractGrowthNumber = (value: unknown): number | null => {
   return Number.isNaN(parsed) ? null : parsed;
 };
 
-const getGrowthThresholds = (rows: Array<{ growth?: unknown }>) => {
-  const values = rows
-    .map(row => extractGrowthNumber(row.growth))
-    .filter((num): num is number => num !== null);
-
-  if (values.length === 0) {
-    return { p20: 0, p80: 0, count: 0 };
-  }
-
-  values.sort((a, b) => a - b);
-  const p20Index = Math.floor(values.length * 0.2);
-  const p80Index = Math.floor(values.length * 0.8);
-
-  return {
-    p20: values[p20Index],
-    p80: values[p80Index],
-    count: values.length
-  };
-};
-
-const growthThresholds = getGrowthThresholds([
-  ...provinceGdpDataTop15,
-  ...provinceGdpDataRest
-]);
-
-const renderGrowthValue = (value: unknown): React.ReactNode => {
+const renderGrowthValue = (value: unknown, row?: any): React.ReactNode => {
   const num = extractGrowthNumber(value);
   if (num === null) {
     return <span className="text-slate-400">-</span>;
   }
 
   const formatted = `${num.toFixed(1)}%`;
-  if (growthThresholds.count === 0) {
-    return <span className="text-slate-600">{formatted}</span>;
+  
+  // 如果是特殊行（江苏/山东 或 增速<5%），不设置颜色，继承行的颜色
+  if (row) {
+    if (['江苏', '山东'].includes(row.province)) {
+      return <span>{formatted}</span>;
+    }
+    const growth = extractGrowthNumber(row.growth);
+    if (growth !== null && growth < 5.0) {
+      return <span>{formatted}</span>;
+    }
   }
-  if (num >= growthThresholds.p80) {
-    return <span className="text-red-500">{formatted}</span>;
-  }
-  if (num <= growthThresholds.p20) {
-    return <span className="text-green-600">{formatted}</span>;
-  }
+
   return <span className="text-slate-600">{formatted}</span>;
+};
+
+const getRowClassName = (row: any) => {
+  if (['江苏', '山东'].includes(row.province)) {
+    return '[&>*]:!text-red-500 [&>*]:font-bold';
+  }
+  const growth = extractGrowthNumber(row.growth);
+  if (growth !== null && growth < 5.0) {
+    return '[&>*]:!text-green-600';
+  }
+  return '';
 };
 
 const tableColumns: ColumnConfig[] = [
@@ -70,7 +59,7 @@ const tableColumns: ColumnConfig[] = [
     key: 'growth',
     title: '增速',
     align: 'right',
-    render: value => renderGrowthValue(value)
+    render: (value, row) => renderGrowthValue(value, row)
   },
 ];
 
@@ -117,6 +106,7 @@ export const ContentSlide07: React.FC = () => {
               title="2025年各省份GDP及增速（前15）"
               subtitle="单位: GDP-万亿, 增速-%"
               colorizeNumbers={false}
+              getRowClassName={getRowClassName}
             />
           </ChartContainer>
           <ChartContainer delay="800ms">
@@ -126,6 +116,7 @@ export const ContentSlide07: React.FC = () => {
               title="2025年31省份GDP及增速（续）"
               subtitle="单位: GDP-万亿, 增速-%"
               colorizeNumbers={false}
+              getRowClassName={getRowClassName}
             />
           </ChartContainer>
         </>
