@@ -26,7 +26,7 @@ export const ContentSlide33: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>全年公共预算收入同比下降-1.7%，税收收入小幅增长，非税因高基数大幅下降</>}
+      title={<>全年公共预算收入21.6万亿，同比下降1.7%，税收收入小幅增长，非税因高基数大幅下降</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -34,7 +34,7 @@ export const ContentSlide33: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="税收结构改善" delay="200ms" variant="accent">
             <p>
-              在总收入微降的背景下，税收收入增速由负转正（<span className="text-red-500 font-semibold">+0.8%</span>），好于整体收入，而非税收入因2024年存在一次性、大规模的国有资本经营收入上缴，形成了极高的比较基数（<span className="text-green-600 font-semibold">-11.3%</span>），两者走势形成鲜明反差，同时税收占比提升。
+              在总收入微降的背景下，税收收入 17.64 万亿，增速由负转正（<span className="text-red-500 font-semibold">+0.8%</span>），好于整体收入，而非税收入因2024年存在一次性、大规模的国有资本经营收入上缴，形成了极高的比较基数（<span className="text-green-600 font-semibold">-11.3%</span>），两者走势形成鲜明反差，同时税收占比提升。
             </p>
           </BaseCard>
           <BaseCard title="主体税种稳健，印花税高增" delay="400ms">
