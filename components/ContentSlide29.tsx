@@ -54,7 +54,7 @@ export const ContentSlide29: React.FC = () => {
           <BaseTable
             data={exportTableData}
             columns={columns}
-            title="主要商品出口额统计"
+            title="2025年主要出口商品统计"
             subtitle="数据来源：海关总署 | 金额单位：百万美元"
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"

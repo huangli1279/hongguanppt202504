@@ -52,12 +52,12 @@ export const ContentSlide30: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="机电与高新技术产品进口韧性显著" delay="200ms" variant="accent">
             <p>
-              机电与高新技术产品全年累计金额同比增长<span className="text-red-500 font-semibold">5.2%</span>和<span className="text-red-500 font-semibold">9.3%</span>。 其中自动数据处理设备（18.2%）与集成电路（10.1%）增势强劲，稳中有升，凸显国内电子制造与AI算力产业对核心零部件的刚性需求与战略补库。
+              机电与高新技术产品全年累计金额同比增长<span className="text-red-500 font-semibold">5.2%</span>和<span className="text-red-500 font-semibold">9.3%</span>。 其中自动数据处理设备（<span className="text-red-500 font-semibold">18.2%</span>）与集成电路（<span className="text-red-500 font-semibold">10.1%</span>）增势强劲，稳中有升，凸显国内电子制造与AI算力产业对核心零部件的刚性需求与战略补库。
             </p>
           </BaseCard>
-          <BaseCard title="大宗商品进口呈现显著的“价格红利”与“品类分化”特征" delay="400ms">
+          <BaseCard title="大宗商品呈现“价格红利”，汽车进口大幅下跌" delay="400ms">
             <p>
-              受全球大宗价格回落影响，原油（数量+4.4%，金额-8.8%）、铁矿砂（数量+1.8%，金额-7.1%）及大豆（数量+6.5%，金额-4.6%）均呈“量增价跌”态势，有效降低了国内原材料输入成本；煤炭与天然气呈现量价双降。汽车产业进口替代效应加速兑现，整车（-39.7%）与零部件（-21.4%）大幅回落，反映国产新能源车企统治力增强。
+              受全球大宗价格回落影响，原油（数量<span className="text-red-500 font-semibold">+4.4%</span>，金额<span className="text-green-500 font-semibold">-8.8%</span>）、铁矿砂（数量<span className="text-red-500 font-semibold">+1.8%</span>，金额<span className="text-green-500 font-semibold">-7.1%</span>）及大豆（数量<span className="text-red-500 font-semibold">+6.5%</span>，金额<span className="text-green-500 font-semibold">-4.6%</span>）均呈“量增价跌”态势，有效降低了国内原材料输入成本；煤炭与天然气呈现量价双降。汽车产业进口替代效应加速兑现，整车（金额<span className="text-green-500 font-semibold">-39.7%</span>）与零部件（金额<span className="text-green-500 font-semibold">-21.4%</span>）大幅回落，反映国产新能源车企统治力增强。
             </p>
           </BaseCard>
         </div>
@@ -67,7 +67,7 @@ export const ContentSlide30: React.FC = () => {
           <BaseTable
             data={importStatisticsData}
             columns={columns}
-            title="主要进口商品统计"
+            title="2025年主要进口商品统计"
             subtitle="金额单位：百万美元，同比：%"
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(2px,0.4vh,6px)]"
