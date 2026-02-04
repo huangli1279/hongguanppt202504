@@ -26,3 +26,23 @@ export const industrialProfitData: IndustrialProfitDataPoint[] = [
   { time: '2512', totalProfit: 391.5, revenue: -4067.7, cost: -3460.8, revenueMinusCost: -606.9, expenses: 151.6, investmentIncome: 542.3 },
   { time: '2025全年', totalProfit: 470.5, revenue: 15756.1, cost: 15702.9, revenueMinusCost: 53.2, expenses: -362.4, investmentIncome: 1004.5 },
 ];
+
+export interface IndustryProfitGrowthDataPoint {
+  industry: string;
+  growth: number;
+}
+
+export const industryProfitGrowthData: IndustryProfitGrowthDataPoint[] = [
+  { industry: '有色金属冶炼和压延加工业', growth: 22.6 },
+  { industry: '计算机、通信和其他电子设备制造业', growth: 19.5 },
+  { industry: '电力、热力生产和供应业', growth: 13.9 },
+  { industry: '专用设备制造业', growth: 5.7 },
+  { industry: '电气机械和器材制造业', growth: 4.9 },
+  { industry: '通用设备制造业', growth: 4.2 },
+  { industry: '汽车制造业', growth: 0.6 },
+  { industry: '非金属矿物制品业', growth: -1.7 },
+  { industry: '化学原料和化学制品制造业', growth: -7.3 },
+  { industry: '纺织业', growth: -12.0 },
+  { industry: '石油和天然气开采业', growth: -18.7 },
+  { industry: '煤炭开采和洗选业', growth: -41.8 },
+];
