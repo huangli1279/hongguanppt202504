@@ -2,53 +2,66 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseTable, ColumnConfig } from './BaseTable';
-import { loanData } from '@/data/loanData';
+import { depositData } from '@/data/depositData';
 
 export const ContentSlide38: React.FC = () => {
-  const loanTableData = loanData.map(item => ({
-    period: item.period,
-    householdLoan: item.householdLoan,
-    enterpriseLoan: item.enterpriseLoan,
-    billFinancing: item.billFinancing,
-    nonBankLoan: item.nonBankLoan,
-  }));
+  const depositTableData = depositData;
 
-  const loanColumns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
-    { key: 'householdLoan', title: '住户贷款', align: 'right' },
-    { key: 'enterpriseLoan', title: '企业贷款', align: 'right' },
-    { key: 'billFinancing', title: '票据融资', align: 'right' },
-    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right' },
+  const renderIncrease = (val: any) => {
+    if (typeof val !== 'number') return val;
+    return val.toFixed(1);
+  };
+
+  const depositColumns: ColumnConfig[] = [
+    { key: 'period', title: '月份', align: 'center' },
+    {
+      key: 'group-balance',
+      title: '人民币存款余额',
+      children: [
+        { key: 'balanceTotal', title: '总额', align: 'right' },
+        { key: 'balanceHousehold', title: '住户', align: 'right' },
+        { key: 'balanceNonFinancial', title: '非金融企业', align: 'right' },
+        { key: 'balanceFiscal', title: '财政', align: 'right' },
+        { key: 'balanceFin', title: '非银金融机构', align: 'right' },
+      ],
+    },
+    {
+      key: 'group-increase',
+      title: '当月增加',
+      children: [
+        { key: 'increaseTotal', title: '总额', align: 'right', render: renderIncrease },
+        { key: 'increaseHousehold', title: '住户', align: 'right', render: renderIncrease },
+        { key: 'increaseNonFinancial', title: '非金融企业', align: 'right', render: renderIncrease },
+        { key: 'increaseFiscal', title: '财政', align: 'right', render: renderIncrease },
+        { key: 'increaseFin', title: '非银金融机构', align: 'right', render: renderIncrease },
+      ],
+    },
   ];
-
 
   return (
     <BaseContentSlide
-      title="四季度居民贷款规模下降，住户贷款全年原地踏步"
+      title="全年存款总额增速回升，住户存款增量同比持平，企业同比多增2.6万亿"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="企业扩表 居民缩表" delay="200ms" variant="accent">
+          <BaseCard delay="400ms">
             <p>
-              企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，四季度出现了逐月萎缩态势（10月83.6万亿到12月83.3万亿），主要受房地产销售持续低迷及"提前还贷潮"拖累，导致居民端实质性缩表。
+              2025年人民币存款总额增加26.39万亿，较24年的17.99万亿增加46.7%。其中住户存款增加14.6万亿（24年14.2万亿），非银金融机构增加6.4万亿（24年约2.7万亿），非金融企业增加2.2万亿（24年-0.4万亿），财政增加0.7万亿（24年-0.2万亿）。
             </p>
           </BaseCard>
         </div>
 
         {/* 表格区域 */}
-        <div className="flex flex-1 min-h-0">
-          <ChartContainer delay="600ms" className="w-full min-h-0">
+        <div className="flex gap-4 flex-1 min-h-0">
+          <ChartContainer delay="700ms" className="w-full min-h-0">
             <BaseTable
-              data={loanTableData}
-              columns={loanColumns}
-              title="2024-2025年人民币贷款分项数据"
+              data={depositTableData}
+              columns={depositColumns}
+              title="人民币存款余额及增加额统计"
               subtitle="数据来源：中国人民银行｜单位：亿元"
               colorizeNumbers={false}
               dateColumn="period"
-              getRowClassName={(row) =>
-                ['2025-10', '2025-11', '2025-12'].includes(row.period) ? 'font-bold text-webank-blue' : ''
-              }
             />
           </ChartContainer>
         </div>
