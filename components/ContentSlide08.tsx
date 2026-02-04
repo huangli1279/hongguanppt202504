@@ -9,7 +9,7 @@ export const ContentSlide08: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          投资明显拖累整体，消费贡献率优于去年，保持稳定
+          投资明显拖累整体，消费贡献率优于去年，出口保持稳定
         </>
       }
       cardColumns={3}
