@@ -271,64 +271,83 @@ export const BaseTable: React.FC<BaseTableProps> = ({
           {/* Header */}
           {isGrouped ? (
             // 二级表头模式 - 使用 Grid 布局确保对齐
-            <>
-              {/* 第一行：分组表头 */}
-              <div
-                className="grid flex-shrink-0"
-                style={{
-                  backgroundColor: headerBgColor,
-                  gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))`
-                }}
-              >
-                {columns.map((col, groupIndex) => {
-                  const childCount = col.children?.length || 1;
-                  const showBorder = groupIndex < columns.length - 1;
+            <div
+              className="grid flex-shrink-0"
+              style={{
+                backgroundColor: headerBgColor,
+                gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))`
+              }}
+            >
+              {columns.map((col, groupIndex) => {
+                const hasChildren = col.children && col.children.length > 0;
+                const childCount = hasChildren ? col.children!.length : 1;
+                const showGroupBorder = groupIndex < columns.length - 1;
+
+                if (hasChildren) {
+                  return (
+                    <React.Fragment key={col.key}>
+                      {/* Group Header (Row 1) */}
+                      <div
+                        className={cn(
+                          `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showGroupBorder ? 'border-r border-slate-400/30' : ''}`,
+                          cellClassName
+                        )}
+                        style={{
+                          color: headerTextColor,
+                          gridColumn: `span ${childCount}`,
+                          gridRow: '1',
+                          borderBottom: '1px solid rgba(148, 163, 184, 0.3)',
+                          ...(col.highlight ? { backgroundColor: highlightColumnColor } : undefined)
+                        }}
+                      >
+                        {col.title}
+                      </div>
+                      {/* Children Headers (Row 2) */}
+                      {col.children!.map((child, childIndex) => {
+                        const isLastChild = childIndex === col.children!.length - 1;
+                        const showChildBorder = isLastChild && showGroupBorder;
+                        return (
+                          <div
+                            key={child.key}
+                            className={cn(
+                              `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showChildBorder ? 'border-r border-slate-400/30' : ''}`,
+                              cellClassName
+                            )}
+                            style={{
+                              color: headerTextColor,
+                              gridColumn: 'span 1',
+                              gridRow: '2',
+                              ...(child.highlight ? { backgroundColor: highlightColumnColor } : undefined)
+                            }}
+                          >
+                            {child.title}
+                          </div>
+                        );
+                      })}
+                    </React.Fragment>
+                  );
+                } else {
+                  // Single Header (Merged Row 1 & 2)
                   return (
                     <div
                       key={col.key}
                       className={cn(
-                        `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showBorder ? 'border-r border-slate-400/30' : ''}`,
+                        `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${showGroupBorder ? 'border-r border-slate-400/30' : ''}`,
                         cellClassName
                       )}
                       style={{
                         color: headerTextColor,
-                        gridColumn: `span ${childCount}`,
+                        gridColumn: 'span 1',
+                        gridRow: '1 / span 2',
                         ...(col.highlight ? { backgroundColor: highlightColumnColor } : undefined)
                       }}
                     >
                       {col.title}
                     </div>
                   );
-                })}
-              </div>
-              {/* 第二行：子列表头 */}
-              <div
-                className="grid flex-shrink-0 border-t border-slate-400/30"
-                style={{
-                  backgroundColor: headerBgColor,
-                  gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))`
-                }}
-              >
-                {leafColumns.map((col, colIndex) => {
-                  const isGroupBoundary = groupBoundaries.has(colIndex);
-                  return (
-                    <div
-                      key={col.key}
-                      className={cn(
-                        `min-w-0 px-3 py-1.5 font-semibold text-center flex items-center justify-center ${isGroupBoundary ? 'border-r border-slate-400/30' : ''}`,
-                        cellClassName
-                      )}
-                      style={{
-                        color: headerTextColor,
-                        ...(col.highlight ? { backgroundColor: highlightColumnColor } : undefined)
-                      }}
-                    >
-                      {col.title}
-                    </div>
-                  );
-                })}
-              </div>
-            </>
+                }
+              })}
+            </div>
           ) : (
             // 单级表头模式
             <div
