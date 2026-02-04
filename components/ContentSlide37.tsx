@@ -13,6 +13,13 @@ export const ContentSlide37: React.FC = () => {
     nonBankLoan: item.nonBankLoan,
   }));
 
+  const highlightRows = loanTableData.reduce<number[]>((acc, item, index) => {
+    if (['2025-10', '2025-11', '2025-12'].includes(item.period)) {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
+
   const loanColumns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
     { key: 'householdLoan', title: '住户贷款', align: 'right' },
@@ -46,9 +53,7 @@ export const ContentSlide37: React.FC = () => {
               subtitle="数据来源：中国人民银行｜单位：亿元"
               colorizeNumbers={false}
               dateColumn="period"
-              getRowClassName={(row) =>
-                ['2025-10', '2025-11', '2025-12'].includes(row.period) ? 'font-bold text-webank-blue' : ''
-              }
+              highlightRows={highlightRows}
             />
           </ChartContainer>
         </div>
