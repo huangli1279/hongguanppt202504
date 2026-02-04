@@ -7,13 +7,8 @@ import { depositData } from '@/data/depositData';
 export const ContentSlide39: React.FC = () => {
   const depositTableData = depositData;
 
-  const renderIncrease = (val: any, row: any) => {
+  const renderIncrease = (val: any) => {
     if (typeof val !== 'number') return val;
-    const isTargetMonth = ['2025-10', '2025-11', '2025-12'].includes(row.period);
-    if (!isTargetMonth) return val.toFixed(1);
-
-    if (val > 0) return <span className="text-red-500 font-medium">{val.toFixed(1)}</span>;
-    if (val < 0) return <span className="text-green-600 font-medium">{val.toFixed(1)}</span>;
     return val.toFixed(1);
   };
 

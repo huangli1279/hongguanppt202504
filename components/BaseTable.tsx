@@ -39,6 +39,8 @@ export interface BaseTableProps {
   headerBgColor?: string;
   /** 表头文字颜色 */
   headerTextColor?: string;
+  /** 表体文字颜色 */
+  bodyTextColor?: string;
   /** 行高模式: compact | default | relaxed | auto (自适应容器高度) | dense (极简紧凑) */
   rowHeight?: 'compact' | 'default' | 'relaxed' | 'auto' | 'dense';
   /** 是否固定表头 */
@@ -113,6 +115,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   bordered = false,
   headerBgColor = '#051c2c',
   headerTextColor = '#ffffff',
+  bodyTextColor,
   rowHeight = 'auto',
   stickyHeader = true,
   highlightRows = [],
@@ -375,7 +378,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                           cellClassName
                         )}
                         style={{
-                          color: uiColors.tick,
+                          color: bodyTextColor ?? uiColors.tick,
                           ...(!highlighted && isColumnHighlighted(col)
                             ? { backgroundColor: highlightColumnColor }
                             : undefined)
@@ -517,7 +520,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                         cellClassName
                       )}
                       style={{
-                        color: uiColors.tick,
+                        color: bodyTextColor ?? uiColors.tick,
                         ...(!highlighted && isColumnHighlighted(col)
                           ? { backgroundColor: highlightColumnColor }
                           : undefined)

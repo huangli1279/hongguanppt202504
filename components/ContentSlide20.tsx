@@ -34,7 +34,19 @@ export const ContentSlide20: React.FC = () => {
     { key: 'period', title: '时间', align: 'center' },
     { key: 'grain', title: '粮食', align: 'right' },
     { key: 'edibleOil', title: '食用油', align: 'right' },
-    { key: 'freshVegetables', title: '鲜菜', align: 'right' },
+    {
+      key: 'freshVegetables',
+      title: '鲜菜',
+      align: 'right',
+      render: (value: any, row: any) => {
+        const isTarget = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+        return (
+          <span className={isTarget ? "text-red-500 font-medium" : ""}>
+            {typeof value === 'number' ? value.toFixed(1) : value}
+          </span>
+        );
+      }
+    },
     { key: 'pork', title: '猪肉', align: 'right' },
     { key: 'freshFruit', title: '鲜果', align: 'right' },
     { key: 'transportation', title: '交通工具', align: 'right' },
@@ -42,8 +54,29 @@ export const ContentSlide20: React.FC = () => {
     { key: 'clothing', title: '衣着', align: 'right' },
     { key: 'education', title: '教育娱乐', align: 'right' },
     { key: 'healthcare', title: '医疗保健', align: 'right' },
-    { key: 'otherGoods', title: '金饰品', align: 'right' },
-    { key: 'homeAppliances', title: '家用器具', align: 'right' },
+    {
+      key: 'otherGoods',
+      title: '金饰品',
+      align: 'right',
+      render: (value: any) => (
+        <span className="text-red-500 font-medium">
+          {typeof value === 'number' ? value.toFixed(1) : value}
+        </span>
+      )
+    },
+    {
+      key: 'homeAppliances',
+      title: '家用器具',
+      align: 'right',
+      render: (value: any, row: any) => {
+        const isTarget = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+        return (
+          <span className={isTarget ? "text-red-500 font-medium" : ""}>
+            {typeof value === 'number' ? value.toFixed(1) : value}
+          </span>
+        );
+      }
+    },
   ];
 
   return (
@@ -92,6 +125,7 @@ export const ContentSlide20: React.FC = () => {
               data={tableData}
               columns={columns}
               dateColumn="period"
+              colorizeNumbers={false}
             />
           </ChartContainer>
         </div>
