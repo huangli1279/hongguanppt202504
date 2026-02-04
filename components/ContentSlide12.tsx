@@ -62,7 +62,6 @@ const shortNames: Record<string, string> = {
 const highlightIndustries = [
   '电子设备',
   '铁路船舶',
-  '医药',
   '汽车',
   '电气机械',
   '通用设备'
