@@ -20,12 +20,19 @@ export const ContentSlide37: React.FC = () => {
     return acc;
   }, []);
 
+  const formatInteger = (val: any) => {
+    if (typeof val === 'number') {
+      return val.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    }
+    return val;
+  };
+
   const loanColumns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'householdLoan', title: '住户贷款', align: 'right' },
-    { key: 'enterpriseLoan', title: '企业贷款', align: 'right' },
-    { key: 'billFinancing', title: '票据融资', align: 'right' },
-    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right' },
+    { key: 'householdLoan', title: '住户贷款', align: 'right', render: (val) => formatInteger(val) },
+    { key: 'enterpriseLoan', title: '企业贷款', align: 'right', render: (val) => formatInteger(val) },
+    { key: 'billFinancing', title: '票据融资', align: 'right', render: (val) => formatInteger(val) },
+    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: (val) => formatInteger(val) },
   ];
 
 

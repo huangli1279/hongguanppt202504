@@ -7,9 +7,12 @@ import { depositData } from '@/data/depositData';
 export const ContentSlide38: React.FC = () => {
   const depositTableData = depositData;
 
-  const renderIncrease = (val: any) => {
+  const renderInteger = (val: any) => {
     if (typeof val !== 'number') return val;
-    return val.toFixed(1);
+    return val.toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    });
   };
 
   const depositColumns: ColumnConfig[] = [
@@ -18,22 +21,22 @@ export const ContentSlide38: React.FC = () => {
       key: 'group-balance',
       title: '人民币存款余额',
       children: [
-        { key: 'balanceTotal', title: '总额', align: 'right' },
-        { key: 'balanceHousehold', title: '住户', align: 'right' },
-        { key: 'balanceNonFinancial', title: '非金融企业', align: 'right' },
-        { key: 'balanceFiscal', title: '财政', align: 'right' },
-        { key: 'balanceFin', title: '非银金融机构', align: 'right' },
+        { key: 'balanceTotal', title: '总额', align: 'right', render: renderInteger },
+        { key: 'balanceHousehold', title: '住户', align: 'right', render: renderInteger },
+        { key: 'balanceNonFinancial', title: '非金融企业', align: 'right', render: renderInteger },
+        { key: 'balanceFiscal', title: '财政', align: 'right', render: renderInteger },
+        { key: 'balanceFin', title: '非银金融机构', align: 'right', render: renderInteger },
       ],
     },
     {
       key: 'group-increase',
       title: '当月增加',
       children: [
-        { key: 'increaseTotal', title: '总额', align: 'right', render: renderIncrease },
-        { key: 'increaseHousehold', title: '住户', align: 'right', render: renderIncrease },
-        { key: 'increaseNonFinancial', title: '非金融企业', align: 'right', render: renderIncrease },
-        { key: 'increaseFiscal', title: '财政', align: 'right', render: renderIncrease },
-        { key: 'increaseFin', title: '非银金融机构', align: 'right', render: renderIncrease },
+        { key: 'increaseTotal', title: '总额', align: 'right', render: renderInteger },
+        { key: 'increaseHousehold', title: '住户', align: 'right', render: renderInteger },
+        { key: 'increaseNonFinancial', title: '非金融企业', align: 'right', render: renderInteger },
+        { key: 'increaseFiscal', title: '财政', align: 'right', render: renderInteger },
+        { key: 'increaseFin', title: '非银金融机构', align: 'right', render: renderInteger },
       ],
     },
   ];
