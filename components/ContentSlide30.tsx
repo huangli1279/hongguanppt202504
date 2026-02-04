@@ -80,7 +80,7 @@ export const ContentSlide30: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="机电与高新技术产品进口韧性显著" delay="200ms" variant="accent">
             <p>
               机电与高新技术产品全年累计金额同比增长<span className="text-red-500 font-semibold">5.2%</span>和<span className="text-red-500 font-semibold">9.3%</span>。 其中自动数据处理设备（<span className="text-red-500 font-semibold">18.2%</span>）与集成电路（<span className="text-red-500 font-semibold">10.1%</span>）增势强劲，稳中有升，凸显国内电子制造与AI算力产业对核心零部件的刚性需求与战略补库。

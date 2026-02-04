@@ -32,7 +32,7 @@ export const ContentSlide19: React.FC = () => {
           render: (val: any, row: any) => {
             const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
             const formatted = typeof val === 'number' ? val.toFixed(1) : val;
-            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+            return <span className={isTargetPeriod ? "text-green-600" : ""}>{formatted}</span>;
           }
         },
         { 
@@ -42,7 +42,7 @@ export const ContentSlide19: React.FC = () => {
           render: (val: any, row: any) => {
             const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
             const formatted = typeof val === 'number' ? val.toFixed(1) : val;
-            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+            return <span className={isTargetPeriod ? "text-green-600" : ""}>{formatted}</span>;
           }
         },
         { 
@@ -114,7 +114,7 @@ export const ContentSlide19: React.FC = () => {
         {/* 表格区域 */}
         <ChartContainer delay="600ms" className="flex-1 min-h-0">
           <BaseTable
-            title="2025年全国分行业零售累计同比数据"
+            title="2025年全国分行业零售当月同比数据"
             subtitle="数据来源：国家统计局 | 单位：%"
             data={tableData}
             columns={columns}
