@@ -93,7 +93,7 @@ export const ContentSlide19: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="“以旧换新”产品多数稳定增长，汽车与石油消费年底承压"
+      title="“以旧换新”产品四季度增速回落，汽车与石油消费年底承压"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
