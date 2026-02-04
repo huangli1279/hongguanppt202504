@@ -9,8 +9,7 @@ const rawData = {
   "高技术制造业": {
     "计算机、通信和其他电子设备制造业": [13.10, 10.80, 10.20, 11.00, 10.20, 9.90, 11.30, 8.90, 9.20, 11.80],
     "铁路、船舶、航空航天和其他运输设备制造业": [19.00, 17.60, 14.60, 10.10, 13.70, 9.80, 10.30, 15.20, 11.90, 9.20],
-    "医药制造业": [1.20, 2.20, 1.30, 2.70, 2.40, 3.30, 5.40, -1.60, 2.40, 7.00],
-    "高技术制造业": [10.70, 10.00, 8.60, 9.70, 9.30, 9.30, 10.30, 7.20, 8.40, 11.00]
+    "医药制造业": [1.20, 2.20, 1.30, 2.70, 2.40, 3.30, 5.40, -1.60, 2.40, 7.00]
   },
   "传统制造业": {
     "黑色金属冶炼和压延加工业": [7.70, 5.80, 4.80, 4.10, 8.60, 7.30, 2.20, 1.40, 0.90, 0.70],
@@ -32,8 +31,7 @@ const rawData = {
     "汽车制造业": [11.50, 9.20, 11.60, 11.40, 8.50, 8.40, 16.00, 16.80, 11.90, 8.30],
     "电气机械和器材制造业": [13.00, 13.40, 11.00, 11.40, 10.20, 9.90, 7.90, 4.90, 4.40, 4.30],
     "通用设备制造业": [9.30, 7.80, 6.30, 7.80, 8.40, 7.30, 9.30, 6.90, 7.50, 7.50],
-    "金属制品业": [9.90, 7.70, 6.70, 6.70, 4.20, 2.80, 4.00, 1.70, 3.00, 3.60],
-    "装备制造业": [null, 9.80, 9.00, null, 8.40, 8.10, null, 8.00, 7.70, null]
+    "金属制品业": [9.90, 7.70, 6.70, 6.70, 4.20, 2.80, 4.00, 1.70, 3.00, 3.60]
   }
 };
 
@@ -42,7 +40,6 @@ const shortNames: Record<string, string> = {
   '计算机、通信和其他电子设备制造业': '电子设备',
   '铁路、船舶、航空航天和其他运输设备制造业': '铁路船舶',
   '医药制造业': '医药',
-  '高技术制造业': '高技术',
   '黑色金属冶炼和压延加工业': '黑色冶炼',
   '有色金属冶炼和压延加工业': '有色冶炼',
   '石油、煤炭及其他燃料加工业': '燃料加工',
@@ -58,8 +55,49 @@ const shortNames: Record<string, string> = {
   '汽车制造业': '汽车',
   '电气机械和器材制造业': '电气机械',
   '通用设备制造业': '通用设备',
-  '金属制品业': '金属制品',
-  '装备制造业': '装备'
+  '金属制品业': '金属制品'
+};
+
+// 需要标红的行业
+const highlightIndustries = [
+  '电子设备',
+  '铁路船舶',
+  '医药',
+  '汽车',
+  '电气机械',
+  '通用设备'
+];
+
+// 需要标红的特定行月份
+const highlightMonths = ["2025-10", "2025-11", "2025-12"];
+
+// 需要特定行标红的行业
+const conditionalHighlightIndustries = ['化学制品', '橡塑制品'];
+
+// 红色数值渲染函数
+const renderRedCell = (value: number) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  return (
+    <span className="text-red-500 font-bold">
+      {value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+    </span>
+  );
+};
+
+// 条件红色数值渲染函数
+const renderConditionalRedCell = (value: number, row: any) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  const shouldHighlight = highlightMonths.includes(row.month);
+  
+  if (shouldHighlight) {
+    return (
+      <span className="text-red-500 font-bold">
+        {value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+      </span>
+    );
+  }
+  
+  return value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 };
 
 // 转换数据为表格格式：月份为行，行业为列
@@ -104,7 +142,8 @@ const columns: ColumnConfig[] = [
       key: `hightech_${industry}`,
       title: shortNames[industry] || industry,
       width: '46px',
-      align: 'right' as const
+      align: 'right' as const,
+      render: highlightIndustries.includes(shortNames[industry]) ? renderRedCell : undefined
     }))
   },
   {
@@ -114,7 +153,8 @@ const columns: ColumnConfig[] = [
       key: `traditional_${industry}`,
       title: shortNames[industry] || industry,
       width: '46px',
-      align: 'right' as const
+      align: 'right' as const,
+      render: conditionalHighlightIndustries.includes(shortNames[industry]) ? renderConditionalRedCell : undefined
     }))
   },
   {
@@ -134,7 +174,8 @@ const columns: ColumnConfig[] = [
       key: `equipment_${industry}`,
       title: shortNames[industry] || industry,
       width: '46px',
-      align: 'right' as const
+      align: 'right' as const,
+      render: highlightIndustries.includes(shortNames[industry]) ? renderRedCell : undefined
     }))
   }
 ];
@@ -176,6 +217,7 @@ export const ContentSlide12: React.FC = () => {
             title="2025年规模以上工业细分行业增加值当月同比增速"
             subtitle="单位：%"
             dateColumn="month"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       }
