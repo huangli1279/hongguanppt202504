@@ -24,4 +24,5 @@ export const industrialProfitData: IndustrialProfitDataPoint[] = [
   { time: '2510', totalProfit: -557.9, revenue: -3774.7, cost: -3078.9, revenueMinusCost: -695.8, expenses: 99.9, investmentIncome: 277.1 },
   { time: '2511', totalProfit: -1011.7, revenue: -11.6, cost: 294.3, revenueMinusCost: -305.9, expenses: 262.1, investmentIncome: -341.8 },
   { time: '2512', totalProfit: 391.5, revenue: -4067.7, cost: -3460.8, revenueMinusCost: -606.9, expenses: 151.6, investmentIncome: 542.3 },
+  { time: '2025全年', totalProfit: 470.5, revenue: 15756.1, cost: 15702.9, revenueMinusCost: 53.2, expenses: -362.4, investmentIncome: 1004.5 },
 ];

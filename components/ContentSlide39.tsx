@@ -56,8 +56,8 @@ export const ContentSlide39: React.FC = () => {
             <BaseTable
               data={depositTableData}
               columns={depositColumns}
-              title="人民币存款余额及增加额统计 2025"
-              subtitle="单位：亿元"
+              title="人民币存款余额及增加额统计"
+              subtitle="数据来源：中国人民银行｜单位：亿元"
               colorizeNumbers={false}
               dateColumn="period"
             />

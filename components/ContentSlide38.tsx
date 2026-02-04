@@ -40,8 +40,8 @@ export const ContentSlide38: React.FC = () => {
             <BaseTable
               data={loanTableData}
               columns={loanColumns}
-              title="2024-2025年人民币贷款分项数据序列"
-              subtitle="单位：亿元"
+              title="2024-2025年人民币贷款分项数据"
+              subtitle="数据来源：中国人民银行｜单位：亿元"
               colorizeNumbers={false}
               dateColumn="period"
               getRowClassName={(row) =>

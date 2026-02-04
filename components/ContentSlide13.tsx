@@ -4,14 +4,36 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseTable, ColumnConfig } from './BaseTable';
 import { industrialProfitData } from '@/data/profit';
 
+const formatNumber = (val: number) => {
+  return val.toLocaleString('en-US', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  });
+};
+
+const renderColoredCell = (value: any, row: any) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  const num = Number(value);
+  if (isNaN(num)) return value;
+  
+  const formatted = formatNumber(num);
+  // 只在特定行进行着色
+  if (row.time === '2512' || row.time === '2025全年') {
+    if (num > 0) return <span className="text-red-500">{formatted}</span>;
+    if (num < 0) return <span className="text-green-600">{formatted}</span>;
+  }
+  
+  return <span className="text-slate-600">{formatted}</span>;
+};
+
 const columns: ColumnConfig[] = [
   { key: 'time', title: '日期', width: '70px', align: 'left' },
-  { key: 'totalProfit', title: '利润', width: '80px', align: 'right' },
+  { key: 'totalProfit', title: '利润', width: '80px', align: 'right', render: renderColoredCell },
   { key: 'revenue', title: '营收', width: '90px', align: 'right' },
   { key: 'cost', title: '成本', width: '90px', align: 'right' },
-  { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right' },
-  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right' },
-  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
+  { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
+  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right', render: renderColoredCell },
+  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right', render: renderColoredCell },
 ];
 
 export const ContentSlide13: React.FC = () => {
@@ -42,10 +64,11 @@ export const ContentSlide13: React.FC = () => {
                 <span className="bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100 font-bold text-webank-blue mr-2">
                   利润 = 营收 - 成本 - 费用 + 投资收益 + 其它收益
                 </span>
-                数据为同比增加值，单位：亿元
+                数据为同比增加值，单位：亿元。日期格式“2502”代表“2025年2月”。
               </>
             }
             dateColumn="time"
+            colorizeNumbers={false}
           />
         </ChartContainer>
       }
