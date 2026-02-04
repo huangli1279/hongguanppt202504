@@ -19,7 +19,9 @@
       "Bash(git reset:*)",
       "Bash(git commit:*)",
       "Bash(curl:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(python skills/ui-ux-pro-max/scripts/search.py:*)",
+      "Bash(python:*)"
     ]
   },
   "enabledPlugins": {}

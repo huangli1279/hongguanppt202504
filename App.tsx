@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { CoverSlide } from './components/CoverSlide';
+import { EconomicForecast2026Slide } from './components/EconomicForecast2026Slide';
 import { TableOfContentsSlide } from './components/TableOfContentsSlide';
 import { BaseSectionTransitionSlide } from './components/BaseSectionTransitionSlide';
 import { ContentSlide04 } from './components/ContentSlide04';
@@ -37,7 +38,7 @@ const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 39;
+  const TOTAL_SLIDES = 40;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -98,44 +99,45 @@ const App: React.FC = () => {
         className="relative bg-white overflow-hidden shadow-2xl transition-all duration-500"
       >
         {currentSlide === 1 && <CoverSlide />}
-        {currentSlide === 2 && <TableOfContentsSlide />}
-        {currentSlide === 3 && <BaseSectionTransitionSlide id="01" title="GDP 分析" subtitle="定基调，找温差" />}
-        {currentSlide === 4 && <ContentSlide04 />}
-        {currentSlide === 5 && <ContentSlide05 />}
-        {currentSlide === 6 && <ContentSlide06 />}
-        {currentSlide === 7 && <ContentSlide07 />}
-        {currentSlide === 8 && <ContentSlide08 />}
-        {currentSlide === 9 && <BaseSectionTransitionSlide id="02" title="生产端分析" subtitle="看景气，看利润" />}
-        {currentSlide === 10 && <ContentSlide10 />}
-        {currentSlide === 11 && <ContentSlide11 />}
-        {currentSlide === 12 && <ContentSlide12 />}
-        {currentSlide === 13 && <ContentSlide13 />}
-        {currentSlide === 14 && <ContentSlide14 />}
-        {currentSlide === 15 && <ContentSlide15 />}
-        {currentSlide === 16 && <BaseSectionTransitionSlide id="03" title="消费分析" subtitle="看意愿，看结构" />}
-        {currentSlide === 17 && <ContentSlide17 />}
-        {currentSlide === 18 && <ContentSlide18 />}
-        {currentSlide === 19 && <ContentSlide19 />}
-        {currentSlide === 20 && <ContentSlide20 />}
-        {currentSlide === 21 && <ContentSlide21 />}
-        {currentSlide === 22 && <BaseSectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看设备更新" />}
-        {currentSlide === 23 && <ContentSlide23 />}
-        {currentSlide === 24 && <ContentSlide24 />}
-        {currentSlide === 25 && <ContentSlide25 />}
-        {currentSlide === 26 && <ContentSlide26 />}
-        {currentSlide === 27 && <BaseSectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
-        {currentSlide === 28 && <ContentSlide28 />}
-        {currentSlide === 29 && <ContentSlide29 />}
-        {currentSlide === 30 && <ContentSlide30 />}
-        {currentSlide === 31 && <ContentSlide31 />}
-        {currentSlide === 32 && <BaseSectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
-        {currentSlide === 33 && <ContentSlide33 />}
-        {currentSlide === 34 && <BaseSectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
-        {currentSlide === 35 && <ContentSlide35 />}
-        {currentSlide === 36 && <ContentSlide36 />}
-        {currentSlide === 37 && <ContentSlide37 />}
-        {currentSlide === 38 && <ContentSlide38 />}
-        {currentSlide === 39 && <ThankYouSlide />}
+        {currentSlide === 2 && <EconomicForecast2026Slide />}
+        {currentSlide === 3 && <TableOfContentsSlide />}
+        {currentSlide === 4 && <BaseSectionTransitionSlide id="01" title="GDP 分析" subtitle="定基调，找温差" />}
+        {currentSlide === 5 && <ContentSlide04 />}
+        {currentSlide === 6 && <ContentSlide05 />}
+        {currentSlide === 7 && <ContentSlide06 />}
+        {currentSlide === 8 && <ContentSlide07 />}
+        {currentSlide === 9 && <ContentSlide08 />}
+        {currentSlide === 10 && <BaseSectionTransitionSlide id="02" title="生产端分析" subtitle="看景气，看利润" />}
+        {currentSlide === 11 && <ContentSlide10 />}
+        {currentSlide === 12 && <ContentSlide11 />}
+        {currentSlide === 13 && <ContentSlide12 />}
+        {currentSlide === 14 && <ContentSlide13 />}
+        {currentSlide === 15 && <ContentSlide14 />}
+        {currentSlide === 16 && <ContentSlide15 />}
+        {currentSlide === 17 && <BaseSectionTransitionSlide id="03" title="消费分析" subtitle="看意愿，看结构" />}
+        {currentSlide === 18 && <ContentSlide17 />}
+        {currentSlide === 19 && <ContentSlide18 />}
+        {currentSlide === 20 && <ContentSlide19 />}
+        {currentSlide === 21 && <ContentSlide20 />}
+        {currentSlide === 22 && <ContentSlide21 />}
+        {currentSlide === 23 && <BaseSectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看设备更新" />}
+        {currentSlide === 24 && <ContentSlide23 />}
+        {currentSlide === 25 && <ContentSlide24 />}
+        {currentSlide === 26 && <ContentSlide25 />}
+        {currentSlide === 27 && <ContentSlide26 />}
+        {currentSlide === 28 && <BaseSectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 29 && <ContentSlide28 />}
+        {currentSlide === 30 && <ContentSlide29 />}
+        {currentSlide === 31 && <ContentSlide30 />}
+        {currentSlide === 32 && <ContentSlide31 />}
+        {currentSlide === 33 && <BaseSectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 34 && <ContentSlide33 />}
+        {currentSlide === 35 && <BaseSectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 36 && <ContentSlide35 />}
+        {currentSlide === 37 && <ContentSlide36 />}
+        {currentSlide === 38 && <ContentSlide37 />}
+        {currentSlide === 39 && <ContentSlide38 />}
+        {currentSlide === 40 && <ThankYouSlide />}
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
           <span className="font-serif text-webank-blue font-medium text-sm">
