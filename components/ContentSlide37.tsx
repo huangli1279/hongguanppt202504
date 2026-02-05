@@ -8,7 +8,7 @@ import { socialFinancingGrowthData, socialFinancingStructureData } from '@/data/
 export const ContentSlide37: React.FC = () => {
   return (
     <BaseContentSlide
-      title={'四季度社融存量增速回落，政府债高基数是核心拖累，企业信贷现积极信号'}
+      title={'四季度社融存量增速回落，政府债高基数是核心拖累，企业债券增长'}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
