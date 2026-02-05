@@ -84,6 +84,7 @@ export const ContentSlide15: React.FC = () => {
                 legendOrder={['能源类', '矿产类', '有色类', '钢铁类']}
                 xAxisTickCount={6}
                 unit=""
+                yAxisTickFormatter={(val) => `${val}`}
               />
             </ChartContainer>
           </div>
