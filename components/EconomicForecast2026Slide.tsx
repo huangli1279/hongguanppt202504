@@ -180,7 +180,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
                 <span className="text-webank-blue font-medium">制造业稳中略降</span>："反内卷"限制低效产能，设备更新和高技术制造业维持高位
               </p>
               <p>
-                <span className="text-webank-blue font-medium">房地产跌幅收窄</span>：预计从-17.2%显著收窄，对经济拖累边际减弱
+                <span className="text-webank-blue font-medium">房地产跌幅收窄</span>：预计从-17.2%收窄，对经济拖累边际减弱
               </p>
             </ForecastCard>
 
