@@ -70,8 +70,26 @@ export const ContentSlide19: React.FC = () => {
       key: 'group-optional',
       title: '可选类',
       children: [
-        { key: 'jewelry', title: '金银珠宝', align: 'right' },
-        { key: 'sportsEntertainment', title: '体育娱乐', align: 'right' },
+        {
+          key: 'jewelry',
+          title: '金银珠宝',
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+          }
+        },
+        {
+          key: 'sportsEntertainment',
+          title: '体育娱乐',
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+          }
+        },
       ],
     },
     {
