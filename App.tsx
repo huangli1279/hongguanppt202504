@@ -99,40 +99,40 @@ const App: React.FC = () => {
         className="relative bg-white overflow-hidden shadow-2xl transition-all duration-500"
       >
         {currentSlide === 1 && <CoverSlide />}
-        {currentSlide === 2 && <EconomicForecast2026Slide />}
-        {currentSlide === 3 && <TableOfContentsSlide />}
-        {currentSlide === 4 && <BaseSectionTransitionSlide id="01" title="GDP 分析" subtitle="定基调，找温差" />}
+        {currentSlide === 2 && <TableOfContentsSlide />}
+        {currentSlide === 3 && <EconomicForecast2026Slide />}
+        {currentSlide === 4 && <BaseSectionTransitionSlide id="02" title="GDP 分析" subtitle="定基调，找温差" />}
         {currentSlide === 5 && <ContentSlide05 />}
         {currentSlide === 6 && <ContentSlide06 />}
         {currentSlide === 7 && <ContentSlide07 />}
         {currentSlide === 8 && <ContentSlide08 />}
         {currentSlide === 9 && <ContentSlide09 />}
-        {currentSlide === 10 && <BaseSectionTransitionSlide id="02" title="生产端分析" subtitle="看景气，看利润" />}
+        {currentSlide === 10 && <BaseSectionTransitionSlide id="03" title="生产端分析" subtitle="看景气，看利润" />}
         {currentSlide === 11 && <ContentSlide11 />}
         {currentSlide === 12 && <ContentSlide12 />}
         {currentSlide === 13 && <ContentSlide13 />}
         {currentSlide === 14 && <ContentSlide14 />}
         {currentSlide === 15 && <ContentSlide15 />}
         {currentSlide === 16 && <ContentSlide16 />}
-        {currentSlide === 17 && <BaseSectionTransitionSlide id="03" title="消费分析" subtitle="看意愿，看结构" />}
+        {currentSlide === 17 && <BaseSectionTransitionSlide id="04" title="消费分析" subtitle="看意愿，看结构" />}
         {currentSlide === 18 && <ContentSlide18 />}
         {currentSlide === 19 && <ContentSlide19 />}
         {currentSlide === 20 && <ContentSlide20 />}
         {currentSlide === 21 && <ContentSlide21 />}
         {currentSlide === 22 && <ContentSlide22 />}
-        {currentSlide === 23 && <BaseSectionTransitionSlide id="04" title="投资分析" subtitle="看地产拖累，看设备更新" />}
+        {currentSlide === 23 && <BaseSectionTransitionSlide id="05" title="投资分析" subtitle="看地产拖累，看设备更新" />}
         {currentSlide === 24 && <ContentSlide24 />}
         {currentSlide === 25 && <ContentSlide25 />}
         {currentSlide === 26 && <ContentSlide26 />}
         {currentSlide === 27 && <ContentSlide27 />}
-        {currentSlide === 28 && <BaseSectionTransitionSlide id="05" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 28 && <BaseSectionTransitionSlide id="06" title="进出口分析" subtitle="看韧性，看抢跑" />}
         {currentSlide === 29 && <ContentSlide29 />}
         {currentSlide === 30 && <ContentSlide30 />}
         {currentSlide === 31 && <ContentSlide31 />}
         {currentSlide === 32 && <ContentSlide32 />}
-        {currentSlide === 33 && <BaseSectionTransitionSlide id="06" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 33 && <BaseSectionTransitionSlide id="07" title="财政分析" subtitle="看钱袋子" />}
         {currentSlide === 34 && <ContentSlide34 />}
-        {currentSlide === 35 && <BaseSectionTransitionSlide id="07" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 35 && <BaseSectionTransitionSlide id="08" title="金融数据分析" subtitle="看资金活性" />}
         {currentSlide === 36 && <ContentSlide36 />}
         {currentSlide === 37 && <ContentSlide37 />}
         {currentSlide === 38 && <ContentSlide38 />}
