@@ -38,7 +38,7 @@ export const ContentSlide18: React.FC = () => {
               ]}
               yAxisDomain={[0, 14]}
               showYAxis={true}
-              legendOrder={['服务零售额:累计同比', '社会消费品零售总额:累计同比', '商品零售额:累计同比']}
+              legendOrder={['社会消费品零售总额:累计同比', '服务零售额:累计同比', '商品零售额:累计同比']}
               xAxisTickCount={6}
             />
           </ChartContainer>
