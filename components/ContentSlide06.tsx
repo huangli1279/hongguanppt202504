@@ -2,60 +2,72 @@ import React from 'react';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseBarChart } from './BaseBarChart';
-import { detailedIndustryGrowthData } from '@/data/industry';
+import { BaseStackedBarChart } from './BaseStackedBarChart';
+import { industryGrowthByIndustryData, industryContributionData2024 } from '@/data/industry';
 
 export const ContentSlide06: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
-          装备制造业（+9.2%）和高技术制造业（+9.4%）全年增速显著快于整体
+          产业分化：
+          <span className="text-webank-accent">第三产业Q4增长5.2%支撑稳健，建筑业拖累第二产业</span>
         </>
       }
-      cardColumns={3}
-      chartColumns={1}
+      cardColumns={2}
       cards={
         <>
-          <BaseCard title="信息与租赁服务业双位数高增" delay="200ms" variant="accent">
+          <BaseCard title="三产拉动分化" delay="200ms" variant="accent">
             <p>
-              在新质生产力核心动能带动下，<span className="font-bold text-green-600">信息服务业</span>全年维持高增速（Q4:<span className="text-green-600">10.7%</span>）；<span className="font-bold text-green-600">租赁和商务服务业</span>四季度增长<span className="text-green-600">12.7%</span>，主要得益于服务消费回暖和以金融、科技为代表的高端商务活动的强劲需求拉动。
+              <span className="font-bold text-webank-accent">第三产业 (5.2%)</span>: 核心支撑。信息技术 (<span className="text-green-600">+11.1%</span>) 与租赁商务服务 (<span className="text-green-600">+10.3%</span>) 领跑，现代服务业增势强劲。
             </p>
           </BaseCard>
 
-          <BaseCard title="制造业稳健支撑" delay="400ms">
+          <BaseCard title="第二产业明显回落" delay="400ms">
             <p>
-              <span className="font-bold">制造业</span> (Q4: 5.1%) 和 <span className="font-bold">工业</span> (Q4: 5.0%) 增速虽放缓但仍高于GDP整体 (4.5%)，体现工业生产韧性。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="房地产建筑拖累" delay="600ms">
-            <p>
-              <span className="font-bold text-red-600">建筑业</span> (Q4: <span className="text-red-600">-2.5%</span>) 和 <span className="font-bold text-red-600">房地产业</span> (Q4: <span className="text-red-600">-1.0%</span>) 增速为负，受房地产投资深度调整影响，对整体经济形成拖累。
+              <span className="font-bold">第二产业 (3.4%)</span>: 虽然12月工业回升，但受房地产投资深跌 (<span className="text-red-600">-17.2%</span>) 影响，建筑业及上游原材料严重拖累整体表现。
             </p>
           </BaseCard>
         </>
       }
       charts={
-        <ChartContainer delay="800ms">
-          <BaseBarChart
-            data={detailedIndustryGrowthData}
-            title="2025年一二三产业细分行业GDP当季同比数据"
-            subtitle="单位: %"
-            xAxisKey="industry"
-            bars={[
-              { dataKey: '2025-03', name: '2025-03'},
-              { dataKey: '2025-06', name: '2025-06'},
-              { dataKey: '2025-09', name: '2025-09'},
-              { dataKey: '2025-12', name: '2025-12'},
-            ]}
-            legendOrder={['2025-03', '2025-06', '2025-09', '2025-12']}
-            barSize={12}
-            showYAxis
-            yAxisDomain={[-5, 15]}
-            showReferenceLine
-            referenceLineY={0}
-          />
-        </ChartContainer>
+        <>
+          <ChartContainer delay="600ms">
+            <BaseBarChart
+              data={industryGrowthByIndustryData}
+              title="2025年三产业GDP增加值当季同比增速"
+              subtitle="单位: %"
+              xAxisKey="industry"
+              bars={[
+                { dataKey: '2025-03', name: '2025-03'},
+                { dataKey: '2025-06', name: '2025-06'},
+                { dataKey: '2025-09', name: '2025-09'},
+                { dataKey: '2025-12', name: '2025-12'},
+              ]}
+              legendOrder={['2025-03', '2025-06', '2025-09', '2025-12']}
+              barSize={16}
+              showYAxis
+              showLabels
+            />
+          </ChartContainer>
+          <ChartContainer delay="800ms">
+            <BaseStackedBarChart
+              data={industryContributionData2024}
+              title="2024-2025年三产业GDP当季同比拉动数据"
+              subtitle="单位: 百分点"
+              bars={[
+                { dataKey: 'primaryContrib', name: '第一产业拉动'},
+                { dataKey: 'secondaryContrib', name: '第二产业拉动'},
+                { dataKey: 'tertiaryContrib', name: '第三产业拉动'},
+              ]}
+              legendOrder={['第一产业拉动', '第二产业拉动', '第三产业拉动']}
+              barSize={20}
+              showYAxis
+              showLabels
+              unit="百分点"
+            />
+          </ChartContainer>
+        </>
       }
     />
   );

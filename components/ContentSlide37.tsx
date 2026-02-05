@@ -1,66 +1,57 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
+import { BaseLineChart } from './BaseLineChart';
+import { BaseBarChart } from './BaseBarChart';
 import { BaseCard } from './BaseCard';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { loanData } from '@/data/loanData';
+import { socialFinancingGrowthData, socialFinancingStructureData } from '@/data/socialFinancing';
 
 export const ContentSlide37: React.FC = () => {
-  const loanTableData = loanData.map(item => ({
-    period: item.period,
-    householdLoan: item.householdLoan,
-    enterpriseLoan: item.enterpriseLoan,
-    billFinancing: item.billFinancing,
-    nonBankLoan: item.nonBankLoan,
-  }));
-
-  const highlightRows = loanTableData.reduce<number[]>((acc, item, index) => {
-    if (['2025-10', '2025-11', '2025-12'].includes(item.period)) {
-      acc.push(index);
-    }
-    return acc;
-  }, []);
-
-  const formatInteger = (val: any) => {
-    if (typeof val === 'number') {
-      return val.toLocaleString('en-US', { maximumFractionDigits: 0 });
-    }
-    return val;
-  };
-
-  const loanColumns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
-    { key: 'householdLoan', title: '住户贷款', align: 'right', render: (val) => formatInteger(val) },
-    { key: 'enterpriseLoan', title: '企业贷款', align: 'right', render: (val) => formatInteger(val) },
-    { key: 'billFinancing', title: '票据融资', align: 'right', render: (val) => formatInteger(val) },
-    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: (val) => formatInteger(val) },
-  ];
-
-
   return (
     <BaseContentSlide
-      title="住户贷款全年规模无增长，四季度较三季度下降"
+      title={'四季度社融存量增速回落，政府债高基数是核心拖累，企业信贷现积极信号'}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="企业扩表 居民缩表" delay="200ms" variant="accent">
+          <BaseCard title="社融结构：政府债回落，企业债放量" delay="400ms">
             <p>
-              企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，四季度出现了逐月萎缩态势（10月83.6万亿到12月83.3万亿），主要受房地产销售持续低迷及贷款系列政策影响，导致居民端实质性缩表。
+              受24年隐债置换影响，Q4季度政府债净融资（2.38万亿）同比大幅少增 <span className="font-bold text-red-500">1.74万亿元</span>。人民币贷款同比少增0.28万亿，企业债券（0.82万亿）同比多增 <span className="font-bold text-webank-blue">0.5万亿</span>。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <div className="flex flex-1 min-h-0">
-          <ChartContainer delay="600ms" className="w-full min-h-0">
-            <BaseTable
-              data={loanTableData}
-              columns={loanColumns}
-              title="2024-2025年人民币贷款分项数据"
-              subtitle="数据来源：中国人民银行｜单位：亿元"
-              colorizeNumbers={false}
-              dateColumn="period"
-              highlightRows={highlightRows}
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={socialFinancingGrowthData}
+              title="2024-2025年社融存量规模同比增速"
+              subtitle="数据来源：中国人民银行 | 单位：%"
+              lines={[
+                { dataKey: 'growth', name: '社融存量同比增速', strokeWidth: 2 },
+              ]}
+              yAxisDomain={[7, 10]}
+              showYAxis={true}
+              xAxisTickCount={8}
+            />
+          </ChartContainer>
+          <ChartContainer delay="800ms">
+            <BaseBarChart
+              data={socialFinancingStructureData}
+              title="社融增量结构对比（25Q4 vs 24Q4）"
+              subtitle="数据来源：中国人民银行 | 单位：亿元"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'q24', name: '24Q4'},
+                { dataKey: 'q25', name: '25Q4'},
+              ]}
+              yAxisDomain={[-10000, 45000]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              barSize={12}
+              legendOrder={['24Q4', '25Q4']}
+              unit="亿元"
             />
           </ChartContainer>
         </div>

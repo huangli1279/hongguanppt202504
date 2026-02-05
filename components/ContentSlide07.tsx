@@ -1,125 +1,61 @@
 import React from 'react';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { provinceGdpDataTop15, provinceGdpDataRest } from '@/data/provinceGdp';
-
-const extractGrowthNumber = (value: unknown): number | null => {
-  if (value === null || value === undefined) return null;
-  if (typeof value === 'number' && !Number.isNaN(value)) return value;
-  const parsed = parseFloat(String(value).replace('%', ''));
-  return Number.isNaN(parsed) ? null : parsed;
-};
-
-const renderGrowthValue = (value: unknown, row?: any): React.ReactNode => {
-  const num = extractGrowthNumber(value);
-  if (num === null) {
-    return <span className="text-slate-400">-</span>;
-  }
-
-  const formatted = `${num.toFixed(1)}%`;
-  
-  // 如果是特殊行（江苏/山东 或 增速<5%），不设置颜色，继承行的颜色
-  if (row) {
-    if (['江苏', '山东'].includes(row.province)) {
-      return <span>{formatted}</span>;
-    }
-    const growth = extractGrowthNumber(row.growth);
-    if (growth !== null && growth < 5.0) {
-      return <span>{formatted}</span>;
-    }
-  }
-
-  return <span className="text-slate-600">{formatted}</span>;
-};
-
-const getRowClassName = (row: any) => {
-  if (['江苏', '山东'].includes(row.province)) {
-    return '[&>*]:!text-red-500 [&>*]:font-bold';
-  }
-  const growth = extractGrowthNumber(row.growth);
-  if (growth !== null && growth < 5.0) {
-    return '[&>*]:!text-green-600';
-  }
-  return '';
-};
-
-const tableColumns: ColumnConfig[] = [
-  {
-    key: 'province',
-    title: '省份',
-    align: 'left'
-  },
-  {
-    key: 'gdp',
-    title: 'GDP',
-    align: 'right',
-  },
-  {
-    key: 'growth',
-    title: '增速',
-    align: 'right',
-    render: (value, row) => renderGrowthValue(value, row)
-  },
-];
+import { BaseBarChart } from './BaseBarChart';
+import { detailedIndustryGrowthData } from '@/data/industry';
 
 export const ContentSlide07: React.FC = () => {
   return (
     <BaseContentSlide
-      title="2025年各省市GDP：新兴产业与高技术制造双轮驱动"
-      cardColumns={2}
-      chartColumns={2}
+      title={
+        <>
+          装备制造业（+9.2%）和高技术制造业（+9.4%）全年增速显著快于整体
+        </>
+      }
+      cardColumns={3}
+      chartColumns={1}
       cards={
         <>
-          <BaseCard title="传统产业拖累" delay="200ms" variant="accent">
-            <div className="space-y-2">
-              <p>
-                <span className="font-bold">广东省</span>2025年GDP增速<span className="text-webank-accent font-bold">3.9%</span>，主要受传统支柱产业（房地产、传统制造业）深度调整影响。
-              </p>
-              <p>
-                <span className="font-bold">海南省</span>高度依赖旅游业和免税消费，工业基础薄弱，受消费下行影响GDP增速低于全国（<span className="text-webank-accent font-bold">4%</span>）。
-              </p>
-              <p>
-                <span className="font-bold">天津市</span>GDP增速<span className="text-webank-accent font-bold">4.9%</span>，主要因石化产业比重高，新兴产业占比低。
-              </p>
-            </div>
+          <BaseCard title="信息与租赁服务业双位数高增" delay="200ms" variant="accent">
+            <p>
+              在新质生产力核心动能带动下，<span className="font-bold text-green-600">信息服务业</span>全年维持高增速（Q4:<span className="text-green-600">10.7%</span>）；<span className="font-bold text-green-600">租赁和商务服务业</span>四季度增长<span className="text-green-600">12.7%</span>，主要得益于服务消费回暖和以金融、科技为代表的高端商务活动的强劲需求拉动。
+            </p>
           </BaseCard>
 
-          <BaseCard title="高新产业带动经济" delay="400ms">
-            <div className="space-y-2">
-              <p>
-                <span className="font-bold">山东省</span>GDP总量首次突破<span className="text-green-600 font-bold">10万亿元</span>，新能源汽车产业链带动整体GDP增长，2025年产量突破150万辆，占全国比重提升至12%以上，位列第二。
-              </p>
-              <p>
-                <span className="font-bold">江苏省</span>高新技术产业产值占规上工业比重达<span className="text-green-600 font-bold">52.1%</span>，规上高技术制造业增加值大增<span className="text-green-600 font-bold">11.9%</span>，拉动全部规上工业增长2.8个百分点，新能源、集成电路等产业规模位居全国首位。
-              </p>
-            </div>
+          <BaseCard title="制造业稳健支撑" delay="400ms">
+            <p>
+              <span className="font-bold">制造业</span> (Q4: 5.1%) 和 <span className="font-bold">工业</span> (Q4: 5.0%) 增速虽放缓但仍高于GDP整体 (4.5%)，体现工业生产韧性。
+            </p>
+          </BaseCard>
+
+          <BaseCard title="房地产建筑拖累" delay="600ms">
+            <p>
+              <span className="font-bold text-red-600">建筑业</span> (Q4: <span className="text-red-600">-2.5%</span>) 和 <span className="font-bold text-red-600">房地产业</span> (Q4: <span className="text-red-600">-1.0%</span>) 增速为负，受房地产投资深度调整影响，对整体经济形成拖累。
+            </p>
           </BaseCard>
         </>
       }
       charts={
-        <>
-          <ChartContainer delay="600ms">
-            <BaseTable
-              data={provinceGdpDataTop15}
-              columns={tableColumns}
-              title="2025年各省份GDP及增速（前15）"
-              subtitle="单位: GDP-万亿, 增速-%"
-              colorizeNumbers={false}
-              getRowClassName={getRowClassName}
-            />
-          </ChartContainer>
-          <ChartContainer delay="800ms">
-            <BaseTable
-              data={provinceGdpDataRest}
-              columns={tableColumns}
-              title="2025年31省份GDP及增速（续）"
-              subtitle="单位: GDP-万亿, 增速-%"
-              colorizeNumbers={false}
-              getRowClassName={getRowClassName}
-            />
-          </ChartContainer>
-        </>
+        <ChartContainer delay="800ms">
+          <BaseBarChart
+            data={detailedIndustryGrowthData}
+            title="2025年一二三产业细分行业GDP当季同比数据"
+            subtitle="单位: %"
+            xAxisKey="industry"
+            bars={[
+              { dataKey: '2025-03', name: '2025-03'},
+              { dataKey: '2025-06', name: '2025-06'},
+              { dataKey: '2025-09', name: '2025-09'},
+              { dataKey: '2025-12', name: '2025-12'},
+            ]}
+            legendOrder={['2025-03', '2025-06', '2025-09', '2025-12']}
+            barSize={12}
+            showYAxis
+            yAxisDomain={[-5, 15]}
+            showReferenceLine
+            referenceLineY={0}
+          />
+        </ChartContainer>
       }
     />
   );
