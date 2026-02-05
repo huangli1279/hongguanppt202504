@@ -38,7 +38,7 @@ export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitl
         </h1>
         
         {/* Animated divider line */}
-        <div className="h-1 bg-webank-lightBlue mx-auto mb-8 animate-line-expand-center"></div>
+        <div className="h-1 w-0 opacity-0 bg-webank-lightBlue mx-auto mb-8 animate-line-expand-center"></div>
         
         {/* Subtitle with fade */}
         <h2 className="text-3xl font-light text-slate-300 leading-normal opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>

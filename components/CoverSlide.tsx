@@ -37,7 +37,7 @@ export const CoverSlide: React.FC = () => {
         </h1>
 
         {/* Animated underline */}
-        <div className="h-1 bg-webank-lightBlue animate-line-expand" style={{ animationDelay: '1.1s' }}></div>
+        <div className="h-1 w-0 opacity-0 bg-webank-lightBlue animate-line-expand" style={{ animationDelay: '1.1s' }}></div>
       </div>
 
       {/* Footer / Date */}
