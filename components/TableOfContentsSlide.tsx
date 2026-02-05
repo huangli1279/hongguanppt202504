@@ -6,7 +6,7 @@ const contents = [
   { id: '01', title: '2026年经济展望：温差收敛', icon: Target, desc: '平减指数有望持续收窄，企业盈利与居民收入体感改善' },
   { id: '02', title: 'GDP 分析：定基调，找温差', icon: BarChart3, desc: '名义与实际增速"温差"显现，价格传导待疏通' },
   { id: '03', title: '生产端分析：看景气，看利润', icon: Zap, desc: 'PMI景气分化，PPI降幅收窄，企业利润承压' },
-  { id: '04', title: '消费分析：看意愿，看结构', icon: ShoppingCart, desc: '服务消费强于商品，核心CPI低位运行，居民信心待振' },
+  { id: '04', title: '消费分析：看意愿，看结构', icon: ShoppingCart, desc: '服务消费强于商品，核心CPI回升，居民信心待振' },
   { id: '05', title: '投资分析：看地产拖累，看设备更新', icon: HardHat, desc: '地产开发投资深跌形成拖累，设备投资增长' },
   { id: '06', title: '进出口分析：看韧性，看抢跑', icon: Globe, desc: '"抢出口"效应支撑增速，出口结构向新兴市场优化' },
   { id: '07', title: '财政分析：看钱袋子', icon: Landmark, desc: '土地出让收入下滑制约财力，广义财政收支紧平衡' },
