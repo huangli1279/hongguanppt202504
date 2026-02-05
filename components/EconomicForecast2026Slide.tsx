@@ -140,7 +140,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
               <span className="text-webank-blue font-medium">"前低后高、内需修复"</span>
             </p>
             <p className="mb-2">
-              <span className="text-emerald-600 font-semibold">GDP平减指数有望转正</span>，平减指数有望持续收窄，企业盈利与居民收入体感改善
+              <span className="text-emerald-600 font-semibold">GDP平减指数有望持续收窄</span>，企业盈利与居民收入体感改善
             </p>
             <p>
               <span className="text-slate-500">核心驱动：</span>"十五五"重大项目开工 + "两新"政策接续 + 出口结构性韧性
