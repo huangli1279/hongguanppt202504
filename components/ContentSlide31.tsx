@@ -99,7 +99,7 @@ export const ContentSlide31: React.FC = () => {
             data={importStatisticsData.filter(item => !['干鲜瓜果及坚果', '铜矿砂及其精矿', '钢材'].includes(item.product))}
             columns={columns}
             title="2025年主要进口商品统计"
-            subtitle="金额单位：百万美元，同比：%"
+            subtitle="数据来源：海关总署 | 金额单位：百万美元，同比：%"
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
             subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
