@@ -9,7 +9,7 @@ const contents = [
   { id: '04', title: '消费分析：看意愿，看结构', icon: ShoppingCart, desc: '服务消费强于商品，核心CPI回升，居民信心待振' },
   { id: '05', title: '投资分析：看地产拖累，看设备更新', icon: HardHat, desc: '地产开发投资深跌形成拖累，设备投资增长' },
   { id: '06', title: '进出口分析：看韧性，看抢跑', icon: Globe, desc: '"抢出口"效应支撑增速，出口结构向新兴市场优化' },
-  { id: '07', title: '财政分析：看钱袋子', icon: Landmark, desc: '土地出让收入下滑制约财力，广义财政收支紧平衡' },
+  { id: '07', title: '财政分析：看钱袋子', icon: Landmark, desc: '税收收入小幅增长，广义财政收支紧平衡' },
   { id: '08', title: '金融数据分析：看资金活性', icon: Activity, desc: 'M1-M2剪刀差走阔，信贷投放节奏差异' },
 ];
 
