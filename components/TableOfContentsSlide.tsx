@@ -15,8 +15,8 @@ const contents = [
 export const TableOfContentsSlide: React.FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col p-12 overflow-hidden relative">
-      {/* Top Decoration */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-slate-200"></div>
+      {/* Top Decoration with animation */}
+      <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue animate-top-line"></div>
 
       <header className="mb-10 animate-fade-in">
         <h1 className="text-4xl font-serif font-bold text-webank-blue">目录</h1>
@@ -58,8 +58,16 @@ export const TableOfContentsSlide: React.FC = () => {
           from { opacity: 0; }
           to { opacity: 1; }
         }
+        @keyframes topLine {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
         .animate-fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-top-line {
+          animation: topLine 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          transform-origin: left;
+        }
         .fill-mode-forwards { animation-fill-mode: forwards; }
       `}</style>
     </div>
