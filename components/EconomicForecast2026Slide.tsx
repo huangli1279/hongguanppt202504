@@ -97,8 +97,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
             <span className="h-px flex-1 bg-gradient-to-r from-[#00a9f4]/60 to-transparent"></span>
           </div>
           <h1 className="text-3xl font-serif font-bold leading-tight text-[#051c2c]">
-            <span>2026年中国经济预测：</span>
-            <span className="text-[#00a9f4]">破局与重塑，迈向"新稳态"</span>
+            <span>2026年中国经济预测</span>
           </h1>
         </header>
 
@@ -227,7 +226,7 @@ export const EconomicForecast2026Slide: React.FC = () => {
               variant="neutral"
             >
               <p className="mb-2">
-                <span className="text-webank-blue font-medium">贸易范式转换</span>：从"看总量β"转向"看结构α"
+                <span className="text-webank-blue font-medium">贸易范式转换</span>：从"看总量"转向"看结构"
               </p>
               <p className="mb-2">
                 <span className="text-webank-accent">非美市场</span>（东盟、一带一路、拉美）工业化需求支撑中间品和资本品出口
