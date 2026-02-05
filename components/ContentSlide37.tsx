@@ -47,6 +47,7 @@ export const ContentSlide37: React.FC = () => {
               ]}
               yAxisDomain={[-10000, 45000]}
               showYAxis={true}
+              yAxisTickFormatter={(val) => `${val}`}
               showReferenceLine={true}
               referenceLineY={0}
               barSize={12}
