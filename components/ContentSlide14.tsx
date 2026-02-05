@@ -53,7 +53,7 @@ const growthColumns: ColumnConfig[] = [
 export const ContentSlide14: React.FC = () => {
   return (
     <BaseContentSlide
-      title="2025年企业效益：投资收益掩盖主业亏损，行业表现呈现两极分化"
+      title="2025年企业效益：行业表现呈现两极分化"
       cardColumns={2}
       cards={
         <>
