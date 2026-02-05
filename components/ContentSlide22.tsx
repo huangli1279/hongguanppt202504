@@ -56,6 +56,7 @@ export const ContentSlide22: React.FC = () => {
               legendOrder={['消费者信心指数', '收入预期', '就业预期', '消费意愿']}
               xAxisTickCount={6}
               unit=""
+              yAxisTickFormatter={(val) => `${val}`}
             />
           </ChartContainer>
 
