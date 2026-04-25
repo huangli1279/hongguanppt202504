@@ -16,19 +16,26 @@ export const ContentSlide22: React.FC = () => {
   // 二级表头列配置
   const columns: ColumnConfig[] = [
     { key: 'period', title: '日期', align: 'center' },
+    { 
+      key: 'infrastructure', 
+      title: '基建投资', 
+      align: 'right',
+      render: (val) => <span className="text-red-500 font-semibold">{formatValue(val)}</span>
+    },
     {
       key: 'transport',
       title: '交通运输、仓储和邮政业',
       children: [
         { key: 'transportTotal', title: '合计', align: 'right' },
-        { key: 'railway', title: '铁路运输', align: 'right' },
-        { key: 'road', title: '道路运输', align: 'right' },
         { 
           key: 'pipeline', 
           title: '管道运输', 
           align: 'right',
           render: (val) => <span className="text-red-500">{formatValue(val)}</span>
         },
+        { key: 'aviation', title: '航空运输', align: 'right' },
+        { key: 'waterTransport', title: '水上运输', align: 'right' },
+        { key: 'loadingStorage', title: '装卸仓储', align: 'right' },
       ],
     },
     {
@@ -37,8 +44,8 @@ export const ContentSlide22: React.FC = () => {
       children: [
         { key: 'waterEnvTotal', title: '合计', align: 'right' },
         { 
-          key: 'ecoProtection', 
-          title: '生态环境', 
+          key: 'environmentManagement', 
+          title: '环境管理', 
           align: 'right',
           render: (val) => {
             const formatted = formatValue(val);
@@ -67,33 +74,40 @@ export const ContentSlide22: React.FC = () => {
       title: '电力、热力、燃气及水的生产和供应业',
       children: [
         { key: 'electricityTotal', title: '合计', align: 'right' },
-        { key: 'gas', title: '燃气', align: 'right' },
-        { key: 'waterSupply', title: '水生产', align: 'right' },
+        { key: 'powerHeat', title: '电热', align: 'right' },
+      ],
+    },
+    {
+      key: 'information',
+      title: '信息传输、软件和信息技术服务业',
+      children: [
+        { key: 'informationTotal', title: '合计', align: 'right' },
+        { key: 'telecom', title: '电信传输', align: 'right' },
       ],
     },
   ];
 
   return (
     <BaseContentSlide
-      title="基建投资全年下降1.48%，财政约束与战略转型驱动行业分化"
+      title="基础建设投资同比大增8.9%"
       cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="化债约束与挤出效应" delay="200ms" variant="accent">
+          <BaseCard title="基建发挥绝对托底作用" delay="200ms" variant="accent">
             <p>
-              受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
+              在“十五五”开局及“两重”重大工程加快推进背景下，一季度基建投资同比增长<span className="font-semibold">8.9%</span>，在三大支柱中表现最为坚挺。
             </p>
           </BaseCard>
-          <BaseCard title="高度依赖地方财政的传统领域成为主要拖累" delay="400ms">
+          <BaseCard title="财政资金靠前发力" delay="400ms">
             <p>
-              严重依赖地方财政和土地收入的水利环境公用设施投资、道路运输业全年增速持续下降，成为主要拖累。
+              提前批项目清单、超长期特别国债、专项债券等资金相继下达，为基建投资提速提供保障，50亿元以上大项目增速达<span className="font-semibold">10.8%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="符合国家长期战略的领域逆势高增" delay="600ms">
+          <BaseCard title="交通与信息链条高增" delay="600ms">
             <p>
-              与传统领域形成鲜明对比的是，服务于长期国家战略的领域实现强劲增长，电热气水投资全年增长<span className="font-semibold">9.1%</span>，管道运输业全年增长<span className="font-semibold">36%</span>。
+              航空运输业增长<span className="font-semibold">43.3%</span>、水上运输业增长<span className="font-semibold">34.1%</span>，电信传输服务增长<span className="font-semibold">29.6%</span>，管道运输业仍维持<span className="font-semibold">99.5%</span>高增。
             </p>
           </BaseCard>
         </div>
@@ -103,10 +117,11 @@ export const ContentSlide22: React.FC = () => {
           <BaseTable
             data={infrastructureInvestmentData}
             columns={columns}
-            title="2025年基础设施建设相关行业固定资产投资累计增长数据"
+            title="基础设施建设投资及分行业累计同比"
             subtitle="数据来源：国家统计局 | 单位：%"
             dateColumn="period"
             colorizeNumbers={false}
+            cellClassName="px-2 text-[10px]"
           />
         </ChartContainer>
       </div>
