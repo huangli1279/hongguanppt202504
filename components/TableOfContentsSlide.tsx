@@ -3,7 +3,7 @@ import React from 'react';
 import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, Target } from 'lucide-react';
 
 const contents = [
-  { id: '01', title: '2026年经济展望：温差收敛', icon: Target, desc: '平减指数有望持续收窄，企业盈利与居民收入体感改善' },
+  { id: '01', title: '一季度关键事件与政策主线', icon: Target, desc: '春节、外部冲击、两会定调与"十五五"规划落地' },
   { id: '02', title: 'GDP 分析：定基调，找温差', icon: BarChart3, desc: '名义与实际增速"温差"显现，价格传导待疏通' },
   { id: '03', title: '生产端分析：看景气，看利润', icon: Zap, desc: 'PMI景气分化，PPI降幅收窄，企业利润承压' },
   { id: '04', title: '消费分析：看意愿，看结构', icon: ShoppingCart, desc: '服务消费强于商品，核心CPI回升，居民信心待振' },
