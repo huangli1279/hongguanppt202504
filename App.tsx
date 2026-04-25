@@ -16,27 +16,26 @@ import { ContentSlide16 } from './components/ContentSlide16';
 import { ContentSlide17 } from './components/ContentSlide17';
 import { ContentSlide18 } from './components/ContentSlide18';
 import { ContentSlide19 } from './components/ContentSlide19';
-import { ContentSlide20 } from './components/ContentSlide20';
+import { ContentSlide21 } from './components/ContentSlide21';
 import { ContentSlide22 } from './components/ContentSlide22';
 import { ContentSlide23 } from './components/ContentSlide23';
 import { ContentSlide24 } from './components/ContentSlide24';
-import { ContentSlide25 } from './components/ContentSlide25';
+import { ContentSlide26 } from './components/ContentSlide26';
 import { ContentSlide27 } from './components/ContentSlide27';
 import { ContentSlide28 } from './components/ContentSlide28';
 import { ContentSlide29 } from './components/ContentSlide29';
-import { ContentSlide30 } from './components/ContentSlide30';
-import { ContentSlide32 } from './components/ContentSlide32';
+import { ContentSlide31 } from './components/ContentSlide31';
+import { ContentSlide33 } from './components/ContentSlide33';
 import { ContentSlide34 } from './components/ContentSlide34';
 import { ContentSlide35 } from './components/ContentSlide35';
 import { ContentSlide36 } from './components/ContentSlide36';
-import { ContentSlide37 } from './components/ContentSlide37';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 38;
+  const TOTAL_SLIDES = 37;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -115,25 +114,24 @@ const App: React.FC = () => {
         {currentSlide === 17 && <ContentSlide17 />}
         {currentSlide === 18 && <ContentSlide18 />}
         {currentSlide === 19 && <ContentSlide19 />}
-        {currentSlide === 20 && <ContentSlide20 />}
-        {currentSlide === 21 && <BaseSectionTransitionSlide id="05" title="投资分析" subtitle="看地产拖累，看设备更新" />}
+        {currentSlide === 20 && <BaseSectionTransitionSlide id="05" title="投资分析" subtitle="看地产拖累，看设备更新" />}
+        {currentSlide === 21 && <ContentSlide21 />}
         {currentSlide === 22 && <ContentSlide22 />}
         {currentSlide === 23 && <ContentSlide23 />}
         {currentSlide === 24 && <ContentSlide24 />}
-        {currentSlide === 25 && <ContentSlide25 />}
-        {currentSlide === 26 && <BaseSectionTransitionSlide id="06" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 25 && <BaseSectionTransitionSlide id="06" title="进出口分析" subtitle="看韧性，看抢跑" />}
+        {currentSlide === 26 && <ContentSlide26 />}
         {currentSlide === 27 && <ContentSlide27 />}
         {currentSlide === 28 && <ContentSlide28 />}
         {currentSlide === 29 && <ContentSlide29 />}
-        {currentSlide === 30 && <ContentSlide30 />}
-        {currentSlide === 31 && <BaseSectionTransitionSlide id="07" title="财政分析" subtitle="看钱袋子" />}
-        {currentSlide === 32 && <ContentSlide32 />}
-        {currentSlide === 33 && <BaseSectionTransitionSlide id="08" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 30 && <BaseSectionTransitionSlide id="07" title="财政分析" subtitle="看钱袋子" />}
+        {currentSlide === 31 && <ContentSlide31 />}
+        {currentSlide === 32 && <BaseSectionTransitionSlide id="08" title="金融数据分析" subtitle="看资金活性" />}
+        {currentSlide === 33 && <ContentSlide33 />}
         {currentSlide === 34 && <ContentSlide34 />}
         {currentSlide === 35 && <ContentSlide35 />}
         {currentSlide === 36 && <ContentSlide36 />}
-        {currentSlide === 37 && <ContentSlide37 />}
-        {currentSlide === 38 && <ThankYouSlide />}
+        {currentSlide === 37 && <ThankYouSlide />}
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
           <span className="font-serif text-webank-blue font-medium text-sm">

@@ -1,67 +1,146 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
-import { cityRetailData, urbanRuralRetailData } from '@/data/cityRetail';
+import { BaseTable, ColumnConfig } from './BaseTable';
+import { industryRetailData } from '@/data/industryRetail';
 
 export const ContentSlide17: React.FC = () => {
+  // 转换数据为表格格式
+  const tableData = industryRetailData.map(item => ({
+    period: item.period,
+    cultureOffice: item.cultureOffice,
+    furniture: item.furniture,
+    homeAppliances: item.homeAppliances,
+    automobile: item.automobile,
+    communication: item.communication,
+    jewelry: item.jewelry,
+    sportsEntertainment: item.sportsEntertainment,
+    petroleumProducts: item.petroleumProducts,
+  }));
+
+  const columns: ColumnConfig[] = [
+    { key: 'period', title: '时间', align: 'center' },
+    {
+      key: 'group-trade-in',
+      title: '以旧换新类',
+      children: [
+        { key: 'cultureOffice', title: '文化办公', align: 'right' },
+        { 
+          key: 'furniture', 
+          title: '家具', 
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-green-600" : ""}>{formatted}</span>;
+          }
+        },
+        { 
+          key: 'homeAppliances', 
+          title: '家电音像', 
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-green-600" : ""}>{formatted}</span>;
+          }
+        },
+        { 
+          key: 'automobile', 
+          title: '汽车', 
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-green-600" : ""}>{formatted}</span>;
+          }
+        },
+        { 
+          key: 'communication', 
+          title: '通讯器材', 
+          align: 'right',
+          render: (val: any) => {
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className="text-red-500">{formatted}</span>;
+          }
+        },
+      ],
+    },
+    {
+      key: 'group-optional',
+      title: '可选类',
+      children: [
+        {
+          key: 'jewelry',
+          title: '金银珠宝',
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+          }
+        },
+        {
+          key: 'sportsEntertainment',
+          title: '体育娱乐',
+          align: 'right',
+          render: (val: any, row: any) => {
+            const isTargetPeriod = ['2025-10', '2025-11', '2025-12'].includes(row.period);
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className={isTargetPeriod ? "text-red-500" : ""}>{formatted}</span>;
+          }
+        },
+      ],
+    },
+    {
+      key: 'group-energy',
+      title: '能源类',
+      children: [
+        { 
+          key: 'petroleumProducts', 
+          title: '石油及制品', 
+          align: 'right',
+          render: (val: any) => {
+            const formatted = typeof val === 'number' ? val.toFixed(1) : val;
+            return <span className="text-green-600">{formatted}</span>;
+          }
+        },
+      ],
+    },
+  ];
+
   return (
     <BaseContentSlide
-      title="一线分化北京反弹，乡村消费韧性优于城镇"
+      title="“以旧换新”产品一季度增速回落，汽车与石油消费年底承压"
       cardColumns={2}
-      chartColumns={2}
-      cards={
-        <>
-          <BaseCard title="一线城市社零分化，一季度北京强力反弹" delay="200ms" variant="accent">
+    >
+      <div className="flex flex-col h-full">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="一季度补贴退坡，体育珠宝体现居民关注" delay="200ms" variant="accent">
             <p>
-              2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但一季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长39.5%，新能源汽车增长13.2%）
+              通讯器材类全年维持高增领跑大盘，一季度超20%增长，主要受益于对中高端机型的精准补贴（占总机型 72.5%）；家具、家用电器受一季度补贴退坡影响，增速持续下降。体育娱乐用品全年正增长，折射居民对健康投资与精神消费的持续热衷；金银珠宝类受金价高位运行与居民避险需求驱动，10月同比高增37.6%。
             </p>
           </BaseCard>
-          <BaseCard title="乡村 vs 城镇：韧性对标" delay="400ms">
+          <BaseCard title="石油、汽车一季度均为负增长" delay="400ms">
             <p>
-              全年乡村增长 4.1% 领跑。12 月城镇受大促透支及高基数压制降至 0.7%，而乡村凭借 1.7% 的增速构筑了年末缓冲垫。逻辑深挖：以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的"下半场"。乡村凭借"基建红利"沉降，展现出更强的增长后劲
+              石油及制品类受油价下行与新能源替代双重挤压，全年增速为负。汽车行业前三季度增速 0.8%，但受补贴退坡和市场内卷影响，一季度转负。
             </p>
           </BaseCard>
-        </>
-      }
-      charts={
-        <>
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              title="2024-2025年一线城市社会消费品零售总额累计同比变化"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              data={cityRetailData}
-              lines={[
-                { dataKey: 'guangzhou', name: '广州', strokeWidth: 2.5 },
-                { dataKey: 'shenzhen', name: '深圳'},
-                { dataKey: 'shanghai', name: '上海'},
-                { dataKey: 'beijing', name: '北京', strokeWidth: 2.5 },
-              ]}
-              yAxisDomain={[-6, 8]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['广州', '深圳', '上海', '北京']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-          <ChartContainer delay="800ms">
-            <BaseLineChart
-              title="2024-2025年城镇与乡村社会消费品零售总额累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              data={urbanRuralRetailData}
-              lines={[
-                { dataKey: 'rural', name: '社会消费品零售总额:乡村', strokeWidth: 2.5 },
-                { dataKey: 'urban', name: '社会消费品零售总额:城镇'},
-              ]}
-              yAxisDomain={[2, 7]}
-              showYAxis={true}
-              legendOrder={['社会消费品零售总额:乡村', '社会消费品零售总额:城镇']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-        </>
-      }
-    />
+        </div>
+
+        {/* 表格区域 */}
+        <ChartContainer delay="600ms" className="flex-1 min-h-0">
+          <BaseTable
+            title="2025年全国分行业零售当月同比数据"
+            subtitle="数据来源：国家统计局 | 单位：%"
+            data={tableData}
+            columns={columns}
+            dateColumn="period"
+            colorizeNumbers={false}
+          />
+        </ChartContainer>
+      </div>
+    </BaseContentSlide>
   );
 };

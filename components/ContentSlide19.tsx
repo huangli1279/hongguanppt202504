@@ -2,130 +2,75 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { cpiTrendData, cpiCategoryData } from '@/data/cpi';
+import { consumerConfidenceData, incomeExpenditureData } from '@/data/consumerConfidence';
 
 export const ContentSlide19: React.FC = () => {
-  // 折线图配置
-  const lineConfigs: LineConfig[] = [
-    { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5 },
-    { dataKey: 'coreCpi', name: '核心CPI:当月同比', strokeWidth: 2 },
+  // 消费者信心指数折线图配置
+  const confidenceLineConfigs: LineConfig[] = [
+    { dataKey: 'confidence', name: '消费者信心指数', strokeWidth: 2.5 },
+    { dataKey: 'income', name: '收入预期', strokeWidth: 2 },
+    { dataKey: 'employment', name: '就业预期', strokeWidth: 2 },
+    { dataKey: 'consumption', name: '消费意愿', strokeWidth: 2 },
   ];
 
-  // 表格数据转换
-  const tableData = cpiCategoryData.map(item => ({
-    period: item.period,
-    grain: item.grain,
-    edibleOil: item.edibleOil,
-    freshVegetables: item.freshVegetables,
-    pork: item.pork,
-    freshFruit: item.freshFruit,
-    transportation: item.transportation,
-    livingServices: item.livingServices,
-    clothing: item.clothing,
-    education: item.education,
-    healthcare: item.healthcare,
-    otherGoods: item.otherGoods,
-    homeAppliances: item.homeAppliances,
-  }));
-
-  // 表格列配置
-  const columns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
-    { key: 'grain', title: '粮食', align: 'right' },
-    { key: 'edibleOil', title: '食用油', align: 'right' },
-    {
-      key: 'freshVegetables',
-      title: '鲜菜',
-      align: 'right',
-      render: (value: any, row: any) => {
-        const isTarget = ['2025-10', '2025-11', '2025-12'].includes(row.period);
-        return (
-          <span className={isTarget ? "text-red-500 font-medium" : ""}>
-            {typeof value === 'number' ? value.toFixed(1) : value}
-          </span>
-        );
-      }
-    },
-    { key: 'pork', title: '猪肉', align: 'right' },
-    { key: 'freshFruit', title: '鲜果', align: 'right' },
-    { key: 'transportation', title: '交通工具', align: 'right' },
-    { key: 'livingServices', title: '生活用品', align: 'right' },
-    { key: 'clothing', title: '衣着', align: 'right' },
-    { key: 'education', title: '教育娱乐', align: 'right' },
-    { key: 'healthcare', title: '医疗保健', align: 'right' },
-    {
-      key: 'otherGoods',
-      title: '金饰品',
-      align: 'right',
-      render: (value: any) => (
-        <span className="text-red-500 font-medium">
-          {typeof value === 'number' ? value.toFixed(1) : value}
-        </span>
-      )
-    },
-    {
-      key: 'homeAppliances',
-      title: '家用器具',
-      align: 'right',
-      render: (value: any, row: any) => {
-        const isTarget = ['2025-10', '2025-11', '2025-12'].includes(row.period);
-        return (
-          <span className={isTarget ? "text-red-500 font-medium" : ""}>
-            {typeof value === 'number' ? value.toFixed(1) : value}
-          </span>
-        );
-      }
-    },
+  // 收入与消费支出折线图配置
+  const incomeLineConfigs: LineConfig[] = [
+    { dataKey: 'incomeReal', name: '可支配收入', strokeWidth: 2.5 },
+    { dataKey: 'consumptionReal', name: '消费支出', strokeWidth: 2 },
+    { dataKey: 'wageIncome', name: '工资性收入', strokeWidth: 1.5 },
+    { dataKey: 'operatingIncome', name: '经营净收入', strokeWidth: 1.5 },
+    { dataKey: 'propertyIncome', name: '财产净收入', strokeWidth: 1.5 },
   ];
 
   return (
     <BaseContentSlide
-      title="CPI一季度持续回升，主要受鲜菜季节性减产与金价上涨驱动"
+      title="人均可支配收入实际增长5.0%，消费者信心指数回升但就业依旧承压"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="CPI 运行特征解析" delay="200ms" variant="accent">
+          <BaseCard title="收入与就业预期分化制约消费者信心回暖" delay="200ms" variant="accent">
             <p>
-              2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第一季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
+              消费者信心指数（从<span className="text-webank-accent font-semibold">86.4</span>升至<span className="text-emerald-600 font-semibold">90.3</span>）的温和回升，主要由收入预期和消费意愿支撑，就业预期虽有回暖趋势，但主要受相关领域就业前景影响：新兴领域（AI、低空经济），中长期的就业结构性问题仍然存在。
             </p>
           </BaseCard>
-          <BaseCard title="CPI结构性分化显著" delay="400ms">
+          <BaseCard title="收入增速超越消费，居民储蓄倾向依然显著" delay="400ms">
             <p>
-              一季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金饰品CPI全年维持高增）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。
+              2025年人均可支配收入实际增长<span className="text-emerald-600 font-semibold">5.0%</span>，但居民人均消费支出实际增长<span className="text-webank-accent font-semibold">4.4%</span>，低于收入增速；显示在资产价格波动（房价/股市）背景下，居民预防性储蓄心理依然较强。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表和表格区域 */}
-        <div className="flex-1 grid grid-cols-5 gap-6 min-h-0">
-          {/* 折线图 - 占2列 */}
-          <ChartContainer delay="600ms" className="col-span-2">
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          {/* 消费者信心指数折线图 */}
+          <ChartContainer delay="600ms">
             <BaseLineChart
-              data={cpiTrendData}
-              title="2024-2025年全国CPI及核心CPI当月同比走势"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={lineConfigs}
-              yAxisDomain={[-2, 2]}
+              data={consumerConfidenceData}
+              title="2024-2025年消费者信心及分项指标趋势"
+              subtitle="数据来源：国家统计局 | 单位：指数"
+              lines={confidenceLineConfigs}
+              yAxisDomain={[65, 105]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['CPI:当月同比', '核心CPI:当月同比']}
+              legendOrder={['消费者信心指数', '收入预期', '就业预期', '消费意愿']}
               xAxisTickCount={6}
+              unit=""
+              yAxisTickFormatter={(val) => `${val}`}
             />
           </ChartContainer>
 
-          {/* 表格 - 占3列 */}
-          <ChartContainer delay="800ms" className="col-span-3">
-            <BaseTable
-              title="2025年主要商品与服务类别CPI当月同比"
+          {/* 收入与消费支出折线图 */}
+          <ChartContainer delay="800ms">
+            <BaseLineChart
+              data={incomeExpenditureData}
+              title="2024-2025年居民收入与消费支出累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
-              data={tableData}
-              columns={columns}
-              dateColumn="period"
-              colorizeNumbers={false}
+              lines={incomeLineConfigs}
+              yAxisDomain={[0, 10]}
+              showYAxis={true}
+              legendOrder={['可支配收入', '消费支出', '工资性收入', '经营净收入', '财产净收入']}
+              xAxisTickCount={8}
             />
           </ChartContainer>
         </div>
