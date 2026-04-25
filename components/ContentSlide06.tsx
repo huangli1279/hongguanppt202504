@@ -22,7 +22,6 @@ const industryGrowthData = [
 ];
 
 const industryContributionData = [
-  { period: '2024-06', primary: 0.24, secondary: 1.98, tertiary: 2.48 },
   { period: '2024-09', primary: 0.29, secondary: 1.57, tertiary: 2.74 },
   { period: '2024-12', primary: 0.39, secondary: 1.81, tertiary: 3.20 },
   { period: '2025-03', primary: 0.14, secondary: 2.06, tertiary: 3.20 },
