@@ -12,19 +12,19 @@ const ppiLines: LineConfig[] = [
 ];
 
 const industryMomColumns: ColumnConfig[] = [
-  { key: 'period', title: '月份', width: '34px', align: 'center' },
-  { key: 'ppiMom', title: 'PPI', width: '28px', align: 'right' },
-  { key: 'externalStorage', title: '外存储设备及部件', width: '34px', align: 'right' },
-  { key: 'photovoltaic', title: '光伏设备及元器件制造', width: '34px', align: 'right' },
-  { key: 'lithiumBattery', title: '锂离子电池制造', width: '34px', align: 'right' },
-  { key: 'electricalMachinery', title: '电气机械和器材制造业', width: '34px', align: 'right' },
-  { key: 'computerComm', title: '计算机、通信和其他电子设备制造业', width: '38px', align: 'right' },
-  { key: 'fuelProcessing', title: '石油、煤炭及其他燃料加工业', width: '38px', align: 'right' },
-  { key: 'oilGas', title: '石油和天然气开采业', width: '34px', align: 'right' },
-  { key: 'ferrousMining', title: '黑色金属矿采选业', width: '34px', align: 'right' },
-  { key: 'nonFerrousMining', title: '有色金属矿采选业', width: '34px', align: 'right' },
-  { key: 'chemicalRawMaterials', title: '化学原料和化学制品制造业', width: '38px', align: 'right' },
-  { key: 'automobile', title: '汽车', width: '28px', align: 'right' },
+  { key: 'period', title: '月份', width: '35px', align: 'center' },
+  { key: 'ppiMom', title: 'PPI', width: '29px', align: 'right' },
+  { key: 'externalStorage', title: '外存储部件', width: '37px', align: 'right' },
+  { key: 'photovoltaic', title: '光伏设备', width: '35px', align: 'right' },
+  { key: 'lithiumBattery', title: '锂电池', width: '33px', align: 'right' },
+  { key: 'electricalMachinery', title: '电气机械', width: '37px', align: 'right' },
+  { key: 'computerComm', title: '计算机通信', width: '40px', align: 'right' },
+  { key: 'fuelProcessing', title: '燃油加工', width: '37px', align: 'right' },
+  { key: 'oilGas', title: '油气开采', width: '37px', align: 'right' },
+  { key: 'ferrousMining', title: '黑色矿采选', width: '39px', align: 'right' },
+  { key: 'nonFerrousMining', title: '有色矿采选', width: '39px', align: 'right' },
+  { key: 'chemicalRawMaterials', title: '化学原料', width: '37px', align: 'right' },
+  { key: 'automobile', title: '汽车制造', width: '35px', align: 'right' },
 ];
 
 
@@ -94,9 +94,9 @@ export const ContentSlide14: React.FC = () => {
                 colorizeNumbers
                 titleBlockClassName="mb-1"
                 subtitleClassName="mt-0.5"
-                tableClassName="text-[7px]"
-                headerCellClassName="!px-0.5 !py-1 text-[6px] leading-[0.72rem] whitespace-normal break-words"
-                cellClassName="!px-0.5 text-[7px] leading-none"
+                tableClassName="text-[9px]"
+                headerCellClassName="!px-[1px] !py-1 text-[8px] leading-[0.78rem] whitespace-normal break-words"
+                cellClassName="!px-[1px] text-[9px] leading-none"
               />
             </ChartContainer>
           </div>
