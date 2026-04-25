@@ -59,6 +59,7 @@ export const ContentSlide05: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               yAxisDomain={[0, 8]}
               showYAxis={true}
+              xAxisTickCount={gdpGrowthData.length}
               legendOrder={['GDP不变价', 'GDP现价']}
               lines={[
                 { dataKey: 'real', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
@@ -73,6 +74,7 @@ export const ContentSlide05: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               yAxisDomain={[-5, 2]}
               showYAxis={true}
+              xAxisTickCount={deflatorData.length}
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
