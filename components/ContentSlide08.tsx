@@ -9,28 +9,35 @@ export const ContentSlide08: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          投资明显拖累整体，消费贡献率优于去年，出口保持稳定
+          消费需求平稳增长，投资结构持续优化，净出口韧性彰显
         </>
       }
       cardColumns={3}
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="外需：强力支撑" delay="200ms" variant="accent">
+          <BaseCard title="消费需求平稳增长" delay="200ms" variant="accent">
             <p>
-              全年出口增长 <span className="text-green-600">6.1%</span>。外贸韧性缓解内需不足压力。
+              春节假期和消费品以旧换新等政策带动消费活力释放。一季度最终消费支出拉动GDP增长
+              <span className="font-bold text-webank-accent">2.4个百分点</span>，贡献GDP增长
+              <span className="font-bold text-webank-accent">48%</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="投资：明显拖累" delay="400ms">
+          <BaseCard title="投资结构持续优化" delay="400ms">
             <p>
-              受<span className="font-bold">房地产开发投资</span> (<span className="text-red-600">-17.2%</span>) 深度调整影响，全年固投增速<span className="text-red-600">下降3.8%</span>。
+              “两重”建设加快推进，“两新”政策优化实施。一季度资本形成总额拉动GDP增长
+              <span className="font-bold text-webank-accent">1.9个百分点</span>，贡献率达
+              <span className="font-bold text-webank-accent">38%</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="消费：贡献稳定" delay="600ms">
+          <BaseCard title="净出口韧性彰显" delay="600ms">
             <p>
-              <span className="font-bold text-webank-accent">52.9%</span> 贡献率，虽然社零增速放缓，但以旧换新及服务需求释放带动<span className="font-bold">服务消费</span> (<span className="text-green-600">+5.5%</span>) 占比提升，最终消费支出贡献率维持在50%以上，发挥基础性作用。
+              外贸承压前行但结构继续优化。一季度货物和服务净出口拉动GDP增长
+              <span className="font-bold text-webank-accent">0.8个百分点</span>，贡献GDP增长
+              <span className="font-bold text-webank-accent">16%</span>，出口总额同比增长
+              <span className="text-green-600">14.7%</span>。
             </p>
           </BaseCard>
         </>
@@ -39,8 +46,8 @@ export const ContentSlide08: React.FC = () => {
         <ChartContainer delay="800ms">
           <BaseStackedBarChart
             data={gdpContributionData}
-            title="2024-2025年GDP当季同比贡献率：三大需求"
-            subtitle="单位: %"
+            title="三大需求对GDP增长的贡献率"
+            subtitle="数据来源：国家统计局｜单位：%"
             bars={[
               { dataKey: 'consumption', name: '最终消费支出'},
               { dataKey: 'investment', name: '资本形成总额'},
