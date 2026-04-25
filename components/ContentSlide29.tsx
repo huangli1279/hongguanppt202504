@@ -1,80 +1,94 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
-import { BaseLineChart, LineConfig } from './BaseLineChart';
-import { foreignTradeTrendData, foreignTradeMonthlyUsdData, foreignTradeMonthlyValuesData } from '@/data/foreignTrade';
+import { BaseTable, ColumnConfig } from './BaseTable';
+import { exportTableData, ExportTableItem } from '@/data';
+import { cn } from '@/utils/cn';
 
 export const ContentSlide29: React.FC = () => {
-  // 折线图配置
-  const lineConfigs: LineConfig[] = [
-    { dataKey: 'exports', name: '出口当月同比', strokeWidth: 2.5 },
-    { dataKey: 'imports', name: '进口当月同比', strokeWidth: 2 },
-  ];
+  const columns: ColumnConfig[] = [
+    {
+      key: 'name',
+      title: '商品名称',
+      width: '24%',
+      align: 'left',
+      render: (value, row: ExportTableItem) => {
+        const padding = row.level === 0 ? 'pl-0' : row.level === 1 ? 'pl-4' : 'pl-8';
+        return (
+          <div className={cn(padding, row.isCategory && 'font-bold text-webank-blue')}>
+            {value}
+          </div>
+        );
+      }
+    },
+    { key: 'decAmount', title: '12月金额', align: 'right' },
+    {
+      key: 'totalAmount',
+      title: '1-12月累计金额',
+      align: 'right',
+      includeInStats: true,
+      render: (value, row: ExportTableItem, index, defaultRender) => {
+        // 特殊处理：指定行强制红色，且不加粗
+        const redRows = ['农产品*', '机电产品*', '高新技术产品*'];
+        if (redRows.includes(row.name)) {
+          const formatted = typeof value === 'number'
+            ? value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            : value;
+          return <span className="text-red-500 font-normal">{formatted}</span>;
+        }
+        
+        // 集成电路保留自动着色（红/绿）
+        if (row.name === '集成电路' && defaultRender) {
+          return defaultRender(value);
+        }
 
-  // 柱状图配置 - 已替换为折线图
-  const lineConfigsValues: LineConfig[] = [
-    { dataKey: 'exports', name: '出口当月值', strokeWidth: 2.5 },
-    { dataKey: 'imports', name: '进口当月值', strokeWidth: 2 },
-    { dataKey: 'surplus', name: '贸易顺差', strokeWidth: 2 },
+        // 其他行显示为黑色
+        const formatted = typeof value === 'number'
+          ? value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+          : value;
+        return <span className="text-black">{formatted}</span>;
+      }
+    },
+    { key: 'yoy12Qty', title: '1-12月数量累计同比', align: 'right', redThreshold: 10 },
+    { key: 'yoy12Amt', title: '1-12月金额累计同比', align: 'right', redThreshold: 10 },
+    { key: 'yoy6Qty', title: '1-6月数量累计同比', align: 'right' },
+    { key: 'yoy6Amt', title: '1-6月金额累计同比', align: 'right' }
   ];
 
   return (
     <BaseContentSlide
-      title={<>出口“抢跑”支撑年末翘尾，全年顺差近1.2万亿美元创历史新高</>}
-      cardColumns={3}
+      title="机电出口占比创新高，劳密产品表现疲软，高技术驱动结构升级"
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="出口端：韧性与“抢跑”并存" delay="200ms" variant="accent">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard delay="200ms" variant="accent" title="机电产品制造稳步领跑，全年出口占比提升至60.9%的历史高位">
             <p>
-              2025年全年出口总值达<span className="text-webank-blue font-semibold">3.77万亿美元</span>，同比增加<span className="text-green-600 font-semibold">5.5%</span>。受去年同期高基数（台风后补偿性出货）影响，10月出口同比下降<span className="text-red-500 font-semibold">1.1%</span>，为年内首次转负。12月出口同比回升至<span className="text-green-600 font-semibold">6.6%</span>，主要源于2026年关税及退税政策调整前的<span className="font-semibold">“抢出口”效应</span>。
+              机电产品全年累计同比增长<span className="text-webank-blue font-semibold">8.4%</span>，其中集成电路（<span className="text-red-500 font-semibold">26.8%</span>），"新三样"（电动载人汽车、锂电池、太阳能电池）（<span className="text-red-500 font-semibold">27.1%</span>）和船舶（<span className="text-red-500 font-semibold">26.7%</span>）贡献巨大；高新技术产品全年增长<span className="text-webank-blue font-semibold">7.5%</span>，充分兑现了中国制造在全球AI算力建设与新能源转型中的核心竞争力。
             </p>
           </BaseCard>
-          <BaseCard title="进口端：内需结构性修复" delay="400ms">
+          <BaseCard delay="400ms" title="劳动密集型产业下跌明显">
             <p>
-              2025年全年进口总值<span className="text-webank-blue font-semibold">2.58万亿美元</span>，与去年<span className="text-slate-500 font-semibold">持平</span>。12月同比大幅回升至<span className="text-green-600 font-semibold">5.7%</span>，主要由于春节错位带来的节前备货需求释放和半导体等硬科技产业在地缘政治焦虑下加速<span className="font-semibold">“战略性补库”</span>的驱动。
-            </p>
-          </BaseCard>
-          <BaseCard title="贸易顺差再创历史新高" delay="600ms">
-            <p>
-              12月单月贸易顺差达<span className="text-webank-blue font-semibold">1141亿美元</span>，较去年12月增加90亿美元。全年累计顺差约为 <span className="text-webank-blue font-semibold">1.19万亿美元</span>，续创历史新高（自1995年统计开始）。
+              衣服（全年<span className="text-green-600 font-semibold">-5.0%</span>），箱包（全年<span className="text-green-600 font-semibold">-13.5%</span>）和鞋靴（全年<span className="text-green-600 font-semibold">-11.3%</span>）等劳动密集型产业均下跌，体现传统支柱产业在存量博弈与产业链外迁压力下正向高端装备制造让位。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={foreignTradeMonthlyUsdData}
-              title="进出口总值(美元计价):当月同比"
-              subtitle="数据来源：海关总署 | 单位：%"
-              lines={lineConfigs}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['出口当月同比', '进口当月同比']}
-              xAxisTickCount={10}
-            />
-          </ChartContainer>
-          <ChartContainer delay="800ms">
-            <BaseLineChart
-              data={foreignTradeMonthlyValuesData}
-              title="海关进出口总值及贸易顺差:当月值"
-              subtitle="数据来源：海关总署 | 单位：亿美元"
-              lines={lineConfigsValues}
-              xAxisTickCount={10}
-              yAxisDomain={['auto', 'auto']}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['出口当月值', '进口当月值', '贸易顺差']}
-              unit=""
-              yAxisTickFormatter={(val) => `${val}`}
-            />
-          </ChartContainer>
-        </div>
+        {/* 表格区域 */}
+        <ChartContainer delay="800ms" className="flex-1 min-h-0">
+          <BaseTable
+            data={exportTableData}
+            columns={columns}
+            title="2025年主要出口商品统计"
+            subtitle="数据来源：海关总署 | 金额单位：百万美元"
+            rowHeight="auto"
+            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
+            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
+            headerCellClassName="py-1 text-[clamp(10px,1.2vh,13px)]"
+            cellClassName="py-0 text-[clamp(9px,1vh,12px)] leading-tight"
+          />
+        </ChartContainer>
       </div>
     </BaseContentSlide>
   );

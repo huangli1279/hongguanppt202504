@@ -1,114 +1,79 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
+import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseTable, ColumnConfig } from './BaseTable';
-import { infrastructureInvestmentData } from '@/data/infrastructureInvestment';
+import { equipmentInvestmentData, manufacturingInvestmentData } from '@/data/equipmentInvestment';
 
 export const ContentSlide26: React.FC = () => {
-  const formatValue = (value: any) => {
-    if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-    if (typeof value === 'number') {
-      return value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-    }
-    return value;
-  };
+  // 折线图配置
+  const lineConfigs: LineConfig[] = [
+    { dataKey: 'equipmentPurchase', name: '设备工器具购置', strokeWidth: 2.5 },
+    { dataKey: 'constructionInstall', name: '建筑安装工程', strokeWidth: 2.5 },
+  ];
 
-  // 二级表头列配置
+  // 表格列配置
   const columns: ColumnConfig[] = [
-    { key: 'period', title: '日期', align: 'center' },
-    {
-      key: 'transport',
-      title: '交通运输、仓储和邮政业',
-      children: [
-        { key: 'transportTotal', title: '合计', align: 'right' },
-        { key: 'railway', title: '铁路运输', align: 'right' },
-        { key: 'road', title: '道路运输', align: 'right' },
-        { 
-          key: 'pipeline', 
-          title: '管道运输', 
-          align: 'right',
-          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
-        },
-      ],
-    },
-    {
-      key: 'waterEnv',
-      title: '水利、环境和公共设施管理业',
-      children: [
-        { key: 'waterEnvTotal', title: '合计', align: 'right' },
-        { 
-          key: 'ecoProtection', 
-          title: '生态环境', 
-          align: 'right',
-          render: (val) => {
-            const formatted = formatValue(val);
-            if (typeof val === 'number' && val < 0) {
-              return <span className="text-green-600">{formatted}</span>;
-            }
-            return formatted;
-          }
-        },
-        { 
-          key: 'publicFacility', 
-          title: '公共设施', 
-          align: 'right',
-          render: (val) => {
-            const formatted = formatValue(val);
-            if (typeof val === 'number' && val < 0) {
-              return <span className="text-green-600">{formatted}</span>;
-            }
-            return formatted;
-          }
-        },
-      ],
-    },
-    {
-      key: 'electricity',
-      title: '电力、热力、燃气及水的生产和供应业',
-      children: [
-        { key: 'electricityTotal', title: '合计', align: 'right' },
-        { key: 'gas', title: '燃气', align: 'right' },
-        { key: 'waterSupply', title: '水生产', align: 'right' },
-      ],
-    },
+    { key: 'period', title: '月份', align: 'center' },
+    { key: 'generalEquipment', title: '通用设备', align: 'right' },
+    { key: 'specialEquipment', title: '专用设备', align: 'right' },
+    { key: 'electricalMachinery', title: '电气机械', align: 'right' },
+    { key: 'electronicEquipment', title: '电子设备', align: 'right' },
+    { key: 'autoManufacturing', title: '汽车制造', align: 'right' },
+    { key: 'railwayAerospace', title: '铁路航天', align: 'right' },
+    { key: 'metalRepair', title: '金属机械修理', align: 'right' },
   ];
 
   return (
     <BaseContentSlide
-      title="基建投资全年下降1.48%，财政约束与战略转型驱动行业分化"
+      title={<>设备购置投资高增11.8%，企业"反内卷"导致产能扩张意愿降温</>}
       cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="化债约束与挤出效应" delay="200ms" variant="accent">
+          <BaseCard title="存量更新驱动" delay="200ms" variant="accent">
             <p>
-              受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
+              全年设备工器具购置投资增长<span className="text-green-600 font-semibold">11.8%</span>，拉动全部投资增长1.8pct。在"两新"政策引导下，制造业投资主要由存量设备技改驱动，而非新建产能。
             </p>
           </BaseCard>
-          <BaseCard title="高度依赖地方财政的传统领域成为主要拖累" delay="400ms">
+          <BaseCard title="扩厂意愿收缩" delay="400ms">
             <p>
-              严重依赖地方财政和土地收入的水利环境公用设施投资、道路运输业全年增速持续下降，成为主要拖累。
+              建筑安装工程投资（代表厂房扩建）全年下降<span className="text-red-500 font-semibold">8.4%</span>，与设备高增形成鲜明对比。企业在"反内卷"政策下，对单纯扩大产能的资本开支变得极为谨慎。
             </p>
           </BaseCard>
-          <BaseCard title="符合国家长期战略的领域逆势高增" delay="600ms">
+          <BaseCard title="高技术引领，传统承压" delay="600ms">
             <p>
-              与传统领域形成鲜明对比的是，服务于长期国家战略的领域实现强劲增长，电热气水投资全年增长<span className="font-semibold">9.1%</span>，管道运输业全年增长<span className="font-semibold">36%</span>。
+              航空航天投资<span className="text-green-600 font-semibold">+17.5%</span>领跑，新质生产力相关领域资金流入加速。电气机械投资<span className="text-red-500 font-semibold">-10.3%</span>显著负增长，行业进入深度去产能周期。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <ChartContainer delay="800ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={infrastructureInvestmentData}
-            columns={columns}
-            title="2025年基础设施建设相关行业固定资产投资累计增长数据"
-            subtitle="数据来源：国家统计局 | 单位：%"
-            dateColumn="period"
-            colorizeNumbers={false}
-          />
-        </ChartContainer>
+        {/* 图表和表格区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="800ms">
+            <BaseLineChart
+              data={equipmentInvestmentData}
+              title="设备投资与建筑工程投资增速对比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={lineConfigs}
+              yAxisDomain={[-15, 25]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['设备工器具购置', '建筑安装工程']}
+            />
+          </ChartContainer>
+          <ChartContainer delay="1000ms">
+            <BaseTable
+              data={manufacturingInvestmentData}
+              columns={columns}
+              title="2025年制造业分行业投资累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              dateColumn="period"
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );

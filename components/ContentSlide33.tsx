@@ -5,7 +5,7 @@ import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseTable, ColumnConfig } from './BaseTable';
 import { fiscalRevenueTrendData, taxCategoryData } from '@/data/fiscalRevenue';
 
-export const ContentSlide34: React.FC = () => {
+export const ContentSlide33: React.FC = () => {
   // 折线图配置
   const lines: LineConfig[] = [
     { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2 },
