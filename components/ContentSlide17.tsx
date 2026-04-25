@@ -2,24 +2,24 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseLineChart } from './BaseLineChart';
 import { BaseCard } from './BaseCard';
-import { retailTrendData, retailMonthlyData } from '@/data/retail';
+import { cityRetailData, urbanRuralRetailData } from '@/data/cityRetail';
 
 export const ContentSlide17: React.FC = () => {
   return (
     <BaseContentSlide
-      title="2025年社零增长3.7%，服务消费韧性显著强于商品零售"
+      title="一线分化北京反弹，乡村消费韧性优于城镇"
       cardColumns={2}
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="服务消费韧性凸显" delay="200ms" variant="accent">
+          <BaseCard title="一线城市社零分化，一季度北京强力反弹" delay="200ms" variant="accent">
             <p>
-              2025 年全年社零总额增长 3.7%，规模为 50.12 万亿元，商品零售总额 44.32 万亿元；服务零售额全年累计增长5.5%，始终快于商品零售，且增速在下半年持续增长
+              2025年一线城市消费出现结构性分化，社零整体增长承压，弱于全国水平；北京前三季度因汽车消费不振和统计外溢，社零明显下滑，但一季度在赛事活动及促消费政策集中发力下强劲反弹（金银珠宝类增长39.5%，新能源汽车增长13.2%）
             </p>
           </BaseCard>
-          <BaseCard title="「促销平移」透支内需" delay="400ms">
+          <BaseCard title="乡村 vs 城镇：韧性对标" delay="400ms">
             <p>
-              受「双十一」错位（10月透支11月）及去年同期高基数（24年Q1疫情后补偿消费及初期政策刺激）影响，一季度社零当月同比增速呈现明显的下行趋势，12 月创下近三年非极端波动期的最低值，复苏斜率明显放缓
+              全年乡村增长 4.1% 领跑。12 月城镇受大促透支及高基数压制降至 0.7%，而乡村凭借 1.7% 的增速构筑了年末缓冲垫。逻辑深挖：以旧换新红利在城镇已提前释放，12 月正处于向乡村深度渗透的"下半场"。乡村凭借"基建红利"沉降，展现出更强的增长后劲
             </p>
           </BaseCard>
         </>
@@ -28,30 +28,35 @@ export const ContentSlide17: React.FC = () => {
         <>
           <ChartContainer delay="600ms">
             <BaseLineChart
-              title="2024-2025年全国社零总额及服务/商品零售累计同比走势"
+              title="2024-2025年一线城市社会消费品零售总额累计同比变化"
               subtitle="数据来源：国家统计局 | 单位：%"
-              data={retailTrendData}
+              data={cityRetailData}
               lines={[
-                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
-                { dataKey: 'totalRetail', name: '社会消费品零售总额:累计同比', labelDY: 12 },
-                { dataKey: 'goodsRetail', name: '商品零售额:累计同比', labelDY: -5 },
+                { dataKey: 'guangzhou', name: '广州', strokeWidth: 2.5 },
+                { dataKey: 'shenzhen', name: '深圳'},
+                { dataKey: 'shanghai', name: '上海'},
+                { dataKey: 'beijing', name: '北京', strokeWidth: 2.5 },
               ]}
-              yAxisDomain={[0, 14]}
+              yAxisDomain={[-6, 8]}
               showYAxis={true}
-              legendOrder={['社会消费品零售总额:累计同比', '服务零售额:累计同比', '商品零售额:累计同比']}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['广州', '深圳', '上海', '北京']}
               xAxisTickCount={6}
             />
           </ChartContainer>
           <ChartContainer delay="800ms">
             <BaseLineChart
-              title="2024-2025年全国社会消费品零售总额当月同比走势"
+              title="2024-2025年城镇与乡村社会消费品零售总额累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
-              data={retailMonthlyData}
+              data={urbanRuralRetailData}
               lines={[
-                { dataKey: 'monthlyYoy', name: '社会消费品零售总额:当月同比', strokeWidth: 2.5 },
+                { dataKey: 'rural', name: '社会消费品零售总额:乡村', strokeWidth: 2.5 },
+                { dataKey: 'urban', name: '社会消费品零售总额:城镇'},
               ]}
-              yAxisDomain={[0, 8]}
+              yAxisDomain={[2, 7]}
               showYAxis={true}
+              legendOrder={['社会消费品零售总额:乡村', '社会消费品零售总额:城镇']}
               xAxisTickCount={6}
             />
           </ChartContainer>

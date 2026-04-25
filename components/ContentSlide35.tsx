@@ -1,56 +1,58 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseLineChart } from './BaseLineChart';
+import { BaseBarChart } from './BaseBarChart';
 import { BaseCard } from './BaseCard';
-import { moneySupplyData, moneySupplyScissorData } from '@/data/moneySupply';
+import { socialFinancingGrowthData, socialFinancingStructureData } from '@/data/socialFinancing';
 
 export const ContentSlide35: React.FC = () => {
   return (
     <BaseContentSlide
-      title={'高基数拖累3月M1增速回落至5.1%，剪刀差小幅走扩至3.4%'}
+      title={'一季度社融平稳扩表，企业债融资是结构性增长亮点'}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="" delay="200ms" variant="accent">
+          <BaseCard title="社融结构：政府债回落，企业债放量" delay="400ms">
             <p>
-              3月M1同比增速回落至 <span className="font-bold text-webank-blue">5.1%</span>，主要受去年同期高基数与实体融资同比少增影响。M2同比增速落至 <span className="font-bold text-webank-blue">8.5%</span>，M1-M2剪刀差录得 <span className="font-bold text-red-500">-3.4%</span>，资金活化进程在1-2月反弹后小幅走扩。
+              2026年一季度新增社融累计 <span className="font-bold text-webank-blue">14.34万亿元</span>，同比少增0.29万亿元。人民币贷款同比少增约7960亿元，政府债同比少增3302亿元；企业债券融资增量 <span className="font-bold text-webank-blue">1.05万亿元</span>，同比多增5214亿元，是结构性亮点。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
         <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
-          <ChartContainer delay="800ms">
+          <ChartContainer delay="600ms">
             <BaseLineChart
-              data={moneySupplyData}
-              title="2022-2026Q1中国货币供应量(M1/M2)当月同比"
+              data={socialFinancingGrowthData}
+              title="2024-2026Q1社融存量规模同比增速"
               subtitle="数据来源：中国人民银行 | 单位：%"
               lines={[
-                { dataKey: 'm1', name: 'M1(货币)', strokeWidth: 2 },
-                { dataKey: 'm2', name: 'M2(货币和准货币)', strokeWidth: 2 },
+                { dataKey: 'growth', name: '社融存量同比增速', strokeWidth: 2 },
               ]}
-              yAxisDomain={[-5, 15]}
+              yAxisDomain={[7, 10]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['M1(货币)', 'M2(货币和准货币)']}
               xAxisTickCount={8}
             />
           </ChartContainer>
-          <ChartContainer delay="1000ms">
-            <BaseLineChart
-              data={moneySupplyScissorData}
-              title="2022-2026Q1中国货币供应量剪刀差走势"
-              subtitle="数据来源：中国人民银行 | 单位：%"
-              lines={[
-                { dataKey: 'scissor', name: 'M1-M2剪刀差', strokeWidth: 2 },
+          <ChartContainer delay="800ms">
+            <BaseBarChart
+              data={socialFinancingStructureData}
+              title="社融增量结构对比（26Q1 vs 25Q1）"
+              subtitle="数据来源：中国人民银行 | 单位：亿元"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'q24', name: '25Q1'},
+                { dataKey: 'q25', name: '26Q1'},
               ]}
-              yAxisDomain={[-12, 0]}
+              yAxisDomain={[-10000, 100000]}
               showYAxis={true}
+              yAxisTickFormatter={(val) => `${val}`}
               showReferenceLine={true}
               referenceLineY={0}
-              xAxisTickCount={8}
+              barSize={12}
+              legendOrder={['25Q1', '26Q1']}
+              unit="亿元"
             />
           </ChartContainer>
         </div>
