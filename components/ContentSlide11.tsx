@@ -54,28 +54,28 @@ const industryColumns: ColumnConfig[] = [
     key: 'advanced',
     title: '新质生产力',
     children: [
-      { key: 'highTech', title: '高技术制造业', align: 'right' },
-      { key: 'electronics', title: '计算机通信电子设备', align: 'right' },
-      { key: 'railway', title: '铁路船舶航空航天', align: 'right' },
-      { key: 'auto', title: '汽车制造业', align: 'right' },
+      { key: 'highTech', title: '高技术制造', align: 'right' },
+      { key: 'electronics', title: '电子设备', align: 'right' },
+      { key: 'railway', title: '铁路航空航天', align: 'right' },
+      { key: 'auto', title: '汽车制造', align: 'right' },
     ],
   },
   {
     key: 'resource',
     title: '资源加工',
     children: [
-      { key: 'oilGas', title: '石油天然气开采', align: 'right' },
-      { key: 'chemical', title: '化学原料及制品', align: 'right' },
-      { key: 'nonferrousMining', title: '有色金属矿采选', align: 'right' },
+      { key: 'oilGas', title: '石油天然气', align: 'right' },
+      { key: 'chemical', title: '化学原料', align: 'right' },
+      { key: 'nonferrousMining', title: '有色矿采选', align: 'right' },
     ],
   },
   {
     key: 'utilities',
     title: '公用事业',
     children: [
-      { key: 'power', title: '电力热力生产供应', align: 'right' },
-      { key: 'gas', title: '燃气生产供应', align: 'right' },
-      { key: 'water', title: '水生产供应', align: 'right' },
+      { key: 'power', title: '电力热力', align: 'right' },
+      { key: 'gas', title: '燃气供应', align: 'right' },
+      { key: 'water', title: '水供应', align: 'right' },
     ],
   },
 ];
@@ -140,8 +140,8 @@ export const ContentSlide11: React.FC = () => {
               dateColumn="period"
               rowHeight="auto"
               colorizeNumbers
-              headerCellClassName="px-0.5 py-1 text-[8px] leading-[1.05] whitespace-normal break-words"
-              cellClassName="px-1 text-[9px] leading-tight"
+              headerCellClassName="px-1 py-1 text-[10px] leading-[1.15] whitespace-normal break-words line-clamp-2"
+              cellClassName="px-1 text-[11px] leading-tight"
               subtitleClassName="text-[10px]"
             />
           </ChartContainer>
