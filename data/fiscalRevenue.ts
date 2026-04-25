@@ -13,6 +13,11 @@ export interface TaxCategoryDataPoint {
   growth: number | null;
 }
 
+export interface FiscalCategoryGrowthDataPoint {
+  category: string;
+  growth: number;
+}
+
 // 2024-2025年一般公共预算收入累计同比变化
 export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2024-02', taxRevenue: -4.00, nonTaxRevenue: 8.60, total: -2.30 },
@@ -37,6 +42,20 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2025-10', taxRevenue: 1.70, nonTaxRevenue: -3.10, total: 0.80 },
   { period: '2025-11', taxRevenue: 1.80, nonTaxRevenue: -3.70, total: 0.80 },
   { period: '2025-12', taxRevenue: 0.80, nonTaxRevenue: -11.30, total: -1.70 },
+  { period: '2026-02', taxRevenue: 0.10, nonTaxRevenue: 3.40, total: 0.70 },
+  { period: '2026-03', taxRevenue: 2.20, nonTaxRevenue: 2.90, total: 2.40 },
+];
+
+// 2026年一季度一般公共预算分项目同比增速
+export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
+  { category: '国内增值税', growth: 4.9 },
+  { category: '企业所得税', growth: -5.6 },
+  { category: '个人所得税', growth: 10.5 },
+  { category: '国内消费税', growth: 4.5 },
+  { category: '进口环节增值税和消费税', growth: 12.9 },
+  { category: '印花税', growth: 31.9 },
+  { category: '关税', growth: 14.1 },
+  { category: '非税收入', growth: 2.9 },
 ];
 
 // 2025年主要税种累计完成情况

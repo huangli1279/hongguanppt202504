@@ -2,75 +2,70 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { fiscalRevenueTrendData, taxCategoryData } from '@/data/fiscalRevenue';
+import { BaseBarChart, BarConfig } from './BaseBarChart';
+import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
 
 export const ContentSlide31: React.FC = () => {
-  // 折线图配置
   const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2 },
-    { dataKey: 'total', name: '合计', strokeWidth: 2.5 },
+    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: 16 },
+    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: -8 },
+    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
   ];
 
-  // 表格列配置
-  const columns: ColumnConfig[] = [
-    { key: 'taxType', title: '税种', align: 'left' },
-    { key: 'amount', title: '税额(亿元)', align: 'right' },
-    { 
-      key: 'growth', 
-      title: '累计增速(%)', 
-      align: 'right'
-    },
+  const bars: BarConfig[] = [
+    { dataKey: 'growth', name: '同比增速' },
   ];
 
   return (
     <BaseContentSlide
-      title={<>全年公共预算收入21.6万亿，同比下降1.7%，税收收入小幅增长，非税因高基数大幅下降</>}
+      title={<>一季度一般公共预算收入增2.4%，高于过去3年同期水平，税收及非税收入均增长</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="税收结构改善" delay="200ms" variant="accent">
+          <BaseCard title="税收/非税收入均增" delay="200ms" variant="accent">
             <p>
-              在总收入微降的背景下，税收收入 17.64 万亿，增速由负转正（<span className="text-red-500 font-semibold">+0.8%</span>），好于整体收入，而非税收入因2024年存在一次性、大规模的国有资本经营收入上缴，形成了极高的比较基数（<span className="text-green-600 font-semibold">-11.3%</span>），两者走势形成鲜明反差，同时税收占比提升。
+              一季度，全国一般公共预算收入 6.16 万亿元，同比增长（<span className="text-red-500 font-semibold">+2.4%</span>），高于过去3年同期水平。主要宏观指标增速回升，价格出现积极变化，货物进出口快速增长，为财政收入增长提供了有力支撑。
             </p>
           </BaseCard>
-          <BaseCard title="主体税种稳健，印花税高增" delay="400ms">
+          <BaseCard title="多数税种保持增长" delay="400ms">
             <p>
-              因加强互联网平台税收征管及股东减持带动个人所得税大幅改善（<span className="text-red-500 font-semibold">+11.5%</span>），资本市场活跃度提升显著拉动证券印花税（<span className="text-red-500 font-semibold">+70.7%</span>），增值税（<span className="text-red-500 font-semibold">+3.4%</span>）和企业所得税（<span className="text-red-500 font-semibold">+1%</span>）随工业生产边际改善而回升。
+              全国税收收入 4.85 万亿元，同比增长（<span className="text-red-500 font-semibold">+2.2%</span>），增幅比前2个月提高2.1个百分点；国内增值税增长 <span className="text-red-500 font-semibold">+4.9%</span>，进口环节增值税、消费税增长 <span className="text-red-500 font-semibold">+12.9%</span>，证券交易印花税大幅增长 <span className="text-red-500 font-semibold">+78.1%</span>；非税收入 1.31 万亿元，同比增长 <span className="text-red-500 font-semibold">+2.9%</span>。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
-          {/* 折线图 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={fiscalRevenueTrendData}
-              title="2024-2025年一般公共预算收入累计同比变化"
+              title="一般公共预算收入累计同比"
               subtitle="数据来源：财政部 | 单位：%"
               lines={lines}
-              yAxisDomain={[-10, 30]}
+              yAxisDomain={[-15, 30]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['税收收入', '非税收入', '合计']}
+              legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
               xAxisTickCount={7}
             />
           </ChartContainer>
 
-          {/* 表格 */}
           <ChartContainer delay="800ms">
-            <BaseTable
-              data={taxCategoryData}
-              columns={columns}
-              title="2025年主要税种累计完成情况"
-              subtitle="数据来源：财政部 | 单位：亿元、%"
-              striped={true}
-              highlightRows={[5, 6]}
+            <BaseBarChart
+              data={fiscalCategoryGrowthData}
+              title="一般公共预算分项目同比增速"
+              subtitle="数据来源：财政部 | 单位：%"
+              bars={bars}
+              xAxisKey="category"
+              yAxisDomain={[-10, 40]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              showLabels={true}
+              barSize={22}
             />
           </ChartContainer>
         </div>
