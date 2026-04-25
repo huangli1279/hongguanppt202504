@@ -51,6 +51,9 @@ export interface BaseBarChartProps {
   lineAxisDomain?: [number, number];
   lineUnit?: string;
   lineYAxisTickFormatter?: (value: any) => string;
+  xAxisAngle?: number;
+  xAxisHeight?: number;
+  xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
 }
 
 const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%' }: any) => {
@@ -130,7 +133,10 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   showLineYAxis = false,
   lineAxisDomain,
   lineUnit = '%',
-  lineYAxisTickFormatter
+  lineYAxisTickFormatter,
+  xAxisAngle,
+  xAxisHeight,
+  xAxisInterval = 0
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
@@ -169,8 +175,11 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}
               tickLine={false}
               tick={{ fill: uiColors.tick, fontSize: 10 }}
-              dy={10}
-              interval={0}
+              dy={xAxisAngle ? 4 : 10}
+              interval={xAxisInterval}
+              angle={xAxisAngle}
+              textAnchor={xAxisAngle && xAxisAngle < 0 ? 'end' : undefined}
+              height={xAxisHeight}
             />
             <YAxis
               hide={!showYAxis}

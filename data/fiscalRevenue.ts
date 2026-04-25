@@ -58,6 +58,46 @@ export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
   { category: '非税收入', growth: 2.9 },
 ];
 
+// 2026年一季度财政支出各领域同比增速
+export interface FiscalExpenditureGrowthDataPoint {
+  category: string;
+  growth: number;
+}
+
+export const fiscalExpenditureGrowthData: FiscalExpenditureGrowthDataPoint[] = [
+  { category: '教育', growth: -0.3 },
+  { category: '科学技术', growth: -3.7 },
+  { category: '文化旅游体育', growth: -4.3 },
+  { category: '社会保障就业', growth: 9.0 },
+  { category: '卫生健康', growth: 12.1 },
+  { category: '节能环保', growth: -1.1 },
+  { category: '城乡社区', growth: 2.8 },
+  { category: '农林水事务', growth: -6.8 },
+  { category: '交通运输', growth: -1.6 },
+  { category: '债务付息', growth: 12.9 },
+];
+
+// 2025-2026年财政资金规模对比（按账本口径）
+export interface FiscalFundsComparisonDataPoint {
+  item: string;
+  ledger: string;
+  y2025: number;
+  y2026: number;
+  delta: number | null;
+}
+
+export const fiscalFundsComparisonData: FiscalFundsComparisonDataPoint[] = [
+  { item: '一般公共预算赤字', ledger: '一般公共预算', y2025: 5.66, y2026: 5.89, delta: 0.23 },
+  { item: '地方专项债', ledger: '政府性基金预算', y2025: 4.40, y2026: 4.40, delta: null },
+  { item: '特殊再融资债（化债）', ledger: '政府性基金预算', y2025: 2.00, y2026: 2.00, delta: null },
+  { item: '超长期特别国债', ledger: '政府性基金预算', y2025: 1.30, y2026: 1.30, delta: null },
+  { item: '两重', ledger: '政府性基金预算', y2025: 0.80, y2026: 0.80, delta: null },
+  { item: '两新-以旧换新', ledger: '政府性基金预算', y2025: 0.30, y2026: 0.25, delta: -0.05 },
+  { item: '两新-设备更新', ledger: '政府性基金预算', y2025: 0.20, y2026: 0.20, delta: null },
+  { item: '促内需', ledger: '政府性基金预算', y2025: 0.00, y2026: 0.05, delta: 0.05 },
+  { item: '特别国债-补充资本金', ledger: '国有资本经营预算', y2025: 0.50, y2026: 0.30, delta: -0.20 },
+];
+
 // 2025年主要税种累计完成情况
 export const taxCategoryData: TaxCategoryDataPoint[] = [
   { taxType: '国内增值税', amount: 68947, growth: 3.4 },

@@ -139,6 +139,18 @@ export const BaseTable: React.FC<BaseTableProps> = ({
     [leafColumns]
   );
 
+  const autoGridTemplate = React.useMemo(() => {
+    const hasAnyWidth = leafColumns.some(col => col.width !== undefined);
+    if (!hasAnyWidth) return `repeat(${leafColumns.length}, minmax(0, 1fr))`;
+    return leafColumns
+      .map(col => {
+        if (col.width === undefined) return 'minmax(0, 1fr)';
+        if (typeof col.width === 'number') return `minmax(0, ${col.width}px)`;
+        return `minmax(0, ${col.width})`;
+      })
+      .join(' ');
+  }, [leafColumns]);
+
   const getAlignment = (align?: string) => {
     switch (align) {
       case 'center': return 'text-center justify-center';
@@ -284,7 +296,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
               className="grid flex-shrink-0"
               style={{
                 backgroundColor: headerBgColor,
-                gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))`
+                gridTemplateColumns: autoGridTemplate
               }}
             >
               {columns.map((col, groupIndex) => {
@@ -360,14 +372,14 @@ export const BaseTable: React.FC<BaseTableProps> = ({
           ) : (
             // 单级表头模式
             <div
-              className="flex flex-shrink-0 items-center"
-              style={{ backgroundColor: headerBgColor }}
+              className="grid flex-shrink-0 items-center"
+              style={{ backgroundColor: headerBgColor, gridTemplateColumns: autoGridTemplate }}
             >
               {columns.map((col, colIndex) => (
                 <div
                   key={col.key}
                   className={cn(
-                    `px-3 py-2 font-semibold text-center flex-1 flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`,
+                    `min-w-0 px-3 py-2 font-semibold text-center flex items-center justify-center ${colIndex < columns.length - 1 ? 'border-r border-slate-400/30' : ''}`,
                     headerCellClassName || cellClassName
                   )}
                   style={{
@@ -390,10 +402,10 @@ export const BaseTable: React.FC<BaseTableProps> = ({
               return (
                 <div
                   key={rowIndex}
-                  className={`${isGrouped ? 'grid' : 'flex'} flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg} ${customRowClass}`}
+                  className={`grid flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg} ${customRowClass}`}
                   style={{
                     ...(highlighted ? { backgroundColor: highlightColor } : undefined),
-                    ...(isGrouped ? { gridTemplateColumns: `repeat(${leafColumns.length}, minmax(0, 1fr))` } : {})
+                    gridTemplateColumns: autoGridTemplate
                   }}
                 >
                   {leafColumns.map((col, colIndex) => {
@@ -402,7 +414,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                       <div
                         key={col.key}
                         className={cn(
-                          `min-w-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGrouped ? '' : 'flex-1'} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`,
+                          `min-w-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`,
                           cellClassName
                         )}
                         style={{

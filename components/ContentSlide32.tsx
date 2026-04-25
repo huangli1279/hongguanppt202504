@@ -1,37 +1,59 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
-import { BaseLineChart, LineConfig } from './BaseLineChart';
 import { BaseBarChart, BarConfig } from './BaseBarChart';
-import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
+import { BaseTable, ColumnConfig } from './BaseTable';
+import { fiscalExpenditureGrowthData, fiscalFundsComparisonData } from '@/data/fiscalRevenue';
+
+const formatNumber = (val: number) =>
+  val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+const renderDelta = (value: any) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  const num = Number(value);
+  if (isNaN(num)) return value;
+  const formatted = (num > 0 ? '+' : '') + formatNumber(num);
+  if (num > 0) return <span className="text-red-500 font-semibold">{formatted}</span>;
+  if (num < 0) return <span className="text-green-600 font-semibold">{formatted}</span>;
+  return <span className="text-slate-600">{formatted}</span>;
+};
+
+const renderAmount = (value: any) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  const num = Number(value);
+  if (isNaN(num)) return value;
+  return <span className="text-slate-700">{formatNumber(num)}</span>;
+};
+
+const fundsColumns: ColumnConfig[] = [
+  { key: 'item', title: '项目', align: 'left', width: '36%' },
+  { key: 'ledger', title: '账本', align: 'left', width: '28%' },
+  { key: 'y2025', title: '2025', align: 'right', width: '10%', render: renderAmount },
+  { key: 'y2026', title: '2026', align: 'right', width: '10%', render: renderAmount, highlight: true },
+  { key: 'delta', title: '同比增量', align: 'right', width: '16%', render: renderDelta },
+];
 
 export const ContentSlide32: React.FC = () => {
-  const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: 16 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: -8 },
-    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
-  ];
-
   const bars: BarConfig[] = [
     { dataKey: 'growth', name: '同比增速' },
   ];
 
   return (
     <BaseContentSlide
-      title={<>一季度一般公共预算收入增2.4%，高于过去3年同期水平，税收及非税收入均增长</>}
+      title={<>全年实施积极财政政策，一季度一般公共预算财政支出同比增长2.6%，精准倾斜民生</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="税收/非税收入均增" delay="200ms" variant="accent">
+          <BaseCard title="积极财政持续加力" delay="200ms" variant="accent">
             <p>
-              一季度，全国一般公共预算收入 6.16 万亿元，同比增长（<span className="text-red-500 font-semibold">+2.4%</span>），高于过去3年同期水平。主要宏观指标增速回升，价格出现积极变化，货物进出口快速增长，为财政收入增长提供了有力支撑。
+              两会定调，全年继续实施更加积极的财政政策，赤字规模 <span className="text-red-500 font-semibold">5.89万亿</span>，较上年增加 <span className="text-red-500 font-semibold">2,300亿</span>。一般公共预算支出规模将首次达到 <span className="text-red-500 font-semibold">30万亿元</span>，比上年增加约 <span className="text-red-500 font-semibold">1.27万亿元</span>。拟发行超长期特别国债 <span className="text-red-500 font-semibold">1.3万亿元</span>，持续支持"两重"建设、"两新"工作等，更加注重提振消费、投资于人、保障民生。
             </p>
           </BaseCard>
-          <BaseCard title="多数税种保持增长" delay="400ms">
+          <BaseCard title="保民生成绝对主力" delay="400ms">
             <p>
-              全国税收收入 4.85 万亿元，同比增长（<span className="text-red-500 font-semibold">+2.2%</span>），增幅比前2个月提高2.1个百分点；国内增值税增长 <span className="text-red-500 font-semibold">+4.9%</span>，进口环节增值税、消费税增长 <span className="text-red-500 font-semibold">+12.9%</span>，证券交易印花税大幅增长 <span className="text-red-500 font-semibold">+78.1%</span>；非税收入 1.31 万亿元，同比增长 <span className="text-red-500 font-semibold">+2.9%</span>。
+              一季度，一般公共预算支出 <span className="text-red-500 font-semibold">7.47万亿</span>，支出规模为年初预算的 <span className="text-red-500 font-semibold">24.9%</span>，进度为近5年最快。其中，卫生健康（<span className="text-red-500 font-semibold">+12.1%</span>）、社会保障和就业（<span className="text-red-500 font-semibold">+9.0%</span>）支出增幅领跑；城乡社区支出（<span className="text-red-500 font-semibold">+2.8%</span>），助力基建强劲开局。
             </p>
           </BaseCard>
         </div>
@@ -39,33 +61,31 @@ export const ContentSlide32: React.FC = () => {
         {/* 图表区域 */}
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={fiscalRevenueTrendData}
-              title="一般公共预算收入累计同比"
-              subtitle="数据来源：财政部 | 单位：%"
-              lines={lines}
-              yAxisDomain={[-15, 30]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
-              xAxisTickCount={7}
-            />
-          </ChartContainer>
-
-          <ChartContainer delay="800ms">
             <BaseBarChart
-              data={fiscalCategoryGrowthData}
-              title="一般公共预算分项目同比增速"
+              data={fiscalExpenditureGrowthData}
+              title="财政支出各领域同比增速"
               subtitle="数据来源：财政部 | 单位：%"
               bars={bars}
               xAxisKey="category"
-              yAxisDomain={[-10, 40]}
+              yAxisDomain={[-10, 15]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
               showLabels={true}
               barSize={22}
+              xAxisAngle={-45}
+              xAxisHeight={50}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="800ms">
+            <BaseTable
+              data={fiscalFundsComparisonData}
+              columns={fundsColumns}
+              title="2025-2026年财政资金规模对比（按账本口径）"
+              subtitle="数据来源：财政部 | 单位：万亿"
+              colorizeNumbers={false}
+              rowHeight="auto"
             />
           </ChartContainer>
         </div>
