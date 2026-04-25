@@ -20,25 +20,25 @@ export const ContentSlide26: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>出口“抢跑”支撑年末翘尾，全年顺差近1.2万亿美元创历史新高</>}
+      title={<>一季度外贸展现强劲韧性，关税政策增强“抢出口”</>}
       cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="出口端：韧性与“抢跑”并存" delay="200ms" variant="accent">
+          <BaseCard title="进出口超预期强势开局" delay="200ms" variant="accent">
             <p>
-              2025年全年出口总值达<span className="text-webank-blue font-semibold">3.77万亿美元</span>，同比增加<span className="text-green-600 font-semibold">5.5%</span>。受去年同期高基数（台风后补偿性出货）影响，10月出口同比下降<span className="text-red-500 font-semibold">1.1%</span>，为年内首次转负。12月出口同比回升至<span className="text-green-600 font-semibold">6.6%</span>，主要源于2026年关税及退税政策调整前的<span className="font-semibold">“抢出口”效应</span>。
+              2026年一季度出口总值<span className="text-webank-blue font-semibold">9775亿美元</span>，同比增长<span className="text-green-600 font-semibold">14.7%</span>；进口总值<span className="text-webank-blue font-semibold">7132亿美元</span>，同比增长<span className="text-green-600 font-semibold">22.7%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="进口端：内需结构性修复" delay="400ms">
+          <BaseCard title="贸易顺差同比下降" delay="400ms">
             <p>
-              2025年全年进口总值<span className="text-webank-blue font-semibold">2.58万亿美元</span>，与去年<span className="text-slate-500 font-semibold">持平</span>。12月同比大幅回升至<span className="text-green-600 font-semibold">5.7%</span>，主要由于春节错位带来的节前备货需求释放和半导体等硬科技产业在地缘政治焦虑下加速<span className="font-semibold">“战略性补库”</span>的驱动。
+              一季度贸易顺差<span className="text-webank-blue font-semibold">2643亿美元</span>，较25年一季度<span className="text-red-500 font-semibold">下降2.5%</span>。进口增速显著高于出口，反映内需修复和战略性补库带动的进口扩张。
             </p>
           </BaseCard>
-          <BaseCard title="贸易顺差再创历史新高" delay="600ms">
+          <BaseCard title="“春节错位”致同比波动，政策影响显著" delay="600ms">
             <p>
-              12月单月贸易顺差达<span className="text-webank-blue font-semibold">1141亿美元</span>，较去年12月增加90亿美元。全年累计顺差约为 <span className="text-webank-blue font-semibold">1.19万亿美元</span>，续创历史新高（自1995年统计开始）。
+              2025年春节较早导致2月出口基数偏低、3月基数偏高，带来当月同比的剧烈波动。叠加4月1日起取消光伏、锂电等产品退税，以及特朗普2月底启动“122条款”对所有贸易伙伴征收10%进口附加费形成的<span className="font-semibold">“抢出口”</span>支撑，一季度出口持续强劲。
             </p>
           </BaseCard>
         </div>

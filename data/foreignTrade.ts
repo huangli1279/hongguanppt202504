@@ -78,6 +78,9 @@ export const foreignTradeMonthlyUsdData: ForeignTradeMonthlyUsdDataPoint[] = [
   { period: '2025-10', imports: 0.9, exports: -1.2 },
   { period: '2025-11', imports: 1.9, exports: 5.9 },
   { period: '2025-12', imports: 5.7, exports: 6.6 },
+  { period: '2026-01', imports: 25.7, exports: 10.0 },
+  { period: '2026-02', imports: 13.9, exports: 39.6 },
+  { period: '2026-03', imports: 27.8, exports: 2.5 },
 ];
 
 export interface ForeignTradeMonthlyValueDataPoint {
@@ -149,4 +152,7 @@ export const foreignTradeMonthlyValuesData: ForeignTradeMonthlyValueDataPoint[] 
   { period: '2025-10', imports: 2151.28, exports: 3050.46, total: 5201.73, surplus: 899.18 },
   { period: '2025-11', imports: 2186.04, exports: 3301.63, total: 5487.67, surplus: 1115.6 },
   { period: '2025-12', imports: 2436.4, exports: 3577.47, total: 6013.87, surplus: 1141.07 },
+  { period: '2026-01', imports: 2342.34, exports: 3566.54, total: 5908.88, surplus: 1224.19 },
+  { period: '2026-02', imports: 2090.23, exports: 2998.08, total: 5088.31, surplus: 907.85 },
+  { period: '2026-03', imports: 2699.04, exports: 3210.33, total: 5909.37, surplus: 511.29 },
 ];
