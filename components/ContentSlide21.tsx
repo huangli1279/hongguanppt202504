@@ -15,13 +15,13 @@ export const ContentSlide21: React.FC = () => {
 
   // 民间投资与国有控股投资折线图配置
   const privateLineConfigs: LineConfig[] = [
-    { dataKey: 'privateInvestment', name: '民间固定资产投资', strokeWidth: 2.5 },
-    { dataKey: 'stateOwned', name: '国有及国有控股资产投资', strokeWidth: 2 },
+    { dataKey: 'stateOwned', name: '国有控股投资', strokeWidth: 2.5 },
+    { dataKey: 'privateInvestment', name: '民间投资', strokeWidth: 2 },
   ];
 
   return (
     <BaseContentSlide
-      title="2025年固投全年下降3.8%，房地产深跌与基建乏力拖累整体投资"
+      title="在稳投资的明确定调下，一季度固投温和企稳至1.7%，其中基建投资增长8.9%，发挥托底作用"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -29,12 +29,12 @@ export const ContentSlide21: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="总量加速下行" delay="200ms" variant="accent">
             <p>
-              全年固定资产投资（不含农户）同比下降<span className="text-red-500 font-semibold">3.8%</span>。一季度下行斜率显著加大，累计增速从1-9月的-0.5%一路滑落，显示投资需求在年末急剧收缩。固定资产投资三大支柱全面降速：房地产深度下跌（<span className="text-red-500 font-semibold">-17.2%</span>）、基建转负（<span className="text-red-500 font-semibold">-1.48%</span>）、制造业增速显著回落（<span className="text-webank-accent font-semibold">0.6%</span>），整体投资动能乏力。
+              2026年一季度，全国固定资产投资（不含农户）达到<span className="text-webank-accent font-semibold">10.27万亿元</span>，同比增长<span className="text-webank-accent font-semibold">1.7%</span>。其中，基础设施建设投资同比增长<span className="text-webank-accent font-semibold">8.9%</span>，发挥绝对托底作用，房地产投资仍为主要拖累。
             </p>
           </BaseCard>
-          <BaseCard title="民间投资深度负增长" delay="400ms">
+          <BaseCard title="国有控股投资优于民间投资" delay="400ms">
             <p>
-              民间投资：全年下降<span className="text-red-500 font-semibold">6.4%</span>，创历史新低，反映民营企业投资意愿极度低迷。国有控股：全年下降<span className="text-red-500 font-semibold">2.5%</span>，亦转负增长。
+              一季度，国有控股投资同比增长<span className="text-webank-accent font-semibold">7.1%</span>，与“两重”建设、大规模设备更新及项目资金前置支持有关。民间投资同比下降<span className="text-red-500 font-semibold">2.2%</span>，其中基础设施民间投资增长5.2%、制造业民间投资增长2.2%，均低于行业整体增速，反映民间投资意愿依然低迷。
             </p>
           </BaseCard>
         </div>
@@ -45,7 +45,7 @@ export const ContentSlide21: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={fixedAssetInvestmentData}
-              title="2024-2025年固定资产投资关键分项累计同比"
+              title="固定资产投资及分项累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={investmentLineConfigs}
               yAxisDomain={[-20, 15]}
@@ -61,14 +61,14 @@ export const ContentSlide21: React.FC = () => {
           <ChartContainer delay="800ms">
             <BaseLineChart
               data={privateInvestmentData}
-              title="2024-2025年民间投资与国有控股投资累计同比"
+              title="国有控股投资与民间投资累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={privateLineConfigs}
               yAxisDomain={[-10, 10]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['民间固定资产投资', '国有及国有控股资产投资']}
+              legendOrder={['国有控股投资', '民间投资']}
               xAxisTickCount={6}
             />
           </ChartContainer>
