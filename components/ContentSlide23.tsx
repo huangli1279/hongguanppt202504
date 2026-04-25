@@ -1,114 +1,77 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { infrastructureInvestmentData } from '@/data/infrastructureInvestment';
+import { BaseLineChart, LineConfig } from './BaseLineChart';
+import { realEstateInvestmentData, housePriceIndexData } from '@/data/realEstate';
 
 export const ContentSlide23: React.FC = () => {
-  const formatValue = (value: any) => {
-    if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-    if (typeof value === 'number') {
-      return value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-    }
-    return value;
-  };
+  // 房地产开发投资折线图配置
+  const investmentLineConfigs: LineConfig[] = [
+    { dataKey: 'realEstateInvestment', name: '房地产开发投资', strokeWidth: 2.5 },
+    { dataKey: 'newConstruction', name: '房屋新开工面积', strokeWidth: 2 },
+    { dataKey: 'completion', name: '房地产竣工面积', strokeWidth: 2 },
+  ];
 
-  // 二级表头列配置
-  const columns: ColumnConfig[] = [
-    { key: 'period', title: '日期', align: 'center' },
-    {
-      key: 'transport',
-      title: '交通运输、仓储和邮政业',
-      children: [
-        { key: 'transportTotal', title: '合计', align: 'right' },
-        { key: 'railway', title: '铁路运输', align: 'right' },
-        { key: 'road', title: '道路运输', align: 'right' },
-        { 
-          key: 'pipeline', 
-          title: '管道运输', 
-          align: 'right',
-          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
-        },
-      ],
-    },
-    {
-      key: 'waterEnv',
-      title: '水利、环境和公共设施管理业',
-      children: [
-        { key: 'waterEnvTotal', title: '合计', align: 'right' },
-        { 
-          key: 'ecoProtection', 
-          title: '生态环境', 
-          align: 'right',
-          render: (val) => {
-            const formatted = formatValue(val);
-            if (typeof val === 'number' && val < 0) {
-              return <span className="text-green-600">{formatted}</span>;
-            }
-            return formatted;
-          }
-        },
-        { 
-          key: 'publicFacility', 
-          title: '公共设施', 
-          align: 'right',
-          render: (val) => {
-            const formatted = formatValue(val);
-            if (typeof val === 'number' && val < 0) {
-              return <span className="text-green-600">{formatted}</span>;
-            }
-            return formatted;
-          }
-        },
-      ],
-    },
-    {
-      key: 'electricity',
-      title: '电力、热力、燃气及水的生产和供应业',
-      children: [
-        { key: 'electricityTotal', title: '合计', align: 'right' },
-        { key: 'gas', title: '燃气', align: 'right' },
-        { key: 'waterSupply', title: '水生产', align: 'right' },
-      ],
-    },
+  // 房价指数折线图配置
+  const priceLineConfigs: LineConfig[] = [
+    { dataKey: 'newHousePrice', name: '新建商品住宅价格指数同比', strokeWidth: 2.5 },
+    { dataKey: 'secondHandPrice', name: '二手住宅价格指数同比', strokeWidth: 2 },
   ];
 
   return (
     <BaseContentSlide
-      title="基建投资全年下降1.48%，财政约束与战略转型驱动行业分化"
-      cardColumns={3}
+      title="房地产开发投资下降17.2%，新开工面积下跌20.4%"
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="化债约束与挤出效应" delay="200ms" variant="accent">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="投资端深度出清" delay="200ms" variant="accent">
             <p>
-              受地方政府化债提速影响，财政资金优先用于偿还存量债务，对新增投资形成明显"挤出"。12月单月基建投资估算同比下降约<span className="font-semibold">12.2%-16%</span>，资金到位率偏低制约施工进度。
+              全年开发投资下降<span className="text-red-500 font-semibold">17.2%</span>。房屋新开工面积下降<span className="text-red-500 font-semibold">20.4%</span>，竣工面积下降<span className="text-red-500 font-semibold">18.1%</span>。先行指标剧烈收缩，意味着未来1-2年建安投资仍面临巨大压力。
             </p>
           </BaseCard>
-          <BaseCard title="高度依赖地方财政的传统领域成为主要拖累" delay="400ms">
+          <BaseCard title="房价指数：持续调整" delay="400ms">
             <p>
-              严重依赖地方财政和土地收入的水利环境公用设施投资、道路运输业全年增速持续下降，成为主要拖累。
-            </p>
-          </BaseCard>
-          <BaseCard title="符合国家长期战略的领域逆势高增" delay="600ms">
-            <p>
-              与传统领域形成鲜明对比的是，服务于长期国家战略的领域实现强劲增长，电热气水投资全年增长<span className="font-semibold">9.1%</span>，管道运输业全年增长<span className="font-semibold">36%</span>。
+              70个大中城市房价指数维持下行态势。12月新建商品住宅价格同比下降<span className="text-red-500 font-semibold">3.05%</span>，二手住宅价格同比下降<span className="text-red-500 font-semibold">6.07%</span>。市场筑底过程仍在延续，价格修复斜率依然偏平。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <ChartContainer delay="800ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={infrastructureInvestmentData}
-            columns={columns}
-            title="2025年基础设施建设相关行业固定资产投资累计增长数据"
-            subtitle="数据来源：国家统计局 | 单位：%"
-            dateColumn="period"
-            colorizeNumbers={false}
-          />
-        </ChartContainer>
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          {/* 房地产开发投资折线图 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={realEstateInvestmentData}
+              title="2024-2025年房屋新开工面积与竣工面积累计同比变化"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={investmentLineConfigs}
+              yAxisDomain={[-35, 0]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['房地产开发投资', '房屋新开工面积', '房地产竣工面积']}
+              xAxisTickCount={6}
+            />
+          </ChartContainer>
+
+          {/* 房价指数折线图 */}
+          <ChartContainer delay="800ms">
+            <BaseLineChart
+              data={housePriceIndexData}
+              title="2024年1月-2025年12月70个大中城市房价指数同比变化"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={priceLineConfigs}
+              yAxisDomain={[-10, 0]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['新建商品住宅价格指数同比', '二手住宅价格指数同比']}
+              xAxisTickCount={6}
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );
