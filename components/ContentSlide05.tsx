@@ -61,8 +61,8 @@ export const ContentSlide05: React.FC = () => {
               showYAxis={true}
               legendOrder={['GDP不变价', 'GDP现价']}
               lines={[
-                { dataKey: 'real', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top' },
-                { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom' }
+                { dataKey: 'real', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom', labelDY: 14 }
               ]}
             />
           </ChartContainer>
@@ -75,7 +75,7 @@ export const ContentSlide05: React.FC = () => {
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['第一产业', '第二产业', '第三产业', '整体']}
+              legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
               lines={[
                 { dataKey: 'primary', name: '第一产业', strokeWidth: 2, labelPosition: 'top' },
                 { dataKey: 'secondary', name: '第二产业', strokeWidth: 2, labelPosition: 'bottom' },
