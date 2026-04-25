@@ -2,73 +2,75 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
 import { BaseLineChart, LineConfig } from './BaseLineChart';
-import { realEstateInvestmentData, housePriceIndexData } from '@/data/realEstate';
+import { BaseTable, ColumnConfig } from './BaseTable';
+import { equipmentInvestmentData, manufacturingInvestmentData } from '@/data/equipmentInvestment';
 
 export const ContentSlide23: React.FC = () => {
-  // 房地产开发投资折线图配置
-  const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'realEstateInvestment', name: '房地产开发投资', strokeWidth: 2.5 },
-    { dataKey: 'newConstruction', name: '房屋新开工面积', strokeWidth: 2 },
-    { dataKey: 'completion', name: '房地产竣工面积', strokeWidth: 2 },
+  // 折线图配置
+  const lineConfigs: LineConfig[] = [
+    { dataKey: 'equipmentPurchase', name: '设备工器具购置', strokeWidth: 2.5 },
+    { dataKey: 'constructionInstall', name: '建筑安装工程', strokeWidth: 2.5 },
   ];
 
-  // 房价指数折线图配置
-  const priceLineConfigs: LineConfig[] = [
-    { dataKey: 'newHousePrice', name: '新建商品住宅价格指数同比', strokeWidth: 2.5 },
-    { dataKey: 'secondHandPrice', name: '二手住宅价格指数同比', strokeWidth: 2 },
+  // 表格列配置
+  const columns: ColumnConfig[] = [
+    { key: 'period', title: '月份', align: 'center' },
+    { key: 'generalEquipment', title: '通用设备', align: 'right' },
+    { key: 'specialEquipment', title: '专用设备', align: 'right' },
+    { key: 'electricalMachinery', title: '电气机械', align: 'right' },
+    { key: 'electronicEquipment', title: '电子设备', align: 'right' },
+    { key: 'autoManufacturing', title: '汽车制造', align: 'right' },
+    { key: 'railwayAerospace', title: '铁路航天', align: 'right' },
+    { key: 'metalRepair', title: '金属机械修理', align: 'right' },
   ];
 
   return (
     <BaseContentSlide
-      title="房地产开发投资下降17.2%，新开工面积下跌20.4%"
-      cardColumns={2}
+      title={<>设备购置投资高增11.8%，企业"反内卷"导致产能扩张意愿降温</>}
+      cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="投资端深度出清" delay="200ms" variant="accent">
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="存量更新驱动" delay="200ms" variant="accent">
             <p>
-              全年开发投资下降<span className="text-red-500 font-semibold">17.2%</span>。房屋新开工面积下降<span className="text-red-500 font-semibold">20.4%</span>，竣工面积下降<span className="text-red-500 font-semibold">18.1%</span>。先行指标剧烈收缩，意味着未来1-2年建安投资仍面临巨大压力。
+              全年设备工器具购置投资增长<span className="text-green-600 font-semibold">11.8%</span>，拉动全部投资增长1.8pct。在"两新"政策引导下，制造业投资主要由存量设备技改驱动，而非新建产能。
             </p>
           </BaseCard>
-          <BaseCard title="房价指数：持续调整" delay="400ms">
+          <BaseCard title="扩厂意愿收缩" delay="400ms">
             <p>
-              70个大中城市房价指数维持下行态势。12月新建商品住宅价格同比下降<span className="text-red-500 font-semibold">3.05%</span>，二手住宅价格同比下降<span className="text-red-500 font-semibold">6.07%</span>。市场筑底过程仍在延续，价格修复斜率依然偏平。
+              建筑安装工程投资（代表厂房扩建）全年下降<span className="text-red-500 font-semibold">8.4%</span>，与设备高增形成鲜明对比。企业在"反内卷"政策下，对单纯扩大产能的资本开支变得极为谨慎。
+            </p>
+          </BaseCard>
+          <BaseCard title="高技术引领，传统承压" delay="600ms">
+            <p>
+              航空航天投资<span className="text-green-600 font-semibold">+17.5%</span>领跑，新质生产力相关领域资金流入加速。电气机械投资<span className="text-red-500 font-semibold">-10.3%</span>显著负增长，行业进入深度去产能周期。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 */}
+        {/* 图表和表格区域 */}
         <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
-          {/* 房地产开发投资折线图 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={realEstateInvestmentData}
-              title="2024-2025年房屋新开工面积与竣工面积累计同比变化"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={investmentLineConfigs}
-              yAxisDomain={[-35, 0]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['房地产开发投资', '房屋新开工面积', '房地产竣工面积']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-
-          {/* 房价指数折线图 */}
           <ChartContainer delay="800ms">
             <BaseLineChart
-              data={housePriceIndexData}
-              title="2024年1月-2025年12月70个大中城市房价指数同比变化"
+              data={equipmentInvestmentData}
+              title="设备投资与建筑工程投资增速对比"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={priceLineConfigs}
-              yAxisDomain={[-10, 0]}
+              lines={lineConfigs}
+              yAxisDomain={[-15, 25]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['新建商品住宅价格指数同比', '二手住宅价格指数同比']}
-              xAxisTickCount={6}
+              legendOrder={['设备工器具购置', '建筑安装工程']}
+            />
+          </ChartContainer>
+          <ChartContainer delay="1000ms">
+            <BaseTable
+              data={manufacturingInvestmentData}
+              columns={columns}
+              title="2025年制造业分行业投资累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              dateColumn="period"
             />
           </ChartContainer>
         </div>
