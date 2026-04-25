@@ -80,8 +80,8 @@ export const ContentSlide27: React.FC = () => {
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
             subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
-            headerCellClassName="py-1 text-[clamp(10px,1.2vh,13px)]"
-            cellClassName="py-0 text-[clamp(9px,1vh,12px)] leading-tight"
+            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
+            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
           />
         </ChartContainer>
       </div>
