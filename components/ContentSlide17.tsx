@@ -283,8 +283,8 @@ export const ContentSlide17: React.FC = () => {
             dateColumn="period"
             colorizeNumbers={false}
             rowHeight="auto"
-            cellClassName="px-1.5 text-[9px] leading-tight"
-            headerCellClassName="px-1.5 text-[9px] leading-tight"
+            cellClassName="px-1.5 text-[11px] leading-tight"
+            headerCellClassName="px-1.5 text-[11px] leading-tight"
           />
         </ChartContainer>
       </div>
