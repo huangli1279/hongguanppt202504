@@ -12,19 +12,19 @@ const ppiLines: LineConfig[] = [
 ];
 
 const industryMomColumns: ColumnConfig[] = [
-  { key: 'period', title: '月份', width: '35px', align: 'center' },
-  { key: 'ppiMom', title: 'PPI', width: '29px', align: 'right' },
-  { key: 'externalStorage', title: '外存储部件', width: '37px', align: 'right' },
-  { key: 'photovoltaic', title: '光伏设备', width: '35px', align: 'right' },
-  { key: 'lithiumBattery', title: '锂电池', width: '33px', align: 'right' },
-  { key: 'electricalMachinery', title: '电气机械', width: '37px', align: 'right' },
-  { key: 'computerComm', title: '计算机通信', width: '40px', align: 'right' },
-  { key: 'fuelProcessing', title: '燃油加工', width: '37px', align: 'right' },
-  { key: 'oilGas', title: '油气开采', width: '37px', align: 'right' },
-  { key: 'ferrousMining', title: '黑色矿采选', width: '39px', align: 'right' },
-  { key: 'nonFerrousMining', title: '有色矿采选', width: '39px', align: 'right' },
-  { key: 'chemicalRawMaterials', title: '化学原料', width: '37px', align: 'right' },
-  { key: 'automobile', title: '汽车制造', width: '35px', align: 'right' },
+  { key: 'period', title: '月份', align: 'center' },
+  { key: 'ppiMom', title: 'PPI', align: 'right' },
+  { key: 'externalStorage', title: '外存储部件', align: 'right' },
+  { key: 'photovoltaic', title: '光伏设备', align: 'right' },
+  { key: 'lithiumBattery', title: '锂电池', align: 'right' },
+  { key: 'electricalMachinery', title: '电气机械', align: 'right' },
+  { key: 'computerComm', title: '计算机通信', align: 'right' },
+  { key: 'fuelProcessing', title: '燃油加工', align: 'right' },
+  { key: 'oilGas', title: '油气开采', align: 'right' },
+  { key: 'ferrousMining', title: '黑色矿采选', align: 'right' },
+  { key: 'nonFerrousMining', title: '有色矿采选', align: 'right' },
+  { key: 'chemicalRawMaterials', title: '化学原料', align: 'right' },
+  { key: 'automobile', title: '汽车制造', align: 'right' },
 ];
 
 
