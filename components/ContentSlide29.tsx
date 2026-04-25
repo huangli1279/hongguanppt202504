@@ -19,26 +19,26 @@ export const ContentSlide29: React.FC = () => {
 
   // 柱状图配置
   const bars: BarConfig[] = [
-    { dataKey: 'y2024', name: '2024年'},
-    { dataKey: 'y2025', name: '2025年'},
+    { dataKey: 'y2024', name: '25Q1'},
+    { dataKey: 'y2025', name: '26Q1'},
   ];
 
   return (
     <BaseContentSlide
-      title={<>12月对美出口降幅扩大至30%，非美市场表现依旧强劲</>}
+      title={<>对美出口继续下降，欧盟非洲支撑增长</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="关税与高基数双重承压，对美出口显著下滑" delay="200ms" variant="accent">
+          <BaseCard title="对美出口持续下降，份额显著收缩" delay="200ms" variant="accent">
             <p>
-              25年受前期关税政策滞后及高基数影响，对美出口当月同比持续下跌，12月降至<span className="text-green-600 font-semibold"> 30.0%</span>，拖累当月整体出口约<span className="text-green-600 font-semibold"> 4.4%</span>。全年对美出口同比<span className="text-green-600 font-semibold"> -20.0%</span>，全年占比由 14.7% 降至 <span className="text-green-600 font-semibold">11.1%</span>，下降 3.6%。
+              一季度对美出口降幅持续，因去年一季度基数影响，1月同比下降<span className="text-green-600 font-semibold"> 23.0%</span>，3月同比下降<span className="text-green-600 font-semibold"> 26.5%</span>，降幅较去年底的<span className="text-green-600 font-semibold"> -30.0%</span>虽收窄，但一季度出口份额已由去年的 13.5% 降至约<span className="text-green-600 font-semibold"> 9.9%</span>，收缩十分显著。
             </p>
           </BaseCard>
-          <BaseCard title="非美市场表现强劲，“一带一路”出口占比过半" delay="400ms">
+          <BaseCard title="“南方国家”工业化红利加速释放" delay="400ms">
             <p>
-              25年对非美区域出口整体增长<span className="text-red-500 font-semibold"> 10%</span>，其中东盟增长<span className="text-red-500 font-semibold"> 13.4%</span>，非洲高增<span className="text-red-500 font-semibold"> 25.8%</span>。共建“一带一路”国家全年累计增速<span className="text-red-500 font-semibold"> 10.6%</span>，出口总值占比达<span className="text-red-500 font-semibold"> 50.7%</span>。新兴市场工业化进程提速，对我国中间品（集成电路、零部件等）和生产资料需求旺盛。产业链将中间品出口到“跳板国”，进行简单组装再转出口到欧美，以此规避关税壁垒，对冲欧美市场波动。
+              一季度我国对新兴市场保持强劲出口态势。2月对非增长<span className="text-red-500 font-semibold"> 97.5%</span>、东盟<span className="text-red-500 font-semibold"> 38.8%</span>、拉美<span className="text-red-500 font-semibold"> 44.2%</span>出口维持高速增长。一季度对东盟、非洲、拉美出口的合并占比提升<span className="text-red-500 font-semibold"> 1.3%</span>，有效对冲了对美出口下降。高油价将加速海外绿色转型，进一步拉动中国新能源汽车、锂电及电力设备相关产品的出口增量空间。
             </p>
           </BaseCard>
         </div>
@@ -50,11 +50,11 @@ export const ContentSlide29: React.FC = () => {
             <BaseTable
               data={exportRegionTrendData}
               columns={columns}
-              title="2025年出口区域当月同比走势"
+              title="出口区域当月同比走势"
               subtitle="数据来源：海关总署 | 单位：%"
               striped={true}
               dateColumn="period"
-              highlightRows={[11]}
+              highlightRows={[14]}
             />
           </ChartContainer>
 
@@ -62,13 +62,13 @@ export const ContentSlide29: React.FC = () => {
           <ChartContainer delay="800ms">
             <BaseBarChart
               data={exportCompositionData}
-              title="出口构成"
+              title="主要国家/地区累计出口占比"
               subtitle="数据来源：海关总署 | 单位：%"
               bars={bars}
               xAxisKey="region"
               yAxisDomain={[0, 20]}
               showYAxis={false}
-              legendOrder={['2024年', '2025年']}
+              legendOrder={['25Q1', '26Q1']}
               barSize={24}
               showLabels={true}
             />

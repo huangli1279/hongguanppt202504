@@ -23,6 +23,9 @@ export const exportRegionTrendData: ExportRegionTrendDataPoint[] = [
   { period: '2510', totalExport: -1.2, toUS: -25.2, toASEAN: 11.0, toAfrica: 10.5, toEU: 0.9, toLatinAmerica: 2.1 },
   { period: '2511', totalExport: 5.9, toUS: -28.6, toASEAN: 8.2, toAfrica: 27.6, toEU: 14.8, toLatinAmerica: 14.9 },
   { period: '2512', totalExport: 6.6, toUS: -30.0, toASEAN: 11.2, toAfrica: 21.8, toEU: 11.6, toLatinAmerica: 9.8 },
+  { period: '2601', totalExport: 10.0, toUS: -23.0, toASEAN: 22.4, toAfrica: 23.4, toEU: 10.8, toLatinAmerica: -0.6 },
+  { period: '2602', totalExport: 39.6, toUS: 9.7, toASEAN: 38.8, toAfrica: 97.5, toEU: 54.9, toLatinAmerica: 44.1 },
+  { period: '2603', totalExport: 2.5, toUS: -26.5, toASEAN: 6.9, toAfrica: 3.1, toEU: 8.6, toLatinAmerica: -3.7 },
 ];
 
 // 出口构成对比数据（按地区分组）
@@ -33,9 +36,13 @@ export interface ExportCompositionDataPoint {
 }
 
 export const exportCompositionData: ExportCompositionDataPoint[] = [
-  { region: '美国', y2024: 14.7, y2025: 11.1 },
-  { region: '东盟', y2024: 16.4, y2025: 17.6 },
-  { region: '欧盟', y2024: 14.4, y2025: 14.8 },
-  { region: '非洲', y2024: 5.0, y2025: 6.0 },
-  { region: '拉美', y2024: 7.7, y2025: 7.9 },
+  { region: '美国', y2024: 13.5, y2025: 9.9 },
+  { region: '日本', y2024: 4.4, y2025: 4.1 },
+  { region: '欧盟', y2024: 14.3, y2025: 15.1 },
+  { region: '东盟', y2024: 17.1, y2025: 18.0 },
+  { region: '印度', y2024: 3.7, y2025: 3.8 },
+  { region: '韩国', y2024: 3.9, y2025: 4.2 },
+  { region: '俄罗斯', y2024: 2.7, y2025: 2.8 },
+  { region: '拉美', y2024: 7.7, y2025: 7.3 },
+  { region: '非洲', y2024: 5.4, y2025: 6.2 },
 ];
