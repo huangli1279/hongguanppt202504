@@ -94,9 +94,9 @@ export const ContentSlide14: React.FC = () => {
                 colorizeNumbers
                 titleBlockClassName="mb-1"
                 subtitleClassName="mt-0.5"
-                tableClassName="text-[9px]"
-                headerCellClassName="!px-[1px] !py-1 text-[8px] leading-[0.78rem] whitespace-normal break-words"
-                cellClassName="!px-[1px] text-[9px] leading-none"
+                tableClassName="text-[11px]"
+                headerCellClassName="!px-[1px] !py-1 text-[10px] leading-[0.9rem] whitespace-normal break-words"
+                cellClassName="!px-[1px] text-[11px] leading-none"
               />
             </ChartContainer>
           </div>
