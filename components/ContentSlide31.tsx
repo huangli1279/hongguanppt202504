@@ -66,6 +66,8 @@ export const ContentSlide31: React.FC = () => {
               referenceLineY={0}
               showLabels={true}
               barSize={22}
+              xAxisAngle={-45}
+              xAxisHeight={60}
             />
           </ChartContainer>
         </div>

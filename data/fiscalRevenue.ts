@@ -52,7 +52,7 @@ export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
   { category: '企业所得税', growth: -5.6 },
   { category: '个人所得税', growth: 10.5 },
   { category: '国内消费税', growth: 4.5 },
-  { category: '进口环节增值税和消费税', growth: 12.9 },
+  { category: '进口增值税/消费税', growth: 12.9 },
   { category: '印花税', growth: 31.9 },
   { category: '关税', growth: 14.1 },
   { category: '非税收入', growth: 2.9 },
