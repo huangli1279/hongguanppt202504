@@ -5,6 +5,8 @@ export interface PmiDataPoint {
   pmi: number;
   production: number;
   newOrders: number;
+  outputPrice: number;
+  rawMaterialPurchasePrice: number;
 }
 
 export interface PmiByEnterpriseSize {
@@ -14,33 +16,35 @@ export interface PmiByEnterpriseSize {
   large: number;
 }
 
-// 制造业PMI、生产、新订单数据
+// 制造业PMI、生产、新订单、出厂价格、主要原材料购进价格数据
 export const pmiTrendData: PmiDataPoint[] = [
-  { period: '2024-01', pmi: 49.2, production: 51.3, newOrders: 49.0 },
-  { period: '2024-02', pmi: 49.1, production: 49.8, newOrders: 49.0 },
-  { period: '2024-03', pmi: 50.8, production: 52.2, newOrders: 53.0 },
-  { period: '2024-04', pmi: 50.4, production: 52.9, newOrders: 51.1 },
-  { period: '2024-05', pmi: 49.5, production: 50.8, newOrders: 49.6 },
-  { period: '2024-06', pmi: 49.5, production: 50.6, newOrders: 49.5 },
-  { period: '2024-07', pmi: 49.4, production: 50.1, newOrders: 49.3 },
-  { period: '2024-08', pmi: 49.1, production: 49.8, newOrders: 48.9 },
-  { period: '2024-09', pmi: 49.8, production: 51.2, newOrders: 49.9 },
-  { period: '2024-10', pmi: 50.1, production: 52.0, newOrders: 50.0 },
-  { period: '2024-11', pmi: 50.3, production: 52.4, newOrders: 50.8 },
-  { period: '2024-12', pmi: 50.1, production: 52.1, newOrders: 51.0 },
-  { period: '2025-01', pmi: 49.1, production: 49.8, newOrders: 49.2 },
-  { period: '2025-02', pmi: 50.2, production: 52.5, newOrders: 51.1 },
-  { period: '2025-03', pmi: 50.5, production: 52.6, newOrders: 51.8 },
-  { period: '2025-04', pmi: 49.0, production: 49.8, newOrders: 49.2 },
-  { period: '2025-05', pmi: 49.5, production: 50.7, newOrders: 49.8 },
-  { period: '2025-06', pmi: 49.7, production: 51.0, newOrders: 50.2 },
-  { period: '2025-07', pmi: 49.3, production: 50.5, newOrders: 49.4 },
-  { period: '2025-08', pmi: 49.4, production: 50.8, newOrders: 49.5 },
-  { period: '2025-09', pmi: 49.8, production: 51.9, newOrders: 49.7 },
-  { period: '2025-10', pmi: 49.0, production: 49.7, newOrders: 48.8 },
-  { period: '2025-11', pmi: 49.2, production: 50.0, newOrders: 49.2 },
-  { period: '2025-12', pmi: 50.1, production: 51.7, newOrders: 50.8 },
-  { period: '2026-01', pmi: 49.3, production: 50.6, newOrders: 49.2 },
+  { period: '2024-01', pmi: 49.2, production: 51.3, newOrders: 49.0, outputPrice: 47.0, rawMaterialPurchasePrice: 50.4 },
+  { period: '2024-02', pmi: 49.1, production: 49.8, newOrders: 49.0, outputPrice: 48.1, rawMaterialPurchasePrice: 50.1 },
+  { period: '2024-03', pmi: 50.8, production: 52.2, newOrders: 53.0, outputPrice: 47.4, rawMaterialPurchasePrice: 50.5 },
+  { period: '2024-04', pmi: 50.4, production: 52.9, newOrders: 51.1, outputPrice: 49.1, rawMaterialPurchasePrice: 54.0 },
+  { period: '2024-05', pmi: 49.5, production: 50.8, newOrders: 49.6, outputPrice: 50.4, rawMaterialPurchasePrice: 56.9 },
+  { period: '2024-06', pmi: 49.5, production: 50.6, newOrders: 49.5, outputPrice: 47.9, rawMaterialPurchasePrice: 51.7 },
+  { period: '2024-07', pmi: 49.4, production: 50.1, newOrders: 49.3, outputPrice: 46.3, rawMaterialPurchasePrice: 49.9 },
+  { period: '2024-08', pmi: 49.1, production: 49.8, newOrders: 48.9, outputPrice: 42.0, rawMaterialPurchasePrice: 43.2 },
+  { period: '2024-09', pmi: 49.8, production: 51.2, newOrders: 49.9, outputPrice: 44.0, rawMaterialPurchasePrice: 45.1 },
+  { period: '2024-10', pmi: 50.1, production: 52.0, newOrders: 50.0, outputPrice: 49.9, rawMaterialPurchasePrice: 53.4 },
+  { period: '2024-11', pmi: 50.3, production: 52.4, newOrders: 50.8, outputPrice: 47.7, rawMaterialPurchasePrice: 49.8 },
+  { period: '2024-12', pmi: 50.1, production: 52.1, newOrders: 51.0, outputPrice: 46.7, rawMaterialPurchasePrice: 48.2 },
+  { period: '2025-01', pmi: 49.1, production: 49.8, newOrders: 49.2, outputPrice: 47.4, rawMaterialPurchasePrice: 49.5 },
+  { period: '2025-02', pmi: 50.2, production: 52.5, newOrders: 51.1, outputPrice: 48.5, rawMaterialPurchasePrice: 50.8 },
+  { period: '2025-03', pmi: 50.5, production: 52.6, newOrders: 51.8, outputPrice: 47.9, rawMaterialPurchasePrice: 49.8 },
+  { period: '2025-04', pmi: 49.0, production: 49.8, newOrders: 49.2, outputPrice: 44.8, rawMaterialPurchasePrice: 47.0 },
+  { period: '2025-05', pmi: 49.5, production: 50.7, newOrders: 49.8, outputPrice: 44.7, rawMaterialPurchasePrice: 46.9 },
+  { period: '2025-06', pmi: 49.7, production: 51.0, newOrders: 50.2, outputPrice: 46.2, rawMaterialPurchasePrice: 48.4 },
+  { period: '2025-07', pmi: 49.3, production: 50.5, newOrders: 49.4, outputPrice: 48.3, rawMaterialPurchasePrice: 51.5 },
+  { period: '2025-08', pmi: 49.4, production: 50.8, newOrders: 49.5, outputPrice: 49.1, rawMaterialPurchasePrice: 53.3 },
+  { period: '2025-09', pmi: 49.8, production: 51.9, newOrders: 49.7, outputPrice: 48.2, rawMaterialPurchasePrice: 53.2 },
+  { period: '2025-10', pmi: 49.0, production: 49.7, newOrders: 48.8, outputPrice: 47.5, rawMaterialPurchasePrice: 52.5 },
+  { period: '2025-11', pmi: 49.2, production: 50.0, newOrders: 49.2, outputPrice: 48.2, rawMaterialPurchasePrice: 53.6 },
+  { period: '2025-12', pmi: 50.1, production: 51.7, newOrders: 50.8, outputPrice: 48.9, rawMaterialPurchasePrice: 53.1 },
+  { period: '2026-01', pmi: 49.3, production: 50.6, newOrders: 49.2, outputPrice: 50.6, rawMaterialPurchasePrice: 56.1 },
+  { period: '2026-02', pmi: 49.0, production: 49.6, newOrders: 48.6, outputPrice: 50.6, rawMaterialPurchasePrice: 54.8 },
+  { period: '2026-03', pmi: 50.4, production: 51.4, newOrders: 51.6, outputPrice: 55.4, rawMaterialPurchasePrice: 63.9 },
 ];
 
 // 按企业规模分类的PMI数据
@@ -70,4 +74,6 @@ export const pmiByEnterpriseSizeData: PmiByEnterpriseSize[] = [
   { period: '2025-11', small: 49.1, medium: 48.9, large: 49.3 },
   { period: '2025-12', small: 48.6, medium: 49.8, large: 50.8 },
   { period: '2026-01', small: 47.4, medium: 48.7, large: 50.3 },
+  { period: '2026-02', small: 44.8, medium: 47.5, large: 51.5 },
+  { period: '2026-03', small: 49.3, medium: 49.0, large: 51.6 },
 ];
