@@ -1,66 +1,83 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
+import { BaseBarChart, BarConfig } from './BaseBarChart';
 import { BaseTable, ColumnConfig } from './BaseTable';
-import { loanData } from '@/data/loanData';
+import { loanStockData, loanIncrementData } from '@/data/loanData';
+import { getSeriesColor } from '@/utils/chartColors';
 
 export const ContentSlide35: React.FC = () => {
-  const loanTableData = loanData.map(item => ({
-    period: item.period,
-    householdLoan: item.householdLoan,
-    enterpriseLoan: item.enterpriseLoan,
-    billFinancing: item.billFinancing,
-    nonBankLoan: item.nonBankLoan,
-  }));
-
-  const highlightRows = loanTableData.reduce<number[]>((acc, item, index) => {
-    if (['2025-10', '2025-11', '2025-12'].includes(item.period)) {
+  const highlightRows = loanStockData.reduce<number[]>((acc, item, index) => {
+    if (['2026-01', '2026-02', '2026-03'].includes(item.period)) {
       acc.push(index);
     }
     return acc;
   }, []);
 
-  const formatInteger = (val: any) => {
-    if (typeof val === 'number') {
-      return val.toLocaleString('en-US', { maximumFractionDigits: 0 });
-    }
-    return val;
-  };
+  const formatTrillion = (val: any) =>
+    typeof val === 'number' ? val.toFixed(2) : val;
 
   const loanColumns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'householdLoan', title: '住户贷款', align: 'right', render: (val) => formatInteger(val) },
-    { key: 'enterpriseLoan', title: '企业贷款', align: 'right', render: (val) => formatInteger(val) },
-    { key: 'billFinancing', title: '票据融资', align: 'right', render: (val) => formatInteger(val) },
-    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: (val) => formatInteger(val) },
+    { key: 'householdLoan', title: '居民贷款', align: 'right', render: formatTrillion },
+    { key: 'consumerLoan', title: '其中：消费贷款', align: 'right', render: formatTrillion },
+    { key: 'businessLoan', title: '其中：经营贷款', align: 'right', render: formatTrillion },
+    { key: 'enterpriseLoan', title: '企业贷款', align: 'right', render: formatTrillion },
+    { key: 'billFinancing', title: '票据融资', align: 'right', render: formatTrillion },
+    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: formatTrillion },
   ];
 
+  const incrementBars: BarConfig[] = [
+    { dataKey: 'q2024', name: '2024Q1', color: getSeriesColor(0) },
+    { dataKey: 'q2025', name: '2025Q1', color: getSeriesColor(1) },
+    { dataKey: 'q2026', name: '2026Q1', color: getSeriesColor(2) },
+  ];
 
   return (
     <BaseContentSlide
-      title="住户贷款全年规模无增长，一季度较三季度下降"
+      title="企业贷款规模持续扩张，居民贷款中经营贷款增长好于消费贷款"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="企业扩表 居民缩表" delay="200ms" variant="accent">
+        <div className="grid grid-cols-1 gap-4 mb-4 flex-shrink-0">
+          <BaseCard title="居民信贷疲软" delay="200ms" variant="accent">
             <p>
-              企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，一季度出现了逐月萎缩态势（10月83.6万亿到12月83.3万亿），主要受房地产销售持续低迷及贷款系列政策影响，导致居民端实质性缩表。
+              居民贷款同比少增<span className="font-bold text-webank-blue">7,468亿</span>，延续偏弱态势，消费贷增长弱于经营贷。居民贷款少增，与实体经济中房地产销售的低迷严密对应，居民购房加杠杆意愿尚未实质性恢复。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <div className="flex flex-1 min-h-0">
-          <ChartContainer delay="600ms" className="w-full min-h-0">
-            <BaseTable
-              data={loanTableData}
-              columns={loanColumns}
-              title="2024-2025年人民币贷款分项数据"
+        {/* 图表+表格区域 */}
+        <div className="grid grid-cols-2 gap-4 flex-1 min-h-0">
+          <ChartContainer delay="400ms" className="min-h-0">
+            <BaseBarChart
+              data={loanIncrementData}
+              title="季度贷款增量数据"
               subtitle="数据来源：中国人民银行｜单位：亿元"
+              bars={incrementBars}
+              xAxisKey="type"
+              showYAxis
+              yAxisDomain={[-20000, 100000]}
+              yAxisTickFormatter={(v) => `${(v / 10000).toFixed(0)}万`}
+              showReferenceLine
+              referenceLineY={0}
+              barSize={14}
+              showLabels={false}
+              unit="亿元"
+              xAxisInterval={0}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="600ms" className="min-h-0">
+            <BaseTable
+              data={loanStockData}
+              columns={loanColumns}
+              title="人民币贷款分项数据"
+              subtitle="数据来源：中国人民银行｜单位：万亿"
               colorizeNumbers={false}
               dateColumn="period"
               highlightRows={highlightRows}
+              rowHeight="auto"
             />
           </ChartContainer>
         </div>

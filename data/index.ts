@@ -44,8 +44,8 @@ export type { GovernmentFundRevenueDataPoint, LandSaleRevenueShareDataPoint } fr
 export { moneySupplyData, moneySupplyScissorData } from './moneySupply';
 export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneySupply';
 export { socialFinancingGrowthData, socialFinancingStructureData } from './socialFinancing';
-export { loanData, loanTableData, loanChartData } from './loanData';
-export type { LoanDataPoint } from './loanData';
+export { loanStockData, loanIncrementData } from './loanData';
+export type { LoanStockPoint, LoanIncrementByType } from './loanData';
 export { depositData } from './depositData';
 export type { DepositDataPoint } from './depositData';
 export { provinceGdpDataTop15, provinceGdpDataRest } from './provinceGdp';
