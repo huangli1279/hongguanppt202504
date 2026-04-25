@@ -35,6 +35,8 @@ export interface BaseStackedBarChartProps {
   unit?: string;
   xAxisInterval?: number;
   valueFormatter?: (value: number) => string;
+  xAxisAngle?: number;
+  xAxisHeight?: number;
 }
 
 const CustomTooltip = ({ active, payload, label, unit = '', valueFormatter }: any) => {
@@ -116,7 +118,9 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
   showLabels = true,
   unit = '',
   xAxisInterval = 2,
-  valueFormatter
+  valueFormatter,
+  xAxisAngle,
+  xAxisHeight
 }) => {
   const totalTicks = data.length;
   const renderCustomTick = (props: any) => {
@@ -127,8 +131,10 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
     // Skip interval tick if it's adjacent to the last tick (avoid overlap)
     if (xAxisInterval > 1 && isInterval && !isLast && index + 1 === totalTicks - 1) return null;
     if (!isFirst && !isLast && !isInterval) return null;
+    const textAnchor = xAxisAngle ? 'end' : 'middle';
+    const transform = xAxisAngle ? `rotate(${xAxisAngle}, ${x}, ${y + 10})` : undefined;
     return (
-      <text x={x} y={y + 10} textAnchor="middle" fill={uiColors.tick} fontSize={10}>
+      <text x={x} y={y + 10} textAnchor={textAnchor} fill={uiColors.tick} fontSize={10} transform={transform}>
         {payload.value}
       </text>
     );
@@ -158,6 +164,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
               tickLine={false}
               tick={renderCustomTick}
               interval={0}
+              height={xAxisHeight}
             />
             <YAxis
               hide={!showYAxis}

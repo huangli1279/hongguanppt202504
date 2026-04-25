@@ -85,6 +85,8 @@ export const ContentSlide37: React.FC = () => {
               barSize={18}
               xAxisInterval={2}
               valueFormatter={(v) => v.toFixed(2)}
+              xAxisAngle={-45}
+              xAxisHeight={60}
             />
           </ChartContainer>
           <ChartContainer delay="1200ms">
