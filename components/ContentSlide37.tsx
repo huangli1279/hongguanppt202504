@@ -1,70 +1,103 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { BaseCard } from './BaseCard';
-import { BaseTable, ColumnConfig } from './BaseTable';
-import { depositData } from '@/data/depositData';
+import { BaseBarChart } from './BaseBarChart';
+import { BaseStackedBarChart } from './BaseStackedBarChart';
+import {
+  nonBankFinQuarterlyData,
+  householdDepositAnnualData,
+  maturityDepositData,
+} from '@/data/depositData';
+
+const q1ComparisonData = [
+  { period: '居民存款增量', '2024Q1': 8.56, '2025Q1': 9.22, '2026Q1': 7.70 },
+  { period: '居民活期存款', '2024Q1': 1.36, '2025Q1': 1.27, '2026Q1': 1.16 },
+  { period: '居民定期存款', '2024Q1': 7.19, '2025Q1': 7.95, '2026Q1': 6.53 },
+  { period: '非银金融机构', '2024Q1': 1.63, '2025Q1': 0.31, '2026Q1': 2.32 },
+];
 
 export const ContentSlide37: React.FC = () => {
-  const depositTableData = depositData;
-
-  const renderInteger = (val: any) => {
-    if (typeof val !== 'number') return val;
-    return val.toLocaleString('en-US', {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    });
-  };
-
-  const depositColumns: ColumnConfig[] = [
-    { key: 'period', title: '月份', align: 'center' },
-    {
-      key: 'group-balance',
-      title: '人民币存款余额',
-      children: [
-        { key: 'balanceTotal', title: '总额', align: 'right', render: renderInteger },
-        { key: 'balanceHousehold', title: '住户', align: 'right', render: renderInteger },
-        { key: 'balanceNonFinancial', title: '非金融企业', align: 'right', render: renderInteger },
-        { key: 'balanceFiscal', title: '财政', align: 'right', render: renderInteger },
-        { key: 'balanceFin', title: '非银金融机构', align: 'right', render: renderInteger },
-      ],
-    },
-    {
-      key: 'group-increase',
-      title: '当月增加',
-      children: [
-        { key: 'increaseTotal', title: '总额', align: 'right', render: renderInteger },
-        { key: 'increaseHousehold', title: '住户', align: 'right', render: renderInteger },
-        { key: 'increaseNonFinancial', title: '非金融企业', align: 'right', render: renderInteger },
-        { key: 'increaseFiscal', title: '财政', align: 'right', render: renderInteger },
-        { key: 'increaseFin', title: '非银金融机构', align: 'right', render: renderInteger },
-      ],
-    },
-  ];
-
   return (
     <BaseContentSlide
-      title="全年人民币存款增加 26.4 万亿，住户存款增加 14.6 万亿"
+      title="一季度居民存款同比少增1.5万亿，非银金融机构存款累计同比多2万亿"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard delay="400ms">
+        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
+          <BaseCard title="“存款搬家”加速" delay="200ms" variant="accent">
             <p>
-              2025年人民币存款总额增加26.39万亿，较24年的17.99万亿增加46.7%。其中住户存款增加14.6万亿（24年14.2万亿），非银金融机构增加6.4万亿（24年约2.7万亿），非金融企业增加2.2万亿（24年-0.4万亿），财政增加0.7万亿（24年-0.2万亿）。
+              一季度居民存款累计同比少增约 <span className="font-bold text-webank-blue">1.5万亿</span>（其中定期存款少增1.4万亿），而非银金融机构存款累计同比多增 <span className="font-bold text-webank-blue">2万亿</span>。非银金融机构存款增量25年以来逐季度增长，资金正加速从银行表内定期储蓄，向理财、基金、保险等非银产品迁移。
+            </p>
+          </BaseCard>
+          <BaseCard title="一年内到期定期存款量增加" delay="400ms" variant="accent">
+            <p>
+              2022—2023年高位利率时期的定期存款集中到期，使得 <span className="font-bold text-webank-blue">2025—2026年</span>短期到期定存规模显著增加。在当前存款利率持续走低的背景下，大量高息存量资金到期后将减少被动续存，逐步向理财、基金、保险等多元资产分流。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <div className="flex gap-6 flex-1 min-h-0">
-          <ChartContainer delay="700ms" className="w-full min-h-0">
-            <BaseTable
-              data={depositTableData}
-              columns={depositColumns}
-              title="人民币存款余额及增加额统计"
-              subtitle="数据来源：中国人民银行｜单位：亿元"
-              colorizeNumbers={false}
-              dateColumn="period"
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-4 gap-4 min-h-0">
+          <ChartContainer delay="600ms">
+            <BaseBarChart
+              data={q1ComparisonData}
+              title="居民存款及非银金融机构存款季度增量"
+              subtitle="数据来源：中国人民银行 | 单位：万亿"
+              bars={[
+                { dataKey: '2024Q1', name: '2024Q1' },
+                { dataKey: '2025Q1', name: '2025Q1' },
+                { dataKey: '2026Q1', name: '2026Q1' },
+              ]}
+              showYAxis={true}
+              yAxisDomain={[0, 10]}
+              unit="万亿"
+              barSize={10}
+              yAxisTickFormatter={(v) => `${v}`}
+              xAxisAngle={-45}
+              xAxisHeight={60}
+            />
+          </ChartContainer>
+          <ChartContainer delay="800ms">
+            <BaseBarChart
+              data={nonBankFinQuarterlyData}
+              title="非银金融机构存款季度增量"
+              subtitle="数据来源：中国人民银行 | 单位：万亿"
+              bars={[{ dataKey: 'value', name: '非银金融机构存款增量' }]}
+              showYAxis={true}
+              yAxisDomain={[0, 3]}
+              unit="万亿"
+              barSize={28}
+              yAxisTickFormatter={(v) => `${v}`}
+            />
+          </ChartContainer>
+          <ChartContainer delay="1000ms">
+            <BaseStackedBarChart
+              data={householdDepositAnnualData}
+              title="住户存款年度增量（活期+定期及其他）"
+              subtitle="数据来源：中国人民银行 | 单位：万亿"
+              bars={[
+                { dataKey: 'demand', name: '住户存款:活期存款' },
+                { dataKey: 'timeAndOther', name: '住户存款:定期及其他存款' },
+              ]}
+              showYAxis={true}
+              yAxisDomain={[0, 22]}
+              unit="万亿"
+              barSize={18}
+              xAxisInterval={2}
+              valueFormatter={(v) => v.toFixed(2)}
+            />
+          </ChartContainer>
+          <ChartContainer delay="1200ms">
+            <BaseBarChart
+              data={maturityDepositData}
+              title="一年内到期存款规模"
+              subtitle="数据来源：wind，银行年报（39家样本，存款占市场83%-85%）| 单位：万亿"
+              bars={[{ dataKey: 'value', name: '一年内到期存款' }]}
+              showYAxis={true}
+              yAxisDomain={[50, 90]}
+              unit="万亿"
+              barSize={32}
+              yAxisTickFormatter={(v) => `${v}`}
             />
           </ChartContainer>
         </div>
