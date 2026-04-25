@@ -42,7 +42,7 @@ const timelineColumns = [
   },
 ];
 
-export const PolicyTimeline2026Slide: React.FC = () => {
+export const ContentSlide03: React.FC = () => {
   return (
     <BaseContentSlide
       subtitle="2026年第一季度宏观经济报告"
