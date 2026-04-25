@@ -24,20 +24,32 @@ export const ContentSlide19: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="人均可支配收入实际增长5.0%，消费者信心指数回升但就业依旧承压"
+      title="消费者信心指数回升，人均可支配收入与消费支出差距扩大"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="收入与就业预期分化制约消费者信心回暖" delay="200ms" variant="accent">
+          <BaseCard title="信心指数创阶段高点，就业预期仍偏弱" delay="200ms">
             <p>
-              消费者信心指数（从<span className="text-webank-accent font-semibold">86.4</span>升至<span className="text-emerald-600 font-semibold">90.3</span>）的温和回升，主要由收入预期和消费意愿支撑，就业预期虽有回暖趋势，但主要受相关领域就业前景影响：新兴领域（AI、低空经济），中长期的就业结构性问题仍然存在。
+              2月消费者信心指数升至
+              <span className="text-emerald-600 font-semibold">91.60</span>
+              ，创2023年3月以来最高点；收入信心指数跃升至
+              <span className="text-emerald-600 font-semibold">100.30</span>
+              ，但就业信心指数回落至
+              <span className="text-webank-accent font-semibold">76.30</span>
+              ，就业市场前景未持续改善。
             </p>
           </BaseCard>
-          <BaseCard title="收入增速超越消费，居民储蓄倾向依然显著" delay="400ms">
+          <BaseCard title="收入快于消费，防御性储蓄仍在延续" delay="400ms" variant="accent">
             <p>
-              2025年人均可支配收入实际增长<span className="text-emerald-600 font-semibold">5.0%</span>，但居民人均消费支出实际增长<span className="text-webank-accent font-semibold">4.4%</span>，低于收入增速；显示在资产价格波动（房价/股市）背景下，居民预防性储蓄心理依然较强。
+              一季度，人均可支配收入增速
+              <span className="text-emerald-600 font-semibold">4.0%</span>
+              与消费支出增速
+              <span className="text-webank-accent font-semibold">2.6%</span>
+              的差值扩大至
+              <span className="text-webank-accent font-semibold">1.4个百分点</span>
+              ，显示居民资产负债表修复仍处于“防御性储蓄”阶段。
             </p>
           </BaseCard>
         </div>
@@ -48,13 +60,13 @@ export const ContentSlide19: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={consumerConfidenceData}
-              title="2024-2025年消费者信心及分项指标趋势"
+              title="消费者信心指数及分项数据"
               subtitle="数据来源：国家统计局 | 单位：指数"
               lines={confidenceLineConfigs}
               yAxisDomain={[65, 105]}
               showYAxis={true}
               legendOrder={['消费者信心指数', '收入预期', '就业预期', '消费意愿']}
-              xAxisTickCount={6}
+              xAxisTickCount={7}
               unit=""
               yAxisTickFormatter={(val) => `${val}`}
             />
@@ -64,7 +76,7 @@ export const ContentSlide19: React.FC = () => {
           <ChartContainer delay="800ms">
             <BaseLineChart
               data={incomeExpenditureData}
-              title="2024-2025年居民收入与消费支出累计同比"
+              title="居民收入及支出累计同比数据（季度）"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={incomeLineConfigs}
               yAxisDomain={[0, 10]}

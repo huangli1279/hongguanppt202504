@@ -32,6 +32,9 @@ export const consumerConfidenceData: ConsumerConfidenceDataPoint[] = [
   { period: '2025-09', confidence: 89.6, income: 97.8, employment: 72.4, consumption: 98.6 },
   { period: '2025-10', confidence: 89.4, income: 96.7, employment: 75.9, consumption: 95.5 },
   { period: '2025-11', confidence: 90.3, income: 98.5, employment: 76.7, consumption: 95.8 },
+  { period: '2025-12', confidence: 89.5, income: 97.5, employment: 76.6, consumption: 94.3 },
+  { period: '2026-01', confidence: 90.6, income: 98.4, employment: 77.2, consumption: 96.3 },
+  { period: '2026-02', confidence: 91.6, income: 100.3, employment: 76.3, consumption: 98.1 },
 ];
 
 // 居民收入与消费支出数据
@@ -53,4 +56,5 @@ export const incomeExpenditureData: IncomeExpenditureDataPoint[] = [
   { period: '2025-06', wageIncome: 5.70, operatingIncome: 5.30, propertyIncome: 2.50, consumptionReal: 5.30, incomeReal: 5.40 },
   { period: '2025-09', wageIncome: 5.40, operatingIncome: 5.30, propertyIncome: 1.70, consumptionReal: 4.70, incomeReal: 5.20 },
   { period: '2025-12', wageIncome: 5.30, operatingIncome: 5.00, propertyIncome: 1.60, consumptionReal: 4.40, incomeReal: 5.00 },
+  { period: '2026-03', wageIncome: 4.90, operatingIncome: 6.60, propertyIncome: 1.60, consumptionReal: 2.60, incomeReal: 4.00 },
 ];
