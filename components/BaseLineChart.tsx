@@ -193,13 +193,19 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               textAnchor="end"
               ticks={(() => {
                 if (xAxisTicks && xAxisTicks.length > 0) return xAxisTicks;
-                if (data.length <= xAxisTickCount) return data.map(d => d.period);
-                // 计算等差间隔：确保首尾必显示，中间等分
+                // 若 period 形如 YYYY-MM，则按季度（3/6/9/12月）锚定最新期向前展示
+                const periods: string[] = data.map(d => d.period);
+                const isYearMonth = periods.every(p => /^\d{4}-(0[1-9]|1[0-2])$/.test(p));
+                if (isYearMonth) {
+                  const quarterMonths = [3, 6, 9, 12];
+                  return periods.filter(p => quarterMonths.includes(parseInt(p.slice(5, 7), 10)));
+                }
+                if (data.length <= xAxisTickCount) return periods;
                 const step = (data.length - 1) / (xAxisTickCount - 1);
                 const ticks: string[] = [];
                 for (let i = 0; i < xAxisTickCount; i++) {
                   const idx = Math.round(i * step);
-                  ticks.push(data[idx].period);
+                  ticks.push(periods[idx]);
                 }
                 return ticks;
               })()}
