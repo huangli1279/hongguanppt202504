@@ -25,17 +25,18 @@ import { ContentSlide27 } from './components/ContentSlide27';
 import { ContentSlide28 } from './components/ContentSlide28';
 import { ContentSlide29 } from './components/ContentSlide29';
 import { ContentSlide31 } from './components/ContentSlide31';
-import { ContentSlide33 } from './components/ContentSlide33';
+import { ContentSlide32 } from './components/ContentSlide32';
 import { ContentSlide34 } from './components/ContentSlide34';
 import { ContentSlide35 } from './components/ContentSlide35';
 import { ContentSlide36 } from './components/ContentSlide36';
+import { ContentSlide37 } from './components/ContentSlide37';
 import { ThankYouSlide } from './components/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 37;
+  const TOTAL_SLIDES = 38;
 
   const handleResize = () => {
     const targetWidth = 1280;
@@ -126,12 +127,13 @@ const App: React.FC = () => {
         {currentSlide === 29 && <ContentSlide29 />}
         {currentSlide === 30 && <BaseSectionTransitionSlide id="07" title="财政分析" subtitle="看钱袋子" />}
         {currentSlide === 31 && <ContentSlide31 />}
-        {currentSlide === 32 && <BaseSectionTransitionSlide id="08" title="金融数据分析" subtitle="看资金活性" />}
-        {currentSlide === 33 && <ContentSlide33 />}
+        {currentSlide === 32 && <ContentSlide32 />}
+        {currentSlide === 33 && <BaseSectionTransitionSlide id="08" title="金融数据分析" subtitle="看资金活性" />}
         {currentSlide === 34 && <ContentSlide34 />}
         {currentSlide === 35 && <ContentSlide35 />}
         {currentSlide === 36 && <ContentSlide36 />}
-        {currentSlide === 37 && <ThankYouSlide />}
+        {currentSlide === 37 && <ContentSlide37 />}
+        {currentSlide === 38 && <ThankYouSlide />}
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
           <span className="font-serif text-webank-blue font-medium text-sm">
