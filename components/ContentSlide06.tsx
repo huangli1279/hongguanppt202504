@@ -11,7 +11,7 @@ export const ContentSlide06: React.FC = () => {
       title={
         <>
           产业分化：
-          <span className="text-webank-accent">第三产业Q4增长5.2%支撑稳健，建筑业拖累第二产业</span>
+          <span className="text-webank-accent">第三产业Q1增长5.2%支撑稳健，建筑业拖累第二产业</span>
         </>
       }
       cardColumns={2}

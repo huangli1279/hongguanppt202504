@@ -31,7 +31,7 @@ export const CoverSlide: React.FC = () => {
 
         {/* Main Title with staggered animation */}
         <h1 className="text-6xl font-serif font-bold leading-tight mb-8">
-          <span className="block opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>2025年第四季度</span>
+          <span className="block opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>2026年第一季度</span>
           <span className="block text-webank-lightBlue opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>中国宏观经济运行</span>
           <span className="block opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>分析报告</span>
         </h1>
@@ -42,7 +42,7 @@ export const CoverSlide: React.FC = () => {
 
       {/* Footer / Date */}
       <div className="absolute bottom-12 left-24 text-slate-400 font-mono text-sm opacity-0 animate-fade-in" style={{ animationDelay: '1.3s' }}>
-        2026年1月
+        2026年4月
       </div>
       
       <style>{`

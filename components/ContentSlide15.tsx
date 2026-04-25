@@ -24,7 +24,7 @@ export const ContentSlide15: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          PPI：全年降幅显著收窄，四季度环比连续上涨，
+          PPI：全年降幅显著收窄，一季度环比连续上涨，
           <span className="text-webank-accent">大宗商品价格分化</span>
         </>
       }
@@ -32,7 +32,7 @@ export const ContentSlide15: React.FC = () => {
       <div className="flex flex-col h-full">
         {/* Cards Section */}
         <section className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="四季度价格信号触底回升，全年跌幅持续收窄" delay="200ms" variant="accent">
+          <BaseCard title="一季度价格信号触底回升，全年跌幅持续收窄" delay="200ms" variant="accent">
             <div className="space-y-2">
               <p>
                 2025年全年PPI同比下降<span className="font-bold">2.6%</span>，10月至12月PPI环比连续三个月保持正增长（12月扩大至<span className="font-bold">+0.2%</span>），带动12月同比降幅收窄至<span className="font-bold">-1.9%</span>，PPI的回升主要依赖"外生性拉动"（金、铜等国际大宗商品）与"政策性提振"（反内卷、产能治理）。

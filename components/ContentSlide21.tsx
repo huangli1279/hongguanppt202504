@@ -81,7 +81,7 @@ export const ContentSlide21: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="CPI四季度持续回升，主要受鲜菜季节性减产与金价上涨驱动"
+      title="CPI一季度持续回升，主要受鲜菜季节性减产与金价上涨驱动"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -89,12 +89,12 @@ export const ContentSlide21: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="CPI 运行特征解析" delay="200ms" variant="accent">
             <p>
-              2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第四季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
+              2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第一季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
             </p>
           </BaseCard>
           <BaseCard title="CPI结构性分化显著" delay="400ms">
             <p>
-              四季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金饰品CPI全年维持高增）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。
+              一季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金饰品CPI全年维持高增）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。
             </p>
           </BaseCard>
         </div>

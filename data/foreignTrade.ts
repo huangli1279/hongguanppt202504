@@ -34,17 +34,17 @@ export const foreignTradeTrendData: ForeignTradeTrendDataPoint[] = [
   { period: '2025-12', totalTrade: 3.80, imports: 0.50, exports: 6.10 },
 ];
 
-// Q4出口月度同比对比数据
-export interface Q4ExportCompareDataPoint {
+// Q1出口月度同比对比数据
+export interface Q1ExportCompareDataPoint {
   month: string;
   y2024: number;
   y2025: number;
 }
 
-export const q4ExportCompareData: Q4ExportCompareDataPoint[] = [
-  { month: '10月', y2024: 12.7, y2025: -1.1 },
-  { month: '11月', y2024: 6.7, y2025: 5.9 },
-  { month: '12月', y2024: 2.3, y2025: 6.6 },
+export const q1ExportCompareData: Q1ExportCompareDataPoint[] = [
+  { month: '1月', y2024: 7.67, y2025: 5.9 },
+  { month: '2月', y2024: 6.24, y2025: -3.1 },
+  { month: '3月', y2024: -7.71, y2025: 12.2 },
 ];
 
 export interface ForeignTradeMonthlyUsdDataPoint {

@@ -6,35 +6,34 @@ import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
 import { gdpTrendData, deflatorData, gdpIndustryValueData } from '@/data/gdp';
 
 export const ContentSlide05: React.FC = () => {
-  // 平减指数数据：过滤只保留24年和25年
+  // 平减指数数据：过滤只保留24年以来数据
   const filteredDeflatorData = deflatorData.filter(item => !item.period.startsWith('2023'));
 
   return (
     <BaseContentSlide
       title={
         <>
-          2025年GDP实现5.0%增长，
-          <span className="text-webank-accent">四季度增速回落至4.5%</span>
+          2026年一季度GDP稳增5.0%，
+          <span className="text-webank-accent">名义增速与实际增速差距收窄</span>
         </>
       }
       cards={
         <>
           <BaseCard title="总量定调" delay="200ms" variant="accent">
             <p>
-              全年GDP达 <span className="font-bold">140.2万亿元</span>，同比增长 <span className="font-bold">5.0%</span>，成功实现全年预期目标。
+              一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="季度走势'前高后低'" delay="400ms">
+          <BaseCard title="增长动能边际回升" delay="400ms">
             <p>
-              受基数及内需影响逐季回落：<br/>Q1 5.4% <span className="text-slate-400">→</span> Q4 4.5%。<br/>
-              四季度环比增长 <span className="font-bold">1.2%</span>，动能仍具韧性。
+              增速较去年一季度回升 <span className="font-bold">0.5个百分点</span>，达到全年“4.5%-5.0%”增长目标上沿，开局平稳。
             </p>
           </BaseCard>
 
           <BaseCard title="平减指数回升" delay="600ms">
             <p>
-              <span className="text-red-600 font-semibold">Q4GDP平减指数-0.7%</span>，较Q3(-1.1%)收窄但仍连续11季为负。三产+0.43%（率先转正）。Q4鲜菜等食品价格回升（CPI食品分项同比+1.1%）带动第一产业平减指数相较上一季度有较大提升。依赖"反内卷"限产政策及财政发力，PPI持续修复，拉动第二产业平减指数收窄至-2.02%。
+              一季度名义GDP增速修复至 <span className="text-red-600 font-semibold">4.9%</span>，GDP平减指数回升至 <span className="font-bold">-0.6%</span> 附近，名义与实际增速差距明显收窄。
             </p>
           </BaseCard>
         </>
@@ -45,7 +44,7 @@ export const ContentSlide05: React.FC = () => {
           <ChartContainer delay="800ms">
             <BaseLineChart
               data={gdpTrendData}
-              title="2024Q1-2025Q4季度GDP当季同比增速走势图"
+              title="2024Q1-2026Q1季度GDP当季同比增速走势图"
               subtitle="数据来源：国家统计局 | 单位：%"
               yAxisDomain={[0, 8]}
               showYAxis={true}
@@ -59,7 +58,7 @@ export const ContentSlide05: React.FC = () => {
           <ChartContainer delay="1000ms">
             <BaseLineChart
               data={filteredDeflatorData}
-              title="三产业GDP平减指数同比增速 (2024-2025)"
+              title="三产业GDP平减指数同比增速 (2024-2026Q1)"
               subtitle="第二产业平减指数持续处于负值区间，拖累整体名义增速"
               yAxisDomain={[-6, 6]}
               showYAxis={true}
@@ -76,7 +75,7 @@ export const ContentSlide05: React.FC = () => {
           <ChartContainer delay="1200ms">
             <BaseStackedBarChart
               data={gdpIndustryValueData}
-              title="2024-2025年三大产业GDP当季值"
+              title="2024-2026Q1三大产业GDP当季值"
               subtitle="单位：万亿元"
               yAxisDomain={[0, 45]}
               showYAxis={true}

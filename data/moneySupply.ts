@@ -14,7 +14,7 @@ export interface MoneySupplyScissorDataPoint {
   scissor: number;
 }
 
-// M1/M2同比增速数据 (2022-2025)
+// M1/M2同比增速数据 (2022-2026Q1)
 export const moneySupplyData: MoneySupplyDataPoint[] = [
   { period: '2022-01', m1: -1.9, m2: 9.8 },
   { period: '2022-02', m1: 4.7, m2: 9.2 },
@@ -64,9 +64,12 @@ export const moneySupplyData: MoneySupplyDataPoint[] = [
   { period: '2025-10', m1: 6.2, m2: 8.2 },
   { period: '2025-11', m1: 4.9, m2: 8.0 },
   { period: '2025-12', m1: 3.8, m2: 8.5 },
+  { period: '2026-01', m1: 4.9, m2: 9.0 },
+  { period: '2026-02', m1: 5.9, m2: 9.0 },
+  { period: '2026-03', m1: 5.1, m2: 8.5 },
 ];
 
-// M1-M2剪刀差数据 (2022-2025)
+// M1-M2剪刀差数据 (2022-2026Q1)
 export const moneySupplyScissorData: MoneySupplyScissorDataPoint[] = [
   { period: '2022-01', scissor: -11.7 },
   { period: '2022-02', scissor: -4.5 },
@@ -116,4 +119,7 @@ export const moneySupplyScissorData: MoneySupplyScissorDataPoint[] = [
   { period: '2025-10', scissor: -2.0 },
   { period: '2025-11', scissor: -3.1 },
   { period: '2025-12', scissor: -4.7 },
+  { period: '2026-01', scissor: -4.1 },
+  { period: '2026-02', scissor: -3.1 },
+  { period: '2026-03', scissor: -3.4 },
 ];

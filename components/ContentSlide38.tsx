@@ -38,14 +38,14 @@ export const ContentSlide38: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="住户贷款全年规模无增长，四季度较三季度下降"
+      title="住户贷款全年规模无增长，一季度较三季度下降"
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="企业扩表 居民缩表" delay="200ms" variant="accent">
             <p>
-              企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，四季度出现了逐月萎缩态势（10月83.6万亿到12月83.3万亿），主要受房地产销售持续低迷及贷款系列政策影响，导致居民端实质性缩表。
+              企业贷款稳步增长，由年初<span className="font-bold text-webank-blue">156.9万亿元</span>扩张至年末<span className="font-bold text-webank-blue">167.5万亿元</span>。住户贷款全年"原地踏步"，一季度出现了逐月萎缩态势（10月83.6万亿到12月83.3万亿），主要受房地产销售持续低迷及贷款系列政策影响，导致居民端实质性缩表。
             </p>
           </BaseCard>
         </div>

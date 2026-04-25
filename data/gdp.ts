@@ -11,6 +11,7 @@ export const gdpTrendData: GdpDataPoint[] = [
   { period: '2025-06', value: 5.2, nominal: 3.9 },
   { period: '2025-09', value: 4.8, nominal: 3.71 },
   { period: '2025-12', value: 4.5, nominal: 3.85 },
+  { period: '2026-03', value: 5.0, nominal: 4.94 },
 ];
 
 // GDP贡献率数据（三大需求）
@@ -47,6 +48,7 @@ export const gdpIndustryValueData = [
   { period: '2025-06', primary: 1.9459, secondary: 12.7147, tertiary: 19.5172 },
   { period: '2025-09', primary: 2.6889, secondary: 12.4970, tertiary: 20.2641 },
   { period: '2025-12', primary: 3.5160, secondary: 13.6803, tertiary: 21.5948 },
+  { period: '2026-03', primary: 1.19, secondary: 11.61, tertiary: 20.61 },
 ];
 
 export const deflatorData: DeflatorDataPoint[] = [
@@ -62,4 +64,5 @@ export const deflatorData: DeflatorDataPoint[] = [
   { period: '2025-06', primary: -1.41, secondary: -2.93, tertiary: -0.15 },
   { period: '2025-09', primary: -3.85, secondary: -2.67, tertiary: 0.31 },
   { period: '2025-12', primary: -1.12, secondary: -2.02, tertiary: 0.43 },
+  { period: '2026-03', primary: -1.97, secondary: -0.75, tertiary: 0.38 },
 ];

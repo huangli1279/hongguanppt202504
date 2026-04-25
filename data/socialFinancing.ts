@@ -28,17 +28,19 @@ export const socialFinancingGrowthData = [
   { period: '2025-10', growth: 8.5 },
   { period: '2025-11', growth: 8.5 },
   { period: '2025-12', growth: 8.3 },
+  { period: '2026-01', growth: 8.2 },
+  { period: '2026-02', growth: 8.2 },
+  { period: '2026-03', growth: 7.9 },
 ];
 
 // 社融增量结构对比数据（横坐标为结构类型）
 export const socialFinancingStructureData = [
-  { category: '人民币贷款', q25: 13746, q24: 16583 },
-  { category: '外币贷款', q25: -1097, q24: -1853 },
-  { category: '委托贷款', q25: 1775, q24: -422 },
-  { category: '信托贷款', q25: 1677, q24: 414 },
-  { category: '未贴现汇票', q25: -2899, q24: -1816 },
-  { category: '企业债券', q25: 8186, q24: 3209 },
-  { category: '政府债券', q25: 23762, q24: 41150 },
-  { category: '股票融资', q25: 1595, q24: 1196 },
-  { category: '贷款核销', q25: 4419, q24: 4038 },
+  { category: '人民币贷款', q25: 88996, q24: 96956 },
+  { category: '外币贷款', q25: 852, q24: -968 },
+  { category: '委托贷款', q25: -657, q24: 56 },
+  { category: '信托贷款', q25: 133, q24: 531 },
+  { category: '未贴现汇票', q25: 5796, q24: 5299 },
+  { category: '企业债券', q25: 10465, q24: 5251 },
+  { category: '政府债券', q25: 35436, q24: 38738 },
+  { category: '股票融资', q25: 1173, q24: 961 },
 ];

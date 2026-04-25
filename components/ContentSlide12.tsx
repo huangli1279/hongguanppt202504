@@ -26,7 +26,7 @@ export const ContentSlide12: React.FC = () => {
         <>
           <BaseCard title="全年增速平稳回升" delay="200ms" variant="accent">
             <p>
-              2025年全国规上工业增加值增长 <span className="font-bold">5.9%</span>，较上年加快0.1个百分点，Q4增速呈"先抑后扬"，12月反弹至 <span className="font-bold">5.2%</span>。
+              2025年全国规上工业增加值增长 <span className="font-bold">5.9%</span>，较上年加快0.1个百分点，Q1增速呈"先抑后扬"，12月反弹至 <span className="font-bold">5.2%</span>。
             </p>
           </BaseCard>
 
