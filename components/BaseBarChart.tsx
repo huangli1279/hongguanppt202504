@@ -41,6 +41,7 @@ export interface BaseBarChartProps {
   yAxisDomain?: [number, number];
   showYAxis?: boolean;
   yAxisTickFormatter?: (value: any) => string;
+  yAxisWidth?: number;
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
@@ -124,6 +125,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   yAxisDomain = [0, 8],
   showYAxis = false,
   yAxisTickFormatter,
+  yAxisWidth,
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
@@ -165,7 +167,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <ChartComponent
             data={data}
-            margin={{ top: 20, right: 30, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
             barSize={barSize}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
@@ -189,6 +191,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
               tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
               yAxisId={barAxisId}
+              width={yAxisWidth}
             />
             {hasLines && (
               <YAxis

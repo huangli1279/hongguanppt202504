@@ -33,6 +33,33 @@ export const socialFinancingGrowthData = [
   { period: '2026-03', growth: 7.9 },
 ];
 
+// 社会融资规模增量（万亿元）
+export const socialFinancingIncrementData = [
+  { period: '2024-05', increment: 2.00 },
+  { period: '2024-06', increment: 3.17 },
+  { period: '2024-07', increment: 0.62 },
+  { period: '2024-08', increment: 2.84 },
+  { period: '2024-09', increment: 3.63 },
+  { period: '2024-10', increment: 1.26 },
+  { period: '2024-11', increment: 2.15 },
+  { period: '2024-12', increment: 2.74 },
+  { period: '2025-01', increment: 6.85 },
+  { period: '2025-02', increment: 2.10 },
+  { period: '2025-03', increment: 5.68 },
+  { period: '2025-04', increment: 1.03 },
+  { period: '2025-05', increment: 2.16 },
+  { period: '2025-06', increment: 4.08 },
+  { period: '2025-07', increment: 1.01 },
+  { period: '2025-08', increment: 2.40 },
+  { period: '2025-09', increment: 3.43 },
+  { period: '2025-10', increment: 0.63 },
+  { period: '2025-11', increment: 2.36 },
+  { period: '2025-12', increment: 2.05 },
+  { period: '2026-01', increment: 6.99 },
+  { period: '2026-02', increment: 2.29 },
+  { period: '2026-03', increment: 5.06 },
+];
+
 // 社融增量结构对比数据（横坐标为结构类型）
 export const socialFinancingStructureData = [
   { category: '人民币贷款', q25: 88996, q24: 96956 },
