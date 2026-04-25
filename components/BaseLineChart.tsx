@@ -39,6 +39,8 @@ export interface BaseLineChartProps {
   highlightPeriods?: string[];
   /** X轴刻度数量，默认6 */
   xAxisTickCount?: number;
+  /** 自定义X轴刻度，优先级高于 xAxisTickCount */
+  xAxisTicks?: string[];
   /** tooltip单位，默认% */
   unit?: string;
   /** Y轴刻度格式化函数 */
@@ -115,6 +117,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   legendOrder,
   highlightPeriods = [],
   xAxisTickCount = 6,
+  xAxisTicks,
   unit = '%',
   yAxisTickFormatter
 }) => {
@@ -185,7 +188,11 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tickLine={false}
               tick={{ fill: uiColors.tick, fontSize: 10 }}
               dy={10}
+              interval={0}
+              angle={-45}
+              textAnchor="end"
               ticks={(() => {
+                if (xAxisTicks && xAxisTicks.length > 0) return xAxisTicks;
                 if (data.length <= xAxisTickCount) return data.map(d => d.period);
                 // 计算等差间隔：确保首尾必显示，中间等分
                 const step = (data.length - 1) / (xAxisTickCount - 1);

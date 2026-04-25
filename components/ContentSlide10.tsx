@@ -96,7 +96,7 @@ export const ContentSlide10: React.FC = () => {
               showYAxis={true}
               legendOrder={['规模以上工业增加值:当月同比']}
               highlightPeriods={['2026-03']}
-              xAxisTickCount={8}
+              xAxisTicks={['2024-03', '2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03']}
             />
           </ChartContainer>
 
@@ -113,7 +113,7 @@ export const ContentSlide10: React.FC = () => {
               showYAxis={true}
               legendOrder={['出口交货值:累计同比', '规模以上工业增加值:累计同比']}
               highlightPeriods={['2026-03']}
-              xAxisTickCount={8}
+              xAxisTicks={['2024-03', '2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03']}
             />
           </ChartContainer>
         </>
