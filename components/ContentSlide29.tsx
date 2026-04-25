@@ -69,7 +69,7 @@ export const ContentSlide29: React.FC = () => {
               yAxisDomain={[0, 20]}
               showYAxis={false}
               legendOrder={['25Q1', '26Q1']}
-              barSize={24}
+              barSize={16}
               showLabels={true}
             />
           </ChartContainer>
