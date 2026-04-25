@@ -7,7 +7,7 @@ import { equipmentInvestmentData, manufacturingInvestmentData } from '@/data/equ
 
 export const ContentSlide23: React.FC = () => {
   const twoLineHeader = (top: string, bottom?: string) => (
-    <span className="leading-tight">
+    <span className="leading-tight whitespace-nowrap">
       {top}
       {bottom && (
         <>
@@ -87,8 +87,8 @@ export const ContentSlide23: React.FC = () => {
               title="制造业细分行业投资增速累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               dateColumn="period"
-              cellClassName="px-1 text-[8.5px]"
-              headerCellClassName="px-0.5 py-1 text-[8.5px]"
+              cellClassName="px-1 text-[10px]"
+              headerCellClassName="px-0.5 py-1 text-[10px]"
             />
           </ChartContainer>
         </div>
