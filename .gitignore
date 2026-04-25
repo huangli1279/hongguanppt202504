@@ -25,5 +25,3 @@ dist-ssr
 # Agent/tool config files
 .claude/
 .codex/
-AGENTS.md
-CLAUDE.md
