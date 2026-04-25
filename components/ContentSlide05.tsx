@@ -1,92 +1,86 @@
 import React from 'react';
 import { BaseLineChart } from './BaseLineChart';
-import { BaseStackedBarChart } from './BaseStackedBarChart';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { gdpTrendData, deflatorData, gdpIndustryValueData } from '@/data/gdp';
 
 export const ContentSlide05: React.FC = () => {
-  // 平减指数数据：过滤只保留24年以来数据
-  const filteredDeflatorData = deflatorData.filter(item => !item.period.startsWith('2023'));
+  const gdpGrowthData = [
+    { period: '2024-09', real: 4.6, nominal: 3.96 },
+    { period: '2024-12', real: 5.4, nominal: 4.56 },
+    { period: '2025-03', real: 5.4, nominal: 4.58 },
+    { period: '2025-06', real: 5.2, nominal: 3.9 },
+    { period: '2025-09', real: 4.8, nominal: 3.71 },
+    { period: '2025-12', real: 4.5, nominal: 3.85 },
+    { period: '2026-03', real: 5.0, nominal: 4.94 },
+  ];
+
+  const deflatorData = [
+    { period: '2024-09', primary: 1.25, secondary: -1.66, tertiary: -0.13, overall: -0.61 },
+    { period: '2024-12', primary: -1.05, secondary: -2.28, tertiary: 0.31, overall: -0.8 },
+    { period: '2025-03', primary: -1.24, secondary: -2.35, tertiary: 0.12, overall: -0.78 },
+    { period: '2025-06', primary: -1.41, secondary: -2.93, tertiary: -0.15, overall: -1.24 },
+    { period: '2025-09', primary: -3.85, secondary: -2.67, tertiary: 0.31, overall: -1.04 },
+    { period: '2025-12', primary: -1.12, secondary: -2.02, tertiary: 0.43, overall: -0.62 },
+    { period: '2026-03', primary: -1.97, secondary: -0.75, tertiary: 0.38, overall: -0.06 },
+  ];
 
   return (
     <BaseContentSlide
       title={
         <>
-          2026年一季度GDP稳增5.0%，
+          一季度GDP稳增5.0%实现良好开局，
           <span className="text-webank-accent">名义增速与实际增速差距收窄</span>
         </>
       }
+      cardColumns={2}
       cards={
         <>
           <BaseCard title="总量定调" delay="200ms" variant="accent">
             <p>
-              一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>。
+              2026年一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>，实现“十五五”开局之年平稳起步。
+              实际GDP增速较去年四季度回升 <span className="font-bold">0.5个百分点</span>，达到全年“4.5%-5.0%”增长目标的上限区域。
             </p>
           </BaseCard>
 
-          <BaseCard title="增长动能边际回升" delay="400ms">
+          <BaseCard title="名义与实际差距收窄" delay="400ms">
             <p>
-              增速较去年一季度回升 <span className="font-bold">0.5个百分点</span>，达到全年“4.5%-5.0%”增长目标上沿，开局平稳。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="平减指数回升" delay="600ms">
-            <p>
-              一季度名义GDP增速修复至 <span className="text-red-600 font-semibold">4.9%</span>，GDP平减指数回升至 <span className="font-bold">-0.6%</span> 附近，名义与实际增速差距明显收窄。
+              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.9%</span>，较去年四季度 <span className="font-bold">3.9%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.6%</span>，整体已接近零值，企业盈利与微观体感的“温差”正在改善。
             </p>
           </BaseCard>
         </>
       }
-      chartColumns={3}
+      chartColumns={2}
       charts={
         <>
-          <ChartContainer delay="800ms">
+          <ChartContainer delay="1000ms">
             <BaseLineChart
-              data={gdpTrendData}
-              title="2024Q1-2026Q1季度GDP当季同比增速走势图"
+              data={gdpGrowthData}
+              title="GDP不变价与现价当季同比增速"
               subtitle="数据来源：国家统计局 | 单位：%"
               yAxisDomain={[0, 8]}
               showYAxis={true}
-              legendOrder={['GDP现价', 'GDP不变价']}
+              legendOrder={['GDP不变价', 'GDP现价']}
               lines={[
-                { dataKey: 'value', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'real', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top' },
                 { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom' }
               ]}
             />
           </ChartContainer>
-          <ChartContainer delay="1000ms">
+          <ChartContainer delay="1200ms">
             <BaseLineChart
-              data={filteredDeflatorData}
-              title="三产业GDP平减指数同比增速 (2024-2026Q1)"
-              subtitle="第二产业平减指数持续处于负值区间，拖累整体名义增速"
-              yAxisDomain={[-6, 6]}
+              data={deflatorData}
+              title="GDP平减指数"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              yAxisDomain={[-5, 2]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['第一产业', '第二产业', '第三产业']}
+              legendOrder={['第一产业', '第二产业', '第三产业', '整体']}
               lines={[
                 { dataKey: 'primary', name: '第一产业', strokeWidth: 2, labelPosition: 'top' },
                 { dataKey: 'secondary', name: '第二产业', strokeWidth: 2, labelPosition: 'bottom' },
-                { dataKey: 'tertiary', name: '第三产业', strokeWidth: 2, labelPosition: 'top' }
-              ]}
-            />
-          </ChartContainer>
-          <ChartContainer delay="1200ms">
-            <BaseStackedBarChart
-              data={gdpIndustryValueData}
-              title="2024-2026Q1三大产业GDP当季值"
-              subtitle="单位：万亿元"
-              yAxisDomain={[0, 45]}
-              showYAxis={true}
-              unit="万亿"
-              barSize={20}
-              legendOrder={['第一产业', '第二产业', '第三产业']}
-              valueFormatter={(val: number) => val.toFixed(2)}
-              bars={[
-                { dataKey: 'primary', name: '第一产业'},
-                { dataKey: 'secondary', name: '第二产业'},
-                { dataKey: 'tertiary', name: '第三产业'}
+                { dataKey: 'tertiary', name: '第三产业', strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'overall', name: '整体', strokeWidth: 3, labelPosition: 'top' }
               ]}
             />
           </ChartContainer>

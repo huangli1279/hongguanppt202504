@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { CoverSlide } from './components/CoverSlide';
-import { EconomicForecast2026Slide } from './components/EconomicForecast2026Slide';
+import { PolicyTimeline2026Slide } from './components/PolicyTimeline2026Slide';
 import { TableOfContentsSlide } from './components/TableOfContentsSlide';
 import { BaseSectionTransitionSlide } from './components/BaseSectionTransitionSlide';
 import { ContentSlide05 } from './components/ContentSlide05';
@@ -100,7 +100,7 @@ const App: React.FC = () => {
       >
         {currentSlide === 1 && <CoverSlide />}
         {currentSlide === 2 && <TableOfContentsSlide />}
-        {currentSlide === 3 && <EconomicForecast2026Slide />}
+        {currentSlide === 3 && <PolicyTimeline2026Slide />}
         {currentSlide === 4 && <BaseSectionTransitionSlide id="02" title="GDP 分析" subtitle="定基调，找温差" />}
         {currentSlide === 5 && <ContentSlide05 />}
         {currentSlide === 6 && <ContentSlide06 />}
