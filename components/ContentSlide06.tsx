@@ -1,8 +1,7 @@
 import React from 'react';
 import { BaseCard } from './BaseCard';
 import { BaseContentSlide, ChartContainer } from './BaseContentSlide';
-import { BaseLineChart } from './BaseLineChart';
-import { BaseStackedBarChart } from './BaseStackedBarChart';
+import { BaseBarChart } from './BaseBarChart';
 import { industryColors } from '@/utils/chartColors';
 
 const industryGdpValueData = [
@@ -15,11 +14,11 @@ const industryGdpValueData = [
   { period: '2026-03', primary: 1.19, secondary: 11.61, tertiary: 20.61 },
 ];
 
+
 const industryGrowthData = [
-  { period: '2025-06', primary: 3.80, secondary: 4.80, tertiary: 5.70 },
-  { period: '2025-09', primary: 4.00, secondary: 4.20, tertiary: 5.40 },
-  { period: '2025-12', primary: 4.20, secondary: 3.40, tertiary: 5.20 },
-  { period: '2026-03', primary: 3.80, secondary: 4.90, tertiary: 5.20 },
+  { industry: '第一产业', '2025-06': 3.80, '2025-09': 4.00, '2025-12': 4.20, '2026-03': 3.80 },
+  { industry: '第二产业', '2025-06': 4.80, '2025-09': 4.20, '2025-12': 3.40, '2026-03': 4.90 },
+  { industry: '第三产业', '2025-06': 5.70, '2025-09': 5.40, '2025-12': 5.20, '2026-03': 5.20 },
 ];
 
 const industryContributionData = [
@@ -32,6 +31,14 @@ const industryContributionData = [
   { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 2.84 },
   { period: '2026-03', primary: 0.13, secondary: 1.71, tertiary: 3.16 },
 ];
+
+const stackedIndustryBars = [
+  { dataKey: 'primary', name: '第一产业', color: industryColors.primary, stackId: 'stack' },
+  { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, stackId: 'stack' },
+  { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, stackId: 'stack' },
+];
+
+const industryLegendOrder = ['第一产业', '第二产业', '第三产业'];
 
 export const ContentSlide06: React.FC = () => {
   return (
@@ -68,57 +75,59 @@ export const ContentSlide06: React.FC = () => {
       charts={
         <>
           <ChartContainer delay="600ms">
-            <BaseStackedBarChart
+            <BaseBarChart
               data={industryGdpValueData}
               title="三大产业GDP值"
               subtitle="数据来源: 国家统计局；单位: 万亿"
-              bars={[
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
-              ]}
-              legendOrder={['第一产业', '第二产业', '第三产业']}
+              bars={stackedIndustryBars}
+              legendOrder={industryLegendOrder}
               yAxisDomain={[0, 40]}
-              barSize={18}
+              barSize={16}
               showYAxis
-              showLabels={false}
+              showLabels
+              labelPosition="center"
+              labelFormatter={(v: any) => Number(v).toFixed(1)}
               unit="万亿"
-              xAxisInterval={2}
+              yAxisTickFormatter={(v) => `${v}`}
+              xAxisInterval={0}
             />
           </ChartContainer>
           <ChartContainer delay="800ms">
-            <BaseLineChart
+            <BaseBarChart
               data={industryGrowthData}
               title="三大产业增加值当季同比增速"
               subtitle="数据来源: 国家统计局；单位: %"
-              lines={[
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, labelDY: -10 },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, labelDY: 14 },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, labelDY: -10 },
+              xAxisKey="industry"
+              bars={[
+                { dataKey: '2025-06', name: '2025-06', color: industryColors.primary },
+                { dataKey: '2025-09', name: '2025-09', color: industryColors.secondary },
+                { dataKey: '2025-12', name: '2025-12', color: industryColors.tertiary },
+                { dataKey: '2026-03', name: '2026-03', color: '#10b981' },
               ]}
-              legendOrder={['第一产业', '第二产业', '第三产业']}
-              yAxisDomain={[3, 6]}
+              legendOrder={['2025-06', '2025-09', '2025-12', '2026-03']}
+              yAxisDomain={[0, 7]}
+              barSize={16}
               showYAxis
-              xAxisTickCount={4}
+              showLabels
+              unit="%"
             />
           </ChartContainer>
           <ChartContainer delay="1000ms">
-            <BaseStackedBarChart
+            <BaseBarChart
               data={industryContributionData}
               title="三产业GDP当季同比拉动数据"
               subtitle="数据来源: 国家统计局；单位: 百分点"
-              bars={[
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
-              ]}
-              legendOrder={['第一产业', '第二产业', '第三产业']}
+              bars={stackedIndustryBars}
+              legendOrder={industryLegendOrder}
               yAxisDomain={[0, 6]}
-              barSize={18}
+              barSize={16}
               showYAxis
               showLabels
+              labelPosition="center"
+              labelFormatter={(v: any) => Number(v).toFixed(1)}
               unit="百分点"
-              xAxisInterval={2}
+              yAxisTickFormatter={(v) => `${v}`}
+              xAxisInterval={0}
             />
           </ChartContainer>
         </>

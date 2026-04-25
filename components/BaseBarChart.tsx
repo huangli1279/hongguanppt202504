@@ -47,6 +47,9 @@ export interface BaseBarChartProps {
   legendOrder?: string[];
   barSize?: number;
   showLabels?: boolean;
+  labelPosition?: 'top' | 'center' | 'inside' | 'insideTop' | 'insideBottom';
+  labelFill?: string;
+  labelFormatter?: (value: any) => string;
   unit?: string;
   showLineYAxis?: boolean;
   lineAxisDomain?: [number, number];
@@ -131,6 +134,9 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   legendOrder,
   barSize = 16,
   showLabels = true,
+  labelPosition = 'top',
+  labelFill,
+  labelFormatter,
   unit = '%',
   showLineYAxis = false,
   lineAxisDomain,
@@ -221,15 +227,16 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   animationDuration={800}
                   animationBegin={0}
                   animationEasing="ease-out"
-                  radius={bar.stackId ? 0 : [2, 2, 0, 0]}
+                  radius={0}
                 >
                   {showLabels && (
                     <LabelList
                       dataKey={bar.dataKey}
-                      position="top"
-                      fill={barColor}
+                      position={labelPosition}
+                      fill={labelFill ?? (labelPosition === 'top' ? barColor : '#fff')}
                       fontSize={9}
                       fontWeight={600}
+                      formatter={labelFormatter}
                     />
                   )}
                 </Bar>
