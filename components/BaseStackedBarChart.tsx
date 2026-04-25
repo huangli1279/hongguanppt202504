@@ -125,7 +125,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
     const isLast = index === totalTicks - 1;
     const isInterval = index % xAxisInterval === 0;
     // Skip interval tick if it's adjacent to the last tick (avoid overlap)
-    if (isInterval && !isLast && index + 1 === totalTicks - 1) return null;
+    if (xAxisInterval > 1 && isInterval && !isLast && index + 1 === totalTicks - 1) return null;
     if (!isFirst && !isLast && !isInterval) return null;
     return (
       <text x={x} y={y + 10} textAnchor="middle" fill={uiColors.tick} fontSize={10}>

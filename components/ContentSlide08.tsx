@@ -55,6 +55,7 @@ export const ContentSlide08: React.FC = () => {
             ]}
             legendOrder={['最终消费支出', '资本形成总额', '货物和服务净出口']}
             barSize={28}
+            xAxisInterval={1}
             yAxisDomain={[0, 100]}
             showYAxis
             showLabels
