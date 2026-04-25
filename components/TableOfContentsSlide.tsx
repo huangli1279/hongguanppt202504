@@ -4,13 +4,13 @@ import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, Targe
 
 const contents = [
   { id: '01', title: '一季度关键事件与政策主线', icon: Target, desc: '春节、外部冲击、两会定调与"十五五"规划落地' },
-  { id: '02', title: 'GDP 分析：定基调，找温差', icon: BarChart3, desc: '名义与实际增速"温差"显现，价格传导待疏通' },
-  { id: '03', title: '生产端分析：看景气，看利润', icon: Zap, desc: 'PMI景气分化，PPI降幅收窄，企业利润承压' },
-  { id: '04', title: '消费分析：看意愿，看结构', icon: ShoppingCart, desc: '服务消费强于商品，核心CPI回升，居民信心待振' },
-  { id: '05', title: '投资分析：看地产拖累，看设备更新', icon: HardHat, desc: '地产开发投资深跌形成拖累，设备投资增长' },
-  { id: '06', title: '进出口分析：看韧性，看抢跑', icon: Globe, desc: '"抢出口"效应支撑增速，出口结构向新兴市场优化' },
-  { id: '07', title: '财政分析：看钱袋子', icon: Landmark, desc: '税收收入小幅增长，广义财政收支紧平衡' },
-  { id: '08', title: '金融数据分析：看资金活性', icon: Activity, desc: 'M1-M2剪刀差走阔，信贷投放节奏差异' },
+  { id: '02', title: 'GDP 分析：找温差，看结构', icon: BarChart3, desc: '名义与实际增速"温差"显现，价格传导待疏通' },
+  { id: '03', title: '生产端分析：看景气，看价格，看利润', icon: Zap, desc: '制造业PMI跃升至50.4%，工业利润显著增长，PPI降幅收窄' },
+  { id: '04', title: '消费分析：看意愿，看结构，看价格', icon: ShoppingCart, desc: '社零回暖至2.4%，服务消费强于商品，核心CPI回升至1.2%' },
+  { id: '05', title: '投资分析：看地产拖累，看制造提速', icon: HardHat, desc: '固投企稳1.7%，基建增8.9%托底，制造业提速，地产仍寻底' },
+  { id: '06', title: '进出口分析：看韧性，看结构', icon: Globe, desc: '"抢出口"支撑增速，AI产业链量价齐升，出口结构优化' },
+  { id: '07', title: '财政分析：看钱袋子', icon: Landmark, desc: '一般公共预算收入增2.4%，支出+2.6%精准倾斜民生' },
+  { id: '08', title: '金融数据分析：看总量，看活性', icon: Activity, desc: '社融平稳扩表，企业贷款支撑信贷，M1-M2剪刀差小幅走扩' },
 ];
 
 export const TableOfContentsSlide: React.FC = () => {
