@@ -24,7 +24,7 @@ export const industrialProfitData: IndustrialProfitDataPoint[] = [
   { time: '2510', totalProfit: -557.9, revenue: -3774.7, cost: -3078.9, revenueMinusCost: -695.8, expenses: 99.9, investmentIncome: 277.1 },
   { time: '2511', totalProfit: -1011.7, revenue: -11.6, cost: 294.3, revenueMinusCost: -305.9, expenses: 262.1, investmentIncome: -341.8 },
   { time: '2512', totalProfit: 391.5, revenue: -4067.7, cost: -3460.8, revenueMinusCost: -606.9, expenses: 151.6, investmentIncome: 542.3 },
-  { time: '2025全年', totalProfit: 470.5, revenue: 15756.1, cost: 15702.9, revenueMinusCost: 53.2, expenses: -362.4, investmentIncome: 1004.5 },
+  { time: '2602', totalProfit: 1354.8, revenue: 10404.8, cost: 8361, revenueMinusCost: 2043.8, expenses: 678.4, investmentIncome: 185.5 },
 ];
 
 export interface IndustryProfitGrowthDataPoint {
@@ -33,16 +33,11 @@ export interface IndustryProfitGrowthDataPoint {
 }
 
 export const industryProfitGrowthData: IndustryProfitGrowthDataPoint[] = [
-  { industry: '有色金属冶炼和压延加工业', growth: 22.6 },
-  { industry: '计算机、通信和其他电子设备制造业', growth: 19.5 },
-  { industry: '电力、热力生产和供应业', growth: 13.9 },
-  { industry: '专用设备制造业', growth: 5.7 },
-  { industry: '电气机械和器材制造业', growth: 4.9 },
-  { industry: '通用设备制造业', growth: 4.2 },
-  { industry: '汽车制造业', growth: 0.6 },
-  { industry: '非金属矿物制品业', growth: -1.7 },
-  { industry: '化学原料和化学制品制造业', growth: -7.3 },
-  { industry: '纺织业', growth: -12.0 },
-  { industry: '石油和天然气开采业', growth: -18.7 },
-  { industry: '煤炭开采和洗选业', growth: -41.8 },
+  { industry: '规模以上原材料制造业', growth: 88.3 },
+  { industry: '有色行业', growth: 148.2 },
+  { industry: '有色金属合金制造', growth: 205.1 },
+  { industry: '铜压延加工', growth: 50.8 },
+  { industry: '化工行业', growth: 35.9 },
+  { industry: '无机盐制造', growth: 518.5 },
+  { industry: '无机酸制造', growth: 306.3 },
 ];

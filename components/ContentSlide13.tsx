@@ -18,7 +18,7 @@ const renderColoredCell = (value: any, row: any) => {
   
   const formatted = formatNumber(num);
   // 只在特定行进行着色
-  if (row.time === '2512' || row.time === '2025全年') {
+  if (row.time === '2602') {
     if (num > 0) return <span className="text-red-500">{formatted}</span>;
     if (num < 0) return <span className="text-green-600">{formatted}</span>;
   }
@@ -53,27 +53,33 @@ const growthColumns: ColumnConfig[] = [
 export const ContentSlide13: React.FC = () => {
   return (
     <BaseContentSlide
-      title="2025年企业效益：行业表现呈现两极分化"
+      title="工业企业利润显著增长，受价格和成本双上涨作用"
       cardColumns={2}
       cards={
         <>
-          <BaseCard title="投资收益拉动全年工业企业利润同比增长" delay="200ms" variant="accent">
+          <BaseCard title="利润显著修复，营收-成本贡献主增量" delay="200ms" variant="accent">
             <div className="space-y-2">
               <p>
-                2025年全年利润实现微弱正增长（<span className="font-bold text-red-500">+0.6%</span>），其中营业收入同比增长1.1%，增速放缓（去年增长2.1%），营业成本同比增长1.3%，投资收益同比增长9.5%；
+                1-2月工业企业利润累计同比增长<span className="font-bold text-red-500">15.2%</span>，同比多增<span className="font-bold text-red-500">1,354.8亿元</span>。
               </p>
               <p>
-                12月工业企业利润当月同比<span className="font-bold text-red-500">+5.3%</span>，利润高增的主要驱动力来自投资收益；
+                营收、成本分别同比增长<span className="font-bold text-red-500">5.3%</span>、<span className="font-bold text-red-500">5.0%</span>，营收-成本项多增<span className="font-bold text-red-500">2,043.8亿元</span>。
+              </p>
+              <p>
+                投资收益同比增长<span className="font-bold text-red-500">29.7%</span>，主要受低基数影响。
               </p>
             </div>
           </BaseCard>
-          <BaseCard title="高技术制造支撑大局，传统采矿与消费品制造拖累严重" delay="400ms">
+          <BaseCard title="新动能与战争利好原材料制造业" delay="400ms">
             <div className="space-y-2">
               <p>
-                <span className="font-bold text-webank-blue">高技术制造业</span>成为利润修复的核心支撑，计算机、通信和其他电子设备制造业增长<span className="font-bold text-red-500">19.5%</span>，专用设备制造业增长<span className="font-bold text-red-500">5.7%</span>，电气机械和器材制造业增长<span className="font-bold text-red-500">4.9%</span>，通用设备制造业增长<span className="font-bold text-red-500">4.2%</span>；
+                新动能产业与美伊战争带动原材料制造业利润同比增长<span className="font-bold text-red-500">88.3%</span>。
               </p>
               <p>
-                反观<span className="font-bold text-webank-blue">采矿业</span>受价格波动影响大幅拖累整体表现，<span className="font-bold text-webank-blue">消费品制造</span>亦受制于需求疲软而复苏缓慢。
+                有色行业增长<span className="font-bold text-red-500">148.2%</span>，合金制造增长<span className="font-bold text-red-500">205.1%</span>。
+              </p>
+              <p>
+                化工行业增长<span className="font-bold text-red-500">35.9%</span>，无机盐、无机酸制造高增。
               </p>
             </div>
           </BaseCard>
@@ -93,13 +99,14 @@ export const ContentSlide13: React.FC = () => {
               }
               dateColumn="time"
               colorizeNumbers={false}
+              highlightRows={[industrialProfitData.length - 1]}
             />
           </ChartContainer>
           <ChartContainer delay="800ms">
             <BaseTable
               data={industryProfitGrowthData}
               columns={growthColumns}
-              title="2025年部分行业利润同比增长情况"
+              title="1-2月原材料制造业及细分行业利润同比增长"
               subtitle="单位：%"
               colorizeNumbers={false}
             />
