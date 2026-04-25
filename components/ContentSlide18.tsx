@@ -6,124 +6,70 @@ import { BaseTable, ColumnConfig } from './BaseTable';
 import { cpiTrendData, cpiCategoryData } from '@/data/cpi';
 
 export const ContentSlide18: React.FC = () => {
-  // 折线图配置
-  const lineConfigs: LineConfig[] = [
-    { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5 },
-    { dataKey: 'coreCpi', name: '核心CPI:当月同比', strokeWidth: 2 },
+  const headlineLineConfigs: LineConfig[] = [
+    { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5, pointOffsets: { '2026-02': -12, '2026-03': 14 } },
+    { dataKey: 'coreCpi', name: '核心CPI:当月同比', strokeWidth: 2, pointOffsets: { '2026-02': -12, '2026-03': -12 } },
   ];
 
-  // 表格数据转换
-  const tableData = cpiCategoryData.map(item => ({
-    period: item.period,
-    grain: item.grain,
-    edibleOil: item.edibleOil,
-    freshVegetables: item.freshVegetables,
-    pork: item.pork,
-    freshFruit: item.freshFruit,
-    transportation: item.transportation,
-    livingServices: item.livingServices,
-    clothing: item.clothing,
-    education: item.education,
-    healthcare: item.healthcare,
-    otherGoods: item.otherGoods,
-    homeAppliances: item.homeAppliances,
-  }));
-
-  // 表格列配置
-  const columns: ColumnConfig[] = [
+  const categoryColumns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'grain', title: '粮食', align: 'right' },
-    { key: 'edibleOil', title: '食用油', align: 'right' },
-    {
-      key: 'freshVegetables',
-      title: '鲜菜',
-      align: 'right',
-      render: (value: any, row: any) => {
-        const isTarget = ['2025-10', '2025-11', '2025-12'].includes(row.period);
-        return (
-          <span className={isTarget ? "text-red-500 font-medium" : ""}>
-            {typeof value === 'number' ? value.toFixed(1) : value}
-          </span>
-        );
-      }
-    },
-    { key: 'pork', title: '猪肉', align: 'right' },
-    { key: 'freshFruit', title: '鲜果', align: 'right' },
-    { key: 'transportation', title: '交通工具', align: 'right' },
-    { key: 'livingServices', title: '生活用品', align: 'right' },
+    { key: 'foodTobaccoAlcohol', title: '食品烟酒', align: 'right' },
+    { key: 'transportation', title: '交通通信', align: 'right' },
+    { key: 'housing', title: '居住', align: 'right' },
+    { key: 'education', title: '教育文娱', align: 'right' },
     { key: 'clothing', title: '衣着', align: 'right' },
-    { key: 'education', title: '教育娱乐', align: 'right' },
     { key: 'healthcare', title: '医疗保健', align: 'right' },
-    {
-      key: 'otherGoods',
-      title: '金饰品',
-      align: 'right',
-      render: (value: any) => (
-        <span className="text-red-500 font-medium">
-          {typeof value === 'number' ? value.toFixed(1) : value}
-        </span>
-      )
-    },
-    {
-      key: 'homeAppliances',
-      title: '家用器具',
-      align: 'right',
-      render: (value: any, row: any) => {
-        const isTarget = ['2025-10', '2025-11', '2025-12'].includes(row.period);
-        return (
-          <span className={isTarget ? "text-red-500 font-medium" : ""}>
-            {typeof value === 'number' ? value.toFixed(1) : value}
-          </span>
-        );
-      }
-    },
+    { key: 'householdServices', title: '生活用品', align: 'right' },
+    { key: 'otherGoodsServices', title: '其他用品', align: 'right' },
   ];
 
   return (
     <BaseContentSlide
-      title="CPI一季度持续回升，主要受鲜菜季节性减产与金价上涨驱动"
+      title="一季度CPI同比上涨0.9%，核心CPI上涨1.2%"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="CPI 运行特征解析" delay="200ms" variant="accent">
+        <div className="grid grid-cols-3 gap-4 mb-5 flex-shrink-0">
+          <BaseCard title="基期变化" delay="200ms" variant="accent">
             <p>
-              2025年中国CPI全年与上年持平，CPI受食品与能源价格下降的拖累较大，但第一季度走势强劲，12月CPI回升至 <span className="text-emerald-600 font-semibold">0.8%</span>，但核心CPI仍显"温和"，反映出耐用品市场仍处于价格博弈期，居民对非必需品的消费弹性极低。
+              2026年起发布以2025年为基期的价格指数，本轮调整提升服务权数、下调消费品权数。官方测算，基期轮换对CPI同比指数影响约 <span className="text-emerald-600 font-semibold">0.06%</span>，总体稳定。
             </p>
           </BaseCard>
-          <BaseCard title="CPI结构性分化显著" delay="400ms">
+          <BaseCard title="通胀温和回升" delay="400ms">
             <p>
-              一季度CPI回升主要受<span className="font-semibold text-emerald-600">鲜菜季节性减产</span>（供给端扰动）与<span className="font-semibold text-emerald-600">全球金价避险需求</span>（金饰品CPI全年维持高增）驱动。耐用消费品方面，受“以旧换新”政策提振，<span className="font-semibold text-emerald-600">家用器具</span>价格自下半年起由负转正，反映政策有效激发了存量更新需求。
+              一季度CPI累计同比 <span className="text-emerald-600 font-semibold">0.9%</span>，2月受春节错位与服务需求释放冲高至 <span className="text-emerald-600 font-semibold">1.3%</span>，3月回落至 <span className="text-emerald-600 font-semibold">1.0%</span>。核心CPI一季度同比上涨 <span className="text-emerald-600 font-semibold">1.2%</span>。
+            </p>
+          </BaseCard>
+          <BaseCard title="分项表现" delay="600ms">
+            <p>
+              节后出行和人工服务需求自然降温，3月生活用品及服务CPI回落至 <span className="text-emerald-600 font-semibold">1.5%</span>。油价上行带动交通和通信由负转正，医疗保健与其他用品和服务延续较高增速。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表和表格区域 */}
         <div className="flex-1 grid grid-cols-5 gap-6 min-h-0">
-          {/* 折线图 - 占2列 */}
-          <ChartContainer delay="600ms" className="col-span-2">
+          <ChartContainer delay="800ms" className="col-span-2">
             <BaseLineChart
               data={cpiTrendData}
-              title="2024-2025年全国CPI及核心CPI当月同比走势"
+              title="CPI与核心CPI当月同比走势"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={lineConfigs}
+              lines={headlineLineConfigs}
               yAxisDomain={[-2, 2]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['CPI:当月同比', '核心CPI:当月同比']}
+              highlightPeriods={['2026-02', '2026-03']}
               xAxisTickCount={6}
             />
           </ChartContainer>
 
-          {/* 表格 - 占3列 */}
-          <ChartContainer delay="800ms" className="col-span-3">
+          <ChartContainer delay="1000ms" className="col-span-3">
             <BaseTable
-              title="2025年主要商品与服务类别CPI当月同比"
+              data={cpiCategoryData}
+              columns={categoryColumns}
+              title="CPI分项当月同比数据"
               subtitle="数据来源：国家统计局 | 单位：%"
-              data={tableData}
-              columns={columns}
               dateColumn="period"
               colorizeNumbers={false}
             />
