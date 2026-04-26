@@ -32,7 +32,7 @@ export const ContentSlide23: React.FC = () => {
     { key: 'chemicals', title: twoLineHeader('化学', '原料'), align: 'right' },
     {
       key: 'highTechManufacturing',
-      title: <span className="text-red-500 leading-tight whitespace-nowrap">高技术<br/>制造</span>,
+      title: twoLineHeader('高技术', '制造'),
       align: 'right',
       highlight: true,
       includeInStats: true,
