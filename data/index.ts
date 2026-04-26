@@ -1,15 +1,17 @@
 // 数据统一导出入口 - 精简版
 
-export { gdpTrendData, deflatorData, gdpContributionData, gdpIndustryShareData, gdpIndustryValueData } from './gdp';
-export { industryGrowthData, industryContributionData, industryContributionData2024, industryGrowthByIndustryData, detailedIndustryGrowthData, industrialProductionData, industrialDifferentiationData } from './industry';
+export { gdpTrendData, deflatorData, gdpContributionData, gdpIndustryShareData, gdpIndustryValueData, gdpGrowthRecentData, deflatorRecentData, industryGdpValueRecentData, industryGrowthByQuarterRecentData, industryContributionRecentData } from './gdp';
+export { industryGrowthData, industryContributionData, industryContributionData2024, industryGrowthByIndustryData, detailedIndustryGrowthData, industrialProductionData, industrialDifferentiationData, industryGrowthByIndustryRecentData } from './industry';
 export type { IndustryGrowthDataPoint, IndustryContributionDataPoint, IndustryByQuarterDataPoint, DetailedIndustryDataPoint, IndustrialProductionDataPoint, IndustrialDifferentiationDataPoint } from './industry';
 export { pmiTrendData, pmiByEnterpriseSizeData } from './pmi';
 export type { PmiDataPoint, PmiByEnterpriseSize } from './pmi';
+export { industrialMonthlyData, industrialCumulativeData, industrialCategoryData, industryDetailMonthlyData } from './industrialOutput';
 export { industrialProfitData } from './profit';
 export type { IndustrialProfitDataPoint } from './profit';
 export { ppiYoyData, commodityPriceData, ppiIndustryMomData } from './ppi';
 export type { PpiDataPoint, CommodityPriceDataPoint, PpiIndustryMomDataPoint } from './ppi';
 export { retailTrendData, retailMonthlyData } from './retail';
+export { retailMonthlyCategoryData, serviceRetailData, springFestivalTravelData, retailCategoryDetailData } from './retailExtra';
 export type { RetailTrendDataPoint, RetailMonthlyDataPoint } from './retail';
 export { cityRetailData, urbanRuralRetailData } from './cityRetail';
 export type { CityRetailDataPoint, UrbanRuralRetailDataPoint } from './cityRetail';
@@ -22,6 +24,7 @@ export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint } from './
 export { fixedAssetInvestmentData, privateInvestmentData } from './fixedAssetInvestment';
 export type { FixedAssetInvestmentDataPoint, PrivateInvestmentDataPoint } from './fixedAssetInvestment';
 export { realEstateInvestmentData, housePriceIndexData } from './realEstate';
+export { investmentData, housePriceYoyData, housePriceMomData } from './realEstateExtra';
 export type { RealEstateInvestmentDataPoint, HousePriceIndexDataPoint } from './realEstate';
 export { infrastructureInvestmentData } from './infrastructureInvestment';
 export type { InfrastructureInvestmentDataPoint } from './infrastructureInvestment';

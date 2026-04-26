@@ -51,6 +51,57 @@ export const gdpIndustryValueData = [
   { period: '2026-03', primary: 1.19, secondary: 11.61, tertiary: 20.61 },
 ];
 
+// Slide05 专用：近 7 期 GDP 不变价/现价同比增速
+export const gdpGrowthRecentData = [
+  { period: '2024-09', real: 4.6, nominal: 3.96 },
+  { period: '2024-12', real: 5.4, nominal: 4.56 },
+  { period: '2025-03', real: 5.4, nominal: 4.58 },
+  { period: '2025-06', real: 5.2, nominal: 3.9 },
+  { period: '2025-09', real: 4.8, nominal: 3.71 },
+  { period: '2025-12', real: 4.5, nominal: 3.85 },
+  { period: '2026-03', real: 5.0, nominal: 4.94 },
+];
+
+// Slide05 专用：近 7 期 GDP 平减指数（含整体）
+export const deflatorRecentData = [
+  { period: '2024-09', primary: 1.25, secondary: -1.66, tertiary: -0.13, overall: -0.61 },
+  { period: '2024-12', primary: -1.05, secondary: -2.28, tertiary: 0.31, overall: -0.8 },
+  { period: '2025-03', primary: -1.24, secondary: -2.35, tertiary: 0.12, overall: -0.78 },
+  { period: '2025-06', primary: -1.41, secondary: -2.93, tertiary: -0.15, overall: -1.24 },
+  { period: '2025-09', primary: -3.85, secondary: -2.67, tertiary: 0.31, overall: -1.04 },
+  { period: '2025-12', primary: -1.12, secondary: -2.02, tertiary: 0.43, overall: -0.62 },
+  { period: '2026-03', primary: -1.97, secondary: -0.75, tertiary: 0.38, overall: -0.06 },
+];
+
+// Slide06 专用：三大产业 GDP 当季值（万亿）
+export const industryGdpValueRecentData = [
+  { period: '2024-09', primary: 2.70, secondary: 12.28, tertiary: 19.17 },
+  { period: '2024-12', primary: 3.41, secondary: 13.51, tertiary: 20.43 },
+  { period: '2025-03', primary: 1.17, secondary: 11.15, tertiary: 19.52 },
+  { period: '2025-06', primary: 1.95, secondary: 12.67, tertiary: 19.52 },
+  { period: '2025-09', primary: 2.70, secondary: 12.46, tertiary: 20.26 },
+  { period: '2025-12', primary: 3.52, secondary: 13.68, tertiary: 21.59 },
+  { period: '2026-03', primary: 1.19, secondary: 11.61, tertiary: 20.61 },
+];
+
+// Slide06 专用：三大产业当季同比增速（按产业横排）
+export const industryGrowthByQuarterRecentData = [
+  { industry: '第一产业', '2025-06': 3.80, '2025-09': 4.00, '2025-12': 4.20, '2026-03': 3.80 },
+  { industry: '第二产业', '2025-06': 4.80, '2025-09': 4.20, '2025-12': 3.40, '2026-03': 4.90 },
+  { industry: '第三产业', '2025-06': 5.70, '2025-09': 5.40, '2025-12': 5.20, '2026-03': 5.20 },
+];
+
+// Slide06 专用：三大产业 GDP 当季同比拉动（百分点）
+export const industryContributionRecentData = [
+  { period: '2024-09', primary: 0.29, secondary: 1.57, tertiary: 2.74 },
+  { period: '2024-12', primary: 0.39, secondary: 1.81, tertiary: 3.20 },
+  { period: '2025-03', primary: 0.14, secondary: 2.06, tertiary: 3.20 },
+  { period: '2025-06', primary: 0.24, secondary: 1.78, tertiary: 3.18 },
+  { period: '2025-09', primary: 0.34, secondary: 1.50, tertiary: 2.97 },
+  { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 2.84 },
+  { period: '2026-03', primary: 0.13, secondary: 1.71, tertiary: 3.16 },
+];
+
 export const deflatorData: DeflatorDataPoint[] = [
   { period: '2023-03', primary: 2.1, secondary: -1.5, tertiary: 1.8 },
   { period: '2023-06', primary: 1.5, secondary: -2.2, tertiary: 1.2 },

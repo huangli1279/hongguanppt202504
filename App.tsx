@@ -1,37 +1,37 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CoverSlide } from './components/CoverSlide';
-import { ContentSlide03 } from './components/ContentSlide03';
-import { TableOfContentsSlide } from './components/TableOfContentsSlide';
-import { BaseSectionTransitionSlide } from './components/BaseSectionTransitionSlide';
-import { ContentSlide05 } from './components/ContentSlide05';
-import { ContentSlide06 } from './components/ContentSlide06';
-import { ContentSlide07 } from './components/ContentSlide07';
-import { ContentSlide08 } from './components/ContentSlide08';
-import { ContentSlide10 } from './components/ContentSlide10';
-import { ContentSlide11 } from './components/ContentSlide11';
-import { ContentSlide12 } from './components/ContentSlide12';
-import { ContentSlide13 } from './components/ContentSlide13';
-import { ContentSlide14 } from './components/ContentSlide14';
-import { ContentSlide16 } from './components/ContentSlide16';
-import { ContentSlide17 } from './components/ContentSlide17';
-import { ContentSlide18 } from './components/ContentSlide18';
-import { ContentSlide19 } from './components/ContentSlide19';
-import { ContentSlide21 } from './components/ContentSlide21';
-import { ContentSlide22 } from './components/ContentSlide22';
-import { ContentSlide23 } from './components/ContentSlide23';
-import { ContentSlide24 } from './components/ContentSlide24';
-import { ContentSlide26 } from './components/ContentSlide26';
-import { ContentSlide27 } from './components/ContentSlide27';
-import { ContentSlide28 } from './components/ContentSlide28';
-import { ContentSlide29 } from './components/ContentSlide29';
-import { ContentSlide31 } from './components/ContentSlide31';
-import { ContentSlide32 } from './components/ContentSlide32';
-import { ContentSlide34 } from './components/ContentSlide34';
-import { ContentSlide35 } from './components/ContentSlide35';
-import { ContentSlide36 } from './components/ContentSlide36';
-import { ContentSlide37 } from './components/ContentSlide37';
-import { ContentSlide38 } from './components/ContentSlide38';
-import { ThankYouSlide } from './components/ThankYouSlide';
+import { CoverSlide } from './components/layouts/CoverSlide';
+import { ContentSlide03 } from './components/slides/ContentSlide03';
+import { TableOfContentsSlide } from './components/layouts/TableOfContentsSlide';
+import { BaseSectionTransitionSlide } from './components/layouts/BaseSectionTransitionSlide';
+import { ContentSlide05 } from './components/slides/ContentSlide05';
+import { ContentSlide06 } from './components/slides/ContentSlide06';
+import { ContentSlide07 } from './components/slides/ContentSlide07';
+import { ContentSlide08 } from './components/slides/ContentSlide08';
+import { ContentSlide10 } from './components/slides/ContentSlide10';
+import { ContentSlide11 } from './components/slides/ContentSlide11';
+import { ContentSlide12 } from './components/slides/ContentSlide12';
+import { ContentSlide13 } from './components/slides/ContentSlide13';
+import { ContentSlide14 } from './components/slides/ContentSlide14';
+import { ContentSlide16 } from './components/slides/ContentSlide16';
+import { ContentSlide17 } from './components/slides/ContentSlide17';
+import { ContentSlide18 } from './components/slides/ContentSlide18';
+import { ContentSlide19 } from './components/slides/ContentSlide19';
+import { ContentSlide21 } from './components/slides/ContentSlide21';
+import { ContentSlide22 } from './components/slides/ContentSlide22';
+import { ContentSlide23 } from './components/slides/ContentSlide23';
+import { ContentSlide24 } from './components/slides/ContentSlide24';
+import { ContentSlide26 } from './components/slides/ContentSlide26';
+import { ContentSlide27 } from './components/slides/ContentSlide27';
+import { ContentSlide28 } from './components/slides/ContentSlide28';
+import { ContentSlide29 } from './components/slides/ContentSlide29';
+import { ContentSlide31 } from './components/slides/ContentSlide31';
+import { ContentSlide32 } from './components/slides/ContentSlide32';
+import { ContentSlide34 } from './components/slides/ContentSlide34';
+import { ContentSlide35 } from './components/slides/ContentSlide35';
+import { ContentSlide36 } from './components/slides/ContentSlide36';
+import { ContentSlide37 } from './components/slides/ContentSlide37';
+import { ContentSlide38 } from './components/slides/ContentSlide38';
+import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -86,7 +86,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-[#f0f0f0] relative overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen w-full bg-webank-grey relative overflow-hidden">
       <div 
         style={{
           width: '1280px',
@@ -138,7 +138,7 @@ const App: React.FC = () => {
         {currentSlide === 39 && <ThankYouSlide />}
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
-          <span className="font-serif text-webank-blue font-medium text-sm">
+          <span className="font-serif text-webank-blue font-medium text-meta">
             {String(currentSlide).padStart(2, '0')}
           </span>
         </div>
