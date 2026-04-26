@@ -52,21 +52,21 @@ export const ContentSlide27: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="产品结构极致分化：AI产业链现“量价齐升”，输入性通胀推高进口读数"
-      cardColumns={2}
+      title="出口结构分化：AI产业链“量价齐升”，高端装备制造高增长"
+      cardColumns={1}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+        <div className="mb-6 flex-shrink-0">
           <BaseCard delay="0ms" variant="accent" title="高附加值与科技产品强势领跑">
-            <p>
-              受全球AI产业爆发拉动，一季度机电产品表现极为亮眼。集成电路出口同比飙升<span className="text-red-500 font-semibold">77.5%</span>，呈现典型的“量价齐升”特征（数量同比<span className="text-red-500 font-semibold">+13.4%</span>）。汽车（<span className="text-red-500 font-semibold">+58.5%</span>）、船舶（<span className="text-red-500 font-semibold">+48.7%</span>）等高端装备制造维持超高增速；受油价影响，一季度新能源汽车出口数量增长<span className="text-red-500 font-semibold">120%</span>。
-            </p>
-          </BaseCard>
-          <BaseCard delay="120ms" title="高附加值脱敏地缘物流摩擦">
-            <p>
-              尽管红海等地缘冲突推升海运集装箱运价，但当前出口结构中高附加值产品占比持续提升，运费占货值比率极低，对运价敏感度较低；尽管霍尔木兹海峡停摆严重，但其海运贸易以原油、液化天然气等化学品为主，占总货运量仅约<span className="text-webank-blue font-semibold">3%</span>。
-            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                <span className="font-semibold">AI产业链：</span>集成电路出口同比飙升<span className="text-red-500 font-semibold">77.5%</span>，呈现“量价齐升”（数量<span className="text-red-500 font-semibold">+13.4%</span>）。
+              </li>
+              <li>
+                <span className="font-semibold">高端装备制造：</span>汽车<span className="text-red-500 font-semibold">+58.5%</span>、船舶<span className="text-red-500 font-semibold">+48.7%</span>维持超高增速；新能源汽车出口数量增长<span className="text-red-500 font-semibold">120%</span>。
+              </li>
+            </ul>
           </BaseCard>
         </div>
 

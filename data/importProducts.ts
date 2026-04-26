@@ -36,7 +36,9 @@ export interface ImportStatisticsData {
 export const importStatisticsData: ImportStatisticsData[] = [
   { product: '农产品*', decAmount: 15612.3, yearTotalAmount: 49293.6, yearQtyYoY: '-', yearAmountYoY: 11.0 },
   { product: '肉类 (包括杂碎)', decAmount: 2036.2, yearTotalAmount: 6679.8, yearQtyYoY: -3.5, yearAmountYoY: 11.3 },
+  { product: '矿产品*', decAmount: 10430.5, yearTotalAmount: 31694.3, yearQtyYoY: '-', yearAmountYoY: 11.3 },
   { product: '铁矿砂及其精矿', decAmount: 10430.5, yearTotalAmount: 31694.3, yearQtyYoY: 10.5, yearAmountYoY: 11.3 },
+  { product: '战略性资源*', decAmount: 279.0, yearTotalAmount: 698.3, yearQtyYoY: '-', yearAmountYoY: 167.5 },
   { product: '稀土', decAmount: 279.0, yearTotalAmount: 698.3, yearQtyYoY: 30.0, yearAmountYoY: 167.5 },
   { product: '机电产品*', decAmount: 108978.6, yearTotalAmount: 281021.7, yearQtyYoY: '-', yearAmountYoY: 24.9 },
   { product: '集成电路', decAmount: 49776.7, yearTotalAmount: 128007.7, yearQtyYoY: 11.0, yearAmountYoY: 45.0 },

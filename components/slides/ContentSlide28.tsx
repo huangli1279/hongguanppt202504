@@ -14,7 +14,7 @@ export const ContentSlide28: React.FC = () => {
       width: '35%',
       render: (val: string) => {
         const level1Items = ['肉类 (包括杂碎)', '铁矿砂及其精矿', '稀土', '集成电路'];
-        const boldItems = ['农产品*', '机电产品*', '高新技术产品*'];
+        const boldItems = ['农产品*', '矿产品*', '战略性资源*', '机电产品*', '高新技术产品*'];
 
         let padding = 'pl-0';
         if (level1Items.includes(val)) padding = 'pl-4';
@@ -29,7 +29,7 @@ export const ContentSlide28: React.FC = () => {
       title: '3月金额',
       align: 'right',
       render: (val: any, row: any) => {
-        const redItems = ['农产品*', '肉类 (包括杂碎)', '铁矿砂及其精矿', '稀土', '机电产品*', '集成电路', '高新技术产品*'];
+        const redItems = ['农产品*', '肉类 (包括杂碎)', '矿产品*', '铁矿砂及其精矿', '战略性资源*', '稀土', '机电产品*', '集成电路', '高新技术产品*'];
         const isRed = redItems.includes(row.product);
 
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
@@ -45,7 +45,7 @@ export const ContentSlide28: React.FC = () => {
       title: '1-3月累计金额',
       align: 'right',
       render: (val: any, row: any) => {
-        const redItems = ['农产品*', '肉类 (包括杂碎)', '铁矿砂及其精矿', '稀土', '机电产品*', '集成电路', '高新技术产品*'];
+        const redItems = ['农产品*', '肉类 (包括杂碎)', '矿产品*', '铁矿砂及其精矿', '战略性资源*', '稀土', '机电产品*', '集成电路', '高新技术产品*'];
         const isRed = redItems.includes(row.product);
 
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
@@ -64,19 +64,19 @@ export const ContentSlide28: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="进口端反映强烈的输入性通胀压力——AI需求拉动叠加大宗价格上行"
+      title="进口结构分化凸显，输入性通胀压力升温"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="AI产业链需求带动高新技术产品进口大增" delay="0ms" variant="accent">
+          <BaseCard title="结构性需求强劲，AI产业链拉动核心零部件进口大增" delay="0ms" variant="accent">
             <p>
-              一季度内部结构性需求强劲，AI产业链拉动自动数据处理设备进口同比大增<span className="text-red-500 font-semibold">49.5%</span>，集成电路累计同比<span className="text-red-500 font-semibold">45.0%</span>。机电产品（<span className="text-red-500 font-semibold">+24.9%</span>）与高新技术产品（<span className="text-red-500 font-semibold">+29.2%</span>）累计金额高速增长，凸显国内电子制造与AI算力产业对核心零部件的刚性需求与战略补库。
+              一季度自动数据处理设备进口同比增长<span className="text-red-500 font-semibold">49.5%</span>，集成电路进口同比增长<span className="text-red-500 font-semibold">45.0%</span>，机电产品（<span className="text-red-500 font-semibold">+24.9%</span>）与高新技术产品（<span className="text-red-500 font-semibold">+29.2%</span>）进口金额高速增长，凸显国内电子制造与AI算力产业对核心零部件的刚性需求与战略补库特征。
             </p>
           </BaseCard>
-          <BaseCard title="地缘冲突推升大宗价格，输入性通胀压力凸显" delay="120ms">
+          <BaseCard title="地缘冲突推升大宗商品价格，输入性通胀压力凸显" delay="120ms">
             <p>
-              中东地缘冲突推升国际原油、铜价，3月整体进口金额同比飙升至<span className="text-red-500 font-semibold">27.8%</span>。铁矿砂（数量<span className="text-red-500 font-semibold">+10.5%</span>，金额<span className="text-red-500 font-semibold">+11.3%</span>）量价齐升；稀土进口数量同比<span className="text-red-500 font-semibold">+30.0%</span>，金额同比飙升<span className="text-red-500 font-semibold">+167.5%</span>，反映战略性资源价格上涨与补库需求并存。
+              中东局势扰动推升原油、铜价，一季度整体进口金额同比增速上行；矿产品中铁矿砂（数量<span className="text-red-500 font-semibold">+10.5%</span>、金额<span className="text-red-500 font-semibold">+11.3%</span>）、战略性资源中稀土（数量<span className="text-red-500 font-semibold">+30.0%</span>、金额<span className="text-red-500 font-semibold">+167.5%</span>）等大宗商品呈现“量价齐升”特征，反映战略性资源价格上涨与补库需求并存。
             </p>
           </BaseCard>
         </div>
