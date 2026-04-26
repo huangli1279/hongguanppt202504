@@ -22,7 +22,7 @@ const industryColumns: ColumnConfig[] = [
     key: 'resource',
     title: '资源加工',
     children: [
-      { key: 'oilGas', title: '石油天然气', align: 'right' },
+      { key: 'oilGas', title: '油气开采', align: 'right' },
       { key: 'chemical', title: '化学原料', align: 'right' },
       { key: 'nonferrousMining', title: '有色矿采选', align: 'right' },
     ],
@@ -46,17 +46,17 @@ export const ContentSlide11: React.FC = () => {
         <>
           <BaseCard title="三大门类：制造业仍是主支撑" delay="0ms" variant="accent">
             <p>
-              一季度制造业累计同比<span className="font-bold">6.4%</span>，继续稳定支撑总体增长；
-              采矿业同比<span className="font-bold">6.0%</span>，规模以上工业增加值3月当月同比
+              3月制造业当月同比<span className="font-bold">6.0%</span>，继续稳定支撑总体增长；
+              采矿业同比<span className="font-bold">5.7%</span>，规模以上工业增加值3月当月同比
               <span className="font-bold">5.7%</span>。
             </p>
           </BaseCard>
 
           <BaseCard title="能源生产：政策需求带动抬升" delay="120ms">
             <p>
-              受“人工智能+”等政策对能源需求带动，电力、热力、燃气及水生产和供应业一季度同比升至
-              <span className="font-bold">4.3%</span>，其中1-2月<span className="font-bold">5.1%</span>、
-              3月<span className="font-bold">4.2%</span>。
+              受"人工智能+"等政策对能源需求带动，电力、热力、燃气及水生产和供应业3月当月同比升至
+              <span className="font-bold">4.2%</span>，其中1-2月累计<span className="font-bold">5.1%</span>、
+              3月当月<span className="font-bold">4.2%</span>。
             </p>
           </BaseCard>
 

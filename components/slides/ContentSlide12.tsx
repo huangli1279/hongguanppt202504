@@ -29,12 +29,9 @@ export const ContentSlide12: React.FC = () => {
       cardColumns={2}
       cards={
         <>
-          <BaseCard title="景气度重返扩张区间" delay="0ms" variant="accent">
+          <BaseCard title="景气度重返扩张区间（含明显季节性）" delay="0ms" variant="accent">
             <p>
-              3月份制造业PMI大幅回升
-              <span className="font-bold">1.4个百分点</span>至
-              <span className="font-bold">50.4%</span>，摆脱"史上最长春节"偏晚带来的员工返乡与停工扰动。大型企业PMI升至
-              <span className="font-bold">51.6%</span>，中型和小型企业分别反弹至49.0%、49.3%。
+              3月制造业PMI大幅回升<span className="font-bold">1.4个百分点</span>至<span className="font-bold">50.4%</span>。需注意此回升<span className="font-bold">具有明显春节季节性</span>——2024年2→3月PMI亦由49.1跃升至50.8，节后复工驱动特征显著。大型企业PMI升至<span className="font-bold">51.6%</span>，中、小型企业分别反弹至49.0%、49.3%。
             </p>
           </BaseCard>
 
@@ -73,26 +70,48 @@ export const ContentSlide12: React.FC = () => {
             />
           </ChartContainer>
           <ChartContainer delay="720ms">
-            <BaseLineChart
-              data={pmiChartData}
-              title="制造业PMI分类指标数据"
-              subtitle="数据来源：国家统计局 | 单位：指数"
-              lines={[
-                { dataKey: 'production', name: '生产', strokeWidth: 2.5, pointOffsets: { '2026-03': 12 } },
-                { dataKey: 'newOrders', name: '新订单', strokeWidth: 2.5, pointOffsets: { '2026-03': -12 } },
-                { dataKey: 'outputPrice', name: '出厂价格', pointOffsets: { '2026-03': 14 } },
-                { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', pointOffsets: { '2026-03': -8 } },
-              ]}
-              yAxisDomain={[42, 66]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={50}
-              legendOrder={['生产', '新订单', '出厂价格', '原材料购进价格']}
-              highlightPeriods={['2026-03']}
-              xAxisTickCount={6}
-              unit=""
-              yAxisTickFormatter={(val) => `${val}`}
-            />
+            <div className="flex flex-col gap-2 h-full">
+              <div className="flex-1 min-h-0">
+                <BaseLineChart
+                  data={pmiChartData}
+                  title="PMI产需指标：生产与新订单"
+                  subtitle="数据来源：国家统计局 | 单位：指数"
+                  lines={[
+                    { dataKey: 'production', name: '生产', strokeWidth: 2.5, pointOffsets: { '2026-03': 12 } },
+                    { dataKey: 'newOrders', name: '新订单', strokeWidth: 2.5, pointOffsets: { '2026-03': -12 } },
+                  ]}
+                  yAxisDomain={[48, 54]}
+                  showYAxis={true}
+                  showReferenceLine={true}
+                  referenceLineY={50}
+                  legendOrder={['生产', '新订单']}
+                  highlightPeriods={['2026-03']}
+                  xAxisTickCount={6}
+                  unit=""
+                  yAxisTickFormatter={(val) => `${val}`}
+                />
+              </div>
+              <div className="flex-1 min-h-0">
+                <BaseLineChart
+                  data={pmiChartData}
+                  title="PMI价格指标：原材料购进与出厂价格"
+                  subtitle="数据来源：国家统计局 | 单位：指数"
+                  lines={[
+                    { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', strokeWidth: 2.5, pointOffsets: { '2026-03': -8 } },
+                    { dataKey: 'outputPrice', name: '出厂价格', strokeWidth: 2.5, pointOffsets: { '2026-03': 14 } },
+                  ]}
+                  yAxisDomain={[42, 66]}
+                  showYAxis={true}
+                  showReferenceLine={true}
+                  referenceLineY={50}
+                  legendOrder={['原材料购进价格', '出厂价格']}
+                  highlightPeriods={['2026-03']}
+                  xAxisTickCount={6}
+                  unit=""
+                  yAxisTickFormatter={(val) => `${val}`}
+                />
+              </div>
+            </div>
           </ChartContainer>
         </>
       }

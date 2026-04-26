@@ -1,8 +1,21 @@
 import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
+import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { industrialMonthlyData, industrialCumulativeData } from '../../data';
+import { industrialCumulativeData } from '../../data';
+
+const capacityUtilizationData = [
+  { period: '2024Q1', utilization: 73.6 },
+  { period: '2024Q2', utilization: 74.9 },
+  { period: '2024Q3', utilization: 75.1 },
+  { period: '2024Q4', utilization: 76.2 },
+  { period: '2025Q1', utilization: 74.0 },
+  { period: '2025Q2', utilization: 74.0 },
+  { period: '2025Q3', utilization: 74.6 },
+  { period: '2025Q4', utilization: 76.5 },
+  { period: '2026Q1', utilization: 73.6 },
+];
 
 export const ContentSlide10: React.FC = () => {
   return (
@@ -32,33 +45,33 @@ export const ContentSlide10: React.FC = () => {
       charts={
         <>
           <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={industrialMonthlyData}
-              title="规上工业增加值当月同比走势"
+            <BaseBarChart
+              data={capacityUtilizationData}
+              title="规上工业产能利用率（季度）"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={[
-                { dataKey: 'industrialOutput', name: '规模以上工业增加值:当月同比', strokeWidth: 2.5 },
+              bars={[
+                { dataKey: 'utilization', name: '产能利用率' },
               ]}
-              yAxisDomain={[4, 8]}
+              xAxisKey="period"
+              yAxisDomain={[70, 78]}
               showYAxis={true}
-              legendOrder={['规模以上工业增加值:当月同比']}
-              highlightPeriods={['2026-03']}
-              xAxisTicks={['2024-03', '2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03']}
+              showLabels={true}
+              labelPosition="top"
+              unit="%"
             />
           </ChartContainer>
 
           <ChartContainer delay="720ms">
             <BaseLineChart
               data={industrialCumulativeData}
-              title="出口交货值与规上工业增加值累计同比"
+              title="规上工业企业出口交货值累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'exportDelivery', name: '出口交货值:累计同比', strokeWidth: 2.5 },
-                { dataKey: 'industrialOutput', name: '规模以上工业增加值:累计同比', strokeWidth: 2.5 },
               ]}
               yAxisDomain={[0, 8]}
               showYAxis={true}
-              legendOrder={['出口交货值:累计同比', '规模以上工业增加值:累计同比']}
+              legendOrder={['出口交货值:累计同比']}
               highlightPeriods={['2026-03']}
               xAxisTicks={['2024-03', '2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03']}
             />

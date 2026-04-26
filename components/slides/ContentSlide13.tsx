@@ -41,12 +41,23 @@ const columns: ColumnConfig[] = [
   { key: 'revenue', title: '营收', width: '90px', align: 'right' },
   { key: 'cost', title: '成本', width: '90px', align: 'right' },
   { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
-  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right', render: renderColoredCell },
-  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right', render: renderColoredCell },
+  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right' },
+  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
 ];
 
+const TOP_LEVEL_INDUSTRIES = new Set(['规模以上原材料制造业', '有色行业', '化工行业']);
+
+const renderIndustryCell = (value: any) => {
+  const isTopLevel = TOP_LEVEL_INDUSTRIES.has(value);
+  return (
+    <span className={isTopLevel ? 'font-semibold' : 'pl-4 text-slate-600'}>
+      {value}
+    </span>
+  );
+};
+
 const growthColumns: ColumnConfig[] = [
-  { key: 'industry', title: '行业', align: 'left' },
+  { key: 'industry', title: '行业', align: 'left', render: renderIndustryCell },
   { key: 'growth', title: '同比增长(%)', align: 'right', render: renderGrowthCell },
 ];
 
@@ -63,10 +74,7 @@ export const ContentSlide13: React.FC = () => {
                 1-2月工业企业利润累计同比增长<span className="font-bold text-red-500">15.2%</span>，同比多增<span className="font-bold text-red-500">1,354.8亿元</span>。
               </p>
               <p>
-                营收、成本分别同比增长<span className="font-bold text-red-500">5.3%</span>、<span className="font-bold text-red-500">5.0%</span>，营收-成本项多增<span className="font-bold text-red-500">2,043.8亿元</span>。
-              </p>
-              <p>
-                投资收益同比增长<span className="font-bold text-red-500">29.7%</span>，主要受低基数影响。
+                营收、成本分别同比增长<span className="font-bold text-red-500">5.3%</span>、<span className="font-bold text-red-500">5.0%</span>，"营收-成本"项多增<span className="font-bold text-red-500">2,043.8亿元</span>，是利润修复的核心来源。
               </p>
             </div>
           </BaseCard>
@@ -107,7 +115,7 @@ export const ContentSlide13: React.FC = () => {
               data={industryProfitGrowthData}
               columns={growthColumns}
               title="1-2月原材料制造业及细分行业利润同比增长"
-              subtitle="单位：%"
+              subtitle="规上原材料制造业为一级分类，下方有色、化工为其重点细分行业 | 单位：%"
               colorizeNumbers={false}
             />
           </ChartContainer>
