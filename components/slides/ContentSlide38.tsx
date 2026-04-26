@@ -15,9 +15,9 @@ const kpis = [
   { label: 'GDP', value: '+5.0%', tone: 'up' },
   { label: 'PMI', value: '50.4%', tone: 'up' },
   { label: 'PPI', value: '0.5%', tone: 'up' },
-  { label: 'CPI', value: '0.9%', tone: 'flat' },
-  { label: '固投', value: '+1.7%', tone: 'flat' },
-  { label: '社零', value: '+1.7%', tone: 'flat' },
+  { label: 'CPI', value: '0.9%', tone: 'up' },
+  { label: '固投', value: '+1.7%', tone: 'up' },
+  { label: '社零', value: '+1.7%', tone: 'up' },
   { label: '进口', value: '+22.7%', tone: 'up' },
   { label: '出口', value: '+14.7%', tone: 'up' },
   { label: 'M1-M2 剪刀差', value: '-3.4%', tone: 'down' },
@@ -43,7 +43,7 @@ type Block = {
 const blocks: Block[] = [
   {
     icon: Target,
-    title: 'GDP：开局良好',
+    title: 'GDP：总量达标、结构分化',
     iconColor: 'text-webank-lightBlue',
     items: [
       { label: '总量稳中有进', text: <>同比 <b className="text-webank-blue">+5.0%</b>，名义与实际 GDP 增速差显著收窄，"温差"改善</>, labelColor: 'text-webank-accent' },
@@ -52,7 +52,7 @@ const blocks: Block[] = [
   },
   {
     icon: Factory,
-    title: '生产端：景气回升',
+    title: '生产：景气回升、成本抬升',
     iconColor: 'text-webank-lightBlue',
     items: [
       { label: '工业稳健', text: '规上工业增加值 +6.1%，出口交货值 +7.1%，外需推动持续增强', labelColor: 'text-webank-accent' },
@@ -62,7 +62,7 @@ const blocks: Block[] = [
   },
   {
     icon: ShoppingBag,
-    title: '消费端：温和修复',
+    title: '消费：温和修复、政策拉动',
     iconColor: 'text-webank-lightBlue',
     items: [
       { label: '社零 +2.4%', text: '服务消费 +5.5% 快于商品消费 +2.2%', labelColor: 'text-webank-accent' },
@@ -72,7 +72,7 @@ const blocks: Block[] = [
   },
   {
     icon: TrendingUp,
-    title: '投资端：政策托底',
+    title: '投资：政策托底、新旧分化',
     iconColor: 'text-webank-lightBlue',
     items: [
       { label: '固投 +1.7%', text: <>基建 <b className="text-webank-blue">+8.9%</b> 绝对托底，"两重"建设推进</>, labelColor: 'text-webank-accent' },
