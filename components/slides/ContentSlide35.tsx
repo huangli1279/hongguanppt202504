@@ -62,7 +62,7 @@ export const ContentSlide35: React.FC = () => {
               showReferenceLine
               referenceLineY={0}
               barSize={14}
-              showLabels={false}
+              showLabels={true}
               unit="亿元"
               xAxisInterval={0}
             />
