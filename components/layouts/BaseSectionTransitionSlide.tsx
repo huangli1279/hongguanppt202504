@@ -3,10 +3,9 @@ import React from 'react';
 interface Props {
   id: string;
   title: string;
-  subtitle: string;
 }
 
-export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle }) => {
+export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title }) => {
   return (
     <div className="w-full h-full bg-webank-blue flex flex-col justify-center items-center relative overflow-hidden text-white">
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue animate-top-line" />
@@ -32,10 +31,6 @@ export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitl
         </h1>
 
         <div className="h-1 w-0 bg-webank-lightBlue mx-auto mb-8 animate-line-expand-center" />
-
-        <h2 className="text-h2 font-light text-slate-300 leading-normal animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          {subtitle}
-        </h2>
       </div>
 
       <div className="absolute bottom-8 left-12 text-webank-muted font-sans text-caption tracking-wider uppercase animate-fade-in" style={{ animationDelay: '1s' }}>

@@ -26,8 +26,8 @@ export const TableOfContentsSlide: React.FC = () => {
 
       <div className="grid grid-cols-2 gap-x-12 gap-y-6 flex-grow content-start">
         {contents.map((item, index) => (
-          <div 
-            key={item.id} 
+          <div
+            key={item.id}
             className="flex items-start gap-4 p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors duration-300 opacity-0 animate-fade-in-up fill-mode-forwards"
             style={{ animationDelay: `${index * 100}ms` }}
           >
@@ -47,7 +47,7 @@ export const TableOfContentsSlide: React.FC = () => {
 
        <footer className="absolute bottom-4 left-12 right-12 border-t border-slate-200 pt-2 flex justify-between text-caption text-slate-400">
         <span>个金管理部-数据管理室</span>
-        
+
       </footer>
 
       <style>{`
