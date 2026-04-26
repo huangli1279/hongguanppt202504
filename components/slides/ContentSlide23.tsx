@@ -50,17 +50,17 @@ export const ContentSlide23: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="出口与政策共同托底" delay="0ms" variant="accent">
             <p>
-              一季度制造业投资同比增长<span className="text-red-500 font-semibold">4.1%</span>，较1-2月加快1.0pct。出口超预期与前期稳增长政策显效，共同推动投资回暖。
+              一季度制造业投资同比增长<span className="text-red-500 font-semibold">4.1%</span>，较1-2月加快1.0个百分点。出口超预期与前期稳增长政策显效，共同推动投资回暖。
             </p>
           </BaseCard>
           <BaseCard title="设备更新保持高增" delay="120ms">
             <p>
-              “大规模设备更新”等“两新”政策优化实施、资金接续发力，设备工器具购置投资同比增长<span className="text-red-500 font-semibold">13.9%</span>，继续维持两位数增长。
+              “大规模设备更新”等“两新”政策优化实施、资金接续发力，设备工器具购置（指企业购入机器设备、生产工具与器具的投资）同比增长<span className="text-red-500 font-semibold">13.9%</span>，继续维持两位数增长。
             </p>
           </BaseCard>
           <BaseCard title="新旧动能分化加剧" delay="600ms">
             <p>
-              高技术制造业投资同比增长<span className="text-red-500 font-semibold">5.2%</span>，计算机及办公设备增长<span className="text-red-500 font-semibold">28.3%</span>；传统行业在“反内卷”约束下扩产意愿偏弱。
+              高技术制造业投资同比增长<span className="text-red-500 font-semibold">5.2%</span>，计算机及办公设备增长<span className="text-red-500 font-semibold">28.3%</span>，铁路船舶航空航天保持高景气；传统行业在“反内卷”约束下扩产意愿偏弱。
             </p>
           </BaseCard>
         </div>

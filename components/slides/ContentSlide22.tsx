@@ -33,8 +33,18 @@ export const ContentSlide22: React.FC = () => {
           align: 'right',
           render: (val) => <span className="text-red-500">{formatValue(val)}</span>
         },
-        { key: 'aviation', title: '航空运输', align: 'right' },
-        { key: 'waterTransport', title: '水上运输', align: 'right' },
+        {
+          key: 'aviation',
+          title: '航空运输',
+          align: 'right',
+          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
+        },
+        {
+          key: 'waterTransport',
+          title: '水上运输',
+          align: 'right',
+          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
+        },
         { key: 'loadingStorage', title: '装卸仓储', align: 'right' },
       ],
     },
@@ -82,7 +92,12 @@ export const ContentSlide22: React.FC = () => {
       title: '信息传输、软件和信息技术服务业',
       children: [
         { key: 'informationTotal', title: '合计', align: 'right' },
-        { key: 'telecom', title: '电信传输', align: 'right' },
+        {
+          key: 'telecom',
+          title: '电信传输',
+          align: 'right',
+          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
+        },
       ],
     },
   ];
@@ -100,14 +115,14 @@ export const ContentSlide22: React.FC = () => {
               在“十五五”开局及“两重”重大工程加快推进背景下，一季度基建投资同比增长<span className="font-semibold">8.9%</span>，在三大支柱中表现最为坚挺。
             </p>
           </BaseCard>
-          <BaseCard title="财政资金靠前发力" delay="120ms">
+          <BaseCard title="管道运输业领跑高增" delay="120ms">
             <p>
-              提前批项目清单、超长期特别国债、专项债券等资金相继下达，为基建投资提速提供保障，50亿元以上大项目增速达<span className="font-semibold">10.8%</span>。
+              管道运输业累计同比增长<span className="text-red-500 font-semibold">99.5%</span>，受益于“十五五”能源基建大年（油气“一张网”2030年建成）、国家管网集中开工（三条主管道同步开工）、天然气刚需，以及专项债、超长期特别国债、1000亿元促内需专项资金与管网自有资金的持续注入。
             </p>
           </BaseCard>
           <BaseCard title="交通与信息链条高增" delay="600ms">
             <p>
-              航空运输业增长<span className="font-semibold">43.3%</span>、水上运输业增长<span className="font-semibold">34.1%</span>，电信传输服务增长<span className="font-semibold">29.6%</span>，管道运输业仍维持<span className="font-semibold">99.5%</span>高增。
+              航空运输业增长<span className="text-red-500 font-semibold">43.3%</span>、水上运输业增长<span className="text-red-500 font-semibold">34.1%</span>，电信传输服务增长<span className="text-red-500 font-semibold">29.6%</span>，共同构成基建提速的主要支撑。
             </p>
           </BaseCard>
         </div>
