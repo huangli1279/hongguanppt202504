@@ -23,22 +23,26 @@ export const TableOfContentsSlide: React.FC = () => {
         <h1 className="text-4xl font-serif font-bold text-webank-blue">目录</h1>
       </header>
 
-      <div className="grid grid-cols-2 gap-x-12 gap-y-6 flex-grow content-start">
+      <div className="grid grid-cols-2 gap-x-10 gap-y-5 flex-grow content-start">
         {contents.map((item, index) => (
           <div
             key={item.id}
-            className="flex items-start gap-4 p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors duration-300 opacity-0 animate-fade-in-up fill-mode-forwards"
+            className="group flex items-center gap-5 px-5 py-5 border-b-2 border-slate-100 hover:border-webank-blue hover:bg-slate-50/60 transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className="text-2xl font-bold text-webank-lightBlue opacity-50 font-serif">
+            <div className="font-serif font-bold text-4xl text-webank-lightBlue/60 group-hover:text-webank-blue transition-colors duration-300 leading-none w-12 shrink-0">
               {item.id}
             </div>
-            <div className="flex-grow">
-              <div className="flex items-center gap-2 mb-1">
-                <item.icon size={16} className="text-webank-blue" />
-                <h3 className="text-lg font-bold text-webank-blue">{item.title}</h3>
-              </div>
+
+            <div className="w-px h-10 bg-slate-200 shrink-0" />
+
+            <div className="flex items-center justify-center w-11 h-11 rounded-md bg-webank-blue/[0.06] text-webank-blue group-hover:bg-webank-blue group-hover:text-white transition-colors duration-300 shrink-0">
+              <item.icon size={20} strokeWidth={1.8} />
             </div>
+
+            <h3 className="flex-grow text-lg font-bold text-webank-blue leading-snug">
+              {item.title}
+            </h3>
           </div>
         ))}
       </div>
