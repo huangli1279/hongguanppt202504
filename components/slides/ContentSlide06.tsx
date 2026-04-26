@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseBarChart } from '../base/BaseBarChart';
-import { industryColors } from '@/utils/chartColors';
+import { industryColors, chartColors } from '@/utils/chartColors';
 import {
   industryGdpValueRecentData as industryGdpValueData,
   industryGrowthByQuarterRecentData as industryGrowthData,
@@ -76,10 +76,10 @@ export const ContentSlide06: React.FC = () => {
               subtitle="数据来源: 国家统计局；单位: %"
               xAxisKey="industry"
               bars={[
-                { dataKey: '2025-06', name: '2025-06', color: industryColors.primary },
-                { dataKey: '2025-09', name: '2025-09', color: industryColors.secondary },
-                { dataKey: '2025-12', name: '2025-12', color: industryColors.tertiary },
-                { dataKey: '2026-03', name: '2026-03', color: '#10b981' },
+                { dataKey: '2025-06', name: '2025-06', color: chartColors.quaternary },
+                { dataKey: '2025-09', name: '2025-09', color: chartColors.tertiary },
+                { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
+                { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
               ]}
               legendOrder={['2025-06', '2025-09', '2025-12', '2026-03']}
               yAxisDomain={[0, 7]}

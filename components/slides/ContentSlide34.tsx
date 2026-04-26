@@ -3,6 +3,7 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
+import { chartColors } from '@/utils/chartColors';
 import {
   socialFinancingGrowthData,
   socialFinancingIncrementData,
@@ -59,8 +60,8 @@ export const ContentSlide34: React.FC = () => {
               subtitle="数据来源：中国人民银行 | 单位：亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'q24', name: '25Q1'},
-                { dataKey: 'q25', name: '26Q1'},
+                { dataKey: 'q24', name: '25Q1', color: chartColors.tertiary },
+                { dataKey: 'q25', name: '26Q1', color: chartColors.primary },
               ]}
               yAxisDomain={[-10000, 100000]}
               showYAxis={true}

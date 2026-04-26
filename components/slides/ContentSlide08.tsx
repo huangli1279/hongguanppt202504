@@ -2,6 +2,7 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseStackedBarChart } from '../base/BaseStackedBarChart';
+import { seriesColors } from '@/utils/chartColors';
 import { gdpContributionData } from '@/data/gdp';
 
 export const ContentSlide08: React.FC = () => {
@@ -49,9 +50,9 @@ export const ContentSlide08: React.FC = () => {
             title="三大需求对GDP增长的贡献率"
             subtitle="数据来源：国家统计局｜单位：%"
             bars={[
-              { dataKey: 'consumption', name: '最终消费支出'},
-              { dataKey: 'investment', name: '资本形成总额'},
-              { dataKey: 'netExport', name: '货物和服务净出口'},
+              { dataKey: 'consumption', name: '最终消费支出', color: seriesColors[1] },
+              { dataKey: 'investment', name: '资本形成总额', color: seriesColors[2] },
+              { dataKey: 'netExport', name: '货物和服务净出口', color: seriesColors[3] },
             ]}
             legendOrder={['最终消费支出', '资本形成总额', '货物和服务净出口']}
             barSize={28}

@@ -4,7 +4,7 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { loanStockData, loanIncrementData } from '@/data/loanData';
-import { getSeriesColor } from '@/utils/chartColors';
+import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide35: React.FC = () => {
   const highlightRows = loanStockData.reduce<number[]>((acc, item, index) => {
@@ -28,9 +28,9 @@ export const ContentSlide35: React.FC = () => {
   ];
 
   const incrementBars: BarConfig[] = [
-    { dataKey: 'q2024', name: '2024Q1', color: getSeriesColor(0) },
-    { dataKey: 'q2025', name: '2025Q1', color: getSeriesColor(1) },
-    { dataKey: 'q2026', name: '2026Q1', color: getSeriesColor(2) },
+    { dataKey: 'q2024', name: '2024Q1', color: chartColors.quaternary },
+    { dataKey: 'q2025', name: '2025Q1', color: chartColors.tertiary },
+    { dataKey: 'q2026', name: '2026Q1', color: chartColors.primary },
   ];
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { industryColors, chartColors } from '@/utils/chartColors';
 import { gdpGrowthRecentData as gdpGrowthData, deflatorRecentData as deflatorData } from '../../data';
 
 export const ContentSlide05: React.FC = () => {
@@ -60,10 +61,10 @@ export const ContentSlide05: React.FC = () => {
               referenceLineY={0}
               legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
               lines={[
-                { dataKey: 'primary', name: '第一产业', strokeWidth: 2, labelPosition: 'top' },
-                { dataKey: 'secondary', name: '第二产业', strokeWidth: 2, labelPosition: 'bottom' },
-                { dataKey: 'tertiary', name: '第三产业', strokeWidth: 2, labelPosition: 'top' },
-                { dataKey: 'overall', name: '整体', strokeWidth: 3, labelPosition: 'top' }
+                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, strokeWidth: 2, labelPosition: 'bottom' },
+                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top' },
+                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top' }
               ]}
             />
           </ChartContainer>

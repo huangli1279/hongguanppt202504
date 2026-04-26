@@ -3,6 +3,7 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseStackedBarChart } from '../base/BaseStackedBarChart';
+import { chartColors, seriesColors } from '@/utils/chartColors';
 import {
   nonBankFinQuarterlyData,
   householdDepositAnnualData,
@@ -44,9 +45,9 @@ export const ContentSlide37: React.FC = () => {
               title="居民存款及非银金融机构存款季度增量"
               subtitle="数据来源：中国人民银行 | 单位：万亿"
               bars={[
-                { dataKey: '2024Q1', name: '2024Q1' },
-                { dataKey: '2025Q1', name: '2025Q1' },
-                { dataKey: '2026Q1', name: '2026Q1' },
+                { dataKey: '2024Q1', name: '2024Q1', color: chartColors.quaternary },
+                { dataKey: '2025Q1', name: '2025Q1', color: chartColors.tertiary },
+                { dataKey: '2026Q1', name: '2026Q1', color: chartColors.primary },
               ]}
               showYAxis={true}
               yAxisDomain={[0, 10]}
@@ -76,8 +77,8 @@ export const ContentSlide37: React.FC = () => {
               title="住户存款年度增量（活期+定期及其他）"
               subtitle="数据来源：中国人民银行 | 单位：万亿"
               bars={[
-                { dataKey: 'demand', name: '住户存款:活期存款' },
-                { dataKey: 'timeAndOther', name: '住户存款:定期及其他存款' },
+                { dataKey: 'demand', name: '住户存款:活期存款', color: seriesColors[1] },
+                { dataKey: 'timeAndOther', name: '住户存款:定期及其他存款', color: seriesColors[2] },
               ]}
               showYAxis={true}
               yAxisDomain={[0, 22]}

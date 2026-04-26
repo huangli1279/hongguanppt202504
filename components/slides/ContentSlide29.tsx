@@ -3,6 +3,7 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { chartColors } from '@/utils/chartColors';
 import { exportRegionTrendData, exportCompositionData } from '@/data/exportRegion';
 
 export const ContentSlide29: React.FC = () => {
@@ -19,8 +20,8 @@ export const ContentSlide29: React.FC = () => {
 
   // 柱状图配置
   const bars: BarConfig[] = [
-    { dataKey: 'y2024', name: '25Q1'},
-    { dataKey: 'y2025', name: '26Q1'},
+    { dataKey: 'y2024', name: '25Q1', color: chartColors.tertiary },
+    { dataKey: 'y2025', name: '26Q1', color: chartColors.primary },
   ];
 
   return (
