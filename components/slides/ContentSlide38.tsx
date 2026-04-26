@@ -124,7 +124,7 @@ const blocks: Block[] = [
 
 export const ContentSlide38: React.FC = () => {
   return (
-    <BaseContentSlide title="2026 年一季度宏观经济总结" subtitle="一季度回顾">
+    <BaseContentSlide title="2026 年一季度宏观经济总结：复苏向好、分化加剧、压力犹存" subtitle="一季度回顾">
       <div className="flex flex-col h-full gap-3">
         {/* KPI 指标条 */}
         <div className="grid grid-cols-9 gap-2 flex-shrink-0">

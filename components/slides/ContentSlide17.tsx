@@ -11,20 +11,22 @@ export const ContentSlide17: React.FC = () => {
     {
       key: 'group-necessities',
       title: '必选消费',
+      highlight: true,
       children: [
-        { key: 'food', title: '粮油食品饮料烟酒', align: 'right' },
-        { key: 'daily', title: '日用品', align: 'right' },
-        { key: 'medicine', title: '中西药品', align: 'right' },
+        { key: 'food', title: '粮油食品饮料烟酒', align: 'right', highlight: true },
+        { key: 'daily', title: '日用品', align: 'right', highlight: true },
+        { key: 'medicine', title: '中西药品', align: 'right', highlight: true },
       ],
     },
     {
       key: 'group-discretionary',
       title: '可选消费',
+      highlight: true,
       children: [
-        { key: 'apparel', title: '服装鞋帽纺织', align: 'right' },
-        { key: 'jewelry', title: '金银珠宝', align: 'right' },
-        { key: 'sports', title: '体育娱乐', align: 'right' },
-        { key: 'cultureOffice', title: '文化办公', align: 'right' },
+        { key: 'apparel', title: '服装鞋帽纺织', align: 'right', highlight: true },
+        { key: 'jewelry', title: '金银珠宝', align: 'right', highlight: true },
+        { key: 'sports', title: '体育娱乐', align: 'right', highlight: true },
+        { key: 'cultureOffice', title: '文化办公', align: 'right', highlight: true },
       ],
     },
     {

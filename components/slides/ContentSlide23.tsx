@@ -30,7 +30,20 @@ export const ContentSlide23: React.FC = () => {
     { key: 'period', title: '月份', align: 'center' },
     { key: 'autoManufacturing', title: twoLineHeader('汽车', '制造'), align: 'right' },
     { key: 'chemicals', title: twoLineHeader('化学', '原料'), align: 'right' },
-    { key: 'highTechManufacturing', title: twoLineHeader('高技术', '制造'), align: 'right' },
+    {
+      key: 'highTechManufacturing',
+      title: <span className="text-red-500 leading-tight whitespace-nowrap">高技术<br/>制造</span>,
+      align: 'right',
+      highlight: true,
+      includeInStats: true,
+      render: (val: any, _row: any, _idx: number, defaultRender?: (v: any) => React.ReactNode) => {
+        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
+        const num = typeof val === 'number' ? val : parseFloat(val);
+        if (isNaN(num)) return defaultRender ? defaultRender(val) : val;
+        const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        return <span className="text-red-500 font-semibold">{formatted}</span>;
+      },
+    },
     { key: 'computerOffice', title: twoLineHeader('计算机', '办公'), align: 'right' },
     { key: 'railwayShipAerospace', title: twoLineHeader('铁路船舶', '航空航天'), align: 'right' },
     { key: 'nonferrousMetal', title: twoLineHeader('有色金属', '冶炼'), align: 'right' },

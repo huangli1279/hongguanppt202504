@@ -22,7 +22,7 @@ const industryColumns: ColumnConfig[] = [
     key: 'resource',
     title: '资源加工',
     children: [
-      { key: 'oilGas', title: '油气开采', align: 'right' },
+      { key: 'oilGas', title: '油气开采', align: 'right', highlight: true },
       { key: 'chemical', title: '化学原料', align: 'right' },
       { key: 'nonferrousMining', title: '有色矿采选', align: 'right' },
     ],

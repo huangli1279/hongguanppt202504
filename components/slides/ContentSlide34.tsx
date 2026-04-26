@@ -37,6 +37,7 @@ export const ContentSlide34: React.FC = () => {
               yAxisDomain={[7, 10]}
               showYAxis={true}
               xAxisTickCount={8}
+              highlightPeriods={['2026-02']}
             />
           </ChartContainer>
           <ChartContainer delay="600ms">
