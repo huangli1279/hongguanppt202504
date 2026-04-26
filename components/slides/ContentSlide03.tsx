@@ -56,25 +56,25 @@ export const ContentSlide03: React.FC = () => {
         </>
       }
     >
-      <div className="grid grid-cols-4 gap-4 h-full pb-6">
+      <div className="grid grid-cols-2 grid-rows-2 gap-5 h-full">
         {timelineColumns.map((column, index) => {
           const Icon = column.icon;
           return (
             <BaseCard
               key={`${column.period}-${column.title}`}
-              variant={index === 0 ? 'accent' : 'subtle'}
+              variant="subtle"
               animated
               className="h-full p-0 gap-0 overflow-hidden"
             >
               <div
-                className="flex items-center gap-2 px-4 py-3 border-b border-slate-200"
+                className="flex items-center gap-3 px-5 py-3.5 border-b border-slate-200/80 bg-gradient-to-r from-webank-accent/5 to-transparent"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-webank-accent/10 text-webank-accent shrink-0">
-                  <Icon size={16} />
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-webank-accent/10 text-webank-accent shrink-0">
+                  <Icon size={20} />
                 </div>
-                <div className="min-w-0">
-                  <div className="text-caption font-bold tracking-widest text-webank-accent uppercase">
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] font-bold tracking-[0.15em] text-webank-accent uppercase mb-0.5">
                     {column.period}
                   </div>
                   <h3 className="text-[15px] font-bold text-webank-blue leading-tight truncate">
@@ -83,14 +83,19 @@ export const ContentSlide03: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex-1 px-4 py-4 space-y-3">
+              <div className="flex-1 px-5 py-6 grid grid-cols-2 gap-x-4 gap-y-3 content-start">
                 {column.items.map((item) => (
-                  <div key={item.label} className="text-[12px] leading-relaxed text-webank-text">
-                    <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="w-1 h-1 rounded-full bg-webank-accent shrink-0" />
-                      <span className="font-bold text-webank-blue text-[12px]">{item.label}</span>
+                  <div
+                    key={item.label}
+                    className="flex gap-3 text-[12px] leading-relaxed text-webank-text"
+                  >
+                    <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-webank-accent shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <div className="font-bold text-webank-blue text-[12px] mb-0.5">
+                        {item.label}
+                      </div>
+                      <p className="text-slate-600 text-[12px] leading-snug">{item.text}</p>
                     </div>
-                    <p className="pl-3 text-slate-600">{item.text}</p>
                   </div>
                 ))}
               </div>
