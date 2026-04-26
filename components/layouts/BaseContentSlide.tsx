@@ -94,7 +94,7 @@ export const ChartContainer: React.FC<{
     role={ariaLabel ? 'img' : undefined}
     aria-label={ariaLabel}
     className={cn(
-      'h-full bg-white rounded-card shadow-chart border border-webank-line/60 animate-fade-in-up fill-mode-forwards',
+      'h-full bg-white animate-fade-in-up fill-mode-forwards',
       className
     )}
     style={{ animationDelay: delay }}
