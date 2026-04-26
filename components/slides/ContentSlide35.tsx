@@ -42,7 +42,7 @@ export const ContentSlide35: React.FC = () => {
         <div className="grid grid-cols-1 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="居民信贷疲软" delay="0ms" variant="accent">
             <p>
-              居民贷款同比少增<span className="font-bold text-webank-blue">7,468亿</span>，延续偏弱态势，消费贷增长弱于经营贷。居民贷款少增，与实体经济中房地产销售的低迷严密对应，居民购房加杠杆意愿尚未实质性恢复。
+              居民贷款同比少增<span className="font-bold text-webank-blue">7,468亿</span>，延续偏弱态势，消费贷增长弱于经营贷。<span className="font-bold text-webank-blue">消费贷的拖累主要来自房贷</span>（一季度个人住房贷款净减少约<span className="font-bold text-webank-blue">6,800亿</span>），非房消费贷仍保持正增长，与实体经济中房地产销售的低迷严密对应，居民购房加杠杆意愿尚未实质性恢复。
             </p>
           </BaseCard>
         </div>
