@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { industryColors, chartColors } from '@/utils/chartColors';
+import { chartColors } from '@/utils/chartColors';
 import { gdpGrowthRecentData as gdpGrowthData, deflatorRecentData as deflatorData } from '../../data';
 
 export const ContentSlide05: React.FC = () => {
@@ -26,7 +26,7 @@ export const ContentSlide05: React.FC = () => {
 
           <BaseCard title="名义与实际差距收窄" delay="120ms">
             <p>
-              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.9%</span>，较去年四季度 <span className="font-bold">3.9%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.6%</span>，整体已接近零值，企业盈利与微观体感的“温差”正在改善。
+              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.9%</span>，较去年四季度 <span className="font-bold">3.9%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.06%</span>，整体已基本回到零值附近，企业盈利与微观体感的“温差”正在改善。
             </p>
           </BaseCard>
         </>
@@ -59,11 +59,8 @@ export const ContentSlide05: React.FC = () => {
               xAxisTickCount={deflatorData.length}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
+              legendOrder={['整体']}
               lines={[
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'top' },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, strokeWidth: 2, labelPosition: 'bottom' },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top' },
                 { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top' }
               ]}
             />

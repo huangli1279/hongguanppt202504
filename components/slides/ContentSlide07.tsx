@@ -10,28 +10,28 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          装备制造业（+8.9%）和高技术制造业（+12.5%）同比增速保持显著快于整体，新旧动能分化
+          高技术制造（+12.5%）、装备制造（+8.9%）显著快于整体，新旧动能分化
         </>
       }
       cardColumns={3}
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="新质生产力强劲" delay="0ms" variant="accent">
+          <BaseCard title="新动能·高端制造领跑" delay="0ms" variant="accent">
             <p>
-              第三产业中，<span className="font-bold text-green-600">信息传输、软件和信息技术服务业</span>一季度同比增长<span className="text-green-600">10.6%</span>，<span className="font-bold text-green-600">租赁和商务服务业</span>增长<span className="text-green-600">12.2%</span>，保持接近或超过两位数增长。
+              工业内部新动能持续突破：<span className="font-bold text-green-600">高技术制造</span>一季度同比增长<span className="text-green-600">12.5%</span>，<span className="font-bold text-green-600">装备制造</span>增长<span className="text-green-600">8.9%</span>，均显著快于<span className="font-bold">工业</span>整体的<span className="font-bold">6.1%</span>和<span className="font-bold">制造业</span>的<span className="font-bold">6.3%</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="高端制造领跑" delay="120ms">
+          <BaseCard title="新动能·现代服务高景气" delay="120ms">
             <p>
-              一季度第二产业增加值同比增长<span className="font-bold">4.9%</span>，规上工业增加值增长<span className="font-bold">6.1%</span>；AI产业链和高端装备延续强势，3月电子设备制造业增长<span className="text-green-600">12.5%</span>，运输设备制造业增长<span className="text-green-600">13.3%</span>。
+              第三产业中代表新质生产力的现代服务业延续两位数增长：<span className="font-bold text-green-600">信息服务业</span>一季度同比增长<span className="text-green-600">10.6%</span>，<span className="font-bold text-green-600">租赁商务</span>增长<span className="text-green-600">12.2%</span>，构成服务业增长的核心引擎。
             </p>
           </BaseCard>
 
-          <BaseCard title="房地产建筑拖累" delay="600ms">
+          <BaseCard title="旧动能·地产建筑筑底" delay="600ms">
             <p>
-              房地产仍在周期底部运行，一季度全国房地产开发投资同比下降<span className="font-bold text-red-600">11.2%</span>，降幅较1-2月扩大0.1个百分点；供给端持续收缩，<span className="font-bold text-red-600">建筑业</span>增加值同比下降<span className="text-red-600">3.8%</span>。
+              传统动能仍在周期底部运行：<span className="font-bold text-red-600">建筑业</span>增加值同比下降<span className="text-red-600">3.8%</span>，降幅较去年四季度继续扩大；<span className="font-bold text-red-600">房地产业</span>同比下降<span className="text-red-600">0.1%</span>，全国房地产开发投资同比下降<span className="font-bold text-red-600">11.2%</span>，仍是经济的主要拖累项。
             </p>
           </BaseCard>
         </>

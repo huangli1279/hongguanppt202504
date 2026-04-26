@@ -38,13 +38,12 @@ export const ContentSlide06: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="第二产业强势回升" delay="120ms">
+          <BaseCard title="第二产业增速边际回升最为显著" delay="120ms">
             <p>
               第一、二、三产业分别同比增长
               <span className="font-bold">3.8%</span>、
               <span className="font-bold text-webank-accent">4.9%</span>、
-              <span className="font-bold">5.2%</span>。第二产业贡献率达
-              <span className="font-bold text-webank-accent">34.1%</span>，是推动一季度经济改善的主要力量。
+              <span className="font-bold">5.2%</span>。三产体量大、贡献率达<span className="font-bold">63.2%</span>持续托底；二产增速较去年四季度的<span className="font-bold">3.4%</span>回升<span className="font-bold text-webank-accent">1.5个百分点</span>，是本季GDP增速边际改善的主要拉动来源。
             </p>
           </BaseCard>
         </>
