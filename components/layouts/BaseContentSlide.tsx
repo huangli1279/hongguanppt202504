@@ -78,8 +78,8 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
  * 节奏：cards 0/120/240/360；charts 在 cards 之后 480/600/720。
  */
 export const stagger = {
-  cards:  ['0ms', '120ms', '240ms', '360ms'] as const,
-  charts: ['480ms', '600ms', '720ms', '840ms'] as const,
+  cards:  ['0ms', '0ms', '0ms', '0ms'] as const,
+  charts: ['0ms', '0ms', '0ms', '0ms'] as const,
 };
 
 /** 图表容器 — delay 真正生效，统一卡片风格 */
@@ -97,7 +97,7 @@ export const ChartContainer: React.FC<{
       'h-full bg-white animate-fade-in-up fill-mode-forwards',
       className
     )}
-    style={{ animationDelay: delay }}
+    style={{ animationDelay: '0ms' }}
   >
     {children}
   </div>
