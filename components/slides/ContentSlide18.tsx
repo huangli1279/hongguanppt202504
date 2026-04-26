@@ -71,7 +71,7 @@ export const ContentSlide18: React.FC = () => {
               title="CPI分项当月同比数据"
               subtitle="数据来源：国家统计局 | 单位：%"
               dateColumn="period"
-              colorizeNumbers={false}
+              colorizeNumbers={true}
             />
           </ChartContainer>
         </div>

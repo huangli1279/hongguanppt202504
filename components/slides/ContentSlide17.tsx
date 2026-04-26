@@ -4,43 +4,38 @@ import { BaseCard } from '../base/BaseCard';
 import { retailCategoryDetailData as retailCategoryData } from '../../data';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
 
-const numberCell = (value: any) => {
-  const formatted = typeof value === 'number' ? value.toFixed(1) : value;
-  return <span>{formatted}</span>;
-};
-
 export const ContentSlide17: React.FC = () => {
   const columns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
-    { key: 'total', title: '限额以上零售总额', align: 'right', render: numberCell },
+    { key: 'total', title: '限额以上零售总额', align: 'right' },
     {
       key: 'group-necessities',
       title: '必选消费',
       children: [
-        { key: 'food', title: '粮油食品饮料烟酒', align: 'right', render: numberCell },
-        { key: 'daily', title: '日用品', align: 'right', render: numberCell },
-        { key: 'medicine', title: '中西药品', align: 'right', render: numberCell },
+        { key: 'food', title: '粮油食品饮料烟酒', align: 'right' },
+        { key: 'daily', title: '日用品', align: 'right' },
+        { key: 'medicine', title: '中西药品', align: 'right' },
       ],
     },
     {
       key: 'group-discretionary',
       title: '可选消费',
       children: [
-        { key: 'apparel', title: '服装鞋帽纺织', align: 'right', render: numberCell },
-        { key: 'jewelry', title: '金银珠宝', align: 'right', render: numberCell },
-        { key: 'sports', title: '体育娱乐', align: 'right', render: numberCell },
-        { key: 'cultureOffice', title: '文化办公', align: 'right', render: numberCell },
+        { key: 'apparel', title: '服装鞋帽纺织', align: 'right' },
+        { key: 'jewelry', title: '金银珠宝', align: 'right' },
+        { key: 'sports', title: '体育娱乐', align: 'right' },
+        { key: 'cultureOffice', title: '文化办公', align: 'right' },
       ],
     },
     {
       key: 'group-trade-in',
       title: '以旧换新及地产链',
       children: [
-        { key: 'communication', title: '通讯器材', align: 'right', render: numberCell },
-        { key: 'appliances', title: '家电音像', align: 'right', render: numberCell },
-        { key: 'automobile', title: '汽车', align: 'right', render: numberCell },
-        { key: 'furniture', title: '家具', align: 'right', render: numberCell },
-        { key: 'buildingMaterials', title: '建筑装潢', align: 'right', render: numberCell },
+        { key: 'communication', title: '通讯器材', align: 'right' },
+        { key: 'appliances', title: '家电音像', align: 'right' },
+        { key: 'automobile', title: '汽车', align: 'right' },
+        { key: 'furniture', title: '家具', align: 'right' },
+        { key: 'buildingMaterials', title: '建筑装潢', align: 'right' },
       ],
     },
   ];
@@ -71,7 +66,7 @@ export const ContentSlide17: React.FC = () => {
             data={retailCategoryData}
             columns={columns}
             dateColumn="period"
-            colorizeNumbers={false}
+            colorizeNumbers={true}
             rowHeight="auto"
             cellClassName="px-1.5 text-caption leading-tight"
             headerCellClassName="px-1.5 text-caption leading-tight"

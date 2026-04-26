@@ -15,7 +15,7 @@ export const ContentSlide16: React.FC = () => {
         <>
           <BaseCard title="总量温和修复" delay="0ms" variant="accent">
             <p>
-              2026年1季度，社会消费品零售总额达到<span className="font-bold text-webank-blue">12.8万亿元</span>，同比增长<span className="font-bold text-webank-blue">2.4%</span>。其中3月单月受春节后需求季节性回落影响，增速放缓至<span className="font-bold text-webank-blue">1.7%</span>。
+              2026年1季度社零累计同比<span className="font-bold text-webank-blue">2.4%</span>（总额<span className="font-bold text-webank-blue">12.8万亿元</span>）。从当月同比看，1-2月维持<span className="font-bold text-webank-blue">4.0%</span>左右，3月受春节后季节性回落影响放缓至<span className="font-bold text-webank-blue">1.7%</span>。
             </p>
           </BaseCard>
           <BaseCard title="服务消费仍是核心驱动" delay="120ms">

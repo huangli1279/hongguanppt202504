@@ -17,9 +17,6 @@ export const ContentSlide19: React.FC = () => {
   const incomeLineConfigs: LineConfig[] = [
     { dataKey: 'incomeReal', name: '可支配收入', strokeWidth: 2.5 },
     { dataKey: 'consumptionReal', name: '消费支出', strokeWidth: 2 },
-    { dataKey: 'wageIncome', name: '工资性收入', strokeWidth: 1.5 },
-    { dataKey: 'operatingIncome', name: '经营净收入', strokeWidth: 1.5 },
-    { dataKey: 'propertyIncome', name: '财产净收入', strokeWidth: 1.5 },
   ];
 
   return (
@@ -81,7 +78,7 @@ export const ContentSlide19: React.FC = () => {
               lines={incomeLineConfigs}
               yAxisDomain={[0, 10]}
               showYAxis={true}
-              legendOrder={['可支配收入', '消费支出', '工资性收入', '经营净收入', '财产净收入']}
+              legendOrder={['可支配收入', '消费支出']}
               xAxisTickCount={8}
             />
           </ChartContainer>
