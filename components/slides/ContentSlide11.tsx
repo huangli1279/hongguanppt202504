@@ -80,11 +80,12 @@ export const ContentSlide11: React.FC = () => {
               showYAxis
               xAxisTickCount={7}
               highlightPeriods={['2026-03']}
+              legendOrder={['规上工业', '制造业', '采矿业', '电热燃水']}
               lines={[
-                { dataKey: 'industrial', name: '规上工业', color: seriesColors[1], strokeWidth: 2.4 },
-                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[0], strokeWidth: 2.4, labelDY: -8 },
-                { dataKey: 'mining', name: '采矿业', color: seriesColors[3], labelDY: 12 },
-                { dataKey: 'utilities', name: '电热燃水', color: seriesColors[2], labelDY: -8 },
+                { dataKey: 'industrial', name: '规上工业', color: seriesColors[0], strokeWidth: 2.4 },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2.4, labelDY: -8 },
+                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], labelDY: 12 },
+                { dataKey: 'utilities', name: '电热燃水', color: seriesColors[3], labelDY: -8 },
               ]}
             />
           </ChartContainer>
