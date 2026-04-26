@@ -26,11 +26,19 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
   headerClassName,
   children,
 }) => {
-  const cardGridClass = { 2: 'grid-cols-2', 3: 'grid-cols-3', 4: 'grid-cols-4' }[cardColumns];
-  const chartGridClass = { 1: 'grid-cols-1', 2: 'grid-cols-2', 3: 'grid-cols-3' }[chartColumns];
+  const cardGridClass = {
+    2: 'grid-cols-1 sm:grid-cols-2',
+    3: 'grid-cols-1 sm:grid-cols-3',
+    4: 'grid-cols-1 sm:grid-cols-4',
+  }[cardColumns];
+  const chartGridClass = {
+    1: 'grid-cols-1',
+    2: 'grid-cols-1 sm:grid-cols-2',
+    3: 'grid-cols-1 sm:grid-cols-3',
+  }[chartColumns];
 
   return (
-    <div className={cn('w-full h-full bg-white flex flex-col p-12 overflow-hidden relative', className)}>
+    <div className={cn('w-full h-full bg-white flex flex-col p-6 sm:p-12 overflow-hidden relative', className)}>
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue animate-top-line" />
 
       <header className={cn('mb-6 animate-fade-in', headerClassName)}>
@@ -51,12 +59,12 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
       ) : (
         <>
           {cards && (
-            <section className={cn('grid gap-4 mb-6', cardGridClass)}>
+            <section className={cn('grid gap-3 sm:gap-4 mb-4 sm:mb-6', cardGridClass)}>
               {cards}
             </section>
           )}
           {charts && (
-            <section className={cn('flex-1 grid gap-6 min-h-0', chartGridClass)}>
+            <section className={cn('flex-1 grid gap-4 sm:gap-6 min-h-0', chartGridClass)}>
               {charts}
             </section>
           )}
@@ -64,7 +72,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
       )}
 
       {footer && (
-        <footer className="absolute bottom-4 left-12 right-12 border-t border-webank-line pt-2 flex justify-between text-caption text-webank-subtext">
+        <footer className="absolute bottom-4 left-6 right-6 sm:left-12 sm:right-12 border-t border-webank-line pt-2 flex justify-between text-caption text-webank-subtext">
           <span>{footer}</span>
         </footer>
       )}

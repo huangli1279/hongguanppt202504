@@ -28,7 +28,11 @@ export const KpiGrid: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ columns = 3, children, className }) => {
-  const colClass = { 2: 'grid-cols-2', 3: 'grid-cols-3', 4: 'grid-cols-4' }[columns];
+  const colClass = {
+    2: 'grid-cols-1 sm:grid-cols-2',
+    3: 'grid-cols-1 sm:grid-cols-3',
+    4: 'grid-cols-1 sm:grid-cols-4',
+  }[columns];
   return <div className={cn('grid gap-4', colClass, className)}>{children}</div>;
 };
 
@@ -59,6 +63,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
 
   return (
     <div
+      data-base-card="true"
       className={cn(
         'flex flex-col gap-2 p-4 rounded-card shadow-card transition-all duration-700 ease-out',
         variantStyles[variant],

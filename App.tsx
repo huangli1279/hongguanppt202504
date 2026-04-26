@@ -1,59 +1,113 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CoverSlide } from './components/layouts/CoverSlide';
-import { ContentSlide03 } from './components/slides/ContentSlide03';
 import { TableOfContentsSlide } from './components/layouts/TableOfContentsSlide';
 import { BaseSectionTransitionSlide } from './components/layouts/BaseSectionTransitionSlide';
-import { ContentSlide05 } from './components/slides/ContentSlide05';
-import { ContentSlide06 } from './components/slides/ContentSlide06';
-import { ContentSlide07 } from './components/slides/ContentSlide07';
-import { ContentSlide08 } from './components/slides/ContentSlide08';
-import { ContentSlide10 } from './components/slides/ContentSlide10';
-import { ContentSlide11 } from './components/slides/ContentSlide11';
-import { ContentSlide12 } from './components/slides/ContentSlide12';
-import { ContentSlide13 } from './components/slides/ContentSlide13';
-import { ContentSlide14 } from './components/slides/ContentSlide14';
-import { ContentSlide16 } from './components/slides/ContentSlide16';
-import { ContentSlide17 } from './components/slides/ContentSlide17';
-import { ContentSlide18 } from './components/slides/ContentSlide18';
-import { ContentSlide19 } from './components/slides/ContentSlide19';
-import { ContentSlide21 } from './components/slides/ContentSlide21';
-import { ContentSlide22 } from './components/slides/ContentSlide22';
-import { ContentSlide23 } from './components/slides/ContentSlide23';
-import { ContentSlide24 } from './components/slides/ContentSlide24';
-import { ContentSlide26 } from './components/slides/ContentSlide26';
-import { ContentSlide27 } from './components/slides/ContentSlide27';
-import { ContentSlide28 } from './components/slides/ContentSlide28';
-import { ContentSlide29 } from './components/slides/ContentSlide29';
-import { ContentSlide31 } from './components/slides/ContentSlide31';
-import { ContentSlide32 } from './components/slides/ContentSlide32';
-import { ContentSlide34 } from './components/slides/ContentSlide34';
-import { ContentSlide35 } from './components/slides/ContentSlide35';
-import { ContentSlide36 } from './components/slides/ContentSlide36';
-import { ContentSlide37 } from './components/slides/ContentSlide37';
-import { ContentSlide38 } from './components/slides/ContentSlide38';
 import { ThankYouSlide } from './components/layouts/ThankYouSlide';
+
+const SLIDE_WIDTH = 1280;
+const SLIDE_HEIGHT = 720;
+const TOTAL_SLIDES = 39;
+const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
+const MOBILE_STAGE_GAP = 12;
+const MOBILE_CONTROLS_SPACE = 96;
+
+const lazyNamed = <T extends React.ComponentType<any>>(
+  importer: () => Promise<Record<string, T>>,
+  exportName: string
+) => lazy(async () => ({ default: (await importer())[exportName] }));
+
+const ContentSlide03 = lazyNamed(() => import('./components/slides/ContentSlide03'), 'ContentSlide03');
+const ContentSlide05 = lazyNamed(() => import('./components/slides/ContentSlide05'), 'ContentSlide05');
+const ContentSlide06 = lazyNamed(() => import('./components/slides/ContentSlide06'), 'ContentSlide06');
+const ContentSlide07 = lazyNamed(() => import('./components/slides/ContentSlide07'), 'ContentSlide07');
+const ContentSlide08 = lazyNamed(() => import('./components/slides/ContentSlide08'), 'ContentSlide08');
+const ContentSlide10 = lazyNamed(() => import('./components/slides/ContentSlide10'), 'ContentSlide10');
+const ContentSlide11 = lazyNamed(() => import('./components/slides/ContentSlide11'), 'ContentSlide11');
+const ContentSlide12 = lazyNamed(() => import('./components/slides/ContentSlide12'), 'ContentSlide12');
+const ContentSlide13 = lazyNamed(() => import('./components/slides/ContentSlide13'), 'ContentSlide13');
+const ContentSlide14 = lazyNamed(() => import('./components/slides/ContentSlide14'), 'ContentSlide14');
+const ContentSlide16 = lazyNamed(() => import('./components/slides/ContentSlide16'), 'ContentSlide16');
+const ContentSlide17 = lazyNamed(() => import('./components/slides/ContentSlide17'), 'ContentSlide17');
+const ContentSlide18 = lazyNamed(() => import('./components/slides/ContentSlide18'), 'ContentSlide18');
+const ContentSlide19 = lazyNamed(() => import('./components/slides/ContentSlide19'), 'ContentSlide19');
+const ContentSlide21 = lazyNamed(() => import('./components/slides/ContentSlide21'), 'ContentSlide21');
+const ContentSlide22 = lazyNamed(() => import('./components/slides/ContentSlide22'), 'ContentSlide22');
+const ContentSlide23 = lazyNamed(() => import('./components/slides/ContentSlide23'), 'ContentSlide23');
+const ContentSlide24 = lazyNamed(() => import('./components/slides/ContentSlide24'), 'ContentSlide24');
+const ContentSlide26 = lazyNamed(() => import('./components/slides/ContentSlide26'), 'ContentSlide26');
+const ContentSlide27 = lazyNamed(() => import('./components/slides/ContentSlide27'), 'ContentSlide27');
+const ContentSlide28 = lazyNamed(() => import('./components/slides/ContentSlide28'), 'ContentSlide28');
+const ContentSlide29 = lazyNamed(() => import('./components/slides/ContentSlide29'), 'ContentSlide29');
+const ContentSlide31 = lazyNamed(() => import('./components/slides/ContentSlide31'), 'ContentSlide31');
+const ContentSlide32 = lazyNamed(() => import('./components/slides/ContentSlide32'), 'ContentSlide32');
+const ContentSlide34 = lazyNamed(() => import('./components/slides/ContentSlide34'), 'ContentSlide34');
+const ContentSlide35 = lazyNamed(() => import('./components/slides/ContentSlide35'), 'ContentSlide35');
+const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
+const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
+const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
+  const [viewportHeight, setViewportHeight] = useState(() =>
+    typeof window === 'undefined' ? SLIDE_HEIGHT : window.innerHeight
+  );
+  const [stageSize, setStageSize] = useState({ width: SLIDE_WIDTH, height: SLIDE_HEIGHT });
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window === 'undefined' ? false : window.matchMedia(MOBILE_QUERY).matches
+  );
   const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
-  const TOTAL_SLIDES = 39;
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
-  const handleResize = () => {
-    const targetWidth = 1280;
-    const targetHeight = 720;
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const scaleX = windowWidth / targetWidth;
-    const scaleY = windowHeight / targetHeight;
-    const newScale = Math.min(scaleX, scaleY) * 0.95;
-    setScale(newScale);
-  };
+  const goToNextSlide = useCallback(() => {
+    setCurrentSlide(prev => (prev < TOTAL_SLIDES ? prev + 1 : 1));
+  }, []);
+
+  const goToPrevSlide = useCallback(() => {
+    setCurrentSlide(prev => (prev > 1 ? prev - 1 : TOTAL_SLIDES));
+  }, []);
+
+  const handleResize = useCallback(() => {
+    const visualViewport = window.visualViewport;
+    const windowWidth = visualViewport?.width ?? window.innerWidth;
+    const windowHeight = visualViewport?.height ?? window.innerHeight;
+    const nextIsMobile = window.matchMedia(MOBILE_QUERY).matches;
+
+    if (nextIsMobile) {
+      const width = Math.max(320, Math.floor(windowWidth - MOBILE_STAGE_GAP * 2));
+      const height = Math.max(480, Math.floor(windowHeight - MOBILE_STAGE_GAP * 2 - MOBILE_CONTROLS_SPACE));
+      setStageSize({ width, height });
+      setScale(1);
+    } else {
+      const stagePadding = 32;
+      const scaleX = (windowWidth - stagePadding * 2) / SLIDE_WIDTH;
+      const scaleY = (windowHeight - stagePadding * 2) / SLIDE_HEIGHT;
+      setStageSize({ width: SLIDE_WIDTH, height: SLIDE_HEIGHT });
+      setScale(Math.max(0.1, Math.min(scaleX, scaleY)));
+    }
+
+    setIsMobile(nextIsMobile);
+    setViewportHeight(windowHeight);
+    document.documentElement.style.setProperty('--app-height', `${windowHeight}px`);
+  }, []);
 
   useEffect(() => {
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.visualViewport?.addEventListener('resize', handleResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.visualViewport?.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_QUERY);
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+    updateIsMobile();
+    mediaQuery.addEventListener('change', updateIsMobile);
+    return () => mediaQuery.removeEventListener('change', updateIsMobile);
   }, []);
 
   useEffect(() => {
@@ -61,81 +115,115 @@ const App: React.FC = () => {
       if (isThrottled.current) return;
       if (Math.abs(e.deltaY) > 20) {
         if (e.deltaY > 0) {
-          setCurrentSlide(prev => (prev < TOTAL_SLIDES ? prev + 1 : 1));
+          goToNextSlide();
         } else {
-          setCurrentSlide(prev => (prev > 1 ? prev - 1 : TOTAL_SLIDES));
+          goToPrevSlide();
         }
         isThrottled.current = true;
         setTimeout(() => { isThrottled.current = false; }, 1000);
       }
     };
-    window.addEventListener('wheel', handleWheel);
+    window.addEventListener('wheel', handleWheel, { passive: true });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, []);
+  }, [goToNextSlide, goToPrevSlide]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-        setCurrentSlide(prev => (prev < TOTAL_SLIDES ? prev + 1 : 1));
+        goToNextSlide();
       } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-        setCurrentSlide(prev => (prev > 1 ? prev - 1 : TOTAL_SLIDES));
+        goToPrevSlide();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [goToNextSlide, goToPrevSlide]);
+
+  const activeSlide = useMemo(() => {
+    switch (currentSlide) {
+      case 1: return <CoverSlide />;
+      case 2: return <TableOfContentsSlide />;
+      case 3: return <ContentSlide03 />;
+      case 4: return <BaseSectionTransitionSlide id="02" title="GDP 分析" />;
+      case 5: return <ContentSlide05 />;
+      case 6: return <ContentSlide06 />;
+      case 7: return <ContentSlide07 />;
+      case 8: return <ContentSlide08 />;
+      case 9: return <BaseSectionTransitionSlide id="03" title="生产端分析" />;
+      case 10: return <ContentSlide10 />;
+      case 11: return <ContentSlide11 />;
+      case 12: return <ContentSlide12 />;
+      case 13: return <ContentSlide13 />;
+      case 14: return <ContentSlide14 />;
+      case 15: return <BaseSectionTransitionSlide id="04" title="消费分析" />;
+      case 16: return <ContentSlide16 />;
+      case 17: return <ContentSlide17 />;
+      case 18: return <ContentSlide18 />;
+      case 19: return <ContentSlide19 />;
+      case 20: return <BaseSectionTransitionSlide id="05" title="投资分析" />;
+      case 21: return <ContentSlide21 />;
+      case 22: return <ContentSlide22 />;
+      case 23: return <ContentSlide23 />;
+      case 24: return <ContentSlide24 />;
+      case 25: return <BaseSectionTransitionSlide id="06" title="进出口分析" />;
+      case 26: return <ContentSlide26 />;
+      case 27: return <ContentSlide27 />;
+      case 28: return <ContentSlide28 />;
+      case 29: return <ContentSlide29 />;
+      case 30: return <BaseSectionTransitionSlide id="07" title="财政分析" />;
+      case 31: return <ContentSlide31 />;
+      case 32: return <ContentSlide32 />;
+      case 33: return <BaseSectionTransitionSlide id="08" title="金融数据分析" />;
+      case 34: return <ContentSlide34 />;
+      case 35: return <ContentSlide35 />;
+      case 36: return <ContentSlide36 />;
+      case 37: return <ContentSlide37 />;
+      case 38: return <ContentSlide38 />;
+      case 39: return <ThankYouSlide />;
+      default: return <CoverSlide />;
+    }
+  }, [currentSlide]);
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    touchStart.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchStart.current) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStart.current.x;
+    const deltaY = touch.clientY - touchStart.current.y;
+    touchStart.current = null;
+
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+    if (deltaX < 0) {
+      goToNextSlide();
+    } else {
+      goToPrevSlide();
+    }
+  };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-webank-grey relative overflow-hidden">
+    <div
+      className={`presentation-shell flex w-full bg-webank-grey relative overflow-hidden ${isMobile ? 'presentation-shell-mobile items-start justify-center' : 'items-center justify-center'}`}
+      style={{ minHeight: viewportHeight }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div 
         style={{
-          width: '1280px',
-          height: '720px',
+          width: `${stageSize.width}px`,
+          height: `${stageSize.height}px`,
           transform: `scale(${scale})`,
           transformOrigin: 'center center',
           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
         }}
-        className="relative bg-white overflow-hidden shadow-2xl transition-all duration-500"
+        className={`relative bg-white overflow-hidden shadow-2xl transition-all duration-500 ${isMobile ? 'mobile-slide-stage' : ''}`}
       >
-        {currentSlide === 1 && <CoverSlide />}
-        {currentSlide === 2 && <TableOfContentsSlide />}
-        {currentSlide === 3 && <ContentSlide03 />}
-        {currentSlide === 4 && <BaseSectionTransitionSlide id="02" title="GDP 分析" />}
-        {currentSlide === 5 && <ContentSlide05 />}
-        {currentSlide === 6 && <ContentSlide06 />}
-        {currentSlide === 7 && <ContentSlide07 />}
-        {currentSlide === 8 && <ContentSlide08 />}
-        {currentSlide === 9 && <BaseSectionTransitionSlide id="03" title="生产端分析" />}
-        {currentSlide === 10 && <ContentSlide10 />}
-        {currentSlide === 11 && <ContentSlide11 />}
-        {currentSlide === 12 && <ContentSlide12 />}
-        {currentSlide === 13 && <ContentSlide13 />}
-        {currentSlide === 14 && <ContentSlide14 />}
-        {currentSlide === 15 && <BaseSectionTransitionSlide id="04" title="消费分析" />}
-        {currentSlide === 16 && <ContentSlide16 />}
-        {currentSlide === 17 && <ContentSlide17 />}
-        {currentSlide === 18 && <ContentSlide18 />}
-        {currentSlide === 19 && <ContentSlide19 />}
-        {currentSlide === 20 && <BaseSectionTransitionSlide id="05" title="投资分析" />}
-        {currentSlide === 21 && <ContentSlide21 />}
-        {currentSlide === 22 && <ContentSlide22 />}
-        {currentSlide === 23 && <ContentSlide23 />}
-        {currentSlide === 24 && <ContentSlide24 />}
-        {currentSlide === 25 && <BaseSectionTransitionSlide id="06" title="进出口分析" />}
-        {currentSlide === 26 && <ContentSlide26 />}
-        {currentSlide === 27 && <ContentSlide27 />}
-        {currentSlide === 28 && <ContentSlide28 />}
-        {currentSlide === 29 && <ContentSlide29 />}
-        {currentSlide === 30 && <BaseSectionTransitionSlide id="07" title="财政分析" />}
-        {currentSlide === 31 && <ContentSlide31 />}
-        {currentSlide === 32 && <ContentSlide32 />}
-        {currentSlide === 33 && <BaseSectionTransitionSlide id="08" title="金融数据分析" />}
-        {currentSlide === 34 && <ContentSlide34 />}
-        {currentSlide === 35 && <ContentSlide35 />}
-        {currentSlide === 36 && <ContentSlide36 />}
-        {currentSlide === 37 && <ContentSlide37 />}
-        {currentSlide === 38 && <ContentSlide38 />}
-        {currentSlide === 39 && <ThankYouSlide />}
+        <Suspense fallback={<div className="w-full h-full bg-white" />}>
+          {activeSlide}
+        </Suspense>
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
           <span className="font-serif text-webank-blue font-medium text-meta">
@@ -144,7 +232,17 @@ const App: React.FC = () => {
         </div>
       </div>
 
-
+      {isMobile && (
+        <nav className="mobile-controls" aria-label="幻灯片导航">
+          <button type="button" onClick={goToPrevSlide} aria-label="上一页">
+            <ChevronLeft size={22} />
+          </button>
+          <span>{currentSlide}/{TOTAL_SLIDES}</span>
+          <button type="button" onClick={goToNextSlide} aria-label="下一页">
+            <ChevronRight size={22} />
+          </button>
+        </nav>
+      )}
     </div>
   );
 };

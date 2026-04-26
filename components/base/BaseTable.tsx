@@ -288,7 +288,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
             )}
           </div>
         )}
-        <div className="flex-1 flex flex-col min-h-0 text-xs">
+        <div className="flex-1 flex flex-col min-h-0 overflow-x-auto text-xs">
           {/* Header */}
           {isGrouped ? (
             // 二级表头模式 - 使用 Grid 布局确保对齐
@@ -457,7 +457,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
       <div className="flex-1 overflow-auto">
         <table
           className={cn(
-            `w-full border-collapse ${rowHeight === 'dense' ? 'text-caption' : 'text-xs'} ${bordered ? 'border border-slate-200' : ''}`,
+            `w-full min-w-[720px] sm:min-w-0 border-collapse ${rowHeight === 'dense' ? 'text-caption' : 'text-xs'} ${bordered ? 'border border-slate-200' : ''}`,
             tableClassName
           )}
           style={{ tableLayout: 'fixed' }}
