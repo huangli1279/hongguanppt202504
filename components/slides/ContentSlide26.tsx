@@ -28,13 +28,13 @@ export const ContentSlide26: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="进出口超预期强势开局" delay="0ms" variant="accent">
             <ul className="list-disc pl-5 space-y-1">
-              <li>出口<span className="text-webank-blue font-semibold">9775亿美元</span>，同比<span className="text-green-600 font-semibold">+14.7%</span></li>
-              <li>进口<span className="text-webank-blue font-semibold">7132亿美元</span>，同比<span className="text-green-600 font-semibold">+22.7%</span></li>
+              <li>出口<span className="text-webank-blue font-semibold">9775亿美元</span>，同比<span className="text-red-500 font-semibold">+14.7%</span></li>
+              <li>进口<span className="text-webank-blue font-semibold">7132亿美元</span>，同比<span className="text-red-500 font-semibold">+22.7%</span></li>
             </ul>
           </BaseCard>
           <BaseCard title="贸易顺差同比下降" delay="120ms">
             <p>
-              一季度贸易顺差<span className="text-webank-blue font-semibold">2643亿美元</span>，同比<span className="text-red-500 font-semibold">-2.5%</span>；进口增速显著高于出口，反映内需修复与战略性补库带动的进口扩张。
+              一季度贸易顺差<span className="text-webank-blue font-semibold">2643亿美元</span>，同比<span className="text-green-600 font-semibold">-2.5%</span>；进口增速显著高于出口，反映内需修复与战略性补库带动的进口扩张。
             </p>
           </BaseCard>
           <BaseCard title="“春节错位”致同比波动，政策影响显著" delay="600ms">

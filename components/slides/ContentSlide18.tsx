@@ -42,7 +42,7 @@ export const ContentSlide18: React.FC = () => {
           </BaseCard>
           <BaseCard title="分项表现" delay="600ms">
             <p>
-              节后出行和人工服务需求自然降温，3月生活用品及服务CPI回落至 <span className="text-emerald-600 font-semibold">1.5%</span>。油价上行推升交通工具用燃料价格，带动CPI"交通通信"分项由负转正（通信价格基本稳定，转正主要由交通拉动）；医疗保健与其他用品和服务延续较高增速。
+              节后出行和人工服务需求自然降温，3月生活用品及服务CPI回落至 <span className="text-emerald-600 font-semibold">1.5%</span>。受全球油价上涨影响，交通与通信3月由负转正（0.9%）；其他用品和服务主要含金银首饰、住宿等，受金价及春节影响延续较高增速。
             </p>
           </BaseCard>
         </div>

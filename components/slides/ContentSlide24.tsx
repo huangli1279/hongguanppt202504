@@ -9,7 +9,6 @@ export const ContentSlide24: React.FC = () => {
     { dataKey: 'realEstateInvestment', name: '开发投资', strokeWidth: 2.5, labelDY: -8 },
     { dataKey: 'newConstruction', name: '新开工', strokeWidth: 2, labelDY: 8 },
     { dataKey: 'salesArea', name: '销售面积', strokeWidth: 2, labelDY: -8 },
-    { dataKey: 'personalMortgage', name: '按揭贷款', strokeWidth: 2, labelDY: 8 },
   ];
 
   const priceYoyLineConfigs: LineConfig[] = [
@@ -33,8 +32,7 @@ export const ContentSlide24: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="核心拖累项仍在筑底阶段" delay="0ms" variant="accent">
             <p>
-              一季度，全国房地产开发投资<span className="text-red-500 font-semibold">17720亿元</span>，同比下降
-              <span className="text-red-500 font-semibold">11.2%</span>，降幅比1-2月份扩大0.1个百分点。地产投资仍深陷两位数负增长区间，是拖累固定资产投资与内需的主要短板。
+              一季度，全国房地产开发投资<span className="text-red-500 font-semibold">17720亿元</span>，同比<span className="text-green-500 font-semibold">下降11.2%</span>，降幅比1-2月份扩大0.1个百分点。地产投资仍深陷两位数负增长区间，是拖累固定资产投资与内需的主要短板。
             </p>
           </BaseCard>
           <BaseCard title="供需双弱，房价指数维持下行" delay="120ms">
@@ -51,7 +49,7 @@ export const ContentSlide24: React.FC = () => {
               title="房地产投资累计同比数据"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={investmentLineConfigs}
-              yAxisDomain={[-45, 5]}
+              yAxisDomain={[-30, 5]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
