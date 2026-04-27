@@ -21,44 +21,50 @@ export const ContentSlide27: React.FC = () => {
         );
       }
     },
-    { key: 'decAmount', title: '3月金额', align: 'right' },
+    {
+      key: 'decAmount',
+      title: '3月金额',
+      align: 'right',
+      render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+    },
     {
       key: 'totalAmount',
       title: '1-3月累计金额',
       align: 'right',
       includeInStats: true,
-      render: (value, row: ExportTableItem, index, defaultRender) => {
-        const redRows = ['农产品*', '机电产品*', '高新技术产品*'];
-        if (redRows.includes(row.name)) {
-          const formatted = typeof value === 'number'
-            ? value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
-            : value;
-          return <span className="text-red-500 font-normal">{formatted}</span>;
-        }
-
-        if (row.name === '集成电路' && defaultRender) {
-          return defaultRender(value);
-        }
-
-        const formatted = typeof value === 'number'
-          ? value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
-          : value;
-        return <span className="text-black">{formatted}</span>;
+      render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
       }
     },
-    { key: 'yoy12Qty', title: '1-3月数量累计同比', align: 'right', redThreshold: 10 },
-    { key: 'yoy12Amt', title: '1-3月金额累计同比', align: 'right', redThreshold: 10 }
+    { key: 'yoy12Qty', title: '1-3月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '成品油') {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      return defaultRender?.(val);
+    }},
+    { key: 'yoy12Amt', title: '1-3月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '成品油') {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      return defaultRender?.(val);
+    }}
   ];
 
   return (
     <BaseContentSlide
-      title="出口结构分化：AI产业链“量价齐升”，高端装备制造高增长"
+      title="出口延续攀升：AI产业链“量价齐升”，高端装备制造高增长"
       cardColumns={1}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="mb-6 flex-shrink-0">
-          <BaseCard delay="0ms" variant="accent" title="高附加值与科技产品强势领跑">
+          <BaseCard delay="0ms" variant="accent" title="一季度高附加值与科技产品强势领跑">
             <ul className="list-disc pl-5 space-y-1">
               <li>
                 <span className="font-semibold">AI产业链：</span>集成电路出口同比飙升<span className="text-red-500 font-semibold">77.5%</span>，呈现“量价齐升”（数量<span className="text-red-500 font-semibold">+13.4%</span>）。
