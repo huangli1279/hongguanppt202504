@@ -45,7 +45,7 @@ const columns: ColumnConfig[] = [
   { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
 ];
 
-const TOP_LEVEL_INDUSTRIES = new Set(['规模以上原材料制造业', '有色行业', '化工行业']);
+const TOP_LEVEL_INDUSTRIES = new Set(['原材料制造业']);
 
 const renderIndustryCell = (value: any) => {
   const isTopLevel = TOP_LEVEL_INDUSTRIES.has(value);
@@ -71,23 +71,17 @@ export const ContentSlide13: React.FC = () => {
           <BaseCard title="利润显著修复，营收-成本贡献主增量" delay="0ms" variant="accent">
             <div className="space-y-2">
               <p>
-                1-2月工业企业利润累计同比增长<span className="font-bold text-red-500">15.2%</span>，同比多增<span className="font-bold text-red-500">1,354.8亿元</span>。
+                工业企业利润一季度累计同比增长<span className="font-bold text-red-500">15.5%</span>，营收、成本分别同比增长<span className="font-bold text-red-500">5.0%</span>、<span className="font-bold text-red-500">4.5%</span>。
               </p>
               <p>
-                营收、成本分别同比增长<span className="font-bold text-red-500">5.3%</span>、<span className="font-bold text-red-500">5.0%</span>，"营收-成本"项多增<span className="font-bold text-red-500">2,043.8亿元</span>，是利润修复的核心来源。
+                "营收-成本"项贡献了主要增长部分，受益于价格上涨。
               </p>
             </div>
           </BaseCard>
-          <BaseCard title="新动能与战争利好原材料制造业" delay="120ms">
+          <BaseCard title="新动能战争利好AI及原材料制造" delay="120ms">
             <div className="space-y-2">
               <p>
-                新动能产业与美伊战争带动原材料制造业利润同比增长<span className="font-bold text-red-500">88.3%</span>。
-              </p>
-              <p>
-                有色行业增长<span className="font-bold text-red-500">148.2%</span>，合金制造增长<span className="font-bold text-red-500">205.1%</span>。
-              </p>
-              <p>
-                化工行业增长<span className="font-bold text-red-500">35.9%</span>，无机盐、无机酸制造高增。
+                一季度在新动能快速发展、美伊战争的带动下，计算机通信制造业同比增长<span className="font-bold text-red-500">124.5%</span>，人工智能带动光纤制造增长<span className="font-bold text-red-500">336.8%</span>；原材料制造业利润同比增长<span className="font-bold text-red-500">77.9%</span>，其中有色冶炼加工行业利润增长<span className="font-bold text-red-500">116.7%</span>，有色采矿业增长<span className="font-bold text-red-500">95.6%</span>。
               </p>
             </div>
           </BaseCard>

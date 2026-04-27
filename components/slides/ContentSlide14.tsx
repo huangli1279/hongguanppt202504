@@ -60,7 +60,7 @@ export const ContentSlide14: React.FC = () => {
 
           <BaseCard title="AI拉动电子链条" delay="160ms">
             <p>
-              3月外存储部件、光纤制造同比分别上涨<span className="font-bold">21.1%</span>和<span className="font-bold">76.1%</span>，AI算力需求带动相关设备价格抬升。
+              一季度外存储部件、光纤制造同比分别上涨<span className="font-bold">20.3%</span>和<span className="font-bold">32.4%</span>，AI算力需求带动相关设备价格抬升。
             </p>
           </BaseCard>
 
@@ -93,7 +93,7 @@ export const ContentSlide14: React.FC = () => {
               <BaseTable
                 data={ppiIndustryMomData}
                 columns={industryMomColumns}
-                title="PPI及主要行业环比数据"
+                title="PPI主要行业环比及Q1同比数据"
                 subtitle="单位：%"
                 dateColumn="period"
                 rowHeight="auto"

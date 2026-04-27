@@ -25,6 +25,7 @@ export const industrialProfitData: IndustrialProfitDataPoint[] = [
   { time: '2511', totalProfit: -1011.7, revenue: -11.6, cost: 294.3, revenueMinusCost: -305.9, expenses: 262.1, investmentIncome: -341.8 },
   { time: '2512', totalProfit: 391.5, revenue: -4067.7, cost: -3460.8, revenueMinusCost: -606.9, expenses: 151.6, investmentIncome: 542.3 },
   { time: '2602', totalProfit: 1354.8, revenue: 10404.8, cost: 8361, revenueMinusCost: 2043.8, expenses: 678.4, investmentIncome: 185.5 },
+  { time: '2603', totalProfit: 921.3, revenue: 5400.6, cost: 3777.6, revenueMinusCost: 1623.0, expenses: null, investmentIncome: null },
 ];
 
 export interface IndustryProfitGrowthDataPoint {
@@ -33,11 +34,9 @@ export interface IndustryProfitGrowthDataPoint {
 }
 
 export const industryProfitGrowthData: IndustryProfitGrowthDataPoint[] = [
-  { industry: '规模以上原材料制造业', growth: 88.3 },
-  { industry: '有色行业', growth: 148.2 },
-  { industry: '有色金属合金制造', growth: 205.1 },
-  { industry: '铜压延加工', growth: 50.8 },
-  { industry: '化工行业', growth: 35.9 },
-  { industry: '无机盐制造', growth: 518.5 },
-  { industry: '无机酸制造', growth: 306.3 },
+  { industry: '计算机通信制造和其他电子设备制造业', growth: 124.5 },
+  { industry: '光纤制造业', growth: 336.8 },
+  { industry: '原材料制造业', growth: 77.9 },
+  { industry: '有色冶炼加工业', growth: 116.7 },
+  { industry: '有色采矿业', growth: 95.6 }
 ];
