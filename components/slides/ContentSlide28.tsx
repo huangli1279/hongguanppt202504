@@ -6,6 +6,10 @@ import { importStatisticsData } from '@/data/importProducts';
 import { cn } from '@/utils/cn';
 
 export const ContentSlide28: React.FC = () => {
+  const filteredData = importStatisticsData.filter((item: any) =>
+    !['农产品*', '矿产品*', '战略性资源*'].includes(item.product)
+  );
+
   const columns: ColumnConfig[] = [
     {
       key: 'product',
@@ -13,7 +17,7 @@ export const ContentSlide28: React.FC = () => {
       align: 'left',
       width: '35%',
       render: (val: string) => {
-        const level1Items = ['肉类 (包括杂碎)', '铁矿砂及其精矿', '稀土', '集成电路'];
+        const level1Items = ['肉类', '铁矿砂及其精矿', '稀土', '集成电路'];
         const boldItems = ['农产品*', '矿产品*', '战略性资源*', '机电产品*', '高新技术产品*'];
 
         let padding = 'pl-0';
@@ -28,26 +32,20 @@ export const ContentSlide28: React.FC = () => {
       key: 'decAmount',
       title: '3月金额',
       align: 'right',
-      render: (val: any, row: any) => {
-        const redItems = ['农产品*', '肉类 (包括杂碎)', '矿产品*', '铁矿砂及其精矿', '战略性资源*', '稀土', '机电产品*', '集成电路', '高新技术产品*'];
-        const isRed = redItems.includes(row.product);
-
+      render: (val: any) => {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
         const formatted = val.toLocaleString('en-US', {
           minimumFractionDigits: 1,
           maximumFractionDigits: 1
         });
-        return <span className={isRed ? "text-red-500" : "text-black"}>{formatted}</span>;
+        return <span className="text-black">{formatted}</span>;
       }
     },
     {
       key: 'yearTotalAmount',
       title: '1-3月累计金额',
       align: 'right',
-      render: (val: any, row: any) => {
-        const redItems = ['农产品*', '肉类 (包括杂碎)', '矿产品*', '铁矿砂及其精矿', '战略性资源*', '稀土', '机电产品*', '集成电路', '高新技术产品*'];
-        const isRed = redItems.includes(row.product);
-
+      render: (val: any) => {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
 
         const formatted = val.toLocaleString('en-US', {
@@ -55,11 +53,17 @@ export const ContentSlide28: React.FC = () => {
           maximumFractionDigits: 1
         });
 
-        return <span className={isRed ? "text-red-500" : "text-black"}>{formatted}</span>;
+        return <span className="text-black">{formatted}</span>;
       }
     },
-    { key: 'yearQtyYoY', title: '1-3月数量累计同比', align: 'right' },
-    { key: 'yearAmountYoY', title: '1-3月金额累计同比', align: 'right' },
+    { key: 'yearQtyYoY', title: '1-3月数量累计同比', align: 'right', render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className={val >= 0 ? "text-black" : "text-green-500"}>{val}%</span>;
+      } },
+    { key: 'yearAmountYoY', title: '1-3月金额累计同比', align: 'right', render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-red-500">{val}%</span>;
+      } },
   ];
 
   return (
@@ -83,7 +87,7 @@ export const ContentSlide28: React.FC = () => {
 
         <ChartContainer delay="600ms" className="flex-1 min-h-0">
           <BaseTable
-            data={importStatisticsData}
+            data={filteredData}
             columns={columns}
             title="2026年3月全国进口重点商品量值表"
             subtitle="数据来源：海关总署 | 金额单位：百万美元，同比：%"
