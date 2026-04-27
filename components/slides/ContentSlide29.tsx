@@ -37,9 +37,9 @@ export const ContentSlide29: React.FC = () => {
               一季度对美出口降幅持续，1月同比<span className="text-green-600 font-semibold">-23.0%</span>，3月<span className="text-green-600 font-semibold">-26.5%</span>，较去年底<span className="text-green-600 font-semibold">-30.0%</span>虽有收窄；出口份额由去年的13.5%降至约<span className="text-green-600 font-semibold">9.9%</span>，<span className="font-semibold">下降3.6个百分点</span>，收缩显著。
             </p>
           </BaseCard>
-          <BaseCard title="“南方国家”工业化红利加速释放" delay="120ms">
+          <BaseCard title="非美地区出口保持强劲" delay="120ms">
             <p>
-              一季度我国对新兴市场出口高增长：2月对非<span className="text-red-500 font-semibold">+97.5%</span>、东盟<span className="text-red-500 font-semibold">+38.8%</span>、拉美<span className="text-red-500 font-semibold">+44.1%</span>。东盟、非洲、拉美合并出口占比提升<span className="text-red-500 font-semibold">1.3个百分点</span>，<span className="font-semibold">部分对冲</span>对美下降。
+              一季度我国对新兴市场出口高增长：2月对非<span className="text-red-500 font-semibold">+97.5%</span>、东盟<span className="text-red-500 font-semibold">+38.8%</span>、拉美<span className="text-red-500 font-semibold">+44.1%</span>。东盟、非洲、欧盟合并出口占比提升<span className="text-red-500 font-semibold">2.5个百分点</span>，<span className="font-semibold">部分对冲</span>对美下降。
               <br />
               后续高油价加速海外绿色转型，有望进一步打开新能源汽车、锂电及电力设备的出口空间。
             </p>
