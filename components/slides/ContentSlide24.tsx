@@ -16,10 +16,13 @@ export const ContentSlide24: React.FC = () => {
     { dataKey: 'secondHandPrice', name: '二手住房价格指数同比', strokeWidth: 2, labelDY: 8 },
   ];
 
-  const priceMomLineConfigs: LineConfig[] = [
+  const priceMomFirstTierConfigs: LineConfig[] = [
     { dataKey: 'firstTierNew', name: '一线新房', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'secondTierNew', name: '二线新房', strokeWidth: 2, labelDY: 8 },
-    { dataKey: 'firstTierUsed', name: '一线二手房', strokeWidth: 2, labelDY: -8 },
+    { dataKey: 'firstTierUsed', name: '一线二手房', strokeWidth: 2, labelDY: 8 },
+  ];
+
+  const priceMomSecondTierConfigs: LineConfig[] = [
+    { dataKey: 'secondTierNew', name: '二线新房', strokeWidth: 2.5, labelDY: -8 },
     { dataKey: 'secondTierUsed', name: '二线二手房', strokeWidth: 2, labelDY: 8 },
   ];
 
@@ -73,20 +76,36 @@ export const ContentSlide24: React.FC = () => {
             />
           </ChartContainer>
 
-          <ChartContainer delay="720ms">
-            <BaseLineChart
-              data={housePriceMomData}
-              title="一线/二线城市住宅价格指数（环比）"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={priceMomLineConfigs}
-              yAxisDomain={[-1.4, 0.6]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['一线新房', '二线新房', '一线二手房', '二线二手房']}
-              xAxisTickCount={5}
-            />
-          </ChartContainer>
+          <div className="flex flex-col gap-5">
+            <ChartContainer delay="720ms">
+              <BaseLineChart
+                data={housePriceMomData}
+                title="一线城市住宅价格指数（环比）"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={priceMomFirstTierConfigs}
+                yAxisDomain={[-1.4, 0.6]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['一线新房', '一线二手房']}
+                xAxisTickCount={5}
+              />
+            </ChartContainer>
+            <ChartContainer delay="720ms">
+              <BaseLineChart
+                data={housePriceMomData}
+                title="二线城市住宅价格指数（环比）"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={priceMomSecondTierConfigs}
+                yAxisDomain={[-1.4, 0.6]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['二线新房', '二线二手房']}
+                xAxisTickCount={5}
+              />
+            </ChartContainer>
+          </div>
         </div>
       </div>
     </BaseContentSlide>
