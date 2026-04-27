@@ -93,9 +93,9 @@ export const ContentSlide37: React.FC = () => {
           <ChartContainer delay="840ms">
             <BaseBarChart
               data={maturityDepositData}
-              title="一年内到期存款规模"
+              title="一年内到期定期存款规模"
               subtitle="数据来源：wind，银行年报（39家样本，存款占市场83%-85%）| 单位：万亿"
-              bars={[{ dataKey: 'value', name: '一年内到期存款' }]}
+              bars={[{ dataKey: 'value', name: '一年内到期定期存款' }]}
               showYAxis={true}
               yAxisDomain={[50, 90]}
               unit="万亿"

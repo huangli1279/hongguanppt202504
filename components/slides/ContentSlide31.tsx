@@ -18,7 +18,7 @@ export const ContentSlide31: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>一季度一般公共预算收入增2.4%，高于过去3年同期水平，税收及非税收入均增长</>}
+      title={<>一般公共预算收入增2.4%，高于过去3年同期水平，税收及非税收入均增长</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -26,12 +26,12 @@ export const ContentSlide31: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="税收/非税收入均增" delay="0ms" variant="accent">
             <p>
-              一季度，全国一般公共预算收入 6.16 万亿元，同比增长（<span className="text-red-500 font-semibold">+2.4%</span>），高于过去3年同期水平。主要宏观指标增速回升，价格出现积极变化，货物进出口快速增长，为财政收入增长提供了有力支撑。
+              一季度，全国一般公共预算收入 6.16 万亿元，同比增长<span className="text-red-500 font-semibold">2.4%</span>，高于过去3年同期水平。主要宏观指标增速回升，价格出现积极变化，货物进出口快速增长，为财政收入增长提供了有力支撑。
             </p>
           </BaseCard>
           <BaseCard title="多数税种保持增长" delay="120ms">
             <p>
-              全国税收收入 4.85 万亿元，同比增长（<span className="text-red-500 font-semibold">+2.2%</span>），增幅比前2个月提高2.1个百分点；国内增值税增长 <span className="text-red-500 font-semibold">+4.9%</span>，进口环节增值税、消费税增长 <span className="text-red-500 font-semibold">+12.9%</span>，证券交易印花税大幅增长 <span className="text-red-500 font-semibold">+78.1%</span>；非税收入 1.31 万亿元，同比增长 <span className="text-red-500 font-semibold">+2.9%</span>。
+              全国税收收入 4.85 万亿元，同比增长<span className="text-red-500 font-semibold">2.2%</span>，增幅比前2个月提高2.1个百分点；国内增值税增长 <span className="text-red-500 font-semibold">4.9%</span>，进口环节增值税、消费税增长 <span className="text-red-500 font-semibold">12.9%</span>，证券交易印花税大幅增长 <span className="text-red-500 font-semibold">78.1%</span>；非税收入 1.31 万亿元，同比增长 <span className="text-red-500 font-semibold">2.9%</span>。
             </p>
           </BaseCard>
         </div>

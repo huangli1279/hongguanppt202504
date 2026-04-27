@@ -26,8 +26,8 @@ const renderAmount = (value: any) => {
 };
 
 const fundsColumns: ColumnConfig[] = [
-  { key: 'item', title: '项目', align: 'left', width: '36%' },
   { key: 'ledger', title: '账本', align: 'left', width: '28%' },
+  { key: 'item', title: '项目', align: 'left', width: '36%' },
   { key: 'y2025', title: '2025', align: 'right', width: '10%', render: renderAmount },
   { key: 'y2026', title: '2026', align: 'right', width: '10%', render: renderAmount, highlight: true },
   { key: 'delta', title: '同比增量', align: 'right', width: '16%', render: renderDelta },
@@ -40,7 +40,7 @@ export const ContentSlide32: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>全年实施积极财政政策，一季度一般公共预算财政支出同比增长2.6%，精准倾斜民生</>}
+      title={<>全年实施积极财政政策，一般公共预算财政支出同比增长2.6%，精准倾斜民生</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -53,13 +53,24 @@ export const ContentSlide32: React.FC = () => {
           </BaseCard>
           <BaseCard title="保民生成绝对主力" delay="120ms">
             <p>
-              一季度，一般公共预算支出 <span className="text-red-500 font-semibold">7.47万亿</span>，支出规模为年初预算的 <span className="text-red-500 font-semibold">24.9%</span>，进度为近5年最快。其中，卫生健康（<span className="text-red-500 font-semibold">+12.1%</span>）、社会保障和就业（<span className="text-red-500 font-semibold">+9.0%</span>）支出增幅领跑；城乡社区支出（<span className="text-red-500 font-semibold">+2.8%</span>），助力基建强劲开局。
+              一季度，一般公共预算支出 <span className="text-red-500 font-semibold">7.47万亿</span>，支出规模为年初预算的 <span className="text-red-500 font-semibold">24.9%</span>，进度为近5年最快。民生等重点领域支出增幅领跑，其中，卫生健康<span className="text-red-500 font-semibold">同比增12.1%</span>、社会保障和就业<span className="text-red-500 font-semibold">同比增9.0%</span>。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
+          <ChartContainer delay="600ms">
+            <BaseTable
+              data={fiscalFundsComparisonData}
+              columns={fundsColumns}
+              title="2025-2026年财政资金规模对比（按账本口径）"
+              subtitle="数据来源：财政部 | 单位：万亿"
+              colorizeNumbers={false}
+              rowHeight="auto"
+            />
+          </ChartContainer>
+
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={fiscalExpenditureGrowthData}
@@ -75,17 +86,6 @@ export const ContentSlide32: React.FC = () => {
               barSize={22}
               xAxisAngle={-45}
               xAxisHeight={50}
-            />
-          </ChartContainer>
-
-          <ChartContainer delay="600ms">
-            <BaseTable
-              data={fiscalFundsComparisonData}
-              columns={fundsColumns}
-              title="2025-2026年财政资金规模对比（按账本口径）"
-              subtitle="数据来源：财政部 | 单位：万亿"
-              colorizeNumbers={false}
-              rowHeight="auto"
             />
           </ChartContainer>
         </div>

@@ -27,6 +27,49 @@ export const ContentSlide35: React.FC = () => {
     { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: formatTrillion },
   ];
 
+  const mergedLoanIncrementData = loanIncrementData
+    .filter(item => item.type !== '票据融资')
+    .map(item => {
+      if (item.type === '消费贷-房贷' || item.type === '消费贷-非房贷') {
+        return null;
+      }
+      return {
+        type: item.type,
+        q2024: Number((item.q2024 / 10000).toFixed(2)),
+        q2025: Number((item.q2025 / 10000).toFixed(2)),
+        q2026: Number((item.q2026 / 10000).toFixed(2)),
+      };
+    })
+    .filter(Boolean);
+
+  const consumerLoanMerged = loanIncrementData
+    .filter(item => item.type === '消费贷-房贷' || item.type === '消费贷-非房贷')
+    .reduce(
+      (acc, item) => ({
+        q2024: acc.q2024 + item.q2024,
+        q2025: acc.q2025 + item.q2025,
+        q2026: acc.q2026 + item.q2026,
+      }),
+      { q2024: 0, q2025: 0, q2026: 0 }
+    );
+
+  const chartData = [
+    ...mergedLoanIncrementData.filter(item => item.type === '居民贷款').map(item => ({ ...item, type: '居民贷款' })),
+    {
+      type: '其中：消费贷',
+      q2024: Number((consumerLoanMerged.q2024 / 10000).toFixed(2)),
+      q2025: Number((consumerLoanMerged.q2025 / 10000).toFixed(2)),
+      q2026: Number((consumerLoanMerged.q2026 / 10000).toFixed(2)),
+    },
+    ...mergedLoanIncrementData.filter(item => item.type === '经营贷').map(item => ({ ...item, type: '其中：经营贷' })),
+    ...mergedLoanIncrementData.filter(item => item.type === '企业贷款'),
+  ].map(item => ({
+    ...item,
+    q2024: Number(item.q2024.toFixed(2)),
+    q2025: Number(item.q2025.toFixed(2)),
+    q2026: Number(item.q2026.toFixed(2)),
+  }));
+
   const incrementBars: BarConfig[] = [
     { dataKey: 'q2024', name: '2024Q1', color: chartColors.quaternary },
     { dataKey: 'q2025', name: '2025Q1', color: chartColors.tertiary },
@@ -42,7 +85,7 @@ export const ContentSlide35: React.FC = () => {
         <div className="grid grid-cols-1 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="居民信贷疲软" delay="0ms" variant="accent">
             <p>
-              居民贷款同比少增<span className="font-bold text-webank-blue">7,468亿</span>，延续偏弱态势，消费贷增长弱于经营贷。<span className="font-bold text-webank-blue">消费贷的拖累主要来自房贷</span>（一季度个人住房贷款净减少约<span className="font-bold text-webank-blue">6,800亿</span>），非房消费贷仍保持正增长，与实体经济中房地产销售的低迷严密对应，居民购房加杠杆意愿尚未实质性恢复。
+              居民贷款同比少增7,468亿，延续偏弱态势，消费贷增长弱于经营贷。居民贷款少增，主要与实体经济中房地产销售低迷，居民购房加杠杆意愿尚未实质性恢复。
             </p>
           </BaseCard>
         </div>
@@ -51,19 +94,19 @@ export const ContentSlide35: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 flex-1 min-h-0">
           <ChartContainer delay="120ms" className="min-h-0">
             <BaseBarChart
-              data={loanIncrementData}
+              data={chartData}
               title="季度贷款增量数据"
-              subtitle="数据来源：中国人民银行｜单位：亿元"
+              subtitle="数据来源：中国人民银行｜单位：万亿"
               bars={incrementBars}
               xAxisKey="type"
               showYAxis
-              yAxisDomain={[-20000, 100000]}
-              yAxisTickFormatter={(v) => `${(v / 10000).toFixed(0)}万`}
+              yAxisDomain={[-2, 10]}
+              yAxisTickFormatter={(v) => `${v.toFixed(0)}万`}
               showReferenceLine
               referenceLineY={0}
               barSize={14}
               showLabels={true}
-              unit="亿元"
+              unit="万亿"
               xAxisInterval={0}
             />
           </ChartContainer>
@@ -79,6 +122,7 @@ export const ContentSlide35: React.FC = () => {
               highlightRows={highlightRows}
               rowHeight="auto"
             />
+            <p className="text-xs text-gray-500 mt-2">备注：消费信贷含个人住房房贷，截至25年末个人住房贷款规模37.01万亿；</p>
           </ChartContainer>
         </div>
       </div>
