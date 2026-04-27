@@ -18,7 +18,7 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          高技术制造（+12.5%）、装备制造（+8.9%）显著快于整体，新旧动能分化
+          高端制造及现代服务增长领跑，显著快于整体，新旧动能分化
         </>
       }
       cardColumns={3}

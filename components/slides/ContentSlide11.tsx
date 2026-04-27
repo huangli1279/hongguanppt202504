@@ -10,30 +10,146 @@ const industryColumns: ColumnConfig[] = [
   { key: 'period', title: '月份', width: '46px', align: 'center' },
   {
     key: 'advanced',
-    title: '新质生产力',
+    title: '制造业',
     children: [
-      { key: 'highTech', title: '高技术制造', align: 'right' },
-      { key: 'electronics', title: '电子设备', align: 'right' },
-      { key: 'railway', title: '铁路航空航天', align: 'right' },
-      { key: 'auto', title: '汽车制造', align: 'right' },
+      {
+        key: 'highTech',
+        title: '高技术制造',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-red-500">{formatted}</span>;
+        },
+      },
+      {
+        key: 'electronics',
+        title: '电子设备',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-red-500">{formatted}</span>;
+        },
+      },
+      {
+        key: 'railway',
+        title: '铁路航空航天',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-red-500">{formatted}</span>;
+        },
+      },
+      {
+        key: 'auto',
+        title: '汽车制造',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
     ],
   },
   {
     key: 'resource',
-    title: '资源加工',
+    title: '采矿业',
     children: [
-      { key: 'oilGas', title: '油气开采', align: 'right', highlight: true },
-      { key: 'chemical', title: '化学原料', align: 'right' },
-      { key: 'nonferrousMining', title: '有色矿采选', align: 'right' },
+      {
+        key: 'oilGas',
+        title: '油气开采',
+        align: 'right',
+        render: (value: any, row: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          if (row.period === '2026-02' || row.period === '2026-03') {
+            return <span className="text-red-500">{formatted}</span>;
+          }
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
+      {
+        key: 'chemical',
+        title: '化学原料',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
+      {
+        key: 'nonferrousMining',
+        title: '有色矿采选',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
     ],
   },
   {
     key: 'utilities',
-    title: '公用事业',
+    title: '电热燃水',
     children: [
-      { key: 'power', title: '电力热力', align: 'right' },
-      { key: 'gas', title: '燃气供应', align: 'right' },
-      { key: 'water', title: '水供应', align: 'right' },
+      {
+        key: 'power',
+        title: '电力热力',
+        align: 'right',
+        render: (value: any, row: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          if (row.period === '2026-02' || row.period === '2026-03') {
+            return <span className="text-red-500">{formatted}</span>;
+          }
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
+      {
+        key: 'gas',
+        title: '燃气供应',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
+      {
+        key: 'water',
+        title: '水供应',
+        align: 'right',
+        render: (value: any) => {
+          if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+          const num = typeof value === 'number' ? value : parseFloat(value);
+          if (isNaN(num)) return value;
+          const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return <span className="text-slate-600">{formatted}</span>;
+        },
+      },
     ],
   },
 ];
@@ -98,7 +214,6 @@ export const ContentSlide11: React.FC = () => {
               columns={industryColumns}
               dateColumn="period"
               rowHeight="auto"
-              colorizeNumbers
               headerCellClassName="px-1 py-1 text-caption leading-[1.15] whitespace-normal break-words line-clamp-2"
               cellClassName="px-1 text-caption leading-tight"
               subtitleClassName="text-caption"
