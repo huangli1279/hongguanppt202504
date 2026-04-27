@@ -52,7 +52,7 @@ export const quarterColors = {
 // 产业对比色 - 沉稳色调
 export const industryColors = {
   primary: '#94a3b8',    // 第一产业 - 浅灰
-  secondary: '#ef4444',  // 第二产业 - 红色（负向拖累）
+  secondary: '#b91c1c',  // 第二产业 - 暗红色
   tertiary: '#005c8f',   // 第三产业 - 深蓝（正向支撑）
 } as const;
 
