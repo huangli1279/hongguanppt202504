@@ -23,7 +23,7 @@ export const ContentSlide06: React.FC = () => {
       title={
         <>
           分产业来看：
-          <span className="text-webank-accent">产业拉动呈现极致分化，服务业与新质生产力挑大梁，地产仍在寻底</span>
+          <span className="text-webank-accent">产业拉动呈现分化，第三产业平稳拖底，第二产业增速边际回升</span>
         </>
       }
       cardColumns={2}
@@ -43,7 +43,7 @@ export const ContentSlide06: React.FC = () => {
               第一、二、三产业分别同比增长
               <span className="font-bold">3.8%</span>、
               <span className="font-bold text-webank-accent">4.9%</span>、
-              <span className="font-bold">5.2%</span>。三产体量大、贡献率达<span className="font-bold">63.2%</span>持续托底；二产增速较去年四季度的<span className="font-bold">3.4%</span>回升<span className="font-bold text-webank-accent">1.5个百分点</span>，是本季GDP增速边际改善的主要拉动来源。
+              <span className="font-bold">5.2%</span>。二产增速较去年四季度的<span className="font-bold">3.4%</span>回升<span className="font-bold text-webank-accent">1.5个百分点</span>，是本季GDP增速边际改善（25Q4:4.5%→26Q1:5%）的主要拉动来源。
             </p>
           </BaseCard>
         </>

@@ -37,7 +37,7 @@ export const ContentSlide10: React.FC = () => {
 
           <BaseCard title="外需推动持续增强" delay="120ms">
             <p>
-              一季度规上工业企业出口累计交货值 <span className="font-bold">3.9万亿元</span>，同比增长 <span className="font-bold">7.1%</span>。装备制造业占比达 <span className="font-bold">75.0%</span>，同比提高1.3个百分点，汽车、铁路船舶航空航天、电气机械、电子行业合计贡献出口交货值增长的 <span className="font-bold">76.6%</span>。
+              一季度规上工业企业出口累计交货值 <span className="font-bold">3.9万亿元</span>，同比增长 <span className="font-bold">7.1%</span>。装备制造业占比达 <span className="font-bold">75.0%</span>，汽车、铁路船舶航空航天、电气机械、电子行业合计贡献出口交货值增长的 <span className="font-bold">76.6%</span>。
             </p>
           </BaseCard>
         </>
