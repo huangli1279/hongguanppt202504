@@ -46,7 +46,7 @@ const blocks: Block[] = [
     title: 'GDP：总量达标、结构分化',
     iconColor: 'text-webank-lightBlue',
     items: [
-      { label: '总量稳中有进', text: <>同比 <b className="text-webank-blue">+5.0%</b>，名义与实际 GDP 增速差显著收窄，"温差"改善</>, labelColor: 'text-webank-accent' },
+      { label: '总量稳中有进', text: <>同比 <b className="text-webank-blue">+5.0%</b>，名义与实际 GDP 增速差显著收窄，经济逐步摆脱通缩、向温和通胀区间靠拢，"温差"改善</>, labelColor: 'text-webank-accent' },
       { label: '结构分化', text: '服务业贡献率 63.2% 压舱；高技术与装备制造强劲，地产仍在寻底', labelColor: 'text-emerald-600' },
     ],
   },
@@ -66,7 +66,7 @@ const blocks: Block[] = [
     iconColor: 'text-webank-lightBlue',
     items: [
       { label: '社零 +2.4%', text: '服务消费 +5.5% 快于商品消费 +2.2%', labelColor: 'text-webank-accent' },
-      { label: '两新政策', text: '"以旧换新"扩围至 AI 手机、智能眼镜，通讯器材类高增', labelColor: 'text-emerald-600' },
+      { label: '两新政策', text: <>"以旧换新"扩围至 AI 手机、智能眼镜，通讯器材类高增；一季度，消费品以旧换新销售额超过了<b className="text-webank-blue">4,300亿元</b>，惠及<b className="text-webank-blue">6,000多万人次</b></>, labelColor: 'text-emerald-600' },
       { label: '物价信心', text: 'CPI +0.9%、核心 CPI +1.2%；信心指数升至 91.60，仍偏防御性储蓄', labelColor: 'text-amber-600' },
     ],
   },
@@ -76,7 +76,7 @@ const blocks: Block[] = [
     iconColor: 'text-webank-lightBlue',
     items: [
       { label: '固投 +1.7%', text: <>基建 <b className="text-webank-blue">+8.9%</b> 绝对托底，"两重"建设推进</>, labelColor: 'text-webank-accent' },
-      { label: '制造业提速', text: '制造业 +4.1%，高技术制造业 +5.2%，新动能成新引擎', labelColor: 'text-emerald-600' },
+      { label: '制造业提速', text: <>制造业 +4.1%，高技术制造业 +5.2%，新动能成新引擎；"两新"政策接续发力，设备工器具购置同比增长<b className="text-webank-blue">13.9%</b></>, labelColor: 'text-emerald-600' },
       { label: '地产承压', text: <>房地产开发投资 <b className="text-rose-500">-11.2%</b>，供需两端疲软</>, labelColor: 'text-rose-500' },
     ],
   },
@@ -97,6 +97,7 @@ const blocks: Block[] = [
     items: [
       { label: '收入 +2.4%', text: '税收与非税收入双增，增值税、进口税收较快', labelColor: 'text-webank-accent' },
       { label: '支出 +2.6%', text: '支出进度近 5 年最快，民生领域增幅领跑', labelColor: 'text-emerald-600' },
+      { label: '积极财政', text: '积极财政政策持续支持"两重"建设、"两新"工作等，更加注重提振消费、投资于人、保障民生', labelColor: 'text-amber-600' },
     ],
   },
   {
@@ -155,7 +156,7 @@ export const ContentSlide38: React.FC = () => {
                   <Icon size={16} className={b.iconColor} />
                   <h3 className="text-sm font-bold text-webank-blue">{b.title}</h3>
                 </div>
-                <ul className="flex flex-col gap-1 text-caption leading-snug text-webank-text">
+                <ul className="flex flex-col gap-3 text-caption leading-snug text-webank-text">
                   {b.items.map((it) => (
                     <li key={it.label}>
                       <span className={`font-bold mr-1 ${it.labelColor || 'text-webank-accent'}`}>
