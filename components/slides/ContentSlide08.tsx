@@ -35,10 +35,10 @@ export const ContentSlide08: React.FC = () => {
 
           <BaseCard title="净出口韧性彰显但贡献占比有限" delay="600ms">
             <p>
-              外贸承压前行但结构继续优化。一季度货物和服务净出口拉动GDP增长
+              一季度货物和服务净出口拉动GDP增长
               <span className="font-bold text-webank-accent">0.8个百分点</span>，出口总额同比增长
-              <span className="text-green-600">14.7%</span>；不过对GDP增长的贡献率仅
-              <span className="font-bold text-webank-accent">16%</span>，在三大需求中占比最低，且后续受全球贸易摩擦和高基数影响，其拉动作用的可持续性仍需观察。
+              <span className="text-green-600">14.7%</span>，对GDP增长的贡献率
+              <span className="font-bold text-webank-accent">16%</span>。
             </p>
           </BaseCard>
         </>

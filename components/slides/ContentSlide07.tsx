@@ -3,7 +3,15 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { chartColors } from '@/utils/chartColors';
-import { industryGrowthByIndustryRecentData as industryGrowthData } from '../../data';
+import { industryGrowthByIndustryRecentData as allIndustryData } from '../../data';
+
+const mainChartData = allIndustryData.filter(item =>
+  !['高技术制造', '装备制造', '数字产品制造'].includes(item.industry)
+);
+
+const rightChartData = allIndustryData.filter(item =>
+  ['高技术制造', '装备制造', '数字产品制造'].includes(item.industry)
+);
 
 export const ContentSlide07: React.FC = () => {
   return (
@@ -37,26 +45,50 @@ export const ContentSlide07: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms">
-          <BaseBarChart
-            data={industryGrowthData}
-            title="分行业增加值同比增速"
-            subtitle="单位: %；数据来源：国家统计局"
-            xAxisKey="industry"
-            bars={[
-              { dataKey: '2025-06', name: '2025-06', color: chartColors.quaternary },
-              { dataKey: '2025-09', name: '2025-09', color: chartColors.tertiary },
-              { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
-              { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
-            ]}
-            legendOrder={['2025-06', '2025-09', '2025-12', '2026-03']}
-            barSize={10}
-            showYAxis
-            yAxisDomain={[-5, 14]}
-            showReferenceLine
-            referenceLineY={0}
-          />
-        </ChartContainer>
+        <div className="flex gap-4 sm:gap-6 h-full">
+          <div className="flex-1">
+            <ChartContainer delay="600ms">
+              <BaseBarChart
+                data={mainChartData}
+                title="一二三产业细分行业GDP当季同比数据"
+                subtitle="单位: %；数据来源：国家统计局"
+                xAxisKey="industry"
+                bars={[
+                  { dataKey: '2025-06', name: '2025-06', color: chartColors.quaternary },
+                  { dataKey: '2025-09', name: '2025-09', color: chartColors.tertiary },
+                  { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
+                  { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
+                ]}
+                legendOrder={['2025-06', '2025-09', '2025-12', '2026-03']}
+                barSize={10}
+                showYAxis
+                yAxisDomain={[-5, 14]}
+                showReferenceLine
+                referenceLineY={0}
+              />
+            </ChartContainer>
+          </div>
+          <div className="w-72 flex-shrink-0">
+            <ChartContainer delay="720ms">
+              <BaseBarChart
+                data={rightChartData}
+                title="工业-制造业及其部分细分行业GDP当季同比"
+                subtitle="单位: %；数据来源：国家统计局"
+                xAxisKey="industry"
+                bars={[
+                  { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
+                  { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
+                ]}
+                legendOrder={['2025-12', '2026-03']}
+                barSize={24}
+                showYAxis
+                yAxisDomain={[-5, 14]}
+                showReferenceLine
+                referenceLineY={0}
+              />
+            </ChartContainer>
+          </div>
+        </div>
       }
     />
   );
