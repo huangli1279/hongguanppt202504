@@ -4,6 +4,7 @@ import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { industrialCumulativeData } from '../../data';
+import { seriesColors } from '../../utils/chartColors';
 
 const capacityUtilizationData = [
   { period: '2024Q1', utilization: 73.6 },
@@ -31,7 +32,10 @@ export const ContentSlide10: React.FC = () => {
         <>
           <BaseCard title="总量稳健增长" delay="0ms" variant="accent">
             <p>
-              2026年一季度，全国规模以上工业增加值同比增长 <span className="font-bold">6.1%</span>，3月同比增长 <span className="font-bold">5.7%</span>，生产端实现稳健开局。房地产和“以旧换新”后的产能过剩带动一季度规模以上工业产能利用率降至 <span className="font-bold">73.6%</span>，较2025年一季度下降0.4个百分点。
+              2026年一季度，全国规模以上工业增加值同比增长 <span className="font-bold">6.1%</span>，3月同比增长 <span className="font-bold">5.7%</span>，生产端实现稳健开局。
+            </p>
+            <p>
+              房地产和"以旧换新"后的产能过剩带动一季度规模以上工业产能利用率降至 <span className="font-bold">73.6%</span>，较2025年一季度下降0.4个百分点。
             </p>
           </BaseCard>
 
@@ -50,7 +54,7 @@ export const ContentSlide10: React.FC = () => {
               title="规上工业产能利用率（季度）"
               subtitle="数据来源：国家统计局 | 单位：%"
               bars={[
-                { dataKey: 'utilization', name: '产能利用率' },
+                { dataKey: 'utilization', name: '产能利用率', color: seriesColors[1] },
               ]}
               xAxisKey="period"
               yAxisDomain={[70, 78]}
