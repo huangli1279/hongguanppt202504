@@ -25,13 +25,13 @@ const enterpriseSizeChartData = pmiByEnterpriseSizeData.map(d => ({
 export const ContentSlide12: React.FC = () => {
   return (
     <BaseContentSlide
-      title="3月制造业PMI强势跃升至50.4%，分项数据均显著回升"
+      title="3月制造业PMI跃升至50.4%，分项数据均显著回升"
       cardColumns={2}
       cards={
         <>
-          <BaseCard title="景气度重返扩张区间（含明显季节性）" delay="0ms" variant="accent">
+          <BaseCard title="景气度重返扩张区间" delay="0ms" variant="accent">
             <p>
-              3月制造业PMI大幅回升<span className="font-bold">1.4个百分点</span>至<span className="font-bold">50.4%</span>。需注意此回升<span className="font-bold">具有明显春节季节性</span>——2024年2→3月PMI亦由49.1跃升至50.8，节后复工驱动特征显著。大型企业PMI升至<span className="font-bold">51.6%</span>，中、小型企业分别反弹至49.0%、49.3%。
+              3月制造业PMI大幅回升<span className="font-bold">1.4个百分点</span>至<span className="font-bold">50.4%</span>，节后复工需求驱动特征显著。大型企业PMI升至<span className="font-bold">51.6%</span>，中、小型企业分别反弹至<span className="font-bold">49.0%</span>、<span className="font-bold">49.3%</span>。
             </p>
           </BaseCard>
 
