@@ -58,6 +58,8 @@ export interface BaseBarChartProps {
   xAxisAngle?: number;
   xAxisHeight?: number;
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
+  lineShowDot?: boolean;
+  lineLabelFormatter?: (value: any) => string;
 }
 
 const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%' }: any) => {
@@ -144,7 +146,9 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   lineYAxisTickFormatter,
   xAxisAngle,
   xAxisHeight,
-  xAxisInterval = 0
+  xAxisInterval = 0,
+  lineShowDot = false,
+  lineLabelFormatter
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
@@ -253,12 +257,23 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     dataKey={line.dataKey}
                     stroke={lineColor}
                     strokeWidth={line.strokeWidth || 2}
-                    dot={false}
+                    dot={lineShowDot}
                     yAxisId={line.yAxisId || lineAxisId}
                     animationDuration={800}
                     animationBegin={0}
                     animationEasing="ease-out"
-                  />
+                  >
+                    {lineShowDot && lineLabelFormatter && (
+                      <LabelList
+                        dataKey={line.dataKey}
+                        position="top"
+                        fill={lineColor}
+                        fontSize={9}
+                        fontWeight={600}
+                        formatter={lineLabelFormatter}
+                      />
+                    )}
+                  </Line>
                 );
               })}
           </ChartComponent>

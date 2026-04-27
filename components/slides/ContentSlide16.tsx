@@ -38,7 +38,7 @@ export const ContentSlide16: React.FC = () => {
                 { dataKey: 'goodsRetail', name: '商品零售:当月同比', labelDY: 12 },
               ]}
               legendOrder={['社零总额:当月同比', '餐饮收入:当月同比', '商品零售:当月同比']}
-              yAxisDomain={[0, 45]}
+              yAxisDomain={[0, 10]}
               showYAxis={true}
               xAxisTickCount={6}
             />
@@ -51,7 +51,7 @@ export const ContentSlide16: React.FC = () => {
               lines={[
                 { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
               ]}
-              yAxisDomain={[0, 22]}
+              yAxisDomain={[0, 15]}
               showYAxis={true}
               xAxisTickCount={6}
             />
@@ -67,7 +67,7 @@ export const ContentSlide16: React.FC = () => {
               lines={[
                 { dataKey: 'spending', name: '国内出游总花费', unit: '亿元', strokeWidth: 2.5 },
               ]}
-              yAxisDomain={[0, 7]}
+              yAxisDomain={[2, 12]}
               lineAxisDomain={[5000, 8500]}
               showYAxis={true}
               showLineYAxis={true}
@@ -76,6 +76,8 @@ export const ContentSlide16: React.FC = () => {
               lineUnit="亿元"
               yAxisTickFormatter={(value) => `${value}亿`}
               lineYAxisTickFormatter={(value) => `${value}`}
+              lineShowDot={true}
+              lineLabelFormatter={(value) => `${value}`}
             />
           </ChartContainer>
         </>

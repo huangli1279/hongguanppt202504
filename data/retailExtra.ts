@@ -1,17 +1,6 @@
 // Slide16/17 专用零售数据
 
 export const retailMonthlyCategoryData = [
-  { period: '2023-02', totalRetail: 3.5, cateringRevenue: 9.2, goodsRetail: 2.9 },
-  { period: '2023-03', totalRetail: 10.6, cateringRevenue: 26.3, goodsRetail: 9.1 },
-  { period: '2023-04', totalRetail: 18.4, cateringRevenue: 43.8, goodsRetail: 15.9 },
-  { period: '2023-05', totalRetail: 12.7, cateringRevenue: 35.1, goodsRetail: 10.5 },
-  { period: '2023-06', totalRetail: 3.1, cateringRevenue: 16.1, goodsRetail: 1.7 },
-  { period: '2023-07', totalRetail: 2.5, cateringRevenue: 15.8, goodsRetail: 1.0 },
-  { period: '2023-08', totalRetail: 4.6, cateringRevenue: 12.4, goodsRetail: 3.7 },
-  { period: '2023-09', totalRetail: 5.5, cateringRevenue: 13.8, goodsRetail: 4.6 },
-  { period: '2023-10', totalRetail: 7.6, cateringRevenue: 17.1, goodsRetail: 6.5 },
-  { period: '2023-11', totalRetail: 10.1, cateringRevenue: 25.8, goodsRetail: 8.0 },
-  { period: '2023-12', totalRetail: 7.4, cateringRevenue: 30.0, goodsRetail: 4.8 },
   { period: '2024-02', totalRetail: 5.5, cateringRevenue: 12.5, goodsRetail: 4.6 },
   { period: '2024-03', totalRetail: 3.1, cateringRevenue: 6.9, goodsRetail: 2.7 },
   { period: '2024-04', totalRetail: 2.3, cateringRevenue: 4.4, goodsRetail: 2.0 },
@@ -39,9 +28,6 @@ export const retailMonthlyCategoryData = [
 ];
 
 export const serviceRetailData = [
-  { period: '2023-07', serviceRetail: 20.3 }, { period: '2023-08', serviceRetail: 19.4 },
-  { period: '2023-09', serviceRetail: 18.9 }, { period: '2023-10', serviceRetail: 19.0 },
-  { period: '2023-11', serviceRetail: 19.5 }, { period: '2023-12', serviceRetail: 20.0 },
   { period: '2024-02', serviceRetail: 12.3 }, { period: '2024-03', serviceRetail: 10.0 },
   { period: '2024-04', serviceRetail: 8.4 },  { period: '2024-05', serviceRetail: 7.9 },
   { period: '2024-06', serviceRetail: 7.5 },  { period: '2024-07', serviceRetail: 7.2 },
