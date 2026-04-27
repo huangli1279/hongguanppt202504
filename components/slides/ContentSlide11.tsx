@@ -160,27 +160,26 @@ export const ContentSlide11: React.FC = () => {
       title="制造业稳定支撑增长，政策带动能源生产增长"
       cards={
         <>
-          <BaseCard title="三大门类：制造业仍是主支撑" delay="0ms" variant="accent">
+          <BaseCard title="三大门类：制造业是主支撑" delay="0ms" variant="accent">
             <p>
-              3月制造业当月同比<span className="font-bold">6.0%</span>，继续稳定支撑总体增长；
-              采矿业同比<span className="font-bold">5.7%</span>，规模以上工业增加值3月当月同比
-              <span className="font-bold">5.7%</span>。
+              一季度制造业累计同比<span className="font-bold">6.4%</span>，继续稳定支撑总体增长，采矿业同比
+              <span className="font-bold">6.0%</span>；受"人工智能+"等政策对电力需求带动，电力、热力、燃气及水生产和供应业同比升至
+              <span className="font-bold">4.3%</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="能源生产：政策需求带动抬升" delay="120ms">
+          <BaseCard title="新质生产力挑大梁" delay="120ms">
             <p>
-              受"人工智能+"等政策对能源需求带动，电力、热力、燃气及水生产和供应业3月当月同比升至
-              <span className="font-bold">4.2%</span>，其中1-2月累计<span className="font-bold">5.1%</span>、
-              3月当月<span className="font-bold">4.2%</span>。
+              在全球AI算力产业链景气拉动及"大规模设备更新"政策的发力下，高技术制造业一季度实现两位数增长，计算机、通信和其他电子设备制造业持续高增（1-2月
+              <span className="font-bold">14.2%</span>，3月
+              <span className="font-bold">12.5%</span>）。
             </p>
           </BaseCard>
 
-          <BaseCard title="新质生产力与地缘因素共振" delay="600ms">
+          <BaseCard title="地缘冲突驱动生产加速" delay="600ms">
             <p>
-              高技术制造业一季度实现两位数增长；3月电子设备制造业
-              <span className="font-bold">12.5%</span>、铁路船舶航空航天设备制造业
-              <span className="font-bold">13.3%</span>，油气开采升至<span className="font-bold">9.4%</span>。
+              中东地缘局势导致国际原油价格上行，带动国内相关开采与加工提速，3月石油和天然气开采业同比升至
+              <span className="font-bold">9.4%</span>，化学原料及化学制品制造业<span className="font-bold">9.0%</span>。
             </p>
           </BaseCard>
         </>
