@@ -29,18 +29,13 @@ export const ContentSlide18: React.FC = () => {
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-3 gap-4 mb-5 flex-shrink-0">
-          <BaseCard title="基期变化" delay="0ms" variant="accent">
+        <div className="grid grid-cols-2 gap-4 mb-5 flex-shrink-0">
+          <BaseCard title="通胀温和回升" delay="0ms" variant="accent">
             <p>
-              2026年起发布以2025年为基期的价格指数，本轮调整提升服务权数、下调消费品权数。官方测算，基期轮换对CPI同比指数影响约 <span className="text-emerald-600 font-semibold">0.06%</span>，总体稳定。
+              一季度CPI累计同比 <span className="text-red-600 font-semibold">0.9%</span>，2月受春节错位与服务需求释放冲高至 <span className="text-red-600 font-semibold">1.3%</span>，3月回落至 <span className="text-red-600 font-semibold">1.0%</span>。核心CPI一季度同比上涨 <span className="text-red-600 font-semibold">1.2%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="通胀温和回升" delay="120ms">
-            <p>
-              一季度CPI累计同比 <span className="text-emerald-600 font-semibold">0.9%</span>，2月受春节错位与服务需求释放冲高至 <span className="text-emerald-600 font-semibold">1.3%</span>，3月回落至 <span className="text-emerald-600 font-semibold">1.0%</span>。核心CPI一季度同比上涨 <span className="text-emerald-600 font-semibold">1.2%</span>。
-            </p>
-          </BaseCard>
-          <BaseCard title="分项表现" delay="600ms">
+          <BaseCard title="分项表现" delay="120ms">
             <p>
               节后出行和人工服务需求自然降温，3月生活用品及服务CPI回落至 <span className="text-emerald-600 font-semibold">1.5%</span>。受全球油价上涨影响，交通与通信3月由负转正（0.9%）；其他用品和服务主要含金银首饰、住宿等，受金价及春节影响延续较高增速。
             </p>

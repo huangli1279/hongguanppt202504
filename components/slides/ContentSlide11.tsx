@@ -162,9 +162,7 @@ export const ContentSlide11: React.FC = () => {
         <>
           <BaseCard title="三大门类：制造业是主支撑" delay="0ms" variant="accent">
             <p>
-              一季度制造业累计同比<span className="font-bold">6.4%</span>，继续稳定支撑总体增长，采矿业同比
-              <span className="font-bold">6.0%</span>；受"人工智能+"等政策对电力需求带动，电力、热力、燃气及水生产和供应业同比升至
-              <span className="font-bold">4.3%</span>。
+              3月规上工业增加<span className="font-bold">5.7%</span>，其中制造业增长<span className="font-bold">6%</span>为主要支撑，采矿业同比<span className="font-bold">5.7%</span>，受"人工智能+"等政策对能源的需求带动，3月电力、热力、燃气及水生产和供应业同比升至<span className="font-bold">4.2%</span>（去年为<span className="font-bold">3.3%</span>）。
             </p>
           </BaseCard>
 
@@ -189,8 +187,8 @@ export const ContentSlide11: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={industrialCategoryData}
-              title="规模以上工业增加值及分项同比数据"
-              subtitle="单位：%；2月为累计同比填充"
+              title="规模以上工业增加值及分项当月同比数据"
+              subtitle="单位：%"
               yAxisDomain={[0, 11]}
               showYAxis
               xAxisTickCount={7}

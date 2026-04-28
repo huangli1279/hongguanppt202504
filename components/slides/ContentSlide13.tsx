@@ -18,7 +18,7 @@ const renderColoredCell = (value: any, row: any) => {
   
   const formatted = formatNumber(num);
   // 只在特定行进行着色
-  if (row.time === '2602') {
+  if (row.time === '2602' || row.time === '2603') {
     if (num > 0) return <span className="text-red-500">{formatted}</span>;
     if (num < 0) return <span className="text-green-600">{formatted}</span>;
   }
