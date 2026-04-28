@@ -56,8 +56,9 @@ export const ContentSlide34: React.FC = () => {
               yAxisTickFormatter={(val) => `${val}`}
               showReferenceLine={true}
               referenceLineY={0}
-              barSize={20}
-              xAxisAngle={-45}
+              barSize={35}
+              xAxisAngle={-15}
+              xAxisHeight={50}
               legendOrder={['25Q1', '26Q1']}
               unit="亿元"
             />

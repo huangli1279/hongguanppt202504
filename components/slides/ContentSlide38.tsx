@@ -118,7 +118,7 @@ const blocks: Block[] = [
       { label: '地缘能源', text: '美以伊冲突推升油价、抬升 PPI，挤压中下游盈利', labelColor: 'text-rose-500' },
       { label: '贸易收缩', text: 'WTO 下调 2026 全球贸易增速至 1.9%，Q2 出口或回落', labelColor: 'text-amber-600' },
       { label: '内需乏力', text: '高储蓄、低信贷，地产投资 -10% 左右筑底', labelColor: 'text-rose-500' },
-      { label: '价格传导', text: 'PPI 上行但 CPI 温和，制造业盈利分化', labelColor: 'text-amber-600' },
+      { label: '价格传导不畅', text: 'PPI 上行，但部分行业成本难向下游传导，盈利分化。', labelColor: 'text-amber-600' },
     ],
   },
 ];

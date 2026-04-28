@@ -33,7 +33,7 @@ export const ContentSlide06: React.FC = () => {
           <BaseCard title="第三产业发挥压舱石作用" delay="0ms">
             <p>
               一季度第三产业同比增长<span className="font-bold">5.2%</span>，
-              对GDP当季同比拉动<span className="font-bold">3.16个百分点</span>，
+              对GDP当季同比拉动<span className="font-bold">3.2个百分点</span>，
               贡献率达<span className="font-bold">63.2%</span>，走势平稳托底大盘。
             </p>
           </BaseCard>
