@@ -25,7 +25,14 @@ export const ContentSlide18: React.FC = () => {
         return defaultRender ? defaultRender(value) : value;
       }
     },
-    { key: 'housing', title: '居住', align: 'right' },
+    { 
+      key: 'housing', 
+      title: '居住', 
+      align: 'right',
+      render: (value, row, index, defaultRender) => {
+        return <span className="text-black">{value}</span>;
+      }
+    },
     { key: 'education', title: '教育文娱', align: 'right' },
     { key: 'clothing', title: '衣着', align: 'right' },
     { key: 'healthcare', title: '医疗保健', align: 'right' },
