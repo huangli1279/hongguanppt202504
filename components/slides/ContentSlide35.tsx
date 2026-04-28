@@ -186,7 +186,7 @@ export const ContentSlide35: React.FC = () => {
               yAxisTickFormatter={(v) => `${(v / 10000).toFixed(0)}万`}
               showReferenceLine
               referenceLineY={0}
-              barSize={28}
+              barSize={22}
               showLabels={true}
               unit="亿元"
               xAxisInterval={0}
@@ -205,7 +205,7 @@ export const ContentSlide35: React.FC = () => {
               yAxisTickFormatter={(v) => `${v.toFixed(0)}`}
               showReferenceLine
               referenceLineY={0}
-              barSize={12}
+              barSize={18}
               showLabels={true}
               unit="亿元"
               xAxisInterval={0}
