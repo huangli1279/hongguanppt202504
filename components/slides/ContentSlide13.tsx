@@ -78,7 +78,7 @@ export const ContentSlide13: React.FC = () => {
               </p>
             </div>
           </BaseCard>
-          <BaseCard title="新动能和战争利好AI及原材料制造" delay="120ms">
+          <BaseCard title="新动能和价格上涨利好AI及原材料制造" delay="120ms">
             <div className="space-y-2">
               <p>
                 一季度在新动能快速发展、美伊战争的带动下，计算机通信制造业同比增长<span className="font-bold text-red-500">124.5%</span>，人工智能带动光纤制造增长<span className="font-bold text-red-500">336.8%</span>；原材料制造业利润同比增长<span className="font-bold text-red-500">77.9%</span>，其中有色冶炼加工行业利润增长<span className="font-bold text-red-500">116.7%</span>，有色采矿业增长<span className="font-bold text-red-500">95.6%</span>。
