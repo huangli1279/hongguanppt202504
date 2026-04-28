@@ -7,7 +7,7 @@ import { cn } from '@/utils/cn';
 
 export const ContentSlide28: React.FC = () => {
   const filteredData = importStatisticsData.filter((item: any) =>
-    !['农产品*', '矿产品*', '战略性资源*'].includes(item.product)
+    !['农产品*', '肉类 (包括杂碎)', '矿产品*', '战略性资源*'].includes(item.product)
   );
 
   const columns: ColumnConfig[] = [
