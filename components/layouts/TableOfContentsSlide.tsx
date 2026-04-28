@@ -37,7 +37,7 @@ export const TableOfContentsSlide: React.FC = () => {
         目录
       </div>
 
-      <header className="mb-8 animate-fade-in relative z-10">
+      <header className="mb-4 animate-fade-in relative z-10">
         <div className="flex items-end gap-4">
           <div className="flex items-end gap-3">
             <div className="w-1.5 h-12 bg-webank-blue rounded-sm" />
@@ -48,11 +48,11 @@ export const TableOfContentsSlide: React.FC = () => {
         </div>
       </header>
 
-      <div className="grid grid-cols-2 gap-x-8 gap-y-3 flex-grow content-start relative z-10">
+      <div className="grid grid-cols-2 gap-x-8 gap-y-3 flex-grow content-start pt-16 relative z-10">
         {contents.map((item, index) => (
           <div
             key={item.id}
-            className="group relative flex items-center gap-4 px-4 py-4 rounded-lg border border-slate-100 bg-white/60 backdrop-blur-sm hover:border-webank-blue/40 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(26,58,138,0.25)] transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards overflow-hidden"
+            className="group relative flex items-center gap-4 px-4 py-3 rounded-lg border border-slate-100 bg-white/60 backdrop-blur-sm hover:border-webank-blue/40 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(26,58,138,0.25)] transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards overflow-hidden"
             style={{ animationDelay: `${index * 80}ms` }}
           >
             {/* Left accent bar */}
