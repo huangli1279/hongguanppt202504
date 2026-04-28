@@ -53,30 +53,8 @@ export const ContentSlide22: React.FC = () => {
       title: '水利、环境和公共设施管理业',
       children: [
         { key: 'waterEnvTotal', title: '合计', align: 'right' },
-        { 
-          key: 'environmentManagement', 
-          title: '环境管理', 
-          align: 'right',
-          render: (val) => {
-            const formatted = formatValue(val);
-            if (typeof val === 'number' && val < 0) {
-              return <span className="text-green-600">{formatted}</span>;
-            }
-            return formatted;
-          }
-        },
-        { 
-          key: 'publicFacility', 
-          title: '公共设施', 
-          align: 'right',
-          render: (val) => {
-            const formatted = formatValue(val);
-            if (typeof val === 'number' && val < 0) {
-              return <span className="text-green-600">{formatted}</span>;
-            }
-            return formatted;
-          }
-        },
+        { key: 'environmentManagement', title: '环境管理', align: 'right' },
+        { key: 'publicFacility', title: '公共设施', align: 'right' },
       ],
     },
     {
@@ -96,7 +74,12 @@ export const ContentSlide22: React.FC = () => {
           key: 'telecom',
           title: '电信传输',
           align: 'right',
-          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
+          render: (val, record) => {
+            if (record.period === '2026-02' || record.period === '2026-03') {
+              return <span className="text-red-500">{formatValue(val)}</span>;
+            }
+            return formatValue(val);
+          }
         },
       ],
     },

@@ -44,17 +44,17 @@ export const ContentSlide14: React.FC = () => {
           <BaseCard title="PPI同比转正，生产资料修复快于生活资料" delay="0ms" variant="accent">
             <div className="space-y-2">
               <p>
-                3月全国PPI环比上升<span className="font-bold text-webank-accent">1.0%</span>，同比上涨至<span className="font-bold text-webank-accent">0.5%</span>，结束连续41个月负增长。
+                3月全国PPI环比上升<span className="font-bold text-black">1.0%</span>，同比上涨至<span className="font-bold text-black">0.5%</span>，结束连续41个月负增长。
               </p>
               <p>
-                生产资料同步转正至<span className="font-bold">1.0%</span>，生活资料仍为<span className="font-bold">-1.3%</span>，中下游成本传导受阻。
+                生产资料同步转正至<span className="font-bold text-black">1.0%</span>，生活资料仍为<span className="font-bold text-black">-1.3%</span>，中下游成本传导受阻。
               </p>
             </div>
           </BaseCard>
 
           <BaseCard title="产能治理显效" delay="80ms">
             <p>
-              一季度光伏设备、锂电池价格同比分别上涨<span className="font-bold">3.0%</span>和<span className="font-bold">0.5%</span>，扭转上年全年下降态势。
+              一季度光伏设备、锂电池价格同比分别上涨<span className="font-bold text-black">3.0%</span>和<span className="font-bold text-black">0.5%</span>，扭转上年全年下降态势。
             </p>
           </BaseCard>
 
@@ -66,7 +66,7 @@ export const ContentSlide14: React.FC = () => {
 
           <BaseCard title="原油输入性冲击" delay="240ms">
             <p>
-              布伦特原油环比上涨<span className="font-bold">45.8%</span>，带动燃油加工、油气开采环比分别上涨<span className="font-bold">5.8%</span>和<span className="font-bold">15.8%</span>。
+              布伦特原油环比上涨<span className="font-bold text-black">45.8%</span>，带动燃油加工、油气开采环比分别上涨<span className="font-bold text-black">5.8%</span>和<span className="font-bold text-black">15.8%</span>。
             </p>
           </BaseCard>
         </section>

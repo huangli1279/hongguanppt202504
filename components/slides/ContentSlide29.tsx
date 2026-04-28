@@ -41,7 +41,7 @@ export const ContentSlide29: React.FC = () => {
             <p>
               一季度我国对新兴市场出口高增长：2月对非<span className="text-red-500 font-semibold">+97.5%</span>、东盟<span className="text-red-500 font-semibold">+38.8%</span>、拉美<span className="text-red-500 font-semibold">+44.1%</span>。东盟、非洲、欧盟合并出口占比提升<span className="text-red-500 font-semibold">2.5个百分点</span>，<span className="font-semibold">部分对冲</span>对美下降。
               <br />
-              后续高油价加速海外绿色转型，有望进一步打开新能源汽车、锂电及电力设备的出口空间。
+              高油价加速海外绿色转型，有望进一步打开新能源汽车、锂电及电力设备的出口空间。
             </p>
           </BaseCard>
         </div>

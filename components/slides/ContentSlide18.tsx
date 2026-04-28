@@ -27,7 +27,7 @@ export const ContentSlide18: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          一季度CPI同比上涨<span className="text-red-600">0.9%</span>，核心CPI上涨<span className="text-red-600">1.2%</span>
+          CPI同比上涨<span className="text-red-600">0.9%</span>，核心CPI上涨<span className="text-red-600">1.2%</span>
         </>
       }
       cardColumns={2}

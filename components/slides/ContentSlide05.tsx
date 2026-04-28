@@ -19,14 +19,14 @@ export const ContentSlide05: React.FC = () => {
         <>
           <BaseCard title="总量定调" delay="0ms" variant="accent">
             <p>
-              2026年一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>，实现“十五五”开局之年平稳起步。
-              实际GDP增速较去年四季度回升 <span className="font-bold">0.5个百分点</span>，达到全年“4.5%-5.0%”增长目标的上限区域。
+              2026年一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold text-red-600">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>，实现"十五五"开局之年平稳起步。
+              实际GDP增速较去年四季度回升 <span className="font-bold">0.5个百分点</span>，达到全年"4.5%-5.0%"增长目标的上限区域。
             </p>
           </BaseCard>
 
           <BaseCard title="名义与实际差距收窄" delay="120ms">
             <p>
-              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.9%</span>，较去年四季度 <span className="font-bold">3.9%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.06%</span>，整体已基本回到零值附近，经济逐步摆脱通缩、向温和通胀区间靠拢，企业盈利与微观体感的“温差”正在改善。
+              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.94%</span>，较去年四季度 <span className="font-bold">3.85%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.06%</span>，整体已基本回到零值附近，经济逐步摆脱通缩、向温和通胀区间靠拢，企业盈利与微观体感的“温差”正在改善。
             </p>
           </BaseCard>
         </>

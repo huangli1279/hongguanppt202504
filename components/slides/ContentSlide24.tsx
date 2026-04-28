@@ -35,7 +35,7 @@ export const ContentSlide24: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="核心拖累项仍在筑底阶段" delay="0ms" variant="accent">
             <p>
-              一季度，全国房地产开发投资<span className="text-red-500 font-semibold">17720亿元</span>，同比<span className="text-green-500 font-semibold">下降11.2%</span>，降幅比1-2月份扩大0.1个百分点。地产投资仍深陷两位数负增长区间，是拖累固定资产投资与内需的主要短板。
+              一季度，全国房地产开发投资<span className="text-black font-semibold">1.77万亿元</span>，同比<span className="text-green-500 font-semibold">下降11.2%</span>，降幅比1-2月份扩大0.1个百分点。地产投资仍深陷两位数负增长区间，是拖累固定资产投资与内需的主要短板。
             </p>
           </BaseCard>
           <BaseCard title="供需双弱，房价指数维持下行" delay="120ms">

@@ -30,23 +30,23 @@ export const ContentSlide19: React.FC = () => {
           <BaseCard title="信心指数创阶段高点，就业预期仍偏弱" delay="0ms">
             <p>
               2月消费者信心指数升至
-              <span className="text-emerald-600 font-semibold">91.60</span>
+              <span className="text-black font-semibold">91.60</span>
               ，创2023年3月以来最高点；收入信心指数跃升至
-              <span className="text-emerald-600 font-semibold">100.30</span>
+              <span className="text-black font-semibold">100.30</span>
               ，但就业信心指数回落至
-              <span className="text-webank-accent font-semibold">76.30</span>
+              <span className="text-black font-semibold">76.30</span>
               ，就业市场前景未持续改善。
             </p>
           </BaseCard>
           <BaseCard title="收入快于消费，防御性储蓄仍在延续" delay="120ms" variant="accent">
             <p>
               一季度，人均可支配收入增速
-              <span className="text-emerald-600 font-semibold">4.0%</span>
+              <span className="text-black font-semibold">4.0%</span>
               与消费支出增速
-              <span className="text-webank-accent font-semibold">2.6%</span>
+              <span className="text-black font-semibold">2.6%</span>
               的差值扩大至
-              <span className="text-webank-accent font-semibold">1.4个百分点</span>
-              ，显示居民资产负债表修复仍处于“防御性储蓄”阶段。
+              <span className="text-red-600 font-semibold">1.4个百分点</span>
+              ，显示居民资产负债表修复仍处于"防御性储蓄"阶段。
             </p>
           </BaseCard>
         </div>

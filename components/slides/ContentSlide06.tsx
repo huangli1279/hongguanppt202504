@@ -23,17 +23,17 @@ export const ContentSlide06: React.FC = () => {
       title={
         <>
           分产业来看：
-          <span className="text-webank-accent">产业拉动呈现分化，第三产业平稳拖底，第二产业增速边际回升</span>
+          <span className="text-webank-accent">第三产业平稳拖底，第二产业增速边际回升</span>
         </>
       }
       cardColumns={2}
       chartColumns={3}
       cards={
         <>
-          <BaseCard title="第三产业发挥压舱石作用" delay="0ms" variant="accent">
+          <BaseCard title="第三产业发挥压舱石作用" delay="0ms">
             <p>
-              一季度第三产业同比增长<span className="font-bold text-webank-accent">5.2%</span>，
-              对GDP当季同比拉动<span className="font-bold text-webank-accent">3.16个百分点</span>，
+              一季度第三产业同比增长<span className="font-bold">5.2%</span>，
+              对GDP当季同比拉动<span className="font-bold">3.16个百分点</span>，
               贡献率达<span className="font-bold">63.2%</span>，走势平稳托底大盘。
             </p>
           </BaseCard>
@@ -42,8 +42,8 @@ export const ContentSlide06: React.FC = () => {
             <p>
               第一、二、三产业分别同比增长
               <span className="font-bold">3.8%</span>、
-              <span className="font-bold text-webank-accent">4.9%</span>、
-              <span className="font-bold">5.2%</span>。二产增速较去年四季度的<span className="font-bold">3.4%</span>回升<span className="font-bold text-webank-accent">1.5个百分点</span>，是本季GDP增速边际改善（25Q4:4.5%→26Q1:5%）的主要拉动来源。
+              <span className="font-bold">4.9%</span>、
+              <span className="font-bold">5.2%</span>。二产增速较去年四季度的<span className="font-bold">3.4%</span>回升<span className="font-bold">1.5个百分点</span>，是本季GDP增速边际改善（25Q4:4.5%→26Q1:5%）的主要拉动来源。
             </p>
           </BaseCard>
         </>
