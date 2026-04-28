@@ -18,13 +18,12 @@ export const ContentSlide35: React.FC = () => {
     typeof val === 'number' ? val.toFixed(2) : val;
 
   const loanColumns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
+    { key: 'period', title: '月份', align: 'center' },
     { key: 'householdLoan', title: '居民贷款', align: 'right', render: formatTrillion },
-    { key: 'consumerLoan', title: '其中：消费贷款', align: 'right', render: formatTrillion },
-    { key: 'businessLoan', title: '其中：经营贷款', align: 'right', render: formatTrillion },
+    { key: 'consumerLoan', title: '居民消费贷款', align: 'right', render: formatTrillion },
+    { key: 'housingLoan', title: '其中：消费贷款-房贷', align: 'right', render: (val) => val === null ? '-' : formatTrillion(val) },
+    { key: 'businessLoan', title: '居民经营贷款', align: 'right', render: formatTrillion },
     { key: 'enterpriseLoan', title: '企业贷款', align: 'right', render: formatTrillion },
-    { key: 'billFinancing', title: '票据融资', align: 'right', render: formatTrillion },
-    { key: 'nonBankLoan', title: '非银金融机构贷款', align: 'right', render: formatTrillion },
   ];
 
   const mergedLoanIncrementData = loanIncrementData
@@ -56,12 +55,12 @@ export const ContentSlide35: React.FC = () => {
   const chartData = [
     ...mergedLoanIncrementData.filter(item => item.type === '居民贷款').map(item => ({ ...item, type: '居民贷款' })),
     {
-      type: '其中：消费贷',
+      type: '其中：居民消费贷',
       q2024: Number((consumerLoanMerged.q2024 / 10000).toFixed(2)),
       q2025: Number((consumerLoanMerged.q2025 / 10000).toFixed(2)),
       q2026: Number((consumerLoanMerged.q2026 / 10000).toFixed(2)),
     },
-    ...mergedLoanIncrementData.filter(item => item.type === '经营贷').map(item => ({ ...item, type: '其中：经营贷' })),
+    ...mergedLoanIncrementData.filter(item => item.type === '经营贷').map(item => ({ ...item, type: '其中：居民经营贷' })),
     ...mergedLoanIncrementData.filter(item => item.type === '企业贷款'),
   ].map(item => ({
     ...item,
@@ -104,7 +103,7 @@ export const ContentSlide35: React.FC = () => {
               yAxisTickFormatter={(v) => `${v.toFixed(0)}万`}
               showReferenceLine
               referenceLineY={0}
-              barSize={14}
+              barSize={28}
               showLabels={true}
               unit="万亿"
               xAxisInterval={0}
@@ -122,7 +121,7 @@ export const ContentSlide35: React.FC = () => {
               highlightRows={highlightRows}
               rowHeight="auto"
             />
-            <p className="text-xs text-gray-500 mt-2">备注：消费信贷含个人住房房贷，截至25年末个人住房贷款规模37.01万亿；</p>
+            <p className="text-xs text-gray-500 mt-2">备注：居民贷款=居民消费贷款+居民经营贷款，企业贷款不含票据融资；</p>
           </ChartContainer>
         </div>
       </div>

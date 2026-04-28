@@ -85,11 +85,14 @@ const industryColumns: ColumnConfig[] = [
         key: 'chemical',
         title: '化学原料',
         align: 'right',
-        render: (value: any) => {
+        render: (value: any, row: any) => {
           if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
           const num = typeof value === 'number' ? value : parseFloat(value);
           if (isNaN(num)) return value;
           const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          if (row.period === '2026-02' || row.period === '2026-03') {
+            return <span className="text-red-500">{formatted}</span>;
+          }
           return <span className="text-slate-600">{formatted}</span>;
         },
       },
@@ -115,14 +118,11 @@ const industryColumns: ColumnConfig[] = [
         key: 'power',
         title: '电力热力',
         align: 'right',
-        render: (value: any, row: any) => {
+        render: (value: any) => {
           if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
           const num = typeof value === 'number' ? value : parseFloat(value);
           if (isNaN(num)) return value;
           const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-          if (row.period === '2026-02' || row.period === '2026-03') {
-            return <span className="text-red-500">{formatted}</span>;
-          }
           return <span className="text-slate-600">{formatted}</span>;
         },
       },
