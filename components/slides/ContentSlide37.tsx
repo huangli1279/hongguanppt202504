@@ -63,7 +63,7 @@ export const ContentSlide37: React.FC = () => {
               data={nonBankFinQuarterlyData}
               title="非银金融机构存款季度增量"
               subtitle="数据来源：中国人民银行 | 单位：万亿"
-              bars={[{ dataKey: 'value', name: '非银金融机构存款增量' }]}
+              bars={[{ dataKey: 'value', name: '非银金融机构存款增量', color: chartColors.primary }]}
               showYAxis={true}
               yAxisDomain={[0, 3]}
               unit="万亿"
@@ -95,7 +95,7 @@ export const ContentSlide37: React.FC = () => {
               data={maturityDepositData}
               title="一年内到期定期存款规模"
               subtitle="数据来源：wind，银行年报（39家样本，存款占市场83%-85%）| 单位：万亿"
-              bars={[{ dataKey: 'value', name: '一年内到期定期存款' }]}
+              bars={[{ dataKey: 'value', name: '一年内到期定期存款', color: chartColors.primary }]}
               showYAxis={true}
               yAxisDomain={[50, 90]}
               unit="万亿"

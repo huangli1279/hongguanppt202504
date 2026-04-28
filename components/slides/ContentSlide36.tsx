@@ -14,7 +14,7 @@ export const ContentSlide36: React.FC = () => {
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="" delay="0ms" variant="accent">
             <p>
-              3月M1同比增速回落至 <span className="font-bold text-webank-blue">5.1%</span>，主要受去年同期高基数与实体融资同比少增影响。M2同比增速落至 <span className="font-bold text-webank-blue">8.5%</span>，M1-M2剪刀差录得 <span className="font-bold text-red-500">-3.4%</span>，资金活化进程在1-2月反弹后小幅走扩。
+              3月M1同比增速回落至 <span className="font-bold text-webank-blue">5.1%</span>，主要受去年同期高基数与实体融资同比少增影响。M2同比增速落至 <span className="font-bold text-webank-blue">8.5%</span>，M1-M2剪刀差录得 <span className="font-bold text-green-500">-3.4%</span>，资金活化进程在1-2月反弹后小幅走扩。
             </p>
           </BaseCard>
         </div>

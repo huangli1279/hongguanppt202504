@@ -13,7 +13,7 @@ export const ContentSlide31: React.FC = () => {
   ];
 
   const bars: BarConfig[] = [
-    { dataKey: 'growth', name: '同比增速' },
+    { dataKey: 'growth', name: '同比增速', color: '#005c8f' },
   ];
 
   return (

@@ -4,6 +4,7 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { fiscalExpenditureGrowthData, fiscalFundsComparisonData } from '@/data/fiscalRevenue';
+import { chartColors } from '@/utils/chartColors';
 
 const formatNumber = (val: number) =>
   val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -35,7 +36,7 @@ const fundsColumns: ColumnConfig[] = [
 
 export const ContentSlide32: React.FC = () => {
   const bars: BarConfig[] = [
-    { dataKey: 'growth', name: '同比增速' },
+    { dataKey: 'growth', name: '同比增速', color: chartColors.primary },
   ];
 
   return (

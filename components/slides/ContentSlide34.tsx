@@ -17,7 +17,7 @@ export const ContentSlide34: React.FC = () => {
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-1 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="总量回归“均衡节奏”：社融存量增速温和回落，企业债融资是结构性亮点" delay="120ms">
+          <BaseCard delay="120ms">
             <p>
               2026年一季度新增社融累计 <span className="font-bold text-webank-blue">14.34万亿元</span>，同比少增<span className="font-bold text-webank-blue">0.29万亿元</span>；对实体经济发放的人民币贷款增加<span className="font-bold text-webank-blue">8.9万亿元</span>，同比少增约<span className="font-bold text-webank-blue">7,960亿元</span>；政府债新增<span className="font-bold text-webank-blue">3.5万亿元</span>，同比少增<span className="font-bold text-webank-blue">3,302亿元</span>；<span className="font-bold text-webank-blue">企业债券融资增量1.05万亿元，同比多增5,214亿元，是结构性亮点</span>。3月末社融存量增速由上月的<span className="font-bold text-webank-blue">8.2%</span>温和回落至 <span className="font-bold text-webank-blue">7.9%</span>，主要受3月人民币贷款、政府债券少增<span className="font-bold text-webank-blue">0.99万亿</span>，以及去年同期超高基数（化债与信贷冲量）压制影响。
             </p>
@@ -56,7 +56,7 @@ export const ContentSlide34: React.FC = () => {
               yAxisTickFormatter={(val) => `${val}`}
               showReferenceLine={true}
               referenceLineY={0}
-              barSize={10}
+              barSize={20}
               xAxisAngle={-45}
               legendOrder={['25Q1', '26Q1']}
               unit="亿元"
