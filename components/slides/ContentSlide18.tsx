@@ -14,12 +14,32 @@ export const ContentSlide18: React.FC = () => {
   const categoryColumns: ColumnConfig[] = [
     { key: 'period', title: '时间', align: 'center' },
     { key: 'foodTobaccoAlcohol', title: '食品烟酒', align: 'right' },
-    { key: 'transportation', title: '交通通信', align: 'right' },
+    { 
+      key: 'transportation', 
+      title: '交通通信', 
+      align: 'right',
+      render: (value, row, index, defaultRender) => {
+        if (row.period === '2026-03' && value === 0.9) {
+          return <span className="text-red-600">0.9</span>;
+        }
+        return defaultRender ? defaultRender(value) : value;
+      }
+    },
     { key: 'housing', title: '居住', align: 'right' },
     { key: 'education', title: '教育文娱', align: 'right' },
     { key: 'clothing', title: '衣着', align: 'right' },
     { key: 'healthcare', title: '医疗保健', align: 'right' },
-    { key: 'householdServices', title: '生活用品', align: 'right' },
+    { 
+      key: 'householdServices', 
+      title: '生活用品', 
+      align: 'right',
+      render: (value, row, index, defaultRender) => {
+        if (row.period === '2026-03' && value === 1.5) {
+          return <span className="text-red-600">1.5</span>;
+        }
+        return defaultRender ? defaultRender(value) : value;
+      }
+    },
     { key: 'otherGoodsServices', title: '其他用品', align: 'right' },
   ];
 

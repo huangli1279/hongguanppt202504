@@ -104,6 +104,7 @@ export const ContentSlide14: React.FC = () => {
                 tableClassName="text-caption"
                 headerCellClassName="!px-[1px] !py-1 text-caption leading-[0.9rem] whitespace-normal break-words"
                 cellClassName="!px-[1px] text-caption leading-none"
+                getRowClassName={(row) => row.period === 'Q1同比' ? '!text-black font-medium' : ''}
               />
             </ChartContainer>
           </div>
