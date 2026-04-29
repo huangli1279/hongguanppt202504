@@ -20,7 +20,7 @@ export const ContentSlide16: React.FC = () => {
           </BaseCard>
           <BaseCard title="服务消费仍是核心驱动" delay="120ms">
             <p>
-              1-3月份服务零售额同比增长<span className="font-bold text-webank-blue">5.5%</span>，持续快于商品零售额（<span className="font-bold text-webank-blue">2.2%</span>），餐饮收入增长<span className="font-bold text-webank-blue">4.2%</span>；春节假期国内出游<span className="font-bold text-webank-blue">5.96亿人次</span>，总花费超<span className="font-bold text-webank-blue">8000亿元</span>，均创历史新高。
+              1-3月份服务零售额同比增长<span className="font-bold text-webank-blue">5.5%</span>，持续快于商品零售额（<span className="font-bold text-webank-blue">2.2%</span>），餐饮收入增长<span className="font-bold text-webank-blue">4.2%</span>；春节假期国内出游<span className="font-bold text-red-600">5.96亿人次</span>，总花费超<span className="font-bold text-red-600">8000亿元</span>，均创历史新高。
             </p>
           </BaseCard>
         </>
