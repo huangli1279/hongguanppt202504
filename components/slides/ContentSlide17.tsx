@@ -56,7 +56,7 @@ export const ContentSlide17: React.FC = () => {
           </BaseCard>
           <BaseCard title="补贴扩容转向数智终端" delay="120ms">
             <p>
-              2026 年消费品“以旧换新”补贴范围由传统家电、汽车扩容至 AI 手机、智能眼镜、智能无人机等数智终端，通讯器材类延续高增，3 月增长 27.3%；汽车、家具受高基数影响分别回落至 -11.8%、-8.7%。
+              2026 年消费品"以旧换新"补贴范围由传统家电、汽车扩容至 AI 手机、智能眼镜、智能无人机等数智终端，通讯器材类延续高增，3 月增长 <span className="text-red-500 font-semibold">27.3%</span>；汽车、家具受高基数影响分别回落至 <span className="text-green-500 font-semibold">-11.8%</span>、<span className="text-green-500 font-semibold">-8.7%</span>。
             </p>
           </BaseCard>
         </div>

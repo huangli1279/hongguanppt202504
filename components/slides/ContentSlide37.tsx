@@ -74,7 +74,7 @@ export const ContentSlide37: React.FC = () => {
           <ChartContainer delay="720ms">
             <BaseStackedBarChart
               data={householdDepositAnnualData}
-              title="居民存款年度增量（活期+定期及其他）"
+              title="居民存款年度增量（活期+定期）"
               subtitle="数据来源：中国人民银行 | 单位：万亿"
               bars={[
                 { dataKey: 'demand', name: '居民存款:活期存款', color: seriesColors[1] },
