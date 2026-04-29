@@ -219,17 +219,17 @@ export const nonBankFinQuarterlyData = [
 ];
 
 export const householdDepositAnnualData = [
-  { period: '2015-12', demand: 2.02, timeAndOther: 2.34 },
-  { period: '2016-12', demand: 2.88, timeAndOther: 2.29 },
-  { period: '2017-12', demand: 1.66, timeAndOther: 2.94 },
-  { period: '2018-12', demand: 1.90, timeAndOther: 5.33 },
-  { period: '2019-12', demand: 2.75, timeAndOther: 6.95 },
-  { period: '2020-12', demand: 3.21, timeAndOther: 8.09 },
-  { period: '2021-12', demand: 1.61, timeAndOther: 8.29 },
-  { period: '2022-12', demand: 4.10, timeAndOther: 13.74 },
-  { period: '2023-12', demand: 0.64, timeAndOther: 16.01 },
-  { period: '2024-12', demand: 2.34, timeAndOther: 11.92 },
-  { period: '2025-12', demand: 2.73, timeAndOther: 11.91 },
+  { period: '2015', demand: 2.02, timeAndOther: 2.34 },
+  { period: '2016', demand: 2.88, timeAndOther: 2.29 },
+  { period: '2017', demand: 1.66, timeAndOther: 2.94 },
+  { period: '2018', demand: 1.90, timeAndOther: 5.33 },
+  { period: '2019', demand: 2.75, timeAndOther: 6.95 },
+  { period: '2020', demand: 3.21, timeAndOther: 8.09 },
+  { period: '2021', demand: 1.61, timeAndOther: 8.29 },
+  { period: '2022', demand: 4.10, timeAndOther: 13.74 },
+  { period: '2023', demand: 0.64, timeAndOther: 16.01 },
+  { period: '2024', demand: 2.34, timeAndOther: 11.92 },
+  { period: '2025', demand: 2.73, timeAndOther: 11.91 },
 ];
 
 export const maturityDepositData = [
