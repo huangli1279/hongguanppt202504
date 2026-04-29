@@ -219,7 +219,12 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
             />
             <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
-            <Legend content={<CustomLegend legendOrder={legendOrder} />} />
+            <Legend 
+              content={<CustomLegend legendOrder={legendOrder} />} 
+              verticalAlign="bottom"
+              align="center"
+              wrapperStyle={{ paddingBottom: '10px', paddingTop: '20px' }}
+            />
             
             {lines.map((line, index) => {
               const lineColor = line.color ?? getSeriesColor(index);
