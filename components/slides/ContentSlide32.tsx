@@ -1,60 +1,46 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { fiscalExpenditureGrowthData, fiscalFundsComparisonData } from '@/data/fiscalRevenue';
-import { chartColors } from '@/utils/chartColors';
-
-const formatNumber = (val: number) =>
-  val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-const renderDelta = (value: any) => {
-  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-  const num = Number(value);
-  if (isNaN(num)) return value;
-  const formatted = (num > 0 ? '+' : '') + formatNumber(num);
-  if (num > 0) return <span className="text-red-500 font-semibold">{formatted}</span>;
-  if (num < 0) return <span className="text-green-600 font-semibold">{formatted}</span>;
-  return <span className="text-slate-600">{formatted}</span>;
-};
-
-const renderAmount = (value: any) => {
-  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-  const num = Number(value);
-  if (isNaN(num)) return value;
-  return <span className="text-slate-700">{formatNumber(num)}</span>;
-};
-
-const fundsColumns: ColumnConfig[] = [
-  { key: 'ledger', title: '账本', align: 'left', width: '28%' },
-  { key: 'item', title: '项目', align: 'left', width: '36%' },
-  { key: 'y2025', title: '2025', align: 'right', width: '10%', render: renderAmount },
-  { key: 'y2026', title: '2026', align: 'right', width: '10%', render: renderAmount, highlight: true },
-  { key: 'delta', title: '同比增量', align: 'right', width: '16%', render: renderDelta },
-];
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { incomeExpenditureData, industryAvgSalaryData } from '@/data/consumerConfidence';
+import { seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide32: React.FC = () => {
-  const bars: BarConfig[] = [
-    { dataKey: 'growth', name: '同比增速', color: chartColors.primary },
+  const incomeLines: LineConfig[] = [
+    { dataKey: 'incomeReal', name: '可支配收入实际', color: seriesColors[0], strokeWidth: 2.5, labelDY: -14 },
+    { dataKey: 'wageIncome', name: '工资性收入', color: seriesColors[1], strokeWidth: 2, labelDY: 4 },
+    { dataKey: 'operatingIncome', name: '经营净收入', color: seriesColors[2], strokeWidth: 2, labelDY: -4 },
+    { dataKey: 'propertyIncome', name: '财产净收入', color: seriesColors[3], strokeWidth: 2, labelDY: 16 },
+    { dataKey: 'transferIncome', name: '转移净收入', color: seriesColors[4], strokeWidth: 2, labelDY: 28 },
+    { dataKey: 'consumptionReal', name: '消费支出实际', color: seriesColors[5], strokeWidth: 2.5, labelDY: 40 },
+  ];
+
+  const salaryLines: LineConfig[] = [
+    { dataKey: 'itSoftwareAi', name: 'IT/软件(AI相关)', color: seriesColors[0], strokeWidth: 2.5, labelDY: -14 },
+    { dataKey: 'finance', name: '金融业', color: seriesColors[1], strokeWidth: 2, labelDY: -4 },
+    { dataKey: 'scientificResearch', name: '科研技术服务', color: seriesColors[2], strokeWidth: 2, labelDY: 4 },
+    { dataKey: 'utilities', name: '电力燃气水', color: seriesColors[3], strokeWidth: 2, labelDY: 14 },
+    { dataKey: 'education', name: '教育', color: seriesColors[4], strokeWidth: 2, labelDY: 24 },
+    { dataKey: 'nationalNonPrivate', name: '全国非私营均值', color: seriesColors[6], strokeWidth: 2, labelDY: 34 },
+    { dataKey: 'realEstate', name: '房地产业', color: seriesColors[5], strokeWidth: 2, labelDY: 44 },
   ];
 
   return (
     <BaseContentSlide
-      title={<>全年实施积极财政政策，一般公共预算财政支出同比增长2.6%，精准倾斜民生</>}
+      title={<>近年收入变化：人均可支配收入增加但满意度及预期长期走低，边际消费倾向下降</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="积极财政持续加力" delay="0ms" variant="accent">
+          <BaseCard title="收入" delay="0ms" variant="accent">
             <p>
-              两会定调，全年继续实施更加积极的财政政策，赤字规模 <span className="text-red-500 font-semibold">5.89万亿</span>，较上年增加 <span className="text-red-500 font-semibold">2,300亿</span>。一般公共预算支出规模将首次达到 <span className="text-red-500 font-semibold">30万亿元</span>，比上年增加约 <span className="text-red-500 font-semibold">1.27万亿元</span>。拟发行超长期特别国债 <span className="text-red-500 font-semibold">1.3万亿元</span>，持续支持"两重"建设、"两新"工作等，更加注重提振消费、投资于人、保障民生。
+              上半年居民人均可支配收入 <span className="text-red-500 font-semibold">2.3万元</span>，实际增长 <span className="text-red-500 font-semibold">4.2%</span>，而人均消费支出为 <span className="text-red-500 font-semibold">1.48万元</span>，实际仅增长 <span className="text-red-500 font-semibold">2.7%</span>。根据人行的调查，居民收入感受和信心指数23年以来低于50，表明居民现在收入的满意度和未来收入预期仍处于变差阶段。边际消费倾向（MPC）——即每增加1元收入中用于消费的比例——是衡量收入对消费拉动效应的核心指标。截至2025年底，我国居民人均边际消费倾向为 <span className="text-red-500 font-semibold">0.61</span>，较2024年底下滑了 <span className="text-red-500 font-semibold">0.08</span>。
             </p>
           </BaseCard>
-          <BaseCard title="保民生成绝对主力" delay="120ms">
+          <BaseCard title="新兴行业" delay="120ms">
             <p>
-              一季度，一般公共预算支出 <span className="text-red-500 font-semibold">7.47万亿</span>，支出规模为年初预算的 <span className="text-red-500 font-semibold">24.9%</span>，进度为近5年最快。民生等重点领域支出增幅领跑，其中，卫生健康<span className="text-red-500 font-semibold">同比增12.1%</span>、社会保障和就业<span className="text-red-500 font-semibold">同比增9.0%</span>。
+              根据国家统计局数据，近5年信息传输、软件和信息技术服务业平均薪资最高，其中AI相关行业薪资增长迅猛。根据脉脉《2025年AI人才流动报告》显示，2025年1—7月，AI新发岗位平均月薪 <span className="text-red-500 font-semibold">6.1万元</span>，同比增长 <span className="text-red-500 font-semibold">4.33%</span>。
             </p>
           </BaseCard>
         </div>
@@ -62,31 +48,48 @@ export const ContentSlide32: React.FC = () => {
         {/* 图表区域 */}
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
-            <BaseTable
-              data={fiscalFundsComparisonData}
-              columns={fundsColumns}
-              title="2025-2026年财政资金规模对比（按账本口径）"
-              subtitle="数据来源：财政部 | 单位：万亿"
-              colorizeNumbers={false}
-              rowHeight="auto"
+            <BaseLineChart
+              data={incomeExpenditureData}
+              title="居民人均收入与消费支出累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={incomeLines}
+              yAxisDomain={[-1, 8]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={[
+                '可支配收入实际',
+                '工资性收入',
+                '经营净收入',
+                '财产净收入',
+                '转移净收入',
+                '消费支出实际',
+              ]}
+              unit="%"
             />
           </ChartContainer>
 
           <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={fiscalExpenditureGrowthData}
-              title="财政支出各领域同比增速"
-              subtitle="数据来源：财政部 | 单位：%"
-              bars={bars}
-              xAxisKey="category"
-              yAxisDomain={[-10, 15]}
+            <BaseLineChart
+              data={industryAvgSalaryData}
+              title="分行业城镇非私营单位年平均工资"
+              subtitle="数据来源：国家统计局 | 单位：万元"
+              lines={salaryLines}
+              yAxisDomain={[8, 26]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={true}
-              barSize={22}
-              xAxisAngle={-45}
-              xAxisHeight={50}
+              showReferenceLine={false}
+              legendOrder={[
+                'IT/软件(AI相关)',
+                '金融业',
+                '科研技术服务',
+                '电力燃气水',
+                '教育',
+                '全国非私营均值',
+                '房地产业',
+              ]}
+              unit="万元"
+              yAxisTickFormatter={(val) => `${val}`}
+              xAxisTicks={['2021', '2022', '2023', '2024', '2025']}
             />
           </ChartContainer>
         </div>

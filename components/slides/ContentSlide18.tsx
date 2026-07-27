@@ -2,102 +2,118 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { cpiTrendData, cpiCategoryData } from '@/data/cpi';
+import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
+import { newProjectInvestmentData, investmentFundingData, specialBondData } from '@/data/fixedAssetInvestment';
 
 export const ContentSlide18: React.FC = () => {
-  const headlineLineConfigs: LineConfig[] = [
-    { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5, pointOffsets: { '2026-02': -12, '2026-03': 14 } },
-    { dataKey: 'coreCpi', name: '核心CPI:当月同比', strokeWidth: 2, pointOffsets: { '2026-02': -12, '2026-03': -12 } },
+  const newProjectLineConfigs: LineConfig[] = [
+    { dataKey: 'newProjectTotal', name: '新开工项目计划总投资', strokeWidth: 2.5 },
   ];
 
-  const categoryColumns: ColumnConfig[] = [
-    { key: 'period', title: '时间', align: 'center' },
-    { key: 'foodTobaccoAlcohol', title: '食品烟酒', align: 'right' },
-    { 
-      key: 'transportation', 
-      title: '交通通信', 
-      align: 'right',
-      render: (value, row, index, defaultRender) => {
-        if (row.period === '2026-03' && value === 0.9) {
-          return <span className="text-red-600">0.9</span>;
-        }
-        return defaultRender ? defaultRender(value) : value;
-      }
-    },
-    { 
-      key: 'housing', 
-      title: '居住', 
-      align: 'right',
-      render: (value, row, index, defaultRender) => {
-        return <span className="text-black">{value}</span>;
-      }
-    },
-    { key: 'education', title: '教育文娱', align: 'right' },
-    { key: 'clothing', title: '衣着', align: 'right' },
-    { key: 'healthcare', title: '医疗保健', align: 'right' },
-    { 
-      key: 'householdServices', 
-      title: '生活用品', 
-      align: 'right',
-      render: (value, row, index, defaultRender) => {
-        if (row.period === '2026-03' && value === 1.5) {
-          return <span className="text-red-600">1.5</span>;
-        }
-        return defaultRender ? defaultRender(value) : value;
-      }
-    },
-    { key: 'otherGoodsServices', title: '其他用品', align: 'right' },
+  const fundingLineConfigs: LineConfig[] = [
+    { dataKey: 'fixedAsset', name: '固定资产投资完成额', strokeWidth: 2.5, labelDY: -10 },
+    { dataKey: 'totalFunding', name: '资金来源累计', strokeWidth: 2, labelDY: -10 },
+    { dataKey: 'selfRaised', name: '自筹资金', strokeWidth: 2, labelDY: 16 },
+    { dataKey: 'domesticLoan', name: '国内贷款', strokeWidth: 2, labelDY: 28 },
+    { dataKey: 'stateBudget', name: '国家预算内资金', strokeWidth: 2, labelDY: 16 },
+  ];
+
+  const bondBarConfigs: BarConfig[] = [
+    { dataKey: 'planned', name: '计划发行' },
+    { dataKey: 'actual', name: '实际发行额' },
+  ];
+  const bondLineConfigs: BarLineConfig[] = [
+    { dataKey: 'completionRate', name: '完成率', strokeWidth: 2.5, yAxisId: 'right', unit: '' },
   ];
 
   return (
     <BaseContentSlide
-      title={
-        <>
-          CPI同比上涨<span className="text-red-600">0.9%</span>，核心CPI上涨<span className="text-red-600">1.2%</span>
-        </>
-      }
+      title="投资端失速归因：项目前置透支叠加资金到位滞后，拖累二季度投资增速"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-2 gap-4 mb-5 flex-shrink-0">
-          <BaseCard title="通胀温和回升" delay="0ms" variant="accent">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="① 年初项目前置透支" delay="0ms" variant="accent">
             <p>
-              一季度CPI累计同比 <span className="text-red-600 font-semibold">0.9%</span>，2月受春节错位与服务需求释放冲高至 <span className="text-red-600 font-semibold">1.3%</span>，3月回落至 <span className="text-red-600 font-semibold">1.0%</span>。核心CPI一季度同比上涨 <span className="text-red-600 font-semibold">1.2%</span>。
+              年初项目集中开工前置，对二季度投资形成透支。二季度新开工项目计划总投资累计同比<span className="text-green-600 font-semibold">下降29%</span>，同时，到位资金同比均下降。
             </p>
           </BaseCard>
-          <BaseCard title="分项表现" delay="120ms">
+          <BaseCard title="② 专项债节奏错配" delay="120ms">
             <p>
-              节后出行和人工服务需求自然降温，3月生活用品及服务CPI回落至 <span className="text-black font-semibold">1.5%</span>。受全球油价上涨影响，交通与通信3月由负转正（0.9%）；其他用品和服务主要含金银首饰、住宿等，受金价及春节影响延续较高增速。
+              一季度新增专项债发行进度达计划<span className="font-semibold">1.4倍</span>，二季度明显放缓（4-5月仅完成不足70%）。2月起土储、特殊新增债比例提高，对二季度投资增长形成拖累。
+            </p>
+          </BaseCard>
+          <BaseCard title="③ 企业盈利→投资传导滞后" delay="240ms">
+            <p>
+              企业盈利→自筹资金传导滞后约<span className="font-semibold">1年</span>。25年规上工业企业利润同比走弱，虽四季度以来利润大增，但尚未转化为固定资产投资。
+            </p>
+          </BaseCard>
+          <BaseCard title="④ 土地出让回落→压制购置费" delay="360ms">
+            <p>
+              年初土地出让收入回落，滞后<span className="font-semibold">3个月</span>压制土地购置费。固投其他费用1-6月累计负增<span className="text-green-600 font-semibold">8.9%</span>，与企业拿地支出下降对应。
             </p>
           </BaseCard>
         </div>
 
-        <div className="flex-1 grid grid-cols-5 gap-6 min-h-0">
-          <ChartContainer delay="600ms" className="col-span-2">
+        {/* 图表区域 - 三列布局 */}
+        <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
+          {/* 新开工项目计划总投资增速 */}
+          <ChartContainer delay="600ms">
             <BaseLineChart
-              data={cpiTrendData}
-              title="CPI与核心CPI当月同比走势"
+              data={newProjectInvestmentData}
+              title="新开工项目计划总投资增速"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={headlineLineConfigs}
-              yAxisDomain={[-2, 2]}
+              lines={newProjectLineConfigs}
+              yAxisDomain={[-35, 5]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['CPI:当月同比', '核心CPI:当月同比']}
-              highlightPeriods={['2026-02', '2026-03']}
-              xAxisTickCount={6}
+              legendOrder={['新开工项目计划总投资']}
+              xAxisTicks={['2024-12', '2025-06', '2025-12', '2026-06']}
             />
           </ChartContainer>
 
-          <ChartContainer delay="720ms" className="col-span-3">
-            <BaseTable
-              data={cpiCategoryData}
-              columns={categoryColumns}
-              title="CPI分项当月同比数据"
+          {/* 投资增速、资金到位增速、自筹资金增速 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={investmentFundingData}
+              title="投资增速、资金到位增速、自筹资金增速"
               subtitle="数据来源：国家统计局 | 单位：%"
-              dateColumn="period"
-              colorizeNumbers={true}
+              lines={fundingLineConfigs}
+              yAxisDomain={[-20, 20]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['固定资产投资完成额', '资金来源累计', '自筹资金', '国内贷款', '国家预算内资金']}
+              xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-06']}
+            />
+          </ChartContainer>
+
+          {/* 专项债发行情况 */}
+          <ChartContainer delay="600ms">
+            <BaseBarChart
+              data={specialBondData}
+              title="专项债情况"
+              subtitle="数据来源：财政部 | 单位：亿元"
+              bars={bondBarConfigs}
+              lines={bondLineConfigs}
+              xAxisKey="period"
+              showYAxis={true}
+              yAxisDomain={[0, 7000]}
+              yAxisTickFormatter={(val) => String(val)}
+              unit="亿元"
+              showLabels={false}
+              showLineYAxis={true}
+              lineAxisDomain={[0, 2.5]}
+              lineUnit=""
+              lineYAxisTickFormatter={(val) => val.toFixed(1)}
+              legendOrder={['计划发行', '实际发行额', '完成率']}
+              barSize={10}
+              xAxisAngle={-45}
+              xAxisHeight={50}
+              xAxisInterval={0}
+              lineShowDot={true}
             />
           </ChartContainer>
         </div>

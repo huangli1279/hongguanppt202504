@@ -27,6 +27,8 @@ export interface LineConfig {
   yAxisId?: 'left' | 'right';
   /** tooltip单位，覆盖全局 unit */
   unit?: string;
+  /** 虚线样式，如 "6 4" 表示预测段 */
+  strokeDasharray?: string;
 }
 
 export interface BaseLineChartProps {
@@ -74,7 +76,7 @@ const CustomTooltip = ({ active, payload, label, unit = '%', unitByKey }: any) =
 };
 
 interface CustomLegendProps {
-  payload?: Array<{ value: string; color: string }>;
+  payload?: Array<{ value: string; color: string; payload?: { strokeDasharray?: string } }>;
   legendOrder?: string[];
 }
 
@@ -96,21 +98,36 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
 
   return (
     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', gap: '24px' }}>
-      {sortedPayload.map((entry, index) => (
-        <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center' }}>
-          <span
-            style={{
-              width: '8px',
-              height: '8px',
-              backgroundColor: entry.color,
-              borderRadius: '50%',
-              marginRight: '6px',
-              display: 'inline-block'
-            }}
-          />
-          <span style={{ color: uiColors.tick, fontSize: '10px' }}>{entry.value}</span>
-        </li>
-      ))}
+      {sortedPayload.map((entry, index) => {
+        const dash = entry.payload?.strokeDasharray;
+        return (
+          <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center' }}>
+            {dash ? (
+              <span
+                style={{
+                  width: '16px',
+                  height: '0',
+                  borderTop: `2px dashed ${entry.color}`,
+                  marginRight: '6px',
+                  display: 'inline-block'
+                }}
+              />
+            ) : (
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: entry.color,
+                  borderRadius: '50%',
+                  marginRight: '6px',
+                  display: 'inline-block'
+                }}
+              />
+            )}
+            <span style={{ color: uiColors.tick, fontSize: '10px' }}>{entry.value}</span>
+          </li>
+        );
+      })}
     </ul>
   );
 };
@@ -286,22 +303,28 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                   dataKey={line.dataKey}
                   stroke={lineColor}
                   strokeWidth={line.strokeWidth || 2}
+                  strokeDasharray={line.strokeDasharray}
                   yAxisId={axisId}
+                  connectNulls={false}
                   dot={(props: any) => {
                     const { cx, cy, index: dotIndex, payload } = props;
+                    const pointValue = payload?.[line.dataKey];
+                    if (pointValue == null || !Number.isFinite(cx) || !Number.isFinite(cy)) {
+                      return null as any;
+                    }
                     const isLastPoint = dotIndex === lastValidIndex;
                     const isHighlighted = highlightPeriods.includes(payload.period);
-                    
+
                     if (isLastPoint || isHighlighted) {
                       return (
-                        <circle 
+                        <circle
                           key={`dot-${line.dataKey}-${dotIndex}`}
-                          cx={cx} 
-                          cy={cy} 
-                          r={isLastPoint ? 3.5 : 3} 
-                          fill={lineColor} 
-                          stroke="white" 
-                          strokeWidth={1.5} 
+                          cx={cx}
+                          cy={cy}
+                          r={isLastPoint ? 3.5 : 3}
+                          fill={lineColor}
+                          stroke="white"
+                          strokeWidth={1.5}
                         />
                       );
                     }

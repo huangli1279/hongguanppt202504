@@ -37,6 +37,8 @@ export interface BaseStackedBarChartProps {
   valueFormatter?: (value: number) => string;
   xAxisAngle?: number;
   xAxisHeight?: number;
+  showTotalLabel?: boolean;
+  totalLabelFormatter?: (total: number, dataPoint: any) => string;
 }
 
 const CustomTooltip = ({ active, payload, label, unit = '', valueFormatter }: any) => {
@@ -83,7 +85,7 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
   }
 
   return (
-    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', gap: '24px' }}>
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '12px 20px' }}>
       {sortedPayload.map((entry, index) => (
         <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center' }}>
           <span
@@ -120,9 +122,13 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
   xAxisInterval = 2,
   valueFormatter,
   xAxisAngle,
-  xAxisHeight
+  xAxisHeight,
+  showTotalLabel = false,
+  totalLabelFormatter,
 }) => {
   const totalTicks = data.length;
+  const getStackTotal = (dataPoint: any) =>
+    bars.reduce((sum, bar) => sum + (Number(dataPoint?.[bar.dataKey]) || 0), 0);
   const renderCustomTick = (props: any) => {
     const { x, y, payload, index } = props;
     const isFirst = index === 0;
@@ -153,7 +159,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: 20, right: 30, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: showTotalLabel ? 28 : 20, right: 30, left: showYAxis ? -20 : 20, bottom: 5 }}
             barSize={barSize}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
@@ -181,6 +187,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
             
             {bars.map((bar, index) => {
               const barColor = bar.color ?? getSeriesColor(index);
+              const isTopBar = index === bars.length - 1;
               return (
                 <Bar
                   key={bar.dataKey}
@@ -200,6 +207,31 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
                       fontSize={8}
                       fontWeight={600}
                       formatter={valueFormatter}
+                    />
+                  )}
+                  {showTotalLabel && isTopBar && (
+                    <LabelList
+                      content={(props: any) => {
+                        const { x, y, width, index: dataIndex } = props;
+                        if (dataIndex == null || x == null || y == null || width == null) return null;
+                        const dataPoint = data[dataIndex];
+                        const total = getStackTotal(dataPoint);
+                        const label = totalLabelFormatter
+                          ? totalLabelFormatter(total, dataPoint)
+                          : String(total);
+                        return (
+                          <text
+                            x={x + width / 2}
+                            y={y - 6}
+                            textAnchor="middle"
+                            fill={uiColors.tick}
+                            fontSize={10}
+                            fontWeight={600}
+                          >
+                            {label}
+                          </text>
+                        );
+                      }}
                     />
                   )}
                 </Bar>

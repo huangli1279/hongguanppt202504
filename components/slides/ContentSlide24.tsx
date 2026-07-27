@@ -2,110 +2,74 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { investmentData, housePriceYoyData, housePriceMomData } from '../../data';
+import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
 
 export const ContentSlide24: React.FC = () => {
-  const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'realEstateInvestment', name: '开发投资', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'newConstruction', name: '新开工', strokeWidth: 2, labelDY: 8 },
-    { dataKey: 'salesArea', name: '销售面积', strokeWidth: 2, labelDY: -8 },
+  const lines: LineConfig[] = [
+    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: 16 },
+    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: -8 },
+    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
   ];
 
-  const priceYoyLineConfigs: LineConfig[] = [
-    { dataKey: 'newHousePrice', name: '新建商品住房价格指数同比', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'secondHandPrice', name: '二手住房价格指数同比', strokeWidth: 2, labelDY: 8 },
-  ];
-
-  const priceMomFirstTierConfigs: LineConfig[] = [
-    { dataKey: 'firstTierNew', name: '一线新房', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'firstTierUsed', name: '一线二手房', strokeWidth: 2, labelDY: 8 },
-  ];
-
-  const priceMomSecondTierConfigs: LineConfig[] = [
-    { dataKey: 'secondTierNew', name: '二线新房', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'secondTierUsed', name: '二线二手房', strokeWidth: 2, labelDY: 8 },
+  const bars: BarConfig[] = [
+    { dataKey: 'growth', name: '同比增速', color: '#005c8f' },
   ];
 
   return (
     <BaseContentSlide
-      title="地产投资下行11.2%仍在寻底，新开工面积累计同比降20.3%"
+      title={<>上半年一般公共预算收入同比增长4.7%，高于年初预算目标，收入进度略快于近年同期均值</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
-          <BaseCard title="核心拖累项仍在筑底阶段" delay="0ms" variant="accent">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="收入总量超出预期" delay="0ms" variant="accent">
             <p>
-              一季度，全国房地产开发投资<span className="text-black font-semibold">1.77万亿元</span>，同比<span className="text-green-500 font-semibold">下降11.2%</span>，降幅比1-2月份扩大0.1个百分点。地产投资仍深陷两位数负增长区间，是拖累固定资产投资与内需的主要短板。
+              上半年全国一般公共预算收入同比增长<span className="text-red-500 font-semibold">4.7%</span>，高于年初<span className="text-red-500 font-semibold">2.2%</span>的预算目标，收入进度达<span className="text-red-500 font-semibold">54.85%</span>，略快于近五年同期均值。
             </p>
           </BaseCard>
-          <BaseCard title="供需双弱，房价指数维持下行" delay="120ms">
+          <BaseCard title="结构改善，“名义增长”拉动显著" delay="120ms">
             <p>
-              居民中长期贷款同比显著少增，与新房销售疲弱相互印证，购房加杠杆意愿尚未实质性恢复。70城房价同比延续下行；环比看一线城市转正，更多来自政策驱动与季节性因素，二线城市仍在下降。
+              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，对收入增长贡献显著。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>；非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。受资本市场活跃带动，上半年证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
             </p>
           </BaseCard>
         </div>
 
-        <div className="flex-1 grid grid-cols-3 gap-5 min-h-0">
+        {/* 图表区域 */}
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={investmentData}
-              title="房地产投资累计同比数据"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={investmentLineConfigs}
-              yAxisDomain={[-30, 5]}
+              data={fiscalRevenueTrendData}
+              title="1—6月一般公共预算收入累计同比，区分税收收入、非税收收入同比增速"
+              subtitle="数据来源：财政部 | 单位：%"
+              lines={lines}
+              yAxisDomain={[-15, 15]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['开发投资', '新开工', '销售面积', '按揭贷款']}
-              xAxisTickCount={5}
+              legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
+              xAxisTickCount={8}
             />
           </ChartContainer>
 
           <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={housePriceYoyData}
-              title="70个大中城市房价指数同比变化"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={priceYoyLineConfigs}
-              yAxisDomain={[-10, 1]}
+            <BaseBarChart
+              data={fiscalCategoryGrowthData}
+              title="各类税收收入累计同比"
+              subtitle="数据来源：财政部 | 单位：%"
+              bars={bars}
+              xAxisKey="category"
+              yAxisDomain={[-5, 50]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['新建商品住房价格指数同比', '二手住房价格指数同比']}
-              xAxisTickCount={5}
+              showLabels={true}
+              barSize={28}
+              xAxisAngle={-45}
+              xAxisHeight={60}
             />
           </ChartContainer>
-
-          <div className="flex flex-col gap-5">
-            <ChartContainer delay="720ms">
-              <BaseLineChart
-                data={housePriceMomData}
-                title="一线城市住宅价格指数（环比）"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={priceMomFirstTierConfigs}
-                yAxisDomain={[-1.4, 0.6]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['一线新房', '一线二手房']}
-                xAxisTickCount={5}
-              />
-            </ChartContainer>
-            <ChartContainer delay="720ms">
-              <BaseLineChart
-                data={housePriceMomData}
-                title="二线城市住宅价格指数（环比）"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={priceMomSecondTierConfigs}
-                yAxisDomain={[-1.4, 0.6]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['二线新房', '二线二手房']}
-                xAxisTickCount={5}
-              />
-            </ChartContainer>
-          </div>
         </div>
       </div>
     </BaseContentSlide>

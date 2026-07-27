@@ -18,19 +18,8 @@ export interface FiscalCategoryGrowthDataPoint {
   growth: number;
 }
 
-// 2024-2025年一般公共预算收入累计同比变化
+// 2025-2026年一般公共预算收入累计同比变化
 export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
-  { period: '2024-02', taxRevenue: -4.00, nonTaxRevenue: 8.60, total: -2.30 },
-  { period: '2024-03', taxRevenue: -4.90, nonTaxRevenue: 10.10, total: -2.30 },
-  { period: '2024-04', taxRevenue: -4.90, nonTaxRevenue: 9.40, total: -2.70 },
-  { period: '2024-05', taxRevenue: -5.10, nonTaxRevenue: 10.30, total: -2.80 },
-  { period: '2024-06', taxRevenue: -5.60, nonTaxRevenue: 11.70, total: -2.80 },
-  { period: '2024-07', taxRevenue: -5.40, nonTaxRevenue: 12.00, total: -2.60 },
-  { period: '2024-08', taxRevenue: -5.30, nonTaxRevenue: 11.70, total: -2.60 },
-  { period: '2024-09', taxRevenue: -5.30, nonTaxRevenue: 13.50, total: -2.20 },
-  { period: '2024-10', taxRevenue: -4.50, nonTaxRevenue: 15.30, total: -1.30 },
-  { period: '2024-11', taxRevenue: -3.90, nonTaxRevenue: 17.00, total: -0.60 },
-  { period: '2024-12', taxRevenue: -3.40, nonTaxRevenue: 25.40, total: 1.30 },
   { period: '2025-02', taxRevenue: -3.90, nonTaxRevenue: 11.00, total: -1.60 },
   { period: '2025-03', taxRevenue: -3.50, nonTaxRevenue: 8.80, total: -1.10 },
   { period: '2025-04', taxRevenue: -2.10, nonTaxRevenue: 7.70, total: -0.40 },
@@ -44,18 +33,18 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2025-12', taxRevenue: 0.80, nonTaxRevenue: -11.30, total: -1.70 },
   { period: '2026-02', taxRevenue: 0.10, nonTaxRevenue: 3.40, total: 0.70 },
   { period: '2026-03', taxRevenue: 2.20, nonTaxRevenue: 2.90, total: 2.40 },
+  { period: '2026-04', taxRevenue: 3.90, nonTaxRevenue: 1.60, total: 3.50 },
+  { period: '2026-05', taxRevenue: 4.40, nonTaxRevenue: 2.20, total: 4.00 },
 ];
 
-// 2026年一季度一般公共预算分项目同比增速
+// 2026年1-6月各类税收收入累计同比
 export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
-  { category: '国内增值税', growth: 4.9 },
-  { category: '企业所得税', growth: -5.6 },
-  { category: '个人所得税', growth: 10.5 },
-  { category: '国内消费税', growth: 4.5 },
-  { category: '进口增值税/消费税', growth: 12.9 },
-  { category: '印花税', growth: 31.9 },
-  { category: '关税', growth: 14.1 },
-  { category: '非税收入', growth: 2.9 },
+  { category: '国内增值税', growth: 6.0 },
+  { category: '国内消费税', growth: -3.4 },
+  { category: '企业所得税', growth: 3.9 },
+  { category: '出口货物增值税/消费税', growth: 5.4 },
+  { category: '进口货物增值税/消费税', growth: 11.8 },
+  { category: '印花税', growth: 40.9 },
 ];
 
 // 2026年一季度财政支出各领域同比增速
@@ -75,6 +64,43 @@ export const fiscalExpenditureGrowthData: FiscalExpenditureGrowthDataPoint[] = [
   { category: '农林水事务', growth: -6.8 },
   { category: '交通运输', growth: -1.6 },
   { category: '债务付息', growth: 12.9 },
+];
+
+// 2026年1-6月财政支出各领域同比增速
+export const fiscalExpenditureH1GrowthData: FiscalExpenditureGrowthDataPoint[] = [
+  { category: '卫生健康', growth: 10.8 },
+  { category: '社会保障和就业', growth: 7.6 },
+  { category: '中央本级支出', growth: 6.5 },
+  { category: '债务付息', growth: 4.5 },
+  { category: '科学技术', growth: 1.3 },
+  { category: '教育', growth: 0.6 },
+  { category: '地方支出', growth: 0.6 },
+  { category: '城乡社区', growth: -2.0 },
+  { category: '交通运输', growth: -2.6 },
+  { category: '文化旅游体育与传媒', growth: -6.4 },
+  { category: '农林水', growth: -8.6 },
+  { category: '节能环保', growth: -10.3 },
+];
+
+// 2025-2026年一般公共预算支出合计累计同比（按月对比）
+export interface FiscalExpenditureTrendDataPoint {
+  period: string;
+  y2025: number | null;
+  y2026: number | null;
+}
+
+export const fiscalExpenditureTrendData: FiscalExpenditureTrendDataPoint[] = [
+  { period: '2月', y2025: 3.4, y2026: 3.6 },
+  { period: '3月', y2025: 4.2, y2026: 2.6 },
+  { period: '4月', y2025: 4.6, y2026: 1.3 },
+  { period: '5月', y2025: 4.2, y2026: 0.8 },
+  { period: '6月', y2025: 3.4, y2026: 1.5 },
+  { period: '7月', y2025: 3.4, y2026: null },
+  { period: '8月', y2025: 3.1, y2026: null },
+  { period: '9月', y2025: 3.1, y2026: null },
+  { period: '10月', y2025: 2.0, y2026: null },
+  { period: '11月', y2025: 1.4, y2026: null },
+  { period: '12月', y2025: 1.0, y2026: null },
 ];
 
 // 2025-2026年财政资金规模对比（按账本口径）
