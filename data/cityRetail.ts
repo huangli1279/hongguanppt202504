@@ -1,13 +1,15 @@
 /**
- * 一线城市社零及城乡消费数据
+ * 多城市社零及城乡消费数据
  */
 
 export interface CityRetailDataPoint {
   period: string;
-  guangzhou: number | null;  // 广州
-  shenzhen: number | null;   // 深圳
-  beijing: number | null;    // 北京
-  shanghai: number | null;   // 上海
+  shenzhen: number | null;
+  shanghai: number | null;
+  beijing: number | null;
+  guangzhou: number | null;
+  hangzhou: number | null;
+  changsha: number | null;
 }
 
 export interface UrbanRuralRetailDataPoint {
@@ -16,30 +18,35 @@ export interface UrbanRuralRetailDataPoint {
   urban: number;    // 城镇
 }
 
-// 2024-2025年一线城市社会消费品零售总额累计同比变化
+// 多城市社会消费品零售总额累计同比
 export const cityRetailData: CityRetailDataPoint[] = [
-  { period: '2024-02', guangzhou: 6.50, shenzhen: 5.63, beijing: 2.60, shanghai: 1.90 },
-  { period: '2024-03', guangzhou: 3.50, shenzhen: 4.30, beijing: -0.10, shanghai: 0.10 },
-  { period: '2024-04', guangzhou: 2.50, shenzhen: 2.30, beijing: -0.20, shanghai: -1.30 },
-  { period: '2024-05', guangzhou: 2.00, shenzhen: 1.78, beijing: 1.00, shanghai: -0.70 },
-  { period: '2024-06', guangzhou: 0.00, shenzhen: 1.00, beijing: -0.30, shanghai: -2.30 },
-  { period: '2024-07', guangzhou: -0.30, shenzhen: 1.17, beijing: -0.80, shanghai: -2.80 },
-  { period: '2024-08', guangzhou: -0.50, shenzhen: 1.07, beijing: -0.93, shanghai: -3.30 },
-  { period: '2024-09', guangzhou: 0.10, shenzhen: 0.67, beijing: -1.60, shanghai: -3.40 },
-  { period: '2024-10', guangzhou: 0.50, shenzhen: 0.96, beijing: -1.30, shanghai: -2.00 },
-  { period: '2024-11', guangzhou: 0.30, shenzhen: 1.51, beijing: -2.80, shanghai: -3.10 },
-  { period: '2024-12', guangzhou: 0.00, shenzhen: 1.08, beijing: -2.70, shanghai: -3.10 },
-  { period: '2025-02', guangzhou: 1.20, shenzhen: 1.66, beijing: -0.10, shanghai: -1.00 },
-  { period: '2025-03', guangzhou: 3.50, shenzhen: 3.05, beijing: -3.30, shanghai: -1.10 },
-  { period: '2025-04', guangzhou: 4.00, shenzhen: 3.66, beijing: -3.70, shanghai: -0.30 },
-  { period: '2025-05', guangzhou: 5.10, shenzhen: 4.66, beijing: -3.10, shanghai: 1.40 },
-  { period: '2025-06', guangzhou: 5.90, shenzhen: 3.47, beijing: -3.80, shanghai: 1.70 },
-  { period: '2025-07', guangzhou: 5.40, shenzhen: 3.60, beijing: -4.20, shanghai: 2.50 },
-  { period: '2025-08', guangzhou: 4.90, shenzhen: 3.83, beijing: -5.10, shanghai: 3.70 },
-  { period: '2025-09', guangzhou: 4.10, shenzhen: 3.63, beijing: -5.10, shanghai: 4.30 },
-  { period: '2025-10', guangzhou: 3.80, shenzhen: 4.02, beijing: -3.20, shanghai: 4.80 },
-  { period: '2025-11', guangzhou: 4.20, shenzhen: 2.77, beijing: -3.10, shanghai: 5.00 },
-  { period: '2025-12', guangzhou: null, shenzhen: null, beijing: -2.90, shanghai: 4.60 },
+  { period: '2024-02', shenzhen: 5.63, shanghai: 1.90, beijing: 2.60, guangzhou: 6.50, hangzhou: 2.20, changsha: 9.40 },
+  { period: '2024-03', shenzhen: 4.30, shanghai: 0.10, beijing: -0.10, guangzhou: 3.50, hangzhou: -0.20, changsha: 7.20 },
+  { period: '2024-04', shenzhen: 2.30, shanghai: -1.30, beijing: -0.20, guangzhou: 2.50, hangzhou: -1.00, changsha: 6.30 },
+  { period: '2024-05', shenzhen: 1.78, shanghai: -0.70, beijing: 1.00, guangzhou: 2.00, hangzhou: 0.80, changsha: 5.60 },
+  { period: '2024-06', shenzhen: 1.00, shanghai: -2.30, beijing: -0.30, guangzhou: 0.00, hangzhou: 0.00, changsha: 5.20 },
+  { period: '2024-07', shenzhen: 1.17, shanghai: -2.80, beijing: -0.80, guangzhou: -0.30, hangzhou: 0.60, changsha: 4.90 },
+  { period: '2024-08', shenzhen: 1.07, shanghai: -3.30, beijing: -0.93, guangzhou: -0.50, hangzhou: 1.00, changsha: 4.60 },
+  { period: '2024-09', shenzhen: 0.67, shanghai: -3.40, beijing: -1.60, guangzhou: 0.10, hangzhou: 2.00, changsha: 4.70 },
+  { period: '2024-10', shenzhen: 0.96, shanghai: -2.00, beijing: -1.30, guangzhou: 0.50, hangzhou: 3.00, changsha: 4.70 },
+  { period: '2024-11', shenzhen: 1.51, shanghai: -3.10, beijing: -2.80, guangzhou: 0.30, hangzhou: 2.60, changsha: 4.50 },
+  { period: '2024-12', shenzhen: 1.08, shanghai: -3.10, beijing: -2.70, guangzhou: 0.00, hangzhou: 2.80, changsha: 4.20 },
+  { period: '2025-02', shenzhen: 1.66, shanghai: -1.00, beijing: -0.10, guangzhou: 1.20, hangzhou: 6.80, changsha: 1.80 },
+  { period: '2025-03', shenzhen: 3.05, shanghai: -1.10, beijing: -3.30, guangzhou: 3.50, hangzhou: 6.30, changsha: 3.50 },
+  { period: '2025-04', shenzhen: 3.66, shanghai: -0.30, beijing: -3.70, guangzhou: 4.00, hangzhou: 6.40, changsha: 4.10 },
+  { period: '2025-05', shenzhen: 4.66, shanghai: 1.40, beijing: -3.10, guangzhou: 5.10, hangzhou: 7.40, changsha: 4.80 },
+  { period: '2025-06', shenzhen: 3.47, shanghai: 1.70, beijing: -3.80, guangzhou: 5.90, hangzhou: 6.00, changsha: 5.60 },
+  { period: '2025-07', shenzhen: 3.60, shanghai: 2.50, beijing: -4.20, guangzhou: 5.40, hangzhou: 5.10, changsha: 5.90 },
+  { period: '2025-08', shenzhen: 3.83, shanghai: 3.70, beijing: -5.10, guangzhou: 4.90, hangzhou: 5.20, changsha: 5.70 },
+  { period: '2025-09', shenzhen: 3.63, shanghai: 4.30, beijing: -5.10, guangzhou: 4.10, hangzhou: 5.10, changsha: 5.50 },
+  { period: '2025-10', shenzhen: 4.02, shanghai: 4.80, beijing: -3.20, guangzhou: 3.80, hangzhou: 4.80, changsha: 5.10 },
+  { period: '2025-11', shenzhen: 2.77, shanghai: 5.00, beijing: -3.10, guangzhou: 4.20, hangzhou: 4.30, changsha: 4.70 },
+  { period: '2025-12', shenzhen: 2.34, shanghai: 4.60, beijing: -2.90, guangzhou: 5.50, hangzhou: 3.80, changsha: 3.90 },
+  { period: '2026-02', shenzhen: 2.60, shanghai: 7.20, beijing: -0.30, guangzhou: 10.70, hangzhou: 4.10, changsha: 2.90 },
+  { period: '2026-03', shenzhen: 0.47, shanghai: 5.50, beijing: -0.60, guangzhou: 6.60, hangzhou: 3.90, changsha: 2.30 },
+  { period: '2026-04', shenzhen: -0.58, shanghai: 3.90, beijing: -1.50, guangzhou: 4.40, hangzhou: 3.50, changsha: 1.70 },
+  { period: '2026-05', shenzhen: 0.27, shanghai: 2.00, beijing: -2.50, guangzhou: 2.40, hangzhou: 1.30, changsha: 1.20 },
+  { period: '2026-06', shenzhen: 1.20, shanghai: 0.70, beijing: -2.20, guangzhou: null, hangzhou: 1.80, changsha: 0.90 },
 ];
 
 // 2024-2025年城镇与乡村社会消费品零售总额累计同比

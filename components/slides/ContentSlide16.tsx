@@ -38,8 +38,10 @@ export const ContentSlide16: React.FC = () => {
                 { dataKey: 'goodsRetail', name: '商品零售:当月同比', labelDY: 12 },
               ]}
               legendOrder={['社零总额:当月同比', '餐饮收入:当月同比', '商品零售:当月同比']}
-              yAxisDomain={[0, 10]}
+              yAxisDomain={[-2, 8]}
               showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
               xAxisTickCount={6}
             />
           </ChartContainer>

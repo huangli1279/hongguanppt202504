@@ -20,7 +20,7 @@ export interface CpiCategoryDataPoint {
   otherGoodsServices: number; // 其他用品和服务
 }
 
-// CPI及核心CPI当月同比走势数据 (2024-01 至 2026-03)
+// CPI及核心CPI当月同比走势数据 (2024-01 至 2026-06)
 export const cpiTrendData: CpiTrendDataPoint[] = [
   { period: '2024-01', cpi: -0.80, coreCpi: 0.40 },
   { period: '2024-02', cpi: 0.70, coreCpi: 1.20 },
@@ -49,6 +49,9 @@ export const cpiTrendData: CpiTrendDataPoint[] = [
   { period: '2026-01', cpi: 0.20, coreCpi: 0.80 },
   { period: '2026-02', cpi: 1.30, coreCpi: 1.80 },
   { period: '2026-03', cpi: 1.00, coreCpi: 1.10 },
+  { period: '2026-04', cpi: 1.20, coreCpi: 1.20 },
+  { period: '2026-05', cpi: 1.20, coreCpi: 1.10 },
+  { period: '2026-06', cpi: 1.00, coreCpi: 1.00 },
 ];
 
 // CPI八大类当月同比数据 (2025-01 至 2026-03)

@@ -1,7 +1,6 @@
-// Slide16/17 专用零售数据
+// 社零分类当月同比（Slide13/16）
 
 export const retailMonthlyCategoryData = [
-  { period: '2024-02', totalRetail: 5.5, cateringRevenue: 12.5, goodsRetail: 4.6 },
   { period: '2024-03', totalRetail: 3.1, cateringRevenue: 6.9, goodsRetail: 2.7 },
   { period: '2024-04', totalRetail: 2.3, cateringRevenue: 4.4, goodsRetail: 2.0 },
   { period: '2024-05', totalRetail: 3.7, cateringRevenue: 5.0, goodsRetail: 3.6 },
@@ -12,19 +11,20 @@ export const retailMonthlyCategoryData = [
   { period: '2024-10', totalRetail: 4.8, cateringRevenue: 3.2, goodsRetail: 5.0 },
   { period: '2024-11', totalRetail: 3.0, cateringRevenue: 4.0, goodsRetail: 2.8 },
   { period: '2024-12', totalRetail: 3.7, cateringRevenue: 2.7, goodsRetail: 3.9 },
-  { period: '2025-02', totalRetail: 4.0, cateringRevenue: 4.3, goodsRetail: 3.9 },
   { period: '2025-03', totalRetail: 5.9, cateringRevenue: 5.6, goodsRetail: 5.9 },
   { period: '2025-04', totalRetail: 5.1, cateringRevenue: 5.2, goodsRetail: 5.1 },
   { period: '2025-05', totalRetail: 6.4, cateringRevenue: 5.9, goodsRetail: 6.5 },
   { period: '2025-06', totalRetail: 4.8, cateringRevenue: 0.9, goodsRetail: 5.3 },
   { period: '2025-07', totalRetail: 3.7, cateringRevenue: 1.1, goodsRetail: 4.0 },
   { period: '2025-08', totalRetail: 3.4, cateringRevenue: 2.1, goodsRetail: 3.6 },
-  { period: '2025-09', totalRetail: 3.05, cateringRevenue: 0.86, goodsRetail: 3.32 },
-  { period: '2025-10', totalRetail: 2.93, cateringRevenue: 3.76, goodsRetail: 2.83 },
+  { period: '2025-09', totalRetail: 3.0, cateringRevenue: 0.9, goodsRetail: 3.3 },
+  { period: '2025-10', totalRetail: 2.9, cateringRevenue: 3.8, goodsRetail: 2.8 },
   { period: '2025-11', totalRetail: 1.3, cateringRevenue: 3.2, goodsRetail: 1.0 },
   { period: '2025-12', totalRetail: 0.9, cateringRevenue: 2.2, goodsRetail: 0.7 },
-  { period: '2026-02', totalRetail: 2.8, cateringRevenue: 4.8, goodsRetail: 2.5 },
   { period: '2026-03', totalRetail: 1.7, cateringRevenue: 2.9, goodsRetail: 1.5 },
+  { period: '2026-04', totalRetail: 0.2, cateringRevenue: 2.2, goodsRetail: -0.1 },
+  { period: '2026-05', totalRetail: -0.6, cateringRevenue: 0.6, goodsRetail: -0.7 },
+  { period: '2026-06', totalRetail: 1.0, cateringRevenue: 1.2, goodsRetail: 0.9 },
 ];
 
 export const serviceRetailData = [
