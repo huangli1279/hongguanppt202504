@@ -16,7 +16,7 @@ export const ContentSlide36: React.FC = () => {
               <span className="text-red-500 font-semibold">37.51%</span>
               的18-35岁青年计划增加旅游消费，
               <span className="text-red-500 font-semibold">45.89%</span>
-              将情绪价值作为增收主要原因。中年消费以家庭为锚、日益关注自我，呈“双重驱动”，
+              将情绪价值作为增收主要原因。中年消费以家庭为锚、日益关注自我，
               <span className="text-red-500 font-semibold">29.96%</span>
               的36-45岁群体计划增加教育支出，呈现“子女教育+自我投资”双向提升。银发群体呈“二元”特征——健康与体验、保障与发展、现实与数字深度融合，
               <span className="text-red-500 font-semibold">24.88%</span>

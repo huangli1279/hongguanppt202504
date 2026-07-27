@@ -24,7 +24,7 @@ export const CoverSlide: React.FC = () => {
         </div>
 
         <h1 className="font-serif leading-tight mb-8" style={{ fontSize: '64px', fontWeight: 700 }}>
-          <span className="block animate-fade-in-up" style={{ animationDelay: '0.5s' }}>2026年第一季度</span>
+          <span className="block animate-fade-in-up" style={{ animationDelay: '0.5s' }}>2026年第二季度</span>
           <span className="block text-webank-lightBlue animate-fade-in-up" style={{ animationDelay: '0.7s' }}>中国宏观经济运行</span>
           <span className="block animate-fade-in-up" style={{ animationDelay: '0.9s' }}>分析报告</span>
         </h1>
@@ -33,7 +33,7 @@ export const CoverSlide: React.FC = () => {
       </div>
 
       <div className="absolute bottom-12 left-24 text-webank-muted font-mono text-meta animate-fade-in" style={{ animationDelay: '1.3s' }}>
-        2026年4月
+        2026年7月
       </div>
     </div>
   );

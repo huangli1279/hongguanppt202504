@@ -1,16 +1,18 @@
 
 import React from 'react';
-import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, Target, ArrowUpRight } from 'lucide-react';
+import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, Target, ArrowUpRight, TrendingUp, Cpu } from 'lucide-react';
 
 const contents = [
-  { id: '01', title: '一季度关键事件与政策主线', icon: Target },
-  { id: '02', title: 'GDP 分析', icon: BarChart3 },
-  { id: '03', title: '生产端分析', icon: Zap },
-  { id: '04', title: '消费分析', icon: ShoppingCart },
-  { id: '05', title: '投资分析', icon: HardHat },
-  { id: '06', title: '进出口分析', icon: Globe },
-  { id: '07', title: '财政分析', icon: Landmark },
-  { id: '08', title: '金融数据分析', icon: Activity },
+  { id: '01', title: '一季度关键事件与政策主线', subtitle: '第 01 章', icon: Target },
+  { id: '02', title: 'GDP 分析', subtitle: '第 02 章', icon: BarChart3 },
+  { id: '03', title: '生产端分析', subtitle: '第 03 章', icon: Zap },
+  { id: '04', title: '消费分析', subtitle: '第 04 章', icon: ShoppingCart },
+  { id: '05', title: '投资分析', subtitle: '第 05 章', icon: HardHat },
+  { id: '06', title: '进出口分析', subtitle: '第 06 章', icon: Globe },
+  { id: '07', title: '财政分析', subtitle: '第 07 章', icon: Landmark },
+  { id: '08', title: '金融数据分析', subtitle: '第 08 章', icon: Activity },
+  { id: '09', title: '消费现状及趋势', subtitle: '专题一', icon: TrendingUp },
+  { id: '10', title: 'K型分化及AI', subtitle: '专题二', icon: Cpu },
 ];
 
 export const TableOfContentsSlide: React.FC = () => {
@@ -48,11 +50,11 @@ export const TableOfContentsSlide: React.FC = () => {
         </div>
       </header>
 
-      <div className="grid grid-cols-2 gap-x-8 gap-y-3 flex-grow content-start pt-16 relative z-10">
+      <div className="grid grid-cols-2 gap-x-8 gap-y-2.5 flex-grow content-start pt-8 relative z-10">
         {contents.map((item, index) => (
           <div
             key={item.id}
-            className="group relative flex items-center gap-4 px-4 py-3 rounded-lg border border-slate-100 bg-white/60 backdrop-blur-sm hover:border-webank-blue/40 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(26,58,138,0.25)] transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards overflow-hidden"
+            className="group relative flex items-center gap-4 px-4 py-2.5 rounded-lg border border-slate-100 bg-white/60 backdrop-blur-sm hover:border-webank-blue/40 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(26,58,138,0.25)] transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards overflow-hidden"
             style={{ animationDelay: `${index * 80}ms` }}
           >
             {/* Left accent bar */}
@@ -76,7 +78,7 @@ export const TableOfContentsSlide: React.FC = () => {
                 {item.title}
               </h3>
               <p className="text-xs text-slate-400 mt-1 truncate">
-                第 {item.id} 章
+                {item.subtitle}
               </p>
             </div>
 

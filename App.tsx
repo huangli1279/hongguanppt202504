@@ -7,7 +7,7 @@ import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 39;
+const TOTAL_SLIDES = 44;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -46,6 +46,9 @@ const ContentSlide35 = lazyNamed(() => import('./components/slides/ContentSlide3
 const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
 const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
 const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
+const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
+const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide40'), 'ContentSlide40');
+const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -56,7 +59,7 @@ const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window === 'undefined' ? false : window.matchMedia(MOBILE_QUERY).matches
   );
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(42);
   const isThrottled = useRef(false);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
@@ -173,13 +176,18 @@ const App: React.FC = () => {
       case 30: return <ContentSlide28 />;
       case 31: return <ContentSlide29 />;
       case 32: return <ContentSlide31 />;
-      case 33: return <ContentSlide32 />;
-      case 34: return <ContentSlide34 />;
-      case 35: return <ContentSlide35 />;
-      case 36: return <ContentSlide36 />;
-      case 37: return <ContentSlide37 />;
-      case 38: return <ContentSlide38 />;
-      case 39: return <ThankYouSlide />;
+      case 33: return <BaseSectionTransitionSlide id="专题一" title="消费现状及趋势" />;
+      case 34: return <ContentSlide32 />;
+      case 35: return <ContentSlide34 />;
+      case 36: return <ContentSlide35 />;
+      case 37: return <ContentSlide36 />;
+      case 38: return <BaseSectionTransitionSlide id="专题二" title="K型分化及AI" />;
+      case 39: return <ContentSlide37 />;
+      case 40: return <ContentSlide38 />;
+      case 41: return <ContentSlide39 />;
+      case 42: return <ContentSlide40 />;
+      case 43: return <ContentSlide41 />;
+      case 44: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);
