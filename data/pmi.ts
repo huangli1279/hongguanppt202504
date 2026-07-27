@@ -5,8 +5,8 @@ export interface PmiDataPoint {
   pmi: number;
   production: number;
   newOrders: number;
-  outputPrice: number;
-  rawMaterialPurchasePrice: number;
+  outputPrice?: number | null;
+  rawMaterialPurchasePrice?: number | null;
 }
 
 export interface PmiByEnterpriseSize {
@@ -45,6 +45,9 @@ export const pmiTrendData: PmiDataPoint[] = [
   { period: '2026-01', pmi: 49.3, production: 50.6, newOrders: 49.2, outputPrice: 50.6, rawMaterialPurchasePrice: 56.1 },
   { period: '2026-02', pmi: 49.0, production: 49.6, newOrders: 48.6, outputPrice: 50.6, rawMaterialPurchasePrice: 54.8 },
   { period: '2026-03', pmi: 50.4, production: 51.4, newOrders: 51.6, outputPrice: 55.4, rawMaterialPurchasePrice: 63.9 },
+  { period: '2026-04', pmi: 50.3, production: 51.5, newOrders: 50.6, outputPrice: 55.1, rawMaterialPurchasePrice: 63.7 },
+  { period: '2026-05', pmi: 50.0, production: 51.2, newOrders: 49.9, outputPrice: 51.9, rawMaterialPurchasePrice: 60.5 },
+  { period: '2026-06', pmi: 50.3, production: 51.4, newOrders: 51.2, outputPrice: 48.2, rawMaterialPurchasePrice: 54.2 },
 ];
 
 // 按企业规模分类的PMI数据

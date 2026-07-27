@@ -111,6 +111,9 @@ export const ppiYoyData: PpiDataPoint[] = [
   { period: '2026-01', ppiYoy: -1.4, productionMaterialsYoy: -1.3, livingGoodsYoy: -1.7 },
   { period: '2026-02', ppiYoy: -0.9, productionMaterialsYoy: -0.7, livingGoodsYoy: -1.6 },
   { period: '2026-03', ppiYoy: 0.5, productionMaterialsYoy: 1.0, livingGoodsYoy: -1.3 },
+  { period: '2026-04', ppiYoy: 2.8, productionMaterialsYoy: 3.8, livingGoodsYoy: -1.0 },
+  { period: '2026-05', ppiYoy: 3.9, productionMaterialsYoy: 5.2, livingGoodsYoy: -0.8 },
+  { period: '2026-06', ppiYoy: 4.1, productionMaterialsYoy: 5.5, livingGoodsYoy: -0.9 },
 ];
 
 // PPI 月度同比明细数据

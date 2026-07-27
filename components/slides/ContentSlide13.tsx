@@ -2,28 +2,13 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { industrialProfitData, industryProfitGrowthData } from '@/data/profit';
+import { industryProfitGrowthData } from '@/data/profit';
 
 const formatNumber = (val: number) => {
   return val.toLocaleString('en-US', {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1
   });
-};
-
-const renderColoredCell = (value: any, row: any) => {
-  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-  const num = Number(value);
-  if (isNaN(num)) return value;
-  
-  const formatted = formatNumber(num);
-  // 只在特定行进行着色
-  if (row.time === '2602' || row.time === '2603') {
-    if (num > 0) return <span className="text-red-500">{formatted}</span>;
-    if (num < 0) return <span className="text-green-600">{formatted}</span>;
-  }
-  
-  return <span className="text-slate-600">{formatted}</span>;
 };
 
 const renderGrowthCell = (value: any) => {
@@ -34,16 +19,6 @@ const renderGrowthCell = (value: any) => {
   if (num < 0) return <span className="text-green-600">{formatted}</span>;
   return <span className="text-slate-600">{formatted}</span>;
 };
-
-const columns: ColumnConfig[] = [
-  { key: 'time', title: '日期', width: '70px', align: 'left' },
-  { key: 'totalProfit', title: '利润', width: '80px', align: 'right', render: renderColoredCell },
-  { key: 'revenue', title: '营收', width: '90px', align: 'right' },
-  { key: 'cost', title: '成本', width: '90px', align: 'right' },
-  { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
-  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right' },
-  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
-];
 
 const TOP_LEVEL_INDUSTRIES = new Set(['原材料制造业']);
 
@@ -66,6 +41,7 @@ export const ContentSlide13: React.FC = () => {
     <BaseContentSlide
       title="工业企业利润显著增长，受价格和成本双上涨作用"
       cardColumns={2}
+      chartColumns={1}
       cards={
         <>
           <BaseCard title="利润显著修复，营收-成本贡献主增量" delay="0ms" variant="accent">
@@ -88,32 +64,15 @@ export const ContentSlide13: React.FC = () => {
         </>
       }
       charts={
-        <>
-          <ChartContainer delay="600ms">
-            <BaseTable
-              data={industrialProfitData}
-              columns={columns}
-              title="工业企业利润分项当月同比增加值"
-              subtitle={
-                <>
-                  公式：利润=营收-成本-费用+投资收益+其它收益 &nbsp;&nbsp;|&nbsp;&nbsp; 单位：亿元
-                </>
-              }
-              dateColumn="time"
-              colorizeNumbers={false}
-              highlightRows={[industrialProfitData.length - 1]}
-            />
-          </ChartContainer>
-          <ChartContainer delay="600ms">
-            <BaseTable
-              data={industryProfitGrowthData}
-              columns={growthColumns}
-              title="一季度分行业利润同比增长"
-              subtitle="规上原材料制造业为一级分类 | 单位：%"
-              colorizeNumbers={false}
-            />
-          </ChartContainer>
-        </>
+        <ChartContainer delay="600ms">
+          <BaseTable
+            data={industryProfitGrowthData}
+            columns={growthColumns}
+            title="一季度分行业利润同比增长"
+            subtitle="规上原材料制造业为一级分类 | 单位：%"
+            colorizeNumbers={false}
+          />
+        </ChartContainer>
       }
     />
   );

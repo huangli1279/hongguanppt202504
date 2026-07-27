@@ -2,46 +2,95 @@ import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { pmiTrendData, pmiByEnterpriseSizeData } from '@/data/pmi';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { ppiYoyData } from '@/data/ppi';
+import { industrialProfitData } from '@/data/profit';
 
-// 转换PMI趋势数据为图表格式
-const pmiChartData = pmiTrendData.map(d => ({
-  period: d.period,
-  production: d.production,
-  newOrders: d.newOrders,
-  outputPrice: d.outputPrice,
-  rawMaterialPurchasePrice: d.rawMaterialPurchasePrice,
-}));
+// PPI 当月同比（2024-01 起）
+const ppiChartData = ppiYoyData.filter((d) => d.period >= '2024-01');
 
-// 转换企业规模PMI数据为图表格式
-const enterpriseSizeChartData = pmiByEnterpriseSizeData.map(d => ({
-  period: d.period,
-  pmi: pmiTrendData.find(item => item.period === d.period)?.pmi,
-  small: d.small,
-  medium: d.medium,
-  large: d.large,
-}));
+const formatNumber = (val: number) => {
+  return val.toLocaleString('en-US', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  });
+};
+
+const renderColoredCell = (value: any, row: any) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  const num = Number(value);
+  if (isNaN(num)) return value;
+
+  const formatted = formatNumber(num);
+  // 只在特定行进行着色
+  if (row.time === '2602' || row.time === '2603') {
+    if (num > 0) return <span className="text-red-500">{formatted}</span>;
+    if (num < 0) return <span className="text-green-600">{formatted}</span>;
+  }
+
+  return <span className="text-slate-600">{formatted}</span>;
+};
+
+const profitColumns: ColumnConfig[] = [
+  { key: 'time', title: '日期', width: '70px', align: 'left' },
+  { key: 'totalProfit', title: '利润', width: '80px', align: 'right', render: renderColoredCell },
+  { key: 'revenue', title: '营收', width: '90px', align: 'right' },
+  { key: 'cost', title: '成本', width: '90px', align: 'right' },
+  { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
+  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right' },
+  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
+];
 
 export const ContentSlide12: React.FC = () => {
   return (
     <BaseContentSlide
-      title="3月制造业PMI跃升至50.4%，分项数据均显著回升"
+      title="1-6月利润持续增长，持续受营收-成本影响"
       cardColumns={2}
+      chartColumns={2}
       cards={
         <>
-          <BaseCard title="景气度重返扩张区间" delay="0ms" variant="accent">
-            <p>
-              3月制造业PMI大幅回升<span className="font-bold">1.4个百分点</span>至<span className="font-bold">50.4%</span>，节后复工需求驱动特征显著。大型企业PMI升至<span className="font-bold">51.6%</span>，中、小型企业分别反弹至<span className="font-bold">49.0%</span>、<span className="font-bold">49.3%</span>。
-            </p>
+          <BaseCard title="二季度企业利润稳定增长" delay="0ms" variant="accent">
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                <span className="font-bold">利润持续增长：</span>
+                1-6月规上工业企业利润同比增长
+                <span className="font-bold">18.7%</span>
+                ，5月增长
+                <span className="font-bold">21.1%</span>
+                ，6月增长
+                <span className="font-bold">15.1%</span>
+                。
+              </li>
+              <li>
+                <span className="font-bold">政策引导供给优化：</span>
+                监管层深入整治“内卷式”竞争，严控低效产能扩张（如光伏、锂电），4月工信部、国家发改委等五部门联合印发《工业产品绿色设计指南（2026年版）》。
+              </li>
+              <li>
+                <span className="font-bold">后续挑战：</span>
+                内需疲软对生产意愿的遏制仍存，且PPI向CPI传导受阻导致中下游行业利润空间受到挤压，利润分配不均可能压制整体生产复苏弹性。
+              </li>
+            </ul>
           </BaseCard>
 
-          <BaseCard title="产需两端同步扩张" delay="120ms">
-            <p>
-              3月新订单指数
-              <span className="font-bold">51.6%</span>，升幅大于生产指数
-              <span className="font-bold">51.4%</span>，供强需弱错配缓解。原材料购进价格猛涨至
-              <span className="font-bold">63.9%</span>，显著高于出厂价格55.4%，中下游利润压力加大。
-            </p>
+          <BaseCard title="PPI回升与FIFO效应" delay="120ms">
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                <span className="font-bold">PPI回升拉动价格增长：</span>
+                尽管实际工增放缓，但二季度PPI保持上行（5月
+                <span className="font-bold">3.9%</span>
+                ，6月
+                <span className="font-bold">4.1%</span>
+                ），推动营收利润率提升至
+                <span className="font-bold">5.56%</span>
+                （同比提高
+                <span className="font-bold">0.63%</span>
+                ），但生产资料和生活资料剪刀差扩大，中下游企业生存条件严峻。
+              </li>
+              <li>
+                <span className="font-bold">FIFO效应与库存：</span>
+                油价飙升初期，受“先进先出”成本核算影响，石化链利润短期改善，但随着低价库存耗尽，下半年中下游成本压力或将凸显。
+              </li>
+            </ul>
           </BaseCard>
         </>
       }
@@ -49,69 +98,39 @@ export const ContentSlide12: React.FC = () => {
         <>
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={enterpriseSizeChartData}
-              title="制造业PMI及不同规模企业PMI数据"
-              subtitle="数据来源：国家统计局 | 单位：指数"
+              data={ppiChartData}
+              title="PPI当月同比、生产资料当月同比、生活资料当月同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'pmi', name: '制造业PMI', strokeWidth: 2.5, pointOffsets: { '2026-03': -12 } },
-                { dataKey: 'large', name: '大型企业', strokeWidth: 2.5 },
-                { dataKey: 'medium', name: '中型企业', labelDY: 14 },
-                { dataKey: 'small', name: '小型企业', pointOffsets: { '2026-03': 18 } },
+                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5 },
+                { dataKey: 'productionMaterialsYoy', name: '生产资料当月同比', strokeWidth: 2.5 },
+                { dataKey: 'livingGoodsYoy', name: '生活资料当月同比', strokeWidth: 2.5 },
               ]}
-              yAxisDomain={[44, 54]}
+              yAxisDomain={[-6, 8]}
               showYAxis={true}
               showReferenceLine={true}
-              referenceLineY={50}
-              legendOrder={['制造业PMI', '大型企业', '中型企业', '小型企业']}
-              highlightPeriods={['2026-03']}
-              xAxisTickCount={6}
+              referenceLineY={0}
+              legendOrder={['PPI当月同比', '生产资料当月同比', '生活资料当月同比']}
+              highlightPeriods={['2026-06']}
+              xAxisTickCount={7}
               unit=""
               yAxisTickFormatter={(val) => `${val}`}
             />
           </ChartContainer>
           <ChartContainer delay="720ms">
-            <div className="flex flex-col gap-2 h-full">
-              <div className="flex-1 min-h-0">
-                <BaseLineChart
-                  data={pmiChartData}
-                  title="PMI产需指标：生产与新订单"
-                  subtitle="数据来源：国家统计局 | 单位：指数"
-                  lines={[
-                    { dataKey: 'production', name: '生产', strokeWidth: 2.5, pointOffsets: { '2026-03': 12 } },
-                    { dataKey: 'newOrders', name: '新订单', strokeWidth: 2.5, pointOffsets: { '2026-03': -12 } },
-                  ]}
-                  yAxisDomain={[48, 54]}
-                  showYAxis={true}
-                  showReferenceLine={true}
-                  referenceLineY={50}
-                  legendOrder={['生产', '新订单']}
-                  highlightPeriods={['2026-03']}
-                  xAxisTickCount={6}
-                  unit=""
-                  yAxisTickFormatter={(val) => `${val}`}
-                />
-              </div>
-              <div className="flex-1 min-h-0">
-                <BaseLineChart
-                  data={pmiChartData}
-                  title="PMI价格指标：原材料购进与出厂价格"
-                  subtitle="数据来源：国家统计局 | 单位：指数"
-                  lines={[
-                    { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', strokeWidth: 2.5, pointOffsets: { '2026-03': -8 } },
-                    { dataKey: 'outputPrice', name: '出厂价格', strokeWidth: 2.5, pointOffsets: { '2026-03': 14 } },
-                  ]}
-                  yAxisDomain={[42, 66]}
-                  showYAxis={true}
-                  showReferenceLine={true}
-                  referenceLineY={50}
-                  legendOrder={['原材料购进价格', '出厂价格']}
-                  highlightPeriods={['2026-03']}
-                  xAxisTickCount={6}
-                  unit=""
-                  yAxisTickFormatter={(val) => `${val}`}
-                />
-              </div>
-            </div>
+            <BaseTable
+              data={industrialProfitData}
+              columns={profitColumns}
+              title="工业企业利润分项当月同比增加值"
+              subtitle={
+                <>
+                  公式：利润=营收-成本-费用+投资收益+其它收益 &nbsp;&nbsp;|&nbsp;&nbsp; 单位：亿元
+                </>
+              }
+              dateColumn="time"
+              colorizeNumbers={false}
+              highlightRows={[industrialProfitData.length - 1]}
+            />
           </ChartContainer>
         </>
       }
