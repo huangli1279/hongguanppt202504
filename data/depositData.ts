@@ -208,6 +208,25 @@ export const quarterlyDepositData: QuarterlyDepositPoint[] = [
   { period: '2025Q3', household: 1.96, householdDemand: 0.52, householdTime: 1.44, nonBankFin: 2.26 },
   { period: '2025Q4', household: 1.91, householdDemand: 0.69, householdTime: 1.22, nonBankFin: 1.60 },
   { period: '2026Q1', household: 7.70, householdDemand: 1.16, householdTime: 6.53, nonBankFin: 2.32 },
+  { period: '2026Q2', household: -0.10, householdDemand: -0.66, householdTime: 0.56, nonBankFin: 2.62 },
+];
+
+/** Q2 存款增量对比：按类别分组，便于同年份并排对比 */
+export const depositIncrementQ2CompareData = [
+  { category: '居民存款增量', q2024: 0.72, q2025: 1.55, q2026: -0.10 },
+  { category: '居民活期存款', q2024: -0.31, q2025: 0.26, q2026: -0.66 },
+  { category: '居民定期存款', q2024: 1.02, q2025: 1.30, q2026: 0.56 },
+  { category: '金融机构存款', q2024: 0.65, q2025: 2.24, q2026: 2.62 },
+];
+
+/** 居民存款分月变化表：同月 25/26 相邻，单位与源表一致 */
+export const householdDepositMonthlyChangeData = [
+  { period: '2025-04', household: -1.39, nonFinancial: -1.33, nonBankFin: 1.57 },
+  { period: '2026-04', household: -1.94, nonFinancial: -1.25, nonBankFin: 2.46 },
+  { period: '2025-05', household: 0.47, nonFinancial: -0.42, nonBankFin: 1.18 },
+  { period: '2026-05', household: -0.11, nonFinancial: -0.16, nonBankFin: 1.14 },
+  { period: '2025-06', household: 2.48, nonFinancial: 1.78, nonBankFin: -0.52 },
+  { period: '2026-06', household: 1.94, nonFinancial: 1.94, nonBankFin: -0.99 },
 ];
 
 export const nonBankFinQuarterlyData = [

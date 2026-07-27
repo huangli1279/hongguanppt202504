@@ -47,11 +47,16 @@ export { fiscalRevenueTrendData, taxCategoryData } from './fiscalRevenue';
 export type { FiscalRevenueTrendDataPoint, TaxCategoryDataPoint } from './fiscalRevenue';
 export { governmentFundRevenueData, landSaleRevenueShareData } from './governmentFund';
 export type { GovernmentFundRevenueDataPoint, LandSaleRevenueShareDataPoint } from './governmentFund';
-export { moneySupplyData, moneySupplyScissorData } from './moneySupply';
-export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint } from './moneySupply';
-export { socialFinancingGrowthData, socialFinancingStructureData } from './socialFinancing';
-export { loanStockData, loanIncrementData } from './loanData';
-export type { LoanStockPoint, LoanIncrementByType } from './loanData';
-export { depositData } from './depositData';
+export { moneySupplyData, moneySupplyScissorData, moneySupplyCombinedRecentData } from './moneySupply';
+export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint, MoneySupplyCombinedDataPoint } from './moneySupply';
+export { socialFinancingGrowthData, socialFinancingStructureData, socialFinancingStructureQ2Data } from './socialFinancing';
+export {
+  loanStockData,
+  loanIncrementData,
+  corporateCreditStructureData,
+  householdLoanChangeData,
+} from './loanData';
+export type { LoanStockPoint, LoanIncrementByType, HouseholdLoanChangePoint } from './loanData';
+export { depositData, depositIncrementQ2CompareData, householdDepositMonthlyChangeData } from './depositData';
 export type { DepositDataPoint } from './depositData';
 export { provinceGdpDataTop15, provinceGdpDataRest } from './provinceGdp';

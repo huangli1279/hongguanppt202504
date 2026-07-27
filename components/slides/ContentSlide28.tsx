@@ -1,103 +1,72 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { importStatisticsData } from '@/data/importProducts';
-import { cn } from '@/utils/cn';
+import { BaseLineChart } from '../base/BaseLineChart';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { chartColors } from '@/utils/chartColors';
+import {
+  socialFinancingGrowthData,
+  socialFinancingStructureQ2Data,
+} from '@/data/socialFinancing';
 
 export const ContentSlide28: React.FC = () => {
-  const filteredData = importStatisticsData.filter((item: any) =>
-    !['农产品*', '肉类 (包括杂碎)', '矿产品*', '战略性资源*'].includes(item.product)
-  );
-
-  const columns: ColumnConfig[] = [
-    {
-      key: 'product',
-      title: '商品',
-      align: 'left',
-      width: '35%',
-      render: (val: string) => {
-        const level1Items = ['肉类', '铁矿砂及其精矿', '稀土', '集成电路'];
-        const boldItems = ['农产品*', '矿产品*', '战略性资源*', '机电产品*', '高新技术产品*'];
-
-        let padding = 'pl-0';
-        if (level1Items.includes(val)) padding = 'pl-4';
-
-        const isBold = boldItems.includes(val);
-
-        return <div className={cn(padding, isBold && "font-bold text-webank-blue")}>{val}</div>;
-      }
-    },
-    {
-      key: 'decAmount',
-      title: '3月金额',
-      align: 'right',
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        const formatted = val.toLocaleString('en-US', {
-          minimumFractionDigits: 1,
-          maximumFractionDigits: 1
-        });
-        return <span className="text-black">{formatted}</span>;
-      }
-    },
-    {
-      key: 'yearTotalAmount',
-      title: '1-3月累计金额',
-      align: 'right',
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-
-        const formatted = val.toLocaleString('en-US', {
-          minimumFractionDigits: 1,
-          maximumFractionDigits: 1
-        });
-
-        return <span className="text-black">{formatted}</span>;
-      }
-    },
-    { key: 'yearQtyYoY', title: '1-3月数量累计同比', align: 'right', render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className={val >= 0 ? "text-black" : "text-green-500"}>{val}%</span>;
-      } },
-    { key: 'yearAmountYoY', title: '1-3月金额累计同比', align: 'right', render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-red-500">{val}%</span>;
-      } },
-  ];
-
   return (
     <BaseContentSlide
-      title="进口结构分化凸显，输入性通胀压力升温"
+      title="二季度社融增量6万亿，主要依赖政府债支撑，信贷需求仍然弱"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="结构性需求强劲，AI产业链拉动核心零部件进口大增" delay="0ms" variant="accent">
+          <BaseCard title="社融总量温和减速" delay="0ms" variant="accent">
             <p>
-              一季度自动数据处理设备进口同比增长<span className="text-red-500 font-semibold">49.5%</span>，集成电路进口同比增长<span className="text-red-500 font-semibold">45.0%</span>，机电产品（<span className="text-red-500 font-semibold">+24.9%</span>）与高新技术产品（<span className="text-red-500 font-semibold">+29.2%</span>）进口金额高速增长，凸显国内电子制造与AI算力产业对核心零部件的刚性需求与战略补库特征。
+              Q2新增社会融资规模<span className="text-webank-blue font-semibold">5.6万亿元</span>，同比少增<span className="text-webank-blue font-semibold">1.67万亿元</span>，存量增速微降至<span className="text-webank-blue font-semibold">7.4%</span>。主要拖累项来自人民币贷款及政府债券的高基数效应。其中，人民币贷款增量<span className="text-webank-blue font-semibold">1.86万亿</span>，同比少增<span className="text-webank-blue font-semibold">1.18万亿</span>；政府债净融资<span className="text-webank-blue font-semibold">2.89万亿元</span>，同比少增<span className="text-webank-blue font-semibold">8862亿元</span>。
             </p>
           </BaseCard>
-          <BaseCard title="地缘冲突推升大宗商品价格，输入性通胀压力凸显" delay="120ms">
+          <BaseCard title="企业债券融资" delay="120ms">
             <p>
-              中东局势扰动推升原油、铜价，一季度整体进口金额同比增速上行；矿产品中铁矿砂（数量<span className="text-red-500 font-semibold">+10.5%</span>、金额<span className="text-red-500 font-semibold">+11.3%</span>）、战略性资源中稀土（数量<span className="text-red-500 font-semibold">+30.0%</span>、金额<span className="text-red-500 font-semibold">+167.5%</span>）等大宗商品呈现“量价齐升”特征，反映战略性资源价格上涨与补库需求并存。
+              Q2企业债券融资<span className="text-webank-blue font-semibold">1.02万亿元</span>，同比多增<span className="text-red-500 font-semibold">3954亿元</span>，延续Q1高增趋势。优质企业倾向于通过债券替代贷款进行融资。
             </p>
           </BaseCard>
         </div>
 
-        <ChartContainer delay="600ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={filteredData}
-            columns={columns}
-            title="2026年3月全国进口重点商品量值表"
-            subtitle="数据来源：海关总署 | 金额单位：百万美元，同比：%"
-            rowHeight="auto"
-            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
-            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
-            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
-            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
-          />
-        </ChartContainer>
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={socialFinancingGrowthData}
+              title="社会融资规模存量增速"
+              subtitle="数据来源：中国人民银行 | 单位：%"
+              lines={[
+                { dataKey: 'growth', name: '社融存量同比增速', strokeWidth: 2 },
+              ]}
+              yAxisDomain={[7, 10]}
+              showYAxis={true}
+              xAxisTickCount={8}
+            />
+          </ChartContainer>
+          <ChartContainer delay="600ms">
+            <BaseBarChart
+              data={socialFinancingStructureQ2Data}
+              title="Q2社融结构同比"
+              subtitle="数据来源：中国人民银行 | 单位：亿元"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'q24', name: '2025Q2', color: chartColors.tertiary },
+                { dataKey: 'q25', name: '2026Q2', color: chartColors.primary },
+              ]}
+              yAxisDomain={[-10000, 40000]}
+              showYAxis={true}
+              yAxisWidth={50}
+              yAxisTickFormatter={(val) => `${val}`}
+              showReferenceLine={true}
+              referenceLineY={0}
+              barSize={35}
+              xAxisAngle={-15}
+              xAxisHeight={60}
+              legendOrder={['2025Q2', '2026Q2']}
+              unit="亿元"
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );

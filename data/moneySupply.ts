@@ -14,7 +14,14 @@ export interface MoneySupplyScissorDataPoint {
   scissor: number;
 }
 
-// M1/M2同比增速数据 (2022-2026Q1)
+export interface MoneySupplyCombinedDataPoint {
+  period: string;
+  m1: number;
+  m2: number;
+  scissor: number;
+}
+
+// M1/M2同比增速数据 (2022-2026H1)
 export const moneySupplyData: MoneySupplyDataPoint[] = [
   { period: '2022-01', m1: -1.9, m2: 9.8 },
   { period: '2022-02', m1: 4.7, m2: 9.2 },
@@ -67,9 +74,12 @@ export const moneySupplyData: MoneySupplyDataPoint[] = [
   { period: '2026-01', m1: 4.9, m2: 9.0 },
   { period: '2026-02', m1: 5.9, m2: 9.0 },
   { period: '2026-03', m1: 5.1, m2: 8.5 },
+  { period: '2026-04', m1: 5.0, m2: 8.6 },
+  { period: '2026-05', m1: 5.5, m2: 8.6 },
+  { period: '2026-06', m1: 4.0, m2: 8.0 },
 ];
 
-// M1-M2剪刀差数据 (2022-2026Q1)
+// M1-M2剪刀差数据 (2022-2026H1)
 export const moneySupplyScissorData: MoneySupplyScissorDataPoint[] = [
   { period: '2022-01', scissor: -11.7 },
   { period: '2022-02', scissor: -4.5 },
@@ -122,4 +132,35 @@ export const moneySupplyScissorData: MoneySupplyScissorDataPoint[] = [
   { period: '2026-01', scissor: -4.1 },
   { period: '2026-02', scissor: -3.1 },
   { period: '2026-03', scissor: -3.4 },
+  { period: '2026-04', scissor: -3.6 },
+  { period: '2026-05', scissor: -3.1 },
+  { period: '2026-06', scissor: -4.0 },
+];
+
+/** M1、M2同比及剪刀差合并序列（2024-07 ~ 2026-06） */
+export const moneySupplyCombinedRecentData: MoneySupplyCombinedDataPoint[] = [
+  { period: '2024-07', m1: -2.6, m2: 6.3, scissor: -8.9 },
+  { period: '2024-08', m1: -3.0, m2: 6.3, scissor: -9.3 },
+  { period: '2024-09', m1: -3.3, m2: 6.8, scissor: -10.1 },
+  { period: '2024-10', m1: -2.3, m2: 7.5, scissor: -9.8 },
+  { period: '2024-11', m1: -0.7, m2: 7.1, scissor: -7.8 },
+  { period: '2024-12', m1: 1.2, m2: 7.3, scissor: -6.1 },
+  { period: '2025-01', m1: 0.4, m2: 7.0, scissor: -6.6 },
+  { period: '2025-02', m1: 0.1, m2: 7.0, scissor: -6.9 },
+  { period: '2025-03', m1: 1.6, m2: 7.0, scissor: -5.4 },
+  { period: '2025-04', m1: 1.5, m2: 8.0, scissor: -6.5 },
+  { period: '2025-05', m1: 2.3, m2: 7.9, scissor: -5.6 },
+  { period: '2025-06', m1: 4.6, m2: 8.3, scissor: -3.7 },
+  { period: '2025-07', m1: 5.6, m2: 8.8, scissor: -3.2 },
+  { period: '2025-08', m1: 6.0, m2: 8.8, scissor: -2.8 },
+  { period: '2025-09', m1: 7.2, m2: 8.4, scissor: -1.2 },
+  { period: '2025-10', m1: 6.2, m2: 8.2, scissor: -2.0 },
+  { period: '2025-11', m1: 4.9, m2: 8.0, scissor: -3.1 },
+  { period: '2025-12', m1: 3.8, m2: 8.5, scissor: -4.7 },
+  { period: '2026-01', m1: 4.9, m2: 9.0, scissor: -4.1 },
+  { period: '2026-02', m1: 5.9, m2: 9.0, scissor: -3.1 },
+  { period: '2026-03', m1: 5.1, m2: 8.5, scissor: -3.4 },
+  { period: '2026-04', m1: 5.0, m2: 8.6, scissor: -3.6 },
+  { period: '2026-05', m1: 5.5, m2: 8.6, scissor: -3.1 },
+  { period: '2026-06', m1: 4.0, m2: 8.0, scissor: -4.0 },
 ];

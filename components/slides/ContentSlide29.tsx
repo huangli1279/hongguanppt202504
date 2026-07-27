@@ -1,79 +1,105 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
+import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
 import { chartColors } from '@/utils/chartColors';
-import { exportRegionTrendData, exportCompositionData } from '@/data/exportRegion';
+import { corporateCreditStructureData, householdLoanChangeData } from '@/data/loanData';
+
+const formatTrillion = (val: any) =>
+  val === null || val === undefined
+    ? '-'
+    : typeof val === 'number'
+      ? Number(val).toFixed(2)
+      : String(val);
+
+const loanColumns: ColumnConfig[] = [
+  { key: 'period', title: '月份', align: 'center', width: '0.75fr' },
+  { key: 'consumerLoan', title: '消费贷款', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'shortTermConsumer', title: '短期消费', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'longTermConsumer', title: '中长期消费', align: 'right', width: '1.1fr', render: formatTrillion },
+  { key: 'housingLoan', title: '其中:房贷', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'businessLoan', title: '经营贷款', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'totalLoan', title: '贷款合计', align: 'right', width: '1fr', render: formatTrillion },
+];
 
 export const ContentSlide29: React.FC = () => {
-  // 表格列配置
-  const columns: ColumnConfig[] = [
-    { key: 'period', title: '月份', align: 'center' },
-    { key: 'totalExport', title: '出口总值', align: 'right' },
-    { key: 'toUS', title: '美国', align: 'right' },
-    { key: 'toASEAN', title: '东盟', align: 'right' },
-    { key: 'toAfrica', title: '非洲', align: 'right' },
-    { key: 'toEU', title: '欧盟', align: 'right' },
-    { key: 'toLatinAmerica', title: '拉美', align: 'right' },
-  ];
-
-  // 柱状图配置
-  const bars: BarConfig[] = [
-    { dataKey: 'y2024', name: '25Q1', color: chartColors.tertiary },
-    { dataKey: 'y2025', name: '26Q1', color: chartColors.primary },
-  ];
+  const highlightRows = householdLoanChangeData.reduce<number[]>((acc, item, index) => {
+    if (['2026-04', '2026-05', '2026-06'].includes(item.period)) {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
 
   return (
     <BaseContentSlide
-      title={<>对美出口继续下降，欧盟非洲支撑增长</>}
+      title={<>企业贷款“票据强、中长期弱”，居民端加速缩表</>}
       cardColumns={2}
     >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="对美出口持续下降，份额显著收缩" delay="0ms" variant="accent">
-            <p>
-              一季度对美出口降幅持续，1月同比<span className="text-green-600 font-semibold">-23.0%</span>，3月<span className="text-green-600 font-semibold">-26.5%</span>，较去年底<span className="text-green-600 font-semibold">-30.0%</span>虽有收窄；出口份额由去年的13.5%降至约<span className="text-green-600 font-semibold">9.9%</span>，<span className="font-semibold">下降3.6个百分点</span>，收缩显著。
-            </p>
+      <div className="flex flex-col h-full pb-6">
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
+            <ul className="list-disc pl-4 space-y-0.5">
+              <li>
+                实体融资意愿低迷：Q2非金融企业贷款新增<span className="text-webank-blue font-semibold">2.5万亿</span>，中长期仅增<span className="text-webank-blue font-semibold">1300亿</span>（同比少增1.46万亿），为近年低点。
+              </li>
+              <li>
+                票据融资独撑增量：Q2票据新增<span className="text-webank-blue font-semibold">1.9万亿</span>（同比多增1.4万亿），票利率约<span className="text-webank-blue font-semibold">0.5%</span>，银行“以票充贷”突出。
+              </li>
+              <li>
+                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">13.6%</span>、绿色贷款<span className="text-red-500 font-semibold">17.6%</span>，显著跑赢大盘<span className="text-webank-blue font-semibold">4.65%</span>。
+              </li>
+            </ul>
           </BaseCard>
-          <BaseCard title="非美地区出口保持强劲" delay="120ms">
-            <p>
-              一季度我国对新兴市场出口高增长：2月对非<span className="text-red-500 font-semibold">+97.5%</span>、东盟<span className="text-red-500 font-semibold">+38.8%</span>、拉美<span className="text-red-500 font-semibold">+44.1%</span>。东盟、非洲、欧盟合并出口占比提升<span className="text-red-500 font-semibold">2.5个百分点</span>，<span className="font-semibold">部分对冲</span>对美下降。
-              <br />
-              高油价加速海外绿色转型，有望进一步打开新能源汽车、锂电及电力设备的出口空间。
-            </p>
+          <BaseCard title="居民端加速缩表，长短双降" delay="120ms" className="!p-3 gap-1 text-sm">
+            <ul className="list-disc pl-4 space-y-0.5">
+              <li>
+                居民信贷持续收缩：Q2居民贷款减少<span className="text-green-600 font-semibold">6600亿</span>，同比多减<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续下降。
+              </li>
+              <li>
+                中长期（房贷）：Q2减少<span className="text-green-600 font-semibold">3700亿</span>（同比多减5263亿），新增按揭难对冲提前还贷。
+              </li>
+              <li>
+                短期（消费）：Q2减少<span className="text-green-600 font-semibold">1900亿</span>，居民消费信心与风险偏好仍处低位。
+              </li>
+            </ul>
           </BaseCard>
         </div>
 
-        {/* 图表区域 */}
-        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
-          {/* 表格 */}
-          <ChartContainer delay="600ms">
-            <BaseTable
-              data={exportRegionTrendData}
-              columns={columns}
-              title="出口区域当月同比走势"
-              subtitle="数据来源：海关总署 | 单位：%"
-              striped={true}
-              dateColumn="period"
-              highlightRows={[14]}
+        <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
+          <ChartContainer delay="600ms" className="min-h-0">
+            <BaseBarChart
+              data={corporateCreditStructureData}
+              title="Q2人民币信贷增长结构"
+              subtitle="数据来源：中国人民银行 | 单位：亿元"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'y2024', name: '2024年', color: chartColors.quaternary },
+                { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
+                { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
+              ]}
+              yAxisDomain={[0, 22000]}
+              showYAxis={true}
+              yAxisWidth={50}
+              yAxisTickFormatter={(val) => `${val}`}
+              barSize={22}
+              showLabels={true}
+              legendOrder={['2024年', '2025年', '2026年']}
+              unit="亿元"
             />
           </ChartContainer>
-
-          {/* 柱状图 */}
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={exportCompositionData}
-              title="主要国家/地区累计出口占比"
-              subtitle="数据来源：海关总署 | 单位：%"
-              bars={bars}
-              xAxisKey="region"
-              yAxisDomain={[0, 20]}
-              showYAxis={false}
-              legendOrder={['25Q1', '26Q1']}
-              barSize={16}
-              showLabels={true}
+          <ChartContainer delay="600ms" className="min-h-0">
+            <BaseTable
+              data={householdLoanChangeData}
+              columns={loanColumns}
+              title="居民贷款变化情况"
+              subtitle="数据来源：中国人民银行｜单位：万亿元"
+              colorizeNumbers={false}
+              dateColumn="period"
+              highlightRows={highlightRows}
+              rowHeight="auto"
+              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[11px] leading-none"
+              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[11px] leading-none"
             />
           </ChartContainer>
         </div>

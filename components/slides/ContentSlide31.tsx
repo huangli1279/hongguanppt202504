@@ -1,73 +1,87 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { chartColors } from '@/utils/chartColors';
+import {
+  depositIncrementQ2CompareData,
+  householdDepositMonthlyChangeData,
+} from '@/data/depositData';
+
+const formatValue = (val: any) =>
+  val === null || val === undefined
+    ? '-'
+    : typeof val === 'number'
+      ? Number(val).toFixed(2)
+      : String(val);
+
+const depositColumns: ColumnConfig[] = [
+  { key: 'period', title: '月份', align: 'center', width: '0.9fr' },
+  { key: 'household', title: '住户存款', align: 'right', width: '1fr', render: formatValue },
+  { key: 'nonFinancial', title: '非金融企业存款', align: 'right', width: '1.2fr', render: formatValue },
+  { key: 'nonBankFin', title: '非银行业金融机构存款', align: 'right', width: '1.4fr', render: formatValue },
+];
 
 export const ContentSlide31: React.FC = () => {
-  const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: 16 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: -8 },
-    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
-  ];
-
-  const bars: BarConfig[] = [
-    { dataKey: 'growth', name: '同比增速', color: '#005c8f' },
-  ];
+  const highlightRows = householdDepositMonthlyChangeData.reduce<number[]>((acc, item, index) => {
+    if (item.period.startsWith('2026-')) {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
 
   return (
     <BaseContentSlide
-      title={<>一般公共预算收入增2.4%，高于过去3年同期水平，税收及非税收入均增长</>}
-      cardColumns={2}
+      title={<>“存款搬家”有所缓解：二季度居民存款同比少增1.52万亿</>}
+      cardColumns={1}
+      chartColumns={2}
     >
       <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="税收/非税收入均增" delay="0ms" variant="accent">
+        <div className="mb-6 flex-shrink-0">
+          <BaseCard title="居民存款变化" delay="0ms" variant="accent">
             <p>
-              一季度，全国一般公共预算收入 6.16 万亿元，同比增长<span className="text-red-500 font-semibold">2.4%</span>，高于过去3年同期水平。主要宏观指标增速回升，价格出现积极变化，货物进出口快速增长，为财政收入增长提供了有力支撑。
-            </p>
-          </BaseCard>
-          <BaseCard title="多数税种保持增长" delay="120ms">
-            <p>
-              全国税收收入 4.85 万亿元，同比增长<span className="text-red-500 font-semibold">2.2%</span>，增幅比前2个月提高2.1个百分点；国内增值税增长 <span className="text-red-500 font-semibold">4.9%</span>，进口环节增值税、消费税增长 <span className="text-red-500 font-semibold">12.9%</span>，证券交易印花税大幅增长 <span className="text-red-500 font-semibold">78.1%</span>；非税收入 1.31 万亿元，同比增长 <span className="text-red-500 font-semibold">2.9%</span>。
+              “存款搬家”有所缓解：二季度居民存款下降<span className="text-webank-blue font-semibold">0.1亿</span>，同比少增<span className="text-webank-blue font-semibold">1.52万亿</span>，非银存款增长<span className="text-webank-blue font-semibold">2.62万亿</span>，同比多增<span className="text-webank-blue font-semibold">2万亿</span>。反映在存款利率下调与资本市场活跃度提升背景下，存款搬家延续。但分月数据看，二季度4月、5月居民存款、企业存款，连续两月下降，6月增长非银存款回落，存款搬家有所缓解。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 */}
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={fiscalRevenueTrendData}
-              title="一般公共预算收入累计同比"
-              subtitle="数据来源：财政部 | 单位：%"
-              lines={lines}
-              yAxisDomain={[-15, 30]}
+            <BaseBarChart
+              data={depositIncrementQ2CompareData}
+              title="存款增量对比（万亿）"
+              subtitle="数据来源：中国人民银行 | 单位：万亿元"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'q2024', name: '2024Q2', color: chartColors.quaternary },
+                { dataKey: 'q2025', name: '2025Q2', color: chartColors.tertiary },
+                { dataKey: 'q2026', name: '2026Q2', color: chartColors.primary },
+              ]}
+              yAxisDomain={[-1, 3]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
-              xAxisTickCount={7}
+              yAxisTickFormatter={(val) => `${val}`}
+              barSize={28}
+              showLabels={true}
+              legendOrder={['2024Q2', '2025Q2', '2026Q2']}
+              unit="万亿"
             />
           </ChartContainer>
 
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={fiscalCategoryGrowthData}
-              title="一般公共预算分项目同比增速"
-              subtitle="数据来源：财政部 | 单位：%"
-              bars={bars}
-              xAxisKey="category"
-              yAxisDomain={[-10, 40]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={true}
-              barSize={22}
-              xAxisAngle={-45}
-              xAxisHeight={60}
+          <ChartContainer delay="720ms" className="min-h-0">
+            <BaseTable
+              data={householdDepositMonthlyChangeData}
+              columns={depositColumns}
+              title="居民存款变化"
+              subtitle="数据来源：中国人民银行｜单位：万亿"
+              colorizeNumbers={false}
+              dateColumn="period"
+              highlightRows={highlightRows}
+              rowHeight="auto"
+              cellClassName="!px-1.5 whitespace-nowrap tabular-nums text-[12px] leading-none"
+              headerCellClassName="!px-1.5 !py-1.5 whitespace-nowrap text-[11px] leading-tight"
             />
           </ChartContainer>
         </div>

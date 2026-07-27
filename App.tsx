@@ -168,12 +168,12 @@ const App: React.FC = () => {
       case 25: return <BaseSectionTransitionSlide id="07" title="财政分析" />;
       case 26: return <ContentSlide24 />;
       case 27: return <ContentSlide26 />;
-      case 28: return <ContentSlide27 />;
-      case 29: return <ContentSlide28 />;
-      case 30: return <ContentSlide29 />;
-      case 31: return <ContentSlide31 />;
-      case 32: return <ContentSlide32 />;
-      case 33: return <BaseSectionTransitionSlide id="08" title="金融数据分析" />;
+      case 28: return <BaseSectionTransitionSlide id="08" title="金融数据分析" />;
+      case 29: return <ContentSlide27 />;
+      case 30: return <ContentSlide28 />;
+      case 31: return <ContentSlide29 />;
+      case 32: return <ContentSlide31 />;
+      case 33: return <ContentSlide32 />;
       case 34: return <ContentSlide34 />;
       case 35: return <ContentSlide35 />;
       case 36: return <ContentSlide36 />;
