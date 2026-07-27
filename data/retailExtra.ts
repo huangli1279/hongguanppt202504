@@ -1,5 +1,44 @@
-// 社零分类当月同比（Slide13/16）
+/** Slide16：社零季调环比 vs 住户消费贷款环比增速 */
+export interface RetailMomVsLoanDataPoint {
+  period: string;
+  retailSaMom: number;
+  consumerLoanMom: number | null;
+}
 
+export const retailMomVsLoanData: RetailMomVsLoanDataPoint[] = [
+  { period: '2024-01', retailSaMom: -0.04, consumerLoanMom: null },
+  { period: '2024-02', retailSaMom: 0.11, consumerLoanMom: -0.99 },
+  { period: '2024-03', retailSaMom: 0.48, consumerLoanMom: 0.45 },
+  { period: '2024-04', retailSaMom: -0.08, consumerLoanMom: -0.63 },
+  { period: '2024-05', retailSaMom: 0.21, consumerLoanMom: -0.10 },
+  { period: '2024-06', retailSaMom: 0.24, consumerLoanMom: 0.34 },
+  { period: '2024-07', retailSaMom: 0.74, consumerLoanMom: -0.16 },
+  { period: '2024-08', retailSaMom: 0.36, consumerLoanMom: 0.18 },
+  { period: '2024-09', retailSaMom: 0.53, consumerLoanMom: 0.35 },
+  { period: '2024-10', retailSaMom: 0.50, consumerLoanMom: 0.40 },
+  { period: '2024-11', retailSaMom: 0.32, consumerLoanMom: 0.48 },
+  { period: '2024-12', retailSaMom: 0.32, consumerLoanMom: 0.33 },
+  { period: '2025-01', retailSaMom: 0.32, consumerLoanMom: 0.37 },
+  { period: '2025-02', retailSaMom: 0.48, consumerLoanMom: -0.64 },
+  { period: '2025-03', retailSaMom: 0.13, consumerLoanMom: 0.65 },
+  { period: '2025-04', retailSaMom: 0.15, consumerLoanMom: -0.33 },
+  { period: '2025-05', retailSaMom: 0.69, consumerLoanMom: 0.03 },
+  { period: '2025-06', retailSaMom: -0.50, consumerLoanMom: 0.30 },
+  { period: '2025-07', retailSaMom: 0.04, consumerLoanMom: -0.38 },
+  { period: '2025-08', retailSaMom: 0.26, consumerLoanMom: -0.05 },
+  { period: '2025-09', retailSaMom: 0.04, consumerLoanMom: 0.12 },
+  { period: '2025-10', retailSaMom: 0.15, consumerLoanMom: -0.25 },
+  { period: '2025-11', retailSaMom: -0.10, consumerLoanMom: -0.29 },
+  { period: '2025-12', retailSaMom: -0.02, consumerLoanMom: -0.41 },
+  { period: '2026-01', retailSaMom: 0.26, consumerLoanMom: 0.13 },
+  { period: '2026-02', retailSaMom: 0.32, consumerLoanMom: -1.03 },
+  { period: '2026-03', retailSaMom: 0.09, consumerLoanMom: 0.06 },
+  { period: '2026-04', retailSaMom: -0.29, consumerLoanMom: -0.88 },
+  { period: '2026-05', retailSaMom: -0.17, consumerLoanMom: -0.23 },
+  { period: '2026-06', retailSaMom: 0.38, consumerLoanMom: 0.12 },
+];
+
+// 社零分类当月同比（Slide13）
 export const retailMonthlyCategoryData = [
   { period: '2024-03', totalRetail: 3.1, cateringRevenue: 6.9, goodsRetail: 2.7 },
   { period: '2024-04', totalRetail: 2.3, cateringRevenue: 4.4, goodsRetail: 2.0 },

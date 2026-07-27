@@ -23,7 +23,7 @@ export const ContentSlide27: React.FC = () => {
     },
     {
       key: 'decAmount',
-      title: '3月金额',
+      title: '6月金额',
       align: 'right',
       render: (val: any) => {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
@@ -32,7 +32,7 @@ export const ContentSlide27: React.FC = () => {
     },
     {
       key: 'totalAmount',
-      title: '1-3月累计金额',
+      title: '1-6月累计金额',
       align: 'right',
       includeInStats: true,
       render: (val: any) => {
@@ -40,14 +40,14 @@ export const ContentSlide27: React.FC = () => {
         return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
       }
     },
-    { key: 'yoy12Qty', title: '1-3月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
       if (row.name === '成品油') {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
         return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
       }
       return defaultRender?.(val);
     }},
-    { key: 'yoy12Amt', title: '1-3月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
       if (row.name === '成品油') {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
         return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
@@ -81,7 +81,7 @@ export const ContentSlide27: React.FC = () => {
           <BaseTable
             data={exportTableData}
             columns={columns}
-            title="2026年3月全国出口重点商品量值表"
+            title="2026年6月全国出口重点商品量值表"
             subtitle="数据来源：海关总署 | 金额单位：百万美元"
             rowHeight="auto"
             titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"

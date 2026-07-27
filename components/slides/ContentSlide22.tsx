@@ -2,110 +2,76 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { infrastructureInvestmentData } from '@/data/infrastructureInvestment';
+import { exportTableData, ExportTableItem } from '@/data';
+import { cn } from '@/utils/cn';
 
 export const ContentSlide22: React.FC = () => {
-  const formatValue = (value: any) => {
-    if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-    if (typeof value === 'number') {
-      return value.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-    }
-    return value;
-  };
-
-  // 二级表头列配置
   const columns: ColumnConfig[] = [
-    { key: 'period', title: '日期', align: 'center' },
-    { 
-      key: 'infrastructure', 
-      title: '基建投资', 
+    {
+      key: 'name',
+      title: '商品名称',
+      width: '28%',
+      align: 'left',
+      render: (value, row: ExportTableItem) => {
+        const padding = row.level === 0 ? 'pl-0' : row.level === 1 ? 'pl-4' : 'pl-8';
+        return (
+          <div className={cn(padding, row.isCategory && 'font-bold text-webank-blue')}>
+            {value}
+          </div>
+        );
+      }
+    },
+    {
+      key: 'decAmount',
+      title: '6月金额',
       align: 'right',
-      render: (val) => <span className="text-red-500 font-semibold">{formatValue(val)}</span>
+      render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
     },
     {
-      key: 'transport',
-      title: '交通运输、仓储和邮政业',
-      children: [
-        { key: 'transportTotal', title: '合计', align: 'right' },
-        { 
-          key: 'pipeline', 
-          title: '管道运输', 
-          align: 'right',
-          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
-        },
-        {
-          key: 'aviation',
-          title: '航空运输',
-          align: 'right',
-          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
-        },
-        {
-          key: 'waterTransport',
-          title: '水上运输',
-          align: 'right',
-          render: (val) => <span className="text-red-500">{formatValue(val)}</span>
-        },
-        { key: 'loadingStorage', title: '装卸仓储', align: 'right' },
-      ],
+      key: 'totalAmount',
+      title: '1-6月累计金额',
+      align: 'right',
+      includeInStats: true,
+      render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
     },
-    {
-      key: 'waterEnv',
-      title: '水利、环境和公共设施管理业',
-      children: [
-        { key: 'waterEnvTotal', title: '合计', align: 'right' },
-        { key: 'environmentManagement', title: '环境管理', align: 'right' },
-        { key: 'publicFacility', title: '公共设施', align: 'right' },
-      ],
-    },
-    {
-      key: 'electricity',
-      title: '电力、热力、燃气及水的生产和供应业',
-      children: [
-        { key: 'electricityTotal', title: '合计', align: 'right' },
-        { key: 'powerHeat', title: '电热', align: 'right' },
-      ],
-    },
-    {
-      key: 'information',
-      title: '信息传输、软件和信息技术服务业',
-      children: [
-        { key: 'informationTotal', title: '合计', align: 'right' },
-        {
-          key: 'telecom',
-          title: '电信传输',
-          align: 'right',
-          render: (val, record) => {
-            if (record.period === '2026-02' || record.period === '2026-03') {
-              return <span className="text-red-500">{formatValue(val)}</span>;
-            }
-            return formatValue(val);
-          }
-        },
-      ],
-    },
+    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '成品油') {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      return defaultRender?.(val);
+    }},
+    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '成品油') {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      return defaultRender?.(val);
+    }}
   ];
 
   return (
     <BaseContentSlide
-      title="基础建设投资同比大增8.9%"
-      cardColumns={3}
+      title="出口端：新动能产品拉动显著"
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="基建发挥绝对托底作用" delay="0ms" variant="accent">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="AI投资周期拉动爆发" delay="0ms" variant="accent">
             <p>
-              在“十五五”开局及“两重”重大工程加快推进背景下，一季度基建投资同比增长<span className="font-semibold">8.9%</span>，在三大支柱中表现最为坚挺。
+              AI基础设施建设进入高投入期，直接拉动电子信息及高端制造贸易需求。上半年，高新技术产品拉动中国出口<span className="text-red-500 font-semibold">9.3%</span>，较2025年全年上升<span className="text-red-500 font-semibold">7.4</span>个百分点。1—6月集成电路出口额增长<span className="text-red-500 font-semibold">96.1%</span>，表现持续亮眼。
             </p>
           </BaseCard>
-          <BaseCard title="管道运输业领跑高增" delay="120ms">
+          <BaseCard title="“新三样”维持高景气" delay="120ms">
             <p>
-              管道运输业累计同比增长<span className="text-red-500 font-semibold">99.5%</span>，受益于“十五五”能源基建大年（油气“一张网”2030年建成）、国家管网集中开工（三条主管道同步开工）、天然气刚需，以及专项债、超长期特别国债、1000亿元促内需专项资金与管网自有资金的持续注入。
-            </p>
-          </BaseCard>
-          <BaseCard title="交通与信息链条高增" delay="600ms">
-            <p>
-              航空运输业增长<span className="text-red-500 font-semibold">43.3%</span>、水上运输业增长<span className="text-red-500 font-semibold">34.1%</span>，电信传输服务增长<span className="text-red-500 font-semibold">29.6%</span>，共同构成基建提速的主要支撑。
+              中东变局引发的能源安全担忧倒逼全球能源转型加速，上半年汽车出口量首次突破<span className="font-semibold">500万辆</span>大关，达<span className="text-red-500 font-semibold">509.6万辆</span>，同比增长<span className="text-red-500 font-semibold">65.3%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">1.2倍</span>，成为增长核心引擎。锂电池出口额<span className="font-semibold">486亿美元</span>，同比增长<span className="text-red-500 font-semibold">42.7%</span>，风力发电机组同比增长<span className="text-red-500 font-semibold">35.6%</span>。
             </p>
           </BaseCard>
         </div>
@@ -113,13 +79,15 @@ export const ContentSlide22: React.FC = () => {
         {/* 表格区域 */}
         <ChartContainer delay="600ms" className="flex-1 min-h-0">
           <BaseTable
-            data={infrastructureInvestmentData}
+            data={exportTableData}
             columns={columns}
-            title="基础设施建设投资及分行业累计同比"
-            subtitle="数据来源：国家统计局 | 单位：%"
-            dateColumn="period"
-            colorizeNumbers={false}
-            cellClassName="px-2 text-caption"
+            title="2026年6月全国出口重点商品量值表"
+            subtitle="数据来源：海关总署 | 金额单位：百万美元"
+            rowHeight="auto"
+            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
+            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
+            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
+            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
           />
         </ChartContainer>
       </div>

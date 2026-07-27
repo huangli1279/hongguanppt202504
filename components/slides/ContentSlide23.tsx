@@ -3,105 +3,126 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { equipmentInvestmentData, manufacturingInvestmentData } from '@/data/equipmentInvestment';
+import { usExportMonthlyData, tradeByCountryH1Data, TradeByCountryDataPoint } from '@/data/foreignTrade';
+import { cn } from '@/utils/cn';
 
 export const ContentSlide23: React.FC = () => {
-  const twoLineHeader = (top: string, bottom?: string) => (
-    <span className="leading-tight whitespace-nowrap">
-      {top}
-      {bottom && (
-        <>
-          <br />
-          {bottom}
-        </>
-      )}
-    </span>
-  );
-
-  // 折线图配置
-  const lineConfigs: LineConfig[] = [
-    { dataKey: 'manufacturing', name: '制造业', strokeWidth: 2.5 },
-    { dataKey: 'equipmentPurchase', name: '设备工器具购置', strokeWidth: 2.5 },
-    { dataKey: 'constructionInstall', name: '建筑安装工程', strokeWidth: 2.5 },
+  const usExportLineConfigs: LineConfig[] = [
+    { dataKey: 'yoy', name: '当月同比', strokeWidth: 2.5, yAxisId: 'left', unit: '%' },
+    { dataKey: 'value', name: '当月值', strokeWidth: 2, yAxisId: 'right', unit: '' },
   ];
 
-  // 表格列配置
   const columns: ColumnConfig[] = [
-    { key: 'period', title: '月份', align: 'center' },
-    { key: 'autoManufacturing', title: twoLineHeader('汽车', '制造'), align: 'right' },
-    { key: 'chemicals', title: twoLineHeader('化学', '原料'), align: 'right' },
     {
-      key: 'highTechManufacturing',
-      title: twoLineHeader('高技术', '制造'),
-      align: 'right',
-      highlight: true,
-      includeInStats: true,
-      render: (val: any, _row: any, _idx: number, defaultRender?: (v: any) => React.ReactNode) => {
-        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
-        const num = typeof val === 'number' ? val : parseFloat(val);
-        if (isNaN(num)) return defaultRender ? defaultRender(val) : val;
-        const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return <span className="text-red-500 font-semibold">{formatted}</span>;
-      },
+      key: 'region',
+      title: '国别/地区',
+      align: 'left',
+      width: '28%',
+      render: (value, row: TradeByCountryDataPoint) => (
+        <span className={cn(row.highlight || row.region === '总值' ? 'font-bold text-webank-blue' : '')}>
+          {value}
+        </span>
+      ),
     },
-    { key: 'computerOffice', title: twoLineHeader('计算机', '办公'), align: 'right' },
-    { key: 'railwayShipAerospace', title: twoLineHeader('铁路船舶', '航空航天'), align: 'right' },
-    { key: 'nonferrousMetal', title: twoLineHeader('有色金属', '冶炼'), align: 'right' },
-    { key: 'generalEquipment', title: twoLineHeader('通用设备', '制造'), align: 'right' },
-    { key: 'specialEquipment', title: twoLineHeader('专用设备', '制造'), align: 'right' },
-    { key: 'electricalMachinery', title: twoLineHeader('电气机械', '器材'), align: 'right' },
-    { key: 'pharmaceutical', title: twoLineHeader('医药', '制造'), align: 'right' },
+    {
+      key: 'exportAmount',
+      title: '1-6月出口',
+      align: 'right',
+      render: (val: number) =>
+        typeof val === 'number' ? (
+          <span className="text-black">
+            {val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+          </span>
+        ) : (
+          <span className="text-slate-400">-</span>
+        ),
+    },
+    {
+      key: 'exportYoy',
+      title: '出口同比',
+      align: 'right',
+      includeInStats: true,
+      redThreshold: 10,
+    },
+    {
+      key: 'importAmount',
+      title: '1-6月进口',
+      align: 'right',
+      render: (val: number) =>
+        typeof val === 'number' ? (
+          <span className="text-black">
+            {val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+          </span>
+        ) : (
+          <span className="text-slate-400">-</span>
+        ),
+    },
+    {
+      key: 'importYoy',
+      title: '进口同比',
+      align: 'right',
+      includeInStats: true,
+      redThreshold: 10,
+      highlight: true,
+    },
   ];
 
   return (
     <BaseContentSlide
-      title={<>制造业投资提速至4.1%，“两新”激发新动能与“反内卷”重塑产能格局</>}
+      title="国别结构：对美出口触底回升，新兴市场稳固贸易基本盘"
       cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="出口与政策共同托底" delay="0ms" variant="accent">
+          <BaseCard title="对美贸易边际缓和" delay="0ms" variant="accent">
             <p>
-              一季度制造业投资同比增长<span className="text-red-500 font-semibold">4.1%</span>，较1-2月加快1.0个百分点。出口超预期与前期稳增长政策显效，共同推动投资回暖。
+              5月14日中美元首会谈构建“建设性战略稳定关系”，加权平均关税率受政策预期及判决影响回落，4月对美进出口由降转升，5月继续保持增长态势同比增长<span className="text-red-500 font-semibold">35.4%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="设备更新保持高增" delay="120ms">
+          <BaseCard title="多元化布局进一步巩固" delay="120ms">
             <p>
-              “大规模设备更新”等“两新”政策优化实施、资金接续发力，设备工器具购置（指企业购入机器设备、生产工具与器具的投资）同比增长<span className="text-red-500 font-semibold">13.9%</span>，继续维持两位数增长。
+              1—6月，我国对东盟、欧盟、非洲的进出口额均实现两位数增长。对共建“一带一路”国家进出口增长<span className="text-red-500 font-semibold">17.9%</span>，占出口总额比重过半。
             </p>
           </BaseCard>
-          <BaseCard title="新旧动能分化加剧" delay="600ms">
+          <BaseCard title="下半年预测" delay="240ms">
             <p>
-              高技术制造业投资同比增长<span className="text-red-500 font-semibold">5.2%</span>，计算机及办公设备增长<span className="text-red-500 font-semibold">28.3%</span>，铁路船舶航空航天保持高景气；传统行业在“反内卷”约束下扩产意愿偏弱。
+              中东能源缺口导致日韩、欧洲等制造业经济体成本压力上移，中国凭借稳健的能源结构和产业链韧性，下半年有望推动出口份额进一步提升。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表和表格区域 */}
+        {/* 图表区域 */}
         <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
           <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={equipmentInvestmentData}
-              title="制造业|设备|建筑安装工程投资增速累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={lineConfigs}
-              yAxisDomain={[-15, 25]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['制造业', '设备工器具购置', '建筑安装工程']}
+            <BaseTable
+              data={tradeByCountryH1Data}
+              columns={columns}
+              title="主要国别（地区）进出口总值（1-6月）"
+              subtitle="数据来源：海关总署 | 金额单位：亿美元"
+              striped={true}
+              rowHeight="auto"
+              highlightRows={[3, 5]}
+              cellClassName="px-1.5 text-caption leading-tight"
+              headerCellClassName="px-1.5 text-caption leading-tight"
             />
           </ChartContainer>
           <ChartContainer delay="720ms">
-            <BaseTable
-              data={manufacturingInvestmentData}
-              columns={columns}
-              title="制造业细分行业投资增速累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              dateColumn="period"
-              cellClassName="px-1 text-caption"
-              headerCellClassName="px-0.5 py-1 text-caption"
+            <BaseLineChart
+              data={usExportMonthlyData}
+              title="对美出口美元计价当月同比及当月值"
+              subtitle="数据来源：海关总署 | 同比为%，当月值为百万美元"
+              lines={usExportLineConfigs}
+              yAxisDomain={[-40, 40]}
+              showYAxis={true}
+              showRightYAxis={true}
+              rightYAxisDomain={[25000, 50000]}
+              rightYAxisTickFormatter={(val) => `${Math.round(val / 1000)}k`}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['当月同比', '当月值']}
+              highlightPeriods={['2026-05']}
+              xAxisTickCount={10}
             />
           </ChartContainer>
         </div>

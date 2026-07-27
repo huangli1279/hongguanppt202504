@@ -23,6 +23,10 @@ export interface LineConfig {
   labelDY?: number;
   /** 特定周期的数值标签偏移，key为period字符串 */
   pointOffsets?: { [key: string]: number };
+  /** 双轴时指定左右Y轴，默认 left */
+  yAxisId?: 'left' | 'right';
+  /** tooltip单位，覆盖全局 unit */
+  unit?: string;
 }
 
 export interface BaseLineChartProps {
@@ -30,7 +34,7 @@ export interface BaseLineChartProps {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   lines: LineConfig[];
-  yAxisDomain?: [number, number];
+  yAxisDomain?: [number | 'auto' | 'dataMin' | 'dataMax', number | 'auto' | 'dataMin' | 'dataMax'];
   showYAxis?: boolean;
   showReferenceLine?: boolean;
   referenceLineY?: number;
@@ -45,16 +49,22 @@ export interface BaseLineChartProps {
   unit?: string;
   /** Y轴刻度格式化函数 */
   yAxisTickFormatter?: (value: any) => string;
+  /** 是否显示右侧Y轴（双轴模式） */
+  showRightYAxis?: boolean;
+  /** 右侧Y轴定义域 */
+  rightYAxisDomain?: [number | 'auto' | 'dataMin' | 'dataMax', number | 'auto' | 'dataMin' | 'dataMax'];
+  /** 右侧Y轴刻度格式化 */
+  rightYAxisTickFormatter?: (value: any) => string;
 }
 
-const CustomTooltip = ({ active, payload, label, unit = '%' }: any) => {
+const CustomTooltip = ({ active, payload, label, unit = '%', unitByKey }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}{unit}
+            {entry.name}: {entry.value}{unitByKey?.[entry.dataKey] ?? unit}
           </p>
         ))}
       </div>
@@ -119,8 +129,17 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   xAxisTickCount = 6,
   xAxisTicks,
   unit = '%',
-  yAxisTickFormatter
+  yAxisTickFormatter,
+  showRightYAxis = false,
+  rightYAxisDomain = ['auto', 'auto'],
+  rightYAxisTickFormatter
 }) => {
+  const hasDualAxis = showRightYAxis || lines.some((line) => line.yAxisId === 'right');
+  const unitByKey = lines.reduce((acc, line) => {
+    if (line.unit !== undefined) acc[line.dataKey] = line.unit;
+    return acc;
+  }, {} as Record<string, string>);
+
   // 自定义标签渲染，显示最后一个有效数据点的值，放在右侧
   const renderCustomLabel = (props: any, color: string, dataKey: string, line: LineConfig) => {
     const { x, y, value, index } = props;
@@ -178,10 +197,17 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 20, right: 50, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: 5 }}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
-            {showReferenceLine && <ReferenceLine y={referenceLineY} stroke={uiColors.tick} strokeWidth={1} />}
+            {showReferenceLine && (
+              <ReferenceLine
+                y={referenceLineY}
+                stroke={uiColors.tick}
+                strokeWidth={1}
+                yAxisId={hasDualAxis ? 'left' : undefined}
+              />
+            )}
             <XAxis
               dataKey="period"
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}
@@ -217,8 +243,21 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tickLine={false}
               tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
               tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
+              yAxisId={hasDualAxis ? 'left' : undefined}
             />
-            <Tooltip content={<CustomTooltip unit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            {hasDualAxis && (
+              <YAxis
+                yAxisId="right"
+                orientation="right"
+                domain={rightYAxisDomain}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+                tickFormatter={rightYAxisTickFormatter || ((val) => `${val}`)}
+                hide={!showRightYAxis}
+              />
+            )}
+            <Tooltip content={<CustomTooltip unit={unit} unitByKey={unitByKey} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             <Legend 
               content={<CustomLegend legendOrder={legendOrder} />} 
               verticalAlign="bottom"
@@ -228,6 +267,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
             
             {lines.map((line, index) => {
               const lineColor = line.color ?? getSeriesColor(index);
+              const axisId = hasDualAxis ? (line.yAxisId || 'left') : undefined;
               
               // 找到该系列最后一个非空值的索引
               let lastValidIndex = -1;
@@ -246,6 +286,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                   dataKey={line.dataKey}
                   stroke={lineColor}
                   strokeWidth={line.strokeWidth || 2}
+                  yAxisId={axisId}
                   dot={(props: any) => {
                     const { cx, cy, index: dotIndex, payload } = props;
                     const isLastPoint = dotIndex === lastValidIndex;
