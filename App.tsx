@@ -59,7 +59,7 @@ const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window === 'undefined' ? false : window.matchMedia(MOBILE_QUERY).matches
   );
-  const [currentSlide, setCurrentSlide] = useState(42);
+  const [currentSlide, setCurrentSlide] = useState(1);
   const isThrottled = useRef(false);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
