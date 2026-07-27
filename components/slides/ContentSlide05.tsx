@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { chartColors } from '@/utils/chartColors';
+import { chartColors, industryColors } from '@/utils/chartColors';
 import { gdpGrowthRecentData as gdpGrowthData, deflatorRecentData as deflatorData } from '../../data';
 
 export const ContentSlide05: React.FC = () => {
@@ -10,23 +10,23 @@ export const ContentSlide05: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          一季度GDP稳增5.0%实现良好开局，
-          <span className="text-webank-accent">名义增速与实际增速差距收窄</span>
+          二季度GDP实际增速回落至4.3%，上半年GDP增速4.7%，
+          <span className="text-webank-accent">平减指数回正</span>
         </>
       }
       cardColumns={2}
       cards={
         <>
-          <BaseCard title="总量定调" delay="0ms" variant="accent">
+          <BaseCard title="总量及增速" delay="0ms" variant="accent">
             <p>
-              2026年一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold text-red-600">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>，实现"十五五"开局之年平稳起步。
-              实际GDP增速较去年四季度回升 <span className="font-bold">0.5个百分点</span>，达到全年"4.5%-5.0%"增长目标的上限区域。
+              2026年二季度GDP <span className="font-bold">36.15万亿</span>，同比增长 <span className="font-bold text-red-600">4.3%</span>，GDP增速较一季度 <span className="font-bold">5%</span> 放缓。
+              上半年GDP增速达 <span className="font-bold text-red-600">4.7%</span>，在全年"4.5%-5.0%"增长目标的区域。
             </p>
           </BaseCard>
 
-          <BaseCard title="名义与实际差距收窄" delay="120ms">
+          <BaseCard title="名义与实际的“温差”" delay="120ms">
             <p>
-              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.94%</span>，较去年四季度 <span className="font-bold">3.85%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.06%</span>，整体已基本回到零值附近，经济逐步摆脱通缩、向温和通胀区间靠拢，企业盈利与微观体感的“温差”正在改善。
+              二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold">4.3%</span>，总量与第二产业平减指数同步由负转正，核心由 AI 产业链景气扩张、能源价格上行拉动，但向终端消费及资本投资的传导有限，微观层面类通缩压力有所缓解但尚未根本出清。
             </p>
           </BaseCard>
         </>
@@ -52,16 +52,19 @@ export const ContentSlide05: React.FC = () => {
           <ChartContainer delay="840ms">
             <BaseLineChart
               data={deflatorData}
-              title="GDP平减指数"
+              title="GDP平减指数分项贡献拆解"
               subtitle="数据来源：国家统计局 | 单位：%"
-              yAxisDomain={[-5, 2]}
+              yAxisDomain={[-5, 4]}
               showYAxis={true}
               xAxisTickCount={deflatorData.length}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['整体']}
+              legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
               lines={[
-                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top' }
+                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 12 },
+                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 }
               ]}
             />
           </ChartContainer>

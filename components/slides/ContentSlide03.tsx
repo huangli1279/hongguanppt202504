@@ -1,49 +1,49 @@
 import React from 'react';
-import { Calendar, Globe2, Landmark, Compass } from 'lucide-react';
+import { Landmark, Globe2, Compass, CloudRain } from 'lucide-react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 
 const timelineColumns = [
   {
-    period: '2月',
-    title: '史上最长春节',
-    icon: Calendar,
-    items: [
-      { label: '消费端', text: '接触型服务消费、文旅餐饮需求集中释放，成为消费端核心亮点' },
-      { label: '生产端', text: '工业生产节前赶工抢单、节后复工放缓，节奏波动明显' },
-      { label: '出口端', text: '外贸出口呈现节前抢单、节后放缓的阶段性错位' },
-      { label: '数据影响', text: '提振消费，生产、出口节奏波动，整体抬升一季度GDP' },
-    ],
-  },
-  {
-    period: '2月底',
-    title: '美以伊地缘冲突（输入性通胀）',
-    icon: Globe2,
-    items: [
-      { label: '上游资源', text: '原油、有色、化工品价格上行，抬升上游资源类行业盈利与产能扩张' },
-      { label: '中下游', text: '物流、燃油成本全面上涨，挤压中下游加工制造企业利润空间' },
-      { label: '数据影响', text: '直接推动3月PPI转正，输入性通胀传导链条形成' },
-    ],
-  },
-  {
-    period: '3月',
-    title: '全国两会（政策定调）',
+    period: '4月底',
+    title: '政治局会议',
     icon: Landmark,
     items: [
-      { label: '发展主要预期目标', text: 'GDP 增速目标4.5%-5%（历史首次低于 5%）' },
-      { label: '重点方向', text: '提振消费专项行动、培育壮大新动能、科技自立自强、整治 “内卷式” 竞争' },
-      { label: '财政政策', text: '更积极的财政政策，财政支出提速，更加注重支持提振消费、投资于人、保障民生等方面' },
-      { label: '落地指引', text: '“两重两新”优化版政策集中落地，“两重”项目资金下达进度超预期，为扩内需、稳增长提供关键支撑' },
+      { label: '积极财政', text: '需求侧推动消费升级，加快“六张网”新型基础设施建设' },
+      { label: '产业端', text: '稳住制造业比重，推进“人工智能+”行动' },
+      { label: '风险领域', text: '稳房地产、有序化解地方债务、提振资本市场信心' },
+      { label: '需关注', text: '扩大有效投资、培育新动能；关注7月底会议是否有更新' },
     ],
   },
   {
-    period: '3月',
-    title: '"十五五"开局落地（中长期主线）',
+    period: '二季度',
+    title: '美以伊冲突持续发酵',
+    icon: Globe2,
+    items: [
+      { label: '冲突脉络', text: '二季度呈现“休战—再开战”反复扰动，地缘风险持续发酵' },
+      { label: '市场冲击', text: '能源与航运成本波动，输入性通胀与风险偏好承压' },
+      { label: '时间线要点', text: '休战后再度升级，外部冲击扰动国内稳增长与物价预期' },
+    ],
+  },
+  {
+    period: '二季度',
+    title: '十五五专项规划落地推进',
     icon: Compass,
     items: [
-      { label: '主要目标', text: '以高质量发展为导向，培育新质生产力，完善民生保障与绿色安全体系' },
-      { label: '重大战略任务', text: '科技自立自强，构建现代产业体系，扩大内需，提振消费与优化投资，兼顾民生、绿色转型与安全，布局六大领域109项重大工程' },
-      { label: '核心导向', text: '以新质生产力为核心，强化科技创新与产业升级，推动经济提质增效' },
+      { label: '绿色与能源', text: '《美丽中国》《新型能源体系》十五五规划印发，统筹碳减排与风光储能' },
+      { label: '科教民生', text: '《教育发展“十五五”规划》审议通过；就业、健康、一老一小仍在编制' },
+      { label: '产业与基建', text: 'AI等专项暂未印发；8000亿“两重”超长期特别国债项目清单全部下达' },
+      { label: '内需消费', text: '《扩大消费“十五五”规划》二季度送审，7月获批；增收方案仍在研究' },
+    ],
+  },
+  {
+    period: '二季度',
+    title: '台风及洪涝等灾害',
+    icon: CloudRain,
+    items: [
+      { label: '广西台风', text: '“美莎克”台风洪灾，直接经济损失约221.8亿元' },
+      { label: '汛期提前', text: '2026年汛期显著提前，广东阳江、湖北恩施等地特大暴雨洪涝' },
+      { label: '财政应对', text: '中央及地方财政及时拨付救灾与灾后重建资金，托底民生与重建' },
     ],
   },
 ];
@@ -53,7 +53,7 @@ export const ContentSlide03: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          一季度关键事件与<span className="text-webank-accent">政策主线</span>
+          二季度关键事件与<span className="text-webank-accent">政策主线</span>
         </>
       }
     >
@@ -78,7 +78,7 @@ export const ContentSlide03: React.FC = () => {
                   <div className="text-[10px] font-bold tracking-[0.15em] text-webank-accent uppercase mb-0.5">
                     {column.period}
                   </div>
-                  <h3 className="text-[15px] font-bold text-webank-blue leading-tight truncate">
+                  <h3 className="text-[15px] font-bold text-webank-blue leading-tight line-clamp-2">
                     {column.title}
                   </h3>
                 </div>
