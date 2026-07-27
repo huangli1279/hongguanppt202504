@@ -189,10 +189,12 @@ export const ContentSlide11: React.FC = () => {
               data={industrialCategoryData}
               title="规模以上工业增加值及分项当月同比数据"
               subtitle="单位：%"
-              yAxisDomain={[0, 11]}
+              yAxisDomain={[-4, 12]}
               showYAxis
+              showReferenceLine
+              referenceLineY={0}
               xAxisTickCount={7}
-              highlightPeriods={['2026-03']}
+              highlightPeriods={['2026-06']}
               legendOrder={['规上工业', '制造业', '采矿业', '电热燃水']}
               lines={[
                 { dataKey: 'industrial', name: '规上工业', color: seriesColors[0], strokeWidth: 2.4 },

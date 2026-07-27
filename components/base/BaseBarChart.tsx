@@ -100,9 +100,9 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
   }
 
   return (
-    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', gap: '24px' }}>
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', flexWrap: 'nowrap', gap: '12px' }}>
       {sortedPayload.map((entry, index) => (
-        <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center' }}>
+        <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center', flexShrink: 0, whiteSpace: 'nowrap' }}>
           <span
             style={{
               width: '8px',
@@ -110,10 +110,11 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
               backgroundColor: entry.color,
               borderRadius: '50%',
               marginRight: '6px',
-              display: 'inline-block'
+              display: 'inline-block',
+              flexShrink: 0
             }}
           />
-          <span style={{ color: uiColors.tick, fontSize: '10px' }}>{entry.value}</span>
+          <span style={{ color: uiColors.tick, fontSize: '10px', whiteSpace: 'nowrap' }}>{entry.value}</span>
         </li>
       ))}
     </ul>

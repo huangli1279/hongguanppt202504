@@ -1,6 +1,6 @@
 // 数据统一导出入口 - 精简版
 
-export { gdpTrendData, deflatorData, gdpContributionData, gdpIndustryShareData, gdpIndustryValueData, gdpGrowthRecentData, deflatorRecentData, industryGdpValueRecentData, industryGrowthByQuarterRecentData, industryContributionRecentData } from './gdp';
+export { gdpTrendData, deflatorData, gdpContributionData, gdpIndustryShareData, gdpIndustryValueData, gdpGrowthRecentData, deflatorRecentData, industryGdpValueRecentData, industryGrowthByQuarterRecentData, industryContributionRecentData, gdpForecastByInstitutionData } from './gdp';
 export { industryGrowthData, industryContributionData, industryContributionData2024, industryGrowthByIndustryData, detailedIndustryGrowthData, industrialProductionData, industrialDifferentiationData, industryGrowthByIndustryRecentData } from './industry';
 export type { IndustryGrowthDataPoint, IndustryContributionDataPoint, IndustryByQuarterDataPoint, DetailedIndustryDataPoint, IndustrialProductionDataPoint, IndustrialDifferentiationDataPoint } from './industry';
 export { pmiTrendData, pmiByEnterpriseSizeData } from './pmi';

@@ -22,12 +22,12 @@ export const ContentSlide06: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          第二产业受AI与外需支撑表现强劲，
-          <span className="text-webank-accent">第三产业内部服务消费与地产链持续拖累</span>
+          第二产业内部K型分化加剧，
+          <span className="text-webank-accent">第三产业消费与地产链持续拖累</span>
         </>
       }
       cardColumns={2}
-      chartColumns={3}
+      chartColumns={1}
       cards={
         <>
           <BaseCard title="分产业看" delay="0ms">
@@ -52,72 +52,84 @@ export const ContentSlide06: React.FC = () => {
         </>
       }
       charts={
-        <>
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={industryGdpValueData}
-              title="三大产业GDP增速对比"
-              subtitle="数据来源: 国家统计局；单位: %"
-              bars={[
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
-              ]}
-              legendOrder={industryLegendOrder}
-              yAxisDomain={[0, 7]}
-              barSize={16}
-              showYAxis
-              showLabels
-              labelFormatter={(v: any) => Number(v).toFixed(1)}
-              unit="%"
-              yAxisTickFormatter={(v) => `${v}`}
-              xAxisInterval={0}
-            />
-          </ChartContainer>
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={industryGrowthData}
-              title="三大产业对GDP增长拉动"
-              subtitle="数据来源: 国家统计局；单位: %"
-              bars={stackedIndustryBars}
-              legendOrder={industryLegendOrder}
-              yAxisDomain={[0, 6]}
-              barSize={16}
-              showYAxis
-              showLabels
-              labelPosition="center"
-              labelFormatter={(v: any) => Number(v).toFixed(1)}
-              unit="%"
-              yAxisTickFormatter={(v) => `${v}`}
-              xAxisInterval={0}
-            />
-          </ChartContainer>
-          <ChartContainer delay="720ms">
-            <BaseBarChart
-              data={industryContributionData}
-              title="不同行业GDP增速对比"
-              subtitle="数据来源: 国家统计局；单位: %"
-              xAxisKey="industry"
-              bars={[
-                { dataKey: '2025-06', name: '2025-06', color: chartColors.quaternary },
-                { dataKey: '2025-12', name: '2025-12', color: chartColors.tertiary },
-                { dataKey: '2026-03', name: '2026-03', color: chartColors.secondary },
-                { dataKey: '2026-06', name: '2026-06', color: chartColors.primary },
-              ]}
-              legendOrder={['2025-06', '2025-12', '2026-03', '2026-06']}
-              barSize={8}
-              showYAxis
-              yAxisDomain={[-5, 14]}
-              showReferenceLine
-              referenceLineY={0}
-              showLabels={false}
-              unit="%"
-              xAxisAngle={-35}
-              xAxisHeight={70}
-              xAxisInterval={0}
-            />
-          </ChartContainer>
-        </>
+        <div className="flex gap-4 sm:gap-6 h-full min-h-0">
+          <div className="w-[26%] min-w-0 flex-shrink-0">
+            <ChartContainer delay="600ms">
+              <BaseBarChart
+                data={industryGdpValueData}
+                title="三大产业GDP增速对比"
+                subtitle="数据来源: 国家统计局；单位: %"
+                xAxisKey="industry"
+                bars={[
+                  { dataKey: '2025-06', name: '25-06', color: chartColors.quinary },
+                  { dataKey: '2025-09', name: '25-09', color: chartColors.quaternary },
+                  { dataKey: '2025-12', name: '25-12', color: chartColors.tertiary },
+                  { dataKey: '2026-03', name: '26-03', color: chartColors.secondary },
+                  { dataKey: '2026-06', name: '26-06', color: chartColors.primary },
+                ]}
+                legendOrder={['25-06', '25-09', '25-12', '26-03', '26-06']}
+                yAxisDomain={[0, 7]}
+                barSize={12}
+                showYAxis
+                showLabels
+                labelFormatter={(v: any) => Number(v).toFixed(1)}
+                unit="%"
+                yAxisTickFormatter={(v) => `${v}`}
+                xAxisInterval={0}
+              />
+            </ChartContainer>
+          </div>
+          <div className="w-[22%] min-w-0 flex-shrink-0">
+            <ChartContainer delay="600ms">
+              <BaseBarChart
+                data={industryGrowthData.map((d) => ({
+                  ...d,
+                  period: d.period.slice(2),
+                }))}
+                title="三大产业对GDP增长拉动"
+                subtitle="数据来源: 国家统计局；单位: %"
+                bars={stackedIndustryBars}
+                legendOrder={industryLegendOrder}
+                yAxisDomain={[0, 6]}
+                barSize={14}
+                showYAxis
+                showLabels
+                labelPosition="center"
+                labelFormatter={(v: any) => Number(v).toFixed(1)}
+                unit="%"
+                yAxisTickFormatter={(v) => `${v}`}
+                xAxisInterval={0}
+              />
+            </ChartContainer>
+          </div>
+          <div className="flex-1 min-w-0">
+            <ChartContainer delay="720ms">
+              <BaseBarChart
+                data={industryContributionData}
+                title="不同行业GDP增速对比"
+                subtitle="数据来源: 国家统计局；单位: %"
+                xAxisKey="industry"
+                bars={[
+                  { dataKey: '2025-06', name: '25-06', color: chartColors.quaternary },
+                  { dataKey: '2025-12', name: '25-12', color: chartColors.tertiary },
+                  { dataKey: '2026-03', name: '26-03', color: chartColors.secondary },
+                  { dataKey: '2026-06', name: '26-06', color: chartColors.primary },
+                ]}
+                legendOrder={['25-06', '25-12', '26-03', '26-06']}
+                barSize={8}
+                showYAxis
+                yAxisDomain={[-5, 14]}
+                showReferenceLine
+                referenceLineY={0}
+                showLabels={false}
+                unit="%"
+                xAxisAngle={-35}
+                xAxisHeight={70}
+                xAxisInterval={0}
+              />
+            </ChartContainer>
+          </div>
+        </div>
       }
     />
   );

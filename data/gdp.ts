@@ -24,6 +24,7 @@ export const gdpContributionData = [
   { period: '2025-09', consumption: 54.10, investment: 15.90, netExport: 30.00 },
   { period: '2025-12', consumption: 52.90, investment: 16.00, netExport: 31.10 },
   { period: '2026-03', consumption: 48.00, investment: 38.00, netExport: 16.00 },
+  { period: '2026-06', consumption: 45.20, investment: 34.00, netExport: 20.80 },
 ];
 
 // 三大产业GDP占比数据
@@ -75,18 +76,15 @@ export const deflatorRecentData = [
   { period: '2026-06', primary: -3.19, secondary: 2.93, tertiary: 1.20, overall: 1.53 },
 ];
 
-// Slide06 专用：三大产业 GDP 增速对比（%）
+// Slide06 专用：三大产业 GDP 增速对比（%，按产业分组，各季度柱子并排）
 export const industryGdpValueRecentData = [
-  { period: '2025-06', primary: 3.80, secondary: 4.80, tertiary: 5.70 },
-  { period: '2025-09', primary: 4.00, secondary: 4.20, tertiary: 5.40 },
-  { period: '2025-12', primary: 4.20, secondary: 3.40, tertiary: 5.20 },
-  { period: '2026-03', primary: 3.80, secondary: 4.90, tertiary: 5.20 },
-  { period: '2026-06', primary: 3.70, secondary: 3.00, tertiary: 5.10 },
+  { industry: '第一产业', '2025-06': 3.80, '2025-09': 4.00, '2025-12': 4.20, '2026-03': 3.80, '2026-06': 3.70 },
+  { industry: '第二产业', '2025-06': 4.80, '2025-09': 4.20, '2025-12': 3.40, '2026-03': 4.90, '2026-06': 3.00 },
+  { industry: '第三产业', '2025-06': 5.70, '2025-09': 5.40, '2025-12': 5.20, '2026-03': 5.20, '2026-06': 5.10 },
 ];
 
-// Slide06 专用：三大产业对 GDP 增长拉动（%）
+// Slide06 专用：三大产业对 GDP 增长拉动（%，自 2025-06 起）
 export const industryGrowthByQuarterRecentData = [
-  { period: '2025-03', primary: 0.14, secondary: 2.06, tertiary: 3.20 },
   { period: '2025-06', primary: 0.24, secondary: 1.78, tertiary: 3.18 },
   { period: '2025-09', primary: 0.34, secondary: 1.50, tertiary: 2.97 },
   { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 2.84 },
@@ -127,4 +125,14 @@ export const deflatorData: DeflatorDataPoint[] = [
   { period: '2025-09', primary: -3.85, secondary: -2.67, tertiary: 0.31 },
   { period: '2025-12', primary: -1.12, secondary: -2.02, tertiary: 0.43 },
   { period: '2026-03', primary: -1.97, secondary: -0.75, tertiary: 0.38 },
+];
+
+// Slide08：国内外机构对中国2026年GDP增速预测对比（%）
+export const gdpForecastByInstitutionData = [
+  { institution: 'IMF (7月)', international: 4.6, domestic: null },
+  { institution: 'OECD (6月)', international: 4.5, domestic: null },
+  { institution: '中信证券 (6月)', international: null, domestic: 4.7 },
+  { institution: '中金公司 (6月)', international: null, domestic: 4.7 },
+  { institution: '华泰证券 (6月)', international: null, domestic: 5.0 },
+  { institution: '招商证券 (6月)', international: null, domestic: 5.0 },
 ];

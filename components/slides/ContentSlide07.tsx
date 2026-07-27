@@ -1,97 +1,58 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart } from '../base/BaseBarChart';
-import { chartColors } from '@/utils/chartColors';
-import { industryGrowthByIndustryRecentData as allIndustryData } from '../../data';
-
-const mainChartData = allIndustryData.filter(item =>
-  !['制造业', '高技术制造', '装备制造', '数字产品制造'].includes(item.industry)
-);
-
-const rightChartData = allIndustryData.filter(item =>
-  ['制造业', '高技术制造', '装备制造', '数字产品制造'].includes(item.industry)
-).sort((a, b) => {
-  const order = ['制造业', '高技术制造', '装备制造', '数字产品制造'];
-  return order.indexOf(a.industry) - order.indexOf(b.industry);
-});
+import { BaseStackedBarChart } from '../base/BaseStackedBarChart';
+import { seriesColors } from '@/utils/chartColors';
+import { gdpContributionData } from '@/data/gdp';
 
 export const ContentSlide07: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
-          高端制造及现代服务增长领跑，显著快于整体，新旧动能分化
+          三驾马车贡献——出口增速冲高至
+          <span className="text-webank-accent">17.6%</span>
+          ，投资与消费受政策节奏及基数扰动阶段性承压
         </>
       }
-      cardColumns={3}
+      cardColumns={1}
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="新动能·高端制造领跑" delay="0ms" variant="accent">
+          <BaseCard title="三驾马车贡献" delay="0ms" variant="accent">
             <p>
-              工业内部新动能持续突破：<span className="font-bold text-red-600">高技术制造</span>一季度同比增长<span className="text-red-600">12.5%</span>，<span className="font-bold text-red-600">装备制造</span>增长<span className="text-red-600">8.9%</span>，均显著快于<span className="font-bold">工业</span>整体的<span className="font-bold">6.1%</span>和<span className="font-bold">制造业</span>的<span className="font-bold">6.3%</span>。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="新动能·现代服务高景气" delay="120ms">
-            <p>
-              第三产业中代表新质生产力的现代服务业延续两位数增长：<span className="font-bold text-red-600">信息服务业</span>一季度同比增长<span className="text-red-600">10.6%</span>，<span className="font-bold text-red-600">租赁商务</span>增长<span className="text-red-600">12.2%</span>，构成服务业增长的核心引擎。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="旧动能·地产建筑筑底" delay="600ms">
-            <p>
-              传统动能仍在周期底部运行：<span className="font-bold text-green-600">建筑业</span>增加值同比下降<span className="text-green-600">3.8%</span>，降幅较去年四季度继续扩大；<span className="font-bold text-green-600">房地产业</span>同比下降<span className="text-green-600">0.1%</span>，全国房地产开发投资同比下降<span className="font-bold text-green-600">11.2%</span>，仍是经济的主要拖累项。
+              消费支出平稳增长，最终消费支出拉动GDP增长
+              <span className="font-bold">1.9个百分点</span>
+              ，贡献增长的<span className="font-bold">45.2%</span>
+              ；资本形成总额拉动GDP增长
+              <span className="font-bold">1.5个百分点</span>
+              ，贡献增长的<span className="font-bold">34%</span>
+              ；出口保持韧性，二季度货物和服务净出口拉动GDP增长
+              <span className="font-bold">0.9个百分点</span>
+              ，贡献增长的<span className="font-bold">20.8%</span>。
             </p>
           </BaseCard>
         </>
       }
       charts={
-        <div className="flex gap-4 sm:gap-6 h-full">
-          <div className="flex-1">
-            <ChartContainer delay="600ms">
-              <BaseBarChart
-                data={mainChartData}
-                title="一二三产业细分行业GDP当季同比数据"
-                subtitle="单位: %；数据来源：国家统计局"
-                xAxisKey="industry"
-                bars={[
-                  { dataKey: '2025-06', name: '2025-06', color: chartColors.quaternary },
-                  { dataKey: '2025-09', name: '2025-09', color: chartColors.tertiary },
-                  { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
-                  { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
-                ]}
-                legendOrder={['2025-06', '2025-09', '2025-12', '2026-03']}
-                barSize={10}
-                showYAxis
-                yAxisDomain={[-5, 14]}
-                showReferenceLine
-                referenceLineY={0}
-              />
-            </ChartContainer>
-          </div>
-          <div className="w-80 flex-shrink-0">
-            <ChartContainer delay="720ms">
-              <BaseBarChart
-                data={rightChartData}
-                title="工业-制造业及其部分细分行业GDP当季同比"
-                subtitle="单位: %；数据来源：国家统计局"
-                xAxisKey="industry"
-                bars={[
-                  { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
-                  { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
-                ]}
-                legendOrder={['2025-12', '2026-03']}
-                barSize={20}
-                showYAxis
-                yAxisDomain={[-5, 14]}
-                showReferenceLine
-                referenceLineY={0}
-              />
-            </ChartContainer>
-          </div>
-        </div>
+        <ChartContainer delay="600ms">
+          <BaseStackedBarChart
+            data={gdpContributionData}
+            title="三驾马车对GDP增长的贡献率"
+            subtitle="数据来源：国家统计局｜单位：%"
+            bars={[
+              { dataKey: 'consumption', name: '消费支出', color: seriesColors[1] },
+              { dataKey: 'investment', name: '资本形成总额', color: seriesColors[2] },
+              { dataKey: 'netExport', name: '货物和服务净出口', color: seriesColors[3] },
+            ]}
+            legendOrder={['消费支出', '资本形成总额', '货物和服务净出口']}
+            barSize={28}
+            xAxisInterval={1}
+            yAxisDomain={[0, 100]}
+            showYAxis
+            showLabels
+          />
+        </ChartContainer>
       }
     />
   );
