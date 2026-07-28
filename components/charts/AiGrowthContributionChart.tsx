@@ -131,8 +131,8 @@ export const AiGrowthContributionChart: React.FC = () => {
             {/* 阶段标注锚点 */}
             <circle cx="120" cy="140" r="3.5" fill="#005c8f" />
             <circle cx="255" cy="205" r="3.5" fill="#005c8f" />
-            <circle cx="400" cy="105" r="3.5" fill="#005c8f" />
-            <circle cx="480" cy="42" r="3.5" fill="#005c8f" />
+            <circle cx="400" cy="114" r="3.5" fill="#005c8f" />
+            <circle cx="480" cy="49" r="3.5" fill="#005c8f" />
           </svg>
 
           {/* HTML 叠加标注（比纯 SVG 文字更易排版） */}

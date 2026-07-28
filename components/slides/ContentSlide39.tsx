@@ -1,48 +1,48 @@
 import React from 'react';
-import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { AiGrowthContributionChart } from '../charts/AiGrowthContributionChart';
+import { BaseCard } from '../base/BaseCard';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { industryHeatmapData } from '@/data/industryHeatmap';
+
+const industryColumns: ColumnConfig[] = [
+  { key: 'industry', title: '行业', align: 'left', width: '170px' },
+  { key: 'valueAdded', title: '工业增加值(H1)', align: 'right', width: '95px' },
+  { key: 'profitGrowth', title: '利润增速(1-5月)', align: 'right', width: '90px' },
+  { key: 'ppiYoy', title: 'PPI同比(6月)', align: 'right', width: '78px' },
+  { key: 'investmentGrowth', title: '投资增速(H1)', align: 'right', width: '85px' },
+  { key: 'pmi', title: 'PMI景气(6月)', align: 'center', width: '100px' },
+  { key: 'exportPerformance', title: '出口表现(H1)', align: 'left', width: '230px' },
+  { key: 'judgment', title: '综合判断', align: 'left', width: '210px' },
+];
 
 export const ContentSlide39: React.FC = () => {
   return (
-    <BaseContentSlide title="目前正处于AI资本开支快速扩张期" cardColumns={2}>
-      <div className="flex flex-col h-full min-h-0">
-        <div className="grid grid-cols-2 gap-3 mb-2 flex-shrink-0">
-          <BaseCard
-            title="资本开支与收入端"
-            delay="0ms"
-            variant="accent"
-            className="!p-2.5 !gap-1"
-          >
-            <p className="text-[12px] leading-snug">
-              目前处于资本开支快速扩张期，据Bloomberg，2026年美国头部企业资本开支预计
-              <span className="text-red-500 font-semibold">6,000-7,000亿美元</span>
-              ，中国约
-              <span className="text-red-500 font-semibold">5,000亿元</span>
-              。收入端，硬件层收入最确定，云服务和订阅层处于早期，Agent商业化尚未落地。
-            </p>
-          </BaseCard>
-
-          <BaseCard
-            title="AI对GDP拉动的预测分歧"
-            delay="120ms"
-            className="!p-2.5 !gap-1"
-          >
-            <p className="text-[11px] leading-snug">
-              乐观派（IMF、McKinsey、OECD）：未来10年AI每年额外拉动GDP
-              <span className="text-red-500 font-semibold">0.7-1.8</span>
-              个百分点；谨慎派（CBO）预计2026—2036年生成式AI年贡献约
-              <span className="text-red-500 font-semibold">0.1</span>
-              个百分点。分歧来自任务可替代比例、部署速度、互补投资、模型成本与可靠性、劳动再配置及需求承接等假设差异。生产率兑现滞后期逐轮缩短，本轮或约
-              <span className="text-red-500 font-semibold">10年</span>
-              内逐步显现。
+    <BaseContentSlide
+      title="从PMI\PPI\投资\同业增加值\利润\出口拆分行业对比看，高景气行业主要为AI产业链"
+      cardColumns={1}
+    >
+      <div className="flex flex-col h-full">
+        <div className="mb-3 flex-shrink-0">
+          <BaseCard title="高景气行业总结" delay="0ms" variant="accent" className="!p-3 gap-1">
+            <p className="text-sm leading-snug">
+              AI相关行业（特别是算力相关）、高端装备相关、绿色出口相关；K型分化短期内不可逆转，新经济端的AI景气有望延续，但旧经济端的地产、建材、传统制造业仍将在底部运行。政策需要在'扶新'与'托旧'之间寻找平衡。
             </p>
           </BaseCard>
         </div>
 
         <div className="flex-1 min-h-0">
-          <ChartContainer delay="480ms" ariaLabel="AI净增长贡献J曲线与兑现周期">
-            <AiGrowthContributionChart />
+          <ChartContainer delay="600ms">
+            <BaseTable
+              data={industryHeatmapData}
+              columns={industryColumns}
+              title="分行业景气度对比：工业增加值/利润/PPI/投资/PMI/出口"
+              subtitle="数据来源：国家统计局、海关总署、中国物流与采购联合会 | H1为上半年累计，其余为最新可比月度/累计数据"
+              colorizeNumbers={false}
+              striped
+              rowHeight="auto"
+              cellClassName="!px-2 tabular-nums text-[11px] leading-tight"
+              headerCellClassName="!px-2 !py-1 whitespace-nowrap text-[11px] leading-tight"
+            />
           </ChartContainer>
         </div>
       </div>

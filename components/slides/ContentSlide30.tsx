@@ -9,7 +9,7 @@ import {
   socialFinancingStructureQ2Data,
 } from '@/data/socialFinancing';
 
-export const ContentSlide28: React.FC = () => {
+export const ContentSlide30: React.FC = () => {
   return (
     <BaseContentSlide
       title="二季度社融增量6万亿，主要依赖政府债支撑，信贷需求仍然弱"

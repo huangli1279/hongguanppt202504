@@ -1,107 +1,95 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
-import { chartColors } from '@/utils/chartColors';
-import { unemploymentRateData, flexibleEmploymentData } from '@/data/employment';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { incomeExpenditureData, industryAvgSalaryData } from '@/data/consumerConfidence';
+import { seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide34: React.FC = () => {
-  const unemploymentLines: LineConfig[] = [
-    { dataKey: 'overall', name: '全国城镇调查失业率', strokeWidth: 2.5 },
-    { dataKey: 'age16_24', name: '16-24岁(不含在校生)', strokeWidth: 2 },
-    { dataKey: 'age25_29', name: '25-29岁(不含在校生)', strokeWidth: 2 },
-    { dataKey: 'age30_59', name: '30-59岁(不含在校生)', strokeWidth: 2 },
+  const incomeLines: LineConfig[] = [
+    { dataKey: 'incomeReal', name: '可支配收入实际', color: seriesColors[0], strokeWidth: 2.5, labelDY: -14 },
+    { dataKey: 'wageIncome', name: '工资性收入', color: seriesColors[1], strokeWidth: 2, labelDY: 4 },
+    { dataKey: 'operatingIncome', name: '经营净收入', color: seriesColors[2], strokeWidth: 2, labelDY: -4 },
+    { dataKey: 'propertyIncome', name: '财产净收入', color: seriesColors[3], strokeWidth: 2, labelDY: 16 },
+    { dataKey: 'transferIncome', name: '转移净收入', color: seriesColors[4], strokeWidth: 2, labelDY: 28 },
+    { dataKey: 'consumptionReal', name: '消费支出实际', color: seriesColors[5], strokeWidth: 2.5, labelDY: 40 },
   ];
 
-  const flexibleEmploymentLines: LineConfig[] = [
-    {
-      dataKey: 'actual',
-      name: '灵活就业人员',
-      color: chartColors.primary,
-      strokeWidth: 2.5,
-    },
-    {
-      dataKey: 'forecast',
-      name: '预测(E)',
-      color: chartColors.primary,
-      strokeWidth: 2.5,
-      strokeDasharray: '6 4',
-    },
+  const salaryLines: LineConfig[] = [
+    { dataKey: 'itSoftwareAi', name: 'IT/软件(AI相关)', color: seriesColors[0], strokeWidth: 2.5, labelDY: -14 },
+    { dataKey: 'finance', name: '金融业', color: seriesColors[1], strokeWidth: 2, labelDY: -4 },
+    { dataKey: 'scientificResearch', name: '科研技术服务', color: seriesColors[2], strokeWidth: 2, labelDY: 4 },
+    { dataKey: 'utilities', name: '电力燃气水', color: seriesColors[3], strokeWidth: 2, labelDY: 14 },
+    { dataKey: 'education', name: '教育', color: seriesColors[4], strokeWidth: 2, labelDY: 24 },
+    { dataKey: 'nationalNonPrivate', name: '全国非私营均值', color: seriesColors[6], strokeWidth: 2, labelDY: 34 },
+    { dataKey: 'realEstate', name: '房地产业', color: seriesColors[5], strokeWidth: 2, labelDY: 44 },
   ];
 
   return (
     <BaseContentSlide
-      title={<>就业变化：失业率维持在5%-5.2%，灵活就业人数24年以来快速上升</>}
+      title={<>近年收入变化：人均可支配收入增加但满意度及预期长期走低，边际消费倾向下降</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="就业" delay="0ms" variant="accent">
+          <BaseCard title="收入" delay="0ms" variant="accent">
             <p>
-              二季度失业率维持在<span className="text-red-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较1季度呈现季节性回落，2026年毕业生预计<span className="text-red-500 font-semibold">1270万</span>，创历史新高，下半年就业情况仍有待观察。灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计将到<span className="text-red-500 font-semibold">3.2亿</span>人，增长态势迅猛。
+              上半年居民人均可支配收入 <span className="text-red-500 font-semibold">2.3万元</span>，实际增长 <span className="text-red-500 font-semibold">4.2%</span>，而人均消费支出为 <span className="text-red-500 font-semibold">1.48万元</span>，实际仅增长 <span className="text-red-500 font-semibold">2.7%</span>。根据人行的调查，居民收入感受和信心指数23年以来低于50，表明居民现在收入的满意度和未来收入预期仍处于变差阶段。边际消费倾向（MPC）——即每增加1元收入中用于消费的比例——是衡量收入对消费拉动效应的核心指标。截至2025年底，我国居民人均边际消费倾向为 <span className="text-red-500 font-semibold">0.61</span>，较2024年底下滑了 <span className="text-red-500 font-semibold">0.08</span>。
             </p>
           </BaseCard>
-          <BaseCard title="城市偏好变化" delay="120ms">
+          <BaseCard title="新兴行业" delay="120ms">
             <p>
-              智联招聘发布的《2026中国城市人才吸引力报告》：一线城市人才净流入率从2019年的<span className="text-red-500 font-semibold">5.8%</span>降至2025年的<span className="text-red-500 font-semibold">2.1%</span>，新一线城市从<span className="text-red-500 font-semibold">1.9%</span>升至<span className="text-red-500 font-semibold">3.7%</span>。青年人才向新一线集中的趋势仍在加速。
+              根据国家统计局数据，近5年信息传输、软件和信息技术服务业平均薪资最高，其中AI相关行业薪资增长迅猛。根据脉脉《2025年AI人才流动报告》显示，2025年1—7月，AI新发岗位平均月薪 <span className="text-red-500 font-semibold">6.1万元</span>，同比增长 <span className="text-red-500 font-semibold">4.33%</span>。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={unemploymentRateData}
-              title="城镇调查失业率（分年龄段）"
+              data={incomeExpenditureData}
+              title="居民人均收入与消费支出累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={unemploymentLines}
-              yAxisDomain={[0, 20]}
+              lines={incomeLines}
+              yAxisDomain={[-1, 8]}
               showYAxis={true}
-              xAxisTickCount={8}
+              showReferenceLine={true}
+              referenceLineY={0}
               legendOrder={[
-                '全国城镇调查失业率',
-                '16-24岁(不含在校生)',
-                '25-29岁(不含在校生)',
-                '30-59岁(不含在校生)',
+                '可支配收入实际',
+                '工资性收入',
+                '经营净收入',
+                '财产净收入',
+                '转移净收入',
+                '消费支出实际',
               ]}
               unit="%"
             />
           </ChartContainer>
+
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={flexibleEmploymentData}
-              title="中国灵活就业人员规模变化"
-              subtitle="数据来源：公开资料整理 | 单位：亿人；虚线为预测值"
-              lines={flexibleEmploymentLines}
-              yAxisDomain={[1, 3.5]}
+              data={industryAvgSalaryData}
+              title="分行业城镇非私营单位年平均工资"
+              subtitle="数据来源：国家统计局 | 单位：万元"
+              lines={salaryLines}
+              yAxisDomain={[8, 26]}
               showYAxis={true}
+              showReferenceLine={false}
+              legendOrder={[
+                'IT/软件(AI相关)',
+                '金融业',
+                '科研技术服务',
+                '电力燃气水',
+                '教育',
+                '全国非私营均值',
+                '房地产业',
+              ]}
+              unit="万元"
               yAxisTickFormatter={(val) => `${val}`}
-              xAxisTicks={[
-                '2015年',
-                '2017',
-                '2019',
-                '2020',
-                '2021',
-                '2022',
-                '2023',
-                '2024',
-                '2025',
-                '2026(E)',
-              ]}
-              highlightPeriods={[
-                '2015年',
-                '2017',
-                '2019',
-                '2020',
-                '2021',
-                '2022',
-                '2023',
-                '2024',
-              ]}
-              legendOrder={['灵活就业人员', '预测(E)']}
-              unit="亿人"
+              xAxisTicks={['2021', '2022', '2023', '2024', '2025']}
             />
           </ChartContainer>
         </div>

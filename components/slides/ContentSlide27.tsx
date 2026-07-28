@@ -1,44 +1,72 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
+import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { moneySupplyCombinedRecentData } from '@/data/moneySupply';
-
-const lineConfigs: LineConfig[] = [
-  { dataKey: 'm1', name: 'M1(货币)', strokeWidth: 2.5 },
-  { dataKey: 'm2', name: 'M2(货币和准货币)', strokeWidth: 2 },
-  { dataKey: 'scissor', name: '剪刀差', strokeWidth: 2 },
-];
+import { fiscalExpenditureH1GrowthData, fiscalExpenditureTrendData } from '@/data/fiscalRevenue';
+import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide27: React.FC = () => {
+  const trendLines: LineConfig[] = [
+    { dataKey: 'y2025', name: '2025年', color: '#93a3b8', strokeWidth: 2, labelDY: -10 },
+    { dataKey: 'y2026', name: '2026年', color: chartColors.primary, strokeWidth: 2.5, labelDY: 16 },
+  ];
+
+  const expBars: BarConfig[] = [
+    { dataKey: 'growth', name: '同比增速', color: chartColors.primary },
+  ];
+
   return (
     <BaseContentSlide
-      title="6月M1M2增速均回落，增速为2026年最低水平，主要为高基数引起"
-      cardColumns={1}
-      chartColumns={1}
+      title={<>上半年一般预算支出增长1.5%，节奏阶段性放缓，结构重科技民生</>}
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="mb-6 flex-shrink-0">
-          <BaseCard delay="0ms" variant="accent" title="货币供应稳中有升">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="支出节奏阶段性放缓" delay="0ms" variant="accent">
             <p>
-              6月M1M2增速回落主要为高基数影响（25年6月化债加速、信贷回暖导致M1增量大幅高于历史均值）。剔除高基数影响后M1M2剪刀差收窄，资金活化改善趋势未变。
+              1—6月累计增长 <span className="text-red-500 font-semibold">1.5%</span>，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间，支出进度 <span className="text-red-500 font-semibold">47.76%</span>。机构预测下半年支出进度加快，重点关注7月底政治局会议定调。
+            </p>
+          </BaseCard>
+          <BaseCard title="投向结构：重科技民生，轻传统基建" delay="120ms">
+            <p>
+              上半年科学技术支出同比增长 <span className="text-red-500 font-semibold">1.3%</span>，卫生健康增长 <span className="text-red-500 font-semibold">10.8%</span>；而基建相关支出（节能环保、城乡社区、农林水、交运）合并同比下降 <span className="text-green-600 font-semibold">5.2%</span>，资金向民生科学技术倾斜特征显著。
             </p>
           </BaseCard>
         </div>
 
-        <div className="flex-1 min-h-0">
+        {/* 图表区域 */}
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={moneySupplyCombinedRecentData}
-              title="M1、M2同比增速及“剪刀差”走势图"
-              subtitle="数据来源：中国人民银行 | 单位：%"
-              lines={lineConfigs}
-              yAxisDomain={[-11, 10]}
+              data={fiscalExpenditureTrendData}
+              title="一般公共预算支出合计累计同比"
+              subtitle="数据来源：财政部 | 单位：累计同比：%"
+              lines={trendLines}
+              yAxisDomain={[0, 6]}
+              showYAxis={true}
+              showReferenceLine={false}
+              xAxisTicks={['2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']}
+              unit="%"
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="600ms">
+            <BaseBarChart
+              data={fiscalExpenditureH1GrowthData}
+              title="1-6月一般公共预算支出主要分项增速排列图"
+              subtitle="数据来源：财政部 | 单位：%"
+              bars={expBars}
+              xAxisKey="category"
+              yAxisDomain={[-12, 14]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['M1(货币)', 'M2(货币和准货币)', '剪刀差']}
-              xAxisTickCount={8}
+              showLabels={true}
+              barSize={18}
+              xAxisAngle={-45}
+              xAxisHeight={70}
             />
           </ChartContainer>
         </div>

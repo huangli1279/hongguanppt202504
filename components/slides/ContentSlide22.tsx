@@ -1,95 +1,77 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { exportTableData, ExportTableItem } from '@/data';
-import { cn } from '@/utils/cn';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { foreignTradeCumulativeYoyData } from '@/data/foreignTrade';
+import { memoryChipPriceData } from '@/data/memoryChipPrices';
 
 export const ContentSlide22: React.FC = () => {
-  const columns: ColumnConfig[] = [
-    {
-      key: 'name',
-      title: '商品名称',
-      width: '28%',
-      align: 'left',
-      render: (value, row: ExportTableItem) => {
-        const padding = row.level === 0 ? 'pl-0' : row.level === 1 ? 'pl-4' : 'pl-8';
-        return (
-          <div className={cn(padding, row.isCategory && 'font-bold text-webank-blue')}>
-            {value}
-          </div>
-        );
-      }
-    },
-    {
-      key: 'decAmount',
-      title: '6月金额',
-      align: 'right',
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
-    },
-    {
-      key: 'totalAmount',
-      title: '1-6月累计金额',
-      align: 'right',
-      includeInStats: true,
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
-    },
-    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
-      if (row.name === '成品油') {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
-      return defaultRender?.(val);
-    }},
-    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
-      if (row.name === '成品油') {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
-      return defaultRender?.(val);
-    }}
+  const tradeLineConfigs: LineConfig[] = [
+    { dataKey: 'exports', name: '出口累计同比', strokeWidth: 2.5 },
+    { dataKey: 'imports', name: '进口累计同比', strokeWidth: 2 },
+    { dataKey: 'surplus', name: '进出口差额累计同比', strokeWidth: 2 },
+  ];
+
+  const memoryLineConfigs: LineConfig[] = [
+    { dataKey: 'dram', name: 'DRAM DDR5 16GB', strokeWidth: 2.5 },
+    { dataKey: 'nand', name: 'NAND Flash 128Gb', strokeWidth: 2 },
   ];
 
   return (
     <BaseContentSlide
-      title="出口端：新动能产品拉动显著"
-      cardColumns={2}
+      title="上半年美元计价的出口额同比增长17.6%，贸易顺差增速同比转负"
+      cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="AI投资周期拉动爆发" delay="0ms" variant="accent">
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="总量持续超预期" delay="0ms" variant="accent">
             <p>
-              AI基础设施建设进入高投入期，直接拉动电子信息及高端制造贸易需求。上半年，高新技术产品拉动中国出口<span className="text-red-500 font-semibold">9.3%</span>，较2025年全年上升<span className="text-red-500 font-semibold">7.4</span>个百分点。1—6月集成电路出口额增长<span className="text-red-500 font-semibold">96.1%</span>，表现持续亮眼。
+              6月出口总额同比增长<span className="text-red-500 font-semibold">27%</span>（前值19.4%），显示在全球经贸增长艰难和局势动荡的背景下，中国外贸展现出强大韧性。受到能源冲突及AI集体涨价的影响，6月进口总额同比高增<span className="text-red-500 font-semibold">36%</span>，二季度均保持超20%的增长。
             </p>
           </BaseCard>
-          <BaseCard title="“新三样”维持高景气" delay="120ms">
+          <BaseCard title="贸易顺差转负" delay="120ms">
             <p>
-              中东变局引发的能源安全担忧倒逼全球能源转型加速，上半年汽车出口量首次突破<span className="font-semibold">500万辆</span>大关，达<span className="text-red-500 font-semibold">509.6万辆</span>，同比增长<span className="text-red-500 font-semibold">65.3%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">1.2倍</span>，成为增长核心引擎。锂电池出口额<span className="font-semibold">486亿美元</span>，同比增长<span className="text-red-500 font-semibold">42.7%</span>，风力发电机组同比增长<span className="text-red-500 font-semibold">35.6%</span>。
+              上半年，贸易顺差为<span className="text-black font-semibold">5759亿美元</span>，受进口增长速度快于出口影响，同比<span className="text-green-600 font-semibold">-1.28%</span>。
+            </p>
+          </BaseCard>
+          <BaseCard title="下半年预测" delay="240ms">
+            <p>
+              AI产业链景气度与地缘不确定性凸显中国产业链韧性，预计全年出口增速有望达到<span className="text-red-500 font-semibold">15.8%</span>。进口端下半年会持续受到AI芯片涨价和“铜周期”与材料通胀的影响，全年进口增速在<span className="text-black font-semibold">12%-15%</span>的区间。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <ChartContainer delay="600ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={exportTableData}
-            columns={columns}
-            title="2026年6月全国出口重点商品量值表"
-            subtitle="数据来源：海关总署 | 金额单位：百万美元"
-            rowHeight="auto"
-            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
-            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
-            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
-            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
-          />
-        </ChartContainer>
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={foreignTradeCumulativeYoyData}
+              title="进出口及其差额：累计同比走势"
+              subtitle="数据来源：海关总署 | 单位：%"
+              lines={tradeLineConfigs}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['出口累计同比', '进口累计同比', '进出口差额累计同比']}
+              xAxisTickCount={10}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={memoryChipPriceData}
+              title="DRAM、NAND Flash合约月度平均价格"
+              subtitle="数据来源：全球半导体观察 | 单位：美元"
+              lines={memoryLineConfigs}
+              showYAxis={true}
+              legendOrder={['DRAM DDR5 16GB', 'NAND Flash 128Gb']}
+              xAxisTickCount={10}
+              unit=""
+              yAxisTickFormatter={(val) => `${val}`}
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );
