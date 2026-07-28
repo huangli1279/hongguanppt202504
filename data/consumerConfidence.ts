@@ -84,3 +84,26 @@ export const industryAvgSalaryData: IndustryAvgSalaryDataPoint[] = [
   { period: '2024', itSoftwareAi: 23.90, finance: 20.19, scientificResearch: 17.54, utilities: 15.03, realEstate: 9.19, education: 12.62, nationalNonPrivate: 12.41 },
   { period: '2025', itSoftwareAi: 24.88, finance: 21.12, scientificResearch: 18.21, utilities: 16.09, realEstate: 8.97, education: 13.35, nationalNonPrivate: 12.94 },
 ];
+
+// 人行储户问卷调查：收入感受指数、收入信心指数（作收入预期）
+export interface IncomeSentimentDataPoint {
+  period: string;
+  incomeFeeling: number;      // 收入感受指数
+  incomeExpectation: number;  // 收入预期指数（收入信心指数）
+}
+
+export const incomeSentimentData: IncomeSentimentDataPoint[] = [
+  { period: '22Q4', incomeFeeling: 43.8, incomeExpectation: 44.4 },
+  { period: '23Q1', incomeFeeling: 50.7, incomeExpectation: 49.9 },
+  { period: '23Q2', incomeFeeling: 49.7, incomeExpectation: 48.5 },
+  { period: '23Q3', incomeFeeling: 47.4, incomeExpectation: 47.4 },
+  { period: '23Q4', incomeFeeling: 47.1, incomeExpectation: 47.0 },
+  { period: '24Q1', incomeFeeling: 48.0, incomeExpectation: 47.0 },
+  { period: '24Q2', incomeFeeling: 46.6, incomeExpectation: 45.6 },
+  { period: '24Q3', incomeFeeling: 45.7, incomeExpectation: 45.2 },
+  { period: '24Q4', incomeFeeling: 46.0, incomeExpectation: 45.1 },
+  { period: '25Q1', incomeFeeling: 46.3, incomeExpectation: 45.6 },
+  { period: '25Q2', incomeFeeling: 45.0, incomeExpectation: 45.0 },
+  { period: '25Q3', incomeFeeling: 46.5, incomeExpectation: 45.9 },
+  { period: '25Q4', incomeFeeling: 46.1, incomeExpectation: 45.8 },
+];
