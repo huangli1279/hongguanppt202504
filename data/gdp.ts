@@ -83,13 +83,13 @@ export const industryGdpValueRecentData = [
   { industry: '第三产业', '2025-06': 5.70, '2025-09': 5.40, '2025-12': 5.20, '2026-03': 5.20, '2026-06': 5.10 },
 ];
 
-// Slide06 专用：三大产业对 GDP 增长拉动（%，自 2025-06 起）
+// Slide06 专用：三大产业对 GDP 增长贡献率（%，各产业合计 100，自 2025-06 起）
 export const industryGrowthByQuarterRecentData = [
-  { period: '2025-06', primary: 0.24, secondary: 1.78, tertiary: 3.18 },
-  { period: '2025-09', primary: 0.34, secondary: 1.50, tertiary: 2.97 },
-  { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 2.84 },
-  { period: '2026-03', primary: 0.13, secondary: 1.71, tertiary: 3.16 },
-  { period: '2026-06', primary: 0.21, secondary: 1.11, tertiary: 2.98 },
+  { period: '2025-06', primary: 4.6, secondary: 34.2, tertiary: 61.2 },
+  { period: '2025-09', primary: 7.1, secondary: 31.2, tertiary: 61.7 },
+  { period: '2025-12', primary: 9.1, secondary: 27.6, tertiary: 63.3 },
+  { period: '2026-03', primary: 2.6, secondary: 34.2, tertiary: 63.2 },
+  { period: '2026-06', primary: 4.9, secondary: 25.8, tertiary: 69.3 },
 ];
 
 // Slide06 专用：不同行业 GDP 增速对比（%）

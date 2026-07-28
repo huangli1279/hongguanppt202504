@@ -47,20 +47,20 @@ export const ContentSlide31: React.FC = () => {
                 票据融资独撑增量：Q2票据新增<span className="text-webank-blue font-semibold">1.9万亿</span>（同比多增1.4万亿），票利率约<span className="text-webank-blue font-semibold">0.5%</span>，银行“以票充贷”突出。
               </li>
               <li>
-                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">13.6%</span>、绿色贷款<span className="text-red-500 font-semibold">17.6%</span>，显著跑赢大盘<span className="text-webank-blue font-semibold">4.65%</span>。
+                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢大盘<span className="text-webank-blue font-semibold">5.2%</span>。
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="居民端加速缩表，长短双降" delay="120ms" className="!p-3 gap-1 text-sm">
+          <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-sm">
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                居民信贷持续收缩：Q2居民贷款减少<span className="text-green-600 font-semibold">6600亿</span>，同比多减<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续下降。
+                Q2居民贷款减少<span className="text-green-600 font-semibold">6636亿</span>，同比多减<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续下降。
               </li>
               <li>
-                中长期（房贷）：Q2减少<span className="text-green-600 font-semibold">3700亿</span>（同比多减5263亿），新增按揭难对冲提前还贷。
+                中长期（房贷）：Q2减少<span className="text-green-600 font-semibold">2395亿</span>（同比多减5263亿），新增按揭难对冲提前还贷。
               </li>
               <li>
-                短期（消费）：Q2减少<span className="text-green-600 font-semibold">1900亿</span>，居民消费信心与风险偏好仍处低位。
+                短期（消费）：Q2减少<span className="text-green-600 font-semibold">4241亿</span>，居民消费信心与风险偏好仍处低位。
               </li>
             </ul>
           </BaseCard>
@@ -70,7 +70,7 @@ export const ContentSlide31: React.FC = () => {
           <ChartContainer delay="600ms" className="min-h-0">
             <BaseBarChart
               data={corporateCreditStructureData}
-              title="Q2企业信贷增长结构"
+              title="Q2新增人民币贷款结构"
               subtitle="数据来源：中国人民银行 | 单位：亿元"
               xAxisKey="category"
               bars={[
@@ -78,12 +78,16 @@ export const ContentSlide31: React.FC = () => {
                 { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
                 { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
               ]}
-              yAxisDomain={[0, 22000]}
+              yAxisDomain={[-6000, 35000]}
               showYAxis={true}
               yAxisWidth={50}
               yAxisTickFormatter={(val) => `${val}`}
-              barSize={22}
+              showReferenceLine={true}
+              referenceLineY={0}
+              barSize={14}
               showLabels={true}
+              xAxisAngle={-20}
+              xAxisHeight={55}
               legendOrder={['2024年', '2025年', '2026年']}
               unit="亿元"
             />

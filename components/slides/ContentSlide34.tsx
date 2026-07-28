@@ -30,7 +30,7 @@ export const ContentSlide34: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="人均收入与支出" delay="0ms" variant="accent">
             <p>
-              上半年居民人均可支配收入 <span className="text-red-500 font-semibold">2.3万元</span>，实际增长 <span className="text-red-500 font-semibold">4.2%</span>，而人均消费支出为 <span className="text-red-500 font-semibold">1.48万元</span>，实际增长 <span className="text-red-500 font-semibold">2.7%</span>，根据调查2025年人均边际消费倾向为 <span className="text-red-500 font-semibold">0.61</span>，同比下滑 <span className="text-red-500 font-semibold">0.08</span>，新增收入转化为消费的比例较低。
+              上半年居民人均可支配收入 <span className="text-red-500 font-semibold">2.3万元</span>，实际增长 <span className="text-red-500 font-semibold">4.2%</span>，其中经营性净收入增长 <span className="text-red-500 font-semibold">6.4%</span>，工资性净收入 <span className="text-red-500 font-semibold">5.3%</span>。人均消费支出为 <span className="text-red-500 font-semibold">1.48万元</span>，实际增长 <span className="text-red-500 font-semibold">2.7%</span>，根据调查2025年人均边际消费倾向为 <span className="text-red-500 font-semibold">0.61</span>，同比下滑 <span className="text-red-500 font-semibold">0.08</span>，新增收入转化为消费的比例较低。
             </p>
           </BaseCard>
           <BaseCard title="收入满意度和预期" delay="120ms">

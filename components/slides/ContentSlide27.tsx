@@ -31,7 +31,7 @@ export const ContentSlide27: React.FC = () => {
           </BaseCard>
           <BaseCard title="投向结构：重科技民生，轻传统基建" delay="120ms">
             <p>
-              上半年科学技术支出同比增长 <span className="text-red-500 font-semibold">1.3%</span>，卫生健康增长 <span className="text-red-500 font-semibold">10.8%</span>；而基建相关支出（节能环保、城乡社区、农林水、交运）合并同比下降 <span className="text-green-600 font-semibold">5.2%</span>，资金向民生科学技术倾斜特征显著。
+              上半年科学技术支出同比增长 <span className="text-red-500 font-semibold">1.3%</span>，卫生健康增长 <span className="text-red-500 font-semibold">10.8%</span>；而基建相关支出（节能环保、城乡社区、农林水、交运）合并同比下降 <span className="text-green-600 font-semibold">5.3%</span>，资金向民生科学技术倾斜特征显著。
             </p>
           </BaseCard>
         </div>

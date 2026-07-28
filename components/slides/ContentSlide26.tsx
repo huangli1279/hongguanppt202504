@@ -26,12 +26,12 @@ export const ContentSlide26: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="收入总量超出预期" delay="0ms" variant="accent">
             <p>
-              上半年全国一般公共预算收入同比增长<span className="text-red-500 font-semibold">4.7%</span>，高于年初<span className="text-red-500 font-semibold">2.2%</span>的预算目标，收入进度达<span className="text-red-500 font-semibold">54.85%</span>，略快于近五年同期均值。
+              上半年价格上行、股市活跃、外贸增势强劲有力支撑全国一般公共预算收入同比增长<span className="text-red-500 font-semibold">4.7%</span>，高于年初<span className="text-red-500 font-semibold">2.2%</span>的预算目标，收入进度达<span className="text-red-500 font-semibold">54.85%</span>，略快于近五年同期均值。
             </p>
           </BaseCard>
-          <BaseCard title="结构改善，“名义增长”拉动显著" delay="120ms">
+          <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
             <p>
-              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，对收入增长贡献显著。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>；非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。受资本市场活跃带动，上半年证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
+              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>，其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
             </p>
           </BaseCard>
         </div>

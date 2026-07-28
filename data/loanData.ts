@@ -48,11 +48,14 @@ export const loanIncrementData: LoanIncrementByType[] = [
   { type: '票据融资',   q2024: -15000, q2025: -5442,  q2026: -11000 },
 ];
 
-/** 人民币信贷增长结构（对公分项，按类别分组），单位：亿元 */
+/** Q2新增人民币贷款结构（按类别分组），单位：亿元 */
 export const corporateCreditStructureData = [
+  { category: '新增人民币贷款', y2024: 30369, y2025: 31597, y2026: 18122 },
   { category: '对公：中长期', y2024: 18800, y2025: 15900, y2026: 1300 },
   { category: '对公：短期', y2024: 1400, y2025: 7900, y2026: 4600 },
   { category: '对公：票据融资', y2024: 11560, y2025: 4978, y2026: 19143 },
+  { category: '居民户：中长期', y2024: 2050, y2025: 2868, y2026: -2395 },
+  { category: '居民户：短期', y2024: -804, y2025: -1606, y2026: -4241 },
 ];
 
 export interface HouseholdLoanChangePoint {

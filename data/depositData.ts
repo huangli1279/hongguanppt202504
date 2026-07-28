@@ -219,13 +219,14 @@ export const depositIncrementQ2CompareData = [
   { category: '金融机构存款', q2024: 0.65, q2025: 2.24, q2026: 2.62 },
 ];
 
-/** 居民存款分月变化表：同月 25/26 相邻，单位与源表一致 */
+/** 居民存款分月变化表：25年一组、空行、26年一组，单位与源表一致 */
 export const householdDepositMonthlyChangeData = [
   { period: '2025-04', household: -1.39, nonFinancial: -1.33, nonBankFin: 1.57 },
-  { period: '2026-04', household: -1.94, nonFinancial: -1.25, nonBankFin: 2.46 },
   { period: '2025-05', household: 0.47, nonFinancial: -0.42, nonBankFin: 1.18 },
-  { period: '2026-05', household: -0.11, nonFinancial: -0.16, nonBankFin: 1.14 },
   { period: '2025-06', household: 2.48, nonFinancial: 1.78, nonBankFin: -0.52 },
+  { period: '', household: '', nonFinancial: '', nonBankFin: '' },
+  { period: '2026-04', household: -1.94, nonFinancial: -1.25, nonBankFin: 2.46 },
+  { period: '2026-05', household: -0.11, nonFinancial: -0.16, nonBankFin: 1.14 },
   { period: '2026-06', household: 1.94, nonFinancial: 1.94, nonBankFin: -0.99 },
 ];
 

@@ -86,12 +86,12 @@ export const ContentSlide06: React.FC = () => {
                   ...d,
                   period: d.period.slice(2),
                 }))}
-                title="三大产业对GDP增长拉动"
+                title="三大产业对GDP增长贡献率"
                 subtitle="数据来源: 国家统计局；单位: %"
                 bars={stackedIndustryBars}
                 legendOrder={industryLegendOrder}
-                yAxisDomain={[0, 6]}
-                barSize={14}
+                yAxisDomain={[0, 100]}
+                barSize={22}
                 showYAxis
                 showLabels
                 labelPosition="center"

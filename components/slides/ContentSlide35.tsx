@@ -31,20 +31,20 @@ export const ContentSlide35: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>就业变化：失业率维持在5%-5.2%，灵活就业人数24年以来快速上升</>}
+      title={<>就业变化：失业率季节性回落，灵活就业快速上升</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="就业" delay="0ms" variant="accent">
+          <BaseCard title="失业率" delay="0ms" variant="accent">
             <p>
-              二季度失业率维持在<span className="text-red-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较1季度呈现季节性回落，2026年毕业生预计<span className="text-red-500 font-semibold">1270万</span>，创历史新高，下半年就业情况仍有待观察。灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计将到<span className="text-red-500 font-semibold">3.2亿</span>人，增长态势迅猛。
+              二季度失业率维持在<span className="text-red-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，2026年毕业生预计<span className="text-red-500 font-semibold">1270万</span>，创历史新高，下半年就业情况仍有待观察。
             </p>
           </BaseCard>
-          <BaseCard title="城市偏好变化" delay="120ms">
+          <BaseCard title="灵活就业" delay="120ms">
             <p>
-              智联招聘发布的《2026中国城市人才吸引力报告》：一线城市人才净流入率从2019年的<span className="text-red-500 font-semibold">5.8%</span>降至2025年的<span className="text-red-500 font-semibold">2.1%</span>，新一线城市从<span className="text-red-500 font-semibold">1.9%</span>升至<span className="text-red-500 font-semibold">3.7%</span>。青年人才向新一线集中的趋势仍在加速。
+              灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计将到<span className="text-red-500 font-semibold">3.2亿</span>人，增长态势迅猛。
             </p>
           </BaseCard>
         </div>

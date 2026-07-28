@@ -35,14 +35,15 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2026-03', taxRevenue: 2.20, nonTaxRevenue: 2.90, total: 2.40 },
   { period: '2026-04', taxRevenue: 3.90, nonTaxRevenue: 1.60, total: 3.50 },
   { period: '2026-05', taxRevenue: 4.40, nonTaxRevenue: 2.20, total: 4.00 },
+  { period: '2026-06', taxRevenue: 5.30, nonTaxRevenue: 2.30, total: 4.70 },
 ];
 
-// 2026年1-6月各类税收收入累计同比
+// 2026年1-6月各类税收收入累计同比（按增速升序）
 export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
-  { category: '国内增值税', growth: 6.0 },
   { category: '国内消费税', growth: -3.4 },
   { category: '企业所得税', growth: 3.9 },
   { category: '出口货物增值税/消费税', growth: 5.4 },
+  { category: '国内增值税', growth: 6.0 },
   { category: '进口货物增值税/消费税', growth: 11.8 },
   { category: '印花税', growth: 40.9 },
 ];

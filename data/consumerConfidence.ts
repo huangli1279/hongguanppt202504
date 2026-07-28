@@ -61,8 +61,13 @@ export const incomeExpenditureData: IncomeExpenditureDataPoint[] = [
   { period: '2024-06', incomeReal: 5.40, wageIncome: 5.76, operatingIncome: 5.10, propertyIncome: 2.50, transferIncome: 3.10, consumptionReal: 5.30 },
   { period: '2024-09', incomeReal: 5.25, wageIncome: 5.40, operatingIncome: 5.10, propertyIncome: 1.70, transferIncome: 3.50, consumptionReal: 4.70 },
   { period: '2024-12', incomeReal: 5.23, wageIncome: 5.39, operatingIncome: 5.80, propertyIncome: 1.40, transferIncome: 3.70, consumptionReal: 4.40 },
-  { period: '2025-03', incomeReal: 4.15, wageIncome: 4.39, operatingIncome: 6.80, propertyIncome: 1.10, transferIncome: 3.10, consumptionReal: 2.80 },
-  { period: '2025-06', incomeReal: 4.20, wageIncome: 5.31, operatingIncome: 6.40, propertyIncome: 1.09, transferIncome: 3.77, consumptionReal: 2.70 },
+  // 以下为统计局官方累计同比（实际增速 / 分项名义增速）
+  { period: '2025-03', incomeReal: 5.60, wageIncome: 5.90, operatingIncome: 5.70, propertyIncome: 2.70, transferIncome: 5.50, consumptionReal: 5.30 },
+  { period: '2025-06', incomeReal: 5.40, wageIncome: 5.70, operatingIncome: 5.30, propertyIncome: 2.50, transferIncome: 5.60, consumptionReal: 5.30 },
+  { period: '2025-09', incomeReal: 5.20, wageIncome: 5.40, operatingIncome: 5.30, propertyIncome: 1.70, transferIncome: 5.30, consumptionReal: 4.70 },
+  { period: '2025-12', incomeReal: 5.00, wageIncome: 5.30, operatingIncome: 5.00, propertyIncome: 1.60, transferIncome: 5.70, consumptionReal: 4.40 },
+  { period: '2026-03', incomeReal: 4.00, wageIncome: 4.90, operatingIncome: 6.60, propertyIncome: 1.60, transferIncome: 5.10, consumptionReal: 2.60 },
+  { period: '2026-06', incomeReal: 4.20, wageIncome: 5.30, operatingIncome: 6.50, propertyIncome: 1.10, transferIncome: 5.80, consumptionReal: 2.70 },
 ];
 
 // 分行业城镇非私营单位就业人员年平均工资（万元）

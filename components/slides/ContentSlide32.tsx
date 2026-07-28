@@ -33,15 +33,18 @@ export const ContentSlide32: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>“存款搬家”有所缓解：二季度居民存款同比少增1.52万亿</>}
+      title={<>二季度居民存款净减少1049亿元，为2018年以来首次下降；非银机构存款则增加2.62万亿元</>}
       cardColumns={1}
       chartColumns={2}
     >
       <div className="flex flex-col h-full">
         <div className="mb-6 flex-shrink-0">
-          <BaseCard title="居民存款变化" delay="0ms" variant="accent">
+          <BaseCard title="存款搬家延续" delay="0ms" variant="accent">
             <p>
-              “存款搬家”有所缓解：二季度居民存款下降<span className="text-webank-blue font-semibold">0.1亿</span>，同比少增<span className="text-webank-blue font-semibold">1.52万亿</span>，非银存款增长<span className="text-webank-blue font-semibold">2.62万亿</span>，同比多增<span className="text-webank-blue font-semibold">2万亿</span>。反映在存款利率下调与资本市场活跃度提升背景下，存款搬家延续。但分月数据看，二季度4月、5月居民存款、企业存款，连续两月下降，6月增长非银存款回落，存款搬家有所缓解。
+              二季度居民存款净减少<span className="text-webank-blue font-semibold">1049亿元</span>（同比少增<span className="text-webank-blue font-semibold">1.66万亿元</span>），非银存款增加<span className="text-webank-blue font-semibold">2.62万亿元</span>（同比多增<span className="text-webank-blue font-semibold">3915亿元</span>），存款搬家趋势延续。
+            </p>
+            <p>
+              分月节奏上，4-5月居民及企业存款连续下降，非银存款加速增长；6月受银行季末冲存款的短期扰动，居民存款阶段性回升、非银存款回落。
             </p>
           </BaseCard>
         </div>
