@@ -3,7 +3,7 @@ import React from 'react';
 import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, Target, ArrowUpRight, TrendingUp, Cpu } from 'lucide-react';
 
 const contents = [
-  { id: '01', title: '一季度关键事件与政策主线', subtitle: '第 01 章', icon: Target },
+  { id: '01', title: '二季度关键事件与政策主线', subtitle: '第 01 章', icon: Target },
   { id: '02', title: 'GDP 分析', subtitle: '第 02 章', icon: BarChart3 },
   { id: '03', title: '生产端分析', subtitle: '第 03 章', icon: Zap },
   { id: '04', title: '消费分析', subtitle: '第 04 章', icon: ShoppingCart },
