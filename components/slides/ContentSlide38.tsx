@@ -22,19 +22,24 @@ export const ContentSlide38: React.FC = () => {
           <ChartContainer delay="480ms" className="min-h-0">
             <BaseLineChart
               data={marginBalanceData}
-              title="两融余额月末值：2026年6月首破3万亿"
-              subtitle="数据来源：Wind、同花顺 | 单位：万亿元；2026-07为7月27日最新值"
+              title="两融余额与沪指月末走势：2026年6月两融首破3万亿"
+              subtitle="数据来源：Wind、同花顺、东方财富 | 左轴万亿、右轴点；2026-07为7月27日"
               lines={[
-                { dataKey: 'balance', name: '两融余额（月末）', strokeWidth: 2.5 },
+                { dataKey: 'balance', name: '两融余额（月末）', strokeWidth: 2.5, yAxisId: 'left', unit: '万亿' },
+                { dataKey: 'shanghai', name: '上证综指（月末）', strokeWidth: 2, yAxisId: 'right', unit: '点' },
               ]}
               yAxisDomain={[0, 3.5]}
               showYAxis={true}
               yAxisTickFormatter={(val) => `${val}`}
+              showRightYAxis={true}
+              rightYAxisDomain={[2000, 5000]}
+              rightYAxisTickFormatter={(val) => `${Math.round(val)}`}
               showReferenceLine={true}
               referenceLineY={3}
               highlightPeriods={['2026-06']}
               xAxisTicks={marginBalanceXTicks}
               unit="万亿"
+              legendOrder={['两融余额（月末）', '上证综指（月末）']}
             />
           </ChartContainer>
 
