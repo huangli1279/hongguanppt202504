@@ -181,7 +181,13 @@ const App: React.FC = () => {
       case 31: return <ContentSlide31 />;
       case 32: return <ContentSlide32 />;
       case 33: return <ContentSlide33 />;
-      case 34: return <BaseSectionTransitionSlide id="专题一" title="消费现状及趋势" />;
+      case 34: return (
+        <BaseSectionTransitionSlide
+          id="专题一"
+          title="消费现状及趋势"
+          subtitle="本轮消费疲弱不止于周期回落，更是收入预期下修、就业不稳与房价财富效应三重约束下的结构性收缩；总量修复仍慢，增量则向体验、情绪与健康等「软消费」迁移。"
+        />
+      );
       case 35: return <ContentSlide35 />;
       case 36: return <ContentSlide36 />;
       case 37: return <ContentSlide37 />;
