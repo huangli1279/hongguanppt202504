@@ -26,7 +26,7 @@ export const industrialProfitData: IndustrialProfitDataPoint[] = [
   { time: '2603', totalProfit: 921.3, revenue: 5400.6, cost: 3777.6, revenueMinusCost: 1623.0, expenses: 269.3, investmentIncome: -8.4 },
   { time: '2604', totalProfit: 1474.5, revenue: 6383.6, cost: 4281.0, revenueMinusCost: 2102.6, expenses: 491.3, investmentIncome: 197.0 },
   { time: '2605', totalProfit: 1224.7, revenue: 7292.1, cost: 5145.6, revenueMinusCost: 2146.5, expenses: 201.3, investmentIncome: -37.3 },
-  { time: '2606', totalProfit: 1244.4, revenue: 12790.3, cost: 11194.0, revenueMinusCost: 1596.3, expenses: null, investmentIncome: null },
+  { time: '2606', totalProfit: 1244.4, revenue: 12790.3, cost: 11194.0, revenueMinusCost: 1596.3, expenses: 495.1, investmentIncome: -16.5 },
 ];
 
 export interface IndustryProfitGrowthDataPoint {

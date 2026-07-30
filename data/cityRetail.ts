@@ -46,7 +46,7 @@ export const cityRetailData: CityRetailDataPoint[] = [
   { period: '2026-03', shenzhen: 0.47, shanghai: 5.50, beijing: -0.60, guangzhou: 6.60, hangzhou: 3.90, changsha: 2.30 },
   { period: '2026-04', shenzhen: -0.58, shanghai: 3.90, beijing: -1.50, guangzhou: 4.40, hangzhou: 3.50, changsha: 1.70 },
   { period: '2026-05', shenzhen: 0.27, shanghai: 2.00, beijing: -2.50, guangzhou: 2.40, hangzhou: 1.30, changsha: 1.20 },
-  { period: '2026-06', shenzhen: 1.20, shanghai: 0.70, beijing: -2.20, guangzhou: null, hangzhou: 1.80, changsha: 0.90 },
+  { period: '2026-06', shenzhen: 1.20, shanghai: 0.70, beijing: -2.20, guangzhou: 2.90, hangzhou: 1.80, changsha: 0.90 },
 ];
 
 // 2024-2025年城镇与乡村社会消费品零售总额累计同比

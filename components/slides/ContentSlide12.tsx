@@ -22,10 +22,9 @@ const renderColoredCell = (value: any, row: any) => {
   if (isNaN(num)) return value;
 
   const formatted = formatNumber(num);
-  // 只在特定行进行着色
-  if (row.time === '2602' || row.time === '2603') {
-    if (num > 0) return <span className="text-red-500">{formatted}</span>;
-    if (num < 0) return <span className="text-green-600">{formatted}</span>;
+  // 2026年（2602 起）利润、营收-成本、费用标红
+  if (row.time >= '2602') {
+    return <span className="text-red-500">{formatted}</span>;
   }
 
   return <span className="text-slate-600">{formatted}</span>;
@@ -37,58 +36,70 @@ const profitColumns: ColumnConfig[] = [
   { key: 'revenue', title: '营收', width: '90px', align: 'right' },
   { key: 'cost', title: '成本', width: '90px', align: 'right' },
   { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
-  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right' },
+  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right', render: renderColoredCell },
   { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
 ];
 
 export const ContentSlide12: React.FC = () => {
   return (
     <BaseContentSlide
-      title="1-6月利润持续增长，持续受营收-成本影响"
-      cardColumns={2}
+      title="上半年企业利润持续增长，受输入性通胀影响显著"
+      cardColumns={3}
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="二季度企业利润稳定增长" delay="0ms" variant="accent">
+          <BaseCard title="上半年企业利润稳定增长" delay="0ms" variant="accent">
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                <span className="font-bold">利润持续增长：</span>
+                <span className="font-bold">利润总量：</span>
                 1-6月规上工业企业利润同比增长
-                <span className="font-bold">18.7%</span>
+                <span className="text-red-500 font-bold">18.7%</span>
                 ，5月增长
-                <span className="font-bold">21.1%</span>
+                <span className="text-red-500 font-bold">21.1%</span>
                 ，6月增长
-                <span className="font-bold">15.1%</span>
+                <span className="text-red-500 font-bold">15.1%</span>
+                ，拆分各项看，增长的主要贡献为营收-成本，营销管理等费用支出较25年增长。
+              </li>
+              <li>
+                <span className="font-bold">FIFO效应：</span>
+                受“先进先出”成本核算影响，油价飙升初期，低价库存导致石化链利润短期暴涨（4月同比
+                <span className="text-red-500 font-bold">+88.5%</span>
+                ）。AI相关上游产品价格和需求增长迅猛，导致计算机、通信电子设备制造业利润增长
+                <span className="text-red-500 font-bold">96%</span>
                 。
-              </li>
-              <li>
-                <span className="font-bold">政策引导供给优化：</span>
-                监管层深入整治“内卷式”竞争，严控低效产能扩张（如光伏、锂电），4月工信部、国家发改委等五部门联合印发《工业产品绿色设计指南（2026年版）》。
-              </li>
-              <li>
-                <span className="font-bold">后续挑战：</span>
-                内需疲软对生产意愿的遏制仍存，且PPI向CPI传导受阻导致中下游行业利润空间受到挤压，利润分配不均可能压制整体生产复苏弹性。
               </li>
             </ul>
           </BaseCard>
 
-          <BaseCard title="PPI回升与FIFO效应" delay="120ms">
+          <BaseCard title="二季度PPI回升拉动价格增长" delay="120ms">
+            <p>
+              二季度PPI保持上行增长
+              <span className="text-red-500 font-bold">3.6%</span>
+              （6月
+              <span className="text-red-500 font-bold">4.1%</span>
+              ），为 2022 年四季度以来季度涨幅首次转正，推动营收利润率提升至
+              <span className="text-red-500 font-bold">5.56%</span>
+              （同比提高
+              <span className="text-red-500 font-bold">0.63%</span>
+              ），但生产资料和生活资料剪刀差二季度持续扩大，6月为
+              <span className="text-red-500 font-bold">6.4%</span>
+              ，中下游企业生存条件严峻。
+            </p>
+          </BaseCard>
+
+          <BaseCard title="机构预测" delay="240ms">
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                <span className="font-bold">PPI回升拉动价格增长：</span>
-                尽管实际工增放缓，但二季度PPI保持上行（5月
-                <span className="font-bold">3.9%</span>
-                ，6月
-                <span className="font-bold">4.1%</span>
-                ），推动营收利润率提升至
-                <span className="font-bold">5.56%</span>
-                （同比提高
-                <span className="font-bold">0.63%</span>
-                ），但生产资料和生活资料剪刀差扩大，中下游企业生存条件严峻。
+                <span className="font-bold">PPI：</span>
+                高点或在 5–6 月已过，年底约
+                <span className="text-red-500 font-bold">2–3%</span>
+                ，全年预计落在
+                <span className="text-red-500 font-bold">2.2–3%</span>
+                。
               </li>
               <li>
-                <span className="font-bold">FIFO效应与库存：</span>
-                油价飙升初期，受“先进先出”成本核算影响，石化链利润短期改善，但随着低价库存耗尽，下半年中下游成本压力或将凸显。
+                <span className="font-bold">企业利润：</span>
+                受价格传导不畅影响，下半年中下游压力偏大，利润增速存在下行风险。
               </li>
             </ul>
           </BaseCard>
@@ -96,10 +107,30 @@ export const ContentSlide12: React.FC = () => {
       }
       charts={
         <>
-          <ChartContainer delay="600ms">
+          <ChartContainer delay="600ms" className="pb-8">
+            <BaseTable
+              data={industrialProfitData}
+              columns={profitColumns}
+              title={
+                <>
+                  工业企业利润分项当月同比增加值
+                  <span className="text-red-500 font-normal normal-case tracking-normal">
+                    （利润（亿）=营收-成本-费用+投资收益+其它收益）
+                  </span>
+                </>
+              }
+              dateColumn="time"
+              colorizeNumbers={false}
+              highlightRows={[industrialProfitData.length - 1]}
+              titleBlockClassName="mb-1"
+              headerCellClassName="!px-1.5 !py-1.5 text-xs leading-tight whitespace-nowrap"
+              cellClassName="!px-1.5 text-xs leading-snug tabular-nums"
+            />
+          </ChartContainer>
+          <ChartContainer delay="720ms" className="pb-8">
             <BaseLineChart
               data={ppiChartData}
-              title="PPI当月同比、生产资料当月同比、生活资料当月同比"
+              title="PPI、生产资料、生活资料当月同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5 },
@@ -115,21 +146,6 @@ export const ContentSlide12: React.FC = () => {
               xAxisTickCount={7}
               unit=""
               yAxisTickFormatter={(val) => `${val}`}
-            />
-          </ChartContainer>
-          <ChartContainer delay="720ms">
-            <BaseTable
-              data={industrialProfitData}
-              columns={profitColumns}
-              title="工业企业利润分项当月同比增加值"
-              subtitle={
-                <>
-                  公式：利润=营收-成本-费用+投资收益+其它收益 &nbsp;&nbsp;|&nbsp;&nbsp; 单位：亿元
-                </>
-              }
-              dateColumn="time"
-              colorizeNumbers={false}
-              highlightRows={[industrialProfitData.length - 1]}
             />
           </ChartContainer>
         </>

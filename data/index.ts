@@ -5,7 +5,7 @@ export { industryGrowthData, industryContributionData, industryContributionData2
 export type { IndustryGrowthDataPoint, IndustryContributionDataPoint, IndustryByQuarterDataPoint, DetailedIndustryDataPoint, IndustrialProductionDataPoint, IndustrialDifferentiationDataPoint } from './industry';
 export { pmiTrendData, pmiByEnterpriseSizeData } from './pmi';
 export type { PmiDataPoint, PmiByEnterpriseSize } from './pmi';
-export { industrialMonthlyData, industrialCumulativeData, industrialCategoryData, industryDetailMonthlyData, miningSubsectorMonthlyData } from './industrialOutput';
+export { industrialMonthlyData, industrialCumulativeData, industrialCategoryData, industrialCategoryCumulativeData, industryDetailMonthlyData, miningSubsectorMonthlyData } from './industrialOutput';
 export { industrialProfitData } from './profit';
 export type { IndustrialProfitDataPoint } from './profit';
 export { ppiYoyData, commodityPriceData, ppiIndustryMomData } from './ppi';

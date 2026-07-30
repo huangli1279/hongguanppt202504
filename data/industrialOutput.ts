@@ -91,6 +91,37 @@ export const industrialCategoryData = [
   { period: '2026-06', industrial: 5.3, mining: -2.2, manufacturing: 6.0, utilities: 7.4 },
 ];
 
+// 分行业累计同比（按时间排序；2月为1-2月累计）
+export const industrialCategoryCumulativeData = [
+  { period: '2024-02', mining: 2.3, manufacturing: 7.7, utilities: 7.9, industrial: 7.0 },
+  { period: '2024-03', mining: 1.6, manufacturing: 6.7, utilities: 6.9, industrial: 6.1 },
+  { period: '2024-04', mining: 1.7, manufacturing: 6.9, utilities: 6.6, industrial: 6.3 },
+  { period: '2024-05', mining: 2.0, manufacturing: 6.7, utilities: 6.2, industrial: 6.2 },
+  { period: '2024-06', mining: 2.4, manufacturing: 6.5, utilities: 6.0, industrial: 6.0 },
+  { period: '2024-07', mining: 2.8, manufacturing: 6.3, utilities: 5.7, industrial: 5.9 },
+  { period: '2024-08', mining: 2.9, manufacturing: 6.1, utilities: 5.8, industrial: 5.8 },
+  { period: '2024-09', mining: 2.9, manufacturing: 6.0, utilities: 6.3, industrial: 5.8 },
+  { period: '2024-10', mining: 3.1, manufacturing: 5.9, utilities: 6.2, industrial: 5.8 },
+  { period: '2024-11', mining: 3.2, manufacturing: 5.9, utilities: 5.8, industrial: 5.8 },
+  { period: '2024-12', mining: 3.1, manufacturing: 6.1, utilities: 5.3, industrial: 5.8 },
+  { period: '2025-02', mining: 4.3, manufacturing: 6.9, utilities: 1.1, industrial: 5.9 },
+  { period: '2025-03', mining: 6.2, manufacturing: 7.1, utilities: 1.9, industrial: 6.5 },
+  { period: '2025-04', mining: 6.0, manufacturing: 7.1, utilities: 2.0, industrial: 6.4 },
+  { period: '2025-05', mining: 6.0, manufacturing: 6.9, utilities: 2.0, industrial: 6.3 },
+  { period: '2025-06', mining: 6.0, manufacturing: 7.0, utilities: 1.9, industrial: 6.4 },
+  { period: '2025-07', mining: 5.8, manufacturing: 6.9, utilities: 2.2, industrial: 6.3 },
+  { period: '2025-08', mining: 5.7, manufacturing: 6.8, utilities: 2.2, industrial: 6.2 },
+  { period: '2025-09', mining: 5.8, manufacturing: 6.8, utilities: 2.0, industrial: 6.2 },
+  { period: '2025-10', mining: 5.6, manufacturing: 6.6, utilities: 2.3, industrial: 6.1 },
+  { period: '2025-11', mining: 5.7, manufacturing: 6.4, utilities: 2.5, industrial: 6.0 },
+  { period: '2025-12', mining: 5.6, manufacturing: 6.4, utilities: 2.3, industrial: 5.9 },
+  { period: '2026-02', mining: 6.1, manufacturing: 6.6, utilities: 4.7, industrial: 6.3 },
+  { period: '2026-03', mining: 6.0, manufacturing: 6.4, utilities: 4.3, industrial: 6.1 },
+  { period: '2026-04', mining: 5.5, manufacturing: 5.8, utilities: 4.5, industrial: 5.6 },
+  { period: '2026-05', mining: 4.8, manufacturing: 5.5, utilities: 5.1, industrial: 5.4 },
+  { period: '2026-06', mining: 3.6, manufacturing: 5.6, utilities: 5.5, industrial: 5.4 },
+];
+
 export const industryDetailMonthlyData = [
   { period: '2025-02', highTech: 9.1, auto: 12.0, railway: 20.8, electronics: 10.6, oilGas: 0.9, chemical: 9.5, nonferrousMining: 4.5, power: 0.8, gas: 3.3, water: 1.8 },
   { period: '2025-03', highTech: 10.7, auto: 11.5, railway: 19.0, electronics: 13.1, oilGas: 6.8, chemical: 8.8, nonferrousMining: 9.3, power: 3.3, gas: 6.9, water: 0.9 },
