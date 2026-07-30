@@ -54,7 +54,8 @@ export const cpiTrendData: CpiTrendDataPoint[] = [
   { period: '2026-06', cpi: 1.00, coreCpi: 1.00 },
 ];
 
-// CPI八大类当月同比数据 (2025-01 至 2026-03)
+// CPI八大类当月同比数据 (2025-01 至 2026-06)
+// 数据来源：国家统计局月度发布（2025年为“食品烟酒”，2026年起为“食品烟酒及在外餐饮”）
 export const cpiCategoryData: CpiCategoryDataPoint[] = [
   { period: '2025-01', foodTobaccoAlcohol: 0.60, transportation: -0.60, housing: 0.10, education: 1.70, clothing: 1.10, healthcare: 0.70, householdServices: -1.10, otherGoodsServices: 5.40 },
   { period: '2025-02', foodTobaccoAlcohol: -1.90, transportation: -2.50, housing: 0.10, education: -0.50, clothing: 1.20, healthcare: 0.20, householdServices: -0.70, otherGoodsServices: 6.50 },
@@ -71,4 +72,7 @@ export const cpiCategoryData: CpiCategoryDataPoint[] = [
   { period: '2026-01', foodTobaccoAlcohol: -0.20, transportation: -3.40, housing: -0.10, education: 0.00, clothing: 1.90, healthcare: 1.70, householdServices: 2.60, otherGoodsServices: 13.20 },
   { period: '2026-02', foodTobaccoAlcohol: 1.40, transportation: -0.70, housing: -0.20, education: 2.00, clothing: 1.90, healthcare: 1.90, householdServices: 2.80, otherGoodsServices: 15.40 },
   { period: '2026-03', foodTobaccoAlcohol: 0.40, transportation: 0.90, housing: -0.20, education: 1.10, clothing: 1.60, healthcare: 1.90, householdServices: 1.50, otherGoodsServices: 13.50 },
+  { period: '2026-04', foodTobaccoAlcohol: -0.80, transportation: 4.60, housing: -0.20, education: 1.30, clothing: 1.50, healthcare: 2.20, householdServices: 1.40, otherGoodsServices: 11.00 },
+  { period: '2026-05', foodTobaccoAlcohol: -0.90, transportation: 5.40, housing: -0.20, education: 1.30, clothing: 1.40, healthcare: 2.10, householdServices: 1.80, otherGoodsServices: 9.90 },
+  { period: '2026-06', foodTobaccoAlcohol: -0.80, transportation: 4.10, housing: -0.30, education: 1.40, clothing: 1.40, healthcare: 2.30, householdServices: 1.30, otherGoodsServices: 6.60 },
 ];
