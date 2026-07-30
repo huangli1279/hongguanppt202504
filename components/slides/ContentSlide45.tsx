@@ -1,143 +1,173 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart } from '../base/BaseBarChart';
-import { jobDemandYoyData } from '@/data/employment';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { BaseStackedBarChart } from '../base/BaseStackedBarChart';
+import {
+  aiPenetrationCurveData,
+  aiSmePenetrationData,
+  aiModelArrData,
+  aiRevenueVsDepreciationData,
+} from '@/data/aiRiskJudgment';
 
-const employmentStages = [
-  {
-    phase: '未来5年',
-    effect: '替代效应占主导',
-    netImpact: '净就业影响为负',
-    detail: '尤其是标准化认知岗位承压明显，招聘端初级、重复性岗位需求率先收缩。',
-    tone: 'negative' as const,
-  },
-  {
-    phase: '5—10年',
-    effect: '互补效应逐步显现',
-    netImpact: '净就业影响转正',
-    detail: 'AI作为工具提升劳动者生产率，人机协作成为主流工作形态，岗位价值向高附加环节迁移。',
-    tone: 'neutral' as const,
-  },
-  {
-    phase: '10年以上',
-    effect: '创造效应占主导',
-    netImpact: '结构性错配并存',
-    detail: '新岗位技能要求与被替代岗位存在错配，“有岗位、缺技能”与“有技能、缺岗位”可能并存。',
-    tone: 'positive' as const,
-  },
-];
-
-const toneStyles = {
-  negative: {
-    card: 'bg-gradient-to-b from-red-50 to-orange-50/70 border-red-200',
-    badge: 'bg-red-500 text-white',
-    effect: 'text-red-600',
-    impact: 'text-red-500',
-  },
-  neutral: {
-    card: 'bg-gradient-to-b from-sky-50 to-blue-50/60 border-sky-200',
-    badge: 'bg-webank-blue text-white',
-    effect: 'text-webank-blue',
-    impact: 'text-webank-accent',
-  },
-  positive: {
-    card: 'bg-gradient-to-b from-emerald-50 to-teal-50/60 border-emerald-200',
-    badge: 'bg-emerald-600 text-white',
-    effect: 'text-emerald-700',
-    impact: 'text-emerald-600',
-  },
+const COLORS = {
+  blue: '#1B4F72',
+  yellow: '#E8B923',
+  grey: '#9CA3AF',
 };
 
-const StageArrow: React.FC = () => (
-  <div className="flex items-center justify-center flex-shrink-0 w-5 self-center">
-    <svg viewBox="0 0 20 12" className="w-5 h-3" fill="none">
-      <path
-        d="M1 6 H15 M12 2 L16 6 L12 10"
-        stroke="#7EB8D8"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </div>
-);
+const penetrationLines: LineConfig[] = [
+  { dataKey: 'ai', name: 'AI渗透率', color: COLORS.blue, strokeWidth: 2 },
+  {
+    dataKey: 'aiForecast',
+    name: 'AI预测',
+    color: COLORS.blue,
+    strokeWidth: 2,
+    strokeDasharray: '6 4',
+  },
+  { dataKey: 'internet', name: '互联网', color: COLORS.yellow, strokeWidth: 2 },
+  { dataKey: 'pc', name: 'PC', color: COLORS.grey, strokeWidth: 2 },
+];
+
+const smeLines: LineConfig[] = [
+  { dataKey: 'ramp', name: 'Ramp(大企业)', color: COLORS.blue, strokeWidth: 2 },
+  { dataKey: 'gov', name: '政府口径(含中小)', color: COLORS.yellow, strokeWidth: 2 },
+];
+
+const revenueDepLines: LineConfig[] = [
+  { dataKey: 'aiRevenue', name: 'AI收入', color: COLORS.blue, strokeWidth: 2 },
+  { dataKey: 'capexDep', name: 'Capex折旧', color: COLORS.yellow, strokeWidth: 2 },
+];
 
 export const ContentSlide45: React.FC = () => {
   return (
     <BaseContentSlide
-      title="风险判断：对就业的影响是阶段式，主要体现为替代、互补和创造三种效应，三者权重将随时间推移而变化"
-      cardColumns={1}
+      title="风险判断：当前AI尚不能被简单定义为全面泡沫，更接近局部风险积聚"
+      cardColumns={2}
       headerClassName="!mb-2"
       className="!p-8 sm:!p-10"
     >
-      <div className="flex flex-col h-full min-h-0 pb-4">
-        <BaseCard
-          title="对就业影响是阶段式"
-          delay="0ms"
-          variant="accent"
-          className="!p-2.5 !gap-1 mb-2 flex-shrink-0"
-        >
-          <p className="text-[12px] leading-snug">
-            AI对就业并非单向冲击，而是
-            <span className="font-semibold text-webank-blue">替代、互补、创造</span>
-            三种效应随时间权重切换：近端替代主导、中端互补抬升、远端创造接力，但技能结构错配将贯穿全过程。
-          </p>
-        </BaseCard>
+      <div className="flex flex-col h-full min-h-0 pb-6">
+        <div className="grid grid-cols-2 gap-2.5 mb-2 flex-shrink-0">
+          <BaseCard
+            title="市场背离与泡沫担忧"
+            delay="0ms"
+            variant="accent"
+            className="!p-2.5 !gap-1"
+          >
+            <p className="text-[11px] leading-snug">
+              近期科技股呈现"基本面不差、股价照跌"的背离：美国降息预期推迟、美债收益率上行压制成长股估值，叠加海外AI算力资本开支扩张节奏边际放缓，国内科技板块前期涨幅偏大、抱团资金集中止盈。同时围绕资本开支高企、商业化回报待验、融资渠道扩散、估值高位且交易拥挤，市场产生AI泡沫担忧。
+            </p>
+          </BaseCard>
 
-        <div className="flex items-stretch gap-0 mb-2 flex-shrink-0">
-          {employmentStages.map((stage, i) => {
-            const style = toneStyles[stage.tone];
-            return (
-              <React.Fragment key={stage.phase}>
-                <div
-                  className={`flex-1 rounded-lg border px-2.5 py-2 flex flex-col
-                    animate-fade-in-up fill-mode-forwards opacity-0 ${style.card}`}
-                  style={{ animationDelay: `${120 + i * 80}ms` }}
-                >
-                  <span
-                    className={`inline-flex self-start rounded px-1.5 py-0.5 text-[10px] font-bold ${style.badge}`}
-                  >
-                    {stage.phase}
-                  </span>
-                  <p className={`mt-1.5 text-[13px] font-bold leading-tight ${style.effect}`}>
-                    {stage.effect}
-                  </p>
-                  <p className={`mt-0.5 text-[11px] font-semibold ${style.impact}`}>
-                    {stage.netImpact}
-                  </p>
-                  <p className="mt-1 text-[10px] leading-snug text-slate-600">
-                    {stage.detail}
-                  </p>
-                </div>
-                {i < employmentStages.length - 1 && <StageArrow />}
-              </React.Fragment>
-            );
-          })}
+          <BaseCard
+            title="为何更接近局部风险积聚"
+            delay="120ms"
+            className="!p-2.5 !gap-1"
+          >
+            <div className="text-[11px] leading-snug space-y-0.5">
+              <p>
+                <span className="font-semibold">1. 产业逻辑未逆转：</span>
+                资本支出占GDP约
+                <span className="text-red-500 font-semibold">2%</span>
+                ，接近互联网泡沫峰值，但数据中心租用率与租金仍指向产能偏紧。
+              </p>
+              <p>
+                <span className="font-semibold">2. 渗透率未到拐点：</span>
+                过往泡沫破裂多在渗透率中后段（电气
+                <span className="text-red-500 font-semibold">80%</span>
+                、互联网
+                <span className="text-red-500 font-semibold">50%</span>
+                ），当前美国企业AI使用率仅约
+                <span className="text-red-500 font-semibold">20%</span>
+                ，远未进入S曲线后半程。
+              </p>
+              <p>
+                <span className="font-semibold">3. 技术迭代拉长周期：</span>
+                "模型-云-端侧-行业应用-知识生产"多层循环演进，周期或更长、更具阶段性。
+              </p>
+              <p>
+                <span className="font-semibold">4. 盈利支撑强于过往：</span>
+                AI龙头多有成熟业务现金流反哺，头部模型ARR持续上调，估值泡沫程度低于互联网时期。
+                <span className="font-semibold text-webank-accent"> 值得警惕：</span>
+                芯片折旧或被低估、
+                <span className="text-red-500 font-semibold">88%</span>
+                企业用AI但深度部署仅
+                <span className="text-red-500 font-semibold">20%</span>
+                、融资成本高、AI公司约占标普500市值
+                <span className="text-red-500 font-semibold">50%</span>
+                。
+              </p>
+            </div>
+          </BaseCard>
         </div>
 
-        <div className="flex-1 min-h-0">
-          <ChartContainer delay="400ms" ariaLabel="国内招聘网站岗位需求同比变化">
-            <BaseBarChart
-              data={jobDemandYoyData}
-              title="国内招聘网站：初级/重复岗位需求下降，AI相关岗位大幅上升"
-              subtitle="数据来源：BOSS直聘、猎聘 | 单位：%"
-              xAxisKey="category"
-              bars={[{ dataKey: 'yoy', name: '同比变化', color: '#1B4F72' }]}
-              yAxisDomain={[-100, 750]}
+        <div className="flex-1 min-h-0 grid grid-cols-4 gap-1.5">
+          <ChartContainer delay="360ms" ariaLabel="渗透率速度较快但仍有空间">
+            <BaseLineChart
+              data={aiPenetrationCurveData}
+              title="图表1：渗透率速度较快但仍有空间"
+              subtitle="来源：Microsoft、华泰研究"
+              lines={penetrationLines}
+              yAxisDomain={[0, 1]}
               showYAxis
-              showReferenceLine
-              referenceLineY={0}
-              showLabels={false}
-              showLegend
-              barSize={14}
-              xAxisAngle={-55}
-              xAxisHeight={88}
-              xAxisInterval={0}
-              legendItems={[
-                { value: 'AI/增长岗位', color: '#1B4F72' },
-                { value: '初级/重复岗位', color: '#E07A5F' },
+              unit=""
+              yAxisTickFormatter={(v) => Number(v).toFixed(1)}
+              legendOrder={['AI渗透率', 'AI预测', '互联网', 'PC']}
+              highlightPeriods={['3']}
+              xAxisTicks={['0', '4', '8', '12', '16', '20', '24']}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="420ms" ariaLabel="中小企业渗透率落后">
+            <BaseLineChart
+              data={aiSmePenetrationData}
+              title="图表2：中小企业渗透率落后"
+              subtitle="来源：Ramp、华泰研究 | %"
+              lines={smeLines}
+              yAxisDomain={[0, 60]}
+              showYAxis
+              unit="%"
+              legendOrder={['Ramp(大企业)', '政府口径(含中小)']}
+              highlightPeriods={['25-11']}
+              xAxisTicks={['23-01', '23-11', '24-09', '25-07', '26-05']}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="480ms" ariaLabel="模型公司ARR连续上调">
+            <BaseStackedBarChart
+              data={aiModelArrData}
+              title="图表3：模型公司ARR连续上调"
+              subtitle="来源：公开资料、华泰研究 | 亿美元"
+              bars={[
+                { dataKey: 'openai', name: 'OpenAI', color: COLORS.blue },
+                { dataKey: 'anthropic', name: 'Anthropic', color: COLORS.yellow },
+                { dataKey: 'cursor', name: 'Cursor', color: COLORS.grey },
               ]}
+              legendOrder={['OpenAI', 'Anthropic', 'Cursor']}
+              yAxisDomain={[0, 1200]}
+              showYAxis
+              showLabels={false}
+              barSize={7}
+              unit="亿"
+              xAxisInterval={3}
+              xAxisAngle={-40}
+              xAxisHeight={42}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="540ms" ariaLabel="云厂商AI收入已超过折旧压力">
+            <BaseLineChart
+              data={aiRevenueVsDepreciationData}
+              title="图表4：云厂商AI收入已超过折旧压力"
+              subtitle="来源：公司财报、华泰研究 | billion"
+              lines={revenueDepLines}
+              yAxisDomain={[0, 30]}
+              showYAxis
+              unit=""
+              yAxisTickFormatter={(v) => `${v}`}
+              legendOrder={['AI收入', 'Capex折旧']}
+              xAxisTicks={['23Q1', '24Q1', '25Q1', '26Q1']}
             />
           </ChartContainer>
         </div>

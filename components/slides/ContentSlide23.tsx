@@ -59,19 +59,24 @@ export const ContentSlide23: React.FC = () => {
   return (
     <BaseContentSlide
       title="出口端：新动能产品拉动显著"
-      cardColumns={2}
+      cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+        <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
           <BaseCard title="AI投资周期拉动爆发" delay="0ms" variant="accent">
             <p>
               AI基础设施建设进入高投入期，直接拉动电子信息及高端制造贸易需求。上半年，高新技术产品拉动中国出口<span className="text-red-500 font-semibold">9.3%</span>，较2025年全年上升<span className="text-red-500 font-semibold">7.4</span>个百分点。1—6月集成电路出口额增长<span className="text-red-500 font-semibold">96.1%</span>，表现持续亮眼。
             </p>
           </BaseCard>
-          <BaseCard title="“新三样”维持高景气" delay="120ms">
+          <BaseCard title="能源转型促进“新三样”增长" delay="120ms">
             <p>
-              中东变局引发的能源安全担忧倒逼全球能源转型加速，上半年汽车出口量首次突破<span className="font-semibold">500万辆</span>大关，达<span className="text-red-500 font-semibold">509.6万辆</span>，同比增长<span className="text-red-500 font-semibold">65.3%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">1.2倍</span>，成为增长核心引擎。锂电池出口额<span className="font-semibold">486亿美元</span>，同比增长<span className="text-red-500 font-semibold">42.7%</span>，风力发电机组同比增长<span className="text-red-500 font-semibold">35.6%</span>。
+              中东变局引发的能源安全担忧使全球能源转型加速，上半年汽车出口量首次突破<span className="font-semibold">500万辆</span>大关，达<span className="text-red-500 font-semibold">509.6万辆</span>，同比增长<span className="text-red-500 font-semibold">65.3%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">1.2倍</span>，成为增长核心引擎。锂电池出口额<span className="font-semibold">486亿美元</span>，同比增长<span className="text-red-500 font-semibold">42.7%</span>，风力发电机组同比增长<span className="text-red-500 font-semibold">35.6%</span>。
+            </p>
+          </BaseCard>
+          <BaseCard title="下半年展望：增速回落、结构分化" delay="240ms">
+            <p>
+              机构普遍认为下半年出口同比中枢将回落：基准情形下三、四季度约<span className="text-red-500 font-semibold">12.4%</span>、<span className="text-red-500 font-semibold">7.7%</span>，全年约<span className="text-red-500 font-semibold">13.7%</span>（乐观<span className="font-semibold">17.6%</span>/悲观<span className="font-semibold">9.8%</span>）。趋势上K型分化延续——AI与“新三样”仍具韧性，传统消费品承压；需关注高基数、中欧贸易摩擦及地缘冲突扰动。
             </p>
           </BaseCard>
         </div>

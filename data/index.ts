@@ -60,6 +60,8 @@ export { exportProductTrendData, exportEquipmentTrendData } from './exportProduc
 export type { ExportProductDataPoint, ExportEquipmentDataPoint } from './exportProducts';
 export { exportTableData } from './exportTableData';
 export type { ExportTableItem } from './exportTableData';
+export { importTableData } from './importTableData';
+export type { ImportTableItem } from './importTableData';
 export { importProductTrendData } from './importProducts';
 export type { ImportProductDataPoint } from './importProducts';
 export { exportRegionTrendData, exportCompositionData } from './exportRegion';
