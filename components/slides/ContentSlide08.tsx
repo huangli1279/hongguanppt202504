@@ -1,11 +1,7 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart } from '../base/BaseBarChart';
-import { gdpForecastByInstitutionData } from '@/data/gdp';
-
-const INTERNATIONAL_COLOR = '#4A79AA';
-const DOMESTIC_COLOR = '#2F5F5A';
+import { GdpForecastTorchChart } from '../charts/GdpForecastTorchChart';
 
 export const ContentSlide08: React.FC = () => {
   return (
@@ -63,39 +59,8 @@ export const ContentSlide08: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms">
-          <BaseBarChart
-            data={gdpForecastByInstitutionData}
-            title="国内外机构对中国2026年GDP增速预测对比"
-            subtitle="注：OECD取基准情景（4.5%）；部分机构尚未公布中期调整频率；券商数据为近期最后更新预测。｜单位：%"
-            xAxisKey="institution"
-            bars={[
-              {
-                dataKey: 'international',
-                name: '国际组织',
-                color: INTERNATIONAL_COLOR,
-                stackId: 'forecast',
-              },
-              {
-                dataKey: 'domestic',
-                name: '国内头部券商',
-                color: DOMESTIC_COLOR,
-                stackId: 'forecast',
-              },
-            ]}
-            legendOrder={['国际组织', '国内头部券商']}
-            yAxisDomain={[3.5, 5.5]}
-            barSize={48}
-            showYAxis
-            showLabels
-            labelFill="#475569"
-            labelFormatter={(v: any) =>
-              v == null || v === '' ? '' : `${Number(v)}%`
-            }
-            unit="%"
-            yAxisTickFormatter={(v) => `${v}%`}
-            xAxisInterval={0}
-          />
+        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测火炬图">
+          <GdpForecastTorchChart />
         </ChartContainer>
       }
     />

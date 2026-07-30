@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
   Legend,
   ReferenceLine,
+  ReferenceArea,
   LabelList
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
@@ -29,6 +30,15 @@ export interface BarLineConfig {
   strokeWidth?: number;
   yAxisId?: 'left' | 'right';
   unit?: string;
+}
+
+export interface CategoryGroupConfig {
+  label: string;
+  x1: string;
+  x2: string;
+  stroke?: string;
+  fill?: string;
+  fillOpacity?: number;
 }
 
 export interface BaseBarChartProps {
@@ -60,6 +70,8 @@ export interface BaseBarChartProps {
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
   lineShowDot?: boolean;
   lineLabelFormatter?: (value: any) => string;
+  /** Gray/outline bands grouping contiguous x-axis categories (e.g. 第二产业 / 第三产业) */
+  categoryGroups?: CategoryGroupConfig[];
 }
 
 const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%' }: any) => {
@@ -149,7 +161,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   xAxisHeight,
   xAxisInterval = 0,
   lineShowDot = false,
-  lineLabelFormatter
+  lineLabelFormatter,
+  categoryGroups
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
@@ -164,6 +177,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   }
   const barAxisId = hasLines ? 'left' : undefined;
   const lineAxisId = 'right';
+  const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
@@ -178,11 +192,39 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <ChartComponent
             data={data}
-            margin={{ top: 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
+            margin={{ top: hasCategoryGroups ? 28 : 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
             barSize={barSize}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
-            {showReferenceLine && <ReferenceLine y={referenceLineY} stroke={uiColors.tick} strokeWidth={1} />}
+            {categoryGroups?.map((group) => (
+              <ReferenceArea
+                key={`group-${group.label}-${group.x1}-${group.x2}`}
+                x1={group.x1}
+                x2={group.x2}
+                {...(barAxisId ? { yAxisId: barAxisId } : {})}
+                stroke={group.stroke ?? '#94a3b8'}
+                strokeWidth={1.5}
+                fill={group.fill ?? '#94a3b8'}
+                fillOpacity={group.fillOpacity ?? 0.06}
+                ifOverflow="hidden"
+                label={{
+                  value: group.label,
+                  position: 'insideTopLeft',
+                  fill: '#64748b',
+                  fontSize: 10,
+                  fontWeight: 600,
+                  offset: 6,
+                }}
+              />
+            ))}
+            {showReferenceLine && (
+              <ReferenceLine
+                y={referenceLineY}
+                stroke={uiColors.tick}
+                strokeWidth={1}
+                {...(barAxisId ? { yAxisId: barAxisId } : {})}
+              />
+            )}
             <XAxis
               dataKey={xAxisKey}
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}

@@ -126,6 +126,10 @@ export const ContentSlide06: React.FC = () => {
                 xAxisAngle={-35}
                 xAxisHeight={70}
                 xAxisInterval={0}
+                categoryGroups={[
+                  { label: '第二产业', x1: '工业', x2: '建筑业' },
+                  { label: '第三产业', x1: '批发零售', x2: '其他行业' },
+                ]}
               />
             </ChartContainer>
           </div>

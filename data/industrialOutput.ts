@@ -106,3 +106,22 @@ export const industryDetailMonthlyData = [
   { period: '2026-02', highTech: 13.1, auto: 3.4, railway: 13.7, electronics: 14.2, oilGas: 5.8, chemical: 7.6, nonferrousMining: 3.6, power: 5.1, gas: 3.5, water: 1.7 },
   { period: '2026-03', highTech: 11.7, auto: 7.5, railway: 13.3, electronics: 12.5, oilGas: 9.4, chemical: 9.0, nonferrousMining: 2.1, power: 4.2, gas: 1.5, water: -3.3 },
 ];
+
+// 采矿业分项当月同比（2月为1-2月累计）；mining/oilGas/coal 对齐统计局公报，nonFerrous 对齐分行业序列
+export const miningSubsectorMonthlyData = [
+  { period: '2025-03', mining: 9.3, oilGas: 6.8, coal: 10.6, nonFerrous: 9.3 },
+  { period: '2025-04', mining: 5.7, oilGas: 4.3, coal: 6.3, nonFerrous: 6.6 },
+  { period: '2025-05', mining: 5.7, oilGas: 5.3, coal: 5.5, nonFerrous: 5.1 },
+  { period: '2025-06', mining: 6.1, oilGas: 3.6, coal: 6.5, nonFerrous: 14.0 },
+  { period: '2025-07', mining: 5.0, oilGas: 4.1, coal: 4.2, nonFerrous: 13.2 },
+  { period: '2025-08', mining: 5.1, oilGas: 4.7, coal: 5.1, nonFerrous: 8.5 },
+  { period: '2025-09', mining: 6.4, oilGas: 8.9, coal: 6.4, nonFerrous: 3.1 },
+  { period: '2025-10', mining: 4.5, oilGas: 1.9, coal: 6.5, nonFerrous: 6.2 },
+  { period: '2025-11', mining: 6.3, oilGas: 5.1, coal: 7.5, nonFerrous: 6.1 },
+  { period: '2025-12', mining: 5.4, oilGas: 3.7, coal: 6.4, nonFerrous: 3.7 },
+  { period: '2026-02', mining: 6.1, oilGas: 5.8, coal: 7.2, nonFerrous: 3.6 },
+  { period: '2026-03', mining: 5.7, oilGas: 9.4, coal: 5.3, nonFerrous: 2.1 },
+  { period: '2026-04', mining: 3.8, oilGas: 4.6, coal: 3.8, nonFerrous: 5.1 },
+  { period: '2026-05', mining: 2.3, oilGas: 1.5, coal: 3.5, nonFerrous: 3.4 },
+  { period: '2026-06', mining: -2.2, oilGas: 1.0, coal: -5.9, nonFerrous: 3.3 },
+];
