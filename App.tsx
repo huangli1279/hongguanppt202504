@@ -185,7 +185,13 @@ const App: React.FC = () => {
       case 37: return <ContentSlide37 />;
       case 38: return <ContentSlide38 />;
       case 39: return <ContentSlide39 />;
-      case 40: return <BaseSectionTransitionSlide id="专题二" title="K型分化及AI" />;
+      case 40: return (
+        <BaseSectionTransitionSlide
+          id="专题二"
+          title="K型分化下的AI产业链"
+          subtitle="经济K型分化加剧，新经济端（AI算力/高端装备/绿色出口）景气延续、旧经济端持续低迷，当前AI尚不构成全面泡沫，更接近资本开支扩张期的局部风险积聚。"
+        />
+      );
       case 41: return <ContentSlide41 />;
       case 42: return <ContentSlide42 />;
       case 43: return <ContentSlide43 />;

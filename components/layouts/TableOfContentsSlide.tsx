@@ -12,7 +12,7 @@ const contents = [
   { id: '07', title: '财政分析', subtitle: '第 07 章', icon: Landmark },
   { id: '08', title: '金融数据分析', subtitle: '第 08 章', icon: Activity },
   { id: '09', title: '消费现状及趋势', subtitle: '专题一', icon: TrendingUp },
-  { id: '10', title: 'K型分化及AI', subtitle: '专题二', icon: Cpu },
+  { id: '10', title: 'K型分化下的AI产业链', subtitle: '专题二', icon: Cpu },
 ];
 
 export const TableOfContentsSlide: React.FC = () => {

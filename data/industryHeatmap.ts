@@ -1,37 +1,145 @@
 export interface IndustryHeatmapItem {
   industry: string;
-  valueAdded: string;
-  profitGrowth: string;
-  ppiYoy: string;
-  investmentGrowth: string;
-  pmi: string;
-  exportPerformance: string;
-  judgment: string;
+  /** 工业增加值同比 % */
+  valueAdded: number;
+  /** 利润增速 % */
+  profitGrowth: number;
+  /** PPI同比 % */
+  ppiYoy: number;
+  /** 投资增速 % */
+  investmentGrowth: number;
+  /** 出口增速 % */
+  exportGrowth: number;
+  /** PMI */
+  pmi: number;
+}
+
+export interface IndustryProsperityRow extends IndustryHeatmapItem {
+  rank: number;
+  /** 六维加权合成景气分 */
+  score: number;
+  valueAddedLabel: string;
+  profitGrowthLabel: string;
+  ppiYoyLabel: string;
+  investmentGrowthLabel: string;
+  exportGrowthLabel: string;
+  pmiLabel: string;
+  scoreLabel: string;
 }
 
 /**
- * 分行业景气度对比表：工业增加值(H1) / 利润增速(1-5月) / PPI同比(6月) /
- * 投资增速(H1) / PMI景气(6月) / 出口表现(H1) / 综合判断
+ * 分行业景气度原始指标（数值版）
  * 数据来源：国家统计局、海关总署、中国物流与采购联合会 公开数据整理
  */
 export const industryHeatmapData: IndustryHeatmapItem[] = [
-  { industry: '计算机/通信/电子设备', valueAdded: '14.80%', profitGrowth: '103.90%', ppiYoy: '+3.3%', investmentGrowth: '6.50%', pmi: '>54%高景气', exportPerformance: '集成电路+96%，计算机+26.4%', judgment: '🔥🔥🔥' },
-  { industry: '铁路/船舶/航空航天', valueAdded: '+18.2%(6月)', profitGrowth: '—', ppiYoy: '-0.2%', investmentGrowth: '24.70%', pmi: '>57%高预期', exportPerformance: '船舶+29.4%', judgment: '🔥🔥🔥' },
-  { industry: '专用设备制造', valueAdded: '+10.0%(6月)', profitGrowth: '-5.50%', ppiYoy: '-0.6%', investmentGrowth: '-8.60%', pmi: '>54%高景气', exportPerformance: '—', judgment: '🔥🔥' },
-  { industry: '通用设备制造', valueAdded: '+9.9%(6月)', profitGrowth: '-0.20%', ppiYoy: '-0.7%', investmentGrowth: '1.90%', pmi: '—', exportPerformance: '机械设备出口强', judgment: '🔥' },
-  { industry: '电气机械和器材', valueAdded: '+7.0%(6月)', profitGrowth: '-13.70%', ppiYoy: '+5.1%', investmentGrowth: '1.20%', pmi: '>57%高预期', exportPerformance: '电工器材+29.2%', judgment: '🔥 (量增利减)' },
-  { industry: '汽车制造', valueAdded: '+8.7%(6月)', profitGrowth: '-19.80%', ppiYoy: '-2.1%', investmentGrowth: '-4.20%', pmi: '—', exportPerformance: '整车出口+53.9%', judgment: '⚡ (出口强但利润承压)' },
-  { industry: '化学原料和制品', valueAdded: '-0.1%(6月)', profitGrowth: '71.60%', ppiYoy: '+11.3%', investmentGrowth: '-6.50%', pmi: '<50%萎缩', exportPerformance: '—', judgment: '⚡ (价涨利增但量缩)' },
-  { industry: '有色金属冶炼', valueAdded: '-3.8%(6月)', profitGrowth: '117.10%', ppiYoy: '+3.10%', investmentGrowth: '-4.10%', pmi: '<50%萎缩', exportPerformance: '铝+33.2%', judgment: '⚡ (暴利但生产收缩)' },
-  { industry: '煤炭开采', valueAdded: '-5.9%(6月)', profitGrowth: '33.50%', ppiYoy: '+3.11%', investmentGrowth: '5.70%', pmi: '<50%萎缩', exportPerformance: '—', judgment: '⚡ (价涨利增但量缩)' },
-  { industry: '石油天然气开采', valueAdded: '+1.0%(6月)', profitGrowth: '17.20%', ppiYoy: '+3.12%', investmentGrowth: '5.10%', pmi: '<50%萎缩', exportPerformance: '—', judgment: '⚡ (同上)' },
-  { industry: '纺织业', valueAdded: '+3.4%(6月)', profitGrowth: '11.70%', ppiYoy: '+1.5%', investmentGrowth: '9.40%', pmi: '—', exportPerformance: '—', judgment: '🟡 (温和正增长)' },
-  { industry: '农副食品加工', valueAdded: '+3.1%(6月)', profitGrowth: '-13.30%', ppiYoy: '-1.2%', investmentGrowth: '1.90%', pmi: '>54%', exportPerformance: '—', judgment: '🟡 (量稳利减)' },
-  { industry: '黑色金属冶炼(钢铁)', valueAdded: '+3.3%(6月)', profitGrowth: '-37.40%', ppiYoy: '+3.1%', investmentGrowth: '-4.90%', pmi: '<50%萎缩', exportPerformance: '—', judgment: '❄️' },
-  { industry: '非金属矿物制品(建材)', valueAdded: '-2.3%(6月)', profitGrowth: '-48.90%', ppiYoy: '-4.4%', investmentGrowth: '-11.90%', pmi: '<50%萎缩', exportPerformance: '—', judgment: '❄️❄️' },
-  { industry: '电力/热力供应', valueAdded: '+7.8%(6月)', profitGrowth: '-4.10%', ppiYoy: '-4.4%', investmentGrowth: '-2.70%', pmi: '—', exportPerformance: '—', judgment: '🟡 (投资强但利减)' },
-  { industry: '高技术制造业(整体)', valueAdded: '13.30%', profitGrowth: '—', ppiYoy: '+3.18%', investmentGrowth: '3.20%', pmi: '53.50%', exportPerformance: '高新技术+38.5%', judgment: '🔥🔥🔥' },
-  { industry: '装备制造业(整体)', valueAdded: '9.30%', profitGrowth: '14.10%', ppiYoy: '+3.19%', investmentGrowth: '1.70%', pmi: '52.50%', exportPerformance: '机电+24.5%', judgment: '🔥🔥' },
-  { industry: '高耗能行业(整体)', valueAdded: '—', profitGrowth: '—', ppiYoy: '+3.20%', investmentGrowth: '—', pmi: '47.10%', exportPerformance: '—', judgment: '❄️' },
-  { industry: '消费品制造业(整体)', valueAdded: '—', profitGrowth: '—', ppiYoy: '+3.21%', investmentGrowth: '—', pmi: '50.20%', exportPerformance: '—', judgment: '🟡 (荣枯线边缘)' },
+  { industry: '计算机通信电子', valueAdded: 15.7, profitGrowth: 61.9, ppiYoy: 3.3, investmentGrowth: 5.5, exportGrowth: 12.9, pmi: 53.5 },
+  { industry: '专用设备', valueAdded: 10.0, profitGrowth: 26.9, ppiYoy: -0.6, investmentGrowth: -11.6, exportGrowth: 21.1, pmi: 52.5 },
+  { industry: '电气机械', valueAdded: 7.0, profitGrowth: 16.9, ppiYoy: 5.1, investmentGrowth: -0.3, exportGrowth: 10.1, pmi: 52.5 },
+  { industry: '铁路船舶航空航天', valueAdded: 18.2, profitGrowth: 53.2, ppiYoy: -0.2, investmentGrowth: 30.2, exportGrowth: 26.5, pmi: 52.5 },
+  { industry: '通用设备', valueAdded: 9.9, profitGrowth: 10.0, ppiYoy: -0.7, investmentGrowth: -2.6, exportGrowth: 11.9, pmi: 52.5 },
+  { industry: '汽车制造', valueAdded: 8.7, profitGrowth: -18.0, ppiYoy: -2.1, investmentGrowth: -11.7, exportGrowth: 42.5, pmi: 52.5 },
+  { industry: '纺织', valueAdded: 3.4, profitGrowth: 41.1, ppiYoy: 1.5, investmentGrowth: 2.4, exportGrowth: 4.0, pmi: 50.2 },
+  { industry: '有色金属', valueAdded: 5.1, profitGrowth: 10.9, ppiYoy: 23.4, investmentGrowth: -13.1, exportGrowth: 71.6, pmi: 47.1 },
+  { industry: '化学原料', valueAdded: -0.1, profitGrowth: 48.8, ppiYoy: 11.3, investmentGrowth: -9.5, exportGrowth: 25.2, pmi: 47.1 },
+  { industry: '农副食品', valueAdded: 3.1, profitGrowth: -5.5, ppiYoy: -1.2, investmentGrowth: -13.9, exportGrowth: 2.8, pmi: 50.2 },
+  { industry: '煤炭开采', valueAdded: -5.9, profitGrowth: 79.1, ppiYoy: 20.6, investmentGrowth: 11.2, exportGrowth: 0.0, pmi: 47.1 },
+  { industry: '石油天然气', valueAdded: 1.0, profitGrowth: 13.6, ppiYoy: 16.8, investmentGrowth: 4.1, exportGrowth: -19.6, pmi: 47.1 },
+  { industry: '黑色金属', valueAdded: 3.3, profitGrowth: 37.0, ppiYoy: 3.1, investmentGrowth: -21.4, exportGrowth: 0.0, pmi: 47.1 },
+  { industry: '电力热力', valueAdded: 7.8, profitGrowth: -16.7, ppiYoy: -4.4, investmentGrowth: -16.1, exportGrowth: 8.5, pmi: 47.1 },
+  { industry: '非金属矿物', valueAdded: -2.3, profitGrowth: -42.3, ppiYoy: -4.4, investmentGrowth: -16.4, exportGrowth: -1.4, pmi: 47.1 },
 ];
+
+const clip = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+
+const mean = (values: number[]) => values.reduce((sum, value) => sum + value, 0) / values.length;
+
+const std = (values: number[]) => {
+  const avg = mean(values);
+  const variance = mean(values.map((value) => (value - avg) ** 2));
+  return Math.sqrt(variance) || 1;
+};
+
+const isValidExport = (value: number) => value !== 0 && value !== -100;
+
+const mapZToScore = (zScore: number) => clip(50 + 10 * zScore, 0, 100);
+
+/**
+ * 景气分计算（与方法论卡片一致）：
+ * 1) 各指标样本内 Z-score 标准化
+ * 2) 映射：Score = clip(50 + 10×Z, 0, 100)
+ * 3) 按有效权重加权平均（出口=0/-100 视为缺失，剔除后重新归一化）
+ *
+ * 权重：PMI 20% / 投资 15% / 工增 15% / 利润 15% / PPI 10% / 出口 25%
+ */
+export function calcProsperityScore(
+  item: IndustryHeatmapItem,
+  sample: IndustryHeatmapItem[] = industryHeatmapData
+): number {
+  const columns = {
+    pmi: sample.map((row) => row.pmi),
+    investmentGrowth: sample.map((row) => row.investmentGrowth),
+    valueAdded: sample.map((row) => row.valueAdded),
+    profitGrowth: sample.map((row) => row.profitGrowth),
+    ppiYoy: sample.map((row) => row.ppiYoy),
+    exportGrowth: sample
+      .filter((row) => isValidExport(row.exportGrowth))
+      .map((row) => row.exportGrowth),
+  };
+
+  const components: Array<{ value: number; series: number[]; weight: number }> = [
+    { value: item.pmi, series: columns.pmi, weight: 0.2 },
+    { value: item.investmentGrowth, series: columns.investmentGrowth, weight: 0.15 },
+    { value: item.valueAdded, series: columns.valueAdded, weight: 0.15 },
+    { value: item.profitGrowth, series: columns.profitGrowth, weight: 0.15 },
+    { value: item.ppiYoy, series: columns.ppiYoy, weight: 0.1 },
+  ];
+
+  if (isValidExport(item.exportGrowth) && columns.exportGrowth.length > 1) {
+    components.push({
+      value: item.exportGrowth,
+      series: columns.exportGrowth,
+      weight: 0.25,
+    });
+  }
+
+  const weightSum = components.reduce((sum, component) => sum + component.weight, 0);
+  const score =
+    components.reduce((sum, component) => {
+      const zScore =
+        (component.value - mean(component.series)) / std(component.series);
+      return sum + mapZToScore(zScore) * component.weight;
+    }, 0) / weightSum;
+
+  return Math.round(score * 10) / 10;
+}
+
+const formatNumber = (value: number) => {
+  const rounded = Math.round(value * 10) / 10;
+  return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
+};
+
+/**
+ * 计算景气分并按降序排名，生成表格展示行
+ */
+export function buildIndustryProsperityRows(
+  data: IndustryHeatmapItem[] = industryHeatmapData
+): IndustryProsperityRow[] {
+  return [...data]
+    .map((item) => {
+      const score = calcProsperityScore(item, data);
+      return {
+        ...item,
+        rank: 0,
+        score,
+        scoreLabel: score.toFixed(1),
+        valueAddedLabel: formatNumber(item.valueAdded),
+        profitGrowthLabel: formatNumber(item.profitGrowth),
+        ppiYoyLabel: formatNumber(item.ppiYoy),
+        investmentGrowthLabel: formatNumber(item.investmentGrowth),
+        exportGrowthLabel: formatNumber(item.exportGrowth),
+        pmiLabel: formatNumber(item.pmi),
+      };
+    })
+    .sort((a, b) => b.score - a.score || a.industry.localeCompare(b.industry, 'zh'))
+    .map((row, index) => ({ ...row, rank: index + 1 }));
+}
