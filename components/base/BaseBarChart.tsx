@@ -359,10 +359,10 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     type="monotone"
                     dataKey={line.dataKey}
                     stroke={lineColor}
-                    strokeWidth={line.strokeWidth || 2}
+                    strokeWidth={line.strokeWidth ?? 2}
                     strokeDasharray={line.strokeDasharray}
                     connectNulls={false}
-                    dot={lineShowDot}
+                    dot={lineShowDot ? { r: 4, fill: lineColor, stroke: lineColor, strokeWidth: 0 } : false}
                     yAxisId={line.yAxisId || lineAxisId}
                     animationDuration={800}
                     animationBegin={0}
@@ -371,7 +371,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     {lineShowDot && lineLabelFormatter && (
                       <LabelList
                         dataKey={line.dataKey}
-                        position="top"
+                        position="right"
                         fill={lineColor}
                         fontSize={9}
                         fontWeight={600}

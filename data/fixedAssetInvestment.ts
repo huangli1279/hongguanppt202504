@@ -182,3 +182,62 @@ export const specialBondData: SpecialBondDataPoint[] = [
   { period: '2026-05', planned: 2511, actual: 1608, completionRate: 0.64 },
   { period: '2026-06', planned: 3448, actual: 5716, completionRate: 1.65 },
 ];
+
+// 规上工业企业利润总额与自筹资金累计同比
+export interface ProfitSelfRaisedDataPoint {
+  period: string;
+  industrialProfit: number; // 利润总额:规模以上工业企业:累计同比
+  selfRaised: number;       // 自筹资金:累计同比
+}
+
+export const profitSelfRaisedData: ProfitSelfRaisedDataPoint[] = [
+  { period: '2022-02', industrialProfit: 5.00, selfRaised: 13.20 },
+  { period: '2022-03', industrialProfit: 8.50, selfRaised: 15.00 },
+  { period: '2022-04', industrialProfit: 3.50, selfRaised: 13.50 },
+  { period: '2022-05', industrialProfit: 1.00, selfRaised: 11.60 },
+  { period: '2022-06', industrialProfit: 1.00, selfRaised: 10.70 },
+  { period: '2022-07', industrialProfit: -1.10, selfRaised: 10.30 },
+  { period: '2022-08', industrialProfit: -2.10, selfRaised: 10.20 },
+  { period: '2022-09', industrialProfit: -2.30, selfRaised: 10.60 },
+  { period: '2022-10', industrialProfit: -3.00, selfRaised: 10.80 },
+  { period: '2022-11', industrialProfit: -3.60, selfRaised: 9.70 },
+  { period: '2022-12', industrialProfit: -4.00, selfRaised: 9.00 },
+  { period: '2023-02', industrialProfit: -22.90, selfRaised: 1.30 },
+  { period: '2023-03', industrialProfit: -21.40, selfRaised: 0.10 },
+  { period: '2023-04', industrialProfit: -20.60, selfRaised: -0.10 },
+  { period: '2023-05', industrialProfit: -18.80, selfRaised: -0.90 },
+  { period: '2023-06', industrialProfit: -16.80, selfRaised: -1.10 },
+  { period: '2023-07', industrialProfit: -15.50, selfRaised: -0.60 },
+  { period: '2023-08', industrialProfit: -11.70, selfRaised: -0.70 },
+  { period: '2023-09', industrialProfit: -9.00, selfRaised: -0.10 },
+  { period: '2023-10', industrialProfit: -7.80, selfRaised: 0.10 },
+  { period: '2023-11', industrialProfit: -4.40, selfRaised: 0.30 },
+  { period: '2023-12', industrialProfit: -2.30, selfRaised: 1.10 },
+  { period: '2024-02', industrialProfit: 10.20, selfRaised: 3.30 },
+  { period: '2024-03', industrialProfit: 4.30, selfRaised: 4.30 },
+  { period: '2024-04', industrialProfit: 4.30, selfRaised: 6.00 },
+  { period: '2024-05', industrialProfit: 3.40, selfRaised: 4.20 },
+  { period: '2024-06', industrialProfit: 3.50, selfRaised: 3.90 },
+  { period: '2024-07', industrialProfit: 3.60, selfRaised: 2.60 },
+  { period: '2024-08', industrialProfit: 0.50, selfRaised: 2.40 },
+  { period: '2024-09', industrialProfit: -3.50, selfRaised: 2.40 },
+  { period: '2024-10', industrialProfit: -4.30, selfRaised: 1.90 },
+  { period: '2024-11', industrialProfit: -4.70, selfRaised: 1.40 },
+  { period: '2024-12', industrialProfit: -3.30, selfRaised: 1.60 },
+  { period: '2025-02', industrialProfit: -0.30, selfRaised: 5.40 },
+  { period: '2025-03', industrialProfit: 0.80, selfRaised: 4.70 },
+  { period: '2025-04', industrialProfit: 1.40, selfRaised: 3.90 },
+  { period: '2025-05', industrialProfit: -1.10, selfRaised: 3.80 },
+  { period: '2025-06', industrialProfit: -1.80, selfRaised: 3.10 },
+  { period: '2025-07', industrialProfit: -1.70, selfRaised: 1.50 },
+  { period: '2025-08', industrialProfit: 0.90, selfRaised: 1.00 },
+  { period: '2025-09', industrialProfit: 3.20, selfRaised: 0.20 },
+  { period: '2025-10', industrialProfit: 1.90, selfRaised: -0.80 },
+  { period: '2025-11', industrialProfit: 0.10, selfRaised: -1.60 },
+  { period: '2025-12', industrialProfit: 0.60, selfRaised: -2.70 },
+  { period: '2026-02', industrialProfit: 15.20, selfRaised: 0.90 },
+  { period: '2026-03', industrialProfit: 15.50, selfRaised: 1.30 },
+  { period: '2026-04', industrialProfit: 18.20, selfRaised: -2.40 },
+  { period: '2026-05', industrialProfit: 18.80, selfRaised: -5.20 },
+  { period: '2026-06', industrialProfit: 18.70, selfRaised: -6.60 },
+];

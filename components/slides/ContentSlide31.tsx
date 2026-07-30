@@ -14,13 +14,14 @@ const formatTrillion = (val: any) =>
       : String(val);
 
 const loanColumns: ColumnConfig[] = [
-  { key: 'period', title: '月份', align: 'center', width: '0.75fr' },
-  { key: 'consumerLoan', title: '消费贷款', align: 'right', width: '1fr', render: formatTrillion },
-  { key: 'shortTermConsumer', title: '短期消费', align: 'right', width: '1fr', render: formatTrillion },
-  { key: 'longTermConsumer', title: '中长期消费', align: 'right', width: '1.1fr', render: formatTrillion },
-  { key: 'housingLoan', title: '其中:房贷', align: 'right', width: '1fr', render: formatTrillion },
-  { key: 'businessLoan', title: '经营贷款', align: 'right', width: '1fr', render: formatTrillion },
-  { key: 'totalLoan', title: '贷款合计', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'period', title: '月份', align: 'center', width: '0.7fr' },
+  { key: 'consumerLoan', title: '消费贷款', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'shortTermConsumer', title: '短期消费', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'longTermConsumer', title: '中长期消费', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'housingLoan', title: '其中:房贷', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'consumerLoanExHousing', title: '消费贷(不含房贷)', align: 'right', width: '1.15fr', render: formatTrillion },
+  { key: 'businessLoan', title: '经营贷款', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'totalLoan', title: '贷款合计', align: 'right', width: '0.9fr', render: formatTrillion },
 ];
 
 export const ContentSlide31: React.FC = () => {
@@ -61,6 +62,9 @@ export const ContentSlide31: React.FC = () => {
               </li>
               <li>
                 短期（消费）：Q2减少<span className="text-green-600 font-semibold">4241亿</span>，居民消费信心与风险偏好仍处低位。
+              </li>
+              <li>
+                居民消费贷（不含房贷）余额<span className="text-webank-blue font-semibold">20.82万亿</span>。
               </li>
             </ul>
           </BaseCard>

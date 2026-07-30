@@ -63,33 +63,31 @@ export const ContentSlide20: React.FC = () => {
   return (
     <BaseContentSlide
       title={<>投资端展望：预计二季度为最低点，前期盈利改善，叠加政策推动，支撑后续投资增速</>}
-      cardColumns={3}
+      cardColumns={4}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-3 flex-shrink-0">
-          <BaseCard title="盈利传导" delay="0ms" variant="accent">
-            <p>
-              2025半年盈利回升→对应支撑2026半年投资（领先1年）。
-            </p>
-          </BaseCard>
-          <BaseCard title="政策性金融工具" delay="120ms">
+        <div className="grid grid-cols-4 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="政策性金融工具" delay="0ms" variant="accent">
             <p>
               <span className="font-semibold">8000亿</span>待落地，市场一致预期将在三季度密集落地，重点投向“六张网”新基建和AI等新质生产力领域。
             </p>
           </BaseCard>
-          <BaseCard title="“六张网”建设" delay="240ms">
+          <BaseCard title="专项债发行提速" delay="120ms">
             <p>
-              投资规模超<span className="font-semibold">7万亿</span>；“两重”项目已全部下达。2026年“六张网”及相关领域投资超7万亿元；2025年无此口径（概念尚未提出）。
+              6月已创单月新高（<span className="font-semibold">5716亿</span>，为计划发行的1.65倍），Q3迎来发行高峰，预计同比<span className="font-semibold">+30%</span>。
             </p>
           </BaseCard>
-        </div>
-
-        {/* 底部文字 */}
-        <div className="mb-3 flex-shrink-0">
-          <p className="text-xs text-webank-subtext leading-relaxed">
-            今年8000亿元“两重”投资建设项目清单和2000亿元设备更新资金已全部下达，“六张网”建设正在统筹推进，城市更新、新型能源体系建设、工业互联网高质量发展等专项规划陆续落地实施
-          </p>
+          <BaseCard title="盈利传导" delay="240ms">
+            <p>
+              2025半年盈利回升→对应支撑2026半年投资（领先2-3季度）。
+            </p>
+          </BaseCard>
+          <BaseCard title="重大项目及“六张网”建设" delay="360ms">
+            <p>
+              “两重”项目已全部下达。2026年“六张网”及相关领域投资超<span className="font-semibold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
+            </p>
+          </BaseCard>
         </div>
 
         {/* 政策部署表格区域 */}

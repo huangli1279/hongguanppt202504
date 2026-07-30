@@ -4,6 +4,7 @@ export type AiPolicyCategory =
   | '消费端'
   | '算力基建'
   | '安全治理'
+  | '就业'
   | '地方落地';
 
 export interface AiPolicyDynamicsItem {
@@ -21,6 +22,7 @@ export const aiPolicyCategoryStyles: Record<
   消费端: { text: '#c2410c', bg: '#ffedd5' },
   算力基建: { text: '#dc2626', bg: '#fee2e2' },
   安全治理: { text: '#7c3aed', bg: '#ede9fe' },
+  就业: { text: '#0891b2', bg: '#cffafe' },
   地方落地: { text: '#65a30d', bg: '#ecfccb' },
 };
 
@@ -79,6 +81,16 @@ export const aiPolicyDynamicsData: AiPolicyDynamicsItem[] = [
     category: '安全治理',
     date: '2026/3/20',
     title: '《人工智能科技伦理审查与服务办法（试行）》',
+  },
+  {
+    category: '就业',
+    date: '2026/6',
+    title: '《实施就业优先战略“十五五”规划》',
+  },
+  {
+    category: '就业',
+    date: '2026/6',
+    title: '《关于加快推进“人工智能＋人社”应用发展的实施意见》',
   },
   {
     category: '地方落地',

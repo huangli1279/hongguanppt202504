@@ -40,14 +40,15 @@ export const ContentSlide08: React.FC = () => {
             <div className="space-y-1.5 text-[13px] leading-snug">
               <div>
                 <span className="font-bold text-webank-blue">IMF：</span>
+                IMF在7月8日逆势上调
                 <span className="font-bold">4.4%→4.6%</span>
-                ，IMF在7月8日逆势上调：在全球经济增长预期下调0.1pct至3.0%的背景下，中国是为数不多被上调的主要经济体，理由是Q1表现超预期（高技术制造业+出口驱动），但同时也指出全球油价上涨和结构性因素仍将形成拖累。
+                ，中国是为数不多被上调的主要经济体，理由是Q1表现超预期（高技术制造业+出口驱动）
               </div>
               <div>
                 <span className="font-bold text-webank-blue">OECD：</span>
                 基准情景2026年
                 <span className="font-bold">4.5%</span>
-                （较3月上调0.1pp）；下半年能源价格上涨拖累、地产投资继续收缩、反内卷政策压制企业投资，但出口受益于关税降低+高科技竞争力提升、基建受重大项目支撑。
+                （较3月上调0.1pp）下半年能源价格上涨拖累、地产投资继续收缩、反内卷政策压制企业投资，但出口受益于关税降低+高科技竞争力提升、基建受重大项目支撑。
               </div>
               <div>
                 <span className="font-bold text-webank-blue">国内券商：</span>

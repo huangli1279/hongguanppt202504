@@ -14,8 +14,6 @@ import {
   jCurveStages,
   frictionItems,
   singularityItems,
-  fourCycleForecast,
-  cycleNote,
 } from '@/data/aiGrowthJCurve';
 
 const StageCallout: React.FC<{
@@ -36,7 +34,7 @@ const StageCallout: React.FC<{
   </div>
 );
 
-/** AI净增长贡献：J曲线 + 兑现周期 + 四周期预测 */
+/** AI净增长贡献：J曲线 + 兑现周期 */
 export const AiGrowthContributionChart: React.FC = () => {
   const barData = realizationPeriodData.map((d) => ({
     tech: d.tech,
@@ -221,34 +219,6 @@ export const AiGrowthContributionChart: React.FC = () => {
           <p className="text-[7px] text-slate-400 leading-tight mt-0.5 flex-shrink-0">
             数据来源：Nicholas Crafts(2004)、MGI、华泰研究
           </p>
-        </div>
-      </div>
-
-      {/* 四周期预测 */}
-      <div className="flex-shrink-0 mt-1.5 pt-1.5 border-t border-webank-line/60 grid grid-cols-[1fr_160px] gap-2">
-        <div>
-          <p className="text-[10px] font-bold text-webank-blue mb-1">四周期预测</p>
-          <div className="space-y-1">
-            {fourCycleForecast.map((cycle) => (
-              <div key={cycle.title} className="flex items-center gap-1.5">
-                <div
-                  className="h-3.5 rounded-sm bg-[#E8B923]/85 flex items-center px-1.5 shrink-0"
-                  style={{ width: cycle.width, minWidth: '72px' }}
-                >
-                  <span className="text-[8px] font-semibold text-webank-blue whitespace-nowrap truncate">
-                    {cycle.title}
-                  </span>
-                </div>
-                <p className="text-[8px] text-slate-600 leading-tight min-w-0">
-                  <span className="font-semibold text-webank-blue">观察：</span>
-                  {cycle.observe}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bg-webank-accent/5 border border-webank-accent/20 rounded px-1.5 py-1 self-stretch">
-          <p className="text-[8px] leading-snug text-slate-600">{cycleNote}</p>
         </div>
       </div>
     </div>

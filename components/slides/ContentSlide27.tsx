@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { fiscalExpenditureH1GrowthData, fiscalExpenditureTrendData } from '@/data/fiscalRevenue';
 import { chartColors } from '@/utils/chartColors';
@@ -13,7 +13,10 @@ export const ContentSlide27: React.FC = () => {
   ];
 
   const expBars: BarConfig[] = [
-    { dataKey: 'growth', name: '同比增速', color: chartColors.primary },
+    { dataKey: 'amount', name: '总额', color: '#4A79AA' },
+  ];
+  const growthLines: BarLineConfig[] = [
+    { dataKey: 'growth', name: '增速', color: '#E8913A', strokeWidth: 0, yAxisId: 'right', unit: '%' },
   ];
 
   return (
@@ -55,16 +58,24 @@ export const ContentSlide27: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={fiscalExpenditureH1GrowthData}
-              title="1-6月一般公共预算支出主要分项增速排列图"
-              subtitle="数据来源：财政部 | 单位：%"
+              title="1-6月一般公共预算支出主要分项总额与累计同比"
+              subtitle="数据来源：财政部 | 单位：亿元，%"
               bars={expBars}
+              lines={growthLines}
               xAxisKey="category"
-              yAxisDomain={[-12, 14]}
+              yAxisDomain={[0, 30000]}
+              yAxisTickFormatter={(val) => String(val)}
+              unit="亿元"
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={true}
-              barSize={18}
+              showLabels={false}
+              showLineYAxis={true}
+              lineAxisDomain={[-12, 14]}
+              lineUnit="%"
+              lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
+              lineShowDot={true}
+              lineLabelFormatter={(val) => `${Number(val).toFixed(1)}%`}
+              legendOrder={['总额', '增速']}
+              barSize={28}
               xAxisAngle={-45}
               xAxisHeight={70}
             />

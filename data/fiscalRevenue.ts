@@ -15,6 +15,7 @@ export interface TaxCategoryDataPoint {
 
 export interface FiscalCategoryGrowthDataPoint {
   category: string;
+  amount: number;
   growth: number;
 }
 
@@ -38,14 +39,15 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2026-06', taxRevenue: 5.30, nonTaxRevenue: 2.30, total: 4.70 },
 ];
 
-// 2026年1-6月各类税收收入累计同比（按增速升序）
+// 2026年1-6月主要税种收入总额与累计同比（按增速升序）
 export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
-  { category: '国内消费税', growth: -3.4 },
-  { category: '企业所得税', growth: 3.9 },
-  { category: '出口货物增值税/消费税', growth: 5.4 },
-  { category: '国内增值税', growth: 6.0 },
-  { category: '进口货物增值税/消费税', growth: 11.8 },
-  { category: '印花税', growth: 40.9 },
+  { category: '国内消费税', amount: 8673, growth: -3.4 },
+  { category: '企业所得税', amount: 25880, growth: 3.9 },
+  { category: '出口退税', amount: 13387, growth: 5.4 },
+  { category: '国内增值税', amount: 38581, growth: 6.0 },
+  { category: '进口货物增值税、消费税', amount: 9758, growth: 11.8 },
+  { category: '个人所得税', amount: 8982, growth: 13.1 },
+  { category: '印花税', amount: 2752, growth: 40.9 },
 ];
 
 // 2026年一季度财政支出各领域同比增速
@@ -67,20 +69,18 @@ export const fiscalExpenditureGrowthData: FiscalExpenditureGrowthDataPoint[] = [
   { category: '债务付息', growth: 12.9 },
 ];
 
-// 2026年1-6月财政支出各领域同比增速
-export const fiscalExpenditureH1GrowthData: FiscalExpenditureGrowthDataPoint[] = [
-  { category: '卫生健康', growth: 10.8 },
-  { category: '社会保障和就业', growth: 7.6 },
-  { category: '中央本级支出', growth: 6.5 },
-  { category: '债务付息', growth: 4.5 },
-  { category: '科学技术', growth: 1.3 },
-  { category: '教育', growth: 0.6 },
-  { category: '地方支出', growth: 0.6 },
-  { category: '城乡社区', growth: -2.0 },
-  { category: '交通运输', growth: -2.6 },
-  { category: '文化旅游体育与传媒', growth: -6.4 },
-  { category: '农林水', growth: -8.6 },
-  { category: '节能环保', growth: -10.3 },
+// 2026年1-6月财政支出各领域总额与同比增速（按增速升序）
+export const fiscalExpenditureH1GrowthData: FiscalCategoryGrowthDataPoint[] = [
+  { category: '节能环保', amount: 2294, growth: -10.3 },
+  { category: '农林水', amount: 9714, growth: -8.6 },
+  { category: '文化旅游体育与传媒', amount: 1626, growth: -6.4 },
+  { category: '交通运输', amount: 5472, growth: -2.6 },
+  { category: '城乡社区', amount: 9838, growth: -2.0 },
+  { category: '教育', amount: 21608, growth: 0.6 },
+  { category: '科学技术', amount: 4854, growth: 1.3 },
+  { category: '债务付息', amount: 6991, growth: 4.5 },
+  { category: '社会保障和就业', amount: 26360, growth: 7.6 },
+  { category: '卫生健康', amount: 12191, growth: 10.8 },
 ];
 
 // 2025-2026年一般公共预算支出合计累计同比（按月对比）

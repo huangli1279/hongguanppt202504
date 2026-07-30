@@ -71,3 +71,39 @@ export const workTypeExpenditureData: WorkTypeExpenditureDataPoint[] = [
   { category: '家庭照料', totalExpenditure: 3038 },
   { category: '未退休且不找工作', totalExpenditure: 4913 },
 ];
+
+// 国内招聘网站岗位需求同比变化（%）；来源：BOSS直聘、猎聘
+export interface JobDemandYoyDataPoint {
+  category: string;
+  name: string;
+  yoy: number;
+  fill: string;
+}
+
+const AI_JOB_UP = '#1B4F72';
+const TRADITIONAL_JOB_DOWN = '#E07A5F';
+
+export const jobDemandYoyData: JobDemandYoyDataPoint[] = [
+  { category: '销售行政/商务(AI)', name: '销售行政/商务（AI相关岗）', yoy: 682, fill: AI_JOB_UP },
+  { category: '提示词工程师', name: '提示词工程师', yoy: 486.8, fill: AI_JOB_UP },
+  { category: 'AI工程师', name: 'AI工程师', yoy: 317, fill: AI_JOB_UP },
+  { category: 'AI智能体开发', name: 'AI智能体开发', yoy: 244, fill: AI_JOB_UP },
+  { category: '人力资源', name: '人力资源', yoy: 200, fill: AI_JOB_UP },
+  { category: 'AI产品经理', name: 'AI产品经理', yoy: 87.7, fill: AI_JOB_UP },
+  { category: 'AI创意叙事', name: 'AI创意叙事', yoy: 84.2, fill: AI_JOB_UP },
+  { category: 'AI伦理社科', name: 'AI伦理社科', yoy: 78.3, fill: AI_JOB_UP },
+  { category: 'AI人机训练', name: 'AI人机训练', yoy: 67.7, fill: AI_JOB_UP },
+  { category: '汽车AI工程师', name: '汽车AI工程师', yoy: 38.2, fill: AI_JOB_UP },
+  { category: '数据标注/AI训练师', name: '数据标注/AI训练师', yoy: 30.3, fill: AI_JOB_UP },
+  { category: '航空航天AI工程师', name: '航空航天AI工程师', yoy: 23.5, fill: AI_JOB_UP },
+  { category: '销售/商务/品牌', name: '销售/商务/品牌', yoy: -10, fill: TRADITIONAL_JOB_DOWN },
+  { category: '视觉交互设计', name: '视觉交互设计', yoy: -21, fill: TRADITIONAL_JOB_DOWN },
+  { category: '初级开发岗', name: '初级开发岗', yoy: -21, fill: TRADITIONAL_JOB_DOWN },
+  { category: '客户服务', name: '客户服务', yoy: -23, fill: TRADITIONAL_JOB_DOWN },
+  { category: '编辑/编校', name: '编辑/编校', yoy: -29, fill: TRADITIONAL_JOB_DOWN },
+  { category: '基础测试工程师', name: '基础测试工程师', yoy: -34, fill: TRADITIONAL_JOB_DOWN },
+  { category: '初级软件测试', name: '初级软件测试', yoy: -52.9, fill: TRADITIONAL_JOB_DOWN },
+  { category: '传统运维工程师', name: '传统运维工程师', yoy: -60, fill: TRADITIONAL_JOB_DOWN },
+  { category: '初级图像算法', name: '初级图像算法', yoy: -66.7, fill: TRADITIONAL_JOB_DOWN },
+  { category: '初级机器学习', name: '初级机器学习', yoy: -71.4, fill: TRADITIONAL_JOB_DOWN },
+];

@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
 
 export const ContentSlide26: React.FC = () => {
@@ -13,7 +13,10 @@ export const ContentSlide26: React.FC = () => {
   ];
 
   const bars: BarConfig[] = [
-    { dataKey: 'growth', name: '同比增速', color: '#005c8f' },
+    { dataKey: 'amount', name: '总额', color: '#4A79AA' },
+  ];
+  const growthLines: BarLineConfig[] = [
+    { dataKey: 'growth', name: '增速', color: '#E8913A', strokeWidth: 0, yAxisId: 'right', unit: '%' },
   ];
 
   return (
@@ -31,7 +34,7 @@ export const ContentSlide26: React.FC = () => {
           </BaseCard>
           <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
             <p>
-              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>，其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
+              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>（整体增长<span className="text-red-500 font-semibold">40%</span>）；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>（贡献整体增长<span className="text-red-500 font-semibold">19%</span>）；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>（贡献整体增长<span className="text-red-500 font-semibold">15%</span>），其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
             </p>
           </BaseCard>
         </div>
@@ -56,18 +59,26 @@ export const ContentSlide26: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={fiscalCategoryGrowthData}
-              title="各类税收收入累计同比"
-              subtitle="数据来源：财政部 | 单位：%"
+              title="各类税收收入总额与累计同比"
+              subtitle="数据来源：财政部 | 单位：亿元，%"
               bars={bars}
+              lines={growthLines}
               xAxisKey="category"
-              yAxisDomain={[-5, 50]}
+              yAxisDomain={[0, 45000]}
+              yAxisTickFormatter={(val) => String(val)}
+              unit="亿元"
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={true}
+              showLabels={false}
+              showLineYAxis={true}
+              lineAxisDomain={[-10, 45]}
+              lineUnit="%"
+              lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
+              lineShowDot={true}
+              lineLabelFormatter={(val) => `${Number(val).toFixed(2)}%`}
+              legendOrder={['总额', '增速']}
               barSize={28}
               xAxisAngle={-45}
-              xAxisHeight={60}
+              xAxisHeight={70}
             />
           </ChartContainer>
         </div>

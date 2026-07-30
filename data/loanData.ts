@@ -64,28 +64,29 @@ export interface HouseholdLoanChangePoint {
   shortTermConsumer: number;
   longTermConsumer: number;
   housingLoan: number | null;
+  consumerLoanExHousing: number | null;
   businessLoan: number;
   totalLoan: number;
 }
 
-/** 居民贷款变化情况（存量），单位：万亿元；已合并重复的2026-03行 */
+/** 居民贷款变化情况（存量），单位：万亿元；房贷/消费贷(不含房贷)仅季末有值 */
 export const householdLoanChangeData: HouseholdLoanChangePoint[] = [
-  { period: '2025-01', consumerLoan: 58.90, shortTermConsumer: 10.11, longTermConsumer: 48.79, housingLoan: null, businessLoan: 24.37, totalLoan: 83.27 },
-  { period: '2025-02', consumerLoan: 58.52, shortTermConsumer: 9.86, longTermConsumer: 48.67, housingLoan: null, businessLoan: 24.36, totalLoan: 82.88 },
-  { period: '2025-03', consumerLoan: 58.91, shortTermConsumer: 9.99, longTermConsumer: 48.91, housingLoan: 37.90, businessLoan: 24.97, totalLoan: 83.87 },
-  { period: '2025-04', consumerLoan: 58.71, shortTermConsumer: 9.87, longTermConsumer: 48.84, housingLoan: null, businessLoan: 24.64, totalLoan: 83.35 },
-  { period: '2025-05', consumerLoan: 58.73, shortTermConsumer: 9.87, longTermConsumer: 48.86, housingLoan: null, businessLoan: 24.67, totalLoan: 83.40 },
-  { period: '2025-06', consumerLoan: 58.91, shortTermConsumer: 9.93, longTermConsumer: 48.97, housingLoan: 37.74, businessLoan: 25.09, totalLoan: 84.00 },
-  { period: '2025-07', consumerLoan: 58.68, shortTermConsumer: 9.79, longTermConsumer: 48.89, housingLoan: null, businessLoan: 24.83, totalLoan: 83.51 },
-  { period: '2025-08', consumerLoan: 58.65, shortTermConsumer: 9.83, longTermConsumer: 48.83, housingLoan: null, businessLoan: 24.89, totalLoan: 83.54 },
-  { period: '2025-09', consumerLoan: 58.73, shortTermConsumer: 9.82, longTermConsumer: 48.90, housingLoan: 37.44, businessLoan: 25.21, totalLoan: 83.93 },
-  { period: '2025-10', consumerLoan: 58.58, shortTermConsumer: 9.73, longTermConsumer: 48.85, housingLoan: null, businessLoan: 24.99, totalLoan: 83.57 },
-  { period: '2025-11', consumerLoan: 58.41, shortTermConsumer: 9.60, longTermConsumer: 48.80, housingLoan: null, businessLoan: 24.96, totalLoan: 83.36 },
-  { period: '2025-12', consumerLoan: 58.16, shortTermConsumer: 9.48, longTermConsumer: 48.68, housingLoan: 37.01, businessLoan: 25.11, totalLoan: 83.27 },
-  { period: '2026-01', consumerLoan: 58.24, shortTermConsumer: 9.42, longTermConsumer: 48.82, housingLoan: null, businessLoan: 25.49, totalLoan: 83.73 },
-  { period: '2026-02', consumerLoan: 57.64, shortTermConsumer: 9.04, longTermConsumer: 48.60, housingLoan: null, businessLoan: 25.44, totalLoan: 83.08 },
-  { period: '2026-03', consumerLoan: 57.68, shortTermConsumer: 9.01, longTermConsumer: 48.67, housingLoan: 36.72, businessLoan: 25.89, totalLoan: 83.57 },
-  { period: '2026-04', consumerLoan: 57.17, shortTermConsumer: 8.80, longTermConsumer: 48.37, housingLoan: null, businessLoan: 25.61, totalLoan: 82.78 },
-  { period: '2026-05', consumerLoan: 57.04, shortTermConsumer: 8.78, longTermConsumer: 48.26, housingLoan: null, businessLoan: 25.60, totalLoan: 82.64 },
-  { period: '2026-06', consumerLoan: 57.11, shortTermConsumer: 8.82, longTermConsumer: 48.29, housingLoan: null, businessLoan: 25.79, totalLoan: 82.90 },
+  { period: '2025-01', consumerLoan: 58.90, shortTermConsumer: 10.11, longTermConsumer: 48.79, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.37, totalLoan: 83.27 },
+  { period: '2025-02', consumerLoan: 58.52, shortTermConsumer: 9.86, longTermConsumer: 48.67, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.36, totalLoan: 82.88 },
+  { period: '2025-03', consumerLoan: 58.91, shortTermConsumer: 9.99, longTermConsumer: 48.91, housingLoan: 37.90, consumerLoanExHousing: 21.01, businessLoan: 24.97, totalLoan: 83.87 },
+  { period: '2025-04', consumerLoan: 58.71, shortTermConsumer: 9.87, longTermConsumer: 48.84, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.64, totalLoan: 83.35 },
+  { period: '2025-05', consumerLoan: 58.73, shortTermConsumer: 9.87, longTermConsumer: 48.86, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.67, totalLoan: 83.40 },
+  { period: '2025-06', consumerLoan: 58.91, shortTermConsumer: 9.93, longTermConsumer: 48.97, housingLoan: 37.74, consumerLoanExHousing: 21.17, businessLoan: 25.09, totalLoan: 84.00 },
+  { period: '2025-07', consumerLoan: 58.68, shortTermConsumer: 9.79, longTermConsumer: 48.89, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.83, totalLoan: 83.51 },
+  { period: '2025-08', consumerLoan: 58.65, shortTermConsumer: 9.83, longTermConsumer: 48.83, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.89, totalLoan: 83.54 },
+  { period: '2025-09', consumerLoan: 58.73, shortTermConsumer: 9.82, longTermConsumer: 48.90, housingLoan: 37.44, consumerLoanExHousing: 21.29, businessLoan: 25.21, totalLoan: 83.93 },
+  { period: '2025-10', consumerLoan: 58.58, shortTermConsumer: 9.73, longTermConsumer: 48.85, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.99, totalLoan: 83.57 },
+  { period: '2025-11', consumerLoan: 58.41, shortTermConsumer: 9.60, longTermConsumer: 48.80, housingLoan: null, consumerLoanExHousing: null, businessLoan: 24.96, totalLoan: 83.36 },
+  { period: '2025-12', consumerLoan: 58.16, shortTermConsumer: 9.48, longTermConsumer: 48.68, housingLoan: 37.01, consumerLoanExHousing: 21.15, businessLoan: 25.11, totalLoan: 83.27 },
+  { period: '2026-01', consumerLoan: 58.24, shortTermConsumer: 9.42, longTermConsumer: 48.82, housingLoan: null, consumerLoanExHousing: null, businessLoan: 25.49, totalLoan: 83.73 },
+  { period: '2026-02', consumerLoan: 57.64, shortTermConsumer: 9.04, longTermConsumer: 48.60, housingLoan: null, consumerLoanExHousing: null, businessLoan: 25.44, totalLoan: 83.08 },
+  { period: '2026-03', consumerLoan: 57.68, shortTermConsumer: 9.01, longTermConsumer: 48.67, housingLoan: 36.72, consumerLoanExHousing: 20.96, businessLoan: 25.89, totalLoan: 83.57 },
+  { period: '2026-04', consumerLoan: 57.17, shortTermConsumer: 8.80, longTermConsumer: 48.37, housingLoan: null, consumerLoanExHousing: null, businessLoan: 25.61, totalLoan: 82.78 },
+  { period: '2026-05', consumerLoan: 57.04, shortTermConsumer: 8.78, longTermConsumer: 48.26, housingLoan: null, consumerLoanExHousing: null, businessLoan: 25.60, totalLoan: 82.64 },
+  { period: '2026-06', consumerLoan: 57.11, shortTermConsumer: 8.82, longTermConsumer: 48.29, housingLoan: 36.29, consumerLoanExHousing: 20.82, businessLoan: 25.79, totalLoan: 82.90 },
 ];

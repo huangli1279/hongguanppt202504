@@ -13,35 +13,23 @@ export const realizationPeriodData = [
 export const jCurveStages = [
   {
     id: 1,
-    title: '①Capex先行',
-    items: [
-      '算力、数据中心建设形成资本开支',
-      '模型验证和产品试用',
-      '资本、电力、人才挤出效应',
-    ],
+    title: '①资本开支先行（建算力、数据中心）',
+    items: [] as string[],
   },
   {
     id: 2,
-    title: '②应用渗透',
-    items: [
-      '互补性无形资本投入积累',
-      '试点扩展，流程再造深化',
-      '应用扩散加快，技术红利开启',
-    ],
+    title: '②应用渗透（试点、流程再造）',
+    items: [] as string[],
   },
   {
     id: 3,
-    title: '③企业效率重构',
-    items: [
-      '技术渗透广泛化，创新应用持续涌现',
-      '企业ROI转正',
-      '行业与部门间协同增强',
-    ],
+    title: '③企业效率重构（ROI转正）',
+    items: [] as string[],
   },
   {
     id: 4,
-    title: '④TFP提升',
-    items: ['新产业形成', '生产率加速提升', '总需求随生产率提升扩张'],
+    title: '④生产率加速',
+    items: [] as string[],
   },
 ] as const;
 
