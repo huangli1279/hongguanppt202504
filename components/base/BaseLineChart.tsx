@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   Legend,
   ReferenceLine,
+  ReferenceArea,
   LabelList
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
@@ -31,6 +32,15 @@ export interface LineConfig {
   strokeDasharray?: string;
 }
 
+export interface CategoryGroupConfig {
+  label: string;
+  x1: string;
+  x2: string;
+  stroke?: string;
+  fill?: string;
+  fillOpacity?: number;
+}
+
 export interface BaseLineChartProps {
   data: any[];
   title: React.ReactNode;
@@ -41,6 +51,7 @@ export interface BaseLineChartProps {
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
+  showLegend?: boolean;
   /** 额外需要显示数值标签的周期 */
   highlightPeriods?: string[];
   /** X轴刻度数量，默认6 */
@@ -57,6 +68,8 @@ export interface BaseLineChartProps {
   rightYAxisDomain?: [number | 'auto' | 'dataMin' | 'dataMax', number | 'auto' | 'dataMin' | 'dataMax'];
   /** 右侧Y轴刻度格式化 */
   rightYAxisTickFormatter?: (value: any) => string;
+  /** 区间标注框（如政策窗口） */
+  categoryGroups?: CategoryGroupConfig[];
 }
 
 const CustomTooltip = ({ active, payload, label, unit = '%', unitByKey }: any) => {
@@ -142,6 +155,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
+  showLegend = true,
   highlightPeriods = [],
   xAxisTickCount = 6,
   xAxisTicks,
@@ -149,9 +163,11 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   yAxisTickFormatter,
   showRightYAxis = false,
   rightYAxisDomain = ['auto', 'auto'],
-  rightYAxisTickFormatter
+  rightYAxisTickFormatter,
+  categoryGroups
 }) => {
   const hasDualAxis = showRightYAxis || lines.some((line) => line.yAxisId === 'right');
+  const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
   const unitByKey = lines.reduce((acc, line) => {
     if (line.unit !== undefined) acc[line.dataKey] = line.unit;
     return acc;
@@ -214,9 +230,30 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: hasCategoryGroups ? 28 : 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: 5 }}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
+            {categoryGroups?.map((group) => (
+              <ReferenceArea
+                key={`group-${group.label}-${group.x1}-${group.x2}`}
+                x1={group.x1}
+                x2={group.x2}
+                {...(hasDualAxis ? { yAxisId: 'left' as const } : {})}
+                stroke={group.stroke ?? '#94a3b8'}
+                strokeWidth={1.5}
+                fill={group.fill ?? '#94a3b8'}
+                fillOpacity={group.fillOpacity ?? 0.08}
+                ifOverflow="extendDomain"
+                label={{
+                  value: group.label,
+                  position: 'insideTopLeft',
+                  fill: '#64748b',
+                  fontSize: 10,
+                  fontWeight: 600,
+                  offset: 6,
+                }}
+              />
+            ))}
             {showReferenceLine && (
               <ReferenceLine
                 y={referenceLineY}
@@ -275,12 +312,14 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               />
             )}
             <Tooltip content={<CustomTooltip unit={unit} unitByKey={unitByKey} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
-            <Legend 
-              content={<CustomLegend legendOrder={legendOrder} />} 
-              verticalAlign="bottom"
-              align="center"
-              wrapperStyle={{ paddingBottom: '10px', paddingTop: '20px' }}
-            />
+            {showLegend && (
+              <Legend
+                content={<CustomLegend legendOrder={legendOrder} />}
+                verticalAlign="bottom"
+                align="center"
+                wrapperStyle={{ paddingBottom: '10px', paddingTop: '20px' }}
+              />
+            )}
             
             {lines.map((line, index) => {
               const lineColor = line.color ?? getSeriesColor(index);

@@ -26,3 +26,61 @@ export const consumerSpendingPlanData: ConsumerSpendingPlanDataPoint[] = [
   { category: '养宠物',               all: 7.0,  age18_35: 8.5,  age36_59: 6.5,  age60plus: 7.5 },
   { category: '租房',                 all: 6.5,  age18_35: 6.5,  age36_59: 6.5,  age60plus: 6.5 },
 ];
+
+/** X 轴展示用短名 */
+const SHORT_CATEGORY_NAMES: Record<string, string> = {
+  '电脑/手机等数码产品': '数码产品',
+  '学习培训等教育支出': '教育支出',
+};
+
+export type AgeGroupKey = 'age18_35' | 'age36_59' | 'age60plus';
+
+export const consumerSpendingAgeGroups: {
+  key: AgeGroupKey;
+  label: string;
+  color: string;
+}[] = [
+  { key: 'age18_35', label: '18-35岁', color: '#5C9A8A' },
+  { key: 'age36_59', label: '36-59岁', color: '#E0925B' },
+  { key: 'age60plus', label: '60岁以上', color: '#9BC7DA' },
+];
+
+/** 按年龄段分组、组内按意愿占比从大到小排列的图表数据 */
+export interface ConsumerSpendingPlanByAgePoint {
+  category: string; // 唯一键：年龄段|消费项
+  name: string;     // X 轴展示名
+  value: number;
+  fill: string;
+  ageGroup: string;
+}
+
+export const consumerSpendingPlanByAgeData: ConsumerSpendingPlanByAgePoint[] =
+  consumerSpendingAgeGroups.flatMap((group) =>
+    [...consumerSpendingPlanData]
+      .sort((a, b) => b[group.key] - a[group.key])
+      .map((item) => ({
+        category: `${group.label}|${item.category}`,
+        name: SHORT_CATEGORY_NAMES[item.category] ?? item.category,
+        value: item[group.key],
+        fill: group.color,
+        ageGroup: group.label,
+      }))
+  );
+
+export const consumerSpendingPlanAgeCategoryGroups = consumerSpendingAgeGroups.map((group) => {
+  const items = consumerSpendingPlanByAgeData.filter((d) => d.ageGroup === group.label);
+  return {
+    label: group.label,
+    x1: items[0].category,
+    x2: items[items.length - 1].category,
+  };
+});
+
+/** 各年龄段意愿占比 Top3 区间（用于图表红框高亮） */
+export const consumerSpendingPlanTop3Highlights = consumerSpendingAgeGroups.map((group) => {
+  const items = consumerSpendingPlanByAgeData.filter((d) => d.ageGroup === group.label);
+  return {
+    x1: items[0].category,
+    x2: items[2].category,
+  };
+});

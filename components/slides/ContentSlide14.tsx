@@ -4,7 +4,7 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { retailMonthlyCategoryData, cityRetailData } from '../../data';
 
-const retailChartData = retailMonthlyCategoryData.filter((d) => d.period >= '2024-01');
+const retailChartData = retailMonthlyCategoryData.filter((d) => d.period >= '2024-06');
 const cityChartData = cityRetailData.filter((d) => d.period >= '2024-06');
 const juneCityRetail = cityRetailData.find((d) => d.period === '2026-06')!;
 const fmtPct = (v: number | null) => (v == null ? '—' : `${v.toFixed(1)}%`);
@@ -52,11 +52,14 @@ export const ContentSlide14: React.FC = () => {
                 { dataKey: 'cateringRevenue', name: '餐饮收入:当月同比', labelDY: -8 },
               ]}
               legendOrder={['社零总额:当月同比', '商品零售:当月同比', '餐饮收入:当月同比']}
-              yAxisDomain={[-2, 14]}
+              yAxisDomain={[-1, 7]}
               showYAxis
               showReferenceLine
               referenceLineY={0}
-              xAxisTickCount={10}
+              xAxisTickCount={8}
+              categoryGroups={[
+                { label: '以旧换新', x1: '2024-12', x2: '2025-07' },
+              ]}
             />
           </ChartContainer>
           <ChartContainer delay="720ms">

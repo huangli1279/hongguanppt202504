@@ -62,6 +62,8 @@ export const retailMonthlyCategoryData = [
   { period: '2024-10', totalRetail: 4.8, cateringRevenue: 3.2, goodsRetail: 5.0 },
   { period: '2024-11', totalRetail: 3.0, cateringRevenue: 4.0, goodsRetail: 2.8 },
   { period: '2024-12', totalRetail: 3.7, cateringRevenue: 2.7, goodsRetail: 3.9 },
+  // 1—2月为国家统计局合并发布
+  { period: '2025-02', totalRetail: 4.0, cateringRevenue: 4.3, goodsRetail: 3.9 },
   { period: '2025-03', totalRetail: 5.9, cateringRevenue: 5.6, goodsRetail: 5.9 },
   { period: '2025-04', totalRetail: 5.1, cateringRevenue: 5.2, goodsRetail: 5.1 },
   { period: '2025-05', totalRetail: 6.4, cateringRevenue: 5.9, goodsRetail: 6.5 },
@@ -72,6 +74,8 @@ export const retailMonthlyCategoryData = [
   { period: '2025-10', totalRetail: 2.9, cateringRevenue: 3.8, goodsRetail: 2.8 },
   { period: '2025-11', totalRetail: 1.3, cateringRevenue: 3.2, goodsRetail: 1.0 },
   { period: '2025-12', totalRetail: 0.9, cateringRevenue: 2.2, goodsRetail: 0.7 },
+  // 1—2月为国家统计局合并发布
+  { period: '2026-02', totalRetail: 2.8, cateringRevenue: 4.8, goodsRetail: 2.5 },
   { period: '2026-03', totalRetail: 1.7, cateringRevenue: 2.9, goodsRetail: 1.5 },
   { period: '2026-04', totalRetail: 0.2, cateringRevenue: 2.2, goodsRetail: -0.1 },
   { period: '2026-05', totalRetail: -0.6, cateringRevenue: 0.6, goodsRetail: -0.7 },

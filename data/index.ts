@@ -10,10 +10,10 @@ export { industrialProfitData } from './profit';
 export type { IndustrialProfitDataPoint } from './profit';
 export { ppiYoyData, commodityPriceData, ppiIndustryMomData } from './ppi';
 export type { PpiDataPoint, CommodityPriceDataPoint, PpiIndustryMomDataPoint } from './ppi';
-export { retailTrendData, retailMonthlyData } from './retail';
+export { retailTrendData, retailMonthlyData, retailCumulativeYoyData } from './retail';
 export { retailMonthlyCategoryData, serviceRetailData, springFestivalTravelData, retailCategoryDetailData, retailMomVsLoanData } from './retailExtra';
 export type { RetailMomVsLoanDataPoint } from './retailExtra';
-export type { RetailTrendDataPoint, RetailMonthlyDataPoint } from './retail';
+export type { RetailTrendDataPoint, RetailMonthlyDataPoint, RetailCumulativeYoyDataPoint } from './retail';
 export { cityRetailData, urbanRuralRetailData } from './cityRetail';
 export type { CityRetailDataPoint, UrbanRuralRetailDataPoint } from './cityRetail';
 export { industryRetailData } from './industryRetail';
@@ -22,12 +22,20 @@ export { cpiTrendData, cpiCategoryData } from './cpi';
 export type { CpiTrendDataPoint, CpiCategoryDataPoint } from './cpi';
 export { consumerConfidenceData, incomeExpenditureData, industryAvgSalaryData, incomeSentimentData } from './consumerConfidence';
 export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint, IndustryAvgSalaryDataPoint, IncomeSentimentDataPoint } from './consumerConfidence';
-export { unemploymentRateData, flexibleEmploymentData } from './employment';
-export type { UnemploymentRateDataPoint, FlexibleEmploymentDataPoint } from './employment';
-export { housingConsumptionData } from './housingConsumption';
-export type { HousingConsumptionDataPoint } from './housingConsumption';
-export { consumerSpendingPlanData } from './consumerSpendingPlan';
-export type { ConsumerSpendingPlanDataPoint } from './consumerSpendingPlan';
+export { unemploymentRateData, flexibleEmploymentData, workTypeExpenditureData } from './employment';
+export type { UnemploymentRateDataPoint, FlexibleEmploymentDataPoint, WorkTypeExpenditureDataPoint } from './employment';
+export { housingConsumptionData, newHousePriceYoyData, newHousePriceYoyXTicks } from './housingConsumption';
+export type { HousingConsumptionDataPoint, NewHousePriceYoyDataPoint } from './housingConsumption';
+export {
+  consumerSpendingPlanData,
+  consumerSpendingPlanByAgeData,
+  consumerSpendingPlanAgeCategoryGroups,
+  consumerSpendingAgeGroups,
+} from './consumerSpendingPlan';
+export type {
+  ConsumerSpendingPlanDataPoint,
+  ConsumerSpendingPlanByAgePoint,
+} from './consumerSpendingPlan';
 
 export { fixedAssetInvestmentData, privateInvestmentData, investmentBreakdownData } from './fixedAssetInvestment';
 export type { FixedAssetInvestmentDataPoint, PrivateInvestmentDataPoint, InvestmentBreakdownDataPoint } from './fixedAssetInvestment';

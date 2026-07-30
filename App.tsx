@@ -7,7 +7,7 @@ import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 45;
+const TOTAL_SLIDES = 46;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -45,11 +45,12 @@ const ContentSlide35 = lazyNamed(() => import('./components/slides/ContentSlide3
 const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
 const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
 const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
-const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide40'), 'ContentSlide40');
+const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
 const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
 const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
 const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
 const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
+const ContentSlide45 = lazyNamed(() => import('./components/slides/ContentSlide45'), 'ContentSlide45');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -183,13 +184,14 @@ const App: React.FC = () => {
       case 36: return <ContentSlide36 />;
       case 37: return <ContentSlide37 />;
       case 38: return <ContentSlide38 />;
-      case 39: return <BaseSectionTransitionSlide id="专题二" title="K型分化及AI" />;
-      case 40: return <ContentSlide40 />;
+      case 39: return <ContentSlide39 />;
+      case 40: return <BaseSectionTransitionSlide id="专题二" title="K型分化及AI" />;
       case 41: return <ContentSlide41 />;
       case 42: return <ContentSlide42 />;
       case 43: return <ContentSlide43 />;
       case 44: return <ContentSlide44 />;
-      case 45: return <ThankYouSlide />;
+      case 45: return <ContentSlide45 />;
+      case 46: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);

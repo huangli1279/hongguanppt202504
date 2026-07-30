@@ -35,22 +35,39 @@ export const unemploymentRateData: UnemploymentRateDataPoint[] = [
   { period: '2026-06', overall: 5.0, age16_24: 14.9, age25_29: 7.1, age30_59: 4.0 },
 ];
 
-// 中国灵活就业人员规模（亿人）；2026(E) 为预测值
+// 中国灵活就业人员规模（亿人）+ 领取失业保险金人数（万人）；2026(E) 为预测值
 export interface FlexibleEmploymentDataPoint {
   period: string;
   actual?: number;
   forecast?: number;
+  /** 领取失业保险金人数（万人） */
+  unemploymentInsurance?: number;
 }
 
 export const flexibleEmploymentData: FlexibleEmploymentDataPoint[] = [
-  { period: '2015年', actual: 1.2 },
-  { period: '2017', actual: 1.45 },
-  { period: '2019', actual: 1.6 },
-  { period: '2020', actual: 1.7 },
-  { period: '2021', actual: 2.0 },
-  { period: '2022', actual: 2.2 },
-  { period: '2023', actual: 2.3 },
-  { period: '2024', actual: 2.4 },
-  { period: '2025', actual: 2.8, forecast: 2.8 },
+  { period: '2015年', actual: 1.2, unemploymentInsurance: 227 },
+  { period: '2017', actual: 1.45, unemploymentInsurance: 220 },
+  { period: '2019', actual: 1.6, unemploymentInsurance: 228.3 },
+  { period: '2020', actual: 1.7, unemploymentInsurance: 270 },
+  { period: '2021', actual: 2.0, unemploymentInsurance: 259 },
+  { period: '2022', actual: 2.2, unemploymentInsurance: 297 },
+  { period: '2023', actual: 2.3, unemploymentInsurance: 352 },
+  { period: '2024', actual: 2.4, unemploymentInsurance: 463 },
+  { period: '2025', actual: 2.8, forecast: 2.8, unemploymentInsurance: 557 },
   { period: '2026(E)', forecast: 3.2 },
+];
+
+// 不同工作类型总支出（元，调查数据）
+export interface WorkTypeExpenditureDataPoint {
+  category: string;
+  totalExpenditure: number;
+}
+
+export const workTypeExpenditureData: WorkTypeExpenditureDataPoint[] = [
+  { category: '全职工作', totalExpenditure: 3521 },
+  { category: '临时工作', totalExpenditure: 2581 },
+  { category: '失业3个月以内', totalExpenditure: 3017 },
+  { category: '失业3个月以上', totalExpenditure: 2925 },
+  { category: '家庭照料', totalExpenditure: 3038 },
+  { category: '未退休且不找工作', totalExpenditure: 4913 },
 ];

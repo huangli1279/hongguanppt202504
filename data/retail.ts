@@ -40,6 +40,64 @@ export const retailTrendData: RetailTrendDataPoint[] = [
   { period: '2025-12', totalRetail: 3.69, serviceRetail: 5.5, goodsRetail: 3.76 },
 ];
 
+/** 社会消费品零售总额:累计同比（专题一开篇） */
+export interface RetailCumulativeYoyDataPoint {
+  period: string;
+  cumulativeYoy: number;
+}
+
+export const retailCumulativeYoyData: RetailCumulativeYoyDataPoint[] = [
+  { period: '2022-02', cumulativeYoy: 6.70 },
+  { period: '2022-03', cumulativeYoy: 3.27 },
+  { period: '2022-04', cumulativeYoy: -0.20 },
+  { period: '2022-05', cumulativeYoy: -1.50 },
+  { period: '2022-06', cumulativeYoy: -0.70 },
+  { period: '2022-07', cumulativeYoy: -0.20 },
+  { period: '2022-08', cumulativeYoy: 0.50 },
+  { period: '2022-09', cumulativeYoy: 0.70 },
+  { period: '2022-10', cumulativeYoy: 0.60 },
+  { period: '2022-11', cumulativeYoy: -0.10 },
+  { period: '2022-12', cumulativeYoy: -0.20 },
+  { period: '2023-02', cumulativeYoy: 3.50 },
+  { period: '2023-03', cumulativeYoy: 5.80 },
+  { period: '2023-04', cumulativeYoy: 8.50 },
+  { period: '2023-05', cumulativeYoy: 9.30 },
+  { period: '2023-06', cumulativeYoy: 8.20 },
+  { period: '2023-07', cumulativeYoy: 7.30 },
+  { period: '2023-08', cumulativeYoy: 7.00 },
+  { period: '2023-09', cumulativeYoy: 6.80 },
+  { period: '2023-10', cumulativeYoy: 6.90 },
+  { period: '2023-11', cumulativeYoy: 7.20 },
+  { period: '2023-12', cumulativeYoy: 7.20 },
+  { period: '2024-02', cumulativeYoy: 5.50 },
+  { period: '2024-03', cumulativeYoy: 4.70 },
+  { period: '2024-04', cumulativeYoy: 4.10 },
+  { period: '2024-05', cumulativeYoy: 4.10 },
+  { period: '2024-06', cumulativeYoy: 3.70 },
+  { period: '2024-07', cumulativeYoy: 3.50 },
+  { period: '2024-08', cumulativeYoy: 3.40 },
+  { period: '2024-09', cumulativeYoy: 3.30 },
+  { period: '2024-10', cumulativeYoy: 3.50 },
+  { period: '2024-11', cumulativeYoy: 3.50 },
+  { period: '2024-12', cumulativeYoy: 3.50 },
+  { period: '2025-02', cumulativeYoy: 4.00 },
+  { period: '2025-03', cumulativeYoy: 4.60 },
+  { period: '2025-04', cumulativeYoy: 4.70 },
+  { period: '2025-05', cumulativeYoy: 5.00 },
+  { period: '2025-06', cumulativeYoy: 5.00 },
+  { period: '2025-07', cumulativeYoy: 4.80 },
+  { period: '2025-08', cumulativeYoy: 4.60 },
+  { period: '2025-09', cumulativeYoy: 4.50 },
+  { period: '2025-10', cumulativeYoy: 4.30 },
+  { period: '2025-11', cumulativeYoy: 4.00 },
+  { period: '2025-12', cumulativeYoy: 3.70 },
+  { period: '2026-02', cumulativeYoy: 2.80 },
+  { period: '2026-03', cumulativeYoy: 2.40 },
+  { period: '2026-04', cumulativeYoy: 1.90 },
+  { period: '2026-05', cumulativeYoy: 1.40 },
+  { period: '2026-06', cumulativeYoy: 1.30 },
+];
+
 // 2024-2025年全国社会消费品零售总额当月同比走势
 export const retailMonthlyData: RetailMonthlyDataPoint[] = [
   { period: '2024-03', monthlyYoy: 3.10 },

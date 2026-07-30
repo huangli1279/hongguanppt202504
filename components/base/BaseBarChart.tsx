@@ -12,7 +12,8 @@ import {
   Legend,
   ReferenceLine,
   ReferenceArea,
-  LabelList
+  LabelList,
+  Cell
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
 
@@ -30,6 +31,8 @@ export interface BarLineConfig {
   strokeWidth?: number;
   yAxisId?: 'left' | 'right';
   unit?: string;
+  /** 虚线样式，如 "6 4" 表示预测段 */
+  strokeDasharray?: string;
 }
 
 export interface CategoryGroupConfig {
@@ -37,6 +40,16 @@ export interface CategoryGroupConfig {
   x1: string;
   x2: string;
   stroke?: string;
+  fill?: string;
+  fillOpacity?: number;
+}
+
+export interface HighlightAreaConfig {
+  x1: string;
+  x2: string;
+  stroke?: string;
+  strokeWidth?: number;
+  strokeDasharray?: string;
   fill?: string;
   fillOpacity?: number;
 }
@@ -55,6 +68,9 @@ export interface BaseBarChartProps {
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
+  /** 自定义图例（用于按数据项着色时展示分组色） */
+  legendItems?: Array<{ value: string; color: string }>;
+  showLegend?: boolean;
   barSize?: number;
   showLabels?: boolean;
   labelPosition?: 'top' | 'center' | 'inside' | 'insideTop' | 'insideBottom';
@@ -68,20 +84,25 @@ export interface BaseBarChartProps {
   xAxisAngle?: number;
   xAxisHeight?: number;
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
+  xAxisTickFormatter?: (value: any) => string;
   lineShowDot?: boolean;
   lineLabelFormatter?: (value: any) => string;
   /** Gray/outline bands grouping contiguous x-axis categories (e.g. 第二产业 / 第三产业) */
   categoryGroups?: CategoryGroupConfig[];
+  /** 高亮区域（如红框标出组内 Top N），无标签 */
+  highlightAreas?: HighlightAreaConfig[];
 }
 
-const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%' }: any) => {
+const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%', labelMap }: any) => {
   if (active && payload && payload.length) {
+    const displayLabel = labelMap?.[label] ?? label;
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
-        <p className="font-bold text-webank-blue mb-1">{label}</p>
+        <p className="font-bold text-webank-blue mb-1">{displayLabel}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}{unitByKey?.[entry.dataKey] ?? defaultUnit}
+            {entry.payload?.ageGroup ? `${entry.payload.ageGroup}: ` : `${entry.name}: `}
+            {entry.value}{unitByKey?.[entry.dataKey] ?? defaultUnit}
           </p>
         ))}
       </div>
@@ -147,6 +168,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
+  legendItems,
+  showLegend = true,
   barSize = 16,
   showLabels = true,
   labelPosition = 'top',
@@ -160,9 +183,11 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   xAxisAngle,
   xAxisHeight,
   xAxisInterval = 0,
+  xAxisTickFormatter,
   lineShowDot = false,
   lineLabelFormatter,
-  categoryGroups
+  categoryGroups,
+  highlightAreas,
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
@@ -178,6 +203,12 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   const barAxisId = hasLines ? 'left' : undefined;
   const lineAxisId = 'right';
   const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
+  const hasHighlightAreas = !!highlightAreas && highlightAreas.length > 0;
+  const useItemFill = data.some((d) => typeof d?.fill === 'string');
+  const labelMap = data.reduce((acc, d) => {
+    if (d?.[xAxisKey] != null && d?.name != null) acc[d[xAxisKey]] = d.name;
+    return acc;
+  }, {} as Record<string, string>);
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mb-4">
@@ -217,6 +248,21 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 }}
               />
             ))}
+            {hasHighlightAreas &&
+              highlightAreas?.map((area) => (
+                <ReferenceArea
+                  key={`highlight-${area.x1}-${area.x2}`}
+                  x1={area.x1}
+                  x2={area.x2}
+                  {...(barAxisId ? { yAxisId: barAxisId } : {})}
+                  stroke={area.stroke ?? '#475569'}
+                  strokeWidth={area.strokeWidth ?? 2}
+                  strokeDasharray={area.strokeDasharray ?? '6 4'}
+                  fill={area.fill ?? 'transparent'}
+                  fillOpacity={area.fillOpacity ?? 0}
+                  ifOverflow="hidden"
+                />
+              ))}
             {showReferenceLine && (
               <ReferenceLine
                 y={referenceLineY}
@@ -235,6 +281,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               angle={xAxisAngle}
               textAnchor={xAxisAngle && xAxisAngle < 0 ? 'end' : undefined}
               height={xAxisHeight}
+              tickFormatter={xAxisTickFormatter}
             />
             <YAxis
               hide={!showYAxis}
@@ -258,8 +305,17 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 hide={!showLineYAxis}
               />
             )}
-            <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
-            <Legend content={<CustomLegend legendOrder={legendOrder} />} />
+            <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} labelMap={labelMap} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
+            {showLegend && (
+              <Legend
+                content={(props) => (
+                  <CustomLegend
+                    legendOrder={legendOrder}
+                    payload={legendItems ?? (props.payload as Array<{ value: string; color: string }> | undefined)}
+                  />
+                )}
+              />
+            )}
             
             {bars.map((bar, index) => {
               const barColor = bar.color ?? getSeriesColor(index);
@@ -276,6 +332,10 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   animationEasing="ease-out"
                   radius={0}
                 >
+                  {useItemFill &&
+                    data.map((entry, cellIndex) => (
+                      <Cell key={`cell-${bar.dataKey}-${cellIndex}`} fill={entry.fill ?? barColor} />
+                    ))}
                   {showLabels && (
                     <LabelList
                       dataKey={bar.dataKey}
@@ -300,6 +360,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     dataKey={line.dataKey}
                     stroke={lineColor}
                     strokeWidth={line.strokeWidth || 2}
+                    strokeDasharray={line.strokeDasharray}
+                    connectNulls={false}
                     dot={lineShowDot}
                     yAxisId={line.yAxisId || lineAxisId}
                     animationDuration={800}

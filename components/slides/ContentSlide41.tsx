@@ -1,85 +1,47 @@
 import React from 'react';
-import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseCard } from '../base/BaseCard';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { aiChainExportData } from '@/data/aiChainExport';
-import { aiChainGlobalParticipationData } from '@/data/aiChainGlobal';
+import { industryHeatmapData } from '@/data/industryHeatmap';
 
-const globalColumns: ColumnConfig[] = [
-  { key: 'region', title: '国家或地区', align: 'center', width: '58px' },
-  { key: 'advantage', title: '核心参与方式和优势', align: 'left', width: '120px' },
-  {
-    key: 'industries',
-    title: '具体产业和代表企业',
-    align: 'left',
-    render: (value: string[]) => (
-      <div className="flex flex-col gap-0.5">
-        {value.map((item, i) => (
-          <p key={i} className="leading-[1.25]">
-            {i + 1}. {item}
-          </p>
-        ))}
-      </div>
-    ),
-  },
+const industryColumns: ColumnConfig[] = [
+  { key: 'industry', title: '行业', align: 'left', width: '170px' },
+  { key: 'valueAdded', title: '工业增加值(H1)', align: 'right', width: '95px' },
+  { key: 'profitGrowth', title: '利润增速(1-5月)', align: 'right', width: '90px' },
+  { key: 'ppiYoy', title: 'PPI同比(6月)', align: 'right', width: '78px' },
+  { key: 'investmentGrowth', title: '投资增速(H1)', align: 'right', width: '85px' },
+  { key: 'pmi', title: 'PMI景气(6月)', align: 'center', width: '100px' },
+  { key: 'exportPerformance', title: '出口表现(H1)', align: 'left', width: '230px' },
+  { key: 'judgment', title: '综合判断', align: 'left', width: '210px' },
 ];
 
 export const ContentSlide41: React.FC = () => {
   return (
     <BaseContentSlide
-      title="上述高景气行业背后，核心驱动力是AI产业链的全球扩张。那么中国在其中的定位是什么？"
+      title="从PMI\PPI\投资\同业增加值\利润\出口拆分行业对比看，高景气行业主要为AI产业链"
+      cardColumns={1}
     >
       <div className="flex flex-col h-full">
         <div className="mb-3 flex-shrink-0">
-          <BaseCard title="中国在AI全球产业链中的定位" delay="0ms" variant="accent" className="!p-3 gap-1">
+          <BaseCard title="高景气行业总结" delay="0ms" variant="accent" className="!p-3 gap-1">
             <p className="text-sm leading-snug">
-              中国在AI全球产业链中处于"中游主导、上游卡脖子、下游追赶"的格局。今年以来国内AI产业链高景气，主要受益于海外
-              AI 资本开支扩张带来的全球需求外溢。中国在芯片价值链占比约
-              <span className="text-red-500 font-semibold">6-8%</span>
-              ，但在AI服务器/光模块等配套环节全球份额
-              <span className="text-red-500 font-semibold">60%+</span>
-              ，量大利薄。
+              AI相关行业（特别是算力相关）、高端装备相关、绿色出口相关；K型分化短期内不可逆转，新经济端的AI景气有望延续，但旧经济端的地产、建材、传统制造业仍将在底部运行。政策需要在'扶新'与'托旧'之间寻找平衡。
             </p>
           </BaseCard>
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-[1fr_1.15fr] gap-3">
+        <div className="flex-1 min-h-0">
           <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={aiChainExportData}
-              title="中国AI链参与情况：出口同比增速"
-              subtitle="数据来源：海关总署 | 单位：%"
-              xAxisKey="category"
-              bars={[
-                { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
-                { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
-                { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
-              ]}
-              legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
-              yAxisDomain={[-40, 160]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={false}
-              barSize={4}
-              xAxisAngle={-90}
-              xAxisHeight={100}
-              xAxisInterval={0}
-            />
-          </ChartContainer>
-
-          <ChartContainer delay="720ms">
             <BaseTable
-              data={aiChainGlobalParticipationData}
-              columns={globalColumns}
-              title="AI链全球参与情况"
-              subtitle="数据来源：公开资料整理"
+              data={industryHeatmapData}
+              columns={industryColumns}
+              title="分行业景气度对比：工业增加值/利润/PPI/投资/PMI/出口"
+              subtitle="数据来源：国家统计局、海关总署、中国物流与采购联合会 | H1为上半年累计，其余为最新可比月度/累计数据"
               colorizeNumbers={false}
               striped
               rowHeight="auto"
-              cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
-              headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
+              cellClassName="!px-2 tabular-nums text-[11px] leading-tight"
+              headerCellClassName="!px-2 !py-1 whitespace-nowrap text-[11px] leading-tight"
             />
           </ChartContainer>
         </div>

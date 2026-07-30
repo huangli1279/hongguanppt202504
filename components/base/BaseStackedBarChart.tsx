@@ -9,13 +9,33 @@ import {
   ResponsiveContainer,
   Legend,
   ReferenceLine,
-  LabelList
+  ReferenceArea,
+  LabelList,
+  usePlotArea,
+  useYAxisDomain,
 } from 'recharts';
-import { uiColors, getSeriesColor } from '@/utils/chartColors';
+import { uiColors, getSeriesColor, chartColors } from '@/utils/chartColors';
 
 export interface StackedBarConfig {
   dataKey: string;
   name: string;
+  color?: string;
+}
+
+export interface CategoryGroupConfig {
+  label: string;
+  x1: string;
+  x2: string;
+  stroke?: string;
+  fill?: string;
+  fillOpacity?: number;
+}
+
+/** 两根柱之间的差距标注（如房价涨跌对应的消费落差） */
+export interface GapAnnotationConfig {
+  fromCategory: string;
+  toCategory: string;
+  label: string;
   color?: string;
 }
 
@@ -39,7 +59,86 @@ export interface BaseStackedBarChartProps {
   xAxisHeight?: number;
   showTotalLabel?: boolean;
   totalLabelFormatter?: (total: number, dataPoint: any) => string;
+  /** 顶部区间标注（如「一套房 / 大于一套房」） */
+  categoryGroups?: CategoryGroupConfig[];
+  /** 在指定类别右侧画虚线分割 */
+  verticalSplitAfter?: string;
+  /** 柱顶差距括号标注 */
+  gapAnnotations?: GapAnnotationConfig[];
 }
+
+const GapAnnotationsLayer: React.FC<{
+  data: any[];
+  xAxisKey: string;
+  annotations: GapAnnotationConfig[];
+  getStackTotal: (dataPoint: any) => number;
+}> = ({ data, xAxisKey, annotations, getStackTotal }) => {
+  const plotArea = usePlotArea();
+  const yDomain = useYAxisDomain(0);
+
+  if (!plotArea || !yDomain || yDomain.length < 2 || !annotations.length) return null;
+
+  const [yMin, yMax] = yDomain as [number, number];
+  if (yMax === yMin) return null;
+
+  const bandWidth = plotArea.width / data.length;
+  const valueToY = (value: number) =>
+    plotArea.y + plotArea.height * (1 - (value - yMin) / (yMax - yMin));
+  const categoryToX = (category: string) => {
+    const idx = data.findIndex((d) => d[xAxisKey] === category);
+    if (idx < 0) return null;
+    return plotArea.x + (idx + 0.5) * bandWidth;
+  };
+
+  return (
+    <g className="recharts-gap-annotations" pointerEvents="none">
+      {annotations.map((ann, i) => {
+        const x1 = categoryToX(ann.fromCategory);
+        const x2 = categoryToX(ann.toCategory);
+        if (x1 == null || x2 == null) return null;
+
+        const fromPoint = data.find((d) => d[xAxisKey] === ann.fromCategory);
+        const toPoint = data.find((d) => d[xAxisKey] === ann.toCategory);
+        if (!fromPoint || !toPoint) return null;
+
+        const y1 = valueToY(getStackTotal(fromPoint));
+        const y2 = valueToY(getStackTotal(toPoint));
+        const color = ann.color ?? chartColors.negative;
+        const bracketY = Math.min(y1, y2) - 22;
+        const tickTop = bracketY;
+        const midX = (x1 + x2) / 2;
+
+        return (
+          <g key={`gap-ann-${i}-${ann.label}`}>
+            <line x1={x1} y1={y1 - 12} x2={x1} y2={tickTop} stroke={color} strokeWidth={1.5} />
+            <line x1={x2} y1={y2 - 12} x2={x2} y2={tickTop} stroke={color} strokeWidth={1.5} />
+            <line x1={x1} y1={tickTop} x2={x2} y2={tickTop} stroke={color} strokeWidth={1.5} />
+            <rect
+              x={midX - 28}
+              y={tickTop - 16}
+              width={56}
+              height={16}
+              rx={3}
+              fill="#fff"
+              stroke={color}
+              strokeWidth={1}
+            />
+            <text
+              x={midX}
+              y={tickTop - 4}
+              textAnchor="middle"
+              fill={color}
+              fontSize={11}
+              fontWeight={700}
+            >
+              {ann.label}
+            </text>
+          </g>
+        );
+      })}
+    </g>
+  );
+};
 
 const CustomTooltip = ({ active, payload, label, unit = '', valueFormatter }: any) => {
   if (active && payload && payload.length) {
@@ -125,8 +224,13 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
   xAxisHeight,
   showTotalLabel = false,
   totalLabelFormatter,
+  categoryGroups,
+  verticalSplitAfter,
+  gapAnnotations,
 }) => {
   const totalTicks = data.length;
+  const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
+  const hasGapAnnotations = !!gapAnnotations && gapAnnotations.length > 0;
   const getStackTotal = (dataPoint: any) =>
     bars.reduce((sum, bar) => sum + (Number(dataPoint?.[bar.dataKey]) || 0), 0);
   const renderCustomTick = (props: any) => {
@@ -159,11 +263,44 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: showTotalLabel ? 28 : 20, right: 30, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{
+              top: hasGapAnnotations ? 36 : hasCategoryGroups || showTotalLabel ? 28 : 20,
+              right: 30,
+              left: showYAxis ? -20 : 20,
+              bottom: 5,
+            }}
             barSize={barSize}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
+            {categoryGroups?.map((group) => (
+              <ReferenceArea
+                key={`group-${group.label}-${group.x1}-${group.x2}`}
+                x1={group.x1}
+                x2={group.x2}
+                stroke="none"
+                fill={group.fill ?? '#94a3b8'}
+                fillOpacity={group.fillOpacity ?? 0.05}
+                ifOverflow="hidden"
+                label={{
+                  value: group.label,
+                  position: 'insideTop',
+                  fill: '#64748b',
+                  fontSize: 11,
+                  fontWeight: 600,
+                  offset: 4,
+                }}
+              />
+            ))}
             {showReferenceLine && <ReferenceLine y={referenceLineY} stroke={uiColors.tick} strokeWidth={1} />}
+            {verticalSplitAfter && (
+              <ReferenceLine
+                x={verticalSplitAfter}
+                position="end"
+                stroke="#94a3b8"
+                strokeDasharray="5 4"
+                strokeWidth={1.5}
+              />
+            )}
             <XAxis
               dataKey={xAxisKey}
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}
@@ -237,6 +374,14 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
                 </Bar>
               );
             })}
+            {hasGapAnnotations && (
+              <GapAnnotationsLayer
+                data={data}
+                xAxisKey={xAxisKey}
+                annotations={gapAnnotations!}
+                getStackTotal={getStackTotal}
+              />
+            )}
           </BarChart>
         </ResponsiveContainer>
       </div>

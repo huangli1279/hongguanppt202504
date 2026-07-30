@@ -1,107 +1,71 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
-import { chartColors } from '@/utils/chartColors';
-import { unemploymentRateData, flexibleEmploymentData } from '@/data/employment';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { incomeExpenditureData, incomeSentimentData } from '@/data/consumerConfidence';
+import { seriesColors } from '@/utils/chartColors';
 
 export const ContentSlide35: React.FC = () => {
-  const unemploymentLines: LineConfig[] = [
-    { dataKey: 'overall', name: '全国城镇调查失业率', strokeWidth: 2.5 },
-    { dataKey: 'age16_24', name: '16-24岁(不含在校生)', strokeWidth: 2 },
-    { dataKey: 'age25_29', name: '25-29岁(不含在校生)', strokeWidth: 2 },
-    { dataKey: 'age30_59', name: '30-59岁(不含在校生)', strokeWidth: 2 },
+  const incomeLines: LineConfig[] = [
+    { dataKey: 'incomeReal', name: '可支配收入实际', color: seriesColors[0], strokeWidth: 2.5, labelDY: -14 },
+    { dataKey: 'consumptionReal', name: '消费支出实际', color: seriesColors[1], strokeWidth: 2.5, labelDY: 16 },
   ];
 
-  const flexibleEmploymentLines: LineConfig[] = [
-    {
-      dataKey: 'actual',
-      name: '灵活就业人员',
-      color: chartColors.primary,
-      strokeWidth: 2.5,
-    },
-    {
-      dataKey: 'forecast',
-      name: '预测(E)',
-      color: chartColors.primary,
-      strokeWidth: 2.5,
-      strokeDasharray: '6 4',
-    },
+  const sentimentLines: LineConfig[] = [
+    { dataKey: 'incomeFeeling', name: '收入感受指数', color: seriesColors[0], strokeWidth: 2.5, labelDY: -14 },
+    { dataKey: 'incomeExpectation', name: '收入预期指数', color: seriesColors[1], strokeWidth: 2.5, labelDY: 16 },
   ];
 
   return (
     <BaseContentSlide
-      title={<>就业变化：失业率季节性回落，灵活就业快速上升</>}
+      title={<>收入变化：满意度及预期长期走低，边际消费倾向下降</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="失业率" delay="0ms" variant="accent">
+          <BaseCard title="收入满意度和预期差" delay="0ms" variant="accent">
             <p>
-              二季度失业率维持在<span className="text-red-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，2026年毕业生预计<span className="text-red-500 font-semibold">1270万</span>，创历史新高，下半年就业情况仍有待观察。
+              根据人行调查，居民收入感受和信心指数自23年以来低于50，表明居民现在收入的满意度和未来收入预期处于变差阶段。
             </p>
           </BaseCard>
-          <BaseCard title="灵活就业" delay="120ms">
+          <BaseCard title="收入增速放缓，剪刀差扩大" delay="120ms">
             <p>
-              灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计将到<span className="text-red-500 font-semibold">3.2亿</span>人，增长态势迅猛。
+              上半年居民人均可支配收入 <span className="text-red-500 font-semibold">2.3万元</span>，实际增长 <span className="text-red-500 font-semibold">4.2%</span>，较2025年全年 <span className="text-red-500 font-semibold">5.0%</span> 明显放缓；人均消费支出 <span className="text-red-500 font-semibold">1.48万元</span>，实际仅增 <span className="text-red-500 font-semibold">2.7%</span>，收入—支出增速剪刀差扩大至 <span className="text-red-500 font-semibold">1.5个百分点</span>。2025年人均边际消费倾向降至 <span className="text-red-500 font-semibold">0.61</span>，同比下滑 <span className="text-red-500 font-semibold">0.08</span>，新增收入转化为消费的比例偏低。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={unemploymentRateData}
-              title="城镇调查失业率（分年龄段）"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={unemploymentLines}
-              yAxisDomain={[0, 20]}
+              data={incomeSentimentData}
+              title="居民收入感受与预期指数"
+              subtitle="数据来源：中国人民银行储户问卷调查 | 单位：%"
+              lines={sentimentLines}
+              yAxisDomain={[42, 52]}
               showYAxis={true}
-              xAxisTickCount={8}
-              legendOrder={[
-                '全国城镇调查失业率',
-                '16-24岁(不含在校生)',
-                '25-29岁(不含在校生)',
-                '30-59岁(不含在校生)',
-              ]}
+              showReferenceLine={true}
+              referenceLineY={50}
+              legendOrder={['收入感受指数', '收入预期指数']}
               unit="%"
+              xAxisTicks={['22Q4', '23Q2', '23Q4', '24Q2', '24Q4', '25Q2', '25Q4']}
             />
           </ChartContainer>
+
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={flexibleEmploymentData}
-              title="中国灵活就业人员规模变化"
-              subtitle="数据来源：公开资料整理 | 单位：亿人；虚线为预测值"
-              lines={flexibleEmploymentLines}
-              yAxisDomain={[1, 3.5]}
+              data={incomeExpenditureData}
+              title="居民人均收入与消费支出累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={incomeLines}
+              yAxisDomain={[-1, 8]}
               showYAxis={true}
-              yAxisTickFormatter={(val) => `${val}`}
-              xAxisTicks={[
-                '2015年',
-                '2017',
-                '2019',
-                '2020',
-                '2021',
-                '2022',
-                '2023',
-                '2024',
-                '2025',
-                '2026(E)',
-              ]}
-              highlightPeriods={[
-                '2015年',
-                '2017',
-                '2019',
-                '2020',
-                '2021',
-                '2022',
-                '2023',
-                '2024',
-              ]}
-              legendOrder={['灵活就业人员', '预测(E)']}
-              unit="亿人"
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['可支配收入实际', '消费支出实际']}
+              unit="%"
             />
           </ChartContainer>
         </div>
