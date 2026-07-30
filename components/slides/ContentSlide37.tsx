@@ -18,11 +18,13 @@ export const ContentSlide37: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="房价持续同比下跌，财富效应承压" delay="0ms" variant="accent">
             <p>
-              70城新建商品住房价格自2023年起持续同比负增长，2024年10月跌幅一度扩大至
+              根据高盛测算，26年Q1居民财富中房地产占
+              <span className="text-red-500 font-semibold">52%</span>
+              。70城新建商品住房价格自2023年起持续同比负增长，2024年10月跌幅一度扩大至
               <span className="text-red-500 font-semibold">-6.2%</span>
               ；此后跌幅收窄，但2026年上半年仍在
               <span className="text-red-500 font-semibold">-3.5%</span>
-              左右徘徊，房价下行周期拉长，居民住房财富缩水、预期偏弱。
+              左右徘徊，房价下行周期拉长，居民住房财富缩水、消费预期偏弱。
             </p>
           </BaseCard>
           <BaseCard title="房价跌幅越大，居民消费越低" delay="120ms">
