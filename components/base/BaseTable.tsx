@@ -288,7 +288,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
             )}
           </div>
         )}
-        <div className="flex-1 flex flex-col min-h-0 overflow-x-auto text-xs">
+        <div className="flex-1 flex flex-col min-h-0 overflow-x-auto overflow-y-hidden text-xs">
           {/* Header */}
           {isGrouped ? (
             // 二级表头模式 - 使用 Grid 布局确保对齐
@@ -402,7 +402,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
               return (
                 <div
                   key={rowIndex}
-                  className={`grid flex-1 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg} ${customRowClass}`}
+                  className={`grid flex-1 min-h-0 items-center border-b border-slate-100 transition-colors hover:bg-slate-100 ${highlighted ? '' : stripedBg} ${customRowClass}`}
                   style={{
                     ...(highlighted ? { backgroundColor: highlightColor } : undefined),
                     gridTemplateColumns: autoGridTemplate
@@ -414,7 +414,7 @@ export const BaseTable: React.FC<BaseTableProps> = ({
                       <div
                         key={col.key}
                         className={cn(
-                          `min-w-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`,
+                          `min-w-0 min-h-0 px-3 self-stretch h-full flex items-center ${getAlignment(col.align)} ${isGroupBoundary ? 'border-r border-slate-200' : ''}`,
                           cellClassName
                         )}
                         style={{

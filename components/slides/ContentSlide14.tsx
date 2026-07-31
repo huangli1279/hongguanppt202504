@@ -2,10 +2,11 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseLineChart } from '../base/BaseLineChart';
-import { retailMonthlyCategoryData, cityRetailData } from '../../data';
+import { retailMonthlyCategoryData, cityRetailData, serviceRetailData } from '../../data';
 
 const retailChartData = retailMonthlyCategoryData.filter((d) => d.period >= '2024-06');
 const cityChartData = cityRetailData.filter((d) => d.period >= '2024-06');
+const serviceChartData = serviceRetailData.filter((d) => d.period >= '2024-06');
 const juneCityRetail = cityRetailData.find((d) => d.period === '2026-06')!;
 const fmtPct = (v: number | null) => (v == null ? '—' : `${v.toFixed(1)}%`);
 
@@ -14,7 +15,7 @@ export const ContentSlide14: React.FC = () => {
     <BaseContentSlide
       title="上半年社零回落，分化特征明显"
       cardColumns={3}
-      chartColumns={2}
+      chartColumns={3}
       cards={
         <>
           <BaseCard title="社零总量承压" delay="0ms" variant="accent">
@@ -79,6 +80,21 @@ export const ContentSlide14: React.FC = () => {
               showReferenceLine
               referenceLineY={0}
               xAxisTickCount={8}
+            />
+          </ChartContainer>
+          <ChartContainer delay="840ms">
+            <BaseLineChart
+              title="服务零售额累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              data={serviceChartData}
+              lines={[
+                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
+              ]}
+              legendOrder={['服务零售额:累计同比']}
+              yAxisDomain={[4, 8]}
+              showYAxis
+              xAxisTickCount={8}
+              highlightPeriods={['2026-06']}
             />
           </ChartContainer>
         </>

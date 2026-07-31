@@ -95,6 +95,8 @@ export const serviceRetailData = [
   { period: '2025-09', serviceRetail: 5.2 },  { period: '2025-10', serviceRetail: 5.3 },
   { period: '2025-11', serviceRetail: 5.4 },  { period: '2025-12', serviceRetail: 5.5 },
   { period: '2026-02', serviceRetail: 5.6 },  { period: '2026-03', serviceRetail: 5.5 },
+  { period: '2026-04', serviceRetail: 5.6 },  { period: '2026-05', serviceRetail: 5.4 },
+  { period: '2026-06', serviceRetail: 5.3 },
 ];
 
 export const springFestivalTravelData = [

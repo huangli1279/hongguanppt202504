@@ -16,7 +16,13 @@ const deflatorXAxisTicks = [
   '2021-03',
   '2023-03',
   '2025-03',
-  '2026-03',
+  '2026-06',
+];
+
+/** 右侧留白，便于红色标注框向右拉宽，避免贴边显得突兀 */
+const deflatorLongChartData = [
+  ...gdpDeflatorYoyLongData,
+  { period: '2026-09', value: null },
 ];
 
 export const ContentSlide05: React.FC = () => {
@@ -86,7 +92,7 @@ export const ContentSlide05: React.FC = () => {
           <div className="min-h-0 flex flex-col gap-2">
             <ChartContainer delay="840ms" className="flex-1 min-h-0">
               <BaseLineChart
-                data={gdpDeflatorYoyLongData}
+                data={deflatorLongChartData}
                 title="GDP平减指数当季同比"
                 subtitle="数据来源：国家统计局 | 单位：%"
                 yAxisDomain={[-2, 6]}
@@ -101,8 +107,8 @@ export const ContentSlide05: React.FC = () => {
                     label: '第一次涨价',
                     x1: '2016-03',
                     x2: '2018-06',
-                    stroke: '#5C9A8A',
-                    fill: '#5C9A8A',
+                    stroke: '#94a3b8',
+                    fill: '#94a3b8',
                     fillOpacity: 0.12,
                   },
                   {
@@ -112,6 +118,14 @@ export const ContentSlide05: React.FC = () => {
                     stroke: '#C09A4A',
                     fill: '#C09A4A',
                     fillOpacity: 0.12,
+                  },
+                  {
+                    label: '',
+                    x1: '2026-03',
+                    x2: '2026-09',
+                    stroke: '#ef4444',
+                    fill: '#ef4444',
+                    fillOpacity: 0.08,
                   },
                 ]}
                 lines={[
@@ -128,7 +142,7 @@ export const ContentSlide05: React.FC = () => {
             </ChartContainer>
 
             <div className="flex flex-col gap-1.5 flex-shrink-0">
-              <div className="rounded-card border-l-4 border-[#5C9A8A] bg-[#edf5f3] px-2.5 py-1.5">
+              <div className="rounded-card border-l-4 border-[#94a3b8] bg-[#f1f5f9] px-2.5 py-1.5">
                 <h4 className="font-bold text-webank-blue text-xs mb-0.5">第一次涨价（2016–2018）</h4>
                 <p className="text-[11px] text-webank-text leading-snug">
                   国内供给侧去产能（钢铁、煤炭等行业产能收缩）+ 棚改货币化拉动房地产需求，两者共同推升PPI。
