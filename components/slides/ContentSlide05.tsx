@@ -63,8 +63,28 @@ export const ContentSlide05: React.FC = () => {
             />
           </ChartContainer>
 
+          <ChartContainer delay="720ms">
+            <BaseLineChart
+              data={deflatorData}
+              title="GDP平减指数分项贡献拆解"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              yAxisDomain={[-5, 4]}
+              showYAxis
+              xAxisTickCount={deflatorData.length}
+              showReferenceLine
+              referenceLineY={0}
+              legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
+              lines={[
+                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 12 },
+                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
+              ]}
+            />
+          </ChartContainer>
+
           <div className="min-h-0 flex flex-col gap-2">
-            <ChartContainer delay="720ms" className="flex-1 min-h-0">
+            <ChartContainer delay="840ms" className="flex-1 min-h-0">
               <BaseLineChart
                 data={gdpDeflatorYoyLongData}
                 title="GDP平减指数当季同比"
@@ -122,26 +142,6 @@ export const ContentSlide05: React.FC = () => {
               </div>
             </div>
           </div>
-
-          <ChartContainer delay="840ms">
-            <BaseLineChart
-              data={deflatorData}
-              title="GDP平减指数分项贡献拆解"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              yAxisDomain={[-5, 4]}
-              showYAxis
-              xAxisTickCount={deflatorData.length}
-              showReferenceLine
-              referenceLineY={0}
-              legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
-              lines={[
-                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top', labelDY: -8 },
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 12 },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
-              ]}
-            />
-          </ChartContainer>
         </section>
       </div>
     </BaseContentSlide>
