@@ -1,191 +1,140 @@
 import React from 'react';
+import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart } from '../base/BaseBarChart';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { aiChainExportData } from '@/data/aiChainExport';
-import { aiChainGlobalParticipationData } from '@/data/aiChainGlobal';
+import { AiGrowthContributionChart } from '../charts/AiGrowthContributionChart';
 
-const keptExportCategories = [
-  '晶圆制造设备',
-  '处理器/控制器IC',
-  '计算机存储单元',
-  '存储器IC',
-  '光模块及光通信零件',
-  'PCB',
-  '液冷模块/冷却塔',
-];
-
-const filteredExportData = keptExportCategories
-  .map((category) => aiChainExportData.find((d) => d.category === category))
-  .filter((d): d is NonNullable<typeof d> => Boolean(d));
-
-const globalColumns: ColumnConfig[] = [
-  { key: 'region', title: '国家或地区', align: 'center', width: '58px' },
-  { key: 'advantage', title: '核心参与方式和优势', align: 'left', width: '120px' },
+const cycleStages = [
   {
-    key: 'industries',
-    title: '具体产业和代表企业',
-    align: 'left',
-    render: (value: string[]) => (
-      <div className="flex flex-col gap-0.5">
-        {value.map((item, i) => (
-          <p key={i} className="leading-[1.25]">
-            {i + 1}. {item}
-          </p>
-        ))}
-      </div>
-    ),
+    title: '短期: 花钱、拖累',
+    subtitle: '资本开支、组织调整',
+    variant: 'blue' as const,
+  },
+  {
+    title: '中期: 磨合、筑底',
+    subtitle: '应用落地、效率验证',
+    variant: 'blue' as const,
+  },
+  {
+    title: '长期: 见效、拉升',
+    subtitle: 'TFP提升、增长奇点',
+    variant: 'blue' as const,
+  },
+  {
+    title: '关键判断',
+    subtitle: '本轮兑现周期≈10年+',
+    variant: 'orange' as const,
   },
 ];
 
-interface ChainNode {
-  category: string;
-  percentage: string;
-  lines: string[];
-  bgColor: string;
-  headerColor: string;
-  textColor: string;
-}
-
-const chainNodes: ChainNode[] = [
-  {
-    category: '上游·芯片设计',
-    percentage: '≈0%',
-    lines: ['英伟达/AMD/Google', '先进制程被封锁'],
-    bgColor: 'bg-red-50',
-    headerColor: 'bg-red-400',
-    textColor: 'text-red-600',
-  },
-  {
-    category: '上游·晶圆代工',
-    percentage: '≈0%',
-    lines: ['台积电/三星', '7nm以下受限'],
-    bgColor: 'bg-red-50',
-    headerColor: 'bg-red-400',
-    textColor: 'text-red-600',
-  },
-  {
-    category: '中游·封测',
-    percentage: '~38%',
-    lines: ['长电/通富/华天', '三龙头合计约35%'],
-    bgColor: 'bg-emerald-50',
-    headerColor: 'bg-emerald-500',
-    textColor: 'text-emerald-600',
-  },
-  {
-    category: '中游·光模块',
-    percentage: '60%+',
-    lines: ['中际旭创/新易盛', 'LightCounting'],
-    bgColor: 'bg-teal-50',
-    headerColor: 'bg-teal-500',
-    textColor: 'text-teal-700',
-  },
-  {
-    category: '中游·服务器代工',
-    percentage: '~80%',
-    lines: ['含台资ODM', 'TrendForce/Omdia'],
-    bgColor: 'bg-teal-50',
-    headerColor: 'bg-teal-600',
-    textColor: 'text-teal-700',
-  },
-  {
-    category: '下游·模型/应用',
-    percentage: '~30%',
-    lines: ['DeepSeek/通义/豆包', 'Token消耗占比'],
-    bgColor: 'bg-blue-50',
-    headerColor: 'bg-blue-500',
-    textColor: 'text-blue-600',
-  },
-];
-
-const ChevronArrow: React.FC<{ color: string }> = ({ color }) => (
-  <div className="flex items-center justify-center flex-shrink-0 w-5">
-    <svg viewBox="0 0 20 40" className="w-4 h-8" fill="none">
-      <path d="M2 2 L16 20 L2 38" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+const StageArrow: React.FC = () => (
+  <div className="flex items-center justify-center flex-shrink-0 w-5 self-center">
+    <svg viewBox="0 0 20 12" className="w-5 h-3" fill="none">
+      <path
+        d="M1 6 H15 M12 2 L16 6 L12 10"
+        stroke="#7EB8D8"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </div>
 );
 
 export const ContentSlide43: React.FC = () => {
   return (
-    <BaseContentSlide
-      title="上述高景气行业背后，核心驱动力是AI产业链的全球扩张。那么中国在其中的定位是什么？"
-    >
-      <div className="flex flex-col h-full">
-        <div className="mb-3 flex-shrink-0">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-1.5 h-5 bg-webank-blue rounded-sm" />
-            <h2 className="text-sm font-bold text-gray-800">全球AI产业链：中国在各环节的位置</h2>
-          </div>
+    <BaseContentSlide title="目前正处于AI资本开支快速扩张期" cardColumns={3}>
+      <div className="flex flex-col h-full min-h-0">
+        <div className="grid grid-cols-3 gap-3 mb-2 flex-shrink-0">
+          <BaseCard
+            title="资本开支与收入端"
+            delay="0ms"
+            variant="accent"
+            className="!p-2.5 !gap-1"
+          >
+            <p className="text-[12px] leading-snug">
+              目前处于资本开支快速扩张期，据Bloomberg，2026年美国头部企业资本开支预计
+              <span className="text-red-500 font-semibold">6,000-7,000亿美元</span>
+              ，中国约
+              <span className="text-red-500 font-semibold">5,000亿元</span>
+              。收入端，硬件层收入最确定，云服务和订阅层处于早期，Agent商业化尚未落地。
+            </p>
+          </BaseCard>
 
-          <div className="flex items-stretch gap-0">
-            {chainNodes.map((node, i) => (
-              <React.Fragment key={node.category}>
-                <div
-                  className={`flex-1 rounded-lg overflow-hidden ${node.bgColor} border border-gray-100 shadow-sm
-                    animate-fade-in-up fill-mode-forwards opacity-0`}
-                  style={{ animationDelay: `${i * 120}ms` }}
-                >
-                  <div className={`${node.headerColor} text-white text-center text-[10px] font-semibold py-1 px-1`}>
-                    {node.category}
-                  </div>
-                  <div className="flex flex-col items-center justify-center py-2 px-1">
-                    <span className={`text-lg font-bold ${node.textColor} leading-none`}>
-                      {node.percentage}
-                    </span>
-                    <div className="mt-1 text-center">
-                      {node.lines.map((line, j) => (
-                        <p key={j} className="text-[9px] text-gray-500 leading-relaxed">{line}</p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                {i < chainNodes.length - 1 && (
-                  <ChevronArrow color="#94a3b8" />
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+          <BaseCard
+            title="AI对GDP拉动的预测分歧"
+            delay="120ms"
+            className="!p-2.5 !gap-1"
+          >
+            <p className="text-[11px] leading-snug">
+              乐观派（IMF、McKinsey、OECD）：未来10年AI每年额外拉动GDP
+              <span className="text-red-500 font-semibold">0.7-1.8</span>
+              个百分点；谨慎派（CBO）预计2026—2036年生成式AI年贡献约
+              <span className="text-red-500 font-semibold">0.1</span>
+              个百分点。分歧来自任务可替代比例、部署速度、互补投资、模型成本与可靠性、劳动再配置及需求承接等假设差异。生产率兑现滞后期逐轮缩短，本轮或约
+              <span className="text-red-500 font-semibold">10年</span>
+              内逐步显现。
+            </p>
+          </BaseCard>
+
+          <BaseCard
+            title="风险提示"
+            delay="240ms"
+            className="!p-2.5 !gap-1
+              !bg-gradient-to-b !from-amber-50 !to-orange-50/80
+              !border-l-4 !border-amber-400 hover:!border-amber-500"
+          >
+            <p className="text-[11px] font-semibold text-amber-800 leading-snug mb-1">
+              引发的问题：
+            </p>
+            <div className="space-y-1.5 text-[11px] leading-snug text-slate-700">
+              <p>
+                <span className="font-semibold text-amber-700">① 这是不是泡沫？</span>
+                ——万亿资本开支砸下去，回报在哪里？
+              </p>
+              <p>
+                <span className="font-semibold text-amber-700">② 就业冲击有多大？</span>
+                ——AI替代的岗位，新创造的岗位，能对上吗？
+              </p>
+            </div>
+          </BaseCard>
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-[1fr_1.15fr] gap-3">
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={filteredExportData}
-              title="中国AI链参与情况：出口同比增速"
-              subtitle="数据来源：海关总署 | 单位：%"
-              xAxisKey="category"
-              bars={[
-                { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
-                { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
-                { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
-              ]}
-              legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
-              yAxisDomain={[-40, 160]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={false}
-              barSize={12}
-              xAxisAngle={-90}
-              xAxisHeight={100}
-              xAxisInterval={0}
-            />
+        <div className="flex-1 min-h-0">
+          <ChartContainer delay="480ms" ariaLabel="AI净增长贡献J曲线与兑现周期">
+            <AiGrowthContributionChart />
           </ChartContainer>
+        </div>
 
-          <ChartContainer delay="720ms">
-            <BaseTable
-              data={aiChainGlobalParticipationData}
-              columns={globalColumns}
-              title="AI链全球参与情况"
-              subtitle="数据来源：公开资料整理"
-              colorizeNumbers={false}
-              striped
-              rowHeight="auto"
-              cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
-              headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
-            />
-          </ChartContainer>
+        <div className="flex items-stretch gap-0 mt-2 flex-shrink-0">
+          {cycleStages.map((stage, i) => (
+            <React.Fragment key={stage.title}>
+              <div
+                className={`flex-1 rounded-lg border px-2 py-1.5 text-center
+                  animate-fade-in-up fill-mode-forwards opacity-0 ${
+                    stage.variant === 'orange'
+                      ? 'bg-gradient-to-b from-amber-50 to-orange-50 border-amber-300'
+                      : 'bg-gradient-to-b from-sky-50 to-blue-50/60 border-sky-200'
+                  }`}
+                style={{ animationDelay: `${600 + i * 80}ms` }}
+              >
+                <p
+                  className={`text-[12px] font-bold leading-tight ${
+                    stage.variant === 'orange' ? 'text-amber-700' : 'text-webank-blue'
+                  }`}
+                >
+                  {stage.title}
+                </p>
+                <p
+                  className={`text-[10px] leading-tight mt-0.5 ${
+                    stage.variant === 'orange' ? 'text-amber-600/90' : 'text-slate-500'
+                  }`}
+                >
+                  {stage.subtitle}
+                </p>
+              </div>
+              {i < cycleStages.length - 1 && <StageArrow />}
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </BaseContentSlide>

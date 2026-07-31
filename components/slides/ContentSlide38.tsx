@@ -35,7 +35,7 @@ export const ContentSlide38: React.FC = () => {
               <span className="text-red-500 font-semibold">11.9%</span>
               ，多套房家庭少
               <span className="text-red-500 font-semibold">25.9%</span>
-              ；文娱与外出餐饮最先收缩，房价下跌对消费的抑制效应明显，稳定房价有助于激发消费动力。
+              ；文娱与外出餐饮最先收缩，房价下跌对消费的抑制效应明显。
             </p>
           </BaseCard>
         </div>
