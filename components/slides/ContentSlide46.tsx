@@ -40,40 +40,121 @@ const policyColumns: ColumnConfig[] = [
   },
 ];
 
+const horizonStages = [
+  {
+    phase: '短期',
+    effect: '跟踪外部资本开支与兑现指标',
+    netImpact: '云厂商Capex与AI变现效率',
+    detail:
+      '云厂商资本支出增速、AI收入/资本支出比、推理需求、数据中心利用率与租金、头部FCF覆盖率、债务融资占比及信用利差。',
+    tone: 'negative' as const,
+  },
+  {
+    phase: '中期',
+    effect: '畅通生产率向宏观扩散的四渠道',
+    netImpact: '硅基供给扩张、碳基收入约束',
+    detail:
+      '价格、工资、投资与就业、财政四渠道需打通；核心矛盾是"硅基供给扩张、碳基收入约束"。',
+    tone: 'neutral' as const,
+  },
+  {
+    phase: '长期',
+    effect: '知识生产与物理生产双路径',
+    netImpact: '两条路径均面临落地约束',
+    detail:
+      '知识生产（辅助→自主发现）与物理生产（机器人/自动驾驶/智能制造）两条路径并行推进，均面临落地约束。',
+    tone: 'positive' as const,
+  },
+];
+
+const toneStyles = {
+  negative: {
+    card: 'bg-gradient-to-b from-red-50 to-orange-50/70 border-red-200',
+    badge: 'bg-red-500 text-white',
+    effect: 'text-red-600',
+    impact: 'text-red-500',
+  },
+  neutral: {
+    card: 'bg-gradient-to-b from-sky-50 to-blue-50/60 border-sky-200',
+    badge: 'bg-webank-blue text-white',
+    effect: 'text-webank-blue',
+    impact: 'text-webank-accent',
+  },
+  positive: {
+    card: 'bg-gradient-to-b from-emerald-50 to-teal-50/60 border-emerald-200',
+    badge: 'bg-emerald-600 text-white',
+    effect: 'text-emerald-700',
+    impact: 'text-emerald-600',
+  },
+};
+
+const StageArrow: React.FC = () => (
+  <div className="flex items-center justify-center flex-shrink-0 w-5 self-center">
+    <svg viewBox="0 0 20 12" className="w-5 h-3" fill="none">
+      <path
+        d="M1 6 H15 M12 2 L16 6 L12 10"
+        stroke="#7EB8D8"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
+
 export const ContentSlide46: React.FC = () => {
   return (
     <BaseContentSlide
       title="后续需关注外部指标与国内政策"
       cardColumns={1}
+      headerClassName="!mb-2"
+      className="!p-8 sm:!p-10"
     >
-      <div className="flex flex-col h-full min-h-0">
-        <div className="mb-2 flex-shrink-0">
-          <BaseCard
-            title="后续关注：外部指标与国内政策"
-            delay="0ms"
-            variant="accent"
-            className="!p-2.5 !gap-1"
-          >
-            <div className="text-[11px] leading-snug space-y-0.5">
-              <p>
-                海外AI资本开支外溢对中国拉动较大，需持续跟踪外部指标与国内政策。
-              </p>
-              <p>
-                <span className="font-semibold">短期：</span>
-                云厂商资本支出增速、AI收入/资本支出比、推理需求、数据中心利用率与租金、头部FCF覆盖率、债务融资占比及信用利差。
-              </p>
-              <p>
-                <span className="font-semibold">中期：</span>
-                畅通生产率向宏观扩散的价格、工资、投资与就业、财政四渠道；核心矛盾是
-                <span className="text-webank-accent font-semibold">"硅基供给扩张、碳基收入约束"</span>
-                。
-              </p>
-              <p>
-                <span className="font-semibold">长期：</span>
-                知识生产（辅助→自主发现）与物理生产（机器人/自动驾驶/智能制造）两条路径，均面临落地约束。
-              </p>
-            </div>
-          </BaseCard>
+      <div className="flex flex-col h-full min-h-0 pb-4">
+        <BaseCard
+          title="后续关注：外部指标与国内政策"
+          delay="0ms"
+          variant="accent"
+          className="!p-2.5 !gap-1 mb-2 flex-shrink-0"
+        >
+          <p className="text-[12px] leading-snug">
+            海外AI资本开支外溢对中国拉动较大，需持续跟踪
+            <span className="font-semibold text-webank-blue">外部指标</span>
+            与
+            <span className="font-semibold text-webank-blue">国内政策</span>
+            ：短期盯兑现与融资约束，中期打通宏观扩散渠道，长期观察知识与物理生产落地。
+          </p>
+        </BaseCard>
+
+        <div className="flex items-stretch gap-0 mb-2 flex-shrink-0">
+          {horizonStages.map((stage, i) => {
+            const style = toneStyles[stage.tone];
+            return (
+              <React.Fragment key={stage.phase}>
+                <div
+                  className={`flex-1 rounded-lg border px-2.5 py-2 flex flex-col
+                    animate-fade-in-up fill-mode-forwards opacity-0 ${style.card}`}
+                  style={{ animationDelay: `${120 + i * 80}ms` }}
+                >
+                  <span
+                    className={`inline-flex self-start rounded px-1.5 py-0.5 text-[10px] font-bold ${style.badge}`}
+                  >
+                    {stage.phase}
+                  </span>
+                  <p className={`mt-1.5 text-[13px] font-bold leading-tight ${style.effect}`}>
+                    {stage.effect}
+                  </p>
+                  <p className={`mt-0.5 text-[11px] font-semibold ${style.impact}`}>
+                    {stage.netImpact}
+                  </p>
+                  <p className="mt-1 text-[10px] leading-snug text-slate-600">
+                    {stage.detail}
+                  </p>
+                </div>
+                {i < horizonStages.length - 1 && <StageArrow />}
+              </React.Fragment>
+            );
+          })}
         </div>
 
         <div className="flex-1 min-h-0 flex flex-col">

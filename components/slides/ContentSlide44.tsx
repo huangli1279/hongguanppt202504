@@ -89,7 +89,9 @@ export const ContentSlide44: React.FC = () => {
               <p>
                 <span className="font-semibold">4. 盈利支撑强于过往：</span>
                 AI龙头多有成熟业务现金流反哺，头部模型ARR持续上调，估值泡沫程度低于互联网时期。
-                <span className="font-semibold text-webank-accent"> 值得警惕：</span>
+              </p>
+              <p>
+                <span className="font-semibold text-webank-accent">值得警惕：</span>
                 芯片折旧或被低估、
                 <span className="text-red-500 font-semibold">88%</span>
                 企业用AI但深度部署仅

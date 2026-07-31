@@ -99,9 +99,6 @@ export const ContentSlide43: React.FC = () => {
               !bg-gradient-to-b !from-amber-50 !to-orange-50/80
               !border-l-4 !border-amber-400 hover:!border-amber-500"
           >
-            <p className="text-[11px] font-semibold text-amber-800 leading-snug mb-1">
-              引发的问题：
-            </p>
             <div className="space-y-1.5 text-[11px] leading-snug text-slate-700">
               <p>
                 <span className="font-semibold text-amber-700">① 这是不是泡沫？</span>
@@ -109,7 +106,7 @@ export const ContentSlide43: React.FC = () => {
               </p>
               <p>
                 <span className="font-semibold text-amber-700">② 就业冲击有多大？</span>
-                ——AI替代的岗位，新创造的岗位，能对上吗？
+                ——AI替代的岗位，新创造的岗位，能衔接吗？
               </p>
             </div>
           </BaseCard>
