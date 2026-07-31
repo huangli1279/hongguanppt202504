@@ -1,8 +1,5 @@
 /** AI净增长贡献 J 曲线与兑现周期数据（来源：Nicholas Crafts(2004)、MGI、华泰研究） */
 
-export const aiNetGrowthFormula =
-  'AI净增长贡献 = 投资拉动 + 资本深化 + 经济传导 + 创新增长 + 总需求扩张 − 转型摩擦成本 − 宏观摩擦成本';
-
 export const realizationPeriodData = [
   { tech: '蒸汽技术', years: 70, highlight: false },
   { tech: '电力', years: 40, highlight: false },
@@ -38,8 +35,6 @@ export const frictionItems = [
   '组织改造和调整成本',
   '技术快速迭代带来折旧',
 ] as const;
-
-export const singularityItems = ['知识生产', '物理AI'] as const;
 
 export const fourCycleForecast = [
   {

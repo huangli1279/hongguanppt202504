@@ -9,11 +9,9 @@ import {
   LabelList,
 } from 'recharts';
 import {
-  aiNetGrowthFormula,
   realizationPeriodData,
   jCurveStages,
   frictionItems,
-  singularityItems,
 } from '@/data/aiGrowthJCurve';
 
 const StageCallout: React.FC<{
@@ -22,10 +20,10 @@ const StageCallout: React.FC<{
   className?: string;
 }> = ({ title, items, className }) => (
   <div className={className}>
-    <p className="font-bold text-webank-blue text-[10px] leading-tight mb-0.5">{title}</p>
+    <p className="font-bold text-webank-blue text-[12px] leading-tight mb-0.5">{title}</p>
     <ul className="space-y-0">
       {items.map((item) => (
-        <li key={item} className="text-[8px] leading-[1.25] text-slate-600 flex gap-0.5">
+        <li key={item} className="text-[10px] leading-[1.25] text-slate-600 flex gap-0.5">
           <span className="text-webank-accent shrink-0">·</span>
           <span>{item}</span>
         </li>
@@ -45,13 +43,8 @@ export const AiGrowthContributionChart: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col min-h-0 overflow-hidden border border-webank-line/60 rounded-card bg-white p-2.5">
-      {/* 公式标题 */}
-      <p className="text-[10px] leading-snug text-webank-blue font-semibold mb-1.5 flex-shrink-0">
-        {aiNetGrowthFormula}
-      </p>
-
       {/* 主图区：J曲线 + 兑现周期 */}
-      <div className="flex-1 min-h-0 grid grid-cols-[1fr_148px] gap-2">
+      <div className="flex-1 min-h-0 grid grid-cols-[1fr_275px] gap-2">
         {/* J 曲线 SVG */}
         <div className="relative min-h-0 h-full">
           <svg
@@ -73,20 +66,20 @@ export const AiGrowthContributionChart: React.FC = () => {
               strokeWidth="1"
               strokeDasharray="4 3"
             />
-            <text x="36" y="152" textAnchor="end" fill="#ef4444" fontSize="9" fontWeight="600">
+            <text x="36" y="152" textAnchor="end" fill="#ef4444" fontSize="12" fontWeight="600">
               0
             </text>
             <text
               x="20"
               y="120"
               fill="#64748b"
-              fontSize="9"
+              fontSize="12"
               transform="rotate(-90 20 120)"
               textAnchor="middle"
             >
               生产率/潜在增长
             </text>
-            <text x="280" y="248" textAnchor="middle" fill="#64748b" fontSize="9">
+            <text x="280" y="250" textAnchor="middle" fill="#64748b" fontSize="12">
               时间
             </text>
 
@@ -106,7 +99,7 @@ export const AiGrowthContributionChart: React.FC = () => {
               fill="url(#frictionFill)"
               rx="2"
             />
-            <text x="235" y="178" textAnchor="middle" fill="#005c8f" fontSize="9" fontWeight="700">
+            <text x="235" y="178" textAnchor="middle" fill="#005c8f" fontSize="12" fontWeight="700">
               转型摩擦
             </text>
 
@@ -138,13 +131,13 @@ export const AiGrowthContributionChart: React.FC = () => {
             <StageCallout
               title={jCurveStages[0].title}
               items={jCurveStages[0].items}
-              className="absolute left-[6%] top-[2%] w-[28%] bg-white/80 rounded px-1 py-0.5"
+              className="absolute left-[18%] top-[36%] w-[28%] bg-white/80 rounded px-1 py-0.5"
             />
-            <div className="absolute left-[22%] top-[52%] w-[26%] bg-white/75 rounded px-1 py-0.5">
-              <p className="font-bold text-webank-blue text-[9px] mb-0.5">转型摩擦</p>
+            <div className="absolute left-[22%] top-[52%] w-[30%] bg-white/75 rounded px-1 py-0.5">
+              <p className="font-bold text-webank-blue text-[11px] mb-0.5">转型摩擦</p>
               <ul className="space-y-0">
                 {frictionItems.map((item) => (
-                  <li key={item} className="text-[8px] leading-[1.2] text-slate-600 flex gap-0.5">
+                  <li key={item} className="text-[10px] leading-[1.2] text-slate-600 flex gap-0.5">
                     <span className="text-webank-accent shrink-0">·</span>
                     <span>{item}</span>
                   </li>
@@ -164,23 +157,15 @@ export const AiGrowthContributionChart: React.FC = () => {
             <StageCallout
               title={jCurveStages[3].title}
               items={jCurveStages[3].items}
-              className="absolute left-[72%] top-[2%] w-[22%] bg-white/80 rounded px-1 py-0.5"
+              className="absolute left-[70%] top-[4%] w-[26%] bg-white/80 rounded px-1 py-0.5"
             />
-            <div className="absolute right-[1%] top-[8%] w-[16%]">
-              <p className="font-bold text-webank-blue text-[10px] leading-tight">增长奇点?</p>
-              {singularityItems.map((item) => (
-                <p key={item} className="text-[8px] text-slate-600 leading-tight">
-                  · {item}
-                </p>
-              ))}
-            </div>
           </div>
         </div>
 
         {/* 兑现周期横向柱状图 */}
-        <div className="flex flex-col min-h-0 border-l border-webank-line/50 pl-2">
-          <p className="text-[10px] font-bold text-webank-blue mb-1 flex-shrink-0">兑现周期</p>
-          <p className="text-[8px] text-slate-500 leading-tight mb-1 flex-shrink-0">
+        <div className="flex flex-col min-h-0">
+          <p className="text-[14px] font-bold text-webank-blue mb-1 flex-shrink-0">兑现周期</p>
+          <p className="text-[10px] text-slate-500 leading-tight mb-1 flex-shrink-0">
             技术出现 → 宏观生产率兑现
           </p>
           <div className="flex-1 min-h-0">
@@ -188,15 +173,15 @@ export const AiGrowthContributionChart: React.FC = () => {
               <BarChart
                 data={barData}
                 layout="vertical"
-                margin={{ top: 4, right: 36, left: 0, bottom: 4 }}
+                margin={{ top: 4, right: 64, left: 0, bottom: 4 }}
                 barCategoryGap="18%"
               >
-                <XAxis type="number" domain={[0, 80]} hide />
+                <XAxis type="number" domain={[0, 100]} hide />
                 <YAxis
                   type="category"
                   dataKey="tech"
-                  width={44}
-                  tick={{ fontSize: 9, fill: '#334155' }}
+                  width={52}
+                  tick={{ fontSize: 11, fill: '#334155' }}
                   axisLine={false}
                   tickLine={false}
                 />
@@ -210,13 +195,13 @@ export const AiGrowthContributionChart: React.FC = () => {
                   <LabelList
                     dataKey="display"
                     position="right"
-                    style={{ fontSize: 9, fill: '#334155', fontWeight: 600 }}
+                    style={{ fontSize: 11, fill: '#334155', fontWeight: 600 }}
                   />
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <p className="text-[7px] text-slate-400 leading-tight mt-0.5 flex-shrink-0">
+          <p className="text-[9px] text-slate-400 leading-tight mt-0.5 flex-shrink-0">
             数据来源：Nicholas Crafts(2004)、MGI、华泰研究
           </p>
         </div>
