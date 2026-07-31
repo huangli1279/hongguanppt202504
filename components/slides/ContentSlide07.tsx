@@ -81,12 +81,13 @@ export const ContentSlide07: React.FC = () => {
           <span className="text-webank-accent">新旧动能转换分化加剧</span>
         </>
       }
-      headerClassName="mb-3"
+      className="!p-6 sm:!px-10 sm:!py-7"
+      headerClassName="mb-2.5"
     >
-      <div className="flex flex-col h-full min-h-0 gap-2.5 pb-5">
-        <section className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 flex-shrink-0">
-          <BaseCard title="传统产业拖累" delay="0ms" className="!p-2.5 gap-1">
-            <ul className="list-disc pl-4 space-y-0.5 text-[11px] leading-snug">
+      <div className="flex flex-col h-full min-h-0 gap-2 pb-4">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-2 flex-shrink-0">
+          <BaseCard title="传统产业拖累" delay="0ms" className="!p-2 gap-0.5">
+            <ul className="list-disc pl-3.5 space-y-0 text-[11px] leading-snug">
               <li>
                 <span className="font-bold">湖南</span>增速
                 <span className="font-bold text-green-600">2.7%</span>
@@ -114,8 +115,8 @@ export const ContentSlide07: React.FC = () => {
             </ul>
           </BaseCard>
 
-          <BaseCard title="高新产业带动经济" delay="120ms" variant="accent" className="!p-2.5 gap-1">
-            <ul className="list-disc pl-4 space-y-0.5 text-[11px] leading-snug">
+          <BaseCard title="高新产业带动经济" delay="120ms" variant="accent" className="!p-2 gap-0.5">
+            <ul className="list-disc pl-3.5 space-y-0 text-[11px] leading-snug">
               <li>
                 <span className="font-bold">浙江</span>增速
                 <span className="font-bold text-red-500">5.7%</span>
