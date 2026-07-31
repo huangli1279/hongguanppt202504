@@ -24,21 +24,21 @@ export const ContentSlide05: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          总量及增速——
-          <span className="text-webank-accent">GDP增速放缓</span>
+          二季度GDP实际增速回落至4.3%，上半年GDP增速4.7%，
+          <span className="text-webank-accent">平减指数回正</span>
         </>
       }
     >
       <div className="flex flex-col h-full min-h-0 gap-3">
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">
-          <BaseCard title="总量及增速——GDP增速放缓" delay="0ms" variant="accent">
+          <BaseCard title="GDP增速放缓" delay="0ms" variant="accent">
             <p>
               2026年二季度GDP <span className="font-bold">36.15万亿</span>，同比增长 <span className="font-bold text-red-600">4.3%</span>，GDP增速较一季度 <span className="font-bold">5%</span> 放缓。
               上半年GDP增速达 <span className="font-bold text-red-600">4.7%</span>，在全年"4.5%-5.0%"增长目标的区域。
             </p>
           </BaseCard>
 
-          <BaseCard title="名义与实际的“温差”——平减指数回正" delay="120ms">
+          <BaseCard title="平减指数回正" delay="120ms">
             <p>
               二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold">4.3%</span>，平减指数自23年2季度以来首次回正。
               总量与第二产业平减指数同步由负转正，核心由 AI 产业链景气扩张、能源价格上行拉动。

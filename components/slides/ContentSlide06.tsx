@@ -30,7 +30,7 @@ export const ContentSlide06: React.FC = () => {
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="分产业看——二产增速回落，三产增速稳定" delay="0ms">
+          <BaseCard title="二产增速回落，三产增速稳定" delay="0ms">
             <p>
               第二产业同比增长<span className="font-bold">3%</span>，较一季度回落
               <span className="font-bold">1.9个百分点</span>
@@ -40,7 +40,7 @@ export const ContentSlide06: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="分化——K型分化加剧" delay="120ms">
+          <BaseCard title="K型分化加剧" delay="120ms">
             <p>
               高技术制造业（<span className="font-bold">13.3%</span>
               ）、信息传输、软件和信息技术服务业（
@@ -126,6 +126,7 @@ export const ContentSlide06: React.FC = () => {
                 xAxisAngle={-35}
                 xAxisHeight={70}
                 xAxisInterval={0}
+                xAxisTickFontSize={8}
                 categoryGroups={[
                   { label: '第二产业', x1: '工业', x2: '建筑业' },
                   { label: '第三产业', x1: '批发零售', x2: '其他行业' },

@@ -85,6 +85,7 @@ export interface BaseBarChartProps {
   xAxisHeight?: number;
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
   xAxisTickFormatter?: (value: any) => string;
+  xAxisTickFontSize?: number;
   lineShowDot?: boolean;
   lineLabelFormatter?: (value: any) => string;
   /** Gray/outline bands grouping contiguous x-axis categories (e.g. 第二产业 / 第三产业) */
@@ -184,6 +185,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   xAxisHeight,
   xAxisInterval = 0,
   xAxisTickFormatter,
+  xAxisTickFontSize = 10,
   lineShowDot = false,
   lineLabelFormatter,
   categoryGroups,
@@ -275,7 +277,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               dataKey={xAxisKey}
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}
               tickLine={false}
-              tick={{ fill: uiColors.tick, fontSize: 10 }}
+              tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}
               dy={xAxisAngle ? 25 : 10}
               interval={xAxisInterval}
               angle={xAxisAngle}
