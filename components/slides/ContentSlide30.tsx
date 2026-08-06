@@ -57,7 +57,7 @@ export const ContentSlide30: React.FC = () => {
             <BaseLineChart
               data={moneySupplyCombinedRecentData}
               title="M1-M2剪刀差走势图"
-              subtitle="数据来源：中国人民银行 | 单位：%；虚线为剔除高基数"
+              subtitle="数据来源：中国人民银行 | 单位：%；虚线为剔除高基数 | 备注：2025年6月M1增加5.03万亿，历史正常增量估约3.25万亿（取2020-2023年区间中值参考，24年偏低不纳入参考），参考正常增量计算增速及剪刀差"
               lines={scissorLineConfigs}
               yAxisDomain={[-11, 0]}
               showYAxis={true}
@@ -70,9 +70,6 @@ export const ContentSlide30: React.FC = () => {
           </ChartContainer>
         </div>
 
-        <p className="mt-2 flex-shrink-0 text-[10px] leading-snug text-slate-500">
-          备注：2025年6月M1增加5.03万亿，历史正常增量估约3.25万亿（取2020-2023年区间中值参考，24年偏低不纳入参考），参考正常增量计算增速及剪刀差。
-        </p>
       </div>
     </BaseContentSlide>
   );

@@ -7,8 +7,8 @@ import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalR
 
 export const ContentSlide27: React.FC = () => {
   const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: 16 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: -8 },
+    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: -18 },
+    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: 22 },
     { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
   ];
 
