@@ -63,7 +63,6 @@ export const ContentSlide25: React.FC = () => {
       align: 'right',
       includeInStats: true,
       redThreshold: 10,
-      highlight: true,
     },
   ];
 
@@ -97,7 +96,7 @@ export const ContentSlide25: React.FC = () => {
               subtitle="数据来源：海关总署 | 金额单位：亿美元"
               striped={true}
               rowHeight="auto"
-              highlightRows={[3, 5]}
+              highlightRows={[]}
               cellClassName="px-1.5 text-caption leading-tight"
               headerCellClassName="px-1.5 text-caption leading-tight"
             />
