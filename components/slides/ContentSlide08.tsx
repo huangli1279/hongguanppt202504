@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { GdpForecastTorchChart } from '../charts/GdpForecastTorchChart';
+import { GdpForecastRangeChart } from '../charts/GdpForecastRangeChart';
 
 export const ContentSlide08: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ export const ContentSlide08: React.FC = () => {
               <li>
                 全年增速大概率落在
                 <span className="font-bold">4.5%-4.8%</span>
-                区间，处于政府目标下限附近
+                区间，处于政府目标（4.5%-5.0%）下限附近
               </li>
               <li>
                 下半年GDP增速将逐季回升，
@@ -60,8 +60,8 @@ export const ContentSlide08: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测火炬图">
-          <GdpForecastTorchChart />
+        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
+          <GdpForecastRangeChart />
         </ChartContainer>
       }
     />

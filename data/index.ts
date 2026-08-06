@@ -26,6 +26,12 @@ export {
   retailCategoryH1Data,
 } from './retailCpiForecast';
 export type { RetailCpiForecastMetric, RetailCategoryH1Point } from './retailCpiForecast';
+export {
+  gdpForecastConsensus,
+  gdpForecastByInstitutionNew,
+  GOVERNMENT_TARGET,
+} from './gdpForecast';
+export type { GdpForecastMetric } from './gdpForecast';
 export { consumerConfidenceData, incomeExpenditureData, industryAvgSalaryData, incomeSentimentData } from './consumerConfidence';
 export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint, IndustryAvgSalaryDataPoint, IncomeSentimentDataPoint } from './consumerConfidence';
 export { unemploymentRateData, flexibleEmploymentData, workTypeExpenditureData } from './employment';
