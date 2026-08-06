@@ -24,6 +24,8 @@ export interface LineConfig {
   labelDY?: number;
   /** 特定周期的数值标签偏移，key为period字符串 */
   pointOffsets?: { [key: string]: number };
+  /** 特定周期的数值标签X轴偏移，key为period字符串 */
+  pointDXOffsets?: { [key: string]: number };
   /** 双轴时指定左右Y轴，默认 left */
   yAxisId?: 'left' | 'right';
   /** tooltip单位，覆盖全局 unit */
@@ -195,6 +197,15 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
 
     // 优先级：特定点偏移 > 线全局偏移 > 默认偏移
     let finalDY = isLastPoint ? 4 : -10;
+    let finalDX = isLastPoint ? 8 : 0;
+    let textAnchor: 'start' | 'middle' | 'end' = isLastPoint ? 'start' : 'middle';
+
+    if (line.pointDXOffsets && line.pointDXOffsets[period] !== undefined) {
+      finalDX = line.pointDXOffsets[period];
+      if (finalDX < 0) textAnchor = 'end';
+      else if (finalDX > 0) textAnchor = 'start';
+    }
+
     if (line.pointOffsets && line.pointOffsets[period] !== undefined) {
       finalDY = line.pointOffsets[period];
     } else if (line.labelDY !== undefined) {
@@ -203,13 +214,13 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
     
     return (
       <text 
-        x={isLastPoint ? x + 8 : x} 
+        x={x + finalDX} 
         y={y} 
         dy={finalDY} 
         fill={color} 
         fontSize={10} 
         fontWeight={600} 
-        textAnchor={isLastPoint ? "start" : "middle"}
+        textAnchor={textAnchor}
       >
         {value}
       </text>

@@ -31,14 +31,14 @@ const provinceColumns: ColumnConfig[] = [
   {
     key: 'province',
     title: '省份',
-    align: 'left',
+    align: 'center',
     width: '30%',
     render: (val: string) => <span className="text-black font-medium">{val}</span>,
   },
   {
     key: 'gdp',
     title: 'GDP',
-    align: 'right',
+    align: 'center',
     width: '35%',
     render: (val: number) =>
       typeof val === 'number' ? (
@@ -52,7 +52,7 @@ const provinceColumns: ColumnConfig[] = [
   {
     key: 'growth',
     title: '增速',
-    align: 'right',
+    align: 'center',
     width: '35%',
     render: renderGrowth,
   },
@@ -66,10 +66,10 @@ const tableSharedProps = {
   rowHeight: 'auto' as const,
   headerBgColor: '#f1f5f9',
   headerTextColor: '#0f172a',
-  cellClassName: '!px-2 !py-0 !text-[11px] leading-none tabular-nums',
-  headerCellClassName: '!px-2 !py-1 !text-[11px] leading-none whitespace-nowrap font-semibold',
-  titleBlockClassName: 'mb-1',
-  subtitleClassName: '!text-[11px] !mt-0.5',
+  cellClassName: '!px-2 !py-0 !text-[9.5px] leading-none tabular-nums',
+  headerCellClassName: '!px-2 !py-0.5 !text-[10px] leading-none whitespace-nowrap font-semibold',
+  titleBlockClassName: 'mb-0.5',
+  subtitleClassName: '!text-[9.5px] !mt-0.5',
 };
 
 export const ContentSlide07: React.FC = () => {
@@ -87,7 +87,7 @@ export const ContentSlide07: React.FC = () => {
       <div className="flex flex-col h-full min-h-0 gap-2 pb-4">
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-2 flex-shrink-0">
           <BaseCard title="传统产业拖累" delay="0ms" className="!p-2 gap-0.5">
-            <ul className="list-disc pl-3.5 space-y-0 text-[11px] leading-snug">
+            <ul className="list-disc pl-3.5 space-y-0 text-[13px] leading-snug">
               <li>
                 <span className="font-bold">湖南</span>增速
                 <span className="font-bold text-green-600">2.7%</span>
@@ -116,7 +116,7 @@ export const ContentSlide07: React.FC = () => {
           </BaseCard>
 
           <BaseCard title="高新产业带动经济" delay="120ms" variant="accent" className="!p-2 gap-0.5">
-            <ul className="list-disc pl-3.5 space-y-0 text-[11px] leading-snug">
+            <ul className="list-disc pl-3.5 space-y-0 text-[13px] leading-snug">
               <li>
                 <span className="font-bold">浙江</span>增速
                 <span className="font-bold text-red-500">5.7%</span>
@@ -157,7 +157,7 @@ export const ContentSlide07: React.FC = () => {
             <BaseTable
               {...tableSharedProps}
               data={provinceGdpDataTop15}
-              title={<span className="text-[13px]">2026年上半年各省份GDP及增速（前15）</span>}
+              title={<span className="text-[11px]">2026年上半年各省份GDP及增速（前15）</span>}
               subtitle="单位：GDP-万亿，增速-%"
             />
           </ChartContainer>
@@ -165,7 +165,7 @@ export const ContentSlide07: React.FC = () => {
             <BaseTable
               {...tableSharedProps}
               data={provinceGdpDataRest}
-              title={<span className="text-[13px]">2026年上半年各省份GDP及增速（续）</span>}
+              title={<span className="text-[11px]">2026年上半年各省份GDP及增速（续）</span>}
               subtitle="数据来源：各省统计局 | GDP-万亿，增速-% | 增速为实际同比"
             />
           </ChartContainer>

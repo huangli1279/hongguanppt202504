@@ -48,6 +48,7 @@ export const pmiTrendData: PmiDataPoint[] = [
   { period: '2026-04', pmi: 50.3, production: 51.5, newOrders: 50.6, outputPrice: 55.1, rawMaterialPurchasePrice: 63.7 },
   { period: '2026-05', pmi: 50.0, production: 51.2, newOrders: 49.9, outputPrice: 51.9, rawMaterialPurchasePrice: 60.5 },
   { period: '2026-06', pmi: 50.3, production: 51.4, newOrders: 51.2, outputPrice: 48.2, rawMaterialPurchasePrice: 54.2 },
+  { period: '2026-07', pmi: 49.2, production: 49.9, newOrders: 48.5, outputPrice: 47.8, rawMaterialPurchasePrice: 53.2 },
 ];
 
 // 按企业规模分类的PMI数据
@@ -79,4 +80,5 @@ export const pmiByEnterpriseSizeData: PmiByEnterpriseSize[] = [
   { period: '2026-01', small: 47.4, medium: 48.7, large: 50.3 },
   { period: '2026-02', small: 44.8, medium: 47.5, large: 51.5 },
   { period: '2026-03', small: 49.3, medium: 49.0, large: 51.6 },
+  { period: '2026-07', small: 47.4, medium: 49.7, large: 49.5 },
 ];
