@@ -16,7 +16,6 @@ export const ContentSlide19: React.FC = () => {
   ];
 
   const fundingLineConfigs: LineConfig[] = [
-    { dataKey: 'fixedAsset', name: '固定资产投资完成额', strokeWidth: 2.5, labelDY: -10 },
     { dataKey: 'totalFunding', name: '资金来源累计', strokeWidth: 2, labelDY: -10 },
     { dataKey: 'selfRaised', name: '自筹资金', strokeWidth: 2, labelDY: 16 },
     { dataKey: 'domesticLoan', name: '国内贷款', strokeWidth: 2, labelDY: 28 },
@@ -61,41 +60,57 @@ export const ContentSlide19: React.FC = () => {
           </BaseCard>
         </div>
 
-        {/* 图表区域 - 2×2 四图 */}
-        <div className="flex-1 grid grid-cols-2 grid-rows-2 gap-3 min-h-0">
-          {/* 图1：新开工项目计划总投资增速 */}
+        {/* 图表区域 - 3列：左列图1+图2上下，中列图4，右列图3 */}
+        <div className="flex-1 grid grid-cols-3 gap-3 min-h-0">
+          {/* 左列：图1（上）+ 图2（下） */}
+          <div className="flex flex-col gap-3 min-h-0">
+            <ChartContainer delay="600ms">
+              <BaseLineChart
+                data={newProjectInvestmentData}
+                title="图1 新开工项目计划总投资增速"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={newProjectLineConfigs}
+                yAxisDomain={[-35, 5]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['新开工项目计划总投资']}
+                xAxisTicks={['2024-12', '2025-06', '2025-12', '2026-06']}
+              />
+            </ChartContainer>
+            <ChartContainer delay="600ms">
+              <BaseLineChart
+                data={investmentFundingData}
+                title="图2 资金到位增速、自筹资金增速"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={fundingLineConfigs}
+                yAxisDomain={[-20, 20]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['资金来源累计', '自筹资金', '国内贷款', '国家预算内资金']}
+                xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-06']}
+              />
+            </ChartContainer>
+          </div>
+
+          {/* 中列：图4 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={newProjectInvestmentData}
-              title="图1 新开工项目计划总投资增速"
+              data={profitSelfRaisedData}
+              title="图4 规上工业企业利润与自筹资金累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={newProjectLineConfigs}
-              yAxisDomain={[-35, 5]}
+              lines={profitSelfRaisedLineConfigs}
+              yAxisDomain={[-25, 25]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['新开工项目计划总投资']}
-              xAxisTicks={['2024-12', '2025-06', '2025-12', '2026-06']}
+              legendOrder={['规上工业企业利润总额', '自筹资金']}
+              xAxisTicks={['2022-02', '2023-02', '2024-02', '2025-02', '2026-02', '2026-06']}
             />
           </ChartContainer>
 
-          {/* 图2：投资增速、资金到位增速、自筹资金增速 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={investmentFundingData}
-              title="图2 投资增速、资金到位增速、自筹资金增速"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={fundingLineConfigs}
-              yAxisDomain={[-20, 20]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['固定资产投资完成额', '资金来源累计', '自筹资金', '国内贷款', '国家预算内资金']}
-              xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-06']}
-            />
-          </ChartContainer>
-
-          {/* 图3：专项债发行情况 */}
+          {/* 右列：图3 */}
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={specialBondData}
@@ -119,22 +134,6 @@ export const ContentSlide19: React.FC = () => {
               xAxisHeight={50}
               xAxisInterval={0}
               lineShowDot={true}
-            />
-          </ChartContainer>
-
-          {/* 图4：企业利润与自筹资金 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={profitSelfRaisedData}
-              title="图4 规上工业企业利润与自筹资金累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={profitSelfRaisedLineConfigs}
-              yAxisDomain={[-25, 25]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['规上工业企业利润总额', '自筹资金']}
-              xAxisTicks={['2022-02', '2023-02', '2024-02', '2025-02', '2026-02', '2026-06']}
             />
           </ChartContainer>
         </div>

@@ -62,10 +62,13 @@ export const ContentSlide15: React.FC = () => {
           <BaseCard title="二季度分项分化" delay="120ms">
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                交通通信由一季度末<span className="font-bold text-webank-blue">0.9%</span>跃升至5月<span className="font-bold text-webank-blue">5.4%</span>（6月仍<span className="font-bold text-webank-blue">4.1%</span>），主因国际油价推升汽油等能源价格。
+                交通通信由一季度末<span className="font-bold text-webank-blue">0.9%</span>跃升至5月<span className="font-bold text-webank-blue">5.4%</span>（6月仍<span className="font-bold text-webank-blue">4.1%</span>），因国际油价推升汽油等价格。
               </li>
               <li>
                 食品烟酒自4月起连续负增长，猪肉等畜肉价格拖累明显。
+              </li>
+              <li>
+                受国际金价冲高回落影响，金饰品价格二季度下滑，影响"其他用品和服务"CPI的增长。
               </li>
             </ul>
           </BaseCard>
