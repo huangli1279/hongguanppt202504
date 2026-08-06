@@ -46,8 +46,8 @@ export const ContentSlide05: React.FC = () => {
 
           <BaseCard title="平减指数回正" delay="120ms">
             <p>
-              二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold">4.3%</span>，平减指数自23年2季度以来首次回正。
-              总量与第二产业平减指数同步由负转正，核心由 AI 产业链景气扩张、能源价格上行拉动。
+            二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold">4.3%</span>，平减指数 <span className="font-bold">12</span> 个季度以来首次回正。
+            总量与第二产业平减指数同步由负转正，核心由 AI 产业链景气扩张、能源价格上行拉动。
             </p>
           </BaseCard>
         </section>
@@ -95,7 +95,7 @@ export const ContentSlide05: React.FC = () => {
                 data={deflatorLongChartData}
                 title="GDP平减指数当季同比"
                 subtitle="数据来源：国家统计局 | 单位：%"
-                yAxisDomain={[-2, 6]}
+                yAxisDomain={[-2, 7]}
                 showYAxis
                 showReferenceLine
                 referenceLineY={0}
@@ -104,7 +104,7 @@ export const ContentSlide05: React.FC = () => {
                 highlightPeriods={['2026-06']}
                 categoryGroups={[
                   {
-                    label: '第一次涨价',
+                    label: '第一次回正',
                     x1: '2016-03',
                     x2: '2018-06',
                     stroke: '#94a3b8',
@@ -112,20 +112,22 @@ export const ContentSlide05: React.FC = () => {
                     fillOpacity: 0.12,
                   },
                   {
-                    label: '第二次涨价',
+                    label: '第二次回正',
                     x1: '2020-06',
                     x2: '2022-06',
                     stroke: '#C09A4A',
                     fill: '#C09A4A',
                     fillOpacity: 0.12,
+                    labelPosition: 'insideTopLeft',
+                    labelDy: 12,
                   },
                   {
-                    label: '',
-                    x1: '2026-03',
+                    label: '本次回正',
+                    x1: '2025-12',
                     x2: '2026-09',
                     stroke: '#ef4444',
                     fill: '#ef4444',
-                    fillOpacity: 0.08,
+                    fillOpacity: 0.1,
                   },
                 ]}
                 lines={[
@@ -141,20 +143,38 @@ export const ContentSlide05: React.FC = () => {
               />
             </ChartContainer>
 
-            <div className="flex flex-col gap-1.5 flex-shrink-0">
-              <div className="rounded-card border-l-4 border-[#94a3b8] bg-[#f1f5f9] px-2.5 py-1.5">
-                <h4 className="font-bold text-webank-blue text-xs mb-0.5">第一次涨价（2016–2018）</h4>
-                <p className="text-[11px] text-webank-text leading-snug">
-                  国内供给侧去产能（钢铁、煤炭等行业产能收缩）+ 棚改货币化拉动房地产需求，两者共同推升PPI。
+            <BaseCard
+              title="不同点"
+              variant="accent"
+              delay="960ms"
+              className="!p-2.5 !gap-1 flex-shrink-0 min-w-0"
+            >
+              <div className="flex flex-col gap-1.5">
+                <p className="text-[11px] leading-relaxed">
+                  三轮平减指数回升均以
+                  <span className="font-semibold text-webank-accent">工业品价格</span>
+                  为主要推手，
+                  <span className="font-semibold text-webank-accent">消费品</span>
+                  涨价力度有限，属于
+                  <span className="font-semibold text-webank-blue">生产端价格修复</span>
+                  ，未出现全面消费通胀。
                 </p>
+                <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] leading-snug text-webank-accent marker:text-webank-accent">
+                  <li>
+                    <span className="font-bold text-webank-accent whitespace-nowrap mr-1">2016–2017</span>
+                    <span className="text-webank-text">国内去产能收缩供给。</span>
+                  </li>
+                  <li>
+                    <span className="font-bold text-webank-accent whitespace-nowrap mr-1">2021</span>
+                    <span className="text-webank-text">全球流动性宽松，海外大宗商品输入涨价，国内限产进一步放大价格波动。</span>
+                  </li>
+                  <li>
+                    <span className="font-bold text-red-600 whitespace-nowrap mr-1">2026Q2</span>
+                    <span className="text-webank-text">主因能源价格上行，叠加 AI 算力等高端制造景气拉动工业需求，消费仅小幅贡献。</span>
+                  </li>
+                </ul>
               </div>
-              <div className="rounded-card border-l-4 border-[#C09A4A] bg-[#f8f3e8] px-2.5 py-1.5">
-                <h4 className="font-bold text-webank-blue text-xs mb-0.5">第二次涨价（2020–2022）</h4>
-                <p className="text-[11px] text-webank-text leading-snug">
-                  疫情后全球大宗商品涨价（原油、铁矿石、铜等输入型通胀），叠加海外QE流动性溢出，属于外部输入驱动。
-                </p>
-              </div>
-            </div>
+            </BaseCard>
           </div>
         </section>
       </div>

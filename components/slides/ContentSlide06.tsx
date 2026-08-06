@@ -44,8 +44,8 @@ export const ContentSlide06: React.FC = () => {
             <p>
               高技术制造业（<span className="font-bold">13.3%</span>
               ）、信息传输、软件和信息技术服务业（
-              <span className="font-bold">11.3%</span>
-              ）和租赁商务服务（<span className="font-bold">10.9%</span>
+              <span className="font-bold">10.7%</span>
+              ）和租赁商务服务（<span className="font-bold">11.9%</span>
               ）仍然保持高增，建筑、房地产依然为主要拖累。
             </p>
           </BaseCard>

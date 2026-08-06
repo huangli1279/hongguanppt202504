@@ -77,7 +77,7 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          2026年上半年各省市GDP：
+          2026年上半年各省市GDP<span className="text-webank-accent">总量及增速</span>：
           <span className="text-webank-accent">新旧动能转换分化加剧</span>
         </>
       }
@@ -121,7 +121,9 @@ export const ContentSlide07: React.FC = () => {
                 <span className="font-bold">浙江</span>增速
                 <span className="font-bold text-red-500">5.7%</span>
                 ，高技术制造<span className="font-bold text-red-500">+16.2%</span>
-                ，数字经济核心<span className="font-bold text-red-500">+15.5%</span>。
+                ，数字经济核心产业制造业
+                <span className="font-bold text-red-500">+15.5%</span>
+                。
               </li>
               <li>
                 <span className="font-bold">安徽</span>增速

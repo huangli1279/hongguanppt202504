@@ -37,7 +37,7 @@ export const ContentSlide19: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="投资端失速归因：项目前置透支叠加资金到位滞后，拖累二季度投资增速"
+      title="固投增速下降原因：年初项目前置透支叠加资金到位滞后，拖累二季度投资增速"
       cardColumns={3}
     >
       <div className="flex flex-col h-full">

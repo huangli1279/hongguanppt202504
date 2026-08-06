@@ -62,15 +62,18 @@ export const ContentSlide20: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>投资端展望：预计二季度为最低点，前期盈利改善，叠加政策推动，支撑后续投资增速</>}
+      title={<>投资端展望：政策推动，叠加前期盈利改善，支撑后续投资增速</>}
       cardColumns={4}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-4 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="政策性金融工具" delay="0ms" variant="accent">
+          <BaseCard title="政策支持" delay="0ms" variant="accent">
             <p>
-              <span className="font-semibold">8000亿</span>待落地，市场一致预期将在三季度密集落地，重点投向“六张网”新基建和AI等新质生产力领域。
+              <span className="font-semibold">8000亿</span>政策工具待落地，市场一致预期将在三季度密集落地，重点投向“六张网”新基建和AI等新质生产力领域。
+            </p>
+            <p className="mt-1">
+              “两重”项目已全部下达。2026年“六张网”及相关领域投资超<span className="font-semibold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
             </p>
           </BaseCard>
           <BaseCard title="专项债发行提速" delay="120ms">
@@ -83,9 +86,12 @@ export const ContentSlide20: React.FC = () => {
               2025半年盈利回升→对应支撑2026半年投资（领先2-3季度）。
             </p>
           </BaseCard>
-          <BaseCard title="重大项目及“六张网”建设" delay="360ms">
+          <BaseCard title="机构预测" delay="360ms">
             <p>
-              “两重”项目已全部下达。2026年“六张网”及相关领域投资超<span className="font-semibold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
+              共识：下半年回升，"前低后高"
+            </p>
+            <p className="mt-1">
+              上半年固定资产投资增速低于预期，机构集中修正全年投资增速，转为定性描述，核心驱动为8000亿政策性金融工具落地、专项债Q3发行提速、2025年同期低基数。
             </p>
           </BaseCard>
         </div>

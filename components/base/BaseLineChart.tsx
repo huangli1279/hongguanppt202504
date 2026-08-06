@@ -41,6 +41,10 @@ export interface CategoryGroupConfig {
   stroke?: string;
   fill?: string;
   fillOpacity?: number;
+  /** 自定义标签位置，缺省时根据 x1/x2 自动判断（首段左上、末段右上、中段居中） */
+  labelPosition?: 'insideTopLeft' | 'insideTopRight' | 'insideTop' | 'insideBottomLeft' | 'insideBottomRight' | 'insideBottom' | 'center';
+  /** 标签垂直偏移量（像素）。正值向下。正值大 → 文字更靠 ReferenceArea 内部下方 */
+  labelDy?: number;
 }
 
 export interface BaseLineChartProps {
@@ -241,30 +245,108 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: hasCategoryGroups ? 28 : 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: hasCategoryGroups ? 36 : 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: 5 }}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
-            {categoryGroups?.map((group) => (
-              <ReferenceArea
-                key={`group-${group.label}-${group.x1}-${group.x2}`}
-                x1={group.x1}
-                x2={group.x2}
-                {...(hasDualAxis ? { yAxisId: 'left' as const } : {})}
-                stroke={group.stroke ?? '#94a3b8'}
-                strokeWidth={1.5}
-                fill={group.fill ?? '#94a3b8'}
-                fillOpacity={group.fillOpacity ?? 0.08}
-                ifOverflow="extendDomain"
-                label={{
-                  value: group.label,
-                  position: 'insideTopLeft',
-                  fill: '#64748b',
-                  fontSize: 10,
-                  fontWeight: 600,
-                  offset: 6,
-                }}
-              />
-            ))}
+            {categoryGroups?.map((group, groupIndex) => {
+              // 默认根据位置自动判断标签位置：首段左上、末段右上、中段居中
+              const isFirst = groupIndex === 0;
+              const isLast = groupIndex === categoryGroups.length - 1;
+              const autoPosition = isFirst
+                ? 'insideTopLeft'
+                : isLast
+                  ? 'insideTopRight'
+                  : 'insideTop';
+              const labelPos = group.labelPosition ?? autoPosition;
+              const labelFill = group.stroke ?? '#64748b';
+              return (
+                <ReferenceArea
+                  key={`group-${group.label}-${group.x1}-${group.x2}`}
+                  x1={group.x1}
+                  x2={group.x2}
+                  {...(hasDualAxis ? { yAxisId: 'left' as const } : {})}
+                  stroke={group.stroke ?? '#94a3b8'}
+                  strokeWidth={1.5}
+                  fill={group.fill ?? '#94a3b8'}
+                  fillOpacity={group.fillOpacity ?? 0.08}
+                  ifOverflow="extendDomain"
+                  label={({
+                    // Recharts 将 viewBox 坐标系下的位置直接传给自定义渲染函数
+                    viewBox,
+                  }: any) => {
+                    const { x, y, width, height } = viewBox ?? {};
+                    if (x == null || y == null || width == null) {
+                      return null;
+                    }
+                    // 根据 labelPos 计算锚点和水平/垂直偏移
+                    let anchor: 'start' | 'middle' | 'end' = 'middle';
+                    let dx = 0;
+                    let dy = 12;
+                    if (labelPos === 'insideTopLeft') {
+                      anchor = 'start';
+                      dx = 6;
+                      dy = 16;
+                    } else if (labelPos === 'insideTopRight') {
+                      anchor = 'end';
+                      dx = -6;
+                      dy = 16;
+                    } else if (labelPos === 'insideBottomLeft') {
+                      anchor = 'start';
+                      dx = 6;
+                      dy = height ? height - 6 : -6;
+                    } else if (labelPos === 'insideBottomRight') {
+                      anchor = 'end';
+                      dx = -6;
+                      dy = height ? height - 6 : -6;
+                    } else if (labelPos === 'insideBottom') {
+                      anchor = 'middle';
+                      dy = height ? height - 6 : -6;
+                    } else {
+                      // insideTop / center 默认
+                      anchor = 'middle';
+                      dy = 16;
+                    }
+                    // 用户自定义垂直偏移覆盖默认值
+                    if (group.labelDy !== undefined) {
+                      dy = group.labelDy;
+                    }
+                    const cx = x + width / 2;
+                    const textX =
+                      labelPos === 'insideTopLeft' || labelPos === 'insideBottomLeft'
+                        ? x + 6
+                        : labelPos === 'insideTopRight' || labelPos === 'insideBottomRight'
+                          ? x + width - 6
+                          : cx;
+                    // 估算文字宽度（中文 12px、ASCII 6.5px），太窄时强制改为 insideTop + 居中
+                    const labelLen = [...group.label].reduce(
+                      (acc, ch) => acc + (/[一-龥]/.test(ch) ? 12 : 6.5),
+                      0
+                    );
+                    const effectiveAnchor =
+                      width < labelLen + 16 ? 'middle' : anchor;
+                    const effectiveX =
+                      width < labelLen + 16 ? cx : textX;
+                    return (
+                      <text
+                        x={effectiveX}
+                        y={y + dy}
+                        fill={labelFill}
+                        fontSize={10}
+                        fontWeight={600}
+                        textAnchor={effectiveAnchor}
+                        paintOrder="stroke"
+                        stroke="#ffffff"
+                        strokeWidth={3}
+                        strokeLinejoin="round"
+                        style={{ pointerEvents: 'none' }}
+                      >
+                        {group.label}
+                      </text>
+                    );
+                  }}
+                />
+              );
+            })}
             {showReferenceLine && (
               <ReferenceLine
                 y={referenceLineY}
