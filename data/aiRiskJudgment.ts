@@ -74,26 +74,17 @@ export const aiSmePenetrationData = [
   { period: '26-05', ramp: 55.0, gov: 20.0 },
 ];
 
-/** 图表10：模型公司 ARR 连续上调（单位：亿美元） */
-export const aiModelArrData = [
-  { period: '23-07', openai: 3, anthropic: 0, cursor: 0 },
-  { period: '23-09', openai: 6, anthropic: 0, cursor: 0 },
-  { period: '23-11', openai: 10, anthropic: 1, cursor: 0 },
-  { period: '24-01', openai: 16, anthropic: 3, cursor: 0 },
-  { period: '24-03', openai: 24, anthropic: 6, cursor: 0 },
-  { period: '24-05', openai: 32, anthropic: 10, cursor: 0 },
-  { period: '24-07', openai: 40, anthropic: 15, cursor: 1 },
-  { period: '24-09', openai: 48, anthropic: 22, cursor: 2 },
-  { period: '24-11', openai: 55, anthropic: 30, cursor: 3 },
-  { period: '25-01', openai: 65, anthropic: 40, cursor: 4 },
-  { period: '25-03', openai: 85, anthropic: 52, cursor: 6 },
-  { period: '25-05', openai: 110, anthropic: 68, cursor: 8 },
-  { period: '25-07', openai: 140, anthropic: 90, cursor: 10 },
-  { period: '25-09', openai: 175, anthropic: 120, cursor: 14 },
-  { period: '25-11', openai: 220, anthropic: 160, cursor: 18 },
-  { period: '26-01', openai: 280, anthropic: 230, cursor: 22 },
-  { period: '26-03', openai: 340, anthropic: 400, cursor: 28 },
-  { period: '26-05', openai: 400, anthropic: 620, cursor: 40 },
+/** 图表3上：海外模型公司 ARR（单位：亿美元，公司为类别、季度为系列） */
+export const aiModelArrOverseasData = [
+  { company: 'OpenAI', '2023Q3': 20, '2024Q4': 60, '2025Q4': 210, '2026Q1': 250 },
+  { company: 'Anthropic', '2024Q4': 10, '2025Q4': 90, '2026Q1': 140, '2026Q2': 470 },
+  { company: 'Cursor', '2024Q4': 5, '2025Q2': 50, '2025Q4': 100, '2026Q1': 200 },
+];
+
+/** 图表3下：国内模型公司 ARR（单位：亿美元） */
+export const aiModelArrDomesticData = [
+  { company: '智谱', '2025Q4': 0.7, '2026Q1': 2.5, '2026Q3': 10 },
+  { company: 'Moonshot(Kimi)', '2026Q1': 1, '2026Q2': 3 },
 ];
 
 /** 图表11：云厂商 AI 收入 vs Capex 折旧（单位：billion USD） */

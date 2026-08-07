@@ -2,11 +2,12 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseStackedBarChart } from '../base/BaseStackedBarChart';
+import { BaseBarChart } from '../base/BaseBarChart';
 import {
   aiPenetrationCurveData,
   aiSmePenetrationData,
-  aiModelArrData,
+  aiModelArrOverseasData,
+  aiModelArrDomesticData,
   aiRevenueVsDepreciationData,
 } from '@/data/aiRiskJudgment';
 
@@ -15,6 +16,36 @@ const COLORS = {
   yellow: '#E8B923',
   grey: '#9CA3AF',
 };
+
+/** 季度系列配色（对齐上传图例风格） */
+const ARR_Q_COLORS = {
+  '2023Q3': '#9DC3E6',
+  '2024Q4': '#ED7D31',
+  '2025Q2': '#A5A5A5',
+  '2025Q4': '#FFC000',
+  '2026Q1': '#5B9BD5',
+  '2026Q2': '#70AD47',
+  '2026Q3': '#FFC000',
+} as const;
+
+const overseasArrBars = [
+  { dataKey: '2023Q3', name: '23Q3', color: ARR_Q_COLORS['2023Q3'] },
+  { dataKey: '2024Q4', name: '24Q4', color: ARR_Q_COLORS['2024Q4'] },
+  { dataKey: '2025Q2', name: '25Q2', color: ARR_Q_COLORS['2025Q2'] },
+  { dataKey: '2025Q4', name: '25Q4', color: ARR_Q_COLORS['2025Q4'] },
+  { dataKey: '2026Q1', name: '26Q1', color: ARR_Q_COLORS['2026Q1'] },
+  { dataKey: '2026Q2', name: '26Q2', color: ARR_Q_COLORS['2026Q2'] },
+];
+
+const domesticArrBars = [
+  { dataKey: '2025Q4', name: '25Q4', color: ARR_Q_COLORS['2023Q3'] },
+  { dataKey: '2026Q1', name: '26Q1', color: ARR_Q_COLORS['2024Q4'] },
+  { dataKey: '2026Q2', name: '26Q2', color: ARR_Q_COLORS['2025Q2'] },
+  { dataKey: '2026Q3', name: '26Q3', color: ARR_Q_COLORS['2025Q4'] },
+];
+
+const overseasPeakLabels = new Set([250, 140, 470, 200]);
+const domesticPeakLabels = new Set([10, 3]);
 
 const penetrationLines: LineConfig[] = [
   { dataKey: 'ai', name: 'AI渗透率', color: COLORS.blue, strokeWidth: 2 },
@@ -47,7 +78,7 @@ export const ContentSlide44: React.FC = () => {
       headerClassName="!mb-2"
       className="!p-8 sm:!p-10"
     >
-      <div className="flex flex-col h-full min-h-0 pb-6">
+      <div className="flex flex-col h-full min-h-0 pb-2">
         <div className="grid grid-cols-2 gap-2.5 mb-2 flex-shrink-0">
           <BaseCard
             title="市场背离与泡沫担忧"
@@ -55,9 +86,14 @@ export const ContentSlide44: React.FC = () => {
             variant="accent"
             className="!p-2.5 !gap-1"
           >
-            <p className="text-[11px] leading-snug">
-              近期科技股呈现"基本面不差、股价照跌"的背离：美国降息预期推迟、美债收益率上行压制成长股估值，叠加海外AI算力资本开支扩张节奏边际放缓，国内科技板块前期涨幅偏大、抱团资金集中止盈。同时围绕资本开支高企、商业化回报待验、融资渠道扩散、估值高位且交易拥挤，市场产生AI泡沫担忧。
-            </p>
+            <div className="text-[11px] leading-snug space-y-1.5">
+              <p>
+                近期科技股呈现"基本面不差、股价照跌"的背离：美国降息预期推迟、美债收益率上行压制成长股估值，叠加海外AI算力资本开支扩张节奏边际放缓，国内科技板块前期涨幅偏大、抱团资金集中止盈。
+              </p>
+              <p>
+                同时围绕资本开支高企、商业化回报待验、融资渠道扩散、估值高位且交易拥挤，市场产生AI泡沫担忧。
+              </p>
+            </div>
           </BaseCard>
 
           <BaseCard
@@ -67,38 +103,37 @@ export const ContentSlide44: React.FC = () => {
           >
             <div className="text-[11px] leading-snug space-y-0.5">
               <p>
-                <span className="font-semibold">1. 产业逻辑未逆转：</span>
-                资本支出占GDP约
-                <span className="text-red-500 font-semibold">2%</span>
-                ，接近互联网泡沫峰值，但数据中心租用率与租金仍指向产能偏紧。
+                当前AI泡沫论主流共识是："局部泡沫 + 结构性分化"，而非全面泡沫。
               </p>
               <p>
-                <span className="font-semibold">2. 渗透率未到拐点：</span>
+                <span className="font-semibold">1. 估值有热度，但远不及互联网泡沫。</span>
+                资本支出占GDP约
+                <span className="text-red-500 font-semibold">2%</span>
+                接近互联网泡沫峰值，但头部公司P/E、PEG均低于互联网泡沫时期，盈利驱动特征更显著；
+              </p>
+              <p>
+                <span className="font-semibold">2. 渗透率未到拐点，需求仍超供给。</span>
                 过往泡沫破裂多在渗透率中后段（电气
                 <span className="text-red-500 font-semibold">80%</span>
                 、互联网
                 <span className="text-red-500 font-semibold">50%</span>
-                ），当前美国企业AI使用率仅约
+                ），2026年初美国企业AI使用率仅约
                 <span className="text-red-500 font-semibold">20%</span>
-                ，远未进入S曲线后半程。
+                。数据中心空置率仅
+                <span className="text-red-500 font-semibold">1.6%</span>
+                ，产能仍偏紧。
               </p>
               <p>
-                <span className="font-semibold">3. 技术迭代拉长周期：</span>
-                "模型-云-端侧-行业应用-知识生产"多层循环演进，周期或更长、更具阶段性。
+                <span className="font-semibold">3. 资本开支集中，但产业逻辑未逆转。</span>
+                AI产业呈现"模型→云→端侧→行业应用→知识生产"的多层递进，每一层成熟后才催生下一层需求，周期更长、更具阶段性。
               </p>
               <p>
-                <span className="font-semibold">4. 盈利支撑强于过往：</span>
-                AI龙头多有成熟业务现金流反哺，头部模型ARR持续上调，估值泡沫程度低于互联网时期。
-              </p>
-              <p>
-                <span className="font-semibold text-webank-accent">值得警惕：</span>
-                芯片折旧或被低估、
-                <span className="text-red-500 font-semibold">88%</span>
-                企业用AI但深度部署仅
-                <span className="text-red-500 font-semibold">20%</span>
-                、融资成本高、AI公司约占标普500市值
-                <span className="text-red-500 font-semibold">50%</span>
-                。
+                <span className="font-semibold">4. 结构性分化：</span>
+                龙头企业多有成熟业务现金流反哺，头部模型ARR持续上调；但应用层部分公司估值虚高（Palantir P/E超
+                <span className="text-red-500 font-semibold">100x</span>
+                ，软件行业平均
+                <span className="text-red-500 font-semibold">30-40x</span>
+                ），高利率环境下未盈利公司造血压力更大。
               </p>
             </div>
           </BaseCard>
@@ -137,25 +172,54 @@ export const ContentSlide44: React.FC = () => {
           </ChartContainer>
 
           <ChartContainer delay="480ms" ariaLabel="模型公司ARR连续上调">
-            <BaseStackedBarChart
-              data={aiModelArrData}
-              title="图表3：模型公司ARR连续上调"
-              subtitle="来源：公开资料、华泰研究 | 亿美元"
-              bars={[
-                { dataKey: 'openai', name: 'OpenAI', color: COLORS.blue },
-                { dataKey: 'anthropic', name: 'Anthropic', color: COLORS.yellow },
-                { dataKey: 'cursor', name: 'Cursor', color: COLORS.grey },
-              ]}
-              legendOrder={['OpenAI', 'Anthropic', 'Cursor']}
-              yAxisDomain={[0, 1200]}
-              showYAxis
-              showLabels={false}
-              barSize={7}
-              unit="亿"
-              xAxisInterval={3}
-              xAxisAngle={-40}
-              xAxisHeight={42}
-            />
+            <div className="flex flex-col h-full min-h-0 gap-1 [&_.mb-4]:!mb-1">
+              <div className="flex-1 min-h-0">
+                <BaseBarChart
+                  data={aiModelArrOverseasData}
+                  title="图表3：模型公司ARR连续上调"
+                  subtitle="海外 | 来源：公开资料 | 亿美元"
+                  bars={overseasArrBars}
+                  xAxisKey="company"
+                  legendOrder={['23Q3', '24Q4', '25Q2', '25Q4', '26Q1', '26Q2']}
+                  legendFontSize={8}
+                  legendGap={6}
+                  yAxisDomain={[0, 500]}
+                  showYAxis
+                  yAxisTickFormatter={(v) => `${v}`}
+                  showLabels
+                  labelFormatter={(v: any) =>
+                    v != null && overseasPeakLabels.has(Number(v)) ? String(v) : ''
+                  }
+                  barSize={8}
+                  unit="亿"
+                  xAxisInterval={0}
+                  xAxisTickFontSize={9}
+                />
+              </div>
+              <div className="flex-1 min-h-0">
+                <BaseBarChart
+                  data={aiModelArrDomesticData}
+                  title="国内模型公司ARR"
+                  subtitle="来源：公开资料 | 亿美元"
+                  bars={domesticArrBars}
+                  xAxisKey="company"
+                  legendOrder={['25Q4', '26Q1', '26Q2', '26Q3']}
+                  legendFontSize={8}
+                  legendGap={6}
+                  yAxisDomain={[0, 12]}
+                  showYAxis
+                  yAxisTickFormatter={(v) => `${v}`}
+                  showLabels
+                  labelFormatter={(v: any) =>
+                    v != null && domesticPeakLabels.has(Number(v)) ? String(v) : ''
+                  }
+                  barSize={10}
+                  unit="亿"
+                  xAxisInterval={0}
+                  xAxisTickFontSize={9}
+                />
+              </div>
+            </div>
           </ChartContainer>
 
           <ChartContainer delay="540ms" ariaLabel="云厂商AI收入已超过折旧压力">
@@ -173,6 +237,10 @@ export const ContentSlide44: React.FC = () => {
             />
           </ChartContainer>
         </div>
+
+        <p className="mt-1.5 flex-shrink-0 text-[10px] leading-snug text-slate-500">
+          备注：数据来源：公开财报、美国人口普查局 BTOS、摩根大通资产管理报告、华泰证券等。主流共识为"局部泡沫+结构性分化"，而非2000年式全面泡沫。该判断得到多家中外机构支撑：摩根大通认为未达经典泡沫标准且数据中心空置率仅1.6%（CBRE）；摩根士丹利称"泡沫只在谈论中"；高盛指出Mag7净利率超25%、英伟达P/E仅31倍（vs 思科2000年472倍），基本面与2000年本质不同；华泰柏瑞、工银国际、银河国际等国内机构均指向"结构性分化"而非整体泡沫。
+        </p>
       </div>
     </BaseContentSlide>
   );

@@ -71,6 +71,10 @@ export interface BaseBarChartProps {
   /** 自定义图例（用于按数据项着色时展示分组色） */
   legendItems?: Array<{ value: string; color: string }>;
   showLegend?: boolean;
+  /** 图例字号，默认 10 */
+  legendFontSize?: number;
+  /** 图例间距，默认 12 */
+  legendGap?: number;
   barSize?: number;
   showLabels?: boolean;
   labelPosition?: 'top' | 'center' | 'inside' | 'insideTop' | 'insideBottom';
@@ -115,9 +119,16 @@ const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%', l
 interface CustomLegendProps {
   payload?: Array<{ value: string; color: string }>;
   legendOrder?: string[];
+  fontSize?: number;
+  gap?: number;
 }
 
-const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => {
+const CustomLegend: React.FC<CustomLegendProps> = ({
+  payload,
+  legendOrder,
+  fontSize = 10,
+  gap = 12,
+}) => {
   if (!payload || !payload.length) return null;
 
   let sortedPayload = payload;
@@ -133,22 +144,34 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
     });
   }
 
+  const dotSize = Math.max(5, Math.round(fontSize * 0.7));
+
   return (
-    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', flexWrap: 'nowrap', gap: '12px' }}>
+    <ul
+      style={{
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        gap: `${Math.max(2, Math.round(gap / 2))}px ${gap}px`,
+      }}
+    >
       {sortedPayload.map((entry, index) => (
-        <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center', flexShrink: 0, whiteSpace: 'nowrap' }}>
+        <li key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
           <span
             style={{
-              width: '8px',
-              height: '8px',
+              width: `${dotSize}px`,
+              height: `${dotSize}px`,
               backgroundColor: entry.color,
               borderRadius: '50%',
-              marginRight: '6px',
+              marginRight: '4px',
               display: 'inline-block',
               flexShrink: 0
             }}
           />
-          <span style={{ color: uiColors.tick, fontSize: '10px', whiteSpace: 'nowrap' }}>{entry.value}</span>
+          <span style={{ color: uiColors.tick, fontSize: `${fontSize}px`, whiteSpace: 'nowrap' }}>{entry.value}</span>
         </li>
       ))}
     </ul>
@@ -171,6 +194,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   legendOrder,
   legendItems,
   showLegend = true,
+  legendFontSize = 10,
+  legendGap = 12,
   barSize = 16,
   showLabels = true,
   labelPosition = 'top',
@@ -313,6 +338,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 content={(props) => (
                   <CustomLegend
                     legendOrder={legendOrder}
+                    fontSize={legendFontSize}
+                    gap={legendGap}
                     payload={legendItems ?? (props.payload as Array<{ value: string; color: string }> | undefined)}
                   />
                 )}
