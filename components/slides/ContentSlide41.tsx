@@ -16,6 +16,35 @@ const industryColumns: ColumnConfig[] = [
   },
   { key: 'industry', title: '行业', align: 'left' },
   {
+    key: 'prosperityLevel',
+    title: '景气',
+    align: 'center',
+    width: '60px',
+    highlight: true,
+    render: (_value, row) => {
+      const score = Number(row?.score);
+      let level: 'high' | 'mid' | 'low';
+      if (Number.isFinite(score) && score > 60) level = 'high';
+      else if (Number.isFinite(score) && score < 45) level = 'low';
+      else level = 'mid';
+
+      const styles: Record<typeof level, { label: string; cls: string }> = {
+        high: { label: '高景气', cls: 'bg-red-100 text-red-700 ring-1 ring-red-200' },
+        mid:  { label: '中景气', cls: 'bg-amber-100 text-amber-700 ring-1 ring-amber-200' },
+        low:  { label: '低景气', cls: 'bg-slate-200 text-slate-600 ring-1 ring-slate-300' },
+      };
+      const item = styles[level];
+
+      return (
+        <span
+          className={`inline-flex items-center justify-center rounded px-1.5 py-[1px] text-[10px] font-semibold leading-none tabular-nums whitespace-nowrap ${item.cls}`}
+        >
+          {item.label}
+        </span>
+      );
+    },
+  },
+  {
     key: 'scoreLabel',
     title: '景气分',
     align: 'center',
@@ -86,7 +115,7 @@ export const ContentSlide41: React.FC = () => {
 
               <div className="flex-1 min-h-0 flex flex-col px-3.5 py-3 gap-3">
                 <p className="text-[11px] leading-relaxed text-slate-500 flex-shrink-0">
-                  注：利润和投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。景气分基于 Z-score 标准化后加权计算，50=历史均值，&gt;60=高景气，&lt;45=低景气。
+                  注：利润和投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。景气分基于 Z-score 标准化后加权计算，50=历史均值；&gt;60 标记为高景气，&lt;45 标记为低景气，其余为中景气。
                 </p>
 
                 <div className="flex-1 min-h-0 overflow-hidden rounded border border-slate-200 flex flex-col">
