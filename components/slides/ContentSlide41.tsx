@@ -21,12 +21,17 @@ const industryColumns: ColumnConfig[] = [
     align: 'center',
     width: '60px',
     highlight: true,
-    render: (_value, row) => {
-      const score = Number(row?.score);
+    render: (_value, row, rowIndex) => {
+      // 前4行固定显示高景气
       let level: 'high' | 'mid' | 'low';
-      if (Number.isFinite(score) && score > 60) level = 'high';
-      else if (Number.isFinite(score) && score < 45) level = 'low';
-      else level = 'mid';
+      if (rowIndex !== undefined && rowIndex < 4) {
+        level = 'high';
+      } else {
+        const score = Number(row?.score);
+        if (Number.isFinite(score) && score > 60) level = 'high';
+        else if (Number.isFinite(score) && score < 45) level = 'low';
+        else level = 'mid';
+      }
 
       const styles: Record<typeof level, { label: string; cls: string }> = {
         high: { label: '高景气', cls: 'bg-red-100 text-red-700 ring-1 ring-red-200' },
@@ -74,14 +79,14 @@ const methodWeights: Array<{ indicator: string; role: string; weight: string }> 
 export const ContentSlide41: React.FC = () => {
   return (
     <BaseContentSlide
-      title="经济K型分化加剧，新经济端（AI算力/高端装备/绿色出口）景气延续、旧经济端持续低迷"
+      title="经济K型分化加剧，新经济端景气延续、旧经济端持续低迷"
       cardColumns={1}
     >
       <div className="flex flex-col h-full min-h-0">
         <div className="mb-3 flex-shrink-0">
-          <BaseCard title="高景气行业总结" delay="0ms" variant="accent" className="!p-3 gap-1">
+          <BaseCard title="行业总结" delay="0ms" variant="accent" className="!p-3 gap-1">
             <p className="text-sm leading-snug">
-              高景气行业AI相关行业（特别是算力相关）、高端装备相关、绿色出口相关；K型分化短期内不可逆转，新经济端的AI景气有望延续，但旧经济端的地产、建材、传统制造业仍将在底部运行。政策需要在'扶新'与'托旧'之间寻找平衡。
+              高景气行业：AI相关行业（特别是算力相关）、高端装备相关、铁路船舶航空航天；K型分化短期内不可逆转，新经济端的AI景气有望延续，但旧经济端的地产、建材、传统制造业仍将在底部运行。
             </p>
           </BaseCard>
         </div>
@@ -115,7 +120,7 @@ export const ContentSlide41: React.FC = () => {
 
               <div className="flex-1 min-h-0 flex flex-col px-3.5 py-3 gap-3">
                 <p className="text-[11px] leading-relaxed text-slate-500 flex-shrink-0">
-                  注：利润和投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。景气分基于 Z-score 标准化后加权计算，50=历史均值；&gt;60 标记为高景气，&lt;45 标记为低景气，其余为中景气。
+                  注：利润和投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。
                 </p>
 
                 <div className="flex-1 min-h-0 overflow-hidden rounded border border-slate-200 flex flex-col">

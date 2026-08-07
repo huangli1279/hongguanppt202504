@@ -2,11 +2,18 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseLineChart } from '../base/BaseLineChart';
-import { retailMonthlyCategoryData, cityRetailData, serviceRetailData } from '../../data';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { retailTrendData, cityRetailData } from '../../data';
 
-const retailChartData = retailMonthlyCategoryData.filter((d) => d.period >= '2024-06');
+// 五一假期出游数据（官方来源：文化和旅游部）
+const laborDayData = [
+  { period: '2024年', trips: 2.95, spending: 1668.9 },
+  { period: '2025年', trips: 3.14, spending: 1802.69 },
+  { period: '2026年', trips: 3.25, spending: 1854.92 },
+];
+
+const retailChartData = retailTrendData.filter((d) => d.period >= '2024-06');
 const cityChartData = cityRetailData.filter((d) => d.period >= '2024-06');
-const serviceChartData = serviceRetailData.filter((d) => d.period >= '2024-06');
 const juneCityRetail = cityRetailData.find((d) => d.period === '2026-06')!;
 const fmtPct = (v: number | null) => (v == null ? '—' : `${v.toFixed(1)}%`);
 
@@ -44,23 +51,20 @@ export const ContentSlide14: React.FC = () => {
         <>
           <ChartContainer delay="600ms">
             <BaseLineChart
-              title="社会消费品零售总额、商品零售及餐饮收入当月同比增速"
+              title="社会消费品零售总额、商品零售及服务零售累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               data={retailChartData}
               lines={[
-                { dataKey: 'totalRetail', name: '社零总额:当月同比', strokeWidth: 2.5 },
-                { dataKey: 'goodsRetail', name: '商品零售:当月同比', labelDY: 12 },
-                { dataKey: 'cateringRevenue', name: '餐饮收入:当月同比', labelDY: -8 },
+                { dataKey: 'totalRetail', name: '社零总额:累计同比', strokeWidth: 2.5 },
+                { dataKey: 'goodsRetail', name: '商品零售:累计同比', labelDY: 12 },
+                { dataKey: 'serviceRetail', name: '服务零售:累计同比', labelDY: -8 },
               ]}
-              legendOrder={['社零总额:当月同比', '商品零售:当月同比', '餐饮收入:当月同比']}
-              yAxisDomain={[-1, 7]}
+              legendOrder={['社零总额:累计同比', '商品零售:累计同比', '服务零售:累计同比']}
+              yAxisDomain={[2, 14]}
               showYAxis
               showReferenceLine
               referenceLineY={0}
               xAxisTickCount={8}
-              categoryGroups={[
-                { label: '以旧换新', x1: '2024-12', x2: '2025-07' },
-              ]}
             />
           </ChartContainer>
           <ChartContainer delay="720ms">
@@ -83,18 +87,31 @@ export const ContentSlide14: React.FC = () => {
             />
           </ChartContainer>
           <ChartContainer delay="840ms">
-            <BaseLineChart
-              title="服务零售额累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              data={serviceChartData}
-              lines={[
-                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
+            <BaseBarChart
+              title="五一假期出游人次与旅游消费"
+              subtitle="数据来源：文化和旅游部数据中心 | 出游人次：亿人次；旅游花费：亿元"
+              data={laborDayData}
+              xAxisKey="period"
+              bars={[
+                { dataKey: 'trips', name: '出游人次', color: '#64748b' },
               ]}
-              legendOrder={['服务零售额:累计同比']}
-              yAxisDomain={[4, 8]}
+              lines={[
+                { dataKey: 'spending', name: '旅游花费', color: '#f97316', yAxisId: 'right', strokeWidth: 2.5 },
+              ]}
+              yAxisDomain={[0, 4]}
               showYAxis
-              xAxisTickCount={8}
-              highlightPeriods={['2026-06']}
+              showLineYAxis
+              lineAxisDomain={[1400, 2000]}
+              barSize={40}
+              showLabels
+              labelFormatter={(v: any) => v.toFixed(2)}
+              unit="亿人次"
+              lineUnit="亿元"
+              lineShowDot
+              lineLabelFormatter={(v: any) => `${v}`}
+              legendOrder={['出游人次', '旅游花费']}
+              yAxisTickFormatter={(v) => `${v}`}
+              lineYAxisTickFormatter={(v) => `${v}`}
             />
           </ChartContainer>
         </>

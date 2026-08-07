@@ -62,165 +62,144 @@ export const ContentSlide42: React.FC = () => {
           </BaseCard>
         </div>
 
-        {/* 主体：左右两栏。AI产业链框架结构(上) + AI产业链分工体系(下) 在左栏，BarChart 在右栏 */}
-        <div className="flex-1 min-h-0 grid grid-cols-2 gap-3">
-          {/* LEFT：AI产业链框架结构（完整版） + AI产业链分工体系 */}
-          <div className="min-h-0 flex flex-col gap-3">
-            {/* AI产业链框架结构（完整版） */}
-            <div className="flex-1 min-h-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm flex flex-col animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '120ms' }}>
-              {/* 标题栏 + 来源同行 */}
-              <div className="flex items-center justify-between px-2.5 py-1 border-b border-slate-200 bg-slate-50 flex-shrink-0">
-                <h3 className="text-[11px] font-bold text-slate-700 tracking-wide">
-                  AI产业链框架结构（完整版）
-                </h3>
-                <div className="flex items-center gap-2">
-                  <span className="text-[9px] text-slate-400">来源：公开资料整理</span>
-                  <span className="text-[9px] font-bold text-amber-600">1.0</span>
-                </div>
+        {/* 主体：AI产业链框架结构（上游+中游并排，下游在右侧） */}
+        <div className="flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm flex flex-col animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '120ms' }}>
+          {/* 标题栏 + 来源 */}
+          <div className="flex items-center justify-between px-2.5 py-1 border-b border-slate-200 bg-slate-50 flex-shrink-0">
+            <h3 className="text-[11px] font-bold text-slate-700 tracking-wide">
+              半导体产业链结构
+            </h3>
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] text-slate-400">来源：公开资料整理</span>
+            </div>
+          </div>
+
+          {/* 框架主体：半导体产业链结构 */}
+          <div className="flex flex-1 min-h-0 p-1.5 gap-1.5">
+            {/* 上游：半导体核心链 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#1B4F72] text-white text-center text-[10px] font-bold py-0.5">
+                半导体核心链（上游）
               </div>
-
-              {/* 上半：上游 + 中游 */}
-              <div className="grid grid-cols-2 gap-1.5 p-1.5 flex-shrink-0">
-                {/* 上游 · 基础层 */}
-                <div className="rounded-md overflow-hidden border border-slate-100">
-                  <div className="bg-amber-500 text-white text-center text-[10px] font-bold py-0.5">
-                    上游 · 基础层
-                  </div>
-                  <div className="p-1 space-y-1 bg-amber-50">
-                    {/* 核心硬件 */}
-                    <div className="rounded border border-amber-200 bg-white overflow-hidden">
-                      <div className="bg-orange-100 text-orange-800 text-[9px] font-bold px-1 py-0.5">
-                        核心硬件
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3]">
-                        芯片、服务器、液冷
-                      </div>
-                    </div>
-                    {/* 配套基础设施 */}
-                    <div className="rounded border border-amber-200 bg-white overflow-hidden">
-                      <div className="bg-orange-100 text-orange-800 text-[9px] font-bold px-1 py-0.5">
-                        配套基础设施
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3] space-y-0.5">
-                        <p><span className="font-semibold">通信：</span>光模块、PCB</p>
-                        <p><span className="font-semibold">配套设施：</span>IDC、电力</p>
-                        <p><span className="font-semibold">其他：</span>机床、IP、EDA、辅料</p>
-                      </div>
-                    </div>
+              <div className="p-1 space-y-1 bg-blue-50">
+                {/* 芯片设计 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    芯片设计
                   </div>
                 </div>
-
-                {/* 中游 · 模型层 */}
-                <div className="rounded-md overflow-hidden border border-slate-100">
-                  <div className="bg-sky-500 text-white text-center text-[10px] font-bold py-0.5">
-                    中游 · 模型层
-                  </div>
-                  <div className="p-1 space-y-1 bg-sky-50">
-                    {/* 基础模型 */}
-                    <div className="rounded border border-sky-200 bg-white overflow-hidden">
-                      <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5">
-                        基础模型
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3]">
-                        通用大模型、行业大模型、多模态、AI Agent
-                      </div>
-                    </div>
-                    {/* 模型能力 */}
-                    <div className="rounded border border-sky-200 bg-white overflow-hidden">
-                      <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5">
-                        模型能力
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3]">
-                        MaaS（模型API调用）、Token消耗
-                      </div>
-                    </div>
-                    {/* 数据要素 */}
-                    <div className="rounded border border-sky-200 bg-white overflow-hidden">
-                      <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5">
-                        数据要素
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3]">
-                        数据采集、数据标注、模型训练、模型推理、模型微调
-                      </div>
-                    </div>
+                {/* 晶圆制造 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    晶圆制造
                   </div>
                 </div>
-              </div>
-
-              {/* 下半：下游 · 应用层 */}
-              <div className="px-1.5 pb-1.5 flex-1 min-h-0">
-                <div className="rounded-md overflow-hidden border border-slate-100 h-full flex flex-col">
-                  <div className="bg-violet-500 text-white text-center text-[10px] font-bold py-0.5 flex-shrink-0">
-                    下游 · 应用层
-                  </div>
-                  <div className="p-1 grid grid-cols-2 gap-1 bg-violet-50 flex-1 min-h-0">
-                    {/* 行业应用 */}
-                    <div className="rounded border border-violet-200 bg-white overflow-hidden">
-                      <div className="bg-violet-100 text-violet-800 text-[9px] font-bold px-1 py-0.5">
-                        行业应用
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3]">
-                        金融、医疗、政务、教育、工业、交通
-                      </div>
-                    </div>
-                    {/* C端超级应用 */}
-                    <div className="rounded border border-violet-200 bg-white overflow-hidden">
-                      <div className="bg-violet-100 text-violet-800 text-[9px] font-bold px-1 py-0.5">
-                        C端超级应用
-                      </div>
-                      <div className="px-1 py-0.5 text-[9px] text-slate-700 leading-[1.3]">
-                        AI搜索、智能助手、AIGC、Agent工具
-                      </div>
-                    </div>
+                {/* 封测 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    封测
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* AI产业链分工体系 表格 */}
-            <div className="flex-1 min-h-0">
-              <ChartContainer delay="600ms">
-                <BaseTable
-                  data={aiChainGlobalParticipationData}
-                  columns={globalColumns}
-                  title="AI产业链分工体系"
-                  subtitle="数据来源：公开资料整理"
-                  colorizeNumbers={false}
-                  striped
-                  rowHeight="auto"
-                  cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
-                  headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
-                />
-              </ChartContainer>
+            {/* 中游：算力硬件中游 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#8ECAE6] text-slate-800 text-center text-[10px] font-bold py-0.5">
+                算力硬件中游
+              </div>
+              <div className="p-1 space-y-1 bg-sky-50">
+                {/* 光模块 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    光模块
+                  </div>
+                </div>
+                {/* 连接器 / PCB / 电源 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    连接器 / PCB / 电源
+                  </div>
+                </div>
+                {/* 服务器整机 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    服务器整机
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 下游：软件与下游 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#E8B923] text-slate-800 text-center text-[10px] font-bold py-0.5">
+                软件与下游
+              </div>
+              <div className="p-1 space-y-1 bg-amber-50">
+                {/* 算力集群 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    算力集群
+                  </div>
+                </div>
+                {/* 大模型 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    大模型
+                  </div>
+                </div>
+                {/* AI行业应用 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    AI行业应用
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* RIGHT：BarChart 占满右侧 */}
-          <div className="min-h-0">
-            <ChartContainer delay="720ms">
-              <BaseBarChart
-                data={filteredExportData}
-                title="中国AI链参与情况：出口同比增速"
-                subtitle="数据来源：海关总署 | 单位：%"
-                xAxisKey="category"
-                bars={[
-                  { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
-                  { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
-                  { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
-                ]}
-                legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
-                yAxisDomain={[-40, 160]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                showLabels={false}
-                barSize={12}
-                xAxisAngle={-90}
-                xAxisHeight={100}
-                xAxisInterval={0}
-              />
-            </ChartContainer>
-          </div>
+        {/* 底部：AI产业链分工体系 + BarChart 并列 */}
+        <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+          {/* 左侧：AI产业链分工体系 表格 */}
+          <ChartContainer delay="600ms" className="h-full">
+            <BaseTable
+              data={aiChainGlobalParticipationData}
+              columns={globalColumns}
+              title="AI产业链分工体系"
+              subtitle="数据来源：公开资料整理"
+              colorizeNumbers={false}
+              striped
+              rowHeight="auto"
+              cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
+              headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
+            />
+          </ChartContainer>
+
+          {/* 右侧：BarChart */}
+          <ChartContainer delay="720ms" className="h-full">
+            <BaseBarChart
+              data={filteredExportData}
+              title="中国AI链参与情况：出口同比增速"
+              subtitle="数据来源：海关总署 | 单位：%"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
+                { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
+                { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
+              ]}
+              legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
+              yAxisDomain={[-40, 160]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              showLabels={false}
+              barSize={12}
+              xAxisAngle={-90}
+              xAxisHeight={70}
+              xAxisInterval={0}
+            />
+          </ChartContainer>
         </div>
       </div>
     </BaseContentSlide>

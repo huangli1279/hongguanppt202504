@@ -8,7 +8,6 @@ import {
   aiSmePenetrationData,
   aiModelArrOverseasData,
   aiModelArrDomesticData,
-  aiRevenueVsDepreciationData,
 } from '@/data/aiRiskJudgment';
 
 const COLORS = {
@@ -48,26 +47,40 @@ const overseasPeakLabels = new Set([250, 140, 470, 200]);
 const domesticPeakLabels = new Set([10, 3]);
 
 const penetrationLines: LineConfig[] = [
-  { dataKey: 'ai', name: 'AI渗透率', color: COLORS.blue, strokeWidth: 2 },
+  {
+    dataKey: 'ai',
+    name: 'AI渗透率',
+    color: COLORS.blue,
+    strokeWidth: 2,
+    pointCallouts: { '3': { dx: -24, dy: -14 } },
+  },
   {
     dataKey: 'aiForecast',
     name: 'AI预测',
     color: COLORS.blue,
     strokeWidth: 2,
     strokeDasharray: '6 4',
+    hiddenLabelPeriods: ['3'],
   },
-  { dataKey: 'internet', name: '互联网', color: COLORS.yellow, strokeWidth: 2 },
-  { dataKey: 'pc', name: 'PC', color: COLORS.grey, strokeWidth: 2 },
+  {
+    dataKey: 'internet',
+    name: '互联网',
+    color: COLORS.yellow,
+    strokeWidth: 2,
+    pointCallouts: { '3': { dx: -24, dy: 14 } },
+  },
+  {
+    dataKey: 'pc',
+    name: 'PC',
+    color: COLORS.grey,
+    strokeWidth: 2,
+    pointCallouts: { '3': { dx: 24, dy: 14 } },
+  },
 ];
 
 const smeLines: LineConfig[] = [
   { dataKey: 'ramp', name: 'Ramp(大企业)', color: COLORS.blue, strokeWidth: 2 },
   { dataKey: 'gov', name: '政府口径(含中小)', color: COLORS.yellow, strokeWidth: 2 },
-];
-
-const revenueDepLines: LineConfig[] = [
-  { dataKey: 'aiRevenue', name: 'AI收入', color: COLORS.blue, strokeWidth: 2 },
-  { dataKey: 'capexDep', name: 'Capex折旧', color: COLORS.yellow, strokeWidth: 2 },
 ];
 
 export const ContentSlide44: React.FC = () => {
@@ -86,7 +99,7 @@ export const ContentSlide44: React.FC = () => {
             variant="accent"
             className="!p-2.5 !gap-1"
           >
-            <div className="text-[11px] leading-snug space-y-1.5">
+            <div className="text-[13px] leading-snug space-y-1.5">
               <p>
                 近期科技股呈现"基本面不差、股价照跌"的背离：美国降息预期推迟、美债收益率上行压制成长股估值，叠加海外AI算力资本开支扩张节奏边际放缓，国内科技板块前期涨幅偏大、抱团资金集中止盈。
               </p>
@@ -101,7 +114,7 @@ export const ContentSlide44: React.FC = () => {
             delay="120ms"
             className="!p-2.5 !gap-1"
           >
-            <div className="text-[11px] leading-snug space-y-0.5">
+            <div className="text-[13px] leading-snug space-y-0.5">
               <p>
                 当前AI泡沫论主流共识是："局部泡沫 + 结构性分化"，而非全面泡沫。
               </p>
@@ -171,7 +184,11 @@ export const ContentSlide44: React.FC = () => {
             />
           </ChartContainer>
 
-          <ChartContainer delay="480ms" ariaLabel="模型公司ARR连续上调">
+          <ChartContainer
+            delay="480ms"
+            ariaLabel="模型公司ARR连续上调"
+            className="col-span-2"
+          >
             <div className="flex flex-col h-full min-h-0 gap-1 [&_.mb-4]:!mb-1">
               <div className="flex-1 min-h-0">
                 <BaseBarChart
@@ -220,21 +237,6 @@ export const ContentSlide44: React.FC = () => {
                 />
               </div>
             </div>
-          </ChartContainer>
-
-          <ChartContainer delay="540ms" ariaLabel="云厂商AI收入已超过折旧压力">
-            <BaseLineChart
-              data={aiRevenueVsDepreciationData}
-              title="图表4：云厂商AI收入已超过折旧压力"
-              subtitle="来源：公司财报、华泰研究 | billion"
-              lines={revenueDepLines}
-              yAxisDomain={[0, 30]}
-              showYAxis
-              unit=""
-              yAxisTickFormatter={(v) => `${v}`}
-              legendOrder={['AI收入', 'Capex折旧']}
-              xAxisTicks={['23Q1', '24Q1', '25Q1', '26Q1']}
-            />
           </ChartContainer>
         </div>
 

@@ -26,6 +26,15 @@ export interface LineConfig {
   pointOffsets?: { [key: string]: number };
   /** 特定周期的数值标签X轴偏移，key为period字符串 */
   pointDXOffsets?: { [key: string]: number };
+  /** 特定周期使用箭头引导标注，将标签偏移并用引导线指向数据点 */
+  pointCallouts?: {
+    [key: string]: {
+      dx: number;
+      dy: number;
+    };
+  };
+  /** 不显示数值标签的周期（如与另一条线数值重复） */
+  hiddenLabelPeriods?: string[];
   /** 双轴时指定左右Y轴，默认 left */
   yAxisId?: 'left' | 'right';
   /** tooltip单位，覆盖全局 unit */
@@ -180,6 +189,50 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   }, {} as Record<string, string>);
 
   // 自定义标签渲染，显示最后一个有效数据点的值，放在右侧
+  const renderCalloutLabel = (
+    x: number,
+    y: number,
+    value: number | string,
+    color: string,
+    dx: number,
+    dy: number
+  ) => {
+    const labelX = x + dx;
+    const labelY = y + dy;
+    const textAnchor: 'start' | 'middle' | 'end' =
+      dx < -4 ? 'end' : dx > 4 ? 'start' : 'middle';
+    const angle = Math.atan2(y - labelY, x - labelX);
+    const arrowSize = 4;
+
+    return (
+      <g>
+        <line
+          x1={labelX}
+          y1={labelY}
+          x2={x}
+          y2={y}
+          stroke={color}
+          strokeWidth={1}
+        />
+        <polygon
+          points={`${x},${y} ${x - arrowSize * Math.cos(angle - 0.45)},${y - arrowSize * Math.sin(angle - 0.45)} ${x - arrowSize * Math.cos(angle + 0.45)},${y - arrowSize * Math.sin(angle + 0.45)}`}
+          fill={color}
+        />
+        <text
+          x={labelX}
+          y={labelY}
+          dy={dy < 0 ? -2 : dy > 0 ? 10 : 0}
+          fill={color}
+          fontSize={10}
+          fontWeight={600}
+          textAnchor={textAnchor}
+        >
+          {value}
+        </text>
+      </g>
+    );
+  };
+
   const renderCustomLabel = (props: any, color: string, dataKey: string, line: LineConfig) => {
     const { x, y, value, index } = props;
     
@@ -198,6 +251,12 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
     const isHighlighted = highlightPeriods.includes(period);
     
     if ((!isLastPoint && !isHighlighted) || value == null) return null;
+    if (line.hiddenLabelPeriods?.includes(period)) return null;
+
+    const callout = line.pointCallouts?.[period];
+    if (callout) {
+      return renderCalloutLabel(x, y, value, color, callout.dx, callout.dy);
+    }
 
     // 优先级：特定点偏移 > 线全局偏移 > 默认偏移
     let finalDY = isLastPoint ? 4 : -10;

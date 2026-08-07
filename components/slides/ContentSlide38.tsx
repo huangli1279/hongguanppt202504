@@ -12,30 +12,39 @@ import {
 
 export const ContentSlide38: React.FC = () => {
   return (
-    <BaseContentSlide title="房价下行背景下，居民消费受抑制" cardColumns={2}>
+    <BaseContentSlide title="房价下行背景下，居民消费受抑制" cardColumns={3}>
       <div className="flex flex-col h-full">
-        {/* 卡片区域：左房价走势，右消费抑制 */}
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
+        {/* 卡片区域：问题—实证—稳房价政策含义 */}
+        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
           <BaseCard title="房价持续同比下跌，财富效应承压" delay="0ms" variant="accent">
             <p>
-              根据高盛测算，26年Q1居民财富中房地产占
+              高盛测算，26年Q1居民财富中房地产占
               <span className="text-red-500 font-semibold">52%</span>
-              。70城新建商品住房价格自2023年起持续同比负增长，2024年10月跌幅一度扩大至
+              。社科院2026Q2报告指出，居民部门主动去杠杆，住房贷款连续
+              <span className="text-red-500 font-semibold">13</span>
+              个季度负增长，房价下行与收入预期偏弱叠加，房地产深度调整仍是内需修复的核心制约。70城新建商品住房价格2024年10月跌幅一度扩大至
               <span className="text-red-500 font-semibold">-6.2%</span>
-              ；此后跌幅收窄，但2026年上半年仍在
+              ，2026年上半年仍在
               <span className="text-red-500 font-semibold">-3.5%</span>
-              左右徘徊，房价下行周期拉长，居民住房财富缩水、消费预期偏弱。
+              左右徘徊。
             </p>
           </BaseCard>
           <BaseCard title="房价跌幅越大，居民消费越低" delay="120ms">
             <p>
-              调查显示，房价跌幅超
+              厦大×蚂蚁集团2025Q4—2026Q1连续两期调查显示，房价跌幅超
               <span className="text-red-500 font-semibold">15%</span>
               时，一套房家庭月均消费较房价上涨时少
               <span className="text-red-500 font-semibold">11.9%</span>
               ，多套房家庭少
               <span className="text-red-500 font-semibold">25.9%</span>
-              ；文娱与外出餐饮最先收缩，房价下跌对消费的抑制效应明显。
+              ；文娱与外出餐饮最先收缩。2025Q4报告判断"房价稳定有助于激发消费动力"，2026Q1约
+              <span className="text-red-500 font-semibold">23%</span>
+              家庭计划缩减消费。
+            </p>
+          </BaseCard>
+          <BaseCard title="稳房价是修复消费预期的关键抓手" delay="240ms">
+            <p>
+              2026年6月《求是》发文提出，加快修复居民资产负债表，着力稳定房地产市场，防止资产价格下跌对消费信心的负向螺旋。中国社会科学院金融研究所2026Q2宏观金融季报中建议因城施策、推动核心城市房价率先企稳。
             </p>
           </BaseCard>
         </div>
@@ -70,7 +79,7 @@ export const ContentSlide38: React.FC = () => {
             <BaseStackedBarChart
               data={housingConsumptionData}
               title="房价波动与家庭月均消费（按住房套数分组）"
-              subtitle="数据来源：调查数据｜单位：元（消费加权平均）"
+              subtitle="数据来源：厦大×蚂蚁集团研究院｜单位：元（消费加权平均）"
               bars={[
                 { dataKey: 'housingTransport', name: '住房与交通支出', color: seriesColors[1] },
                 { dataKey: 'foodLiving', name: '居家食品与生活支出', color: seriesColors[3] },
@@ -118,6 +127,10 @@ export const ContentSlide38: React.FC = () => {
             />
           </ChartContainer>
         </div>
+
+        <p className="mt-1 flex-shrink-0 text-[10px] leading-snug text-slate-500">
+          注：厦大×蚂蚁集团《中国家庭财富与消费报告》2025Q4—2026Q1；社科院金融所《中国宏观金融分析》2026Q2；《求是》2026.6.18
+        </p>
       </div>
     </BaseContentSlide>
   );

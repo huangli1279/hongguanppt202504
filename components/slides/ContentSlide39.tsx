@@ -6,7 +6,6 @@ import {
   consumerSpendingAgeGroups,
   consumerSpendingPlanAgeCategoryGroups,
   consumerSpendingPlanByAgeData,
-  consumerSpendingPlanTop3Highlights,
 } from '@/data/consumerSpendingPlan';
 
 const nameByCategory = Object.fromEntries(
@@ -15,7 +14,7 @@ const nameByCategory = Object.fromEntries(
 
 export const ContentSlide39: React.FC = () => {
   return (
-    <BaseContentSlide title="社零疲弱难改，增量向体验文娱、情绪陪伴、健康自我投资集中" cardColumns={2}>
+    <BaseContentSlide title="社零疲弱难改：增量向体验文娱、情绪陪伴、健康自我投资集中" cardColumns={2}>
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
@@ -23,20 +22,32 @@ export const ContentSlide39: React.FC = () => {
             <ul className="list-disc pl-4 space-y-1.5 text-sm">
               <li>
                 <span className="font-semibold">青年：</span>
-                引领体验与情绪消费——愿为旅游、文娱等「经历」和情绪价值买单。
+                体验与情绪消费引领：愿为旅游、文娱等「经历」和情绪价值买单。
               </li>
               <li>
                 <span className="font-semibold">中年：</span>
-                家庭与自我并重——子女教育之外，运动健身、自我提升支出同步抬升。
+                家庭与自我并重：子女教育之外，运动健身、自我提升支出同步抬升。
               </li>
               <li>
                 <span className="font-semibold">银发：</span>
-                健康与数字双轮驱动——养老服务与数码消费并行，迈向「智慧养老」。
+                健康与数字双轮驱动：养老服务与数码消费并行，迈向「智慧养老」。
               </li>
             </ul>
           </BaseCard>
           <BaseCard title="政策支持" delay="120ms">
             <ul className="list-disc pl-4 space-y-1.5 text-sm">
+              <li>
+                <span className="font-semibold">稳楼市：</span>
+                4月、7月政治局均强调稳定房地产，延续「止跌回稳」基调，因城施策控增量、去库存、优供给。
+              </li>
+              <li>
+                <span className="font-semibold">需求端：</span>
+                Q2深圳、广州、苏州等地大幅上调公积金贷款上限；武汉等地对多孩家庭发放6—12万元购房补贴。
+              </li>
+              <li>
+                <span className="font-semibold">供给端：</span>
+                专项债收购存量土地力度加大，商品房待售面积连续下降，一线新房价格环比四个月回升。
+              </li>
               <li>
                 <span className="font-semibold">扩消费：</span>
                 7月国务院批复《扩大消费“十五五”规划》，服务消费为核心，兼顾银发康养。
@@ -44,14 +55,6 @@ export const ContentSlide39: React.FC = () => {
               <li>
                 <span className="font-semibold">AI+消费：</span>
                 6月八部门印发《关于加快“人工智能+消费”发展的实施意见》。
-              </li>
-              <li>
-                <span className="font-semibold">文旅消费：</span>
-                7月印发《旅游强国建设“十五五”规划》，拓展体验型消费场景。
-              </li>
-              <li>
-                <span className="font-semibold">就业优先：</span>
-                6月发布《实施就业优先战略“十五五”规划》，稳收入夯实消费基础。
               </li>
             </ul>
           </BaseCard>
@@ -72,7 +75,6 @@ export const ContentSlide39: React.FC = () => {
               }))}
               legendOrder={['18-35岁', '36-59岁', '60岁以上']}
               categoryGroups={consumerSpendingPlanAgeCategoryGroups}
-              highlightAreas={consumerSpendingPlanTop3Highlights}
               yAxisDomain={[0, 40]}
               showYAxis={true}
               yAxisTickFormatter={(val) => `${val}`}
