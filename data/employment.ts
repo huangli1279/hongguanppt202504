@@ -65,11 +65,8 @@ export interface WorkTypeExpenditureDataPoint {
 
 export const workTypeExpenditureData: WorkTypeExpenditureDataPoint[] = [
   { category: '全职工作', totalExpenditure: 3521 },
-  { category: '临时工作', totalExpenditure: 2581 },
   { category: '失业3个月以内', totalExpenditure: 3017 },
   { category: '失业3个月以上', totalExpenditure: 2925 },
-  { category: '家庭照料', totalExpenditure: 3038 },
-  { category: '未退休且不找工作', totalExpenditure: 4913 },
 ];
 
 // 国内招聘网站岗位需求同比变化（%）；来源：BOSS直聘、猎聘

@@ -66,7 +66,7 @@ export const ContentSlide37: React.FC = () => {
           </BaseCard>
           <BaseCard title="失业对支出的影响" delay="240ms">
             <p>
-              调查显示，全职工作群体月均总支出<span className="text-red-500 font-semibold">3521</span>元，失业3个月以内、3个月以上分别降至<span className="text-red-500 font-semibold">3017</span>、<span className="text-red-500 font-semibold">2925</span>元，失业时间越长压制越明显；临时工作支出仅<span className="text-red-500 font-semibold">2581</span>元，为各类最低。
+              调查显示，全职工作群体月均总支出<span className="text-red-500 font-semibold">3521</span>元，失业3个月以内、3个月以上分别降低<span className="text-red-500 font-semibold">14.0%</span>、<span className="text-red-500 font-semibold">16.9%</span>，失业时间越长压制越明显。
             </p>
           </BaseCard>
         </div>
@@ -159,7 +159,7 @@ export const ContentSlide37: React.FC = () => {
                   bars={workTypeExpenditureBars}
                   xAxisKey="category"
                   showYAxis={true}
-                  yAxisDomain={[0, 5500]}
+                  yAxisDomain={[0, 4000]}
                   yAxisTickFormatter={(val) => `${val}`}
                   unit="元"
                   showLabels={true}

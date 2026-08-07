@@ -4,16 +4,14 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { retailCumulativeYoyData } from '@/data/retail';
 import { consumerConfidenceData } from '@/data/consumerConfidence';
+import { chartColors } from '@/utils/chartColors';
 
 const retailLines: LineConfig[] = [
   { dataKey: 'cumulativeYoy', name: '社零累计同比', strokeWidth: 2.5 },
 ];
 
 const confidenceLines: LineConfig[] = [
-  { dataKey: 'confidence', name: '消费者信心指数', strokeWidth: 2.5, labelDY: -14 },
-  { dataKey: 'employment', name: '就业信心指数', strokeWidth: 2, labelDY: 16 },
-  { dataKey: 'income', name: '收入信心指数', strokeWidth: 2, labelDY: -4 },
-  { dataKey: 'willingness', name: '消费意愿指数', strokeWidth: 2, labelDY: 4 },
+  { dataKey: 'confidence', name: '消费者信心指数', strokeWidth: 2.5, color: chartColors.primary },
 ];
 
 export const ContentSlide35: React.FC = () => {
@@ -71,19 +69,14 @@ export const ContentSlide35: React.FC = () => {
           <ChartContainer delay="720ms">
             <BaseLineChart
               data={consumerConfidenceData}
-              title="消费者信心及相关分项指数"
+              title="消费者信心指数"
               subtitle="数据来源：国家统计局 | 单位：点；100为荣枯线"
               lines={confidenceLines}
               yAxisDomain={[70, 130]}
               showYAxis
               showReferenceLine
               referenceLineY={100}
-              legendOrder={[
-                '消费者信心指数',
-                '就业信心指数',
-                '收入信心指数',
-                '消费意愿指数',
-              ]}
+              legendOrder={['消费者信心指数']}
               unit=""
               xAxisTickCount={8}
             />
