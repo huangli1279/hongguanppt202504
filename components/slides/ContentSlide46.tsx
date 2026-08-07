@@ -111,71 +111,87 @@ export const ContentSlide46: React.FC = () => {
       className="!p-8 sm:!p-10"
     >
       <div className="flex flex-col h-full min-h-0 pb-4">
-        <BaseCard
-          title="国内政策总结：贯通上中下游全链条，全面落地 “AI+” 战略"
-          delay="0ms"
-          variant="accent"
-          className="!p-2.5 !gap-1 mb-2 flex-shrink-0"
-        >
-          <div className="flex flex-col gap-1.5">
-            <p className="text-[12px] leading-relaxed">
-              国家持续支持、扶持人工智能
-              <span className="font-bold text-webank-blue">全链条发展</span>
-              ，统筹推动 AI 贯通
-              <span className="font-semibold text-webank-blue">上游基础技术攻关</span>
-              、
-              <span className="font-semibold text-webank-accent">中游产业新旧升级</span>
-              、
-              <span className="font-semibold text-emerald-700">下游民生消费就业应用</span>
-              全链条。
-            </p>
-            <p className="text-[12px] leading-relaxed">
-              多措并举促进
-              <span className="font-semibold text-webank-blue">技术迭代</span>
-              、
-              <span className="font-semibold text-webank-blue">产业融合</span>
-              与
-              <span className="font-semibold text-webank-blue">场景普惠落地</span>
-              ，全面落地
-              <span className="font-bold text-webank-blue">"AI+"</span>
-              战略，使其成为我国
-              <span className="font-semibold text-webank-accent">新旧动能转换</span>
-              、培育
-              <span className="font-semibold text-emerald-700">新质生产力</span>
-              的核心支撑。
-            </p>
+        {/* 左右两栏布局：国外政策总结 + 国内政策总结 */}
+        <div className="flex items-stretch gap-2 mb-2 flex-shrink-0 min-h-[120px]">
+          {/* 左侧：国外政策总结 */}
+          <div className="flex-1 flex flex-col">
+            <BaseCard
+              title="多维观察框架"
+              delay="0ms"
+              variant="default"
+              className="!p-2.5 !gap-1 flex-1"
+            >
+              <div className="flex items-stretch gap-0 flex-1">
+                {horizonStages.map((stage, i) => {
+                  const style = toneStyles[stage.tone];
+                  return (
+                    <React.Fragment key={stage.phase}>
+                      <div
+                        className={`flex-1 rounded-lg border px-2 py-1.5 flex flex-col
+                          animate-fade-in-up fill-mode-forwards opacity-0 ${style.card}`}
+                        style={{ animationDelay: `${120 + i * 80}ms` }}
+                      >
+                        <span
+                          className={`inline-flex self-start rounded px-1.5 py-0.5 text-[10px] font-bold ${style.badge}`}
+                        >
+                          {stage.phase}
+                        </span>
+                        <p className={`mt-1 text-[11px] font-bold leading-tight ${style.effect}`}>
+                          {stage.effect}
+                        </p>
+                        <p className={`mt-0.5 text-[10px] font-semibold ${style.impact}`}>
+                          {stage.netImpact}
+                        </p>
+                        <p className="mt-0.5 text-[9px] leading-snug text-slate-600">
+                          {stage.detail}
+                        </p>
+                      </div>
+                      {i < horizonStages.length - 1 && <StageArrow />}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            </BaseCard>
           </div>
-        </BaseCard>
 
-        <div className="flex items-stretch gap-0 mb-2 flex-shrink-0">
-          {horizonStages.map((stage, i) => {
-            const style = toneStyles[stage.tone];
-            return (
-              <React.Fragment key={stage.phase}>
-                <div
-                  className={`flex-1 rounded-lg border px-2.5 py-2 flex flex-col
-                    animate-fade-in-up fill-mode-forwards opacity-0 ${style.card}`}
-                  style={{ animationDelay: `${120 + i * 80}ms` }}
-                >
-                  <span
-                    className={`inline-flex self-start rounded px-1.5 py-0.5 text-[10px] font-bold ${style.badge}`}
-                  >
-                    {stage.phase}
-                  </span>
-                  <p className={`mt-1.5 text-[13px] font-bold leading-tight ${style.effect}`}>
-                    {stage.effect}
-                  </p>
-                  <p className={`mt-0.5 text-[11px] font-semibold ${style.impact}`}>
-                    {stage.netImpact}
-                  </p>
-                  <p className="mt-1 text-[10px] leading-snug text-slate-600">
-                    {stage.detail}
-                  </p>
-                </div>
-                {i < horizonStages.length - 1 && <StageArrow />}
-              </React.Fragment>
-            );
-          })}
+          {/* 右侧：国内政策总结 */}
+          <div className="flex-1 flex flex-col">
+            <BaseCard
+              title="国内政策总结：贯通上中下游全链条，全面落地 AI+ 战略"
+              delay="60ms"
+              variant="accent"
+              className="!p-2.5 !gap-1 flex-1"
+            >
+              <div className="flex flex-col gap-1.5 flex-1">
+                <p className="text-[12px] leading-relaxed">
+                  国家持续支持、扶持人工智能
+                  <span className="font-bold text-webank-blue">全链条发展</span>
+                  ，统筹推动 AI 贯通
+                  <span className="font-semibold text-webank-blue">上游基础技术攻关</span>
+                  、
+                  <span className="font-semibold text-webank-accent">中游产业新旧升级</span>
+                  、
+                  <span className="font-semibold text-emerald-700">下游民生消费就业应用</span>
+                  全链条。
+                </p>
+                <p className="text-[12px] leading-relaxed">
+                  多措并举促进
+                  <span className="font-semibold text-webank-blue">技术迭代</span>
+                  、
+                  <span className="font-semibold text-webank-blue">产业融合</span>
+                  与
+                  <span className="font-semibold text-webank-blue">场景普惠落地</span>
+                  ，全面落地
+                  <span className="font-bold text-webank-blue">"AI+"</span>
+                  战略，使其成为我国
+                  <span className="font-semibold text-webank-accent">新旧动能转换</span>
+                  、培育
+                  <span className="font-semibold text-emerald-700">新质生产力</span>
+                  的核心支撑。
+                </p>
+              </div>
+            </BaseCard>
+          </div>
         </div>
 
         <div className="flex-1 min-h-0 flex flex-col">
