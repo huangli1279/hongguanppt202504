@@ -75,15 +75,16 @@ export const ContentSlide39: React.FC = () => {
               }))}
               legendOrder={['18-35岁', '36-59岁', '60岁以上']}
               categoryGroups={consumerSpendingPlanAgeCategoryGroups}
-              yAxisDomain={[0, 40]}
+              yAxisDomain={[0, 50]}
               showYAxis={true}
+              yAxisWidth={40}
               yAxisTickFormatter={(val) => `${val}`}
               unit="%"
               barSize={10}
               showLabels={false}
               xAxisInterval={0}
               xAxisAngle={-35}
-              xAxisHeight={72}
+              xAxisHeight={90}
               xAxisTickFormatter={(v) => nameByCategory[String(v)] ?? String(v).split('|')[1] ?? String(v)}
             />
           </ChartContainer>
