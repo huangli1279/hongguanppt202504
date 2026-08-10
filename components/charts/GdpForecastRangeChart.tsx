@@ -14,7 +14,6 @@ const INTL_COLOR = '#4A79AA';
 const DOM_COLOR = '#2F5F5A';
 
 const DOMAIN: [number, number] = [4.0, 5.4];
-const TICKS = [4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4];
 
 function xOf(value: number, left: number, width: number) {
   const [min, max] = DOMAIN;
@@ -28,7 +27,7 @@ export const GdpForecastRangeChart: React.FC = () => {
   const plotWidth = 760;
   const metric = gdpForecastConsensus[0];
 
-  const axisY = 195;
+  const axisY = 160;
   const barH = 30;
   const xLow = xOf(metric.low, plotLeft, plotWidth);
   const xHigh = xOf(metric.high, plotLeft, plotWidth);
@@ -40,7 +39,7 @@ export const GdpForecastRangeChart: React.FC = () => {
   const actualLeftOfBand = metric.actual < metric.low - 0.05;
 
   // 机构点放在上半区，与轴拉开足够空间
-  const dotY = 45;
+  const dotY = 55;
   const sortedDots = [...gdpForecastByInstitutionNew].sort((a, b) => a.value - b.value);
 
   // 为每个点计算标签位置：检测与左右相邻点的距离，靠近则把标签往外推
@@ -143,7 +142,7 @@ export const GdpForecastRangeChart: React.FC = () => {
         </span>
         <span className="flex items-center gap-1.5 text-[10px] text-[#666]">
           <span
-            className="inline-block w-2.5 h-2.5 rounded-full border-2 border-white"
+            className="inline-block w-0.5 h-3"
             style={{ backgroundColor: ACTUAL_COLOR }}
           />
           上半年均值
@@ -314,17 +313,7 @@ export const GdpForecastRangeChart: React.FC = () => {
             {metric.low.toFixed(1)}–{metric.high.toFixed(1)}%
           </text>
 
-          {/* ========== 上半年实际均值（灰色虚线 + 灰点） ========== */}
-          <line
-            x1={xActual}
-            y1={axisY - barH / 2 - 2}
-            x2={xActual}
-            y2={axisY + barH / 2 + 2}
-            stroke={ACTUAL_COLOR}
-            strokeWidth={2}
-            strokeDasharray="3 2"
-          />
-          <circle cx={xActual} cy={axisY} r={4.5} fill={ACTUAL_COLOR} stroke="#fff" strokeWidth={1.5} />
+          {/* ========== 上半年实际均值（仅在 GDP 条下方标注，避免遮挡 GDP 条内的数字） ========== */}
           <text
             x={actualLeftOfBand ? xActual : xActual - 4}
             y={axisY + barH / 2 + 22}
@@ -348,18 +337,6 @@ export const GdpForecastRangeChart: React.FC = () => {
             opacity={0.55}
           />
 
-          {/* ========== 刻度 ========== */}
-          {TICKS.map((t) => {
-            const x = xOf(t, plotLeft, plotWidth);
-            return (
-              <g key={t}>
-                <line x1={x} y1={axisY + 32} x2={x} y2={axisY + 37} stroke="#cbd5e1" strokeWidth={1} />
-                <text x={x} y={axisY + 49} textAnchor="middle" fill="#94a3b8" fontSize={10}>
-                  {t.toFixed(1)}
-                </text>
-              </g>
-            );
-          })}
         </svg>
       </div>
     </div>
