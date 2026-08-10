@@ -3,7 +3,7 @@
 export const realizationPeriodData = [
   { tech: '蒸汽技术', years: 70, highlight: false },
   { tech: '电力', years: 40, highlight: false },
-  { tech: '互联网', years: 15, highlight: false },
+  { tech: '信息与通信技术', years: 15, highlight: false },
   { tech: '本轮', years: 10, highlight: true, label: '预计10年' },
 ] as const;
 

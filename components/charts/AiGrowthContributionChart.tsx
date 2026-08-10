@@ -43,8 +43,8 @@ export const AiGrowthContributionChart: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col min-h-0 overflow-hidden border border-webank-line/60 rounded-card bg-white p-2.5">
-      {/* 主图区：J曲线 + 兑现周期 */}
-      <div className="flex-1 min-h-0 grid grid-cols-[1fr_275px] gap-2">
+      {/* 主图区：J曲线 + 兑现周期 + 变化原因 */}
+      <div className="flex-1 min-h-0 grid grid-cols-[1fr_340px_280px] gap-3">
         {/* J 曲线 SVG */}
         <div className="relative min-h-0 h-full">
           <svg
@@ -157,7 +157,7 @@ export const AiGrowthContributionChart: React.FC = () => {
             <StageCallout
               title={jCurveStages[3].title}
               items={jCurveStages[3].items}
-              className="absolute left-[70%] top-[4%] w-[26%] bg-white/80 rounded px-1 py-0.5"
+              className="absolute left-[70%] top-[4%] w-[24%] bg-white/80 rounded px-1 py-0.5"
             />
           </div>
         </div>
@@ -173,14 +173,14 @@ export const AiGrowthContributionChart: React.FC = () => {
               <BarChart
                 data={barData}
                 layout="vertical"
-                margin={{ top: 4, right: 64, left: 0, bottom: 4 }}
+                margin={{ top: 4, right: 204, left: 0, bottom: 4 }}
                 barCategoryGap="18%"
               >
                 <XAxis type="number" domain={[0, 100]} hide />
                 <YAxis
                   type="category"
                   dataKey="tech"
-                  width={52}
+                  width={88}
                   tick={{ fontSize: 11, fill: '#334155' }}
                   axisLine={false}
                   tickLine={false}
@@ -195,7 +195,53 @@ export const AiGrowthContributionChart: React.FC = () => {
                   <LabelList
                     dataKey="display"
                     position="right"
-                    style={{ fontSize: 11, fill: '#334155', fontWeight: 600 }}
+                    content={(props: any) => {
+                      const { x, y, width, value, index } = props;
+                      const isHighlight = barData[index]?.highlight;
+                      if (!isHighlight) {
+                        return (
+                          <text
+                            x={x + width + 6}
+                            y={y}
+                            fill="#334155"
+                            fontSize={11}
+                            fontWeight={600}
+                            dominantBaseline="central"
+                          >
+                            {value}
+                          </text>
+                        );
+                      }
+                      // "本轮"行：数字 + 红色箭头指向右侧原因卡片
+                      const labelX = x + width + 6;
+                      return (
+                        <g>
+                          <text
+                            x={labelX}
+                            y={y}
+                            fill="#ef4444"
+                            fontSize={11}
+                            fontWeight={700}
+                            dominantBaseline="central"
+                          >
+                            {value}
+                          </text>
+                          <line
+                            x1={labelX + 62}
+                            y1={y}
+                            x2={labelX + 152}
+                            y2={y}
+                            stroke="#ef4444"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                          <polygon
+                            points={`${labelX + 152},${y - 4} ${labelX + 164},${y} ${labelX + 152},${y + 4}`}
+                            fill="#ef4444"
+                          />
+                        </g>
+                      );
+                    }}
                   />
                 </Bar>
               </BarChart>
@@ -204,6 +250,48 @@ export const AiGrowthContributionChart: React.FC = () => {
           <p className="text-[9px] text-slate-400 leading-tight mt-0.5 flex-shrink-0">
             数据来源：Nicholas Crafts(2004)、MGI、华泰研究
           </p>
+        </div>
+
+        {/* 本轮兑现周期更短的原因 */}
+        <div className="flex flex-col min-h-0 rounded-lg border border-sky-200 bg-gradient-to-b from-sky-50 to-blue-50/60 p-2.5 overflow-hidden">
+          <div className="flex items-center gap-1.5 mb-2 flex-shrink-0">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-webank-accent text-white text-[12px] font-bold leading-none">
+              ?
+            </span>
+            <p className="text-[15px] font-bold text-webank-blue leading-tight">
+              本轮兑现更快的 3 个原因
+            </p>
+          </div>
+
+          <ol className="space-y-2 flex-1 min-h-0 text-[13px] leading-relaxed text-slate-700">
+            <li className="flex gap-2">
+              <span className="shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full bg-webank-accent/15 text-webank-accent text-[12px] font-bold leading-none mt-[1px]">
+                1
+              </span>
+              <span>
+                <span className="font-semibold text-webank-blue">软件天然已扩散</span>
+                ，无需重新铺设物理网络。
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full bg-webank-accent/15 text-webank-accent text-[12px] font-bold leading-none mt-[1px]">
+                2
+              </span>
+              <span>
+                <span className="font-semibold text-webank-blue">基础设施并非从零起步</span>
+                ，AI 可借力既有云、算力网络和宽带部署。
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full bg-webank-accent/15 text-webank-accent text-[12px] font-bold leading-none mt-[1px]">
+                3
+              </span>
+              <span>
+                <span className="font-semibold text-webank-blue">部分落地场景已明确</span>
+                ：搜索、客服、编程等已产生可量化收益。
+              </span>
+            </li>
+          </ol>
         </div>
       </div>
     </div>

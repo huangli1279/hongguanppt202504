@@ -56,7 +56,7 @@ export const ContentSlide42: React.FC = () => {
           <BaseCard delay="0ms" variant="accent" className="!p-2.5 gap-1">
             <p className="text-[12.5px] leading-snug">
               中国在AI全球产业链中处于
-              <span className="font-semibold text-webank-blue">"中游主导、上游卡脖子、下游追赶"</span>
+              <span className="font-semibold text-webank-blue">"中游主导、下游追赶"</span>
               的格局。今年以来国内AI产业链高景气，主要受益于海外 AI 资本开支扩张带来的全球需求外溢。
             </p>
           </BaseCard>

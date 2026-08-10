@@ -27,12 +27,12 @@ const cycleStages = [
 ];
 
 const StageArrow: React.FC = () => (
-  <div className="flex items-center justify-center flex-shrink-0 w-5 self-center">
-    <svg viewBox="0 0 20 12" className="w-5 h-3" fill="none">
+  <div className="flex items-center justify-center flex-shrink-0 w-10 self-center">
+    <svg viewBox="0 0 40 14" className="w-10 h-3.5" fill="none">
       <path
-        d="M1 6 H15 M12 2 L16 6 L12 10"
+        d="M1 7 H32 M28 2 L34 7 L28 12"
         stroke="#7EB8D8"
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
