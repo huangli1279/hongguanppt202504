@@ -17,13 +17,13 @@ export const aiPolicyCategoryStyles: Record<
   AiPolicyCategory,
   { text: string; bg: string }
 > = {
-  顶层设计: { text: '#2563eb', bg: '#dbeafe' },
-  生产端: { text: '#16a34a', bg: '#dcfce7' },
-  消费端: { text: '#c2410c', bg: '#ffedd5' },
-  算力基建: { text: '#dc2626', bg: '#fee2e2' },
-  安全治理: { text: '#7c3aed', bg: '#ede9fe' },
-  就业: { text: '#0891b2', bg: '#cffafe' },
-  地方落地: { text: '#65a30d', bg: '#ecfccb' },
+  顶层设计: { text: '#1E6BB8', bg: '#DBEAFE' },
+  生产端: { text: '#1E6BB8', bg: '#DBEAFE' },
+  消费端: { text: '#1E6BB8', bg: '#DBEAFE' },
+  算力基建: { text: '#1E6BB8', bg: '#DBEAFE' },
+  安全治理: { text: '#1E6BB8', bg: '#DBEAFE' },
+  就业: { text: '#1E6BB8', bg: '#DBEAFE' },
+  地方落地: { text: '#1E6BB8', bg: '#DBEAFE' },
 };
 
 export const aiPolicyDynamicsData: AiPolicyDynamicsItem[] = [

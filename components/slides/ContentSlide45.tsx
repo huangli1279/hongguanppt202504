@@ -171,7 +171,7 @@ export const ContentSlide45: React.FC = () => {
                   、
                   <span className="font-semibold text-webank-accent">中游产业新旧升级</span>
                   、
-                  <span className="font-semibold text-emerald-700">下游民生消费就业应用</span>
+                  <span className="font-semibold text-webank-accent">下游民生消费就业应用</span>
                   全链条。
                 </p>
                 <p className="text-[12px] leading-relaxed">
@@ -186,7 +186,7 @@ export const ContentSlide45: React.FC = () => {
                   战略，使其成为我国
                   <span className="font-semibold text-webank-accent">新旧动能转换</span>
                   、培育
-                  <span className="font-semibold text-emerald-700">新质生产力</span>
+                  <span className="font-semibold text-webank-accent">新质生产力</span>
                   的核心支撑。
                 </p>
               </div>
