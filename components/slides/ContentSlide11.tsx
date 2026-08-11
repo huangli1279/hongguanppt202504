@@ -87,7 +87,15 @@ export const ContentSlide11: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="机构预测" delay="240ms">
+          <BaseCard
+            title={
+              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
+                机构预测
+              </span>
+            }
+            delay="240ms"
+            className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
+          >
             <ul className="list-disc pl-5 space-y-1">
               <li>
                 <span className="font-bold">PPI：</span>

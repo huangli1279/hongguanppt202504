@@ -62,7 +62,18 @@ export const ContentSlide19: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>投资端展望：政策推动，叠加前期盈利改善，支撑后续投资增速</>}
+      title={
+        <span className="inline-flex items-center gap-2 flex-wrap">
+          <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
+            <svg className="w-3 h-3 inline-block mr-1" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            投资端展望
+          </span>
+          <span className="text-black">政策推动，叠加前期盈利改善，支撑后续投资增速</span>
+        </span>
+      }
+      className="[&_[class*='animate-top-line']]:!bg-gradient-to-r [&_[class*='animate-top-line']]:!from-yellow-200 [&_[class*='animate-top-line']]:!to-amber-400"
       cardColumns={4}
     >
       <div className="flex flex-col h-full">
@@ -73,7 +84,7 @@ export const ContentSlide19: React.FC = () => {
               <span className="font-semibold">8000亿</span>政策工具待落地，市场一致预期将在三季度密集落地，重点投向“六张网”新基建和AI等新质生产力领域。
             </p>
             <p className="mt-1">
-              “两重”项目已全部下达。2026年“六张网”及相关领域投资超<span className="font-semibold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
+              “两重”项目全部下达。2026年“六张网”及相关领域投资超<span className="font-semibold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
             </p>
           </BaseCard>
           <BaseCard title="专项债发行提速" delay="120ms">

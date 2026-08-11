@@ -21,7 +21,7 @@ export const ContentSlide26: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>上半年一般公共预算收入同比增长4.7%，高于年初预算目标，收入进度略快于近年同期均值</>}
+      title={<>上半年一般公共预算收入同比增长4.7%，高于年初预算目标，进度略快于近年同期均值</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">

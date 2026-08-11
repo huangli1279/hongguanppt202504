@@ -74,7 +74,15 @@ export const ContentSlide22: React.FC = () => {
               中东变局引发的能源安全担忧使全球能源转型加速，上半年汽车出口量首次突破<span className="font-semibold">500万辆</span>大关，达<span className="text-red-500 font-semibold">509.6万辆</span>，同比增长<span className="text-red-500 font-semibold">65.3%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">1.2倍</span>，成为增长核心引擎。锂电池出口额<span className="font-semibold">486亿美元</span>，同比增长<span className="text-red-500 font-semibold">42.7%</span>，风力发电机组同比增长<span className="text-red-500 font-semibold">35.6%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="下半年展望：增速回落、结构分化" delay="240ms">
+          <BaseCard
+            title={
+              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
+                下半年展望：增速回落、结构分化
+              </span>
+            }
+            delay="240ms"
+            className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
+          >
             <p>
               机构普遍认为下半年出口同比中枢将回落：基准情形下三、四季度约<span className="text-red-500 font-semibold">12.4%</span>、<span className="text-red-500 font-semibold">7.7%</span>，全年约<span className="text-red-500 font-semibold">13.7%</span>（乐观<span className="font-semibold">17.6%</span>/悲观<span className="font-semibold">9.8%</span>）。趋势上K型分化延续——AI与“新三样”仍具韧性，传统消费品承压；需关注高基数、中欧贸易摩擦及地缘冲突扰动。
             </p>

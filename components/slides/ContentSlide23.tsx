@@ -62,7 +62,15 @@ export const ContentSlide23: React.FC = () => {
               金属矿砂进口增长<span className="text-red-500 font-semibold">22.6%</span>，其中铁矿砂进口量增<span className="text-red-500 font-semibold">6.3%</span>、金额增<span className="text-red-500 font-semibold">11.4%</span>；电子元件进口增长<span className="text-red-500 font-semibold">45.6%</span>。原油进口量累计下降<span className="text-green-600 font-semibold">11.4%</span>，但价格抬升使金额仍增<span className="text-red-500 font-semibold">1.8%</span>；6月原油进口量降至近十年低位，地缘冲突扰动供给与补库节奏。
             </p>
           </BaseCard>
-          <BaseCard title="下半年展望：结构韧性仍在" delay="240ms">
+          <BaseCard
+            title={
+              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
+                下半年展望：结构韧性仍在
+              </span>
+            }
+            delay="240ms"
+            className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
+          >
             <p>
               总量增速或回落，但AI算力扩产与存储涨价周期尚未结束，集成电路、算力硬件进口有望保持韧性。若内需改善加快、能源供给逐步修复，进口结构有望优化，支撑全年外贸发展。
             </p>

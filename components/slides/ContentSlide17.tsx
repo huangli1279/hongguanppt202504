@@ -36,9 +36,9 @@ export const ContentSlide17: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="总量超预期回落" delay="0ms" variant="accent">
             <p>
-              上半年全国固定资产投资（不含农户）<span className="text-black font-semibold">22.64万亿</span>，同比下降<span className="text-green-600 font-semibold">5.7%</span>（前值+1.7%），增速回落<span className="text-black font-semibold">7.4个百分点</span>。其中，基础设施建设投资同比下降<span className="text-green-600 font-semibold">2.4%</span>，房地产投资同比降幅扩大，仍为主要拖累。
+              上半年全国固定资产投资（不含农户）<span className="text-black font-semibold">22.64万亿</span>，同比下降<span className="text-green-600 font-semibold">5.7%</span>（前值+1.7%），增速回落<span className="text-black font-semibold">7.4个百分点</span>。其中基础设施建设投资同比下降<span className="text-green-600 font-semibold">2.4%</span>，房地产投资同比降幅扩大，仍为主要拖累。
             </p>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-black">
               房地产投资方面，商品待售面积连续4个月同比下降，一线城市价格端连续4个月环比上升，房地产开发投资累计同比仍然深度负增长。
             </p>
           </BaseCard>

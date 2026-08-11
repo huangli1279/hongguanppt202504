@@ -20,7 +20,7 @@ export const ContentSlide37: React.FC = () => {
             <p>
               高盛测算，26年Q1居民财富中房地产占
               <span className="text-red-500 font-semibold">52%</span>
-              。社科院2026Q2报告指出，居民部门主动去杠杆，住房贷款连续
+              。社科院26Q2报告指出，居民部门主动去杠杆，住房贷款连续
               <span className="text-red-500 font-semibold">13</span>
               个季度负增长，房价下行与收入预期偏弱叠加，房地产深度调整仍是内需修复的核心制约。70城新建商品住房价格2024年10月跌幅一度扩大至
               <span className="text-red-500 font-semibold">-6.2%</span>
@@ -95,7 +95,7 @@ export const ContentSlide37: React.FC = () => {
                 '教育与医疗支出',
                 '耐用品支出',
               ]}
-              yAxisDomain={[0, 6500]}
+              yAxisDomain={[0, 7500]}
               showYAxis
               barSize={36}
               showLabels
