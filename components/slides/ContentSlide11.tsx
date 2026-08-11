@@ -81,7 +81,7 @@ export const ContentSlide11: React.FC = () => {
               <span className="text-red-500 font-bold">5.56%</span>
               （同比提高
               <span className="text-red-500 font-bold">0.63%</span>
-              ），但生产资料和生活资料剪刀差二季度持续扩大，6月为
+              ）。生产资料和生活资料剪刀差持续扩大，6月为
               <span className="text-red-500 font-bold">6.4%</span>
               ，中下游企业生存条件严峻。
             </p>
@@ -141,7 +141,7 @@ export const ContentSlide11: React.FC = () => {
               title="PPI、生产资料、生活资料当月同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5 },
+                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-06': 14 } },
                 { dataKey: 'productionMaterialsYoy', name: '生产资料当月同比', strokeWidth: 2.5 },
                 { dataKey: 'livingGoodsYoy', name: '生活资料当月同比', strokeWidth: 2.5 },
               ]}
@@ -150,7 +150,7 @@ export const ContentSlide11: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['PPI当月同比', '生产资料当月同比', '生活资料当月同比']}
-              highlightPeriods={['2026-06']}
+              highlightPeriods={['2026-06', '2026-07']}
               xAxisTickCount={7}
               unit=""
               yAxisTickFormatter={(val) => `${val}`}
