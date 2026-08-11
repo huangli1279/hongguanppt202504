@@ -37,11 +37,7 @@ export const ContentSlide15: React.FC = () => {
               <li>
                 CPI 全年预计
                 <span className="font-bold">0.9%-1.0%</span>
-                （浦银
-                <span className="font-bold">0.9%</span>
-                、大公约
-                <span className="font-bold">1.0%</span>
-                ），上半年已录得
+                ，上半年已录得
                 <span className="font-bold">1.0%</span>
                 ，下半年继续上行空间有限
               </li>
@@ -54,7 +50,7 @@ export const ContentSlide15: React.FC = () => {
                 1—6月社零仅
                 <span className="font-bold">1.3%</span>
                 ，要实现全年
-                <span className="font-bold">3%+</span>
+                <span className="font-bold">3%</span>
                 ，下半年累计增速需明显回升
               </li>
               <li>
