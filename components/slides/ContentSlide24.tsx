@@ -1,88 +1,125 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { importTableData, ImportTableItem } from '@/data';
+import { usExportMonthlyData, tradeByCountryH1Data, TradeByCountryDataPoint } from '@/data/foreignTrade';
 import { cn } from '@/utils/cn';
 
 export const ContentSlide24: React.FC = () => {
+  const usExportLineConfigs: LineConfig[] = [
+    { dataKey: 'yoy', name: '当月同比', strokeWidth: 2.5, yAxisId: 'left', unit: '%' },
+    { dataKey: 'value', name: '当月值', strokeWidth: 2, yAxisId: 'right', unit: '' },
+  ];
+
   const columns: ColumnConfig[] = [
     {
-      key: 'name',
-      title: '商品名称',
-      width: '28%',
+      key: 'region',
+      title: '国别/地区',
       align: 'left',
-      render: (value, row: ImportTableItem) => {
-        const padding = row.level === 0 ? 'pl-0' : row.level === 1 ? 'pl-4' : 'pl-8';
-        return (
-          <div className={cn(padding, row.isCategory && 'font-bold text-webank-blue')}>
-            {value}
-          </div>
-        );
-      }
+      width: '28%',
+      render: (value, row: TradeByCountryDataPoint) => (
+        <span className={cn(row.highlight || row.region === '总值' ? 'font-bold text-webank-blue' : '')}>
+          {value}
+        </span>
+      ),
     },
     {
-      key: 'decAmount',
-      title: '6月金额',
+      key: 'exportAmount',
+      title: '1-6月出口',
       align: 'right',
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
+      render: (val: number) =>
+        typeof val === 'number' ? (
+          <span className="text-black">
+            {val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+          </span>
+        ) : (
+          <span className="text-slate-400">-</span>
+        ),
     },
     {
-      key: 'totalAmount',
-      title: '1-6月累计金额',
+      key: 'exportYoy',
+      title: '出口同比',
       align: 'right',
       includeInStats: true,
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
+      redThreshold: 10,
     },
-    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true },
-    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true },
+    {
+      key: 'importAmount',
+      title: '1-6月进口',
+      align: 'right',
+      render: (val: number) =>
+        typeof val === 'number' ? (
+          <span className="text-black">
+            {val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+          </span>
+        ) : (
+          <span className="text-slate-400">-</span>
+        ),
+    },
+    {
+      key: 'importYoy',
+      title: '进口同比',
+      align: 'right',
+      includeInStats: true,
+      redThreshold: 10,
+    },
   ];
 
   return (
     <BaseContentSlide
-      title="进口端：AI链拉动显著，大宗商品量价分化"
-      cardColumns={3}
+      title="国别结构：对美出口触底回升，新兴市场稳固贸易基本盘"
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
-          <BaseCard title="AI产业链贡献近半增量" delay="0ms" variant="accent">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="对美贸易边际缓和" delay="0ms" variant="accent">
             <p>
-              上半年进口历史同期首次突破<span className="font-semibold">10万亿元</span>，同比增长<span className="text-red-500 font-semibold">22.1%</span>（美元计<span className="text-red-500 font-semibold">26.6%</span>），增速高于出口<span className="text-red-500 font-semibold">8.7</span>个百分点。集成电路进口额<span className="font-semibold">2980亿美元</span>、同比<span className="text-red-500 font-semibold">55.8%</span>，自动数据处理设备及零部件同比<span className="text-red-500 font-semibold">78.9%</span>；6月二者合计拉动进口约<span className="text-red-500 font-semibold">17.4</span>个百分点，贡献近一半增量。
+              5月14日中美元首会谈构建“建设性战略稳定关系”，加权平均关税率受政策预期及判决影响回落，4月对美进出口由降转升，5月继续保持增长态势同比增长<span className="text-red-500 font-semibold">35.4%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="大宗商品量价分化" delay="120ms">
+          <BaseCard title="多元化布局进一步巩固" delay="120ms">
             <p>
-              金属矿砂进口增长<span className="text-red-500 font-semibold">22.6%</span>，其中铁矿砂进口量增<span className="text-red-500 font-semibold">6.3%</span>、金额增<span className="text-red-500 font-semibold">11.4%</span>；电子元件进口增长<span className="text-red-500 font-semibold">45.6%</span>。原油进口量累计下降<span className="text-green-600 font-semibold">11.4%</span>，但价格抬升使金额仍增<span className="text-red-500 font-semibold">1.8%</span>；6月原油进口量降至近十年低位，地缘冲突扰动供给与补库节奏。
-            </p>
-          </BaseCard>
-          <BaseCard title="下半年展望：结构韧性仍在" delay="240ms">
-            <p>
-              总量增速或回落，但AI算力扩产与存储涨价周期尚未结束，集成电路、算力硬件进口有望保持韧性。若内需改善加快、能源供给逐步修复，进口结构有望优化，支撑全年外贸发展。
+              1—6月，我国对东盟、欧盟、非洲的进出口额均实现两位数增长。对共建“一带一路”国家进出口增长<span className="text-red-500 font-semibold">17.9%</span>，占出口总额比重过半。
             </p>
           </BaseCard>
         </div>
 
-        {/* 表格区域 */}
-        <ChartContainer delay="600ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={importTableData}
-            columns={columns}
-            title="2026年6月全国进口重点商品量值表"
-            subtitle="数据来源：海关总署 | 金额单位：百万美元"
-            rowHeight="auto"
-            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
-            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
-            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
-            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
-          />
-        </ChartContainer>
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="600ms">
+            <BaseTable
+              data={tradeByCountryH1Data}
+              columns={columns}
+              title="主要国别（地区）进出口总值（1-6月）"
+              subtitle="数据来源：海关总署 | 金额单位：亿美元"
+              striped={true}
+              rowHeight="auto"
+              highlightRows={[]}
+              cellClassName="px-1.5 text-caption leading-tight"
+              headerCellClassName="px-1.5 text-caption leading-tight"
+            />
+          </ChartContainer>
+          <ChartContainer delay="720ms">
+            <BaseLineChart
+              data={usExportMonthlyData}
+              title="对美出口美元计价当月同比及当月值"
+              subtitle="数据来源：海关总署 | 同比为%，当月值为百万美元"
+              lines={usExportLineConfigs}
+              yAxisDomain={[-40, 40]}
+              showYAxis={true}
+              showRightYAxis={true}
+              rightYAxisDomain={[25000, 50000]}
+              rightYAxisTickFormatter={(val) => `${Math.round(val / 1000)}k`}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['当月同比', '当月值']}
+              highlightPeriods={['2026-05']}
+              xAxisTickCount={10}
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );

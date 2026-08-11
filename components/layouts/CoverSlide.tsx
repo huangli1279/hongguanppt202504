@@ -33,7 +33,7 @@ export const CoverSlide: React.FC = () => {
       </div>
 
       <div className="absolute bottom-12 left-24 text-webank-muted font-mono text-meta animate-fade-in" style={{ animationDelay: '1.3s' }}>
-        2026年7月
+        2026年8月
       </div>
     </div>
   );

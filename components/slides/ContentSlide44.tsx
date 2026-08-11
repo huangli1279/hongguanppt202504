@@ -1,249 +1,354 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { jobDemandYoyData } from '@/data/employment';
 import {
-  aiPenetrationCurveData,
-  aiSmePenetrationData,
-  aiModelArrOverseasData,
-  aiModelArrDomesticData,
-} from '@/data/aiRiskJudgment';
+  industrialRevolutionTableRows,
+  irPhaseStyles,
+  IRTableRow,
+  IRTone,
+} from '@/data/industrialRevolutionEmployment';
 
-const COLORS = {
-  blue: '#1B4F72',
-  yellow: '#E8B923',
-  grey: '#9CA3AF',
+const employmentStages = [
+  {
+    phase: '未来5年',
+    effect: '替代效应占主导',
+    netImpact: '净就业影响为负',
+    detail: '标准化认知岗位承压明显，初级、重复性岗位需求率先收缩。',
+    tone: 'negative' as const,
+  },
+  {
+    phase: '5—10年',
+    effect: '互补效应逐步显现',
+    netImpact: '净就业影响转正',
+    detail: 'AI作为工具提升劳动者生产率，人机协作成为主流工作形态。',
+    tone: 'neutral' as const,
+  },
+  {
+    phase: '10年以上',
+    effect: '创造效应占主导',
+    netImpact: '结构性错配并存',
+    detail: '"有岗位、缺技能"与"有技能、缺岗位"可能并存。',
+    tone: 'positive' as const,
+  },
+];
+
+const toneStyles = {
+  negative: {
+    card: 'bg-gradient-to-b from-red-50 to-orange-50/70 border-red-200',
+    badge: 'bg-red-500 text-white',
+    effect: 'text-red-600',
+    impact: 'text-red-500',
+  },
+  neutral: {
+    card: 'bg-gradient-to-b from-sky-50 to-blue-50/60 border-sky-200',
+    badge: 'bg-webank-blue text-white',
+    effect: 'text-webank-blue',
+    impact: 'text-webank-accent',
+  },
+  positive: {
+    card: 'bg-gradient-to-b from-emerald-50 to-teal-50/60 border-emerald-200',
+    badge: 'bg-emerald-600 text-white',
+    effect: 'text-emerald-700',
+    impact: 'text-emerald-600',
+  },
 };
 
-/** 季度系列配色（对齐上传图例风格） */
-const ARR_Q_COLORS = {
-  '2023Q3': '#9DC3E6',
-  '2024Q4': '#ED7D31',
-  '2025Q2': '#A5A5A5',
-  '2025Q4': '#FFC000',
-  '2026Q1': '#5B9BD5',
-  '2026Q2': '#70AD47',
-  '2026Q3': '#FFC000',
-} as const;
+const StageArrow: React.FC = () => (
+  <div className="flex items-center justify-center flex-shrink-0 w-4 self-center">
+    <svg viewBox="0 0 20 12" className="w-4 h-3" fill="none">
+      <path
+        d="M1 6 H15 M12 2 L16 6 L12 10"
+        stroke="#7EB8D8"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
 
-const overseasArrBars = [
-  { dataKey: '2023Q3', name: '23Q3', color: ARR_Q_COLORS['2023Q3'] },
-  { dataKey: '2024Q4', name: '24Q4', color: ARR_Q_COLORS['2024Q4'] },
-  { dataKey: '2025Q2', name: '25Q2', color: ARR_Q_COLORS['2025Q2'] },
-  { dataKey: '2025Q4', name: '25Q4', color: ARR_Q_COLORS['2025Q4'] },
-  { dataKey: '2026Q1', name: '26Q1', color: ARR_Q_COLORS['2026Q1'] },
-  { dataKey: '2026Q2', name: '26Q2', color: ARR_Q_COLORS['2026Q2'] },
-];
+// 阶段徽章渲染
+const PhaseBadge: React.FC<{ phase: string; tone: IRTone }> = ({ phase, tone }) => {
+  const style = irPhaseStyles[tone];
+  return (
+    <span className={`inline-block rounded px-0.5 py-0.5 text-[8px] font-semibold leading-none ${style.badge}`}>
+      {phase}
+    </span>
+  );
+};
 
-const domesticArrBars = [
-  { dataKey: '2025Q4', name: '25Q4', color: ARR_Q_COLORS['2023Q3'] },
-  { dataKey: '2026Q1', name: '26Q1', color: ARR_Q_COLORS['2024Q4'] },
-  { dataKey: '2026Q2', name: '26Q2', color: ARR_Q_COLORS['2025Q2'] },
-  { dataKey: '2026Q3', name: '26Q3', color: ARR_Q_COLORS['2025Q4'] },
-];
-
-const overseasPeakLabels = new Set([250, 140, 470, 200]);
-const domesticPeakLabels = new Set([10, 3]);
-
-const penetrationLines: LineConfig[] = [
+// 本次AI革命与前几次工业革命的核心差异（精简版）
+const differencePoints: { num: string; title: string; content: string }[] = [
   {
-    dataKey: 'ai',
-    name: 'AI渗透率',
-    color: COLORS.blue,
-    strokeWidth: 2,
-    pointCallouts: { '3': { dx: -24, dy: -14 } },
+    num: '1',
+    title: '替代白领脑力工作',
+    content: '前几次替代体力劳动；AI直接冲击法律、会计、编程等知识型岗位。',
   },
   {
-    dataKey: 'aiForecast',
-    name: 'AI预测',
-    color: COLORS.blue,
-    strokeWidth: 2,
-    strokeDasharray: '6 4',
-    hiddenLabelPeriods: ['3'],
+    num: '2',
+    title: '速度数量级差异',
+    content: 'ChatGPT 2个月破亿用户，远超历史技术普及速度。',
   },
   {
-    dataKey: 'internet',
-    name: '互联网',
-    color: COLORS.yellow,
-    strokeWidth: 2,
-    pointCallouts: { '3': { dx: -24, dy: 14 } },
+    num: '3',
+    title: '转型门槛抬高',
+    content: '初级白领岗位收缩，晋升阶梯断裂，再培训成本高。',
   },
   {
-    dataKey: 'pc',
-    name: 'PC',
-    color: COLORS.grey,
-    strokeWidth: 2,
-    pointCallouts: { '3': { dx: 24, dy: 14 } },
+    num: '4',
+    title: '同步冲击',
+    content: '跨行业、跨城市同时爆发，缺少地理与产业缓冲。',
+  },
+  {
+    num: '5',
+    title: 'K型撕裂',
+    content: '受益高度集中于少数人，财富不平等显著加剧。',
   },
 ];
 
-const smeLines: LineConfig[] = [
-  { dataKey: 'ramp', name: 'Ramp(大企业)', color: COLORS.blue, strokeWidth: 2 },
-  { dataKey: 'gov', name: '政府口径(含中小)', color: COLORS.yellow, strokeWidth: 2 },
+const concernsList: string[] = [
+  '供需错配问题严重；白领里的"流水线岗位"塌了，中产上升路也断了',
+];
+
+// 历次工业革命表格列配置：每行 = 一次工业革命，三列展示三阶段
+const irTableColumns: ColumnConfig[] = [
+  {
+    key: 'epoch',
+    title: '工业革命',
+    width: 68,
+    align: 'center',
+    render: (value: string, row: IRTableRow) => (
+      <div className="flex flex-col items-center leading-tight">
+        <span className="text-[9px] font-bold text-slate-800 whitespace-pre-line">{value}</span>
+        <span className="text-[8px] text-slate-500 mt-0.5">{row.period}</span>
+      </div>
+    ),
+  },
+  {
+    key: 'phase1',
+    title: '替代主导',
+    width: 130,
+    align: 'center',
+    children: [
+      {
+        key: 'phase1_inner',
+        title: '替代主导',
+        width: 130,
+        align: 'center',
+        render: (_: any, row: IRTableRow) => (
+          <div className="flex flex-col gap-0.5 w-full">
+            <PhaseBadge phase={row.phase1} tone={row.tone1} />
+            <div className="text-[8px] text-slate-500 leading-tight">{row.duration1}</div>
+            <div className="text-[8px] text-red-500 leading-tight mt-0.5">↓ {row.displaced1}</div>
+            <div className="text-[8px] text-slate-500 leading-tight">净：<span className="text-red-600 font-medium">{row.net1}</span></div>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    key: 'phase2',
+    title: '互补显现',
+    width: 130,
+    align: 'center',
+    children: [
+      {
+        key: 'phase2_inner',
+        title: '互补显现',
+        width: 130,
+        align: 'center',
+        render: (_: any, row: IRTableRow) => (
+          <div className="flex flex-col gap-0.5 w-full">
+            <PhaseBadge phase={row.phase2} tone={row.tone2} />
+            <div className="text-[8px] text-slate-500 leading-tight">{row.duration2}</div>
+            <div className="text-[8px] text-webank-blue leading-tight">↑ {row.emerging2}</div>
+            <div className="text-[8px] text-slate-500 leading-tight">净：<span className="text-webank-blue font-medium">{row.net2}</span></div>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    key: 'phase3',
+    title: '创造主导',
+    width: 130,
+    align: 'center',
+    children: [
+      {
+        key: 'phase3_inner',
+        title: '创造主导',
+        width: 130,
+        align: 'center',
+        render: (_: any, row: IRTableRow) => (
+          <div className="flex flex-col gap-0.5 w-full">
+            <PhaseBadge phase={row.phase3} tone={row.tone3} />
+            <div className="text-[8px] text-slate-500 leading-tight">{row.duration3}</div>
+            <div className="text-[8px] text-emerald-600 leading-tight">↑ {row.emerging3}</div>
+            <div className="text-[8px] text-slate-500 leading-tight">净：<span className="text-emerald-700 font-medium">{row.net3}</span></div>
+          </div>
+        ),
+      },
+    ],
+  },
 ];
 
 export const ContentSlide44: React.FC = () => {
   return (
     <BaseContentSlide
-      title="风险判断：当前AI尚不能被简单定义为全面泡沫，更接近局部风险积聚"
-      cardColumns={2}
-      headerClassName="!mb-2"
-      className="!p-8 sm:!p-10"
+      title="风险判断：对就业的影响是阶段式，主要体现为替代、互补和创造三种效应，三者权重将随时间推移而变化"
+      cardColumns={1}
+      headerClassName="!mb-1.5"
+      className="!p-6 sm:!p-8"
     >
-      <div className="flex flex-col h-full min-h-0 pb-2">
-        <div className="grid grid-cols-2 gap-2.5 mb-2 flex-shrink-0">
-          <BaseCard
-            title="市场背离与泡沫担忧"
-            delay="0ms"
-            variant="accent"
-            className="!p-2.5 !gap-1"
-          >
-            <div className="text-[13px] leading-snug space-y-1.5">
-              <p>
-                近期科技股呈现"基本面不差、股价照跌"的背离：美国降息预期推迟、美债收益率上行压制成长股估值，叠加海外AI算力资本开支扩张节奏边际放缓，国内科技板块前期涨幅偏大、抱团资金集中止盈。
+      <div className="flex flex-col h-full min-h-0">
+        {/* 左右双栏布局 */}
+        <div className="flex gap-1.5 mb-1.5 flex-shrink-0">
+          {/* 左侧：导语 + 三阶段时间轴（约55%） */}
+          <div className="w-[55%] flex flex-col gap-1.5 min-h-0">
+            {/* 导语卡片 */}
+            <BaseCard
+              title="对就业影响是阶段式"
+              delay="0ms"
+              variant="accent"
+              className="!p-2 !gap-0.5"
+            >
+              <p className="text-[11px] leading-snug">
+                AI对就业并非单向冲击，而是
+                <span className="font-semibold text-webank-blue">替代、互补、创造</span>
+                三种效应随时间权重切换：近端替代主导、中端互补抬升、远端创造接力，但技能结构错配将贯穿全过程。
               </p>
-              <p>
-                同时围绕资本开支高企、商业化回报待验、融资渠道扩散、估值高位且交易拥挤，市场产生AI泡沫担忧。
-              </p>
-            </div>
-          </BaseCard>
+            </BaseCard>
 
-          <BaseCard
-            title="为何更接近局部风险积聚"
-            delay="120ms"
-            className="!p-2.5 !gap-1"
-          >
-            <div className="text-[13px] leading-snug space-y-0.5">
-              <p>
-                当前AI泡沫论主流共识是："局部泡沫 + 结构性分化"，而非全面泡沫。
-              </p>
-              <p>
-                <span className="font-semibold">1. 估值有热度，但远不及互联网泡沫。</span>
-                资本支出占GDP约
-                <span className="text-red-500 font-semibold">2%</span>
-                接近互联网泡沫峰值，但头部公司P/E、PEG均低于互联网泡沫时期，盈利驱动特征更显著；
-              </p>
-              <p>
-                <span className="font-semibold">2. 渗透率未到拐点，需求仍超供给。</span>
-                过往泡沫破裂多在渗透率中后段（电气
-                <span className="text-red-500 font-semibold">80%</span>
-                、互联网
-                <span className="text-red-500 font-semibold">50%</span>
-                ），2026年初美国企业AI使用率仅约
-                <span className="text-red-500 font-semibold">20%</span>
-                。数据中心空置率仅
-                <span className="text-red-500 font-semibold">1.6%</span>
-                ，产能仍偏紧。
-              </p>
-              <p>
-                <span className="font-semibold">3. 资本开支集中，但产业逻辑未逆转。</span>
-                AI产业呈现"模型→云→端侧→行业应用→知识生产"的多层递进，每一层成熟后才催生下一层需求，周期更长、更具阶段性。
-              </p>
-              <p>
-                <span className="font-semibold">4. 结构性分化：</span>
-                龙头企业多有成熟业务现金流反哺，头部模型ARR持续上调；但应用层部分公司估值虚高（Palantir P/E超
-                <span className="text-red-500 font-semibold">100x</span>
-                ，软件行业平均
-                <span className="text-red-500 font-semibold">30-40x</span>
-                ），高利率环境下未盈利公司造血压力更大。
-              </p>
+            {/* 三阶段时间轴卡片 */}
+            <div className="flex items-stretch gap-0">
+              {employmentStages.map((stage, i) => {
+                const style = toneStyles[stage.tone];
+                return (
+                  <React.Fragment key={stage.phase}>
+                    <div
+                      className={`flex-1 rounded-lg border px-2 py-1.5 flex flex-col
+                        animate-fade-in-up fill-mode-forwards opacity-0 ${style.card}`}
+                      style={{ animationDelay: `${120 + i * 80}ms` }}
+                    >
+                      <span
+                        className={`inline-flex self-start rounded px-1 py-0.5 text-[9px] font-bold ${style.badge}`}
+                      >
+                        {stage.phase}
+                      </span>
+                      <p className={`mt-1 text-[12px] font-bold leading-tight ${style.effect}`}>
+                        {stage.effect}
+                      </p>
+                      <p className={`mt-0.5 text-[10px] font-semibold ${style.impact}`}>
+                        {stage.netImpact}
+                      </p>
+                      <p className="mt-0.5 text-[9px] leading-snug text-slate-600">
+                        {stage.detail}
+                      </p>
+                    </div>
+                    {i < employmentStages.length - 1 && <StageArrow />}
+                  </React.Fragment>
+                );
+              })}
             </div>
-          </BaseCard>
+          </div>
+
+          {/* 右侧：本次与前几次不同（约45%） */}
+          <div className="flex-1 flex flex-col min-h-0">
+            <BaseCard
+              title="本次与前几次工业革命的核心差异"
+              delay="360ms"
+              variant="accent"
+              className="!p-2 !gap-1 h-full flex-1 min-h-0 overflow-hidden"
+            >
+              <div className="flex flex-col gap-1 overflow-y-auto pr-1">
+                {differencePoints.map((point) => (
+                  <div
+                    key={point.num}
+                    className="text-[9.5px] leading-snug"
+                  >
+                    <span className="font-bold text-webank-blue">
+                      {point.num}. {point.title}
+                    </span>
+                    <span className="text-slate-600 ml-1">— {point.content}</span>
+                  </div>
+                ))}
+
+                {/* 担忧内容 */}
+                <div className="mt-1.5 pt-1.5 border-t border-red-200">
+                  <p className="text-[9.5px] font-bold text-red-600 mb-1">
+                    核心担忧
+                  </p>
+                  <ul className="text-[8.5px] text-slate-700 space-y-0.5 leading-snug">
+                    {concernsList.map((item, idx) => (
+                      <li key={idx} className="flex gap-1">
+                        <span className="text-red-500 flex-shrink-0">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </BaseCard>
+          </div>
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-4 gap-1.5">
-          <ChartContainer delay="360ms" ariaLabel="渗透率速度较快但仍有空间">
-            <BaseLineChart
-              data={aiPenetrationCurveData}
-              title="图表1：渗透率速度较快但仍有空间"
-              subtitle="来源：Microsoft、华泰研究"
-              lines={penetrationLines}
-              yAxisDomain={[0, 1]}
-              showYAxis
-              unit=""
-              yAxisTickFormatter={(v) => Number(v).toFixed(1)}
-              legendOrder={['AI渗透率', 'AI预测', '互联网', 'PC']}
-              highlightPeriods={['3']}
-              xAxisTicks={['0', '4', '8', '12', '16', '20', '24']}
-            />
-          </ChartContainer>
-
-          <ChartContainer delay="420ms" ariaLabel="中小企业渗透率落后">
-            <BaseLineChart
-              data={aiSmePenetrationData}
-              title="图表2：中小企业渗透率落后"
-              subtitle="来源：Ramp、华泰研究 | %"
-              lines={smeLines}
-              yAxisDomain={[0, 60]}
-              showYAxis
-              unit="%"
-              legendOrder={['Ramp(大企业)', '政府口径(含中小)']}
-              highlightPeriods={['25-11']}
-              xAxisTicks={['23-01', '23-11', '24-09', '25-07', '26-05']}
-            />
-          </ChartContainer>
-
+        {/* 下方：左侧历史对照表格 + 右侧柱状图 */}
+        <div className="flex-1 min-h-0 flex gap-1.5">
+          {/* 左侧：历次工业革命历史对照表格 */}
           <ChartContainer
             delay="480ms"
-            ariaLabel="模型公司ARR连续上调"
-            className="col-span-2"
+            ariaLabel="历次工业革命就业三段式影响参照"
+            className="w-[38%] min-h-0 flex flex-col"
           >
-            <div className="flex flex-col h-full min-h-0 gap-1 [&_.mb-4]:!mb-1">
-              <div className="flex-1 min-h-0">
-                <BaseBarChart
-                  data={aiModelArrOverseasData}
-                  title="图表3：模型公司ARR连续上调"
-                  subtitle="海外 | 来源：公开资料 | 亿美元"
-                  bars={overseasArrBars}
-                  xAxisKey="company"
-                  legendOrder={['23Q3', '24Q4', '25Q2', '25Q4', '26Q1', '26Q2']}
-                  legendFontSize={8}
-                  legendGap={6}
-                  yAxisDomain={[0, 500]}
-                  showYAxis
-                  yAxisTickFormatter={(v) => `${v}`}
-                  showLabels
-                  labelFormatter={(v: any) =>
-                    v != null && overseasPeakLabels.has(Number(v)) ? String(v) : ''
-                  }
-                  barSize={8}
-                  unit="亿"
-                  xAxisInterval={0}
-                  xAxisTickFontSize={9}
-                />
-              </div>
-              <div className="flex-1 min-h-0">
-                <BaseBarChart
-                  data={aiModelArrDomesticData}
-                  title="国内模型公司ARR"
-                  subtitle="来源：公开资料 | 亿美元"
-                  bars={domesticArrBars}
-                  xAxisKey="company"
-                  legendOrder={['25Q4', '26Q1', '26Q2', '26Q3']}
-                  legendFontSize={8}
-                  legendGap={6}
-                  yAxisDomain={[0, 12]}
-                  showYAxis
-                  yAxisTickFormatter={(v) => `${v}`}
-                  showLabels
-                  labelFormatter={(v: any) =>
-                    v != null && domesticPeakLabels.has(Number(v)) ? String(v) : ''
-                  }
-                  barSize={10}
-                  unit="亿"
-                  xAxisInterval={0}
-                  xAxisTickFontSize={9}
-                />
-              </div>
-            </div>
+            <BaseTable
+              data={industrialRevolutionTableRows}
+              columns={irTableColumns}
+              title="历次工业革命：就业三段式影响参照"
+              rowHeight="auto"
+              titleBlockClassName="!mb-0.5"
+              cellClassName="!px-1 !py-1 text-[8px] leading-tight"
+              headerCellClassName="!px-1 !py-1 text-[8px] leading-tight"
+              headerBgColor="#1B4F72"
+              stickyHeader
+            />
+          </ChartContainer>
+
+          {/* 右侧：柱状图 */}
+          <ChartContainer delay="400ms" ariaLabel="国内招聘网站岗位需求同比变化" className="flex-1 min-h-0">
+            <BaseBarChart
+              data={jobDemandYoyData}
+              title="国内招聘网站：初级/重复岗位需求下降，AI相关岗位大幅上升"
+              subtitle="数据来源：BOSS直聘、猎聘、IMF《一场新的工业革命？》(2025)；Frey &amp; Osborne (2013)；WEF《未来就业报告》(2023)；Goldin &amp; Katz (1998) | 单位：%"
+              subtitleClassName="!text-[5px]"
+              xAxisKey="category"
+              bars={[{ dataKey: 'yoy', name: '同比变化', color: '#1B4F72' }]}
+              yAxisDomain={[-100, 250]}
+              showYAxis
+              showReferenceLine
+              referenceLineY={0}
+              showLabels={false}
+              showLegend
+              barSize={8}
+              xAxisAngle={-55}
+              xAxisHeight={50}
+              xAxisInterval={0}
+              xAxisTickFontSize={7}
+              legendItems={[
+                { value: 'AI/增长岗位', color: '#1B4F72' },
+                { value: '初级/重复岗位', color: '#E07A5F' },
+              ]}
+              legendFontSize={8}
+              legendGap={8}
+            />
           </ChartContainer>
         </div>
-
-        <p className="mt-1.5 flex-shrink-0 text-[10px] leading-snug text-slate-500">
-          备注：数据来源：公开财报、美国人口普查局 BTOS、摩根大通资产管理报告、华泰证券等。主流共识为"局部泡沫+结构性分化"，而非2000年式全面泡沫。该判断得到多家中外机构支撑：摩根大通认为未达经典泡沫标准且数据中心空置率仅1.6%（CBRE）；摩根士丹利称"泡沫只在谈论中"；高盛指出Mag7净利率超25%、英伟达P/E仅31倍（vs 思科2000年472倍），基本面与2000年本质不同；华泰柏瑞、工银国际、银河国际等国内机构均指向"结构性分化"而非整体泡沫。
-        </p>
       </div>
+
+      {/* 底部空位，保持布局 */}
+      <div className="h-4" />
     </BaseContentSlide>
   );
 };

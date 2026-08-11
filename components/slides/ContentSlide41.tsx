@@ -1,158 +1,204 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
+import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { buildIndustryProsperityRows } from '@/data/industryHeatmap';
+import { aiChainExportData } from '@/data/aiChainExport';
+import { aiChainGlobalParticipationData } from '@/data/aiChainGlobal';
 
-const prosperityRows = buildIndustryProsperityRows();
-
-const industryColumns: ColumnConfig[] = [
-  {
-    key: 'rank',
-    title: '排名',
-    align: 'center',
-    width: '42px',
-    render: (value) => String(Math.round(Number(value))),
-  },
-  { key: 'industry', title: '行业', align: 'left' },
-  {
-    key: 'prosperityLevel',
-    title: '景气',
-    align: 'center',
-    width: '60px',
-    highlight: true,
-    render: (_value, row, rowIndex) => {
-      // 前4行固定显示高景气
-      let level: 'high' | 'mid' | 'low';
-      if (rowIndex !== undefined && rowIndex < 4) {
-        level = 'high';
-      } else {
-        const score = Number(row?.score);
-        if (Number.isFinite(score) && score > 60) level = 'high';
-        else if (Number.isFinite(score) && score < 45) level = 'low';
-        else level = 'mid';
-      }
-
-      const styles: Record<typeof level, { label: string; cls: string }> = {
-        high: { label: '高景气', cls: 'bg-red-100 text-red-700 ring-1 ring-red-200' },
-        mid:  { label: '中景气', cls: 'bg-amber-100 text-amber-700 ring-1 ring-amber-200' },
-        low:  { label: '低景气', cls: 'bg-slate-200 text-slate-600 ring-1 ring-slate-300' },
-      };
-      const item = styles[level];
-
-      return (
-        <span
-          className={`inline-flex items-center justify-center rounded px-1.5 py-[1px] text-[10px] font-semibold leading-none tabular-nums whitespace-nowrap ${item.cls}`}
-        >
-          {item.label}
-        </span>
-      );
-    },
-  },
-  {
-    key: 'scoreLabel',
-    title: '景气分',
-    align: 'center',
-    width: '68px',
-    highlight: true,
-    render: (value) => (
-      <span className="text-[12px] font-bold tabular-nums text-webank-blue">{value}</span>
-    ),
-  },
-  { key: 'valueAddedLabel', title: '工增%', align: 'center' },
-  { key: 'profitGrowthLabel', title: '利润%', align: 'center' },
-  { key: 'ppiYoyLabel', title: 'PPI%', align: 'center' },
-  { key: 'investmentGrowthLabel', title: '投资%', align: 'center' },
-  { key: 'exportGrowthLabel', title: '出口%', align: 'center' },
-  { key: 'pmiLabel', title: 'PMI', align: 'center' },
+const keptExportCategories = [
+  '晶圆制造设备',
+  '处理器/控制器IC',
+  '计算机存储单元',
+  '存储器IC',
+  '光模块及光通信零件',
+  'PCB',
+  '液冷模块/冷却塔',
 ];
 
-const methodWeights: Array<{ indicator: string; role: string; weight: string }> = [
-  { indicator: 'PMI', role: '先行', weight: '20%' },
-  { indicator: '固定资产投资增速', role: '先行', weight: '15%' },
-  { indicator: '工业增加值增速', role: '同步', weight: '15%' },
-  { indicator: '利润总额增速', role: '同步', weight: '15%' },
-  { indicator: 'PPI同比', role: '同步', weight: '10%' },
-  { indicator: '出口交货值增速', role: '验证', weight: '25%' },
+const filteredExportData = keptExportCategories
+  .map((category) => aiChainExportData.find((d) => d.category === category))
+  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+
+const globalColumns: ColumnConfig[] = [
+  { key: 'country', title: '国家或地区', align: 'center', width: '85px' },
+  { key: 'region', title: '产业链环节', align: 'center', width: '75px' },
+  { key: 'advantage', title: '核心分工', align: 'left', width: '120px' },
+  {
+    key: 'industries',
+    title: '代表企业',
+    align: 'left',
+    render: (value: string[]) => (
+      <div className="flex flex-col gap-0.5">
+        {value.map((item, i) => (
+          <p key={i} className="leading-[1.25]">
+            {item}
+          </p>
+        ))}
+      </div>
+    ),
+  },
 ];
 
 export const ContentSlide41: React.FC = () => {
   return (
     <BaseContentSlide
-      title="经济K型分化加剧，新经济端景气延续、旧经济端持续低迷"
-      cardColumns={1}
+      title="上述高景气行业背后，核心驱动力是AI产业链的全球扩张"
     >
-      <div className="flex flex-col h-full min-h-0">
-        <div className="mb-3 flex-shrink-0">
-          <BaseCard title="行业总结" delay="0ms" variant="accent" className="!p-3 gap-1">
-            <p className="text-sm leading-snug">
-              高景气行业：AI相关行业（特别是算力相关）、高端装备相关、铁路船舶航空航天；K型分化短期内不可逆转，新经济端的AI景气有望延续，但旧经济端的地产、建材、传统制造业仍将在底部运行。
+      <div className="flex flex-col h-full">
+        {/* 顶部：分组小标题 + 叙述 BaseCard */}
+        <div className="flex-shrink-0 mb-1.5">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-1.5 h-4 bg-webank-blue rounded-sm" />
+            <h2 className="text-sm font-bold text-gray-800">全球AI产业链：</h2>
+          </div>
+
+          <BaseCard delay="0ms" variant="accent" className="!p-2.5 gap-1">
+            <p className="text-[12.5px] leading-snug">
+              中国在AI全球产业链中处于
+              <span className="font-semibold text-webank-blue">"中游主导、下游追赶"</span>
+              的格局。今年以来国内AI产业链高景气，主要受益于海外 AI 资本开支扩张带来的全球需求外溢。
             </p>
           </BaseCard>
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-[1.35fr_1fr] gap-3">
-          <ChartContainer delay="400ms" className="min-h-0">
-            <BaseTable
-              data={prosperityRows}
-              columns={industryColumns}
-              title="分行业景气分排名"
-              subtitle="橙色高亮为前4名高景气行业"
-              colorizeNumbers={false}
-              striped
-              bordered
-              rowHeight="auto"
-              headerBgColor="#f1f5f9"
-              headerTextColor="#0f172a"
-              highlightRows={[0, 1, 2, 3]}
-              highlightColor="rgba(255, 237, 213, 0.95)"
-              highlightColumnColor="rgba(255, 247, 237, 0.9)"
-              cellClassName="!px-1 tabular-nums text-[10px] leading-tight"
-              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[10px] leading-tight font-semibold"
-            />
-          </ChartContainer>
+        {/* 主体：AI产业链框架结构（上游+中游并排，下游在右侧） */}
+        <div className="flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm flex flex-col animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '120ms' }}>
+          {/* 标题栏 + 来源 */}
+          <div className="flex items-center justify-between px-2.5 py-1 border-b border-slate-200 bg-slate-50 flex-shrink-0">
+            <h3 className="text-[11px] font-bold text-slate-700 tracking-wide">
+              半导体产业链结构
+            </h3>
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] text-slate-400">来源：公开资料整理</span>
+            </div>
+          </div>
 
-          <ChartContainer delay="600ms" className="min-h-0 h-full">
-            <div className="h-full flex flex-col rounded-lg border border-slate-200 bg-white overflow-hidden">
-              <div className="px-3.5 py-2.5 border-b border-slate-200 bg-slate-50 flex-shrink-0">
-                <h3 className="text-sm font-bold text-webank-blue">景气分计算方法</h3>
+          {/* 框架主体：半导体产业链结构 */}
+          <div className="flex flex-1 min-h-0 p-1.5 gap-1.5">
+            {/* 上游：半导体核心链 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#1B4F72] text-white text-center text-[10px] font-bold py-0.5">
+                半导体核心链（上游）
               </div>
-
-              <div className="flex-1 min-h-0 flex flex-col px-3.5 py-3 gap-3">
-                <p className="text-[11px] leading-relaxed text-slate-500 flex-shrink-0">
-                  注：利润和投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。
-                </p>
-
-                <div className="flex-1 min-h-0 overflow-hidden rounded border border-slate-200 flex flex-col">
-                  <div className="grid grid-cols-[1.6fr_0.7fr_0.7fr] bg-sky-50 text-slate-700 text-[11px] font-semibold border-b border-slate-200 flex-shrink-0">
-                    <div className="px-2.5 py-2">指标</div>
-                    <div className="px-2.5 py-2 text-center">角色</div>
-                    <div className="px-2.5 py-2 text-center">权重</div>
-                  </div>
-                  <div className="flex-1 min-h-0 flex flex-col">
-                    {methodWeights.map((row, index) => (
-                      <div
-                        key={row.indicator}
-                        className={`flex-1 grid grid-cols-[1.6fr_0.7fr_0.7fr] items-center text-[11px] border-b border-slate-100 last:border-b-0 ${
-                          index % 2 === 1 ? 'bg-slate-50' : 'bg-white'
-                        }`}
-                      >
-                        <div className="px-2.5 text-slate-700">{row.indicator}</div>
-                        <div className="px-2.5 text-center text-slate-600">{row.role}</div>
-                        <div className="px-2.5 text-center font-semibold text-webank-blue">{row.weight}</div>
-                      </div>
-                    ))}
+              <div className="p-1 space-y-1 bg-blue-50">
+                {/* 芯片设计 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    芯片设计
                   </div>
                 </div>
-
-                <div className="flex-shrink-0 space-y-2 text-[11px] leading-relaxed text-slate-600 border-t border-dashed border-slate-200 pt-3">
-                  <p>
-                    <span className="font-semibold text-slate-800">景气分</span>
-                    {' = Σ( Z-score → 0-100 映射 × 权重 ) / Σ 有效权重'}
-                  </p>
+                {/* 晶圆制造 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    晶圆制造
+                  </div>
+                </div>
+                {/* 封测 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    封测
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* 中游：算力硬件中游 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#8ECAE6] text-slate-800 text-center text-[10px] font-bold py-0.5">
+                算力硬件中游
+              </div>
+              <div className="p-1 space-y-1 bg-sky-50">
+                {/* 光模块 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    光模块
+                  </div>
+                </div>
+                {/* 连接器 / PCB / 电源 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    连接器 / PCB / 电源
+                  </div>
+                </div>
+                {/* 服务器整机 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    服务器整机
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 下游：软件与下游 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#E8B923] text-slate-800 text-center text-[10px] font-bold py-0.5">
+                软件与下游
+              </div>
+              <div className="p-1 space-y-1 bg-amber-50">
+                {/* 算力集群 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    算力集群
+                  </div>
+                </div>
+                {/* 大模型 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    大模型
+                  </div>
+                </div>
+                {/* AI行业应用 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    AI行业应用
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 底部：AI产业链分工体系 + BarChart 并列 */}
+        <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+          {/* 左侧：AI产业链分工体系 表格 */}
+          <ChartContainer delay="600ms" className="h-full">
+            <BaseTable
+              data={aiChainGlobalParticipationData}
+              columns={globalColumns}
+              title="AI产业链分工体系"
+              subtitle="数据来源：公开资料整理"
+              colorizeNumbers={false}
+              striped
+              rowHeight="auto"
+              cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
+              headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
+            />
+          </ChartContainer>
+
+          {/* 右侧：BarChart */}
+          <ChartContainer delay="720ms" className="h-full">
+            <BaseBarChart
+              data={filteredExportData}
+              title="中国AI链参与情况：出口同比增速"
+              subtitle="数据来源：海关总署 | 单位：%"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
+                { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
+                { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
+              ]}
+              legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
+              yAxisDomain={[-40, 160]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              showLabels={false}
+              barSize={12}
+              xAxisAngle={-90}
+              xAxisHeight={70}
+              xAxisInterval={0}
+            />
           </ChartContainer>
         </div>
       </div>

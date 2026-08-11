@@ -1,18 +1,18 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
-import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { fiscalExpenditureH1GrowthData, fiscalExpenditureTrendData } from '@/data/fiscalRevenue';
+import { chartColors } from '@/utils/chartColors';
 
 export const ContentSlide27: React.FC = () => {
-  const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: -18 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: 22 },
-    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
+  const trendLines: LineConfig[] = [
+    { dataKey: 'y2025', name: '2025年', color: '#93a3b8', strokeWidth: 2, labelDY: -10 },
+    { dataKey: 'y2026', name: '2026年', color: chartColors.primary, strokeWidth: 2.5, labelDY: 16 },
   ];
 
-  const bars: BarConfig[] = [
+  const expBars: BarConfig[] = [
     { dataKey: 'amount', name: '总额', color: '#4A79AA' },
   ];
   const growthLines: BarLineConfig[] = [
@@ -21,20 +21,20 @@ export const ContentSlide27: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>上半年一般公共预算收入同比增长4.7%，高于年初预算目标，收入进度略快于近年同期均值</>}
+      title={<>上半年一般预算支出增长1.5%，节奏阶段性放缓，结构重科技民生</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="收入总量超出预期" delay="0ms" variant="accent">
+          <BaseCard title="支出节奏阶段性放缓" delay="0ms" variant="accent">
             <p>
-              上半年价格上行、股市活跃、外贸增势强劲有力支撑全国一般公共预算收入同比增长<span className="text-red-500 font-semibold">4.7%</span>，高于年初<span className="text-red-500 font-semibold">2.2%</span>的预算目标，收入进度达<span className="text-red-500 font-semibold">54.85%</span>，略快于近五年同期均值。
+              1—6月累计增长 <span className="text-red-500 font-semibold">1.5%</span>，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间，支出进度 <span className="text-red-500 font-semibold">47.76%</span>。机构预测下半年支出进度加快，重点关注7月底政治局会议定调。
             </p>
           </BaseCard>
-          <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
+          <BaseCard title="投向结构：重科技民生，轻传统基建" delay="120ms">
             <p>
-              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>（整体增长<span className="text-red-500 font-semibold">40%</span>）；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>（贡献整体增长<span className="text-red-500 font-semibold">19%</span>）；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>（贡献整体增长<span className="text-red-500 font-semibold">15%</span>），其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
+              上半年科学技术支出同比增长 <span className="text-red-500 font-semibold">1.3%</span>，卫生健康增长 <span className="text-red-500 font-semibold">10.8%</span>；而基建相关支出（节能环保、城乡社区、农林水、交运）合并同比下降 <span className="text-green-600 font-semibold">5.3%</span>，资金向民生科学技术倾斜特征显著。
             </p>
           </BaseCard>
         </div>
@@ -43,38 +43,37 @@ export const ContentSlide27: React.FC = () => {
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={fiscalRevenueTrendData}
-              title="1—6月一般公共预算收入累计同比，区分税收收入、非税收收入同比增速"
-              subtitle="数据来源：财政部 | 单位：%"
-              lines={lines}
-              yAxisDomain={[-15, 15]}
+              data={fiscalExpenditureTrendData}
+              title="一般公共预算支出合计累计同比"
+              subtitle="数据来源：财政部 | 单位：累计同比：%"
+              lines={trendLines}
+              yAxisDomain={[0, 6]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
-              xAxisTickCount={8}
+              showReferenceLine={false}
+              xAxisTicks={['2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']}
+              unit="%"
             />
           </ChartContainer>
 
           <ChartContainer delay="600ms">
             <BaseBarChart
-              data={fiscalCategoryGrowthData}
-              title="各类税收收入总额与累计同比"
+              data={fiscalExpenditureH1GrowthData}
+              title="1-6月一般公共预算支出主要分项总额与累计同比"
               subtitle="数据来源：财政部 | 单位：亿元，%"
-              bars={bars}
+              bars={expBars}
               lines={growthLines}
               xAxisKey="category"
-              yAxisDomain={[0, 45000]}
+              yAxisDomain={[0, 30000]}
               yAxisTickFormatter={(val) => String(val)}
               unit="亿元"
               showYAxis={true}
               showLabels={false}
               showLineYAxis={true}
-              lineAxisDomain={[-10, 45]}
+              lineAxisDomain={[-12, 14]}
               lineUnit="%"
               lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
               lineShowDot={true}
-              lineLabelFormatter={(val) => `${Number(val).toFixed(2)}%`}
+              lineLabelFormatter={(val) => `${Number(val).toFixed(1)}%`}
               legendOrder={['总额', '增速']}
               barSize={28}
               xAxisAngle={-45}

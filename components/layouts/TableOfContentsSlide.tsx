@@ -1,18 +1,17 @@
 
 import React from 'react';
-import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, Target, ArrowUpRight, TrendingUp, Cpu } from 'lucide-react';
+import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, TrendingUp, Cpu, ArrowUpRight } from 'lucide-react';
 
 const contents = [
-  { id: '01', title: '二季度关键事件与政策主线', subtitle: '第 01 章', icon: Target },
-  { id: '02', title: 'GDP 分析', subtitle: '第 02 章', icon: BarChart3 },
-  { id: '03', title: '生产端分析', subtitle: '第 03 章', icon: Zap },
-  { id: '04', title: '消费分析', subtitle: '第 04 章', icon: ShoppingCart },
-  { id: '05', title: '投资分析', subtitle: '第 05 章', icon: HardHat },
-  { id: '06', title: '进出口分析', subtitle: '第 06 章', icon: Globe },
-  { id: '07', title: '财政分析', subtitle: '第 07 章', icon: Landmark },
-  { id: '08', title: '金融数据分析', subtitle: '第 08 章', icon: Activity },
-  { id: '09', title: '消费现状及趋势', subtitle: '专题一', icon: TrendingUp },
-  { id: '10', title: 'K型分化下的AI产业链', subtitle: '专题二', icon: Cpu },
+  { id: '01', title: 'GDP 分析', subtitle: '第 01 章', icon: BarChart3 },
+  { id: '02', title: '生产端分析', subtitle: '第 02 章', icon: Zap },
+  { id: '03', title: '消费分析', subtitle: '第 03 章', icon: ShoppingCart },
+  { id: '04', title: '投资分析', subtitle: '第 04 章', icon: HardHat },
+  { id: '05', title: '进出口分析', subtitle: '第 05 章', icon: Globe },
+  { id: '06', title: '财政分析', subtitle: '第 06 章', icon: Landmark },
+  { id: '07', title: '金融数据分析', subtitle: '第 07 章', icon: Activity },
+  { id: '08', title: '消费现状及趋势', subtitle: '专题一', icon: TrendingUp },
+  { id: '09', title: 'K型分化下的AI产业链', subtitle: '专题二', icon: Cpu },
 ];
 
 export const TableOfContentsSlide: React.FC = () => {
