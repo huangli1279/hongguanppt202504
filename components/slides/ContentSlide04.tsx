@@ -46,7 +46,7 @@ export const ContentSlide04: React.FC = () => {
 
           <BaseCard title="平减指数回正" delay="120ms">
             <p>
-            二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold">4.3%</span>，平减指数 <span className="font-bold">12</span> 个季度以来首次回正。
+            二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold text-red-600">4.3%</span>，平减指数 <span className="font-bold">12</span> 个季度以来首次回正。
             总量与第二产业平减指数同步由负转正，核心由 AI 产业链景气扩张、能源价格上行拉动。
             </p>
           </BaseCard>

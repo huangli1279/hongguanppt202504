@@ -27,12 +27,12 @@ export const ContentSlide13: React.FC = () => {
         <>
           <BaseCard title="社零总量承压" delay="0ms" variant="accent">
             <p>
-              上半年社零累计仅增长<span className="font-bold text-webank-blue">1.3%</span>，二季度社零同比增长<span className="font-bold text-webank-blue">0.2%</span>，较一季度（<span className="font-bold text-webank-blue">2.4%</span>）明显放缓。5月社会消费品零售总额同比<span className="font-bold text-webank-blue">-0.6%</span>，系2023年以来首次单月增速转负，其中餐饮收入<span className="font-bold text-webank-blue">0.6%</span>，商品零售<span className="font-bold text-webank-blue">-0.7%</span>，主要由高基数叠加内需不足导致。
+              上半年社零累计仅增长<span className="font-bold text-green-600">1.3%</span>，二季度社零同比增长<span className="font-bold text-green-600">0.2%</span>，较一季度（<span className="font-bold text-webank-blue">2.4%</span>）明显放缓。5月社会消费品零售总额同比<span className="font-bold text-green-600">-0.6%</span>，系2023年以来首次单月增速转负，其中餐饮收入<span className="font-bold text-green-600">0.6%</span>，商品零售<span className="font-bold text-green-600">-0.7%</span>，主要由高基数叠加内需不足导致。
             </p>
           </BaseCard>
           <BaseCard title="一线城市分化" delay="120ms">
             <p>
-              上半年，北上深拖累全国社零增长——北京累计同比<span className="font-bold text-webank-blue">{fmtPct(juneCityRetail.beijing)}</span>、上海<span className="font-bold text-webank-blue">{fmtPct(juneCityRetail.shanghai)}</span>、深圳<span className="font-bold text-webank-blue">{fmtPct(juneCityRetail.shenzhen)}</span>，广州上半年社零累计同比<span className="font-bold text-webank-blue">{fmtPct(juneCityRetail.guangzhou)}</span>，在一线城市中一枝独秀，上半年广州餐饮收入增长<span className="font-bold text-webank-blue">5.8%</span>、汽车消费增长<span className="font-bold text-webank-blue">8.2%</span>，其中新能源车增长<span className="font-bold text-webank-blue">29.2%</span>。
+              上半年，北上深拖累全国社零增长——北京累计同比<span className="font-bold text-green-600">{fmtPct(juneCityRetail.beijing)}</span>、上海<span className="font-bold text-green-600">{fmtPct(juneCityRetail.shanghai)}</span>、深圳<span className="font-bold text-green-600">{fmtPct(juneCityRetail.shenzhen)}</span>，广州上半年社零累计同比<span className="font-bold text-webank-blue">{fmtPct(juneCityRetail.guangzhou)}</span>，在一线城市中一枝独秀，上半年广州餐饮收入增长<span className="font-bold text-red-500">5.8%</span>、汽车消费增长<span className="font-bold text-red-500">8.2%</span>，其中新能源车增长<span className="font-bold text-red-500">29.2%</span>。
             </p>
           </BaseCard>
           <BaseCard title="节日对消费促进微弱" delay="240ms">
@@ -89,7 +89,7 @@ export const ContentSlide13: React.FC = () => {
           <ChartContainer delay="840ms">
             <BaseBarChart
               title="五一假期出游人次与旅游消费"
-              subtitle="数据来源：文化和旅游部数据中心 | 出游人次：亿人次；旅游花费：亿元"
+              subtitle="数据来源：文化和旅游部 | 出游人次：亿人；旅游花费：亿元"
               data={laborDayData}
               xAxisKey="period"
               bars={[
@@ -105,7 +105,7 @@ export const ContentSlide13: React.FC = () => {
               barSize={40}
               showLabels
               labelFormatter={(v: any) => v.toFixed(2)}
-              unit="亿人次"
+              unit="亿人"
               lineUnit="亿元"
               lineShowDot
               lineLabelFormatter={(v: any) => `${v}`}

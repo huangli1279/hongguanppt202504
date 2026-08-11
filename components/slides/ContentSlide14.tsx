@@ -88,6 +88,7 @@ export const ContentSlide14: React.FC = () => {
               referenceLineY={0}
               legendOrder={['CPI:当月同比', '剔除食品能源CPI:当月同比']}
               xAxisTickCount={7}
+              highlightPeriods={['2026-06', '2026-07']}
             />
           </ChartContainer>
           <ChartContainer delay="720ms" className="min-h-0 pb-8">

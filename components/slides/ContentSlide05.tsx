@@ -35,17 +35,17 @@ export const ContentSlide05: React.FC = () => {
               第二产业同比增长<span className="font-bold">3%</span>，较一季度回落
               <span className="font-bold">1.9个百分点</span>
               ，为季度GDP增速放缓主要拖累，主要受制造业、建筑业增速回落影响。第三产业维持稳定增速，对GDP当季同比增长贡献率达
-              <span className="font-bold">69.4%</span>
-              ，较去年同期增长<span className="font-bold">8.2个百分点</span>。
+              <span className="font-bold text-red-500">69.4%</span>
+              ，较去年同期增长<span className="font-bold text-red-500">8.2个百分点</span>。
             </p>
           </BaseCard>
 
           <BaseCard title="K型分化加剧" delay="120ms">
             <p>
-              高技术制造业（<span className="font-bold">13.3%</span>
+              高技术制造业（<span className="font-bold text-red-500">13.3%</span>
               ）、信息传输、软件和信息技术服务业（
-              <span className="font-bold">10.7%</span>
-              ）和租赁商务服务（<span className="font-bold">11.9%</span>
+              <span className="font-bold text-red-500">10.7%</span>
+              ）和租赁商务服务（<span className="font-bold text-red-500">11.9%</span>
               ）仍然保持高增，建筑、房地产依然为主要拖累。
             </p>
           </BaseCard>

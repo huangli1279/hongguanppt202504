@@ -86,36 +86,7 @@ export const ContentSlide06: React.FC = () => {
     >
       <div className="flex flex-col h-full min-h-0 gap-2 pb-4">
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-2 flex-shrink-0">
-          <BaseCard title="传统产业拖累" delay="0ms" className="!p-2 gap-0.5">
-            <ul className="list-disc pl-3.5 space-y-0 text-[13px] leading-snug">
-              <li>
-                <span className="font-bold">湖南</span>增速
-                <span className="font-bold text-green-600">2.7%</span>
-                ，二产仅<span className="font-bold text-green-600">1.1%</span>
-                ，工程机械等传统支柱触底。
-              </li>
-              <li>
-                <span className="font-bold">山西</span>增速
-                <span className="font-bold text-green-600">2.1%</span>
-                ，6月原煤产量骤降<span className="font-bold text-green-600">31.5%</span>
-                ，被贵州反超至第22位。
-              </li>
-              <li>
-                <span className="font-bold">海南</span>增速
-                <span className="font-bold text-green-600">2.0%</span>
-                全国垫底，石化检修叠加体量偏小。
-              </li>
-              <li>
-                <span className="font-bold">东北三省</span>辽吉黑仅
-                <span className="font-bold text-green-600">2.5%</span>/
-                <span className="font-bold text-green-600">2.4%</span>/
-                <span className="font-bold text-green-600">3.5%</span>
-                ，资源型与重化工持续萎缩。
-              </li>
-            </ul>
-          </BaseCard>
-
-          <BaseCard title="高新产业带动经济" delay="120ms" variant="accent" className="!p-2 gap-0.5">
+          <BaseCard title="高新产业带动经济" delay="0ms" variant="accent" className="!p-2 gap-0.5">
             <ul className="list-disc pl-3.5 space-y-0 text-[13px] leading-snug">
               <li>
                 <span className="font-bold">浙江</span>增速
@@ -149,6 +120,35 @@ export const ContentSlide06: React.FC = () => {
                 <span className="font-bold text-red-500">5.0%</span>
                 ，高技术制造<span className="font-bold text-red-500">+26.1%</span>
                 ，居中部之首。
+              </li>
+            </ul>
+          </BaseCard>
+
+          <BaseCard title="传统产业拖累" delay="120ms" className="!p-2 gap-0.5">
+            <ul className="list-disc pl-3.5 space-y-0 text-[13px] leading-snug">
+              <li>
+                <span className="font-bold">湖南</span>增速
+                <span className="font-bold text-green-600">2.7%</span>
+                ，二产仅<span className="font-bold text-green-600">1.1%</span>
+                ，工程机械等传统支柱触底。
+              </li>
+              <li>
+                <span className="font-bold">山西</span>增速
+                <span className="font-bold text-green-600">2.1%</span>
+                ，6月原煤产量骤降<span className="font-bold text-green-600">31.5%</span>
+                ，被贵州反超至第22位。
+              </li>
+              <li>
+                <span className="font-bold">海南</span>增速
+                <span className="font-bold text-green-600">2.0%</span>
+                全国垫底，石化检修叠加体量偏小。
+              </li>
+              <li>
+                <span className="font-bold">东北三省</span>辽吉黑
+                <span className="font-bold text-green-600">2.5%</span>/
+                <span className="font-bold text-green-600">2.4%</span>/
+                <span className="font-bold text-green-600">3.5%</span>
+                ，资源型与重化工持续萎缩。
               </li>
             </ul>
           </BaseCard>
