@@ -48,14 +48,14 @@ export const ContentSlide18: React.FC = () => {
               年初项目集中开工前置，对二季度投资形成透支。二季度新开工项目计划总投资累计同比<span className="text-green-600 font-semibold">下降29%</span>（图1），同时，到位资金同比均下降（图2）。
             </p>
           </BaseCard>
-          <BaseCard title="② 专项债节奏错配" delay="120ms">
+          <BaseCard title="② 企业盈利→投资传导滞后" delay="120ms">
             <p>
-              一季度新增专项债发行进度达计划<span className="font-semibold">1.4倍</span>，二季度明显放缓（4-5月仅完成不足70%）。2月起土储、特殊新增债比例提高，对二季度投资增长形成拖累（图3）。
+              企业盈利→自筹资金传导滞后约<span className="font-semibold">2-3季度</span>。25年规上工业企业利润同比走弱，虽四季度以来利润大增，但尚未转化为固定资产投资。（图3）
             </p>
           </BaseCard>
-          <BaseCard title="③ 企业盈利→投资传导滞后" delay="240ms">
+          <BaseCard title="③ 专项债节奏错配" delay="240ms">
             <p>
-              企业盈利→自筹资金传导滞后约<span className="font-semibold">2-3季度</span>。25年规上工业企业利润同比走弱，虽四季度以来利润大增，但尚未转化为固定资产投资。（图4）
+              一季度新增专项债发行进度达计划<span className="font-semibold">1.4倍</span>，二季度明显放缓（4-5月仅完成不足70%）。2月起土储、特殊新增债比例提高，对二季度投资增长形成拖累（图4）。
             </p>
           </BaseCard>
         </div>
@@ -98,7 +98,7 @@ export const ContentSlide18: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={profitSelfRaisedData}
-              title="图4 规上工业企业利润与自筹资金累计同比"
+              title="图3 规上工业企业利润与自筹资金累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={profitSelfRaisedLineConfigs}
               yAxisDomain={[-25, 25]}
@@ -114,7 +114,7 @@ export const ContentSlide18: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={specialBondData}
-              title="图3 专项债情况"
+              title="图4 专项债情况"
               subtitle="数据来源：财政部 | 单位：亿元"
               bars={bondBarConfigs}
               lines={bondLineConfigs}
