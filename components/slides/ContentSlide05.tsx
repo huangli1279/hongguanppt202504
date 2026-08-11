@@ -23,7 +23,7 @@ export const ContentSlide05: React.FC = () => {
       title={
         <>
           第二产业内部K型分化加剧，
-          <span className="text-webank-accent">第三产业消费与地产链持续拖累</span>
+          <span>第三产业消费与地产链持续拖累</span>
         </>
       }
       cardColumns={2}
