@@ -92,7 +92,7 @@ export const ContentSlide43: React.FC = () => {
       className="!p-8 sm:!p-10"
     >
       <div className="flex flex-col h-full min-h-0 pb-2">
-        <div className="grid grid-cols-2 gap-2.5 mb-2 flex-shrink-0">
+        <div className="grid grid-cols-3 gap-2.5 mb-2 flex-shrink-0">
           <BaseCard
             title="市场背离与泡沫担忧"
             delay="0ms"
@@ -110,19 +110,19 @@ export const ContentSlide43: React.FC = () => {
           </BaseCard>
 
           <BaseCard
-            title="为何更接近局部风险积聚"
+            title="为何更接近局部风险积聚（1/2）"
             delay="120ms"
             className="!p-2.5 !gap-1"
           >
-            <div className="text-[13px] leading-snug space-y-0.5">
+            <div className="text-[13px] leading-snug space-y-2">
               <p>
-                当前AI泡沫论主流共识是："局部泡沫 + 结构性分化"，而非全面泡沫。
+                AI泡沫论主流共识："局部泡沫 + 结构性分化"，而非全面泡沫。
               </p>
               <p>
                 <span className="font-semibold">1. 估值有热度，但远不及互联网泡沫。</span>
                 资本支出占GDP约
                 <span className="text-red-500 font-semibold">2%</span>
-                接近互联网泡沫峰值，但头部公司P/E、PEG均低于互联网泡沫时期，盈利驱动特征更显著；
+                接近互联网泡沫峰值，但头部公司P/E、PEG均低于互联网泡沫时期，盈利驱动特征更显著。
               </p>
               <p>
                 <span className="font-semibold">2. 渗透率未到拐点，需求仍超供给。</span>
@@ -130,12 +130,21 @@ export const ContentSlide43: React.FC = () => {
                 <span className="text-red-500 font-semibold">80%</span>
                 、互联网
                 <span className="text-red-500 font-semibold">50%</span>
-                ），2026年初美国企业AI使用率仅约
+                ），2026年初美国企业AI渗透率仅约
                 <span className="text-red-500 font-semibold">20%</span>
                 。数据中心空置率仅
                 <span className="text-red-500 font-semibold">1.6%</span>
                 ，产能仍偏紧。
               </p>
+            </div>
+          </BaseCard>
+
+          <BaseCard
+            title="为何更接近局部风险积聚（2/2）"
+            delay="240ms"
+            className="!p-2.5 !gap-1"
+          >
+            <div className="text-[13px] leading-snug space-y-2">
               <p>
                 <span className="font-semibold">3. 资本开支集中，但产业逻辑未逆转。</span>
                 AI产业呈现"模型→云→端侧→行业应用→知识生产"的多层递进，每一层成熟后才催生下一层需求，周期更长、更具阶段性。

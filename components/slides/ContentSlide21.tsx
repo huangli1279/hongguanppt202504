@@ -33,7 +33,7 @@ export const ContentSlide21: React.FC = () => {
             </ul>
           </BaseCard>
           <BaseCard title="贸易顺差转负" delay="120ms">
-            <p>
+            <p className="text-sm">
               上半年，贸易顺差为<span className="text-black font-semibold">5759亿美元</span>，受进口增长速度快于出口影响，同比<span className="text-green-600 font-semibold">-1.25%</span>。
             </p>
           </BaseCard>

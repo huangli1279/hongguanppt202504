@@ -179,7 +179,7 @@ const cards: {
         tone: 'blue',
         content: (
           <>
-            一般公共预算支出累计 <span className="font-bold text-webank-blue">+1.5%</span>，支出进度仅{' '}
+            一般公共预算支出累计 <span className="font-bold text-webank-blue">+1.5%</span>，进度仅{' '}
             <span className="font-bold text-orange-600">47.76%</span>，距年初目标仍有空间。
           </>
         ),
@@ -255,8 +255,14 @@ const cards: {
 export const ContentSlide46: React.FC = () => {
   return (
     <BaseContentSlide
-      subtitle="二季度回顾"
-      title="动能放缓、向新向优、分化延续、内需偏弱"
+      title={
+        <>
+          <span className="inline-flex items-center gap-2">
+            <span className="px-3 py-1 bg-gradient-to-r from-webank-blue to-blue-600 text-white text-lg font-bold rounded-md shadow-sm">二季度整体回顾</span>
+            <span className="text-webank-blue">动能放缓、向新向优、分化延续、内需偏弱</span>
+          </span>
+        </>
+      }
       headerClassName="!mb-4"
     >
       <div className="flex flex-col h-full min-h-0 gap-4 pb-4">
