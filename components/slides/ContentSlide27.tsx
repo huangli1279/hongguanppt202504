@@ -76,10 +76,18 @@ const methodWeights: Array<{ indicator: string; role: string; weight: string }> 
   { indicator: '出口交货值增速', role: '验证', weight: '25%' },
 ];
 
-export const ContentSlide42: React.FC = () => {
+export const ContentSlide27: React.FC = () => {
   return (
     <BaseContentSlide
-      title="经济K型分化加剧，新经济端景气延续、旧经济端持续低迷"
+      title={
+        <>
+          <span className="inline-flex items-center gap-2">
+            <span className="px-3 py-1 bg-gradient-to-r from-webank-blue to-blue-600 text-white text-lg font-bold rounded-md shadow-sm">K型分化总结</span>
+            <span className="text-webank-blue">经济K型分化加剧，新经济端景气延续、旧经济端持续低迷</span>
+          </span>
+        </>
+      }
+      headerClassName="!mb-4"
       cardColumns={1}
     >
       <div className="flex flex-col h-full min-h-0">

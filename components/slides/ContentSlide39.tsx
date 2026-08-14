@@ -1,136 +1,182 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
-import { BaseStackedBarChart } from '../base/BaseStackedBarChart';
-import { BaseLineChart } from '../base/BaseLineChart';
 import { chartColors, seriesColors } from '@/utils/chartColors';
-import {
-  housingConsumptionData,
-  newHousePriceYoyData,
-  newHousePriceYoyXTicks,
-} from '@/data/housingConsumption';
+import { unemploymentRateData, flexibleEmploymentData, workTypeExpenditureData } from '@/data/employment';
 
 export const ContentSlide39: React.FC = () => {
+  const unemploymentLines: LineConfig[] = [
+    { dataKey: 'overall', name: '全国城镇调查失业率', strokeWidth: 2.5 },
+    { dataKey: 'age16_24', name: '16-24岁(不含在校生)', strokeWidth: 2 },
+    { dataKey: 'age25_29', name: '25-29岁(不含在校生)', strokeWidth: 2 },
+    { dataKey: 'age30_59', name: '30-59岁(不含在校生)', strokeWidth: 2 },
+  ];
+
+  const flexibleEmploymentLines: LineConfig[] = [
+    {
+      dataKey: 'actual',
+      name: '灵活就业人员',
+      color: chartColors.primary,
+      strokeWidth: 2.5,
+    },
+    {
+      dataKey: 'forecast',
+      name: '预测(E)',
+      color: chartColors.primary,
+      strokeWidth: 2.5,
+      strokeDasharray: '6 4',
+    },
+  ];
+
+  const unemploymentInsuranceBars: BarConfig[] = [
+    {
+      dataKey: 'unemploymentInsurance',
+      name: '领取失业金人数',
+      color: seriesColors[0],
+    },
+  ];
+
+  const workTypeExpenditureBars: BarConfig[] = [
+    {
+      dataKey: 'totalExpenditure',
+      name: '总支出',
+      color: seriesColors[1],
+    },
+  ];
+
   return (
-    <BaseContentSlide title="房价下行背景下，居民消费受抑制" cardColumns={3}>
+    <BaseContentSlide
+      title={<>就业变化：灵活就业快速增加，失业拉低居民消费</>}
+      cardColumns={3}
+    >
       <div className="flex flex-col h-full">
-        {/* 卡片区域：问题—实证—稳房价政策含义 */}
-        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="房价持续同比下跌，财富效应承压" delay="0ms" variant="accent">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="失业率" delay="0ms" variant="accent">
             <p>
-              高盛测算，26年Q1居民财富中房地产占
-              <span className="text-red-500 font-semibold">52%</span>
-              。社科院26Q2报告指出，居民部门主动去杠杆，住房贷款连续
-              <span className="text-red-500 font-semibold">13</span>
-              个季度负增长，房价下行与收入预期偏弱叠加，房地产深度调整仍是内需修复的核心制约。70城新建商品住房价格2024年10月跌幅一度扩大至
-              <span className="text-red-500 font-semibold">-6.2%</span>
-              ，2026年上半年仍在
-              <span className="text-red-500 font-semibold">-3.5%</span>
-              左右徘徊。
+              二季度失业率维持在<span className="text-red-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，但16-24岁失业率长期维持在<span className="text-red-500 font-semibold">15%</span>的高位。2026年毕业生预计<span className="text-red-500 font-semibold">1270万</span>，继续创历史新高。
             </p>
           </BaseCard>
-          <BaseCard title="房价跌幅越大，居民消费越低" delay="120ms">
+          <BaseCard title="灵活就业与失业保险" delay="120ms">
             <p>
-              厦大×蚂蚁集团2025Q4—2026Q1连续两期调查显示，房价跌幅超
-              <span className="text-red-500 font-semibold">15%</span>
-              时，一套房家庭月均消费较房价上涨时少
-              <span className="text-red-500 font-semibold">11.9%</span>
-              ，多套房家庭少
-              <span className="text-red-500 font-semibold">25.9%</span>
-              ；文娱与外出餐饮最先收缩。2025Q4报告判断"房价稳定有助于激发消费动力"，2026Q1约
-              <span className="text-red-500 font-semibold">23%</span>
-              家庭计划缩减消费。
+              灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计将到<span className="text-red-500 font-semibold">3.2亿</span>人，增长态势迅猛；与此同时，领取失业保险金人数由21年的<span className="text-red-500 font-semibold">259万</span>升至25年的<span className="text-red-500 font-semibold">557万</span>，就业稳定性承压、保障需求同步抬升。
             </p>
           </BaseCard>
-          <BaseCard title="稳房价是修复消费预期的关键抓手" delay="240ms">
+          <BaseCard title="失业对支出的影响" delay="240ms">
             <p>
-              2026年6月《求是》发文提出，加快修复居民资产负债表，着力稳定房地产市场，防止资产价格下跌对消费信心的负向螺旋。中国社会科学院金融研究所2026Q2宏观金融季报中建议因城施策、推动核心城市房价率先企稳。
+              调查显示，全职工作群体月均总支出<span className="text-red-500 font-semibold">3521</span>元，失业3个月以内、3个月以上分别降低<span className="text-red-500 font-semibold">14.0%</span>、<span className="text-red-500 font-semibold">16.9%</span>，失业时间越长压制越明显。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域：左房价走势，右消费结构 */}
-        <div className="flex-1 min-h-0 grid grid-cols-2 gap-4">
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={newHousePriceYoyData}
-              title="70城新建商品住房价格同比走势"
-              subtitle="数据来源：国家统计局｜单位：%"
-              lines={[
-                {
-                  dataKey: 'newHousePrice',
-                  name: '新建商品住房价格同比',
-                  color: chartColors.primary,
-                  strokeWidth: 2.5,
-                },
+              data={unemploymentRateData}
+              title="城镇调查失业率（分年龄段）"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={unemploymentLines}
+              yAxisDomain={[0, 20]}
+              showYAxis={true}
+              xAxisTickCount={8}
+              legendOrder={[
+                '全国城镇调查失业率',
+                '16-24岁(不含在校生)',
+                '25-29岁(不含在校生)',
+                '30-59岁(不含在校生)',
               ]}
-              yAxisDomain={[-7, 1]}
-              showYAxis
-              showReferenceLine
-              referenceLineY={0}
-              xAxisTicks={newHousePriceYoyXTicks}
-              highlightPeriods={['2024-10', '2025-10', '2026-06']}
-              legendOrder={['新建商品住房价格同比']}
               unit="%"
             />
           </ChartContainer>
 
-          <ChartContainer delay="720ms">
-            <BaseStackedBarChart
-              data={housingConsumptionData}
-              title="房价波动与家庭月均消费（按住房套数分组）"
-              subtitle="数据来源：厦大×蚂蚁集团研究院｜单位：元（消费加权平均）"
-              bars={[
-                { dataKey: 'housingTransport', name: '住房与交通支出', color: seriesColors[1] },
-                { dataKey: 'foodLiving', name: '居家食品与生活支出', color: seriesColors[3] },
-                { dataKey: 'entertainment', name: '文娱与外出餐饮支出', color: seriesColors[5] },
-                { dataKey: 'educationMedical', name: '教育与医疗支出', color: seriesColors[0] },
-                { dataKey: 'durables', name: '耐用品支出', color: seriesColors[4] },
-              ]}
-              xAxisKey="category"
-              legendOrder={[
-                '住房与交通支出',
-                '居家食品与生活支出',
-                '文娱与外出餐饮支出',
-                '教育与医疗支出',
-                '耐用品支出',
-              ]}
-              yAxisDomain={[0, 7500]}
-              showYAxis
-              barSize={36}
-              showLabels
-              showTotalLabel
-              totalLabelFormatter={(_total, item) => `${item.total}`}
-              unit="元"
-              xAxisInterval={1}
-              xAxisAngle={-20}
-              xAxisHeight={50}
-              categoryGroups={[
-                { label: '一套房', x1: '一套房 <-15%', x2: '一套房 >=0' },
-                { label: '大于一套房', x1: '大于一套房 <-15%', x2: '大于一套房 >=0' },
-              ]}
-              verticalSplitAfter="一套房 >=0"
-              gapAnnotations={[
-                {
-                  fromCategory: '一套房 <-15%',
-                  toCategory: '一套房 >=0',
-                  label: '↓11.9%',
-                  color: '#64748b',
-                },
-                {
-                  fromCategory: '大于一套房 <-15%',
-                  toCategory: '大于一套房 >=0',
-                  label: '↓25.9%',
-                  color: '#64748b',
-                },
-              ]}
-            />
+          <div className="flex flex-col gap-3 min-h-0">
+            <ChartContainer delay="600ms" className="flex-1 min-h-0">
+              <BaseLineChart
+                data={flexibleEmploymentData}
+                title="中国灵活就业人员规模变化"
+                subtitle="数据来源：公开资料整理 | 单位：亿人；虚线为预测值"
+                lines={flexibleEmploymentLines}
+                yAxisDomain={[1, 3.5]}
+                showYAxis={true}
+                yAxisTickFormatter={(val) => `${val}`}
+                xAxisTicks={[
+                  '2015年',
+                  '2017',
+                  '2019',
+                  '2020',
+                  '2021',
+                  '2022',
+                  '2023',
+                  '2024',
+                  '2025',
+                  '2026(E)',
+                ]}
+                highlightPeriods={[
+                  '2015年',
+                  '2017',
+                  '2019',
+                  '2020',
+                  '2021',
+                  '2022',
+                  '2023',
+                  '2024',
+                ]}
+                showLegend={false}
+                unit="亿人"
+              />
+            </ChartContainer>
+            <ChartContainer delay="720ms" className="flex-1 min-h-0">
+              <BaseBarChart
+                data={flexibleEmploymentData.filter((d) => d.unemploymentInsurance != null)}
+                title="领取失业保险金人数"
+                subtitle="数据来源：Wind | 单位：万人"
+                bars={unemploymentInsuranceBars}
+                xAxisKey="period"
+                showYAxis={true}
+                yAxisDomain={[0, 650]}
+                yAxisTickFormatter={(val) => `${val}`}
+                unit="万人"
+                showLabels={false}
+                showLegend={false}
+                barSize={16}
+                xAxisAngle={-35}
+                xAxisHeight={40}
+                xAxisInterval={0}
+              />
+            </ChartContainer>
+          </div>
+
+          <ChartContainer delay="840ms">
+            <div className="flex flex-col h-full min-h-0">
+              <div className="flex-1 min-h-0">
+                <BaseBarChart
+                  data={workTypeExpenditureData}
+                  title="不同工作类型总支出"
+                  subtitle="数据来源：调查数据 | 单位：元"
+                  bars={workTypeExpenditureBars}
+                  xAxisKey="category"
+                  showYAxis={true}
+                  yAxisDomain={[0, 4000]}
+                  yAxisTickFormatter={(val) => `${val}`}
+                  unit="元"
+                  showLabels={true}
+                  labelFormatter={(val) => `${val}`}
+                  legendOrder={['总支出']}
+                  barSize={28}
+                  xAxisAngle={-30}
+                  xAxisHeight={55}
+                  xAxisInterval={0}
+                />
+              </div>
+              <p className="mt-1 flex-shrink-0 text-[10px] leading-snug text-slate-500">
+                注：报告出自《2026年一季度中国家庭财富与消费报告》厦门大学×蚂蚁集团研究院
+              </p>
+            </div>
           </ChartContainer>
         </div>
-
-        <p className="mt-1 flex-shrink-0 text-[10px] leading-snug text-slate-500">
-          注：厦大×蚂蚁集团《中国家庭财富与消费报告》2025Q4—2026Q1；社科院金融所《中国宏观金融分析》2026Q2；《求是》2026.6.18
-        </p>
       </div>
     </BaseContentSlide>
   );

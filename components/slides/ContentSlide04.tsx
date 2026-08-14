@@ -35,30 +35,6 @@ export const ContentSlide04: React.FC = () => {
         </>
       }
     >
-      {/* 右上角 Logo */}
-      <div className="absolute top-6 right-6 sm:top-8 sm:right-8 z-10">
-        <div className="flex items-center gap-3">
-          {/* 地球线条矢量图标 */}
-          <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* 蓝色外圆环 */}
-            <circle cx="50" cy="50" r="42" stroke="#0F4C81" strokeWidth="4.5"/>
-            {/* 蓝色横向纬线弧环 */}
-            <ellipse cx="50" cy="50" rx="42" ry="18" stroke="#0F4C81" strokeWidth="4" fill="none"/>
-            {/* 红色纵向经线弧环 */}
-            <ellipse cx="50" cy="50" rx="18" ry="42" stroke="#C8102E" strokeWidth="4" fill="none"/>
-          </svg>
-          {/* 右侧文字 */}
-          <div className="flex flex-col justify-center">
-            <div className="text-webank-accent font-bold text-base tracking-wide leading-tight" style={{ fontFamily: "'Helvetica Neue', Arial, 'PingFang SC', sans-serif" }}>
-              微众银行
-            </div>
-            <div className="text-webank-accent font-semibold text-[10px] tracking-wider leading-tight mt-0.5" style={{ fontFamily: "'Helvetica Neue', Arial, 'PingFang SC', sans-serif" }}>
-              宏观经济报告
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="flex flex-col h-full min-h-0 gap-3">
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">
           <BaseCard title="GDP增速放缓" delay="0ms" variant="accent">

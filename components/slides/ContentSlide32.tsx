@@ -1,30 +1,39 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseLineChart } from '../base/BaseLineChart';
-import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { moneySupplyCombinedRecentData } from '@/data/moneySupply';
 import { chartColors } from '@/utils/chartColors';
-import {
-  socialFinancingGrowthData,
-  socialFinancingStructureQ2Data,
-} from '@/data/socialFinancing';
+
+const m1m2LineConfigs: LineConfig[] = [
+  { dataKey: 'm1', name: 'M1(货币)', strokeWidth: 2.5 },
+  { dataKey: 'm2', name: 'M2(货币和准货币)', strokeWidth: 2 },
+];
+
+const scissorLineConfigs: LineConfig[] = [
+  { dataKey: 'scissor', name: '剪刀差', strokeWidth: 2.5 },
+  {
+    dataKey: 'scissorAdj',
+    name: '剔除高基数',
+    color: chartColors.primary,
+    strokeWidth: 2.5,
+    strokeDasharray: '6 4',
+    labelDY: -12,
+  },
+];
 
 export const ContentSlide32: React.FC = () => {
   return (
     <BaseContentSlide
-      title="二季度社融增量6万亿，主要依赖政府债支撑，信贷需求仍然弱"
-      cardColumns={2}
+      title="6月M1M2增速均回落，增速为2026年最低水平，主要为高基数引起"
+      cardColumns={1}
+      chartColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="社融总量温和减速" delay="0ms" variant="accent">
+        <div className="mb-4 flex-shrink-0">
+          <BaseCard delay="0ms" variant="accent" title="资金活化改善趋势">
             <p>
-              Q2新增社会融资规模<span className="text-webank-blue font-semibold">6万亿元</span>，同比少增<span className="text-webank-blue font-semibold">1.67万亿元</span>，存量增速微降至<span className="text-webank-blue font-semibold">7.4%</span>。其中，人民币贷款增量<span className="text-webank-blue font-semibold">1.86万亿</span>，同比少增<span className="text-webank-blue font-semibold">1.18万亿</span>；政府债净融资<span className="text-webank-blue font-semibold">2.9万亿元</span>，同比少增<span className="text-webank-blue font-semibold">8862亿元</span>。社融增速微降，主要拖累项来自人民币贷款及政府债券的高基数效应。
-            </p>
-          </BaseCard>
-          <BaseCard title="企业债券融资" delay="120ms">
-            <p>
-              Q2企业债券融资<span className="text-webank-blue font-semibold">1.02万亿元</span>，同比多增<span className="text-red-500 font-semibold">3954亿元</span>，延续Q1高增趋势。优质企业倾向于通过债券替代贷款进行融资。
+              6月M1增速回落主要受2025年同期高基数扰动——彼时化债加速推进、相关信贷集中投放，推高M1单月增量远超历史均值；M2同步回落则受信贷派生放缓与政府债发行偏慢共同拖累。剔除基数效应后，M1-M2剪刀差延续收窄态势，资金活化改善趋势未变。
             </p>
           </BaseCard>
         </div>
@@ -32,41 +41,35 @@ export const ContentSlide32: React.FC = () => {
         <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={socialFinancingGrowthData}
-              title="社会融资规模存量增速"
+              data={moneySupplyCombinedRecentData}
+              title="M1、M2同比增速走势图"
               subtitle="数据来源：中国人民银行 | 单位：%"
-              lines={[
-                { dataKey: 'growth', name: '社融存量同比增速', strokeWidth: 2 },
-              ]}
-              yAxisDomain={[7, 10]}
+              lines={m1m2LineConfigs}
+              yAxisDomain={[-4, 10]}
               showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['M1(货币)', 'M2(货币和准货币)']}
               xAxisTickCount={8}
             />
           </ChartContainer>
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={socialFinancingStructureQ2Data}
-              title="Q2社融结构同比"
-              subtitle="数据来源：中国人民银行 | 单位：亿元"
-              xAxisKey="category"
-              bars={[
-                { dataKey: 'q24', name: '2025Q2', color: chartColors.tertiary },
-                { dataKey: 'q25', name: '2026Q2', color: chartColors.primary },
-              ]}
-              yAxisDomain={[-10000, 40000]}
+          <ChartContainer delay="700ms">
+            <BaseLineChart
+              data={moneySupplyCombinedRecentData}
+              title="M1-M2剪刀差走势图"
+              subtitle="数据来源：中国人民银行 | 单位：%；虚线为剔除高基数 | 备注：2025年6月M1增加5.03万亿，历史正常增量估约3.25万亿（取2020-2023年区间中值参考，24年偏低不纳入参考），参考正常增量计算增速及剪刀差"
+              lines={scissorLineConfigs}
+              yAxisDomain={[-11, 0]}
               showYAxis={true}
-              yAxisWidth={50}
-              yAxisTickFormatter={(val) => `${val}`}
               showReferenceLine={true}
               referenceLineY={0}
-              barSize={35}
-              xAxisAngle={-15}
-              xAxisHeight={60}
-              legendOrder={['2025Q2', '2026Q2']}
-              unit="亿元"
+              legendOrder={['剪刀差', '剔除高基数']}
+              xAxisTickCount={8}
+              highlightPeriods={['2026-06']}
             />
           </ChartContainer>
         </div>
+
       </div>
     </BaseContentSlide>
   );

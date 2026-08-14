@@ -50,11 +50,11 @@ export const ContentSlide40: React.FC = () => {
               </li>
               <li>
                 <span className="font-semibold">扩消费：</span>
-                7月国务院批复《扩大消费“十五五”规划》，服务消费为核心，兼顾银发康养。
+                7月国务院批复《扩大消费"十五五"规划》，服务消费为核心，兼顾银发康养。
               </li>
               <li>
                 <span className="font-semibold">AI+消费：</span>
-                6月八部门印发《关于加快“人工智能+消费”发展的实施意见》。
+                6月八部门印发《关于加快"人工智能+消费"发展的实施意见》。
               </li>
             </ul>
           </BaseCard>

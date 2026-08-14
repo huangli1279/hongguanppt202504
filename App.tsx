@@ -35,18 +35,17 @@ const ContentSlide23 = lazyNamed(() => import('./components/slides/ContentSlide2
 const ContentSlide24 = lazyNamed(() => import('./components/slides/ContentSlide24'), 'ContentSlide24');
 const ContentSlide25 = lazyNamed(() => import('./components/slides/ContentSlide25'), 'ContentSlide25');
 const ContentSlide26 = lazyNamed(() => import('./components/slides/ContentSlide26'), 'ContentSlide26');
-const ContentSlide28 = lazyNamed(() => import('./components/slides/ContentSlide28'), 'ContentSlide28');
+const ContentSlide27 = lazyNamed(() => import('./components/slides/ContentSlide27'), 'ContentSlide27');
 const ContentSlide29 = lazyNamed(() => import('./components/slides/ContentSlide29'), 'ContentSlide29');
-const ContentSlide31 = lazyNamed(() => import('./components/slides/ContentSlide31'), 'ContentSlide31');
+const ContentSlide30 = lazyNamed(() => import('./components/slides/ContentSlide30'), 'ContentSlide30');
 const ContentSlide32 = lazyNamed(() => import('./components/slides/ContentSlide32'), 'ContentSlide32');
 const ContentSlide33 = lazyNamed(() => import('./components/slides/ContentSlide33'), 'ContentSlide33');
 const ContentSlide34 = lazyNamed(() => import('./components/slides/ContentSlide34'), 'ContentSlide34');
-const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
+const ContentSlide35 = lazyNamed(() => import('./components/slides/ContentSlide35'), 'ContentSlide35');
 const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
 const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
 const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
 const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide40'), 'ContentSlide40');
-const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
 const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
 const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
 const ContentSlide45 = lazyNamed(() => import('./components/slides/ContentSlide45'), 'ContentSlide45');
@@ -175,22 +174,22 @@ const App: React.FC = () => {
       case 24: return <ContentSlide24 />;
       case 25: return <ContentSlide25 />;
       case 26: return <ContentSlide26 />;
-      case 27: return <BaseSectionTransitionSlide id="06" title="财政分析" />;
-      case 28: return <ContentSlide28 />;
+      case 27: return <ContentSlide27 />;
+      case 28: return <BaseSectionTransitionSlide id="06" title="财政分析" />;
       case 29: return <ContentSlide29 />;
-      case 30: return <BaseSectionTransitionSlide id="07" title="金融数据分析" />;
-      case 31: return <ContentSlide31 />;
+      case 30: return <ContentSlide30 />;
+      case 31: return <BaseSectionTransitionSlide id="07" title="金融数据分析" />;
       case 32: return <ContentSlide32 />;
       case 33: return <ContentSlide33 />;
       case 34: return <ContentSlide34 />;
-      case 35: return (
+      case 35: return <ContentSlide35 />;
+      case 36: return (
         <BaseSectionTransitionSlide
           id="08"
           title="消费现状及趋势"
           subtitle="本轮消费疲弱不止于周期回落，更是收入预期下修、就业不稳与房价财富效应三重约束下的结构性收缩；总量修复仍慢，增量则向体验、情绪与健康等「软消费」迁移。"
         />
       );
-      case 36: return <ContentSlide36 />;
       case 37: return <ContentSlide37 />;
       case 38: return <ContentSlide38 />;
       case 39: return <ContentSlide39 />;
@@ -202,14 +201,13 @@ const App: React.FC = () => {
           subtitle="经济K型分化加剧，新经济端（AI算力/高端装备/绿色出口）景气延续、旧经济端持续低迷；当前AI尚不构成全面泡沫，更接近资本开支扩张期的局部风险积聚。"
         />
       );
-      case 42: return <ContentSlide42 />;
-      case 43: return <ContentSlide43 />;
-      case 44: return <ContentSlide44 />;
-      case 45: return <ContentSlide45 />;
-      case 46: return <ContentSlide46 />;
-      case 47: return <ContentSlide47 />;
-      case 48: return <ContentSlide48 />;
-      case 49: return <ThankYouSlide />;
+      case 42: return <ContentSlide43 />;
+      case 43: return <ContentSlide44 />;
+      case 44: return <ContentSlide45 />;
+      case 45: return <ContentSlide46 />;
+      case 46: return <ContentSlide47 />;
+      case 47: return <ContentSlide48 />;
+      case 48: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);
