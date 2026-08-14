@@ -80,6 +80,9 @@ export interface BaseBarChartProps {
   labelPosition?: 'top' | 'center' | 'inside' | 'insideTop' | 'insideBottom';
   labelFill?: string;
   labelFormatter?: (value: any) => string;
+  labelDy?: number;
+  /** 负值柱状图的标签位置，默认 'bottom' 放在柱子下方 */
+  labelNegativePosition?: 'top' | 'bottom' | 'insideTop' | 'insideBottom';
   unit?: string;
   showLineYAxis?: boolean;
   lineAxisDomain?: [number, number];
@@ -201,6 +204,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   labelPosition = 'top',
   labelFill,
   labelFormatter,
+  labelDy = 0,
+  labelNegativePosition = 'bottom',
   unit = '%',
   showLineYAxis = false,
   lineAxisDomain,
@@ -368,11 +373,36 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   {showLabels && (
                     <LabelList
                       dataKey={bar.dataKey}
-                      position={labelPosition as any}
-                      fill={labelFill ?? (labelPosition === 'top' ? barColor : '#fff')}
-                      fontSize={9}
-                      fontWeight={600}
-                      formatter={labelFormatter}
+                      content={({ x, y, width, height, value, textAnchor, payload }) => {
+                        const isNegative = value < 0;
+                        const isOrange = (payload?.fill === '#E07A5F') || (isNegative && bar.color === '#1B4F72');
+                        const isTop = !isNegative;
+                        const fill = isOrange
+                          ? '#E07A5F'
+                          : (labelFill ?? (labelPosition === 'top' && isTop ? barColor : '#475569'));
+                        const fontSize = 9;
+                        const fontWeight = 600;
+                        let labelY = y;
+                        if (isNegative) {
+                          // 负值柱子：y 是0轴位置（柱子顶部），height 为负值（向下延伸）
+                          // labelNegativePosition='bottom' 时，标签放在柱子下方（屏幕下方，y值更大）
+                          labelY = labelNegativePosition === 'bottom' ? y - height + 2 : y;
+                        } else {
+                          labelY = y - 2;
+                        }
+                        return (
+                          <text
+                            x={x! + width! / 2}
+                            y={labelY}
+                            textAnchor={textAnchor ?? 'middle'}
+                            fill={fill}
+                            fontSize={fontSize}
+                            fontWeight={fontWeight}
+                          >
+                            {labelFormatter ? labelFormatter(value) : value}
+                          </text>
+                        );
+                      }}
                     />
                   )}
                 </Bar>
