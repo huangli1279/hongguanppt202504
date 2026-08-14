@@ -22,6 +22,9 @@ export const investmentData = [
   { period: '2025-12', realEstateInvestment: -17.2, salesArea: -8.7, newConstruction: -20.4, personalMortgage: -17.8 },
   { period: '2026-02', realEstateInvestment: -11.1, salesArea: -13.5, newConstruction: -23.1, personalMortgage: -41.9 },
   { period: '2026-03', realEstateInvestment: -11.2, salesArea: -10.4, newConstruction: -20.3, personalMortgage: -34.6 },
+  { period: '2026-04', realEstateInvestment: -13.7, salesArea: -15.2, newConstruction: -22.8, personalMortgage: -38.5 },
+  { period: '2026-05', realEstateInvestment: -16.2, salesArea: -18.5, newConstruction: -25.4, personalMortgage: -42.3 },
+  { period: '2026-06', realEstateInvestment: -18.0, salesArea: -20.1, newConstruction: -27.6, personalMortgage: -45.8 },
 ];
 
 export const housePriceYoyData = [
@@ -52,6 +55,9 @@ export const housePriceYoyData = [
   { period: '2026-01', newHousePrice: -3.33, secondHandPrice: -6.24 },
   { period: '2026-02', newHousePrice: -3.46, secondHandPrice: -6.31 },
   { period: '2026-03', newHousePrice: -3.59, secondHandPrice: -6.33 },
+  { period: '2026-04', newHousePrice: -3.65, secondHandPrice: -6.42 },
+  { period: '2026-05', newHousePrice: -3.64, secondHandPrice: -6.38 },
+  { period: '2026-06', newHousePrice: -3.54, secondHandPrice: -6.25 },
 ];
 
 export const housePriceMomData = [
@@ -82,5 +88,8 @@ export const housePriceMomData = [
   { period: '2026-01', firstTierNew: -0.3, secondTierNew: -0.3, firstTierUsed: -0.5, secondTierUsed: -0.5 },
   { period: '2026-02', firstTierNew: 0.0, secondTierNew: -0.2, firstTierUsed: -0.1, secondTierUsed: -0.4 },
   { period: '2026-03', firstTierNew: 0.2, secondTierNew: -0.2, firstTierUsed: 0.4, secondTierUsed: -0.2 },
+  { period: '2026-04', firstTierNew: -0.1, secondTierNew: -0.3, firstTierUsed: -0.3, secondTierUsed: -0.4 },
+  { period: '2026-05', firstTierNew: -0.2, secondTierNew: -0.4, firstTierUsed: -0.5, secondTierUsed: -0.5 },
+  { period: '2026-06', firstTierNew: -0.1, secondTierNew: -0.3, firstTierUsed: -0.2, secondTierUsed: -0.3 },
 ];
 

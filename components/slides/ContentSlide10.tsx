@@ -14,7 +14,7 @@ export const ContentSlide10: React.FC = () => {
         <>
           <BaseCard title="二季度景气度企稳，7月淡季回调" delay="0ms" variant="accent">
             <p>
-              二季度制造业PMI重返扩张区间（6月<span className="font-bold">50.3%</span>），生产经营活动预期向好，但7月回落至<span className="font-bold">49.2%</span>。
+              二季度制造业PMI重返扩张区间（6月<span className="font-bold text-red-600">50.3%</span>），生产经营活动预期向好，但7月回落至<span className="font-bold text-green-600">49.2%</span>。
             </p>
             <p>
               <span className="font-bold">产需结构：</span>

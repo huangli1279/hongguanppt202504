@@ -1,72 +1,112 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { RetailCpiForecastChart } from '../charts/RetailCpiForecastChart';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { cpiTrendData, cpiCategoryData } from '@/data/cpi';
+
+const cpiLines: LineConfig[] = [
+  { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5 },
+  { dataKey: 'coreCpi', name: '剔除食品能源CPI:当月同比', strokeWidth: 2 },
+];
+
+const formatNumber = (val: number) =>
+  val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+/** 2026 年分项：正红负绿；其余年份保持中性色 */
+const renderSigned2026 = (value: any, row: { period: string }) => {
+  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
+  const num = Number(value);
+  if (isNaN(num)) return value;
+
+  const formatted = formatNumber(num);
+  if (!row.period.startsWith('2026')) {
+    return <span className="text-slate-600">{formatted}</span>;
+  }
+  if (num > 0) return <span className="text-red-500 font-medium">{formatted}</span>;
+  if (num < 0) return <span className="text-green-600 font-medium">{formatted}</span>;
+  return <span className="text-slate-600">{formatted}</span>;
+};
+
+const categoryColumns: ColumnConfig[] = [
+  { key: 'period', title: '日期', align: 'left' },
+  { key: 'foodTobaccoAlcohol', title: '食品烟酒', align: 'right', render: renderSigned2026 },
+  { key: 'transportation', title: '交通通信', align: 'right', render: renderSigned2026 },
+  { key: 'housing', title: '居住', align: 'right', render: renderSigned2026 },
+  { key: 'education', title: '教育文娱', align: 'right', render: renderSigned2026 },
+  { key: 'clothing', title: '衣着', align: 'right', render: renderSigned2026 },
+  { key: 'healthcare', title: '医疗保健', align: 'right', render: renderSigned2026 },
+  { key: 'householdServices', title: '生活用品', align: 'right', render: renderSigned2026 },
+  { key: 'otherGoodsServices', title: '其他', align: 'right', render: renderSigned2026 },
+];
+
+const tableData = cpiCategoryData;
+const highlight2026Rows = tableData.reduce<number[]>((acc, row, index) => {
+  if (row.period.startsWith('2026')) acc.push(index);
+  return acc;
+}, []);
 
 export const ContentSlide15: React.FC = () => {
   return (
     <BaseContentSlide
-      title={
-        <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-            <svg className="w-3 h-3 inline-block mr-1" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-            下半年预测
-          </span>
-          <span className="text-black">社零修复至3%附近，服务与升级品类占优</span>
-        </span>
-      }
-      className="[&_[class*='animate-top-line']]:!bg-gradient-to-r [&_[class*='animate-top-line']]:!from-yellow-200 [&_[class*='animate-top-line']]:!to-amber-400"
+      title="核心CPI回落印证内生动能不足"
       cardColumns={2}
-      chartColumns={1}
+      chartColumns={2}
       cards={
         <>
-          <BaseCard title="全年社零与CPI预测" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
-            <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
-              <li>
-                H2 在政策密集落地与高基数压力缓和背景下，全年社零累计增速预测中枢约
-                <span className="font-bold">3.0%-3.5%</span>
-                （浦银国际
-                <span className="font-bold">3.5%</span>
-                ，较年初
-                <span className="font-bold">4.8%</span>
-                下调；大公国际商品+服务零售口径约
-                <span className="font-bold">3%</span>
-              </li>
-              <li>
-                CPI 全年预计
-                <span className="font-bold">0.9%-1.0%</span>
-                ，上半年已录得
-                <span className="font-bold">1.0%</span>
-                ，下半年继续上行空间有限
-              </li>
-            </ul>
+          <BaseCard title="物价温差显著" delay="0ms" variant="accent">
+            <p>
+              上半年CPI同比上涨<span className="font-bold text-red-500">1.0%</span>，剔除食品能源的核心CPI上涨<span className="font-bold text-red-500">1.2%</span>，仍处于温和通胀区间，印证内生增长动能及居民购买力仍待修复。
+            </p>
           </BaseCard>
-
-          <BaseCard title="下半年发力关键" delay="120ms" className="!gap-1.5 !p-3">
-            <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
+          <BaseCard title="二季度分项分化" delay="120ms">
+            <ul className="list-disc pl-5 space-y-1">
               <li>
-                1—6月社零仅
-                <span className="font-bold">1.3%</span>
-                ，要实现全年
-                <span className="font-bold">3%</span>
-                ，下半年累计增速需明显回升
+                交通通信由一季度末<span className="font-bold text-webank-blue">0.9%</span>跃升至5月<span className="font-bold text-red-500">5.4%</span>（6月<span className="font-bold text-webank-blue">4.1%</span>），因国际油价推升汽油等价格。
               </li>
               <li>
-                服务消费与升级品类占优，政策支持推动需求释放
+                食品烟酒自4月起连续负增长，猪肉等畜肉价格拖累明显。
               </li>
               <li>
-                高基数压力缓和为下半年增长提供更好起点
+                受国际金价冲高回落影响，金饰品价格二季度下滑，影响"其他用品和服务"CPI的增长。
               </li>
             </ul>
           </BaseCard>
         </>
       }
       charts={
-        <ChartContainer delay="600ms" className="min-h-0" ariaLabel="主流机构对2026年社零与CPI预测共识区间图">
-          <RetailCpiForecastChart />
-        </ChartContainer>
+        <>
+          <ChartContainer delay="600ms" className="min-h-0">
+            <BaseLineChart
+              data={cpiTrendData}
+              title="CPI当月同比、剔除食品能源CPI当月同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={cpiLines}
+              yAxisDomain={[-1, 2]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['CPI:当月同比', '剔除食品能源CPI:当月同比']}
+              xAxisTickCount={7}
+              highlightPeriods={['2026-06', '2026-07']}
+            />
+          </ChartContainer>
+          <ChartContainer delay="720ms" className="min-h-0 pb-8">
+            <BaseTable
+              data={tableData}
+              columns={categoryColumns}
+              title="CPI八大类当月同比"
+              subtitle="数据来源：国家统计局 | 单位：% | 2026年：正红负绿"
+              dateColumn="period"
+              colorizeNumbers={false}
+              highlightRows={highlight2026Rows}
+              titleBlockClassName="mb-1"
+              headerCellClassName="!px-1 !py-1 text-[11px] leading-tight whitespace-nowrap"
+              cellClassName="!px-1 text-[11px] leading-none tabular-nums"
+              getRowClassName={() => 'min-h-0'}
+            />
+          </ChartContainer>
+        </>
       }
     />
   );

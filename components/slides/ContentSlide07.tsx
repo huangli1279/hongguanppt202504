@@ -14,11 +14,11 @@ export const ContentSlide07: React.FC = () => {
             </svg>
             预测与展望
           </span>
-          <span className="text-black">二季度为低点，三、四季度逐步回升，全年增长预计</span>
+          <span className="text-black">二季度为低点，三、四季度逐步回升，全年预计</span>
           <span className="text-black">4.5%-4.8%</span>
         </span>
       }
-      className="[&_[class*='animate-top-line']]:!bg-gradient-to-r [&_[class*='animate-top-line']]:!from-yellow-200 [&_[class*='animate-top-line']]:!to-amber-400"
+      className="[&_[class*='animate-top-line']]:!bg-gradient-to-r [&_[class*='animate-top-line']]:!from-yellow-200 [&_[class*='animate-top-line']]:!to-amber-400 [&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
       cardColumns={2}
       chartColumns={1}
       cards={
@@ -26,9 +26,9 @@ export const ContentSlide07: React.FC = () => {
           <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
             <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
               <li>
-                全年增速大概率落在
-                <span className="font-bold">4.5%-4.8%</span>
-                区间，处于政府目标（4.5%-5.0%）下限附近
+全年增速大概率落在
+<span className="font-bold text-[#b91c1c]">4.5%-4.8%</span>
+区间，处于政府目标（4.5%-5.0%）下限附近
               </li>
               <li>
                 下半年GDP增速将逐季回升，
