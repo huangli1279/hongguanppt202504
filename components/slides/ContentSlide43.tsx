@@ -1,157 +1,205 @@
 import React from 'react';
-import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { AiGrowthContributionChart } from '../charts/AiGrowthContributionChart';
+import { BaseCard } from '../base/BaseCard';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { aiChainExportData } from '@/data/aiChainExport';
+import { aiChainGlobalParticipationData } from '@/data/aiChainGlobal';
 
-const cycleStages = [
+const keptExportCategories = [
+  '晶圆制造设备',
+  '处理器/控制器IC',
+  '计算机存储单元',
+  '存储器IC',
+  '光模块及光通信零件',
+  'PCB',
+  '液冷模块/冷却塔',
+];
+
+const filteredExportData = keptExportCategories
+  .map((category) => aiChainExportData.find((d) => d.category === category))
+  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+
+const globalColumns: ColumnConfig[] = [
+  { key: 'country', title: '国家或地区', align: 'center', width: '85px' },
+  { key: 'region', title: '产业链环节', align: 'center', width: '75px' },
+  { key: 'advantage', title: '核心分工', align: 'left', width: '120px' },
   {
-    title: '短期: 花钱、拖累',
-    subtitle: '资本开支、组织调整',
-    variant: 'blue' as const,
-  },
-  {
-    title: '中期: 磨合、筑底',
-    subtitle: '应用落地、效率验证',
-    variant: 'blue' as const,
-  },
-  {
-    title: '长期: 见效、拉升',
-    subtitle: 'TFP提升、增长奇点',
-    variant: 'blue' as const,
-  },
-  {
-    title: '关键判断',
-    subtitle: '本轮兑现周期≈10年+',
-    variant: 'orange' as const,
+    key: 'industries',
+    title: '代表企业',
+    align: 'left',
+    render: (value: string[]) => (
+      <div className="flex flex-col gap-0.5">
+        {value.map((item, i) => (
+          <p key={i} className="leading-[1.25]">
+            {item}
+          </p>
+        ))}
+      </div>
+    ),
   },
 ];
 
-const StageArrow: React.FC = () => (
-  <div className="flex items-center justify-center flex-shrink-0 w-10 self-center">
-    <svg viewBox="0 0 40 14" className="w-10 h-3.5" fill="none">
-      <path
-        d="M1 7 H32 M28 2 L34 7 L28 12"
-        stroke="#7EB8D8"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </div>
-);
-
 export const ContentSlide43: React.FC = () => {
   return (
-    <BaseContentSlide title="目前正处于AI资本开支快速扩张期" cardColumns={3}>
-      <div className="flex flex-col h-full min-h-0">
-        <div className="grid grid-cols-3 gap-3 mb-2 flex-shrink-0">
-          <BaseCard
-            title="资本开支与收入端"
-            delay="0ms"
-            variant="accent"
-            className="!p-2.5 !gap-1"
-          >
-            <ul className="list-disc pl-4 space-y-1 text-[12px] leading-snug">
-              <li>
-                目前处于资本开支快速扩张期，据Bloomberg，2026年美国头部企业资本开支预计
-                <span className="text-red-500 font-semibold">6,000-7,000亿美元</span>
-                ，中国约
-                <span className="text-red-500 font-semibold">5,000亿元</span>
-                。
-              </li>
-              <li>
-                收入端，硬件层收入最确定，云服务和订阅层处于早期，Agent商业化尚未落地。
-              </li>
-            </ul>
-          </BaseCard>
+    <BaseContentSlide
+      title="上述高景气行业背后，核心驱动力是AI产业链的全球扩张"
+    >
+      <div className="flex flex-col h-full">
+        {/* 顶部：分组小标题 + 叙述 BaseCard */}
+        <div className="flex-shrink-0 mb-1.5">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-1.5 h-4 bg-webank-blue rounded-sm" />
+            <h2 className="text-sm font-bold text-gray-800">全球AI产业链：</h2>
+          </div>
 
-          <BaseCard
-            title={
-              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-                AI对GDP拉动的预测分歧
-              </span>
-            }
-            delay="120ms"
-            className="!p-2.5 !gap-1 [&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
-          >
-            <ul className="list-disc pl-4 space-y-1 text-[11px] leading-snug">
-              <li>
-                乐观派（IMF、McKinsey、OECD）：未来10年AI每年额外拉动GDP
-                <span className="text-red-500 font-semibold">0.7-1.8</span>
-                个百分点；
-              </li>
-              <li>
-                谨慎派（CBO）预计2026—2036年生成式AI年贡献约
-                <span className="text-red-500 font-semibold">0.1</span>
-                个百分点。
-              </li>
-              <li>
-                分歧来自任务可替代比例、部署速度、互补投资、模型成本与可靠性、劳动再配置及需求承接等假设差异。
-              </li>
-              <li>
-                生产率兑现滞后期逐轮缩短，本轮或约
-                <span className="text-red-500 font-semibold">10年</span>
-                内逐步显现。
-              </li>
-            </ul>
+          <BaseCard delay="0ms" variant="accent" className="!p-2.5 gap-1">
+            <p className="text-[12.5px] leading-snug">
+              中国在AI全球产业链中处于
+              <span className="font-semibold text-webank-blue">"中游主导、下游追赶"</span>
+              的格局。今年以来国内AI产业链高景气，主要受益于海外 AI 资本开支扩张带来的全球需求外溢。
+            </p>
           </BaseCard>
+        </div>
 
-          <BaseCard
-            title="风险提示"
-            delay="240ms"
-            className="!p-2.5 !gap-1
-              !bg-gradient-to-b !from-amber-50 !to-orange-50/80
-              !border-l-4 !border-amber-400 hover:!border-amber-500"
-          >
-            <div className="space-y-1.5 text-[11px] leading-snug text-slate-700">
-              <p>
-                <span className="font-semibold text-amber-700">① 这是不是泡沫？</span>
-                ——万亿资本开支砸下去，回报在哪里？
-              </p>
-              <p>
-                <span className="font-semibold text-amber-700">② 就业冲击有多大？</span>
-                ——AI替代的岗位，新创造的岗位，能衔接吗？
-              </p>
+        {/* 主体：AI产业链框架结构（上游+中游并排，下游在右侧） */}
+        <div className="flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm flex flex-col animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '120ms' }}>
+          {/* 标题栏 + 来源 */}
+          <div className="flex items-center justify-between px-2.5 py-1 border-b border-slate-200 bg-slate-50 flex-shrink-0">
+            <h3 className="text-[11px] font-bold text-slate-700 tracking-wide">
+              半导体产业链结构
+            </h3>
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] text-slate-400">来源：公开资料整理</span>
             </div>
-          </BaseCard>
-        </div>
+          </div>
 
-        <div className="flex-1 min-h-0">
-          <ChartContainer delay="480ms" ariaLabel="AI净增长贡献J曲线与兑现周期">
-            <AiGrowthContributionChart />
-          </ChartContainer>
-        </div>
-
-        <div className="flex items-stretch gap-0 mt-2 flex-shrink-0">
-          {cycleStages.map((stage, i) => (
-            <React.Fragment key={stage.title}>
-              <div
-                className={`flex-1 rounded-lg border px-2 py-1.5 text-center
-                  animate-fade-in-up fill-mode-forwards opacity-0 ${
-                    stage.variant === 'orange'
-                      ? 'bg-gradient-to-b from-amber-50 to-orange-50 border-amber-300'
-                      : 'bg-gradient-to-b from-sky-50 to-blue-50/60 border-sky-200'
-                  }`}
-                style={{ animationDelay: `${600 + i * 80}ms` }}
-              >
-                <p
-                  className={`text-[12px] font-bold leading-tight ${
-                    stage.variant === 'orange' ? 'text-amber-700' : 'text-webank-blue'
-                  }`}
-                >
-                  {stage.title}
-                </p>
-                <p
-                  className={`text-[10px] leading-tight mt-0.5 ${
-                    stage.variant === 'orange' ? 'text-amber-600/90' : 'text-slate-500'
-                  }`}
-                >
-                  {stage.subtitle}
-                </p>
+          {/* 框架主体：半导体产业链结构 */}
+          <div className="flex flex-1 min-h-0 p-1.5 gap-1.5">
+            {/* 上游：半导体核心链 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#1B4F72] text-white text-center text-[10px] font-bold py-0.5">
+                半导体核心链（上游）
               </div>
-              {i < cycleStages.length - 1 && <StageArrow />}
-            </React.Fragment>
-          ))}
+              <div className="p-1 space-y-1 bg-blue-50">
+                {/* 芯片设计 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    芯片设计
+                  </div>
+                </div>
+                {/* 晶圆制造 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    晶圆制造
+                  </div>
+                </div>
+                {/* 封测 */}
+                <div className="rounded border border-blue-200 bg-white overflow-hidden">
+                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    封测
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 中游：算力硬件中游 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#8ECAE6] text-slate-800 text-center text-[10px] font-bold py-0.5">
+                算力硬件中游
+              </div>
+              <div className="p-1 space-y-1 bg-sky-50">
+                {/* 光模块 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    光模块
+                  </div>
+                </div>
+                {/* 连接器 / PCB / 电源 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    连接器 / PCB / 电源
+                  </div>
+                </div>
+                {/* 服务器整机 */}
+                <div className="rounded border border-sky-200 bg-white overflow-hidden">
+                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    服务器整机
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 下游：软件与下游 */}
+            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
+              <div className="bg-[#E8B923] text-slate-800 text-center text-[10px] font-bold py-0.5">
+                软件与下游
+              </div>
+              <div className="p-1 space-y-1 bg-amber-50">
+                {/* 算力集群 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    算力集群
+                  </div>
+                </div>
+                {/* 大模型 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    大模型
+                  </div>
+                </div>
+                {/* AI行业应用 */}
+                <div className="rounded border border-amber-200 bg-white overflow-hidden">
+                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
+                    AI行业应用
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 底部：AI产业链分工体系 + BarChart 并列 */}
+        <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+          {/* 左侧：AI产业链分工体系 表格 */}
+          <ChartContainer delay="600ms" className="h-full">
+            <BaseTable
+              data={aiChainGlobalParticipationData}
+              columns={globalColumns}
+              title="AI产业链分工体系"
+              subtitle="数据来源：公开资料整理"
+              colorizeNumbers={false}
+              striped
+              rowHeight="auto"
+              cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
+              headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
+            />
+          </ChartContainer>
+
+          {/* 右侧：BarChart */}
+          <ChartContainer delay="720ms" className="h-full">
+            <BaseBarChart
+              data={filteredExportData}
+              title="中国AI链参与情况：出口同比增速"
+              subtitle="数据来源：海关总署 | 单位：%"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
+                { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
+                { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
+              ]}
+              legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
+              yAxisDomain={[-40, 160]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              showLabels={false}
+              barSize={12}
+              xAxisAngle={-90}
+              xAxisHeight={70}
+              xAxisInterval={0}
+            />
+          </ChartContainer>
         </div>
       </div>
     </BaseContentSlide>

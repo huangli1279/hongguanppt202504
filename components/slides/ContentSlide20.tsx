@@ -1,125 +1,117 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
+import { investmentData, housePriceYoyData, housePriceMomData } from '@/data/realEstateExtra';
+
+// 房地产开发投资累计同比折线图配置
+const investmentLineConfigs: LineConfig[] = [
+  { dataKey: 'realEstateInvestment', name: '房地产开发投资', strokeWidth: 2.5 },
+  { dataKey: 'newConstruction', name: '新开工面积', strokeWidth: 2 },
+  { dataKey: 'salesArea', name: '销售面积', strokeWidth: 2, labelDY: 12 },
+  { dataKey: 'personalMortgage', name: '个人按揭贷款', strokeWidth: 1.5, labelDY: 12 },
+];
+
+// 房价同比折线图配置
+const priceYoyLineConfigs: LineConfig[] = [
+  { dataKey: 'newHousePrice', name: '新建商品住宅价格指数', strokeWidth: 2.5 },
+  { dataKey: 'secondHandPrice', name: '二手住宅价格指数', strokeWidth: 2 },
+];
+
+// 房价环比折线图配置
+const priceMomLineConfigs: LineConfig[] = [
+  { dataKey: 'firstTierNew', name: '一线城市新建', strokeWidth: 2 },
+  { dataKey: 'secondTierNew', name: '二线城市新建', strokeWidth: 2 },
+  { dataKey: 'firstTierUsed', name: '一线城市二手', strokeWidth: 1.5, labelDY: 10 },
+  { dataKey: 'secondTierUsed', name: '二线城市二手', strokeWidth: 1.5, labelDY: 10 },
+];
 
 export const ContentSlide20: React.FC = () => {
-  // 政策部署与投资重点表
-  const policyTableData = [
-    {
-      area: '“六张网”基础设施建设\n（核心投资方向）',
-      content: '抓紧出台专项规划和实施方案，系统推进六大基础设施网络一体化发展：\n交通网：完善综合立体交通网络，推进城市群、都市圈轨道交通互联互通\n能源网：“十五五”投资超5万亿元，加快新型电力系统建设，推进跨省跨区输电通道和储能设施建设\n水利网：实施重大水利工程，提升防洪减灾和水资源配置能力\n信息网：加快5G-A、算力网络、工业互联网建设，布局新一代信息基础设施\n物流网：完善国家物流枢纽网络，推进冷链物流和城乡配送体系建设\n市政网：“十五五”投资约5万亿元，结合城市更新建设改造地下管网77万公里、排水防涝等市政设施',
-    },
-    {
-      area: '人工智能产业',
-      content: '正在谋划出台加快人工智能落地的配套文件，加大要素保障力度；持续推动央国企开放高价值应用场景，打造各行业人工智能标杆应用；支持具身智能领域高质量发展，加速“人工智能+”赋能千行百业',
-    },
-    {
-      area: '能源保供领域',
-      content: '全面部署迎峰度夏能源保供工作，今夏全国最高用电负荷将达16亿千瓦，较去年增加9000万千瓦；推动电力、电煤中长期合同高比例签约和有效履约；加快煤炭先进产能释放，推进油气增储上产；强化省间电力互济，支持新型储能和调峰电源建设',
-    },
-    {
-      area: '营商环境与民间投资',
-      content: '深入整治“内卷式”竞争，规范涉企行政执法；完善民营企业参与国家重大项目建设长效机制；优化数据跨境流动管理，持续扩大高水平对外开放，稳定外资预期',
-    },
-    {
-      area: '生态环保领域',
-      content: '印发《推进生态综合补偿实施方案》，加大对重点生态功能区的转移支付力度；支持生态保护修复工程建设，推动绿色低碳技术研发和产业化应用',
-    },
-    {
-      area: '民生与消费领域',
-      content: '推进完整社区建设，支持养老托育、社区服务等民生设施建设；稳定粮食生产和市场供应，保障重要民生商品价格平稳；促进汽车、家电等大宗消费升级',
-    },
-  ];
-
-  const policyColumns: ColumnConfig[] = [
-    { key: 'area', title: '核心领域', align: 'center', width: '16%' },
-    {
-      key: 'content',
-      title: '政策部署与投资重点',
-      align: 'left',
-      render: (val: string) => {
-        const lines = val.split('\n');
-        return (
-          <div className="leading-snug text-caption">
-            {lines.map((line, idx) => {
-              const match = line.match(/^(交通网|能源网|水利网|信息网|物流网|市政网)：/);
-              if (match) {
-                const rest = line.substring(match[0].length);
-                return (
-                  <div key={idx} className={idx > 0 ? 'mt-0.5' : ''}>
-                    <span className="font-semibold text-webank-blue">{match[1]}</span>：{rest}
-                  </div>
-                );
-              }
-              return <div key={idx} className={idx > 0 ? 'mt-0.5' : ''}>{line}</div>;
-            })}
-          </div>
-        );
-      },
-    },
-  ];
-
   return (
     <BaseContentSlide
-      title={
-        <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-            <svg className="w-3 h-3 inline-block mr-1" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            投资端展望
-          </span>
-          <span className="text-black">政策推动，叠加前期盈利改善，支撑后续投资增速</span>
-        </span>
-      }
-      className="[&_[class*='animate-top-line']]:!bg-gradient-to-r [&_[class*='animate-top-line']]:!from-yellow-200 [&_[class*='animate-top-line']]:!to-amber-400"
-      cardColumns={4}
+      title="二季度房地产：投资降幅扩大至-18%，新开工与销售面积跌幅加深拖累开发投资"
+      cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-4 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="政策支持" delay="0ms" variant="accent">
+        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="① 开发投资降幅持续扩大" delay="0ms" variant="accent">
             <p>
-              <span className="font-semibold">8000亿</span>政策工具待落地，市场一致预期将在三季度密集落地，重点投向“六张网”新基建和AI等新质生产力领域。
+              二季度房地产开发投资累计同比降幅扩大至<span className="text-red-500 font-semibold">-18.0%</span>（Q1为-11.2%），拖累固定资产投资整体表现。
             </p>
-            <p className="mt-1">
-              “两重”项目全部下达。2026年“六张网”及相关领域投资超<span className="font-semibold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
+            <p className="mt-2">
+              6月当月投资同比下降约22%，绝对量处于近年同期低位。新开工面积、销售面积、个人按揭贷款降幅均超20%，资金来源持续收缩。（图1）
             </p>
           </BaseCard>
-          <BaseCard title="专项债发行提速" delay="120ms">
+          <BaseCard title="② 房价同比跌幅小幅收窄" delay="120ms">
             <p>
-              6月已创单月新高（<span className="font-semibold">5716亿</span>，为计划发行的1.65倍），Q3迎来发行高峰，预计同比<span className="font-semibold">+30%</span>。
+              6月70城新建商品住宅价格指数同比<span className="text-green-600 font-semibold">-3.54%</span>，较Q1（-3.59%）略有收窄；二手住宅同比<span className="text-green-600 font-semibold">-6.25%</span>，同样边际改善。
+            </p>
+            <p className="mt-2">
+              但环比看，4-5月一线城市新房价格环比转负，6月略有企稳。房价整体仍处于负区间，以价换量态势延续。（图2）
             </p>
           </BaseCard>
-          <BaseCard title="盈利传导" delay="240ms">
+          <BaseCard title="③ 以价换量难持续" delay="240ms">
             <p>
-              2025半年盈利回升→对应支撑2026半年投资（领先2-3季度）。
+              销售面积累计同比降至<span className="text-red-500 font-semibold">-20.1%</span>，降幅较Q1扩大近10个百分点。居民购房意愿偏弱，按揭贷款降幅扩大至-45.8%。
             </p>
-          </BaseCard>
-          <BaseCard title="机构预测" delay="360ms">
-            <p>
-              共识：下半年回升，"前低后高"
-            </p>
-            <p className="mt-1">
-              上半年固定资产投资增速低于预期，机构集中修正全年投资增速，转为定性描述，核心驱动为8000亿政策性金融工具落地、专项债Q3发行提速、2025年同期低基数。
+            <p className="mt-2">
+              政策端"白名单"贷款、收储等举措仍在推进，但传导至投资端仍需时日，短期投资压力不减。（图3）
             </p>
           </BaseCard>
         </div>
 
-        {/* 政策部署表格区域 */}
-        <ChartContainer delay="600ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={policyTableData}
-            columns={policyColumns}
-            title="政策部署与投资重点"
-            subtitle="资料来源：国务院及部委公开文件"
-            rowHeight="dense"
-            cellClassName="px-2 py-1 align-top"
-            headerCellClassName="px-2 py-1.5 text-center font-semibold"
-            bordered={true}
-          />
-        </ChartContainer>
+        {/* 图表区域 - 3列：图1左、图2中、图3右 */}
+        <div className="flex-1 grid grid-cols-3 gap-3 min-h-0">
+          {/* 左列：图1 - 房地产投资 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={investmentData}
+              title="图1 房地产投资及分项累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={investmentLineConfigs}
+              yAxisDomain={[-50, 5]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['房地产开发投资', '新开工面积', '销售面积', '个人按揭贷款']}
+              xAxisTicks={['2025-02', '2025-06', '2025-12', '2026-02', '2026-04', '2026-06']}
+            />
+          </ChartContainer>
+
+          {/* 中列：图2 - 房价同比 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={housePriceYoyData.slice(-18)}
+              title="图2 70城住宅价格指数同比变化"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={priceYoyLineConfigs}
+              yAxisDomain={[-10, 2]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['新建商品住宅价格指数', '二手住宅价格指数']}
+              xAxisTicks={['2025-01', '2025-04', '2025-07', '2025-10', '2026-01', '2026-04', '2026-06']}
+            />
+          </ChartContainer>
+
+          {/* 右列：图3 - 房价环比 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={housePriceMomData.slice(-12)}
+              title="图3 70城住宅价格指数环比变化"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={priceMomLineConfigs}
+              yAxisDomain={[-1.5, 1]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['一线城市新建', '二线城市新建', '一线城市二手', '二线城市二手']}
+              xAxisTicks={['2025-07', '2025-10', '2026-01', '2026-04', '2026-06']}
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );
