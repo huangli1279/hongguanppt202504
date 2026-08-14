@@ -109,10 +109,10 @@ const StageArrow: React.FC = () => (
   </div>
 );
 
-export const ContentSlide40: React.FC = () => {
+export const ContentSlide39: React.FC = () => {
   return (
     <BaseContentSlide
-      title="AI冲击与就业：结构特征"
+      title="AI冲击与就业结构特征"
       cardColumns={3}
       headerClassName="!mb-2"
     >
@@ -132,7 +132,9 @@ export const ContentSlide40: React.FC = () => {
             <p className="text-[11px] leading-snug">
               行业工资增速：
               <span className="text-webank-blue font-semibold">计算机AI相关</span>
-              岗位收入增长领跑，2025年增长4.1%；金融业稳健增长；房地产等行业增速垫底，收入的分化预计在今年持续显现。
+              岗位收入增长领跑，2025年增长4.1%；金融业稳健增长；
+              <span className="text-green-500 font-semibold">房地产收入增速转负</span>
+              ，收入的分化预计在今年持续显现。
             </p>
           </BaseCard>
         </div>

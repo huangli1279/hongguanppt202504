@@ -55,7 +55,7 @@ export const ContentSlide12: React.FC = () => {
           <BaseCard title="企业利润K型分化" delay="120ms" variant="accent">
             <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
               <li>
-                <span className="font-semibold text-webank-blue">利润高增、结构分化</span>：1-6月规上工业企业利润同比增长<span className="font-bold text-webank-blue">18.7%</span>，但电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等新动能领跑，汽车(<span className="font-bold text-red-500">-19.5%</span>)、纺织(<span className="font-bold text-red-500">-28.0%</span>)等传统产业明显承压。
+                <span className="font-semibold text-webank-blue">利润高增、结构分化</span>：1-6月规上工业企业利润同比增长<span className="font-bold text-webank-blue">18.7%</span>，但电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等新动能领跑，汽车(<span className="font-bold text-green-500">-19.5%</span>)、纺织(<span className="font-bold text-green-500">-28.0%</span>)等传统产业明显承压。
               </li>
               <li>
                 <span className="font-semibold text-webank-blue">新经济持续释放</span>：高技术制造业利润增长<span className="font-bold text-red-500">44.7%</span>，AI算力、半导体、新能源等景气有望延续。
@@ -88,7 +88,7 @@ export const ContentSlide12: React.FC = () => {
             <BaseBarChart
               data={industryProfitGrowthData}
               title="主要行业利润增速：新旧经济分化显著"
-              subtitle="注：*高技术制造业仅5月数据 | 数据来源：国家统计局 | 单位：%"
+              subtitle={<><span className="text-red-500">注：*高技术制造业仅5月数据</span> | 数据来源：国家统计局 | 单位：%</>}
               bars={profitBars}
               xAxisKey="period"
               yAxisDomain={[-50, 120]}
@@ -96,8 +96,7 @@ export const ContentSlide12: React.FC = () => {
               yAxisTickFormatter={(val) => `${val}%`}
               showReferenceLine={true}
               referenceLineY={0}
-              showLegend={true}
-              legendOrder={['新经济/装备制造', '传统行业']}
+              showLegend={false}
               showLabels={true}
               labelPosition="top"
               labelFormatter={(val: number | string) => (Number(val) > 0 ? `+${val}%` : `${val}%`)}

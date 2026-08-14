@@ -6,7 +6,7 @@ import { BaseCard } from '../base/BaseCard';
 import { chartColors, seriesColors } from '@/utils/chartColors';
 import { unemploymentRateData, flexibleEmploymentData, workTypeExpenditureData } from '@/data/employment';
 
-export const ContentSlide39: React.FC = () => {
+export const ContentSlide40: React.FC = () => {
   const unemploymentLines: LineConfig[] = [
     { dataKey: 'overall', name: '全国城镇调查失业率', strokeWidth: 2.5 },
     { dataKey: 'age16_24', name: '16-24岁(不含在校生)', strokeWidth: 2 },
@@ -48,7 +48,7 @@ export const ContentSlide39: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>就业变化：灵活就业快速增加，失业拉低居民消费</>}
+      title={<>整体就业变化：灵活就业快速增加，失业拉低居民消费</>}
       cardColumns={3}
     >
       <div className="flex flex-col h-full">

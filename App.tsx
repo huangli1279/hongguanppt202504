@@ -7,7 +7,7 @@ import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 50;
+const TOTAL_SLIDES = 45;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -47,12 +47,12 @@ const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide3
 const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
 const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide40'), 'ContentSlide40');
 const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
+const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
 const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
 const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
 const ContentSlide45 = lazyNamed(() => import('./components/slides/ContentSlide45'), 'ContentSlide45');
 const ContentSlide46 = lazyNamed(() => import('./components/slides/ContentSlide46'), 'ContentSlide46');
 const ContentSlide47 = lazyNamed(() => import('./components/slides/ContentSlide47'), 'ContentSlide47');
-const ContentSlide48 = lazyNamed(() => import('./components/slides/ContentSlide48'), 'ContentSlide48');
 const ContentSlide21 = lazyNamed(() => import('./components/slides/ContentSlide21'), 'ContentSlide21');
 
 const App: React.FC = () => {
@@ -193,23 +193,11 @@ const App: React.FC = () => {
       );
       case 37: return <ContentSlide37 />;
       case 38: return <ContentSlide38 />;
-      case 39: return <ContentSlide40 />;
-      case 40: return <ContentSlide39 />;
+      case 39: return <ContentSlide39 />;
+      case 40: return <ContentSlide40 />;
       case 41: return <ContentSlide41 />;
-      case 42: return (
-        <BaseSectionTransitionSlide
-          id="09"
-          title="K型分化下的AI产业链"
-          subtitle="经济K型分化加剧，新经济端（AI算力/高端装备/绿色出口）景气延续、旧经济端持续低迷；当前AI尚不构成全面泡沫，更接近资本开支扩张期的局部风险积聚。"
-        />
-      );
-      case 43: return <ContentSlide43 />;
-      case 44: return <ContentSlide44 />;
-      case 45: return <ContentSlide45 />;
-      case 46: return <ContentSlide46 />;
-      case 47: return <ContentSlide47 />;
-      case 48: return <ContentSlide48 />;
-      case 49: return <ThankYouSlide />;
+      case 42: return <ContentSlide42 />;
+      case 43: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);

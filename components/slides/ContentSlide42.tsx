@@ -252,7 +252,7 @@ const cards: {
   },
 ];
 
-export const ContentSlide48: React.FC = () => {
+export const ContentSlide42: React.FC = () => {
   return (
     <BaseContentSlide
       title={

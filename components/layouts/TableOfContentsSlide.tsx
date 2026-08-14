@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, TrendingUp, Cpu, ArrowUpRight } from 'lucide-react';
+import { BarChart3, Zap, ShoppingCart, HardHat, Globe, Landmark, Activity, TrendingUp, ArrowUpRight } from 'lucide-react';
 
 const contents = [
   { id: '01', title: 'GDP 分析', subtitle: '第 01 章', icon: BarChart3 },
@@ -11,7 +11,6 @@ const contents = [
   { id: '06', title: '财政分析', subtitle: '第 06 章', icon: Landmark },
   { id: '07', title: '金融数据分析', subtitle: '第 07 章', icon: Activity },
   { id: '08', title: '消费现状及趋势', subtitle: '专题一', icon: TrendingUp },
-  { id: '09', title: 'K型分化下的AI产业链', subtitle: '专题二', icon: Cpu },
 ];
 
 export const TableOfContentsSlide: React.FC = () => {
