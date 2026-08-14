@@ -4,28 +4,29 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { chartColors } from '@/utils/chartColors';
-import {
-  depositIncrementQ2CompareData,
-  householdDepositMonthlyChangeData,
-} from '@/data/depositData';
+import { corporateCreditStructureData, householdLoanChangeData } from '@/data/loanData';
 
-const formatValue = (val: any) =>
+const formatTrillion = (val: any) =>
   val === null || val === undefined
     ? '-'
     : typeof val === 'number'
       ? Number(val).toFixed(2)
       : String(val);
 
-const depositColumns: ColumnConfig[] = [
-  { key: 'period', title: '月份', align: 'center', width: '0.9fr' },
-  { key: 'household', title: '住户存款', align: 'right', width: '1fr', render: formatValue },
-  { key: 'nonFinancial', title: '非金融企业存款', align: 'right', width: '1.2fr', render: formatValue },
-  { key: 'nonBankFin', title: '非银行业金融机构存款', align: 'right', width: '1.4fr', render: formatValue },
+const loanColumns: ColumnConfig[] = [
+  { key: 'period', title: '月份', align: 'center', width: '0.7fr' },
+  { key: 'consumerLoan', title: '消费贷款', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'shortTermConsumer', title: '短期消费', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'longTermConsumer', title: '中长期消费', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'housingLoan', title: '其中:房贷', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'consumerLoanExHousing', title: '消费贷(不含房贷)', align: 'right', width: '1.15fr', render: formatTrillion },
+  { key: 'businessLoan', title: '经营贷款', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'totalLoan', title: '贷款合计', align: 'right', width: '0.9fr', render: formatTrillion },
 ];
 
 export const ContentSlide33: React.FC = () => {
-  const highlightRows = householdDepositMonthlyChangeData.reduce<number[]>((acc, item, index) => {
-    if (item.period.startsWith('2026-')) {
+  const highlightRows = householdLoanChangeData.reduce<number[]>((acc, item, index) => {
+    if (['2026-04', '2026-05', '2026-06'].includes(item.period)) {
       acc.push(index);
     }
     return acc;
@@ -33,58 +34,80 @@ export const ContentSlide33: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>二季度居民存款净减少1049亿元，为2018年以来首次下降；非银机构存款则增加2.62万亿元</>}
-      cardColumns={1}
-      chartColumns={2}
+      title={<>企业贷款“票据强、中长期弱”，居民端加速缩表</>}
+      cardColumns={2}
     >
-      <div className="flex flex-col h-full">
-        <div className="mb-6 flex-shrink-0">
-          <BaseCard title="存款搬家延续" delay="0ms" variant="accent">
-            <p>
-              二季度居民存款净减少<span className="text-webank-blue font-semibold">1049亿元</span>（同比少增<span className="text-webank-blue font-semibold">1.66万亿元</span>），非银存款增加<span className="text-webank-blue font-semibold">2.62万亿元</span>（同比多增<span className="text-webank-blue font-semibold">3915亿元</span>），存款搬家趋势延续。
-            </p>
-            <p>
-              分月节奏上，4-5月居民及企业存款连续下降，非银存款加速增长；6月受银行季末冲存款的短期扰动，居民存款阶段性回升、非银存款回落。
-            </p>
+      <div className="flex flex-col h-full pb-6">
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
+            <ul className="list-disc pl-4 space-y-0.5">
+              <li>
+                实体融资意愿低迷：Q2非金融企业贷款新增<span className="text-webank-blue font-semibold">2.5万亿</span>，中长期仅增<span className="text-webank-blue font-semibold">1300亿</span>（同比少增1.46万亿），为近年低点。
+              </li>
+              <li>
+                票据融资独撑增量：Q2票据新增<span className="text-webank-blue font-semibold">1.9万亿</span>（同比多增1.4万亿），票利率约<span className="text-webank-blue font-semibold">0.5%</span>，银行“以票充贷”突出。
+              </li>
+              <li>
+                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢大盘<span className="text-webank-blue font-semibold">5.2%</span>。
+              </li>
+            </ul>
+          </BaseCard>
+          <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-sm">
+            <ul className="list-disc pl-4 space-y-0.5">
+              <li>
+                Q2居民贷款减少<span className="text-green-600 font-semibold">6636亿</span>，同比多减<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续下降。
+              </li>
+              <li>
+                中长期（房贷）：Q2减少<span className="text-green-600 font-semibold">2395亿</span>（同比多减5263亿），新增按揭难对冲提前还贷。
+              </li>
+              <li>
+                短期（消费）：Q2减少<span className="text-green-600 font-semibold">4241亿</span>，居民消费信心与风险偏好仍处低位。
+              </li>
+              <li>
+                居民消费贷（不含房贷）余额<span className="text-webank-blue font-semibold">20.82万亿</span>。
+              </li>
+            </ul>
           </BaseCard>
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
-          <ChartContainer delay="600ms">
+        <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
+          <ChartContainer delay="600ms" className="min-h-0">
             <BaseBarChart
-              data={depositIncrementQ2CompareData}
-              title="存款增量对比（万亿）"
-              subtitle="数据来源：中国人民银行 | 单位：万亿元"
+              data={corporateCreditStructureData}
+              title="Q2新增人民币贷款结构"
+              subtitle="数据来源：中国人民银行 | 单位：亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'q2024', name: '2024Q2', color: chartColors.quaternary },
-                { dataKey: 'q2025', name: '2025Q2', color: chartColors.tertiary },
-                { dataKey: 'q2026', name: '2026Q2', color: chartColors.primary },
+                { dataKey: 'y2024', name: '2024年', color: chartColors.quaternary },
+                { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
+                { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
               ]}
-              yAxisDomain={[-1, 3]}
+              yAxisDomain={[-6000, 35000]}
               showYAxis={true}
+              yAxisWidth={50}
+              yAxisTickFormatter={(val) => `${val}`}
               showReferenceLine={true}
               referenceLineY={0}
-              yAxisTickFormatter={(val) => `${val}`}
-              barSize={28}
+              barSize={14}
               showLabels={true}
-              legendOrder={['2024Q2', '2025Q2', '2026Q2']}
-              unit="万亿"
+              xAxisAngle={-20}
+              xAxisHeight={55}
+              legendOrder={['2024年', '2025年', '2026年']}
+              unit="亿元"
             />
           </ChartContainer>
-
-          <ChartContainer delay="720ms" className="min-h-0">
+          <ChartContainer delay="600ms" className="min-h-0">
             <BaseTable
-              data={householdDepositMonthlyChangeData}
-              columns={depositColumns}
-              title="居民存款变化"
-              subtitle="数据来源：中国人民银行｜单位：万亿"
+              data={householdLoanChangeData}
+              columns={loanColumns}
+              title="居民贷款变化情况"
+              subtitle="数据来源：中国人民银行｜单位：万亿元"
               colorizeNumbers={false}
               dateColumn="period"
               highlightRows={highlightRows}
               rowHeight="auto"
-              cellClassName="!px-1.5 whitespace-nowrap tabular-nums text-[12px] leading-none"
-              headerCellClassName="!px-1.5 !py-1.5 whitespace-nowrap text-[11px] leading-tight"
+              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[11px] leading-none"
+              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[11px] leading-none"
             />
           </ChartContainer>
         </div>
