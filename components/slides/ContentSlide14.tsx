@@ -55,8 +55,8 @@ export const ContentSlide14: React.FC = () => {
               subtitle="数据来源：国家统计局 | 单位：%"
               data={retailChartData}
               lines={[
-                { dataKey: 'totalRetail', name: '社零总额:累计同比', strokeWidth: 2.5 },
-                { dataKey: 'goodsRetail', name: '商品零售:累计同比', labelDY: 12 },
+                { dataKey: 'totalRetail', name: '社零总额:累计同比', strokeWidth: 2.5, labelDY: -14 },
+                { dataKey: 'goodsRetail', name: '商品零售:累计同比', labelDY: -10 },
                 { dataKey: 'serviceRetail', name: '服务零售:累计同比', labelDY: -8 },
               ]}
               legendOrder={['社零总额:累计同比', '商品零售:累计同比', '服务零售:累计同比']}
@@ -73,10 +73,10 @@ export const ContentSlide14: React.FC = () => {
               subtitle="数据来源：深圳/广州统计局、国家统计局 | 单位：%"
               data={cityChartData}
               lines={[
-                { dataKey: 'shenzhen', name: '深圳', strokeWidth: 2 },
-                { dataKey: 'shanghai', name: '上海', strokeWidth: 2 },
+                { dataKey: 'shenzhen', name: '深圳', strokeWidth: 2, labelDY: 14, pointOffsets: { '2026-06': 14 } },
+                { dataKey: 'shanghai', name: '上海', strokeWidth: 2, labelDY: 8, pointOffsets: { '2026-06': 19} },
                 { dataKey: 'beijing', name: '北京', strokeWidth: 2 },
-                { dataKey: 'guangzhou', name: '广州', strokeWidth: 2 },
+                { dataKey: 'guangzhou', name: '广州', strokeWidth: 2, labelDY: -14, pointOffsets: { '2026-06': -14 } },
               ]}
               legendOrder={['深圳', '上海', '北京', '广州']}
               yAxisDomain={[-6, 12]}

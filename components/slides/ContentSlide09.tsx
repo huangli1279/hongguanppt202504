@@ -40,14 +40,15 @@ export const ContentSlide09: React.FC = () => {
               title="规上工业分行业增加值累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'industrial', name: '全部', color: seriesColors[0], strokeWidth: 2.5 },
-                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2 },
-                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2 },
+                { dataKey: 'industrial', name: '全部', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-06': -22 } },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-06': -5 } },
+                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-06': 28 } },
                 {
                   dataKey: 'utilities',
                   name: '电力热力燃气水',
                   color: seriesColors[3],
                   strokeWidth: 1.8,
+                  pointOffsets: { '2026-06': -38 },
                 },
               ]}
               yAxisDomain={[0, 10]}

@@ -22,6 +22,14 @@ export const ContentSlide19: React.FC = () => {
     { dataKey: 'stateBudget', name: '国家预算内资金', strokeWidth: 2, labelDY: 16 },
   ];
 
+  // 图2 中资金来源累计和自筹资金在最右侧数据点使用箭头标注分开显示
+  const fundingLinesWithCallouts: LineConfig[] = [
+    { dataKey: 'totalFunding', name: '资金来源累计', strokeWidth: 2, pointCallouts: { '2026-06': { dx: 25, dy: -30 } } },
+    { dataKey: 'selfRaised', name: '自筹资金', strokeWidth: 2, pointCallouts: { '2026-06': { dx: 30, dy: 30 } } },
+    { dataKey: 'domesticLoan', name: '国内贷款', strokeWidth: 2, labelDY: 28 },
+    { dataKey: 'stateBudget', name: '国家预算内资金', strokeWidth: 2, labelDY: 16 },
+  ];
+
   const bondBarConfigs: BarConfig[] = [
     { dataKey: 'planned', name: '计划发行' },
     { dataKey: 'actual', name: '实际发行额' },
@@ -83,7 +91,7 @@ export const ContentSlide19: React.FC = () => {
                 data={investmentFundingData}
                 title="图2 资金到位增速、自筹资金增速"
                 subtitle="数据来源：国家统计局 | 单位：%"
-                lines={fundingLineConfigs}
+                lines={fundingLinesWithCallouts}
                 yAxisDomain={[-20, 20]}
                 showYAxis={true}
                 showReferenceLine={true}

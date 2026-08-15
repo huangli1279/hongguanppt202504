@@ -32,7 +32,7 @@ export const ContentSlide16: React.FC = () => {
                 ，较年初
                 <span className="font-bold">4.8%</span>
                 下调；大公国际商品+服务零售口径约
-                <span className="font-bold">3%</span>
+                <span className="font-bold">3%</span>）
               </li>
               <li>
                 CPI 全年预计
