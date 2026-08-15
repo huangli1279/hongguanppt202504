@@ -73,6 +73,8 @@ export interface BaseLineChartProps {
   xAxisTickCount?: number;
   /** 自定义X轴刻度，优先级高于 xAxisTickCount */
   xAxisTicks?: string[];
+  /** X轴标签旋转角度，默认-45 */
+  xAxisAngle?: number;
   /** tooltip单位，默认% */
   unit?: string;
   /** Y轴刻度格式化函数 */
@@ -179,7 +181,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   showRightYAxis = false,
   rightYAxisDomain = ['auto', 'auto'],
   rightYAxisTickFormatter,
-  categoryGroups
+  categoryGroups,
+  xAxisAngle = -45
 }) => {
   const hasDualAxis = showRightYAxis || lines.some((line) => line.yAxisId === 'right');
   const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
@@ -421,8 +424,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               tick={{ fill: uiColors.tick, fontSize: 10 }}
               dy={10}
               interval={0}
-              angle={-45}
-              textAnchor="end"
+              angle={xAxisAngle}
+              textAnchor={xAxisAngle !== 0 ? "end" : "middle"}
               ticks={(() => {
                 if (xAxisTicks && xAxisTicks.length > 0) return xAxisTicks;
                 // 若 period 形如 YYYY-MM，则按季度（3/6/9/12月）锚定最新期向前展示

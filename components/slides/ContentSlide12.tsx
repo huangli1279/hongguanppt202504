@@ -7,8 +7,8 @@ import { pmiByEnterpriseSizeData } from '@/data/pmi';
 
 // PMI 大中小企业数据
 const pmiSizeLines: LineConfig[] = [
-  { dataKey: 'large', name: '大型企业', strokeWidth: 2.5 },
-  { dataKey: 'medium', name: '中型企业', strokeWidth: 2 },
+  { dataKey: 'large', name: '大型企业', strokeWidth: 2.5, pointOffsets: { '2026-07': 8 } },
+  { dataKey: 'medium', name: '中型企业', strokeWidth: 2, pointOffsets: { '2026-07': -8 } },
   { dataKey: 'small', name: '小型企业', strokeWidth: 2 },
 ];
 
@@ -80,8 +80,7 @@ export const ContentSlide12: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={50}
               legendOrder={['大型企业', '中型企业', '小型企业']}
-              xAxisTickCount={7}
-              xAxisInterval={3}
+              xAxisAngle={0}
             />
           </ChartContainer>
           <ChartContainer delay="600ms" className="min-h-0">
