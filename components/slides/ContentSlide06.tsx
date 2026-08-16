@@ -78,7 +78,7 @@ export const ContentSlide06: React.FC = () => {
       title={
         <>
           2026年上半年各省市GDP<span className="text-webank-accent">总量及增速</span>：
-          <span className="text-webank-accent">新旧动能转换分化加剧</span>
+          <span className="text-webank-accent">新旧动能转换分化显著</span>
         </>
       }
       className="!p-6 sm:!px-10 sm:!py-7"

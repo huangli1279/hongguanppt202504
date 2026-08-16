@@ -107,7 +107,7 @@ export const GdpForecastRangeChart: React.FC = () => {
           国内外机构对2026年GDP增速预测：共识处于政府目标下限
         </h3>
         <p className="text-xs text-webank-subtext mt-1 leading-relaxed">
-          注：蓝框为政府工作报告目标（4.5%–5.0%）；红框为机构共识（4.5%–4.8%）；上排为机构点预测，下方为共识条；灰点为上半年均值。｜单位：%
+          注：蓝框为政府工作报告目标（4.5%–5.0%）；红框为机构共识（4.5%–4.8%）；上排为机构点预测，下方为共识条｜单位：%
         </p>
       </div>
 
@@ -311,18 +311,6 @@ export const GdpForecastRangeChart: React.FC = () => {
             fontWeight={700}
           >
             {metric.low.toFixed(1)}–{metric.high.toFixed(1)}%
-          </text>
-
-          {/* ========== 上半年实际均值（仅在 GDP 条下方标注，避免遮挡 GDP 条内的数字） ========== */}
-          <text
-            x={actualLeftOfBand ? xActual : xActual - 4}
-            y={axisY + barH / 2 + 22}
-            textAnchor={actualLeftOfBand ? 'middle' : 'end'}
-            fill={ACTUAL_COLOR}
-            fontSize={10}
-            fontWeight={700}
-          >
-            {metric.actualLabel} {metric.actual.toFixed(2)}%
           </text>
 
           {/* 目标上限 5.0% 虚线贯穿 */}
