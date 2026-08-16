@@ -376,16 +376,23 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                       content={({ x, y, width, height, value, textAnchor, payload }) => {
                         const isNegative = value < 0;
                         const isOrange = (payload?.fill === '#E07A5F') || (isNegative && bar.color === '#1B4F72');
-                        const isTop = !isNegative;
-                        const fill = isOrange
-                          ? '#E07A5F'
-                          : (labelFill ?? (labelPosition === 'top' && isTop ? barColor : '#475569'));
-                        const fontSize = 9;
-                        const fontWeight = 600;
+                        let labelText = labelFormatter ? labelFormatter(value) : value;
+                        // 堆叠柱：统一用白色标签，确保对比度
+                        const fill = bar.stackId
+                          ? '#FFFFFF'
+                          : (isOrange ? '#E07A5F' : (labelFill ?? '#475569'));
+                        const fontSize = bar.stackId ? 10 : 9;
+                        const fontWeight = 700;
+
                         let labelY = y;
-                        if (isNegative) {
-                          // 负值柱子：y 是0轴位置（柱子顶部），height 为负值（向下延伸）
-                          // labelNegativePosition='bottom' 时，标签放在柱子下方（屏幕下方，y值更大）
+                        if (bar.stackId) {
+                          const stackBars = bars.filter(b => b.stackId === bar.stackId);
+                          if (stackBars.length > 1) {
+                            // 堆叠柱：y 是分段顶部，height 是分段像素高度
+                            // 居中于分段中间
+                            labelY = y + (height ?? 30) / 2;
+                          }
+                        } else if (isNegative) {
                           labelY = labelNegativePosition === 'bottom' ? y - height + 2 : y;
                         } else {
                           labelY = y - 2;
@@ -395,11 +402,14 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                             x={x! + width! / 2}
                             y={labelY}
                             textAnchor={textAnchor ?? 'middle'}
+                            dominantBaseline="middle"
                             fill={fill}
                             fontSize={fontSize}
                             fontWeight={fontWeight}
+                            stroke={bar.stackId ? 'rgba(0,0,0,0.25)' : undefined}
+                            strokeWidth={bar.stackId ? 0.4 : 0}
                           >
-                            {labelFormatter ? labelFormatter(value) : value}
+                            {labelText}
                           </text>
                         );
                       }}

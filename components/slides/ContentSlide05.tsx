@@ -36,7 +36,7 @@ export const ContentSlide05: React.FC = () => {
               <span className="font-bold">1.9个百分点</span>
               ，为季度GDP增速放缓主要拖累，主要受制造业、建筑业增速回落影响。第三产业维持稳定增速，对GDP当季同比增长贡献率达
               <span className="font-bold text-red-500">69.4%</span>
-              ，较去年同期增长<span className="font-bold text-red-500">8.2个百分点</span>。
+              ，贡献率较去年同期增长<span className="font-bold text-red-500">8.2个百分点</span>。
             </p>
           </BaseCard>
 
@@ -86,6 +86,7 @@ export const ContentSlide05: React.FC = () => {
                   ...d,
                   period: d.period.slice(2),
                 }))}
+                xAxisKey="period"
                 title="三大产业对GDP增长贡献率"
                 subtitle="数据来源: 国家统计局；单位: %"
                 bars={stackedIndustryBars}
@@ -97,7 +98,7 @@ export const ContentSlide05: React.FC = () => {
                 labelPosition="center"
                 labelFormatter={(v: any) => Number(v).toFixed(1)}
                 unit="%"
-                yAxisTickFormatter={(v) => `${v}`}
+                yAxisTickFormatter={(v) => `${Math.round(v)}`}
                 xAxisInterval={0}
               />
             </ChartContainer>
