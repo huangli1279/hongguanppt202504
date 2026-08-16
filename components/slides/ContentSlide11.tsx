@@ -83,7 +83,7 @@ export const ContentSlide11: React.FC = () => {
               <span className="text-red-500 font-bold">0.63%</span>
               ）。生产资料和生活资料剪刀差持续扩大，6月为
               <span className="font-bold">6.4%</span>
-              ，中下游企业生存条件严峻。
+              ，多数中下游企业盈利空间收到明显挤压。
             </p>
           </BaseCard>
 
