@@ -35,6 +35,22 @@ export const unemploymentRateData: UnemploymentRateDataPoint[] = [
   { period: '2026-06', overall: 5.0, age16_24: 14.9, age25_29: 7.1, age30_59: 4.0 },
 ];
 
+// 近5年全国就业人员数据（万人）；来源：国家统计局
+export interface EmploymentDataPoint {
+  period: string;
+  national: number;    // 全国就业人员（万人）
+  urban: number;      // 城镇就业人员（万人）
+}
+
+export const employmentData: EmploymentDataPoint[] = [
+  { period: '2020年', national: 75064, urban: 46286 },
+  { period: '2021年', national: 74652, urban: 46773 },
+  { period: '2022年', national: 73351, urban: 45931 },
+  { period: '2023年', national: 74041, urban: 47032 },
+  { period: '2024年', national: 73439, urban: 47345 },
+  { period: '2025年', national: 72504, urban: 47535 },
+];
+
 // 中国灵活就业人员规模（亿人）+ 领取失业保险金人数（万人）；2026(E) 为预测值
 export interface FlexibleEmploymentDataPoint {
   period: string;
