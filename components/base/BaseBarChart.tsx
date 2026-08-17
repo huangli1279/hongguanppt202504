@@ -13,8 +13,7 @@ import {
   ReferenceLine,
   ReferenceArea,
   LabelList,
-  Cell,
-  Customized
+  Cell
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
 
@@ -112,16 +111,6 @@ export interface BaseBarChartProps {
   labelNegativeOffsets?: Record<string, number>;
   /** 按行索引的负值偏移量，key 为行索引，value 为偏移量 */
   labelNegativeOffsetsByIndex?: Record<number, number>;
-  /** 显示堆叠柱状图的总量标签（如 2590、2670 等），默认 false */
-  showTotalLabels?: boolean;
-  /** 总量标签的格式化函数，默认直接显示数值 */
-  totalLabelFormatter?: (value: any) => string;
-  /** 总量标签颜色，默认 '#1e293b' */
-  totalLabelFill?: string;
-  /** 总量标签字号，默认 11 */
-  totalLabelFontSize?: number;
-  /** 总量标签偏移量（正值往上，负值往下），默认 -5 */
-  totalLabelDy?: number;
 }
 
 const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%', labelMap }: any) => {
@@ -249,11 +238,6 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   lineLabelContent,
   categoryGroups,
   highlightAreas,
-  showTotalLabels = false,
-  totalLabelFormatter,
-  totalLabelFill = '#1e293b',
-  totalLabelFontSize = 11,
-  totalLabelDy = -5,
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
@@ -454,71 +438,6 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 </Bar>
               );
             })}
-            {/* 总量标签（用于堆叠柱状图，显示在柱子顶部） */}
-            {showTotalLabels && bars.some(b => b.stackId) && data[0]?.total !== undefined && (
-              <Customized
-                component={(props: any) => {
-                  const { xAxis, yAxis, chartWidth, chartHeight, data: chartData } = props;
-                  if (!chartData || !xAxis || !yAxis) return null;
-
-                  // 获取图表尺寸
-                  const width = chartWidth || 400;
-                  const height = chartHeight || 300;
-                  
-                  // margin
-                  const marginTop = 25;
-                  const marginRight = 30;
-                  const marginBottom = 90;
-                  const marginLeft = 50;
-                  
-                  const plotWidth = width - marginLeft - marginRight;
-                  const plotHeight = height - marginTop - marginBottom;
-                  
-                  // y轴范围
-                  const yDomain = yAxis.domain || [0, 'auto'];
-                  const yMin = yDomain[0] === 'auto' ? 0 : yDomain[0];
-                  const yMax = yDomain[1] === 'auto' ? 
-                    Math.max(...chartData.map((d: any) => d.total || 0)) : yDomain[1];
-                  
-                  // scale 函数
-                  const yScale = (val: number) => {
-                    return marginTop + ((yMax - val) / (yMax - yMin)) * plotHeight;
-                  };
-                  
-                  // 计算柱子宽度和间距
-                  const barCount = chartData.length;
-                  const barWidth = Math.min(30, plotWidth / barCount / 2);
-                  const gap = (plotWidth - barCount * barWidth) / (barCount + 1);
-                  
-                  return (
-                    <>
-                      {chartData.map((item: any, idx: number) => {
-                        if (item.total === undefined) return null;
-                        
-                        // 计算柱子位置
-                        const x = marginLeft + gap + idx * (barWidth + gap) + barWidth / 2;
-                        const y = yScale(item.total) + totalLabelDy;
-                        
-                        return (
-                          <text
-                            key={`total-${idx}`}
-                            x={x}
-                            y={y}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            fill={totalLabelFill}
-                            fontSize={totalLabelFontSize}
-                            fontWeight={700}
-                          >
-                            {totalLabelFormatter ? totalLabelFormatter(item.total) : item.total}
-                          </text>
-                        );
-                      })}
-                    </>
-                  );
-                }}
-              />
-            )}
             {hasLines &&
               lines?.map((line, index) => {
                 const lineColor = line.color ?? getSeriesColor(index + bars.length);
