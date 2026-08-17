@@ -58,7 +58,7 @@ export const ContentSlide11: React.FC = () => {
                 <span className="text-red-500 font-bold">21.1%</span>
                 ，6月增长
                 <span className="text-red-500 font-bold">15.1%</span>
-                ，拆分各项看，增长的主要贡献为<span className="font-bold">营收-成本</span>，营销管理等费用支出较25年增长。
+                ，拆分各项看，增长的主要贡献为<span>营收-成本</span>，营销管理等费用支出较25年增长。
               </li>
               <li>
                 <span className="font-bold">FIFO效应：</span>
@@ -82,27 +82,23 @@ export const ContentSlide11: React.FC = () => {
               （同比提高
               <span className="text-red-500 font-bold">0.63%</span>
               ）。生产资料和生活资料剪刀差持续扩大，6月为
-              <span className="font-bold">6.4%</span>
+              <span className="text-red-500 font-bold">6.4%</span>
               ，多数中下游企业盈利空间受到明显挤压。
             </p>
           </BaseCard>
 
           <BaseCard
-            title={
-              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-                机构预测
-              </span>
-            }
+            title="机构预测"
             delay="240ms"
-            className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
+            className="!bg-blue-100"
           >
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                <span className="font-bold">PPI：</span>
+                <span>PPI：</span>
                 随着地缘因素缓和，年底回落至
-                <span className="font-bold">2–3%</span>
+                <span>2–3%</span>
                 ，全年预计落在
-                <span className="font-bold">2.2–3%</span>
+                <span>2.2–3%</span>
                 。
               </li>
               <li>

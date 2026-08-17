@@ -15,13 +15,13 @@ export const ContentSlide09: React.FC = () => {
         <>
           <BaseCard title="工业增加值及分项" delay="0ms">
             <p>
-              上半年规上工业增加值累计同比 <span className="text-red-500 font-bold">5.4%</span>，二季度制造业仍为主要支撑，采矿业累计增速由一季度末 <span className="font-bold">6.0%</span> 降至 <span className="font-bold">3.6%</span>，电热燃水累计增速由一季度末 <span className="font-bold">4.3%</span> 回升至 <span className="text-red-500 font-bold">5.5%</span>。
+              上半年规上工业增加值累计同比 <span className="text-red-500 font-bold">5.4%</span>，二季度制造业仍为主要支撑，采矿业累计增速由一季度末 <span>6.0%</span> 降至 <span>3.6%</span>，电热燃水累计增速由一季度末 <span>4.3%</span> 回升至 <span className="text-red-500 font-bold">5.5%</span>。
             </p>
           </BaseCard>
 
           <BaseCard title="采矿业6月转负受煤炭拖累" delay="120ms">
             <p>
-              采矿业6月同比转负至 <span className="text-green-600 font-bold">-2.2%</span>（5月为 <span className="font-bold">+2.3%</span>）。主因是山西矿难导致大量矿井停产整顿，煤炭开采由5月 <span className="font-bold">+3.5%</span> 骤降至 <span className="text-green-600 font-bold">-5.9%</span>；石油和天然气开采业受战争影响小幅回落至 <span className="font-bold">1.0%</span>，有色受AI扩产驱动，二季度增速超<span className="font-bold">3%</span>。
+              采矿业6月同比转负至 <span className="text-green-600 font-bold">-2.2%</span>（5月为 <span>+2.3%</span>）。主因是山西矿难导致大量矿井停产整顿，煤炭开采由5月 <span>+3.5%</span> 骤降至 <span className="text-green-600 font-bold">-5.9%</span>；石油和天然气开采业受战争影响小幅回落至 <span>1.0%</span>，有色受AI扩产驱动，二季度增速超<span>3%</span>。
             </p>
           </BaseCard>
 

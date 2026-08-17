@@ -63,46 +63,46 @@ export const ContentSlide19: React.FC = () => {
           </BaseCard>
           <BaseCard title="③ 专项债节奏错配" delay="240ms">
             <p>
-              一季度新增专项债发行进度达到计划的<span className="text-red-500 font-semibold">1.4 倍</span>，前置使用额度；二季度发行节奏明显放缓，4‑5 月仅完成二季度计划额度不足<span className="text-red-500 font-semibold">70%</span>。同时土储、特殊新增债占比提升，该类资金转化实物投资效率偏低，进一步压制二季度投资（图 4）。
+              一季度新增专项债发行进度达到计划的<span className="text-red-500 font-semibold">1.4 倍</span>，前置使用额度；二季度发行节奏明显放缓，4‑5 月仅完成二季度计划额度不足70%。同时土储、特殊新增债占比提升，该类资金转化实物投资效率偏低，进一步压制二季度投资（图 4）。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 - 3列：左列图1+图2上下，中列图4，右列图3 */}
-        <div className="flex-1 grid grid-cols-3 gap-3 min-h-0">
-          {/* 左列：图1（上）+ 图2（下） */}
-          <div className="flex flex-col gap-3 min-h-0">
-            <ChartContainer delay="600ms">
-              <BaseLineChart
-                data={newProjectInvestmentData}
-                title="图1 新开工项目计划总投资增速"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={newProjectLineConfigs}
-                yAxisDomain={[-35, 5]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['新开工项目计划总投资']}
-                xAxisTicks={['2024-12', '2025-06', '2025-12', '2026-06']}
-              />
-            </ChartContainer>
-            <ChartContainer delay="600ms">
-              <BaseLineChart
-                data={investmentFundingData}
-                title="图2 资金到位增速、自筹资金增速"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={fundingLinesWithCallouts}
-                yAxisDomain={[-20, 20]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['资金来源累计', '自筹资金', '国内贷款', '国家预算内资金']}
-                xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-06']}
-              />
-            </ChartContainer>
-          </div>
+        {/* 图表区域 - 4列：图1、图2、图3、图4各占一列 */}
+        <div className="flex-1 grid grid-cols-4 gap-3 min-h-0">
+          {/* 图1 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={newProjectInvestmentData}
+              title="图1 新开工项目计划总投资增速"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={newProjectLineConfigs}
+              yAxisDomain={[-35, 5]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['新开工项目计划总投资']}
+              xAxisTicks={['2024-12', '2025-06', '2025-12', '2026-06']}
+            />
+          </ChartContainer>
 
-          {/* 中列：图4 */}
+          {/* 图2 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={investmentFundingData}
+              title="图2 资金到位增速、自筹资金增速"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={fundingLinesWithCallouts}
+              yAxisDomain={[-20, 20]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['资金来源累计', '自筹资金', '国内贷款', '国家预算内资金']}
+              xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-06']}
+            />
+          </ChartContainer>
+
+          {/* 图3 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={profitSelfRaisedData}
@@ -118,7 +118,7 @@ export const ContentSlide19: React.FC = () => {
             />
           </ChartContainer>
 
-          {/* 右列：图3 */}
+          {/* 图4 */}
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={specialBondData}

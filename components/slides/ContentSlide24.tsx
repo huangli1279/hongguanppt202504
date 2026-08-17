@@ -75,13 +75,9 @@ export const ContentSlide24: React.FC = () => {
             </p>
           </BaseCard>
           <BaseCard
-            title={
-              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-                下半年展望：增速回落、结构分化
-              </span>
-            }
+            title="下半年展望：增速回落、结构分化"
             delay="240ms"
-            className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
+            className="!bg-blue-100"
           >
             <p>
               机构判断下半年出口增速中枢将回落：基准情景三、四季度分别约<span className="text-black">12.4%</span>、<span className="text-black">7.7%</span>，全年约<span className="text-black">13.7%</span>（乐观 <span className="text-black">17.6%</span> / 悲观 <span className="text-black">9.8%</span>）。

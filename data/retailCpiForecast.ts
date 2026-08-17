@@ -25,9 +25,9 @@ export const retailCpiForecastConsensus: RetailCpiForecastMetric[] = [
     shortLabel: '社零',
     actual: 1.3,
     actualLabel: '1—6月',
-    low: 3.0,
-    high: 3.5,
-    mid: 3.3,
+    low: 1.5,
+    high: 1.8,
+    mid: 1.65,
     color: '#4A79AA',
   },
   {
@@ -45,8 +45,9 @@ export const retailCpiForecastConsensus: RetailCpiForecastMetric[] = [
 
 /** 代表机构点预测 */
 export const retailCpiForecastByInstitution = [
-  { institution: '浦银国际', retail: 3.5, cpi: 0.9, note: '中期由4.8%下调' },
+  { institution: '中金', retail: 2.8, cpi: 0.9, note: '最新预测' },
   { institution: 'Wind一致(1.8%)', retail: 1.8, cpi: 1.2, note: '8月一致预测' },
+  { institution: '高盛', retail: 1.5, cpi: 1.0, note: '8月预测' },
 ];
 
 export interface RetailCategoryH1Point {

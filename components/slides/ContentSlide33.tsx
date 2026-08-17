@@ -19,12 +19,12 @@ export const ContentSlide33: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="社融总量温和减速" delay="0ms" variant="accent">
             <p>
-              Q2新增社会融资规模<span className="text-webank-blue font-semibold">6万亿元</span>，同比少增<span className="text-webank-blue font-semibold">1.67万亿元</span>，存量增速微降至<span className="text-webank-blue font-semibold">7.4%</span>。其中，人民币贷款增量<span className="text-webank-blue font-semibold">1.86万亿</span>，同比少增<span className="text-webank-blue font-semibold">1.18万亿</span>；政府债净融资<span className="text-webank-blue font-semibold">2.9万亿元</span>，同比少增<span className="text-webank-blue font-semibold">8862亿元</span>。社融增速微降，主要拖累项来自人民币贷款及政府债券的高基数效应。
+              Q2新增社会融资规模<span className="text-webank-blue">6万亿元</span>，同比少增<span className="text-webank-blue">1.67万亿元</span>，存量增速微降至<span className="text-webank-blue">7.4%</span>。其中，人民币贷款增量<span className="text-webank-blue">1.86万亿</span>，同比少增<span className="text-webank-blue">1.18万亿</span>；政府债净融资<span className="text-webank-blue">2.9万亿元</span>，同比少增<span className="text-webank-blue">8862亿元</span>。社融增速微降，主要拖累项来自人民币贷款及政府债券的高基数效应。
             </p>
           </BaseCard>
           <BaseCard title="企业债券融资" delay="120ms">
             <p>
-              Q2企业债券融资<span className="text-webank-blue font-semibold">1.02万亿元</span>，同比多增<span className="text-red-500 font-semibold">3954亿元</span>，延续Q1高增趋势。优质企业倾向于通过债券替代贷款进行融资。
+              Q2企业债券融资<span className="text-webank-blue">1.02万亿元</span>，同比多增<span className="text-red-500 font-semibold">3954亿元</span>，延续Q1高增趋势。优质企业倾向于通过债券替代贷款进行融资。
             </p>
           </BaseCard>
         </div>

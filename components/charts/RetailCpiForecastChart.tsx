@@ -11,8 +11,8 @@ const ACTUAL_COLOR = '#64748b';
 
 const ROW_CONFIG = {
   retail: {
-    domain: [1.0, 4.0] as [number, number],
-    ticks: [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+    domain: [1.0, 2.5] as [number, number],
+    ticks: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4],
   },
   cpi: {
     domain: [0.7, 1.3] as [number, number],
@@ -162,7 +162,7 @@ export const RetailCpiForecastChart: React.FC = () => {
           主流机构对2026年社零与CPI预测共识
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          注：红框为中期展望共识；白点为浦银/Wind一致预测；灰点为上半年实际。各行刻度独立。｜单位：%
+          注：红框为共识区间；白点为中金/Wind/高盛预测；灰点为上半年实际。各行刻度独立。｜单位：%
         </p>
       </div>
 

@@ -63,13 +63,9 @@ export const ContentSlide25: React.FC = () => {
             </p>
           </BaseCard>
           <BaseCard
-            title={
-              <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-                下半年展望：进口总量增速或回落
-              </span>
-            }
+            title="下半年展望：进口总量增速或回落"
             delay="240ms"
-            className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
+            className="!bg-blue-100"
           >
             <p>
               集成电路、算力硬件仍保有结构性韧性，受高基数、AI硬件拉动边际减弱影响，下半年进口整体增速大概率回落。如内需进一步修复，大宗商品进口结构有望改善。

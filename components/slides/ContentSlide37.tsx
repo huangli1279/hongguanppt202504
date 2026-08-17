@@ -26,24 +26,24 @@ export const ContentSlide37: React.FC = () => {
           <BaseCard title="社零增速持续下行" delay="0ms" variant="accent">
             <p>
               上半年社零累计同比仅
-              <span className="font-bold text-webank-blue">1.3%</span>
+              <span className="font-bold text-green-600">1.3%</span>
               ，自2025年中
-              <span className="font-bold text-webank-blue">5.0%</span>
+              <span className="font-bold text-red-600">5.0%</span>
               高点逐月回落，较年初市场普遍预期的全年约
-              <span className="font-bold text-webank-blue">4.5%</span>
+              4.5%
               明显偏低，消费修复显著不及预期。在当前轨迹下，全年社零达到前期市场预期中枢存在难度。消费的疲软主要受：收入、就业和房价财富效应三重约束。
             </p>
           </BaseCard>
           <BaseCard title="消费信心仍处收缩区间" delay="120ms">
             <p>
               6月消费者信心指数
-              <span className="font-bold text-webank-blue">89.4</span>
+              <span className="text-webank-blue">89.4</span>
               ，自2月高点
-              <span className="font-bold text-webank-blue">91.6</span>
+              <span className="text-webank-blue">91.6</span>
               回落，持续低于荣枯线
-              <span className="font-bold text-webank-blue">100</span>
+              <span className="text-webank-blue">100</span>
               。分项中就业信心长期低位徘徊，收入与消费意愿自22年4月低于
-              <span className="font-bold text-webank-blue">100</span>
+              <span className="text-webank-blue">100</span>
               ，整体信心偏弱制约居民消费意愿释放。
             </p>
           </BaseCard>

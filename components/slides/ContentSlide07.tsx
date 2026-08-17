@@ -8,13 +8,13 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="inline-block bg-webank-blue text-white px-2 py-0.5 rounded">
+          <span className="inline-block bg-blue-100 text-black px-2 py-0.5 rounded font-bold">
             预测与展望：二季度为低点，三、四季度逐步回升，全年预计
             <span className="font-bold">4.5%-4.8%</span>
           </span>
         </span>
       }
-      className="[&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
+      className="bg-blue-100 [&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
       cardColumns={2}
       chartColumns={1}
       headerChild={
@@ -28,7 +28,7 @@ export const ContentSlide07: React.FC = () => {
       }
       cards={
         <>
-          <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
+          <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3 !bg-blue-100">
             <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
               <li>
 全年增速大概率落在
@@ -48,7 +48,7 @@ export const ContentSlide07: React.FC = () => {
             </ul>
           </BaseCard>
 
-          <BaseCard title="代表机构预测" delay="120ms" className="!gap-1.5 !p-3">
+          <BaseCard title="代表机构预测" delay="120ms" className="!gap-1.5 !p-3 !bg-blue-100">
             <div className="space-y-1.5 text-[13px] leading-snug">
               <div>
                 <span className="font-bold text-webank-blue">IMF：</span>
@@ -72,7 +72,7 @@ export const ContentSlide07: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
+        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图" className="!bg-blue-100">
           <GdpForecastRangeChart />
         </ChartContainer>
       }

@@ -31,7 +31,7 @@ export const ContentSlide38: React.FC = () => {
           </BaseCard>
           <BaseCard title="收入增速放缓，剪刀差扩大" delay="120ms">
             <p>
-              上半年居民人均可支配收入 2.3万元，实际增长 <span className="font-semibold text-black">4.2%</span>，较2025年全年 5.0% 明显放缓；人均消费支出 1.48万元，实际仅增 <span className="font-semibold text-black">2.7%</span>，收入—支出增速剪刀差扩大至 1.5个百分点。2025年人均边际消费倾向降至 0.61，同比下滑 0.08，新增收入转化为消费的比例偏低。
+              上半年居民人均可支配收入 2.3万元，实际增长 <span className="font-semibold text-red-500">4.2%</span>，较2025年全年 5.0% 明显放缓；人均消费支出 1.48万元，实际仅增 <span className="font-semibold text-green-500">2.7%</span>，收入—支出增速剪刀差扩大至 1.5个百分点。2025年人均边际消费倾向降至 0.61，同比下滑 0.08，新增收入转化为消费的比例偏低。
             </p>
           </BaseCard>
         </div>

@@ -81,7 +81,7 @@ export const ContentSlide40: React.FC = () => {
               <BaseBarChart
                 data={housingConsumptionData}
                 title="家庭月均消费：按住房套数×房价涨跌分组"
-                subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》 | 单位：元"
+                subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》 | 单位：元｜样本量14,967人"
                 xAxisKey="category"
                 bars={consumptionBars}
                 yAxisDomain={[0, 5500]}

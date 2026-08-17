@@ -255,14 +255,7 @@ const cards: {
 export const ContentSlide42: React.FC = () => {
   return (
     <BaseContentSlide
-      title={
-        <>
-          <span className="inline-flex items-center gap-2">
-            <span className="px-3 py-1 bg-gradient-to-r from-webank-blue to-blue-600 text-white text-lg font-bold rounded-md shadow-sm">二季度整体回顾</span>
-            <span className="text-webank-blue">动能放缓、向新向优、分化延续、内需偏弱</span>
-          </span>
-        </>
-      }
+      title="2026年二季度宏观经济总结：动能放缓、向新向优、分化延续、内需偏弱"
       headerClassName="!mb-4"
     >
       <div className="flex flex-col h-full min-h-0 gap-4 pb-4">

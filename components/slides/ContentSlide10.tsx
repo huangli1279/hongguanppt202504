@@ -24,8 +24,8 @@ export const ContentSlide10: React.FC = () => {
 
           <BaseCard title="价格景气持续走弱" delay="120ms">
             <p>
-              价格指标自3月高位持续回落。最新<span className="font-bold">7月出厂价格指数降至47.8%</span>（6月48.2%），连续两月处于收缩区间；
-              <span className="font-bold">7月原材料购进价格降至53.2%</span>（6月54.2%），虽然仍处扩张区间但持续降温，购进与出厂价差（<span className="text-green-500 font-bold">5.4个百分点</span>）中下游企业利润持续承压。
+              价格指标自3月高位持续回落。最新<span>7月出厂价格指数降至47.8%</span>（6月48.2%），连续两月处于收缩区间；
+              <span>7月原材料购进价格降至53.2%</span>（6月54.2%），虽然仍处扩张区间但持续降温，购进与出厂价差（<span className="text-green-500 font-bold">5.4个百分点</span>）中下游企业利润持续承压。
             </p>
           </BaseCard>
         </>

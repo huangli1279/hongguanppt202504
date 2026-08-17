@@ -163,7 +163,7 @@ export const ContentSlide39: React.FC = () => {
                 <BaseBarChart
                   data={workTypeExpenditureData}
                   title="不同工作类型总支出"
-                  subtitle="数据来源：调查数据 | 单位：元"
+                  subtitle="数据来源：调查数据 | 单位：元 | 样本量：14967份"
                   bars={workTypeExpenditureBars}
                   xAxisKey="category"
                   showYAxis={true}

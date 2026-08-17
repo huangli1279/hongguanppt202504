@@ -15,13 +15,13 @@ const pmiSizeLines: LineConfig[] = [
 // 企业利润分化数据
 // 数据说明：仅"高技术制造业"无2026-06数据，使用2026-05数据并标注"(5月)"
 const industryProfitGrowthData: Array<{ period: string; newEconomy?: number; oldEconomy?: number; fill: string }> = [
-  { period: '化学纤维', newEconomy: 102.0, fill: '#1e40af' },
+  { period: '化学纤维', newEconomy: 102.0, fill: '#2563eb' },
   { period: '计算机通信电子', newEconomy: 96.9, fill: '#2563eb' },
-  { period: '有色金属', newEconomy: 80.0, fill: '#3b82f6' },
-  { period: '高技术制造', newEconomy: 44.7, fill: '#60a5fa' },
-  { period: '通用设备', newEconomy: 1.5, fill: '#93c5fd' },
-  { period: '农副食品', oldEconomy: -12.0, fill: '#fca5a5' },
-  { period: '汽车制造', oldEconomy: -19.5, fill: '#f87171' },
+  { period: '有色金属', newEconomy: 80.0, fill: '#2563eb' },
+  { period: '高技术制造', newEconomy: 44.7, fill: '#2563eb' },
+  { period: '通用设备', newEconomy: 1.5, fill: '#2563eb' },
+  { period: '农副食品', oldEconomy: -12.0, fill: '#ef4444' },
+  { period: '汽车制造', oldEconomy: -19.5, fill: '#ef4444' },
   { period: '纺织服装', oldEconomy: -28.0, fill: '#ef4444' },
 ];
 
@@ -52,7 +52,7 @@ export const ContentSlide12: React.FC = () => {
           <BaseCard title="企业利润 K 型分化：新旧行业盈利差异持续扩大" delay="120ms" variant="accent">
             <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
               <li>
-                <span className="font-semibold text-webank-blue">新动能行业高增领跑</span>：1‑6 月规上工业企业利润累计同比增长 <span className="font-bold text-webank-blue">18.7%</span>，行业内部分化显著。电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色金属(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等高景气板块拉动整体利润；AI 算力、半导体、新能源带动高技术制造业利润增长 <span className="font-bold text-red-500">44.7%</span>，新经济动能持续释放。
+                <span className="font-semibold text-webank-blue">新动能行业高增领跑</span>：1‑6 月规上工业企业利润累计同比增长 <span className="font-bold text-red-500">18.7%</span>，行业内部分化显著。电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色金属(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等高景气板块拉动整体利润；AI 算力、半导体、新能源带动高技术制造业利润增长 <span className="font-bold text-red-500">44.7%</span>，新经济动能持续释放。
               </li>
               <li>
                 <span className="font-semibold text-webank-blue">传统行业承压走弱</span>：地产链、汽车、纺织、农产品加工等传统领域盈利承压，汽车(<span className="font-bold text-green-500">-19.5%</span>)、纺织服装(<span className="font-bold text-green-500">-28.0%</span>)利润明显下滑，旧经济板块仍处于底部运行区间。

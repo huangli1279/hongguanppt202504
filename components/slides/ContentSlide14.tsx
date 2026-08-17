@@ -7,6 +7,7 @@ import { retailTrendData, cityRetailData } from '../../data';
 
 // 五一假期出游数据（官方来源：文化和旅游部）
 const laborDayData = [
+  { period: '2023年', trips: 2.74, spending: 1480.56 },
   { period: '2024年', trips: 2.95, spending: 1668.9 },
   { period: '2025年', trips: 3.14, spending: 1802.69 },
   { period: '2026年', trips: 3.25, spending: 1854.92 },
@@ -44,10 +45,10 @@ export const ContentSlide14: React.FC = () => {
           <BaseCard title="节日对消费促进微弱" delay="240ms">
             <div className="space-y-2">
               <p>
-                五一假期出行人次<span className="font-bold text-webank-blue">3.25亿</span>，增长<span className="font-bold text-webank-blue">3.6%</span>，出行总花费<span className="font-bold text-webank-blue">1855亿元</span>，同比增长<span className="font-bold text-webank-blue">2.9%</span>，人均支出约<span className="font-bold text-webank-blue">571元</span>，终结23年以来人均花费连续上行（540→566→574元）的走势。
+                五一假期出行人次<span className="text-black">3.25亿</span>，增长<span className="text-black">3.6%</span>，出行总花费<span className="text-black">1855亿元</span>，同比增长<span className="text-black">2.9%</span>，人均支出约<span className="text-black">571元</span>，终结23年以来人均花费连续上行（540→566→574元）的走势。
               </p>
               <p>
-                618综合电商销售额<span className="font-bold text-webank-blue">8636亿元</span>，同比增长<span className="font-bold text-webank-blue">0.9%</span>，调研显示<span className="font-bold text-webank-blue">72.7%</span>的消费者今年618的消费心态比往年更理性或谨慎。
+                618综合电商销售额<span className="text-black">8636亿元</span>，同比增长<span className="text-black">0.9%</span>，调研显示<span className="text-black">72.7%</span>的消费者今年618的消费心态比往年更理性或谨慎。
               </p>
             </div>
           </BaseCard>

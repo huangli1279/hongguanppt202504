@@ -76,7 +76,7 @@ export const ContentSlide41: React.FC = () => {
             <BaseBarChart
               data={consumerSpendingPlanByAgeData}
               title="2026年您打算在哪些方面增加消费？（分年龄段，组内从高到低）"
-              subtitle="数据来源：中央广播电视总台研究院《美好生活大调查》 | 单位：占比 %"
+              subtitle="数据来源：中央广播电视总台研究院《美好生活大调查》 | 单位：占比 %｜样本量23,700人"
               xAxisKey="category"
               bars={[{ dataKey: 'value', name: '占比', color: '#5C9A8A' }]}
               legendItems={consumerSpendingAgeGroups.map((g) => ({

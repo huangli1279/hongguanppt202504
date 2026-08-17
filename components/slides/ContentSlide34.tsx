@@ -42,13 +42,13 @@ export const ContentSlide34: React.FC = () => {
           <BaseCard title="企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                实体融资意愿低迷：Q2非金融企业贷款新增<span className="text-webank-blue font-semibold">2.5万亿</span>，中长期仅增<span className="text-webank-blue font-semibold">1300亿</span>（同比少增1.46万亿），为近年低点。
+                实体融资意愿低迷：Q2非金融企业贷款新增<span className="text-webank-blue">2.5万亿</span>，中长期仅增<span className="text-webank-blue">1300亿</span>（同比少增1.46万亿），为近年低点。
               </li>
               <li>
-                票据融资独撑增量：Q2票据新增<span className="text-webank-blue font-semibold">1.9万亿</span>（同比多增1.4万亿），票利率约<span className="text-webank-blue font-semibold">0.5%</span>，银行"以票充贷"突出。
+                票据融资独撑增量：Q2票据新增<span className="text-webank-blue">1.9万亿</span>（同比多增1.4万亿），票利率约<span className="text-webank-blue">0.5%</span>，银行"以票充贷"突出。
               </li>
               <li>
-                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢大盘<span className="text-webank-blue font-semibold">5.2%</span>。
+                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢大盘<span className="text-webank-blue">5.2%</span>。
               </li>
             </ul>
           </BaseCard>
@@ -64,7 +64,7 @@ export const ContentSlide34: React.FC = () => {
                 短期（消费）：Q2减少<span className="text-green-600 font-semibold">4241亿</span>，居民消费信心与风险偏好仍处低位。
               </li>
               <li>
-                居民消费贷（不含房贷）余额<span className="text-webank-blue font-semibold">20.82万亿</span>。
+                居民消费贷（不含房贷）余额<span className="text-webank-blue">20.82万亿</span>。
               </li>
             </ul>
           </BaseCard>

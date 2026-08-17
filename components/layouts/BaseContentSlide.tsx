@@ -14,6 +14,8 @@ export interface BaseContentSlideProps {
   children?: React.ReactNode;
   /** 右上角附加内容（如书签标签） */
   headerChild?: React.ReactNode;
+  /** 背景透明 */
+  transparentBackground?: boolean;
 }
 
 export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
