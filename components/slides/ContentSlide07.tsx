@@ -8,8 +8,10 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="text-black">预测与展望：二季度为低点，三、四季度逐步回升，全年预计</span>
-          <span className="text-black">4.5%-4.8%</span>
+          <span className="inline-block bg-webank-blue text-white px-2 py-0.5 rounded">
+            预测与展望：二季度为低点，三、四季度逐步回升，全年预计
+            <span className="font-bold">4.5%-4.8%</span>
+          </span>
         </span>
       }
       className="[&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
