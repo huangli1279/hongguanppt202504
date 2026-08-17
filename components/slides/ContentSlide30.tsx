@@ -19,6 +19,24 @@ export const ContentSlide30: React.FC = () => {
     { dataKey: 'growth', name: '增速', color: '#E8913A', strokeWidth: 0, yAxisId: 'right', unit: '%' },
   ];
 
+  const lineLabelContent = (props: any) => {
+    const { x, y, value } = props;
+    const isNegative = value < 0;
+    return (
+      <text
+        x={x + 8}
+        y={y - 10}
+        textAnchor="start"
+        dominantBaseline="middle"
+        fill={isNegative ? '#16a34a' : '#E8913A'}
+        fontSize={9}
+        fontWeight={600}
+      >
+        {Number(value).toFixed(1)}%
+      </text>
+    );
+  };
+
   return (
     <BaseContentSlide
       title={<>上半年一般预算支出增长1.5%，节奏阶段性放缓，结构重科技民生</>}
@@ -29,7 +47,10 @@ export const ContentSlide30: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="支出节奏阶段性放缓" delay="0ms" variant="accent">
             <p>
-              1—6月累计增长 <span className="text-red-500 font-semibold">1.5%</span>，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间，支出进度 <span className="text-red-500 font-semibold">47.76%</span>。机构预测下半年支出进度加快，重点关注7月底政治局会议定调。
+              1—6月累计增长 <span className="text-red-500 font-semibold">1.5%</span>，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间，支出进度 <span className="text-red-500 font-semibold">47.76%</span>。
+            </p>
+            <p className="mt-2">
+              新增7 月 30 日政治局会议明确要求加快财政支出、债券资金使用进度，推动尽快形成实物工作量，下半年支出提速明确。
             </p>
           </BaseCard>
           <BaseCard title="投向结构：重科技民生，轻传统基建" delay="120ms">
@@ -73,9 +94,9 @@ export const ContentSlide30: React.FC = () => {
               lineUnit="%"
               lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
               lineShowDot={true}
-              lineLabelFormatter={(val) => `${Number(val).toFixed(1)}%`}
+              lineLabelContent={lineLabelContent}
               legendOrder={['总额', '增速']}
-              barSize={28}
+              barSize={20}
               xAxisAngle={-45}
               xAxisHeight={70}
             />

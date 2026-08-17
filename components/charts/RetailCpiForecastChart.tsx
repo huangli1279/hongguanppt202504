@@ -162,7 +162,7 @@ export const RetailCpiForecastChart: React.FC = () => {
           主流机构对2026年社零与CPI预测共识
         </h3>
         <p className="text-xs text-webank-subtext mt-1">
-          注：红框为中期展望共识；白点为浦银/大公点预测；灰点为上半年实际。各行刻度独立。｜单位：%
+          注：红框为中期展望共识；白点为浦银/Wind一致预测；灰点为上半年实际。各行刻度独立。｜单位：%
         </p>
       </div>
 

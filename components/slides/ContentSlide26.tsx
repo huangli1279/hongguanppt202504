@@ -76,12 +76,12 @@ export const ContentSlide26: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="对美贸易边际缓和" delay="0ms" variant="accent">
             <p>
-              5月14日中美元首会谈构建“建设性战略稳定关系”，加权平均关税率受政策预期及判决影响回落，4月对美进出口由降转升，5月继续保持增长态势同比增长<span className="text-red-500 font-semibold">35.4%</span>。
+              5月14日中美元首会谈构建"建设性战略稳定关系"，即4月由降转升后，5月单月对美出口同比大幅增长<span className="text-red-500 font-semibold">35.4%</span>，出口短期触底回升。但1-6月累计对美出口同比仅<span className="text-red-500 font-semibold">0.2%</span>，美国市场修复仍有不确定性。
             </p>
           </BaseCard>
           <BaseCard title="多元化布局进一步巩固" delay="120ms">
             <p>
-              1—6月，我国对东盟、欧盟、非洲的进出口额均实现两位数增长。对共建“一带一路”国家进出口增长<span className="text-red-500 font-semibold">17.9%</span>，占出口总额比重过半。
+              1-6月，对东盟、非洲进出口实现双位数增长；对欧盟出口保持双位数，进口增速相对偏弱。对共建"一带一路"国家出口增长<span className="text-red-500 font-semibold">17.9%</span>，出口占比过半，新兴市场成为贸易基本盘。
             </p>
           </BaseCard>
         </div>

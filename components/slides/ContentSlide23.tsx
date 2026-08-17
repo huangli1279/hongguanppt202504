@@ -25,16 +25,16 @@ export const ContentSlide23: React.FC = () => {
           <BaseCard title="总量持续超预期" delay="0ms" variant="accent">
             <ul className="list-disc pl-4 space-y-1.5 text-sm">
               <li>
-                6月出口总额同比增长<span className="text-red-500 font-semibold">27%</span>（前值19.4%），在全球经贸增长艰难和局势动荡的背景下，中国外贸展现出强大韧性。
+                上半年出口累计同比<span className="text-red-500 font-semibold">17.6%</span>，6月出口总额同比增长<span className="text-red-500 font-semibold">27%</span>，在全球经贸需求偏弱、地缘扰动的背景下，出口展现出强大韧性。
               </li>
               <li>
-                受能源冲突及AI集体涨价影响，6月进口总额同比高增<span className="text-red-500 font-semibold">36%</span>，二季度均保持超20%的增长。
+                上半年进口同比<span className="text-red-500 font-semibold">26.6%</span>，6月进口总额同比高增<span className="text-red-500 font-semibold">36%</span>，受大宗商品价格、AI产业链设备零部件进口增加影响，二季度进口增速均保持超20%的增长。
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="贸易顺差转负" delay="120ms">
+          <BaseCard title="贸易顺差增速转负" delay="120ms">
             <p className="text-sm">
-              上半年，贸易顺差为<span className="text-black font-semibold">5759亿美元</span>，受进口增长速度快于出口影响，同比<span className="text-green-600 font-semibold">-1.25%</span>。
+              上半年，贸易顺差为<span className="text-black">5759亿美元</span>，受进口增长速度快于出口影响，顺差同比增速<span className="text-green-600 font-semibold">-1.25%</span>。
             </p>
           </BaseCard>
         </div>

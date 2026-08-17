@@ -34,7 +34,7 @@ export const ContentSlide34: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>企业贷款"票据强、中长期弱"，居民端加速缩表</>}
+      title={<>企业贷款"票据强、中长期弱"，居民端持续缩表</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full pb-6">
@@ -90,6 +90,9 @@ export const ContentSlide34: React.FC = () => {
               referenceLineY={0}
               barSize={14}
               showLabels={true}
+              labelNegativeOffset={-20}
+              labelNegativeOffsets={{ y2024: -20, y2025: -20, y2026: 2 }}
+              labelNegativeOffsetsByIndex={{ 4: -35, 5: -55 }}
               xAxisAngle={-20}
               xAxisHeight={55}
               legendOrder={['2024年', '2025年', '2026年']}

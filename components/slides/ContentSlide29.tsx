@@ -34,7 +34,7 @@ export const ContentSlide29: React.FC = () => {
           </BaseCard>
           <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
             <p>
-              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>（整体增长<span className="text-red-500 font-semibold">40%</span>）；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>（贡献整体增长<span className="text-red-500 font-semibold">19%</span>）；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>（贡献整体增长<span className="text-red-500 font-semibold">15%</span>），其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
+              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>（对收入增量贡献<span className="text-red-500 font-semibold">40%</span>）；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>（对收入增量贡献<span className="text-red-500 font-semibold">19%</span>）；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>（对收入增量贡献<span className="text-red-500 font-semibold">15%</span>），其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
             </p>
           </BaseCard>
         </div>
@@ -75,8 +75,25 @@ export const ContentSlide29: React.FC = () => {
               lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
               lineShowDot={true}
               lineLabelFormatter={(val) => `${Number(val).toFixed(2)}%`}
+              lineLabelContent={(props) => {
+                const val = props.value;
+                const isNegative = Number(val) < 0;
+                return (
+                  <text
+                    x={(props.x ?? 0) + 20}
+                    y={props.y}
+                    textAnchor="start"
+                    dominantBaseline="middle"
+                    fill={isNegative ? '#16a34a' : props.fill}
+                    fontSize={9}
+                    fontWeight={600}
+                  >
+                    {`${Number(val).toFixed(2)}%`}
+                  </text>
+                );
+              }}
               legendOrder={['总额', '增速']}
-              barSize={28}
+              barSize={22}
               xAxisAngle={-45}
               xAxisHeight={70}
             />

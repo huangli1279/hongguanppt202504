@@ -103,7 +103,7 @@ export const ContentSlide15: React.FC = () => {
               data={filteredCpiCategoryData}
               columns={categoryColumns}
               title="CPI八大类当月同比"
-              subtitle="数据来源：国家统计局 | 单位：% | 2026年：正红负绿"
+              subtitle="数据来源：国家统计局 | 单位：% "
               dateColumn="period"
               colorizeNumbers={false}
               highlightRows={filteredHighlight2026Rows}

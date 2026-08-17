@@ -54,25 +54,25 @@ export const ContentSlide25: React.FC = () => {
         <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
           <BaseCard title="AI产业链贡献近半增量" delay="0ms" variant="accent">
             <p>
-              上半年进口历史同期首次突破<span className="font-semibold">10万亿元</span>，同比增长<span className="text-red-500 font-semibold">22.1%</span>（美元计<span className="text-red-500 font-semibold">26.6%</span>），增速高于出口<span className="text-red-500 font-semibold">8.7</span>个百分点。集成电路进口额<span className="font-semibold">2980亿美元</span>、同比<span className="text-red-500 font-semibold">55.8%</span>，自动数据处理设备及零部件同比<span className="text-red-500 font-semibold">78.9%</span>；6月二者合计拉动进口约<span className="text-red-500 font-semibold">17.4</span>个百分点，贡献近一半增量。
+              上半年进口历史同期首次突破<span className="font-semibold">10万亿元</span>，同比增长<span className="text-red-500 font-semibold">22.1%</span>（美元计<span className="text-red-500 font-semibold">26.6%</span>），增速高于出口<span className="text-red-500 font-semibold">8.7</span>个百分点。集成电路进口额<span>2980亿美元</span>、同比<span className="text-red-500 font-semibold">55.8%</span>，自动数据处理设备及零部件同比<span className="text-red-500 font-semibold">78.9%</span>；6月二者合计拉动进口约<span className="text-red-500 font-semibold">17.4</span>个百分点，贡献近一半增量。
             </p>
           </BaseCard>
           <BaseCard title="大宗商品量价分化" delay="120ms">
             <p>
-              金属矿砂进口增长<span className="text-red-500 font-semibold">22.6%</span>，其中铁矿砂进口量增<span className="text-red-500 font-semibold">6.3%</span>、金额增<span className="text-red-500 font-semibold">11.4%</span>；电子元件进口增长<span className="text-red-500 font-semibold">45.6%</span>。原油进口量累计下降<span className="text-green-600 font-semibold">11.4%</span>，但价格抬升使金额仍增<span className="text-red-500 font-semibold">1.8%</span>；6月原油进口量降至近十年低位，地缘冲突扰动供给与补库节奏。
+              铁矿砂进口数量<span className="text-red-500 font-semibold">+6.3%</span>，在价格带动下进口金额<span className="text-red-500 font-semibold">+11.4%</span>；原油进口实物量累计下降<span className="text-green-600 font-semibold">11.4%</span>，受国际油价支撑，进口金额小幅增长<span className="text-red-500 font-semibold">1.8%</span>；6月原油进口量回落至近十年低位，地缘冲突扰动全球供给和国内补库节奏。
             </p>
           </BaseCard>
           <BaseCard
             title={
               <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-                下半年展望：结构韧性仍在
+                下半年展望：进口总量增速或回落
               </span>
             }
             delay="240ms"
             className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
           >
             <p>
-              总量增速或回落，但AI算力扩产与存储涨价周期尚未结束，集成电路、算力硬件进口有望保持韧性。若内需改善加快、能源供给逐步修复，进口结构有望优化，支撑全年外贸发展。
+              集成电路、算力硬件仍保有结构性韧性，受高基数、AI硬件拉动边际减弱影响，下半年进口整体增速大概率回落。如内需进一步修复，大宗商品进口结构有望改善。
             </p>
           </BaseCard>
         </div>

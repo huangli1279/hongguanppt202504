@@ -66,12 +66,12 @@ export const ContentSlide24: React.FC = () => {
         <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
           <BaseCard title="AI投资周期拉动爆发" delay="0ms" variant="accent">
             <p>
-              AI基础设施建设进入高投入期，直接拉动电子信息及高端制造贸易需求。上半年，高新技术产品拉动中国出口<span className="text-red-500 font-semibold">9.3%</span>，较2025年全年上升<span className="text-red-500 font-semibold">7.4</span>个百分点。1—6月集成电路出口额增长<span className="text-red-500 font-semibold">96.1%</span>，表现持续亮眼。
+              AI基础设施建设进入高投入期，直接拉动电子信息及高端制造贸易需求。上半年，高新技术产品拉动中国出口增长<span className="text-red-500 font-semibold">9.3</span>个百分点，拉动力度较2025年全年上升<span className="text-red-500 font-semibold">7.4</span>个百分点。1—6月集成电路出口额增长<span className="text-red-500 font-semibold">96.1%</span>，表现持续亮眼。
             </p>
           </BaseCard>
-          <BaseCard title="能源转型促进“新三样”增长" delay="120ms">
+          <BaseCard title={'能源转型促进"新三样"增长'} delay="120ms">
             <p>
-              中东变局引发的能源安全担忧使全球能源转型加速，上半年汽车出口量首次突破<span className="font-semibold">500万辆</span>大关，达<span className="text-red-500 font-semibold">509.6万辆</span>，同比增长<span className="text-red-500 font-semibold">65.3%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">1.2倍</span>，成为增长核心引擎。锂电池出口额<span className="font-semibold">486亿美元</span>，同比增长<span className="text-red-500 font-semibold">42.7%</span>，风力发电机组同比增长<span className="text-red-500 font-semibold">35.6%</span>。
+              中东变局引发的能源安全担忧使全球能源转型加速，上半年汽车出口<span className="text-red-500 font-semibold">509.6万辆</span>，首次突破<span>500万辆</span>大关，汽车（包括底盘）累计同比增长<span className="text-red-500 font-semibold">53%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">120%</span>，是核心拉动力量。锂电池出口额<span>486亿美元</span>（<span className="text-red-500 font-semibold">+42.7%</span>），风力发电机组同比<span className="text-red-500 font-semibold">+35.6%</span>。
             </p>
           </BaseCard>
           <BaseCard
@@ -84,7 +84,13 @@ export const ContentSlide24: React.FC = () => {
             className="[&_h4]:!bg-gradient-to-r [&_h4]:!from-yellow-200 [&_h4]:!to-amber-300 [&_h4]:!text-amber-700 [&_h4]:!shadow-sm border-l-4 !border-amber-400"
           >
             <p>
-              机构普遍认为下半年出口同比中枢将回落：基准情形下三、四季度约<span className="text-red-500 font-semibold">12.4%</span>、<span className="text-red-500 font-semibold">7.7%</span>，全年约<span className="text-red-500 font-semibold">13.7%</span>（乐观<span className="font-semibold">17.6%</span>/悲观<span className="font-semibold">9.8%</span>）。趋势上K型分化延续——AI与“新三样”仍具韧性，传统消费品承压；需关注高基数、中欧贸易摩擦及地缘冲突扰动。
+              机构判断下半年出口增速中枢将回落：基准情景三、四季度分别约<span className="text-black">12.4%</span>、<span className="text-black">7.7%</span>，全年约<span className="text-black">13.7%</span>（乐观 <span className="text-black">17.6%</span> / 悲观 <span className="text-black">9.8%</span>）。
+            </p>
+            <p>
+              结构上呈现 K 型分化：AI 链电子产品、"新三样" 仍保持韧性，传统消费品出口压力较大。
+            </p>
+            <p>
+              风险来自去年高基数抬升、海外贸易摩擦、地缘局势扰动。
             </p>
           </BaseCard>
         </div>

@@ -83,6 +83,10 @@ export interface BaseBarChartProps {
   labelDy?: number;
   /** 负值柱状图的标签位置，默认 'bottom' 放在柱子下方 */
   labelNegativePosition?: 'top' | 'bottom' | 'insideTop' | 'insideBottom';
+  /** 负值标签与柱子的偏移量（正值往上推，负值往下），默认 -10 */
+  labelNegativeOffset?: number;
+  /** 正值标签与柱子的偏移量（正值往上，负值往下），默认 8 */
+  labelPositiveOffset?: number;
   unit?: string;
   showLineYAxis?: boolean;
   lineAxisDomain?: [number, number];
@@ -95,10 +99,18 @@ export interface BaseBarChartProps {
   xAxisTickFontSize?: number;
   lineShowDot?: boolean;
   lineLabelFormatter?: (value: any) => string;
+  /** 自定义折线标签渲染，优先级高于 lineLabelFormatter */
+  lineLabelContent?: (props: any) => React.ReactNode;
   /** Gray/outline bands grouping contiguous x-axis categories (e.g. 第二产业 / 第三产业) */
   categoryGroups?: CategoryGroupConfig[];
   /** 高亮区域（如红框标出组内 Top N），无标签 */
   highlightAreas?: HighlightAreaConfig[];
+  /** 标签与柱子的偏移量（正值往上，负值往下），默认 2 */
+  labelOffset?: number;
+  /** 各数据列的负值偏移量，key 为 dataKey，value 为偏移量 */
+  labelNegativeOffsets?: Record<string, number>;
+  /** 按行索引的负值偏移量，key 为行索引，value 为偏移量 */
+  labelNegativeOffsetsByIndex?: Record<number, number>;
 }
 
 const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%', labelMap }: any) => {
@@ -205,7 +217,12 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   labelFill,
   labelFormatter,
   labelDy = 0,
+  labelOffset = 2,
   labelNegativePosition = 'bottom',
+  labelNegativeOffset = -10,
+  labelPositiveOffset = 8,
+  labelNegativeOffsets,
+  labelNegativeOffsetsByIndex,
   unit = '%',
   showLineYAxis = false,
   lineAxisDomain,
@@ -218,6 +235,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   xAxisTickFontSize = 10,
   lineShowDot = false,
   lineLabelFormatter,
+  lineLabelContent,
   categoryGroups,
   highlightAreas,
 }) => {
@@ -373,7 +391,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   {showLabels && (
                     <LabelList
                       dataKey={bar.dataKey}
-                      content={({ x, y, width, height, value, textAnchor, payload }) => {
+                      content={({ x, y, width, height, value, textAnchor, payload, index }) => {
                         const isNegative = value < 0;
                         const isOrange = (payload?.fill === '#E07A5F') || (isNegative && bar.color === '#1B4F72');
                         let labelText = labelFormatter ? labelFormatter(value) : value;
@@ -393,9 +411,11 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                             labelY = y + (height ?? 30) / 2;
                           }
                         } else if (isNegative) {
-                          labelY = labelNegativePosition === 'bottom' ? y - height + 2 : y;
+                          const byIndexOffset = labelNegativeOffsetsByIndex?.[index ?? 0] ?? labelNegativeOffset;
+                          const negOffset = labelNegativeOffsets?.[bar.dataKey] ?? byIndexOffset;
+                          labelY = labelNegativePosition === 'bottom' ? y - height + negOffset : y;
                         } else {
-                          labelY = y - 2;
+                          labelY = y - labelPositiveOffset;
                         }
                         return (
                           <text
@@ -437,14 +457,15 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     animationBegin={0}
                     animationEasing="ease-out"
                   >
-                    {lineShowDot && lineLabelFormatter && (
+                    {lineShowDot && (lineLabelFormatter || lineLabelContent) && (
                       <LabelList
                         dataKey={line.dataKey}
                         position="right"
                         fill={lineColor}
                         fontSize={9}
                         fontWeight={600}
-                        formatter={lineLabelFormatter}
+                        content={lineLabelContent ? lineLabelContent : undefined}
+                        formatter={lineLabelContent ? undefined : lineLabelFormatter}
                       />
                     )}
                   </Line>

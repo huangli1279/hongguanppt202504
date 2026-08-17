@@ -68,6 +68,9 @@ export const ContentSlide35: React.FC = () => {
               yAxisTickFormatter={(val) => `${val}`}
               barSize={28}
               showLabels={true}
+              labelOffset={8}
+              labelNegativeOffset={-20}
+              labelNegativeOffsets={{ q2024: -10 }}
               legendOrder={['2024Q2', '2025Q2', '2026Q2']}
               unit="万亿"
             />

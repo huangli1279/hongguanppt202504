@@ -36,15 +36,18 @@ export const ContentSlide18: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="总量超预期回落" delay="0ms" variant="accent">
             <p>
-              上半年全国固定资产投资（不含农户）<span className="text-black font-semibold">22.64万亿</span>，同比下降<span className="text-green-600 font-semibold">5.7%</span>（前值+1.7%），增速回落<span className="text-black font-semibold">7.4个百分点</span>。其中基础设施建设投资同比下降<span className="text-green-600 font-semibold">2.4%</span>，房地产投资同比降幅扩大，仍为主要拖累。
+              上半年全国固定资产投资（不含农户）<span className="text-black">22.64万亿</span>，同比下降<span className="text-green-600 font-semibold">5.7%</span>，一季度为<span className="text-black">+1.7%</span>，增速大幅回落<span className="text-black">7.4个百分点</span>。此前承担托底作用的基建投资同比下降<span className="text-green-600 font-semibold">2.4%</span>，托底力度明显减弱；房地产投资降幅进一步扩大，仍是固投最主要拖累。
             </p>
             <p className="mt-2 text-black">
-              房地产投资方面，商品待售面积连续4个月同比下降，一线城市价格端连续4个月环比上升，房地产开发投资累计同比仍然深度负增长。
+              地产呈现明显结构性分化：商品待售面积连续<span className="text-black">4个月</span>同比下降，一线城市房价连续<span className="text-black">4个月</span>环比上行；但房企拿地、新开工修复不足，房地产开发投资依旧维持深度负增长。
             </p>
           </BaseCard>
           <BaseCard title="分类投资全面走弱" delay="120ms">
             <p>
-              从分类来看：民间投资、国有控股投资<span className="text-green-600 font-semibold">均下降</span>，固定投资建筑安装工程、其他费用同比均扩大降幅，设备工器具购置同比正增但增幅下降。企业投资意愿下降，特别对于扩建意愿低。
+              从投资主体看：国有控股、民间投资同步走弱，民间投资降幅（<span className="text-green-600 font-semibold">‑8.5%</span>）显著高于国有控股（<span className="text-green-600 font-semibold">‑2.3%</span>），民营资本扩投意愿偏弱。
+            </p>
+            <p className="mt-2 text-black">
+              从投资构成看：建筑安装工程、其他费用降幅进一步扩大；仅设备工器具购置维持<span className="text-black">8.1%</span>正增长，但增势边际回落，企业更倾向于存量设备更新改造。
             </p>
           </BaseCard>
         </div>

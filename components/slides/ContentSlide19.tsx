@@ -63,7 +63,7 @@ export const ContentSlide19: React.FC = () => {
           </BaseCard>
           <BaseCard title="③ 专项债节奏错配" delay="240ms">
             <p>
-              一季度新增专项债发行进度达计划<span className="text-red-500 font-semibold">1.4倍</span>，二季度明显放缓（4-5月仅完成不足70%）。2月起土储、特殊新增债比例提高，对二季度投资增长形成拖累（图4）。
+              一季度新增专项债发行进度达到计划的<span className="text-red-500 font-semibold">1.4 倍</span>，前置使用额度；二季度发行节奏明显放缓，4‑5 月仅完成二季度计划额度不足<span className="text-red-500 font-semibold">70%</span>。同时土储、特殊新增债占比提升，该类资金转化实物投资效率偏低，进一步压制二季度投资（图 4）。
             </p>
           </BaseCard>
         </div>

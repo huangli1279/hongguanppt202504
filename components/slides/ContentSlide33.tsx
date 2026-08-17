@@ -64,6 +64,7 @@ export const ContentSlide33: React.FC = () => {
               xAxisHeight={60}
               legendOrder={['2025Q2', '2026Q2']}
               unit="亿元"
+              labelOffset={8}
             />
           </ChartContainer>
         </div>
