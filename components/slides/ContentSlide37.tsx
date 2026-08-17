@@ -17,7 +17,7 @@ const confidenceLines: LineConfig[] = [
 export const ContentSlide37: React.FC = () => {
   return (
     <BaseContentSlide
-      title="社零增速持续下行，收入就业信心长期处于收缩区间"
+      title="社零增速持续下行，消费信心长期处于收缩区间"
       cardColumns={2}
       chartColumns={2}
       headerClassName="!mb-3"
@@ -31,7 +31,7 @@ export const ContentSlide37: React.FC = () => {
               <span className="font-bold text-webank-blue">5.0%</span>
               高点逐月回落，较年初市场普遍预期的全年约
               <span className="font-bold text-webank-blue">4.5%</span>
-              明显偏低，消费修复显著不及预期。按当前轨迹，全年社零增速大概率难达预期中枢。
+              明显偏低，消费修复显著不及预期。在当前轨迹下，全年社零达到前期市场预期中枢存在难度。消费的疲软主要受：收入、就业和房价财富效应三重约束。
             </p>
           </BaseCard>
           <BaseCard title="消费信心仍处收缩区间" delay="120ms">
@@ -64,6 +64,7 @@ export const ContentSlide37: React.FC = () => {
               legendOrder={['社零累计同比']}
               unit="%"
               xAxisTickCount={8}
+              highlightPeriods={['2026-06', '2026-07']}
             />
           </ChartContainer>
           <ChartContainer delay="720ms">

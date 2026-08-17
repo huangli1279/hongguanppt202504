@@ -64,7 +64,7 @@ export const ContentSlide39: React.FC = () => {
               近五年，全国就业人数减少<span className="text-red-500 font-semibold">2600万</span>。灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计<span className="text-red-500 font-semibold">3.2亿</span>人，增长迅猛。
             </p>
             <p className="mt-2 text-xs">
-              花旗银行2026年报告表明，AI可能会影响中国约<span className="text-red-500 font-semibold">31%</span>的岗位，约<span className="text-red-500 font-semibold">9.6%</span>的岗位（约<span className="text-red-500 font-semibold">7000万</span>份）面临被替代风险。上海科技大学研究表明近三年约有<span className="text-red-500 font-semibold">2100万</span>个岗位由任务重组而生，占总招聘岗位的<span className="text-red-500 font-semibold">18.6%</span>。
+              报告表明，AI可能会影响中国约<span className="text-red-500 font-semibold">31%</span>的岗位，约<span className="text-red-500 font-semibold">9.6%</span>的岗位（约<span className="text-red-500 font-semibold">7000万</span>份）面临被替代风险。上海科技大学研究表明近三年约有<span className="text-red-500 font-semibold">2100万</span>个岗位由任务重组而生，占总招聘岗位的<span className="text-red-500 font-semibold">18.6%</span>。
             </p>
           </BaseCard>
           <BaseCard title="失业对支出的影响" delay="240ms">

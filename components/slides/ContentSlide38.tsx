@@ -69,6 +69,11 @@ export const ContentSlide38: React.FC = () => {
             />
           </ChartContainer>
         </div>
+
+        {/* 备注 */}
+        <div className="mt-4 text-xs text-gray-500 border-t border-gray-200 pt-3 text-right">
+          ① 边际消费倾向 = 新增收入当中拿来消费的比例。数值下滑，代表多赚一块钱，更愿意存起来，而不是消费。
+        </div>
       </div>
     </BaseContentSlide>
   );
