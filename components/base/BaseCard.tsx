@@ -42,6 +42,7 @@ export interface BaseCardProps {
   icon?: LucideIcon;
   delay?: string;
   className?: string;
+  titleClassName?: string;
   variant?: 'default' | 'accent' | 'subtle';
   animated?: boolean;
 }
@@ -52,6 +53,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   icon: Icon,
   delay = '0ms',
   className,
+  titleClassName,
   variant = 'default',
   animated = true,
 }) => {
@@ -75,7 +77,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
       {(title || Icon) && (
         <div className="flex items-center gap-2 text-webank-accent">
           {Icon && <Icon size={18} />}
-          {title && <h4 className="font-bold text-webank-blue text-h3 uppercase">{title}</h4>}
+          {title && <h4 className={cn("font-bold text-webank-blue text-h3 uppercase", titleClassName)}>{title}</h4>}
         </div>
       )}
       <div className="text-body text-webank-text leading-relaxed">

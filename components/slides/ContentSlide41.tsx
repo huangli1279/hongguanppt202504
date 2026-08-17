@@ -14,12 +14,12 @@ const nameByCategory = Object.fromEntries(
 
 export const ContentSlide41: React.FC = () => {
   return (
-    <BaseContentSlide title="社零疲弱难改：增量向体验文娱、情绪陪伴、健康自我投资集中" cardColumns={2}>
+    <BaseContentSlide title="在三重约束压制总消费大盘同时，居民消费结构发生切换：压缩大宗耐用品，资源向体验文娱、情绪陪伴、健康养老等软消费倾斜" cardColumns={2}>
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
-          <BaseCard title="居民消费趋势" delay="0ms" variant="accent">
-            <ul className="list-disc pl-4 space-y-1.5 text-sm">
+          <BaseCard title="居民消费趋势" delay="0ms" variant="accent" titleClassName="text-sm">
+            <ul className="list-disc pl-4 space-y-1 text-xs">
               <li>
                 <span className="font-semibold">青年：</span>
                 体验与情绪消费引领：愿为旅游、文娱等「经历」和情绪价值买单。
@@ -34,8 +34,8 @@ export const ContentSlide41: React.FC = () => {
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="政策支持" delay="120ms">
-            <ul className="list-disc pl-4 space-y-1.5 text-sm">
+          <BaseCard title="政策支持" delay="120ms" titleClassName="text-sm">
+            <ul className="list-disc pl-4 space-y-1 text-xs">
               <li>
                 <span className="font-semibold">稳楼市：</span>
                 4月、7月政治局均强调稳定房地产，延续"止跌回稳"基调，因城施策控增量、去库存、优供给。
