@@ -35,6 +35,8 @@ export interface LineConfig {
   };
   /** 不显示数值标签的周期（如与另一条线数值重复） */
   hiddenLabelPeriods?: string[];
+  /** 不显示数据点的周期 */
+  hiddenDotPeriods?: string[];
   /** 双轴时指定左右Y轴，默认 left */
   yAxisId?: 'left' | 'right';
   /** tooltip单位，覆盖全局 unit */
@@ -508,8 +510,9 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                     }
                     const isLastPoint = dotIndex === lastValidIndex;
                     const isHighlighted = highlightPeriods.includes(payload.period);
+                    const isDotHidden = line.hiddenDotPeriods?.includes(payload.period);
 
-                    if (isLastPoint || isHighlighted) {
+                    if ((isLastPoint || isHighlighted) && !isDotHidden) {
                       return (
                         <circle
                           key={`dot-${line.dataKey}-${dotIndex}`}

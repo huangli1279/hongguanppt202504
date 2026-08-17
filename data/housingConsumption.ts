@@ -2,13 +2,12 @@
 
 export interface HousingConsumptionDataPoint {
   category: string;
-  housingTransport: number; // 住房与交通支出
-  foodLiving: number;       // 居家食品与生活支出
-  entertainment: number;    // 文娱与外出餐饮支出
-  educationMedical: number; // 教育与医疗支出
-  durables: number;         // 耐用品支出
+  housingTransport: number;    // 住房与交通支出
+  foodLiving: number;          // 居家食品与生活支出
+  entertainment: number;       // 文娱与外出餐饮支出
+  educationMedical: number;    // 教育与医疗支出
+  durables: number;            // 耐用品支出
   total: number;
-  sampleSize: number;
 }
 
 export const housingConsumptionData: HousingConsumptionDataPoint[] = [
@@ -20,7 +19,6 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 299,
     durables: 127,
     total: 2590,
-    sampleSize: 985,
   },
   {
     category: '一套房 [-15%,0)',
@@ -30,7 +28,6 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 311,
     durables: 135,
     total: 2670,
-    sampleSize: 4593,
   },
   {
     category: '一套房 >=0',
@@ -40,7 +37,6 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 347,
     durables: 140,
     total: 2939,
-    sampleSize: 1699,
   },
   {
     category: '大于一套房 <-15%',
@@ -50,7 +46,6 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 412,
     durables: 210,
     total: 3630,
-    sampleSize: 557,
   },
   {
     category: '大于一套房 [-15%,0)',
@@ -60,7 +55,6 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 496,
     durables: 238,
     total: 4313,
-    sampleSize: 2573,
   },
   {
     category: '大于一套房 >=0',
@@ -70,9 +64,17 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 521,
     durables: 274,
     total: 4900,
-    sampleSize: 975,
   },
 ];
+
+export const housingConsumptionCategoryGroups = [
+  { label: '一套房', x1: '一套房 <-15%', x2: '一套房 >=0', fill: '#94a3b8' },
+  { label: '大于一套房', x1: '大于一套房 <-15%', x2: '大于一套房 >=0', fill: '#94a3b8' },
+];
+
+export const housingConsumptionNameByCategory = Object.fromEntries(
+  housingConsumptionData.map((d) => [d.category, d.category])
+);
 
 // 70个大中城市新建商品住房价格指数同比（上年同期=100 换算）
 export interface NewHousePriceYoyDataPoint {

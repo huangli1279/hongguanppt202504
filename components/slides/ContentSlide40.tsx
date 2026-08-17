@@ -1,92 +1,118 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseBarChart } from '../base/BaseBarChart';
-import {
-  consumerSpendingAgeGroups,
-  consumerSpendingPlanAgeCategoryGroups,
-  consumerSpendingPlanByAgeData,
-} from '@/data/consumerSpendingPlan';
+import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { housingConsumptionData, housingConsumptionCategoryGroups, housingConsumptionNameByCategory, newHousePriceYoyData, newHousePriceYoyXTicks } from '@/data/housingConsumption';
 
-const nameByCategory = Object.fromEntries(
-  consumerSpendingPlanByAgeData.map((d) => [d.category, d.name])
-);
+const consumptionBars: BarConfig[] = [
+  { dataKey: 'housingTransport', name: '住房与交通', color: '#1B4F72', stackId: 'consumption' },
+  { dataKey: 'foodLiving', name: '居家食品与生活', color: '#DC2626', stackId: 'consumption' },
+  { dataKey: 'educationMedical', name: '教育与医疗', color: '#F4D35E', stackId: 'consumption' },
+  { dataKey: 'durables', name: '耐用品', color: '#81B29A', stackId: 'consumption' },
+  { dataKey: 'entertainment', name: '文娱与外出餐饮', color: '#9B72AA', stackId: 'consumption' },
+];
+
+const priceLineConfigs: LineConfig[] = [
+  {
+    dataKey: 'newHousePrice',
+    name: '新建商品住宅价格指数同比',
+    strokeWidth: 2.5,
+  },
+];
 
 export const ContentSlide40: React.FC = () => {
   return (
-    <BaseContentSlide title="社零疲弱难改：增量向体验文娱、情绪陪伴、健康自我投资集中" cardColumns={2}>
+    <BaseContentSlide
+      title={<>房价下行背景下，居民消费受抑制</>}
+      cardColumns={3}
+    >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
-          <BaseCard title="居民消费趋势" delay="0ms" variant="accent">
-            <ul className="list-disc pl-4 space-y-1.5 text-sm">
-              <li>
-                <span className="font-semibold">青年：</span>
-                体验与情绪消费引领：愿为旅游、文娱等「经历」和情绪价值买单。
-              </li>
-              <li>
-                <span className="font-semibold">中年：</span>
-                家庭与自我并重：子女教育之外，运动健身、自我提升支出同步抬升。
-              </li>
-              <li>
-                <span className="font-semibold">银发：</span>
-                健康与数字双轮驱动：养老服务与数码消费并行，迈向「智慧养老」。
-              </li>
-            </ul>
+        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="房价持续同比下跌，财富效应承压" delay="0ms" variant="accent">
+            <p className="text-xs">
+              高盛测算，26年Q1居民财富中房地产占<span className="text-red-500 font-semibold">52%</span>。社科院26Q2报告指出，居民部门主动去杠杆，住房贷款<span className="text-green-600 font-semibold">连续13个季度负增长</span>，房价下行与收入预期偏弱叠加，房地产仍是内需修复的核心制约。
+            </p>
+            <p className="mt-1 text-xs">
+              70城新建商品住房价格2024年10月跌幅一度扩大至<span className="text-green-600 font-semibold">-6.2%</span>，2026年上半年仍在<span className="text-green-600 font-semibold">-3.5%</span>左右徘徊。
+            </p>
           </BaseCard>
-          <BaseCard title="政策支持" delay="120ms">
-            <ul className="list-disc pl-4 space-y-1.5 text-sm">
-              <li>
-                <span className="font-semibold">稳楼市：</span>
-                4月、7月政治局均强调稳定房地产，延续“止跌回稳”基调，因城施策控增量、去库存、优供给。
-              </li>
-              <li>
-                <span className="font-semibold">需求端：</span>
-                Q2深圳、广州、苏州等地大幅上调公积金贷款上限；武汉等地对多孩家庭发放6—12万元购房补贴。
-              </li>
-              <li>
-                <span className="font-semibold">供给端：</span>
-                专项债收购存量土地力度加大，商品房待售面积连续下降，一线新房价格环比四个月回升。
-              </li>
-              <li>
-                <span className="font-semibold">扩消费：</span>
-                7月国务院批复《扩大消费"十五五"规划》，服务消费为核心，兼顾银发康养。
-              </li>
-              <li>
-                <span className="font-semibold">AI+消费：</span>
-                6月八部门印发《关于加快"人工智能+消费"发展的实施意见》。
-              </li>
-            </ul>
+          <BaseCard title="房价跌幅越大，居民消费越低" delay="120ms">
+            <p className="text-xs">
+              厦大×蚂蚁集团2025Q4—2026Q1连续两期调查显示，房价跌幅超15%时，一套房家庭月均消费较房价上涨时少<span className="text-red-500 font-semibold">11.9%</span>，多套房家庭少<span className="text-red-500 font-semibold">25.9%</span>。
+            </p>
+            <p className="mt-1 text-xs">
+              文娱与外出餐饮最先收缩。2025Q4报告判断"房价稳定有助于激发消费动力"，2026Q1约<span className="text-webank-blue font-semibold">23%</span>家庭计划缩减消费。
+            </p>
+          </BaseCard>
+          <BaseCard title="稳房价是修复消费预期的关键抓手" delay="240ms">
+            <p className="text-xs">
+              2026年6月《求是》发文提出，加快修复居民资产负债表，着力稳定房地产市场，防止资产价格下跌对消费信心的负向螺旋。
+            </p>
+            <p className="mt-1 text-xs">
+              中国社会科学院金融研究所2026Q2宏观金融季报中建议因城施策、推动核心城市房价率先企稳。
+            </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域：按年龄段分组，组内意愿占比从大到小 */}
-        <div className="flex-1 min-h-0">
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
+          {/* 左侧：房价同比折线图 */}
           <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={consumerSpendingPlanByAgeData}
-              title="2026年您打算在哪些方面增加消费？（分年龄段，组内从高到低）"
-              subtitle="数据来源：中央广播电视总台研究院《美好生活大调查》 | 单位：占比 %"
-              xAxisKey="category"
-              bars={[{ dataKey: 'value', name: '占比', color: '#5C9A8A' }]}
-              legendItems={consumerSpendingAgeGroups.map((g) => ({
-                value: g.label,
-                color: g.color,
-              }))}
-              legendOrder={['18-35岁', '36-59岁', '60岁以上']}
-              categoryGroups={consumerSpendingPlanAgeCategoryGroups}
-              yAxisDomain={[0, 50]}
+            <BaseLineChart
+              data={newHousePriceYoyData}
+              title="70城新建商品住宅价格指数同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={priceLineConfigs}
+              yAxisDomain={[-7, 0]}
               showYAxis={true}
-              yAxisWidth={40}
-              yAxisTickFormatter={(val) => `${val}`}
+              showReferenceLine={true}
+              referenceLineY={0}
+              xAxisTicks={newHousePriceYoyXTicks}
+              legendOrder={['新建商品住宅价格指数同比']}
               unit="%"
-              barSize={10}
-              showLabels={false}
-              xAxisInterval={0}
-              xAxisAngle={-35}
-              xAxisHeight={90}
-              xAxisTickFormatter={(v) => nameByCategory[String(v)] ?? String(v).split('|')[1] ?? String(v)}
             />
+          </ChartContainer>
+
+          {/* 右侧：消费结构堆叠柱状图 */}
+          <ChartContainer delay="600ms">
+            <div className="relative w-full h-full">
+              <BaseBarChart
+                data={housingConsumptionData}
+                title="家庭月均消费：按住房套数×房价涨跌分组"
+                subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》 | 单位：元"
+                xAxisKey="category"
+                bars={consumptionBars}
+                yAxisDomain={[0, 5500]}
+                showYAxis={true}
+                yAxisWidth={50}
+                yAxisTickFormatter={(val) => `${val}`}
+                unit="元"
+                barSize={30}
+                showLabels={true}
+                labelPosition="outside"
+                labelFill="#333333"
+                labelDy={-8}
+                legendOrder={['住房与交通', '居家食品与生活', '教育与医疗', '耐用品', '文娱与外出餐饮']}
+                categoryGroups={housingConsumptionCategoryGroups}
+                xAxisInterval={0}
+                xAxisAngle={-35}
+                xAxisHeight={90}
+                xAxisTickFormatter={(v) => housingConsumptionNameByCategory[String(v)] ?? String(v)}
+              />
+              {/* 消费差距标注 - 放在图表上方 */}
+              <div className="absolute top-0 right-0 flex gap-6 text-xs">
+                <div className="flex items-center gap-1">
+                  <span className="w-3 h-3 bg-[#DC2626] rounded-sm"></span>
+                  <span className="text-[#DC2626] font-bold">一套房: -11.9%</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-3 h-3 bg-[#9B72AA] rounded-sm"></span>
+                  <span className="text-[#9B72AA] font-bold">多套房: -25.9%</span>
+                </div>
+              </div>
+            </div>
           </ChartContainer>
         </div>
       </div>

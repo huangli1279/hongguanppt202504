@@ -22,8 +22,8 @@ export const ContentSlide05: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          第二产业内部K型分化加剧，
-          <span>第三产业消费与地产链持续拖累</span>
+          分化显著：高端制造及现代服务保持高增，
+          <span>传统行业消费及地产链增速低于整体增速</span>
         </>
       }
       cardColumns={2}
@@ -40,13 +40,13 @@ export const ContentSlide05: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="K型分化加剧" delay="120ms">
+          <BaseCard title="行业分化显著" delay="120ms">
             <p>
               高技术制造业（<span className="font-bold text-red-500">13.3%</span>
               ）、信息传输、软件和信息技术服务业（
               <span className="font-bold text-red-500">10.7%</span>
               ）和租赁商务服务（<span className="font-bold text-red-500">11.9%</span>
-              ）仍然保持高增，建筑、房地产依然为主要拖累。
+              ）仍然保持高增，批发零售增长<span className="font-bold text-red-500">3.3%</span>显著低于整体，建筑、房地产依然为主要拖累。
             </p>
           </BaseCard>
         </>
@@ -108,7 +108,7 @@ export const ContentSlide05: React.FC = () => {
               <BaseBarChart
                 data={industryContributionData}
                 title="不同行业GDP增速对比"
-                subtitle="数据来源: 国家统计局；单位: %"
+                subtitle="数据来源: 国家统计局；单位: %；注：高技术制造业、装备制造业、数字产品制造业为上半年累计增速"
                 xAxisKey="industry"
                 bars={[
                   { dataKey: '2025-06', name: '25-06', color: chartColors.quaternary },

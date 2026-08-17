@@ -52,7 +52,7 @@ export const ContentSlide11: React.FC = () => {
             <ul className="list-disc pl-5 space-y-1">
               <li>
                 <span className="font-bold">利润总量：</span>
-                1-6月规上工业企业利润同比增长
+                上半年工业企业利润累计同比增长
                 <span className="text-red-500 font-bold">18.7%</span>
                 ，5月增长
                 <span className="text-red-500 font-bold">21.1%</span>
@@ -83,7 +83,7 @@ export const ContentSlide11: React.FC = () => {
               <span className="text-red-500 font-bold">0.63%</span>
               ）。生产资料和生活资料剪刀差持续扩大，6月为
               <span className="font-bold">6.4%</span>
-              ，多数中下游企业盈利空间收到明显挤压。
+              ，多数中下游企业盈利空间受到明显挤压。
             </p>
           </BaseCard>
 
@@ -99,7 +99,7 @@ export const ContentSlide11: React.FC = () => {
             <ul className="list-disc pl-5 space-y-1">
               <li>
                 <span className="font-bold">PPI：</span>
-                高点或在 5–6 月已过，年底约
+                随着地缘因素缓和，年底回落至
                 <span className="font-bold">2–3%</span>
                 ，全年预计落在
                 <span className="font-bold">2.2–3%</span>
@@ -107,7 +107,7 @@ export const ContentSlide11: React.FC = () => {
               </li>
               <li>
                 <span className="font-bold">企业利润：</span>
-                受价格传导不畅影响，下半年中下游压力偏大，利润增速存在下行风险。
+                受价格传导不畅影响，下半年中下游盈利压力仍大；随着上游价格红利消退、存货 FIFO 效应耗尽，利润增速存在下行风险。
               </li>
             </ul>
           </BaseCard>
@@ -122,7 +122,7 @@ export const ContentSlide11: React.FC = () => {
               title={
                 <>
                   工业企业利润分项当月同比增加值
-                  <span className="text-red-500 font-normal normal-case tracking-normal">
+                  <span className="text-black font-normal normal-case tracking-normal">
                     （利润（亿）=营收-成本-费用+投资收益+其它收益）
                   </span>
                 </>

@@ -7,7 +7,7 @@ import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 44;
+const TOTAL_SLIDES = 45;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -51,6 +51,7 @@ const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide4
 const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
 const ContentSlide45 = lazyNamed(() => import('./components/slides/ContentSlide45'), 'ContentSlide45');
 const ContentSlide46 = lazyNamed(() => import('./components/slides/ContentSlide46'), 'ContentSlide46');
+const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
 const ContentSlide21 = lazyNamed(() => import('./components/slides/ContentSlide21'), 'ContentSlide21');
 
 const App: React.FC = () => {
@@ -194,7 +195,8 @@ const App: React.FC = () => {
       case 39: return <ContentSlide39 />;
       case 40: return <ContentSlide40 />;
       case 41: return <ContentSlide41 />;
-      case 42: return <ThankYouSlide />;
+      case 42: return <ContentSlide42 />;
+      case 43: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);

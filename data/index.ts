@@ -36,7 +36,7 @@ export { consumerConfidenceData, incomeExpenditureData, industryAvgSalaryData, i
 export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint, IndustryAvgSalaryDataPoint, IncomeSentimentDataPoint } from './consumerConfidence';
 export { unemploymentRateData, flexibleEmploymentData, workTypeExpenditureData } from './employment';
 export type { UnemploymentRateDataPoint, FlexibleEmploymentDataPoint, WorkTypeExpenditureDataPoint } from './employment';
-export { housingConsumptionData, newHousePriceYoyData, newHousePriceYoyXTicks } from './housingConsumption';
+export { housingConsumptionData, housingConsumptionCategoryGroups, housingConsumptionNameByCategory, newHousePriceYoyData, newHousePriceYoyXTicks } from './housingConsumption';
 export type { HousingConsumptionDataPoint, NewHousePriceYoyDataPoint } from './housingConsumption';
 export {
   consumerSpendingPlanData,

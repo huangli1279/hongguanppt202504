@@ -38,30 +38,27 @@ export const ContentSlide12: React.FC = () => {
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="景气度分化" delay="0ms" variant="accent">
+          <BaseCard title="企业规模、行业维度双重 K 型分化" delay="0ms" variant="accent">
             <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
               <li>
-                <span className="font-semibold text-webank-blue">制造业PMI全面收缩</span>：7月大型<span className="font-bold text-red-500">49.5%</span>、中型<span className="font-bold text-red-500">49.7%</span>、小型<span className="font-bold text-red-500">47.4%</span>，均低于荣枯线，大型企业持续高于中小企业，小型企业已连续探深收缩。
+                <span className="font-semibold text-webank-blue">企业规模维度</span>：7 月制造业 PMI 整体处于收缩区间，大型企业 <span className="font-bold text-green-500">49.5%</span>、中型 <span className="font-bold text-green-500">49.7%</span>、小型 <span className="font-bold text-green-500">47.4%</span>。大型企业相对韧性更强，但同样未回到扩张区间；小微企业持续深度收缩。
               </li>
               <li>
-                <span className="font-semibold text-webank-blue">高技术/装备制造保持扩张</span>：PMI分别为<span className="font-bold text-red-500">53.3%</span>和<span className="font-bold text-red-500">51.4%</span>，明显高于制造业总体，持续发挥支撑引领作用。
-              </li>
-              <li>
-                <span className="font-semibold text-slate-600">价格景气重回回落</span>：消费品<span className="font-bold text-red-500">47.8%</span>，高耗能<span className="font-bold text-red-500">47.0%</span>，均录得收缩放缓。小型企业是吸纳就业的主力军，稳就业政策需加大。
+                <span className="font-semibold text-webank-blue">行业结构维度</span>：行业景气分化明显，高技术制造业 PMI <span className="font-bold text-red-500">53.3%</span>、装备制造业 PMI <span className="font-bold text-red-500">51.4%</span> 维持扩张；高耗能行业 PMI <span className="font-bold text-green-500">47.0%</span>、消费品行业 PMI <span className="font-bold text-green-500">47.8%</span> 持续收缩，仅呈现边际放缓。新动能与传统行业景气形成鲜明反差。
               </li>
             </ul>
           </BaseCard>
 
-          <BaseCard title="企业利润K型分化" delay="120ms" variant="accent">
+          <BaseCard title="企业利润 K 型分化：新旧行业盈利差异持续扩大" delay="120ms" variant="accent">
             <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
               <li>
-                <span className="font-semibold text-webank-blue">利润高增、结构分化</span>：1-6月规上工业企业利润同比增长<span className="font-bold text-webank-blue">18.7%</span>，但电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等新动能领跑，汽车(<span className="font-bold text-green-500">-19.5%</span>)、纺织(<span className="font-bold text-green-500">-28.0%</span>)等传统产业明显承压。
+                <span className="font-semibold text-webank-blue">新动能行业高增领跑</span>：1‑6 月规上工业企业利润累计同比增长 <span className="font-bold text-webank-blue">18.7%</span>，行业内部分化显著。电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色金属(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等高景气板块拉动整体利润；AI 算力、半导体、新能源带动高技术制造业利润增长 <span className="font-bold text-red-500">44.7%</span>，新经济动能持续释放。
               </li>
               <li>
-                <span className="font-semibold text-webank-blue">新经济持续释放</span>：高技术制造业利润增长<span className="font-bold text-red-500">44.7%</span>，AI算力、半导体、新能源等景气有望延续。
+                <span className="font-semibold text-webank-blue">传统行业承压走弱</span>：地产链、汽车、纺织、农产品加工等传统领域盈利承压，汽车(<span className="font-bold text-green-500">-19.5%</span>)、纺织服装(<span className="font-bold text-green-500">-28.0%</span>)利润明显下滑，旧经济板块仍处于底部运行区间。
               </li>
               <li>
-                <span className="font-semibold text-slate-600">旧经济底部运行</span>：地产链、建材、纺织、农产品加工仍在底部，两端差距持续扩大。
+                <span className="font-semibold text-slate-600">分化结果</span>：整体工业利润的拉动高度依赖新动能与上游行业，传统行业尚未形成盈利修复的合力。
               </li>
             </ul>
           </BaseCard>

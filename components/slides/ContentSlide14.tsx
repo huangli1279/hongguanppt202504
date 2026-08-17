@@ -25,14 +25,20 @@ export const ContentSlide14: React.FC = () => {
       chartColumns={3}
       cards={
         <>
-          <BaseCard title="社零总量承压" delay="0ms" variant="accent">
+          <BaseCard title="社零总量承压：实物消费走弱，服务尚有韧性" delay="0ms" variant="accent">
             <p>
-              上半年社零累计仅增长<span className="font-bold text-green-600">1.3%</span>，二季度社零同比增长<span className="font-bold text-green-600">0.2%</span>，较一季度（<span className="font-bold text-webank-blue">2.4%</span>）明显放缓。5月社会消费品零售总额同比<span className="font-bold text-green-600">-0.6%</span>，系2023年以来首次单月增速转负，其中餐饮收入<span className="font-bold text-green-600">0.6%</span>，商品零售<span className="font-bold text-green-600">-0.7%</span>，主要由高基数叠加内需不足导致。
+              上半年社零累计仅增长<span className="font-bold text-green-600">1.3%</span>，二季度社零同比增长<span className="font-bold text-green-600">0.2%</span>，较一季度（<span className="text-webank-blue">2.4%</span>）明显放缓。5月社会消费品零售总额同比<span className="font-bold text-green-600">-0.6%</span>，为2023年以来首次单月转负。
+            </p>
+            <p>
+              结构分化：服务零售上半年累计同比<span className="font-bold text-red-500">5.3%</span>保持韧性格局，商品零售仅<span className="font-bold text-green-600">0.2%</span>，服务与商品增长分化特征显著。
             </p>
           </BaseCard>
-          <BaseCard title="一线城市分化" delay="120ms">
+          <BaseCard title="一线城市明显分化，广州韧性突出" delay="120ms">
             <p>
-              上半年，北上深拖累全国社零增长——北京累计同比<span className="font-bold text-green-600">{fmtPct(juneCityRetail.beijing)}</span>、上海<span className="font-bold text-green-600">{fmtPct(juneCityRetail.shanghai)}</span>、深圳<span className="font-bold text-green-600">{fmtPct(juneCityRetail.shenzhen)}</span>，广州上半年社零累计同比<span className="font-bold text-webank-blue">{fmtPct(juneCityRetail.guangzhou)}</span>，在一线城市中一枝独秀，上半年广州餐饮收入增长<span className="font-bold text-red-500">5.8%</span>、汽车消费增长<span className="font-bold text-red-500">8.2%</span>，其中新能源车增长<span className="font-bold text-red-500">29.2%</span>。
+              四大一线城市消费走势分化：北京累计同比<span className="font-bold text-green-600">‑2.2%</span>、上海<span className="font-bold text-green-600">0.7%</span>、深圳<span className="font-bold text-green-600">1.2%</span>，广州达到<span className="font-bold text-red-500">2.9%</span>，表现显著优于其余一线。
+            </p>
+            <p>
+              广州的消费拉动来自服务与汽车双轮驱动：餐饮收入增长<span className="font-bold text-webank-blue">5.8%</span>，汽车消费增长<span className="font-bold text-red-500">8.2%</span>，新能源车增速<span className="font-bold text-red-500">29.2%</span>，对本地消费形成有力支撑。
             </p>
           </BaseCard>
           <BaseCard title="节日对消费促进微弱" delay="240ms">
@@ -41,7 +47,7 @@ export const ContentSlide14: React.FC = () => {
                 五一假期出行人次<span className="font-bold text-webank-blue">3.25亿</span>，增长<span className="font-bold text-webank-blue">3.6%</span>，出行总花费<span className="font-bold text-webank-blue">1855亿元</span>，同比增长<span className="font-bold text-webank-blue">2.9%</span>，人均支出约<span className="font-bold text-webank-blue">571元</span>，终结23年以来人均花费连续上行（540→566→574元）的走势。
               </p>
               <p>
-                618综合电商销售额<span className="font-bold text-webank-blue">8636亿元</span>，同比增长<span className="font-bold text-webank-blue">0.9%</span>，花旗集团称<span className="font-bold text-webank-blue">72.7%</span>的消费者今年618的消费心态比往年更理性或谨慎。
+                618综合电商销售额<span className="font-bold text-webank-blue">8636亿元</span>，同比增长<span className="font-bold text-webank-blue">0.9%</span>，调研显示<span className="font-bold text-webank-blue">72.7%</span>的消费者今年618的消费心态比往年更理性或谨慎。
               </p>
             </div>
           </BaseCard>

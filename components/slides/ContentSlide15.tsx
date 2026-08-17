@@ -47,6 +47,13 @@ const highlight2026Rows = tableData.reduce<number[]>((acc, row, index) => {
 }, []);
 
 export const ContentSlide15: React.FC = () => {
+  const filteredCpiTrendData = cpiTrendData.filter(d => d.period !== '2026-07');
+  const filteredCpiCategoryData = cpiCategoryData.filter(d => d.period !== '2026-07');
+  const filteredHighlight2026Rows = filteredCpiCategoryData.reduce<number[]>((acc, row, index) => {
+    if (row.period.startsWith('2026')) acc.push(index);
+    return acc;
+  }, []);
+
   return (
     <BaseContentSlide
       title="核心CPI回落印证内生动能不足"
@@ -56,13 +63,13 @@ export const ContentSlide15: React.FC = () => {
         <>
           <BaseCard title="物价温差显著" delay="0ms" variant="accent">
             <p>
-              上半年CPI同比上涨<span className="font-bold text-red-500">1.0%</span>，剔除食品能源的核心CPI上涨<span className="font-bold text-red-500">1.2%</span>，仍处于温和通胀区间，印证内生增长动能及居民购买力仍待修复。
+              上半年CPI同比上涨<span className="font-bold text-red-500">1.0%</span>（7月<span className="font-bold text-red-500">0.5%</span>），剔除食品能源的核心CPI上涨<span className="font-bold text-red-500">1.2%</span>（7月<span className="font-bold text-red-500">0.9%</span>），仍处于温和通胀区间，印证内生增长动能及居民购买力仍待修复。
             </p>
           </BaseCard>
           <BaseCard title="二季度分项分化" delay="120ms">
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                交通通信由一季度末<span className="font-bold text-webank-blue">0.9%</span>跃升至5月<span className="font-bold text-red-500">5.4%</span>（6月<span className="font-bold text-webank-blue">4.1%</span>），因国际油价推升汽油等价格。
+                交通通信由一季度末<span className="font-bold text-webank-blue">0.9%</span>跃升至5月<span className="font-bold text-red-500">5.4%</span>（6月<span className="font-bold text-webank-blue">4.1%</span>），因国际油价波动（7月已回落至<span className="font-bold text-webank-blue">0.4%</span>）。
               </li>
               <li>
                 食品烟酒自4月起连续负增长，猪肉等畜肉价格拖累明显。
@@ -78,7 +85,7 @@ export const ContentSlide15: React.FC = () => {
         <>
           <ChartContainer delay="600ms" className="min-h-0">
             <BaseLineChart
-              data={cpiTrendData}
+              data={filteredCpiTrendData}
               title="CPI当月同比、剔除食品能源CPI当月同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={cpiLines}
@@ -88,18 +95,18 @@ export const ContentSlide15: React.FC = () => {
               referenceLineY={0}
               legendOrder={['CPI:当月同比', '剔除食品能源CPI:当月同比']}
               xAxisTickCount={7}
-              highlightPeriods={['2026-06', '2026-07']}
+              highlightPeriods={['2026-06']}
             />
           </ChartContainer>
           <ChartContainer delay="720ms" className="min-h-0 pb-8">
             <BaseTable
-              data={tableData}
+              data={filteredCpiCategoryData}
               columns={categoryColumns}
               title="CPI八大类当月同比"
               subtitle="数据来源：国家统计局 | 单位：% | 2026年：正红负绿"
               dateColumn="period"
               colorizeNumbers={false}
-              highlightRows={highlight2026Rows}
+              highlightRows={filteredHighlight2026Rows}
               titleBlockClassName="mb-1"
               headerCellClassName="!px-1 !py-1 text-[11px] leading-tight whitespace-nowrap"
               cellClassName="!px-1 text-[11px] leading-none tabular-nums"
