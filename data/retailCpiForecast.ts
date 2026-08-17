@@ -1,6 +1,6 @@
 /**
  * Slide16：主流机构对2026年社零/CPI预测 + 上半年分品类表现
- * 数据来源：浦银国际中期展望、大公国际半年展望、国家统计局、国泰海通等
+ * 数据来源：浦银国际中期展望、Wind 8月一致预测、国家统计局、国泰海通等
  */
 
 export interface RetailCpiForecastMetric {
@@ -46,7 +46,7 @@ export const retailCpiForecastConsensus: RetailCpiForecastMetric[] = [
 /** 代表机构点预测 */
 export const retailCpiForecastByInstitution = [
   { institution: '浦银国际', retail: 3.5, cpi: 0.9, note: '中期由4.8%下调' },
-  { institution: '大公国际', retail: 3.0, cpi: 1.0, note: '商品+服务零售口径约3%' },
+  { institution: 'Wind一致(1.8%)', retail: 1.8, cpi: 1.2, note: '8月一致预测' },
 ];
 
 export interface RetailCategoryH1Point {
