@@ -88,4 +88,5 @@ export {
 export type { LoanStockPoint, LoanIncrementByType, HouseholdLoanChangePoint } from './loanData';
 export { depositData, depositIncrementQ2CompareData, householdDepositMonthlyChangeData } from './depositData';
 export type { DepositDataPoint } from './depositData';
-export { provinceGdpDataTop15, provinceGdpDataRest } from './provinceGdp';
+export { provinceGdpDataTop15, provinceGdpDataRest, provinceGdpMapData } from './provinceGdp';
+export type { ProvinceGdpItem } from './provinceGdp';

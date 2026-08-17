@@ -12,6 +12,8 @@ export interface BaseContentSlideProps {
   className?: string;
   headerClassName?: string;
   children?: React.ReactNode;
+  /** 右上角附加内容（如书签标签） */
+  headerChild?: React.ReactNode;
 }
 
 export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
@@ -25,6 +27,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
   className,
   headerClassName,
   children,
+  headerChild,
 }) => {
   const cardGridClass = {
     2: 'grid-cols-1 sm:grid-cols-2',
@@ -41,7 +44,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
     <div className={cn('w-full h-full bg-white flex flex-col p-6 sm:p-12 overflow-hidden relative', className)}>
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-blue animate-top-line" />
 
-      <header className={cn('mb-6 animate-fade-in', headerClassName)}>
+      <header className={cn('mb-6 animate-fade-in relative', headerClassName)}>
         {subtitle && (
           <div className="flex justify-between items-end mb-1">
             <span className="text-caption font-bold text-webank-subtext uppercase">
@@ -49,9 +52,12 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
             </span>
           </div>
         )}
-        <h1 className="text-h1 font-serif text-webank-blue">
-          {title}
-        </h1>
+        <div className="flex items-start justify-between">
+          <h1 className="text-h1 font-serif text-webank-blue">
+            {title}
+          </h1>
+          {headerChild}
+        </div>
       </header>
 
       {children ? (

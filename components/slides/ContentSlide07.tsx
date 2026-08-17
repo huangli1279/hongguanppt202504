@@ -8,19 +8,22 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="px-2 py-0.5 bg-gradient-to-r from-yellow-200 to-amber-300 rounded-full text-amber-700 font-semibold shadow-sm">
-            <svg className="w-3 h-3 inline-block mr-1" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            预测与展望
-          </span>
-          <span className="text-black">二季度为低点，三、四季度逐步回升，全年预计</span>
+          <span className="text-black">预测与展望：二季度为低点，三、四季度逐步回升，全年预计</span>
           <span className="text-black">4.5%-4.8%</span>
         </span>
       }
-      className="[&_[class*='animate-top-line']]:!bg-gradient-to-r [&_[class*='animate-top-line']]:!from-yellow-200 [&_[class*='animate-top-line']]:!to-amber-400 [&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
+      className="[&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
       cardColumns={2}
       chartColumns={1}
+      headerChild={
+        <div className="absolute -top-1 -right-6 sm:-right-12 z-20">
+          <div className="bg-gradient-to-b from-blue-600 to-blue-700 shadow-xl rounded-b-lg px-4 py-2.5 flex items-center justify-center">
+            <span className="text-white text-sm font-bold whitespace-nowrap">
+              预测与展望
+            </span>
+          </div>
+        </div>
+      }
       cards={
         <>
           <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3">

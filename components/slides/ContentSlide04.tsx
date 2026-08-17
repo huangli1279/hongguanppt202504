@@ -39,14 +39,14 @@ export const ContentSlide04: React.FC = () => {
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">
           <BaseCard title="GDP增速放缓" delay="0ms" variant="accent">
             <p>
-              2026年二季度GDP <span className="font-bold">36.15万亿</span>，同比增长 <span className="font-bold text-red-600">4.3%</span>，GDP增速较一季度 <span className="font-bold">5%</span> 放缓。
+              2026年二季度GDP <span>36.15万亿</span>，同比增长 <span className="font-bold text-red-600">4.3%</span>，GDP增速较一季度 <span className="font-bold">5%</span> 放缓。
               上半年GDP增速达 <span className="font-bold text-red-600">4.7%</span>，在全年"4.5%-5.0%"增长目标的区域。
             </p>
           </BaseCard>
 
           <BaseCard title="平减指数回正" delay="120ms">
             <p>
-            二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold text-red-600">4.3%</span>，平减指数 <span className="font-bold">12</span> 个季度以来首次回正。
+            二季度 GDP 名义增速 <span className="text-red-600 font-semibold">5.89%</span>、实际增速 <span className="font-bold text-red-600">4.3%</span>，平减指数 <span>12</span> 个季度以来首次回正。
             总量与第二产业平减指数同步由负转正，核心由 AI 产业链景气扩张、能源价格上行拉动。
             </p>
           </BaseCard>
@@ -156,7 +156,7 @@ export const ContentSlide04: React.FC = () => {
                   为主要推手，
                   <span className="font-semibold text-webank-accent">消费品</span>
                   涨价力度有限，属于
-                  <span className="font-semibold text-webank-blue">生产端价格修复</span>
+                  <span className="text-webank-blue">生产端价格修复</span>
                   ，未出现全面消费通胀。
                 </p>
                 <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] leading-snug text-webank-accent marker:text-webank-accent">

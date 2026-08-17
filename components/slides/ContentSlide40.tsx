@@ -40,7 +40,7 @@ export const ContentSlide40: React.FC = () => {
           </BaseCard>
           <BaseCard title="房价跌幅越大，居民消费越低" delay="120ms">
             <p className="text-xs">
-              厦大×蚂蚁集团2025Q4—2026Q1连续两期调查显示，房价跌幅超15%时，一套房家庭月均消费较房价上涨时少<span className="text-red-500 font-semibold">11.9%</span>，多套房家庭少<span className="text-red-500 font-semibold">25.9%</span>。
+              厦大×蚂蚁集团2025Q4—2026Q1连续两期调查显示，房价跌幅超15%时，一套房家庭月均消费较房价上涨时少<span className="text-green-600 font-semibold">11.9%</span>，多套房家庭少<span className="text-green-600 font-semibold">25.9%</span>。
             </p>
             <p className="mt-1 text-xs">
               文娱与外出餐饮最先收缩。2025Q4报告判断"房价稳定有助于激发消费动力"，2026Q1约<span className="text-webank-blue font-semibold">23%</span>家庭计划缩减消费。

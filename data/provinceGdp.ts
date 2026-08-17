@@ -1,6 +1,12 @@
 // 2026年上半年各省份GDP及增速
 
-export const provinceGdpDataTop15 = [
+export interface ProvinceGdpItem {
+  province: string;
+  gdp: number;
+  growth: string;
+}
+
+export const provinceGdpDataTop15: ProvinceGdpItem[] = [
   { province: '广东', gdp: 7.23, growth: '4.5%' },
   { province: '江苏', gdp: 7.04, growth: '5.2%' },
   { province: '山东', gdp: 5.32, growth: '5.6%' },
@@ -18,7 +24,7 @@ export const provinceGdpDataTop15 = [
   { province: '陕西', gdp: 1.75, growth: '3.8%' },
 ];
 
-export const provinceGdpDataRest = [
+export const provinceGdpDataRest: ProvinceGdpItem[] = [
   { province: '重庆', gdp: 1.67, growth: '4.2%' },
   { province: '辽宁', gdp: 1.62, growth: '2.5%' },
   { province: '云南', gdp: 1.62, growth: '2.5%' },
@@ -35,4 +41,20 @@ export const provinceGdpDataRest = [
   { province: '宁夏', gdp: 0.28, growth: '4.9%' },
   { province: '青海', gdp: 0.21, growth: '5.0%' },
   { province: '西藏', gdp: 0.16, growth: '6.3%' },
+];
+
+/**
+ * 合并所有省份GDP数据，用于地图热力图
+ */
+export const provinceGdpMapData = [
+  ...provinceGdpDataTop15.map((item) => ({
+    name: item.province,
+    gdp: item.gdp,
+    growth: item.growth,
+  })),
+  ...provinceGdpDataRest.map((item) => ({
+    name: item.province,
+    gdp: item.gdp,
+    growth: item.growth,
+  })),
 ];

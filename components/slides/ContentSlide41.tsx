@@ -17,7 +17,7 @@ export const ContentSlide41: React.FC = () => {
     <BaseContentSlide title="在三重约束压制总消费大盘同时，居民消费结构发生切换：压缩大宗耐用品，资源向体验文娱、情绪陪伴、健康养老等软消费倾斜" cardColumns={2}>
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
+        <div className="grid grid-cols-3 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="居民消费趋势" delay="0ms" variant="accent" titleClassName="text-sm">
             <ul className="list-disc pl-4 space-y-1 text-xs">
               <li>
@@ -34,19 +34,29 @@ export const ContentSlide41: React.FC = () => {
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="政策支持" delay="120ms" titleClassName="text-sm">
+          {/* 左侧：房价政策 */}
+          <BaseCard title="房价政策" delay="120ms" titleClassName="text-sm">
             <ul className="list-disc pl-4 space-y-1 text-xs">
               <li>
-                <span className="font-semibold">稳楼市：</span>
-                4月、7月政治局均强调稳定房地产，延续"止跌回稳"基调，因城施策控增量、去库存、优供给。
-              </li>
-              <li>
-                <span className="font-semibold">需求端：</span>
+                <span className="font-semibold">短期·需求端：</span>
                 Q2深圳、广州、苏州等地大幅上调公积金贷款上限；武汉等地对多孩家庭发放6—12万元购房补贴。
               </li>
               <li>
-                <span className="font-semibold">供给端：</span>
+                <span className="font-semibold">中长期·稳楼市：</span>
+                4月、7月政治局均强调稳定房地产，延续"止跌回稳"基调，因城施策控增量、去库存、优供给。
+              </li>
+              <li>
+                <span className="font-semibold">中长期·供给端：</span>
                 专项债收购存量土地力度加大，商品房待售面积连续下降，一线新房价格环比四个月回升。
+              </li>
+            </ul>
+          </BaseCard>
+          {/* 右侧：收入就业政策 */}
+          <BaseCard title="收入就业政策" delay="240ms" titleClassName="text-sm">
+            <ul className="list-disc pl-4 space-y-1 text-xs">
+              <li>
+                <span className="font-semibold">收入保障：</span>
+                二季度人社部研究制定《2026年最低工资标准调整国家年度指导意见》，推动各地落实调整。
               </li>
               <li>
                 <span className="font-semibold">扩消费：</span>
