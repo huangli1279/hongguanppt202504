@@ -23,7 +23,7 @@ export const ContentSlide18: React.FC = () => {
   const breakdownLineConfigs: LineConfig[] = [
     { dataKey: 'construction', name: '建筑安装工程', strokeWidth: 2.5 },
     { dataKey: 'equipment', name: '设备工器具购置', strokeWidth: 2 },
-    { dataKey: 'otherExpenses', name: '其他费用', strokeWidth: 2 },
+    { dataKey: 'otherExpenses', name: '其他费用', strokeWidth: 2, pointOffsets: { '2026-06': 10 } },
   ];
 
   return (
