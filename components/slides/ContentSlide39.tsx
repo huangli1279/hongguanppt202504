@@ -56,20 +56,20 @@ export const ContentSlide39: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="失业率" delay="0ms" variant="accent">
             <p className="text-xs">
-              二季度失业率维持在<span className="text-red-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，但16-24岁失业率长期维持在<span className="text-red-500 font-semibold">15%</span>的高位。2026年毕业生预计<span className="text-red-500 font-semibold">1270万</span>，继续创历史新高。
+              二季度失业率维持在<span className="text-green-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，但16-24岁失业率长期维持在<span className="text-green-500 font-semibold">15%</span>的高位。2026年毕业生预计<span className="text-green-500 font-semibold">1270万</span>，继续创历史新高。
             </p>
           </BaseCard>
           <BaseCard title="就业结构变化" delay="120ms">
             <p className="text-xs">
-              近五年，全国就业人数减少<span className="text-red-500 font-semibold">2600万</span>。灵活就业人数从21年的<span className="text-red-500 font-semibold">2亿</span>拓展到25年的约<span className="text-red-500 font-semibold">2.8亿</span>，26年预计<span className="text-red-500 font-semibold">3.2亿</span>人，增长迅猛。
+              近五年，全国就业人数减少<span className="text-green-500 font-semibold">2600万</span>。灵活就业人数从21年的<span>2亿</span>拓展到25年的约<span>2.8亿</span>，26年预计<span className="text-green-500 font-semibold">3.2亿</span>人，增长迅猛。
             </p>
             <p className="mt-2 text-xs">
-              报告表明，AI可能会影响中国约<span className="text-red-500 font-semibold">31%</span>的岗位，约<span className="text-red-500 font-semibold">9.6%</span>的岗位（约<span className="text-red-500 font-semibold">7000万</span>份）面临被替代风险。上海科技大学研究表明近三年约有<span className="text-red-500 font-semibold">2100万</span>个岗位由任务重组而生，占总招聘岗位的<span className="text-red-500 font-semibold">18.6%</span>。
+              报告表明，AI可能会影响中国约<span>31%</span>的岗位，约<span className="text-green-500 font-semibold">9.6%</span>的岗位（约<span className="text-green-500 font-semibold">7000万</span>份）面临被替代风险。上海科技大学研究表明近三年约有<span className="text-red-500 font-semibold">2100万</span>个岗位由任务重组而生，占总招聘岗位的<span className="text-red-500 font-semibold">18.6%</span>。
             </p>
           </BaseCard>
           <BaseCard title="失业对支出的影响" delay="240ms">
             <p className="text-xs">
-              调查显示，全职工作群体月均总支出<span className="text-red-500 font-semibold">3521</span>元，失业3个月以内、3个月以上分别降低<span className="text-red-500 font-semibold">14.0%</span>、<span className="text-red-500 font-semibold">16.9%</span>，失业时间越长压制越明显。
+              调查显示，全职工作群体月均总支出<span>3521</span>元，失业3个月以内、3个月以上分别降低<span className="text-green-500 font-semibold">14.0%</span>、<span className="text-green-500 font-semibold">16.9%</span>，失业时间越长压制越明显。
             </p>
           </BaseCard>
         </div>
