@@ -8,9 +8,9 @@ export const ContentSlide18: React.FC = () => {
   // 固定资产投资关键分项折线图配置
   const investmentLineConfigs: LineConfig[] = [
     { dataKey: 'fixedAsset', name: '固定资产投资', strokeWidth: 2.5 },
-    { dataKey: 'manufacturing', name: '制造业投资', strokeWidth: 2 },
+    { dataKey: 'manufacturing', name: '制造业投资', strokeWidth: 2, pointOffsets: { '2026-06': -5 } },
     { dataKey: 'realEstate', name: '房地产开发投资', strokeWidth: 2 },
-    { dataKey: 'infrastructure', name: '基础设施建设投资', strokeWidth: 2 },
+    { dataKey: 'infrastructure', name: '基础设施建设投资', strokeWidth: 2, pointOffsets: { '2026-06': 5} },
   ];
 
   // 民间投资与国有控股投资折线图配置
