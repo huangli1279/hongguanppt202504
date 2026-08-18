@@ -131,31 +131,64 @@ export const ChinaMapHeatmap: React.FC<ChinaMapHeatmapProps> = ({
 
   useEffect(() => {
     const loadMap = async () => {
+      // 优先从本地 public 目录加载地图
+      const localSource = '/china.json';
+      
+      // CDN 备选列表
       const cdnSources = [
         'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
+        'https://unpkg.com/echarts@5.4.3/map/json/china.json',
+        'https://cdn.jsdelivr.net/npm/echarts@5.4.3/map/json/china.json',
+        'https://registry.npmmirror.com/echarts/5.4.3/files/source/map/json/china.json',
       ];
       
+      // 首先尝试本地加载
+      try {
+        console.log('Trying to load map from local:', localSource);
+        const response = await fetch(localSource, {
+          signal: AbortSignal.timeout(5000)
+        });
+        if (response.ok) {
+          const chinaJson = await response.json();
+          echarts.registerMap('china', chinaJson);
+          setMapLoaded(true);
+          console.log('China map loaded from local successfully');
+          return;
+        }
+      } catch (err) {
+        console.warn('Local map failed, trying CDN:', err);
+      }
+      
+      // CDN 备选
       for (const cdnUrl of cdnSources) {
         try {
+          console.log('Trying to load map from CDN:', cdnUrl);
           const response = await fetch(cdnUrl, {
             mode: 'cors',
-            signal: AbortSignal.timeout(8000)
+            signal: AbortSignal.timeout(10000)
           });
           if (response.ok) {
             const chinaJson = await response.json();
             echarts.registerMap('china', chinaJson);
             setMapLoaded(true);
+            console.log('China map loaded from CDN:', cdnUrl);
             return;
           }
         } catch (err) {
-          console.warn(`CDN failed: ${cdnUrl}`);
+          console.warn(`CDN failed: ${cdnUrl}`, err);
         }
       }
       
-      // 使用内置地图
-      const builtInMapData = getBuiltInChinaMap();
-      echarts.registerMap('china', builtInMapData);
-      setMapLoaded(true);
+      // 使用内置地图作为最后的备选
+      try {
+        const builtInMapData = getBuiltInChinaMap();
+        echarts.registerMap('china', builtInMapData);
+        setMapLoaded(true);
+        console.log('Using built-in simplified map');
+      } catch (err) {
+        setError('地图加载失败');
+        console.error('All map sources failed:', err);
+      }
     };
     loadMap();
   }, []);
