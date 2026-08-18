@@ -58,7 +58,7 @@ export const ContentSlide05: React.FC = () => {
               <BaseBarChart
                 data={industryGdpValueData}
                 title="三大产业GDP增速对比"
-                subtitle="数据来源: 国家统计局；单位: %"
+                subtitle="数据来源: 国家统计局｜单位: %"
                 xAxisKey="industry"
                 bars={[
                   { dataKey: '2025-06', name: '25-06', color: chartColors.quinary },
@@ -88,7 +88,7 @@ export const ContentSlide05: React.FC = () => {
                 }))}
                 xAxisKey="period"
                 title="三大产业对GDP增长贡献率"
-                subtitle="数据来源: 国家统计局；单位: %"
+                subtitle="数据来源: 国家统计局｜单位: %"
                 bars={stackedIndustryBars}
                 legendOrder={industryLegendOrder}
                 yAxisDomain={[0, 100]}
@@ -108,7 +108,7 @@ export const ContentSlide05: React.FC = () => {
               <BaseBarChart
                 data={industryContributionData}
                 title="不同行业GDP增速对比"
-                subtitle="数据来源: 国家统计局；单位: %；注：高技术制造业、装备制造业、数字产品制造业为上半年累计增速"
+                subtitle="数据来源: 国家统计局｜单位: %｜注：高技术制造业、装备制造业、数字产品制造业为上半年累计增速"
                 xAxisKey="industry"
                 bars={[
                   { dataKey: '2025-06', name: '25-06', color: chartColors.quaternary },

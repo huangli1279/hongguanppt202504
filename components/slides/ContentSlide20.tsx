@@ -42,7 +42,7 @@ export const ContentSlide20: React.FC = () => {
         <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
           <BaseCard title="① 开发投资延续惯性下探" delay="0ms" variant="accent">
             <p>
-              上半年房地产开发投资同比跌幅扩大至<span className="text-green-600">-18%</span>（1-2月为-10.4%），新开工面积降幅约23%，拖累固投整体表现（图1）。
+              上半年房地产开发投资同比跌幅扩大至<span className="text-green-600 font-bold">18%</span>（1-2月为<span className="text-green-600 font-bold">10.4%</span>），新开工面积降幅约<span className="text-green-600 font-bold">23%</span>，拖累固投整体表现（图1）。
             </p>
           </BaseCard>
           <BaseCard title="② 库存去化与价格端出现积极信号" delay="120ms">

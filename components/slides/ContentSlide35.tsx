@@ -53,8 +53,8 @@ export const ContentSlide35: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={depositIncrementQ2CompareData}
-              title="存款增量对比（万亿）"
-              subtitle="数据来源：中国人民银行 | 单位：万亿元"
+              title="存款增量对比"
+              subtitle="数据来源：中国人民银行 | 单位：万亿"
               xAxisKey="category"
               bars={[
                 { dataKey: 'q2024', name: '2024Q2', color: chartColors.quaternary },

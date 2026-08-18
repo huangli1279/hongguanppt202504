@@ -321,7 +321,7 @@ export const ContentSlide46: React.FC = () => {
             <BaseBarChart
               data={jobDemandYoyData}
               title="国内招聘网站：初级/重复岗位需求下降，AI相关岗位大幅上升"
-              subtitle="数据来源：BOSS直聘、猎聘、IMF《一场新的工业革命？》(2025)；Frey &amp; Osborne (2013)；WEF《未来就业报告》(2023)；Goldin &amp; Katz (1998) | 单位：%"
+              subtitle="数据来源：BOSS直聘、猎聘、IMF《一场新的工业革命？》(2025)｜Frey &amp; Osborne (2013)｜WEF《未来就业报告》(2023)｜Goldin &amp; Katz (1998)｜单位：%"
               subtitleClassName="!text-[5px]"
               xAxisKey="category"
               bars={[{ dataKey: 'yoy', name: '同比变化', color: '#1B4F72' }]}

@@ -45,7 +45,7 @@ export const ContentSlide06: React.FC = () => {
                 <span className="font-bold text-red-500">7万亿</span>
                 ，增速<span className="font-bold text-red-500">5.2%</span>
                 ，高技术制造<span className="font-bold text-red-500">+14.8%</span>
-                ，外贸<span className="font-bold text-red-500">+20%</span>以上。
+                ，进出口额<span className="font-bold text-red-500">+20%</span>以上。
               </li>
               <li>
                 <span>河南</span>增速

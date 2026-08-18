@@ -71,7 +71,7 @@ export const ContentSlide37: React.FC = () => {
             <BaseLineChart
               data={consumerConfidenceData}
               title="消费者信心指数"
-              subtitle="数据来源：国家统计局 | 单位：点；100为荣枯线"
+              subtitle="数据来源：国家统计局｜单位：点｜100为荣枯线"
               lines={confidenceLines}
               yAxisDomain={[70, 130]}
               showYAxis

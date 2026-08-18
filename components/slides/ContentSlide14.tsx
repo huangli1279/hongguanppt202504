@@ -96,7 +96,7 @@ export const ContentSlide14: React.FC = () => {
           <ChartContainer delay="840ms">
             <BaseBarChart
               title="五一假期出游人次与旅游消费"
-              subtitle="数据来源：文化和旅游部 | 出游人次：亿人；旅游花费：亿元"
+              subtitle="数据来源：文化和旅游部｜出游人次：亿人｜旅游花费：亿元"
               data={laborDayData}
               xAxisKey="period"
               bars={[

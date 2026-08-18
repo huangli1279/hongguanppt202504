@@ -123,7 +123,7 @@ export const ContentSlide39: React.FC = () => {
                 <BaseLineChart
                   data={flexibleEmploymentData}
                   title="中国灵活就业人员规模变化"
-                  subtitle="数据来源：公开资料整理 | 单位：亿人；虚线为预测值"
+                  subtitle="数据来源：公开资料整理｜单位：亿人｜虚线为预测值"
                   lines={flexibleEmploymentLines}
                   yAxisDomain={[1, 3.5]}
                   showYAxis={true}
