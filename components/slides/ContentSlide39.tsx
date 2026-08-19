@@ -59,12 +59,18 @@ export const ContentSlide39: React.FC = () => {
             </p>
           </BaseCard>
           <BaseCard title="就业结构变化" delay="120ms">
-            <p className="text-xs">
-              <span className="font-semibold text-gray-700">就业状态变化：</span>近五年，全国就业人数减少<span className="text-green-500 font-semibold">2600万</span>。灵活就业人数从21年的<span>2亿</span>拓展到25年<span>2.8亿</span>，26年预计<span className="text-green-500 font-semibold">3.2亿</span>，增长迅猛。
-            </p>
-            <p className="mt-2 text-xs">
-              <span className="font-semibold text-gray-700">岗位类型变化：</span>报告表明，AI可能会影响中国约<span>31%</span>的岗位，未来五年约<span className="text-green-500 font-semibold">7000万</span>岗位面临被替代风险（主要为基础岗位）。上海科技大学研究表明近三年约有<span className="text-red-500 font-semibold">2100万</span>个岗位由AI技能任务重组而生。短期AI替代效应明显，中长期来看AI创造新岗位。
-            </p>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs">
+                  <span className="font-semibold text-gray-700">就业状态变化：</span>近五年，全国就业人数减少<span className="text-green-500 font-semibold">2600万</span>。灵活就业人数从21年的<span>2亿</span>拓展到25年<span>2.8亿</span>，26年预计<span className="text-green-500 font-semibold">3.2亿</span>，增长迅猛。
+                </p>
+              </div>
+              <div className="pt-1 border-t border-gray-100">
+                <p className="text-xs">
+                  <span className="font-semibold text-gray-700">AI对岗位类型变化：</span>短期AI替代效应明显，报告表明，AI可能会影响中国约<span className="text-red-500 font-semibold">31%</span>的岗位，未来五年约<span className="text-green-500 font-semibold">7000万</span>岗位面临被替代风险（主要为基础岗位）。上海科技大学研究表明近三年约有<span className="font-semibold text-red-500">2100万</span>个岗位由AI技能任务重组而生。<span className="font-semibold text-red-500">中长期来看AI创造出的新岗位数量会超过减少的岗位数。</span>
+                </p>
+              </div>
+            </div>
           </BaseCard>
           <BaseCard title="失业对支出的影响" delay="240ms">
             <p className="text-xs">
