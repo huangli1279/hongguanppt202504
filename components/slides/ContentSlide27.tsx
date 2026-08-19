@@ -133,7 +133,7 @@ export const ContentSlide27: React.FC = () => {
               <div className="px-3.5 py-2.5 border-b border-slate-200 bg-slate-50 flex-shrink-0">
                 <h3 className="text-webank-blue leading-snug">
                   <span className="text-sm font-bold">景气分计算</span>
-                  <span className="text-[11px] font-normal">（参考申万宏源行业中观景气跟踪（量价利分位法）、中金五维打分卡（外需维度），采用多指标加权方法对细分行业进行景气评估）</span>
+                  <span className="text-[11px] font-normal">（参考申万宏源行业中观景气跟踪（量价利分位法）、中金五维打分卡，采用多指标加权方法对细分行业进行景气评估）</span>
                 </h3>
               </div>
 
