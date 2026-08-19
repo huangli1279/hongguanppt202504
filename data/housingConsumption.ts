@@ -11,33 +11,7 @@ export interface HousingConsumptionDataPoint {
 }
 
 export const housingConsumptionData: HousingConsumptionDataPoint[] = [
-  {
-    category: '一套房 >=0',
-    housingTransport: 1067,
-    foodLiving: 895,
-    entertainment: 488,
-    educationMedical: 347,
-    durables: 140,
-    total: 2939,
-  },
-  {
-    category: '一套房 [-15%,0)',
-    housingTransport: 962,
-    foodLiving: 817,
-    entertainment: 444,
-    educationMedical: 311,
-    durables: 135,
-    total: 2670,
-  },
-  {
-    category: '一套房 <-15%',
-    housingTransport: 969,
-    foodLiving: 799,
-    entertainment: 395,
-    educationMedical: 299,
-    durables: 127,
-    total: 2590,
-  },
+  // 大于一套房（多套房家庭）
   {
     category: '大于一套房 >=0',
     housingTransport: 1948,
@@ -64,6 +38,34 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     educationMedical: 412,
     durables: 210,
     total: 3630,
+  },
+  // 一套房家庭
+  {
+    category: '一套房 >=0',
+    housingTransport: 1067,
+    foodLiving: 895,
+    entertainment: 488,
+    educationMedical: 347,
+    durables: 140,
+    total: 2939,
+  },
+  {
+    category: '一套房 [-15%,0)',
+    housingTransport: 962,
+    foodLiving: 817,
+    entertainment: 444,
+    educationMedical: 311,
+    durables: 135,
+    total: 2670,
+  },
+  {
+    category: '一套房 <-15%',
+    housingTransport: 969,
+    foodLiving: 799,
+    entertainment: 395,
+    educationMedical: 299,
+    durables: 127,
+    total: 2590,
   },
 ];
 

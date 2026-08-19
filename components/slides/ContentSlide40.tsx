@@ -40,7 +40,7 @@ export const ContentSlide40: React.FC = () => {
           </BaseCard>
           <BaseCard title="消费与房价变化正相关" delay="120ms">
             <p className="text-sm">
-              厦大×蚂蚁集团调查显示，房价跌幅越大，家庭消费越低，且<span className="text-red-500 font-semibold">所有类别消费均下降</span>。房价跌幅超15%时，一套房家庭消费较房价上涨家庭消费下降<span className="text-green-600 font-semibold">11.9%</span>，多套房家庭下降<span className="text-green-600 font-semibold">25.9%</span>，其中文娱与外出餐饮收缩的幅度最大。
+              厦大×蚂蚁集团调查显示，房价跌幅越大，家庭消费越低，且<span className="text-red-500 font-semibold">所有类别消费均下降</span>。房价跌幅超15%时，大于一套房消费较房价上涨家庭消费下降<span className="text-green-600 font-semibold">25.9%</span>，一套房家庭为<span className="text-green-600 font-semibold">11.9%</span>，其中文娱与外出餐饮收缩的幅度最大。
             </p>
           </BaseCard>
         </div>
@@ -98,7 +98,7 @@ export const ContentSlide40: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-3 h-3 bg-[#9B72AA] rounded-sm"></span>
-                  <span className="text-[#9B72AA] font-bold">多套房: -25.9%</span>
+                  <span className="text-[#9B72AA] font-bold">大于一套房: -25.9%</span>
                 </div>
               </div>
               {/* 房价波动定义备注 */}
