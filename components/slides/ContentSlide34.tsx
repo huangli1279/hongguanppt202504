@@ -38,7 +38,7 @@ export const ContentSlide34: React.FC = () => {
       cardColumns={2}
     >
       <div className="flex flex-col h-full pb-6">
-        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0 h-[160px]">
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
           <BaseCard title="Q2企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
@@ -70,7 +70,7 @@ export const ContentSlide34: React.FC = () => {
         </div>
 
         <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
-          <ChartContainer delay="600ms" className="min-h-0 h-full">
+          <ChartContainer delay="600ms" className="min-h-0">
             <BaseBarChart
               data={corporateCreditStructureData}
               title="Q2新增人民币贷款结构"
@@ -94,11 +94,12 @@ export const ContentSlide34: React.FC = () => {
               labelNegativeOffsetsByIndex={{ 4: -35, 5: -55 }}
               xAxisAngle={-20}
               xAxisHeight={55}
+              labelFontSize={11}
               legendOrder={['2024年', '2025年', '2026年']}
               unit="亿元"
             />
           </ChartContainer>
-          <ChartContainer delay="600ms" className="min-h-0 h-full">
+          <ChartContainer delay="600ms" className="min-h-0">
             <BaseTable
               data={householdLoanChangeData}
               columns={loanColumns}
@@ -108,8 +109,8 @@ export const ContentSlide34: React.FC = () => {
               dateColumn="period"
               highlightRows={highlightRows}
               rowHeight="auto"
-              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[11px] leading-none"
-              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[11px] leading-none"
+              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[13px] leading-none"
+              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[13px] leading-none"
             />
           </ChartContainer>
         </div>
