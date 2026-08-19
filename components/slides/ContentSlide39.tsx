@@ -1,6 +1,8 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
+import { JobDemandBarChart } from '../charts/JobDemandBarChart';
+import { JobGrowthBarChart } from '../charts/JobGrowthBarChart';
 import { BaseCard } from '../base/BaseCard';
 import { chartColors, seriesColors } from '@/utils/chartColors';
 import { workTypeExpenditureData, jobDemandYoyData } from '@/data/employment';
@@ -103,65 +105,37 @@ export const ContentSlide39: React.FC = () => {
 
           {/* 第2列：岗位替代（负增长岗位） */}
           <ChartContainer delay="720ms">
-            <BaseBarChart
+            <JobDemandBarChart
               data={[
                 { name: '初级机器学习', yoy: -71.4 },
                 { name: '初级图像算法', yoy: -66.7 },
                 { name: '传统运维工程师', yoy: -60 },
-                { name: '基础测试工程师', yoy: -34 },
+                { name: '初级软件测试', yoy: -52.9 },
+                { name: '编辑/编校', yoy: -29 },
                 { name: '客户服务', yoy: -23 },
-                { name: '初级开发岗', yoy: -21 },
-                { name: '销售/商务/品牌', yoy: -10 },
-                { name: 'AI产品经理', yoy: 87.7 },
-                { name: 'AI工程师', yoy: 317 },
-                { name: '提示词工程师', yoy: 486.8 },
-                { name: '销售行政/商务（AI）', yoy: 682 },
+                { name: '视觉交互设计', yoy: -21 },
               ]}
               title="岗位需求变化（替代视角）"
-              subtitle="数据来源：BOSS直聘、猎聘 | 比例尺：-80%至700%"
-              bars={[{ dataKey: 'yoy', name: '同比变化', color: '#666' }]}
-              xAxisKey="yoy"
-              showYAxis={true}
-              yAxisDomain={[-80, 720]}
-              yAxisTickFormatter={(val) => `${val}%`}
-              unit="%"
-              showLabels={true}
-              labelFormatter={(val) => `${val}%`}
-              legendOrder={['同比变化']}
-              barSize={28}
-              layout="horizontal"
+              subtitle="数据来源：BOSS直聘、猎聘"
+              extraCard="短期：约7000万（5年）"
             />
           </ChartContainer>
 
           {/* 第3列：岗位新增（正增长岗位） */}
           <ChartContainer delay="840ms">
-            <BaseBarChart
+            <JobGrowthBarChart
               data={[
-                { name: '销售/商务/品牌', yoy: -10 },
-                { name: '初级开发岗', yoy: -21 },
-                { name: '客户服务', yoy: -23 },
-                { name: '基础测试工程师', yoy: -34 },
-                { name: '传统运维工程师', yoy: -60 },
-                { name: '初级图像算法', yoy: -66.7 },
-                { name: '初级机器学习', yoy: -71.4 },
+                { name: 'AI伦理社科', yoy: 78.3 },
+                { name: 'AI创意叙事', yoy: 84.2 },
                 { name: 'AI产品经理', yoy: 87.7 },
+                { name: 'AI智能体开发', yoy: 244 },
                 { name: 'AI工程师', yoy: 317 },
                 { name: '提示词工程师', yoy: 486.8 },
-                { name: '销售行政/商务（AI）', yoy: 682 },
+                { name: 'AI销售行政/商务', yoy: 682 },
               ]}
               title="岗位需求变化（增长视角）"
-              subtitle="数据来源：BOSS直聘、猎聘 | 比例尺：-80%至700%"
-              bars={[{ dataKey: 'yoy', name: '同比变化', color: '#666' }]}
-              xAxisKey="yoy"
-              showYAxis={true}
-              yAxisDomain={[-80, 720]}
-              yAxisTickFormatter={(val) => `${val}%`}
-              unit="%"
-              showLabels={true}
-              labelFormatter={(val) => `${val}%`}
-              legendOrder={['同比变化']}
-              barSize={18}
-              layout="horizontal"
+              subtitle="数据来源：BOSS直聘、猎聘"
+              extraCard="短期：2100万（3年）"
             />
           </ChartContainer>
 

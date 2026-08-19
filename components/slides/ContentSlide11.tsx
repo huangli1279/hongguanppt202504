@@ -77,11 +77,7 @@ export const ContentSlide11: React.FC = () => {
               <span className="text-red-500 font-bold">3.6%</span>
               （6月
               <span className="text-red-500 font-bold">4.1%</span>
-              ），为 2022 年四季度以来季度涨幅首次转正，推动营收利润率提升至
-              <span className="text-red-500 font-bold">5.56%</span>
-              （同比提高
-              <span className="text-red-500 font-bold">0.63%</span>
-              ）。生产资料和生活资料剪刀差持续扩大，6月为
+              ），为 2022 年四季度以来季度涨幅首次转正。生产资料和生活资料剪刀差持续扩大，6月为
               <span className="text-red-500 font-bold">6.4%</span>
               ，多数中下游企业盈利空间受到明显挤压。
             </p>
