@@ -133,6 +133,7 @@ export const ContentSlide19: React.FC = () => {
               unit="亿元"
               showLabels={false}
               showLineYAxis={true}
+              lineYAxisWidth={2}
               lineAxisDomain={[0, 2.5]}
               lineUnit=""
               lineYAxisTickFormatter={(val) => val.toFixed(1)}

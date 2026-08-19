@@ -49,7 +49,7 @@ export const ContentSlide11: React.FC = () => {
       cards={
         <>
           <BaseCard title="上半年企业利润稳定增长" delay="0ms" variant="accent">
-            <ul className="list-disc pl-5 space-y-1">
+            <ul className="list-disc pl-5 space-y-1 text-xs">
               <li>
                 <span className="font-bold">利润总量：</span>
                 上半年工业企业利润累计同比增长
@@ -62,17 +62,21 @@ export const ContentSlide11: React.FC = () => {
               </li>
               <li>
                 <span className="font-bold">FIFO效应：</span>
-                受“先进先出”成本核算影响，油价飙升初期，低价库存导致石化链利润短期暴涨（4月同比
+                受"先进先出"成本核算影响，油价飙升初期，低价库存导致石化链利润短期暴涨（4月同比
                 <span className="text-red-500 font-bold">+88.5%</span>
-                ）。AI相关上游产品价格和需求增长迅猛，导致计算机、通信电子设备制造业利润增长
+                ）。随着低价库存耗尽，该效应预计将逐步消退。
+              </li>
+              <li>
+                <span className="font-bold">AI算力需求爆发：</span>
+                AI相关上游产品价格和需求增长迅猛，导致计算机、通信电子设备制造业利润增长
                 <span className="text-red-500 font-bold">96%</span>
-                。
+                ，成为利润增长的核心驱动力之一。
               </li>
             </ul>
           </BaseCard>
 
           <BaseCard title="二季度PPI回升拉动价格增长" delay="120ms">
-            <p>
+            <p className="text-xs">
               二季度PPI保持上行增长
               <span className="text-red-500 font-bold">3.6%</span>
               （6月
@@ -85,21 +89,21 @@ export const ContentSlide11: React.FC = () => {
 
           <BaseCard delay="240ms" variant="accent">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md text-xs">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
                 预测与展望
               </span>
             </div>
-            <ul className="list-disc pl-5 space-y-1">
+            <ul className="list-disc pl-5 space-y-1 text-xs">
               <li>
                 <span>PPI：</span>
                 随着地缘因素缓和，年底回落至
                 <span>2–3%</span>
                 ，全年预计落在
                 <span>2.2–3%</span>
-                。
+                。（中金预测2.3%，华泰预测2.2%，银河证券预测3.1%）
               </li>
               <li>
                 <span className="font-bold">企业利润：</span>

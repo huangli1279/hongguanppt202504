@@ -164,8 +164,6 @@ export interface SpecialBondDataPoint {
 }
 
 export const specialBondData: SpecialBondDataPoint[] = [
-  { period: '2025-02', planned: 3503, actual: 3920, completionRate: 1.12 },
-  { period: '2025-03', planned: 3383, actual: 3635, completionRate: 1.07 },
   { period: '2025-04', planned: 3293, actual: 2301, completionRate: 0.70 },
   { period: '2025-05', planned: 3598, actual: 4432, completionRate: 1.23 },
   { period: '2025-06', planned: 5147, actual: 5271, completionRate: 1.02 },

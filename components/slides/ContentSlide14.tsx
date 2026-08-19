@@ -36,7 +36,7 @@ export const ContentSlide14: React.FC = () => {
           </BaseCard>
           <BaseCard title="一线城市明显分化，广州韧性突出" delay="120ms">
             <p>
-              四大一线城市消费走势分化：北京累计同比<span className="font-bold text-green-600">‑2.2%</span>、上海<span className="font-bold text-green-600">0.7%</span>、深圳<span className="font-bold text-green-600">1.2%</span>，广州达到<span className="font-bold text-red-500">2.9%</span>，表现显著优于其余一线。
+              四大一线城市社零分化：北京累计同比<span className="font-bold text-green-600">‑2.2%</span>、上海<span className="font-bold text-green-600">0.7%</span>、深圳<span className="font-bold text-green-600">1.2%</span>，广州达到<span className="font-bold text-red-500">2.9%</span>，表现显著优于其余一线。
             </p>
             <p>
               广州的消费拉动来自服务与汽车双轮驱动：餐饮收入增长<span className="font-bold text-webank-blue">5.8%</span>，汽车消费增长<span className="font-bold text-red-500">8.2%</span>，新能源车增速<span className="font-bold text-red-500">29.2%</span>，对本地消费形成有力支撑。

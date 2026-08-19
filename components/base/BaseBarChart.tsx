@@ -93,6 +93,8 @@ export interface BaseBarChartProps {
   labelPositiveOffset?: number;
   unit?: string;
   showLineYAxis?: boolean;
+  /** 右侧Y轴的宽度（用于调整右侧轴与图表的间距），默认 0 */
+  lineYAxisWidth?: number;
   lineAxisDomain?: [number, number];
   lineUnit?: string;
   lineYAxisTickFormatter?: (value: any) => string;
@@ -235,6 +237,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   groupBySeries = false,
   unit = '%',
   showLineYAxis = false,
+  lineYAxisWidth = 0,
   lineAxisDomain,
   lineUnit = '%',
   lineYAxisTickFormatter,
@@ -416,6 +419,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
                 tickFormatter={lineYAxisTickFormatter || ((val) => `${val}${lineUnit}`)}
                 hide={!showLineYAxis}
+                width={lineYAxisWidth}
               />
             )}
             <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} labelMap={labelMap} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
