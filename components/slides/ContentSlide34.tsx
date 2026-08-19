@@ -38,47 +38,46 @@ export const ContentSlide34: React.FC = () => {
       cardColumns={2}
     >
       <div className="flex flex-col h-full pb-6">
-        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0 h-[160px]">
+          <BaseCard title="Q2企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                实体融资意愿低迷：Q2非金融企业贷款新增<span className="text-webank-blue">2.5万亿</span>，中长期仅增<span className="text-webank-blue">1300亿</span>（同比少增1.46万亿），为近年低点。
+                实体融资意愿低迷：Q2非金融企业贷款增长<span className="text-webank-blue">2.5万亿</span>，中长期贷款（剔票据）仅增<span className="text-webank-blue">1300亿</span>，同比少增<span className="text-webank-blue">1.46万亿</span>，为近年低点，与企业资本开支意愿偏弱、项目落地偏慢有关。
               </li>
               <li>
-                票据融资独撑增量：Q2票据新增<span className="text-webank-blue">1.9万亿</span>（同比多增1.4万亿），票利率约<span className="text-webank-blue">0.5%</span>，银行"以票充贷"突出。
+                票据融资独撑增量：Q2票据增长<span className="text-webank-blue">1.9万亿</span>（同比多增<span className="text-webank-blue">1.4万亿</span>），票利率约<span className="text-webank-blue">0.5%</span>，银行"以票充贷"冲量明显。
               </li>
               <li>
-                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢大盘<span className="text-webank-blue">5.2%</span>。
+                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢企业贷款整体增速<span className="text-webank-blue">5.2%</span>。
               </li>
             </ul>
           </BaseCard>
           <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-sm">
+            <p className="mb-1">Q2居民贷款下降<span className="text-green-600 font-semibold">6636亿</span>，同比多降<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续收缩。</p>
+            <p className="mb-1 font-semibold">从贷款分类看：</p>
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                Q2居民贷款减少<span className="text-green-600 font-semibold">6636亿</span>，同比多减<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续下降。
+                住房贷款：Q2下降<span className="text-green-600 font-semibold">4300亿</span>，同比多降<span className="text-green-600 font-semibold">2700亿</span>，提前还贷潮延续，新增按揭难以对冲存量压缩。
               </li>
               <li>
-                中长期（房贷）：Q2减少<span className="text-green-600 font-semibold">2395亿</span>（同比多减5263亿），新增按揭难对冲提前还贷。
+                消费贷款（不含房贷）：Q2下降<span className="text-green-600 font-semibold">1341亿</span>，同比多降<span className="text-green-600 font-semibold">2934亿</span>，消费需求修复仍显疲弱。
               </li>
               <li>
-                短期（消费）：Q2减少<span className="text-green-600 font-semibold">4241亿</span>，居民消费信心与风险偏好仍处低位。
-              </li>
-              <li>
-                居民消费贷（不含房贷）余额<span className="text-webank-blue">20.82万亿</span>。
+                经营贷款：Q2下降<span className="text-green-600 font-semibold">995亿</span>，同比多降<span className="text-green-600 font-semibold">2264亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
               </li>
             </ul>
           </BaseCard>
         </div>
 
         <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
-          <ChartContainer delay="600ms" className="min-h-0">
+          <ChartContainer delay="600ms" className="min-h-0 h-full">
             <BaseBarChart
               data={corporateCreditStructureData}
               title="Q2新增人民币贷款结构"
               subtitle="数据来源：中国人民银行 | 单位：亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'y2024', name: '2024年', color: chartColors.quaternary },
+                { dataKey: 'y2024', name: '2024年', color: '#6b7280' },
                 { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
                 { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
               ]}
@@ -99,7 +98,7 @@ export const ContentSlide34: React.FC = () => {
               unit="亿元"
             />
           </ChartContainer>
-          <ChartContainer delay="600ms" className="min-h-0">
+          <ChartContainer delay="600ms" className="min-h-0 h-full">
             <BaseTable
               data={householdLoanChangeData}
               columns={loanColumns}

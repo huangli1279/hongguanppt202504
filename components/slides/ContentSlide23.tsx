@@ -6,12 +6,30 @@ import { foreignTradeCumulativeYoyData } from '@/data/foreignTrade';
 
 export const ContentSlide23: React.FC = () => {
   const tradeLineConfigs: LineConfig[] = [
-    { dataKey: 'exports', name: '出口累计同比', strokeWidth: 2.5 },
-    { dataKey: 'imports', name: '进口累计同比', strokeWidth: 2 },
+    {
+      dataKey: 'exports',
+      name: '出口累计同比',
+      strokeWidth: 2.5,
+      pointOffsets: { '2026-06': -8, '2026-07': 8 },
+    },
+    {
+      dataKey: 'imports',
+      name: '进口累计同比',
+      strokeWidth: 2,
+      pointOffsets: { '2026-06': 16, '2026-07': -8 },
+    },
   ];
 
   const surplusLineConfigs: LineConfig[] = [
-    { dataKey: 'surplus', name: '进出口差额累计同比', strokeWidth: 2.5 },
+    {
+      dataKey: 'surplus',
+      name: '进出口差额累计同比',
+      strokeWidth: 2.5,
+      pointCallouts: {
+        '2026-06': { dx: 20, dy: 16 },
+        '2026-07': { dx: 20, dy: -8 },
+      },
+    },
   ];
 
   return (
@@ -34,7 +52,7 @@ export const ContentSlide23: React.FC = () => {
           </BaseCard>
           <BaseCard title="贸易顺差增速转负" delay="120ms">
             <p className="text-sm">
-              上半年，贸易顺差为<span className="text-black">5759亿美元</span>，受进口增长速度快于出口影响，顺差同比增速<span className="text-green-600 font-semibold">-1.25%</span>。
+              上半年，贸易顺差为<span className="text-black">5759亿美元</span>，受进口增长速度快于出口影响，顺差同比增速<span className="text-green-600 font-semibold">-1.25%</span>（1-7月回正至<span className="text-red-500 font-semibold">0.99%</span>）。
             </p>
           </BaseCard>
         </div>
@@ -52,6 +70,7 @@ export const ContentSlide23: React.FC = () => {
               referenceLineY={0}
               legendOrder={['出口累计同比', '进口累计同比']}
               xAxisTickCount={10}
+              highlightPeriods={['2026-06', '2026-07']}
             />
           </ChartContainer>
 
@@ -66,6 +85,7 @@ export const ContentSlide23: React.FC = () => {
               referenceLineY={0}
               legendOrder={['进出口差额累计同比']}
               xAxisTickCount={10}
+              highlightPeriods={['2026-06', '2026-07']}
             />
           </ChartContainer>
         </div>

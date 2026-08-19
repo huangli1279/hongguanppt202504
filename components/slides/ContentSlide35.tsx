@@ -2,39 +2,33 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart } from '../base/BaseBarChart';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { chartColors } from '@/utils/chartColors';
-import {
-  depositIncrementQ2CompareData,
-  householdDepositMonthlyChangeData,
-} from '@/data/depositData';
-
-const formatValue = (val: any) =>
-  val === null || val === undefined
-    ? '-'
-    : typeof val === 'number'
-      ? Number(val).toFixed(2)
-      : String(val);
-
-const depositColumns: ColumnConfig[] = [
-  { key: 'period', title: '月份', align: 'center', width: '0.9fr' },
-  { key: 'household', title: '住户存款', align: 'right', width: '1fr', render: formatValue },
-  { key: 'nonFinancial', title: '非金融企业存款', align: 'right', width: '1.2fr', render: formatValue },
-  { key: 'nonBankFin', title: '非银行业金融机构存款', align: 'right', width: '1.4fr', render: formatValue },
-];
+import { depositIncrementQ2CompareData } from '@/data/depositData';
 
 export const ContentSlide35: React.FC = () => {
-  const highlightRows = householdDepositMonthlyChangeData.reduce<number[]>((acc, item, index) => {
-    if (item.period.startsWith('2026-')) {
-      acc.push(index);
-    }
-    return acc;
-  }, []);
+  // 住户存款数据
+  const householdDepositData = [
+    { category: '2504', value: -1.39 },
+    { category: '2505', value: 0.47 },
+    { category: '2506', value: 2.48 },
+    { category: '2604', value: -1.94 },
+    { category: '2605', value: -0.11 },
+    { category: '2606', value: 1.94 },
+  ];
+
+  // 非银存款数据
+  const nonBankDepositData = [
+    { category: '2504', value: 1.57 },
+    { category: '2505', value: 1.18 },
+    { category: '2506', value: -0.52 },
+    { category: '2604', value: 2.46 },
+    { category: '2605', value: 1.14 },
+    { category: '2606', value: -0.99 },
+  ];
 
   return (
     <BaseContentSlide
       title={<>二季度居民存款净减少1049亿元，为2018年以来首次下降；非银机构存款则增加2.62万亿元</>}
-      cardColumns={1}
       chartColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -57,7 +51,7 @@ export const ContentSlide35: React.FC = () => {
               subtitle="数据来源：中国人民银行 | 单位：万亿"
               xAxisKey="category"
               bars={[
-                { dataKey: 'q2024', name: '2024Q2', color: chartColors.quaternary },
+                { dataKey: 'q2024', name: '2024Q2', color: '#6b7280' },
                 { dataKey: 'q2025', name: '2025Q2', color: chartColors.tertiary },
                 { dataKey: 'q2026', name: '2026Q2', color: chartColors.primary },
               ]}
@@ -76,20 +70,45 @@ export const ContentSlide35: React.FC = () => {
             />
           </ChartContainer>
 
-          <ChartContainer delay="720ms" className="min-h-0">
-            <BaseTable
-              data={householdDepositMonthlyChangeData}
-              columns={depositColumns}
-              title="居民存款变化"
-              subtitle="数据来源：中国人民银行｜单位：万亿"
-              colorizeNumbers={false}
-              dateColumn="period"
-              highlightRows={highlightRows}
-              rowHeight="auto"
-              cellClassName="!px-1.5 whitespace-nowrap tabular-nums text-[12px] leading-none"
-              headerCellClassName="!px-1.5 !py-1.5 whitespace-nowrap text-[11px] leading-tight"
+          <div className="grid grid-cols-2 gap-2">
+            <BaseBarChart
+              data={householdDepositData}
+              title="居民存款月度变化"
+              subtitle="单位：万亿"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'value', name: '居民存款', color: chartColors.primary },
+              ]}
+              yAxisDomain={[-3, 3]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              yAxisTickFormatter={(val) => `${val}`}
+              barSize={32}
+              showLabels={true}
+              labelNegativeOffsetsByIndex={{ 0: 0, 3: -70 }}
+              unit="万亿"
             />
-          </ChartContainer>
+            <BaseBarChart
+              data={nonBankDepositData}
+              title="非银存款月度变化"
+              subtitle="单位：万亿"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'value', name: '非银存款', color: chartColors.secondary },
+              ]}
+              yAxisDomain={[-3, 3]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              yAxisTickFormatter={(val) => `${val}`}
+              barSize={32}
+              showLabels={true}
+              labelOffset={6}
+              labelNegativeOffset={-18}
+              unit="万亿"
+            />
+          </div>
         </div>
       </div>
     </BaseContentSlide>

@@ -46,7 +46,7 @@ export const retailCpiForecastConsensus: RetailCpiForecastMetric[] = [
 /** 代表机构点预测 */
 export const retailCpiForecastByInstitution = [
   { institution: '中金', retail: 2.8, cpi: 0.9, note: '最新预测' },
-  { institution: 'Wind一致(1.8%)', retail: 1.8, cpi: 1.2, note: '8月一致预测' },
+  { institution: 'Wind', retail: 1.8, cpi: 1.2, note: '8月一致预测' },
   { institution: '高盛', retail: 1.5, cpi: 1.0, note: '8月预测' },
 ];
 

@@ -41,13 +41,19 @@ export const ContentSlide24: React.FC = () => {
       }
     },
     { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '集成电路' && val === 7.0) {
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
       if (row.name === '成品油') {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+        return <span className="text-green-600">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
       }
       return defaultRender?.(val);
     }},
     { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '农产品*' && val === 7.4) {
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
       if (row.name === '成品油') {
         if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
         return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
@@ -77,7 +83,7 @@ export const ContentSlide24: React.FC = () => {
           <BaseCard
             title="下半年展望：增速回落、结构分化"
             delay="240ms"
-            className="!bg-blue-100"
+            titleClassName="!bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
           >
             <p>
               机构判断下半年出口增速中枢将回落：基准情景三、四季度分别约<span className="text-black">12.4%</span>、<span className="text-black">7.7%</span>，全年约<span className="text-black">13.7%</span>（乐观 <span className="text-black">17.6%</span> / 悲观 <span className="text-black">9.8%</span>）。

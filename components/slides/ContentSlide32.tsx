@@ -26,14 +26,20 @@ export const ContentSlide32: React.FC = () => {
   return (
     <BaseContentSlide
       title="6月M1M2增速均回落，增速为2026年最低水平，主要为高基数引起"
-      cardColumns={1}
-      chartColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="mb-4 flex-shrink-0">
-          <BaseCard delay="0ms" variant="accent" title="资金活化改善趋势">
+        <div className="mb-4 flex-shrink-0 grid grid-cols-2 gap-6">
+          <BaseCard delay="0ms" variant="accent" title="M1 与 M2 双双回落，原因各异">
             <p>
-              6月M1增速回落主要受2025年同期高基数扰动——彼时化债加速推进、相关信贷集中投放，推高M1单月增量远超历史均值；M2同步回落则受信贷派生放缓与政府债发行偏慢共同拖累。剔除基数效应后，M1-M2剪刀差延续收窄态势，资金活化改善趋势未变。
+              <strong>M1同比回落：</strong>主要受去年同期化债加速落地形成的高基数扰动。
+            </p>
+            <p className="mt-2">
+              <strong>M2同比回落：</strong>信贷派生放缓、政府债发行节奏偏慢等现实因素，共同压制了 M2 总量的扩张。
+            </p>
+          </BaseCard>
+          <BaseCard delay="200ms" variant="accent" title="M1-M2 剪刀差边际收窄">
+            <p>
+              剔除 2025 年高基数扰动后，M1-M2 剪刀差有所收窄，资金活化趋势方向未变，但改善速率已明显放缓。
             </p>
           </BaseCard>
         </div>

@@ -50,7 +50,7 @@ export const ContentSlide30: React.FC = () => {
               1—6月累计增长 <span className="text-red-500 font-semibold">1.5%</span>，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间，支出进度 <span className="text-red-500 font-semibold">47.76%</span>。
             </p>
             <p className="mt-2">
-              新增7 月 30 日政治局会议明确要求加快财政支出、债券资金使用进度，推动尽快形成实物工作量，下半年支出提速明确。
+              7 月 30 日政治局会议明确要求加快财政支出、债券资金使用进度，推动尽快形成实物工作量，下半年支出提速明确。
             </p>
           </BaseCard>
           <BaseCard title="投向结构：重科技民生，轻传统基建" delay="120ms">

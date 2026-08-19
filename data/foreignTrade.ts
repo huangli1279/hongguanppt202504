@@ -110,6 +110,7 @@ export const foreignTradeCumulativeYoyData: ForeignTradeMonthlyUsdDataPoint[] = 
   { period: '2026-04', imports: 23.90, exports: 14.50, surplus: -5.92 },
   { period: '2026-05', imports: 24.60, exports: 15.50, surplus: -4.08 },
   { period: '2026-06', imports: 26.60, exports: 17.60, surplus: -1.25 },
+  { period: '2026-07', imports: 26.70, exports: 18.50, surplus: 0.99 },
 ];
 
 export const foreignTradeMonthlyUsdData: ForeignTradeMonthlyUsdDataPoint[] = [

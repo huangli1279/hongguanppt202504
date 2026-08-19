@@ -40,8 +40,24 @@ export const ContentSlide25: React.FC = () => {
         return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
       }
     },
-    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true },
-    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true },
+    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true,
+      render: (val: any) => {
+        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
+        if ([6.3, 8.1].includes(val)) return <span className="text-black">{val.toFixed(1)}</span>;
+        if (val >= 10) return <span className="text-red-500">{val.toFixed(1)}</span>;
+        if (val <= -10) return <span className="text-green-600">{val.toFixed(1)}</span>;
+        return <span className="text-slate-600">{val.toFixed(1)}</span>;
+      }
+    },
+    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true,
+      render: (val: any) => {
+        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
+        if (val === 1.8) return <span className="text-black">{val.toFixed(1)}</span>;
+        if (val >= 10) return <span className="text-red-500">{val.toFixed(1)}</span>;
+        if (val <= -10) return <span className="text-green-600">{val.toFixed(1)}</span>;
+        return <span className="text-slate-600">{val.toFixed(1)}</span>;
+      }
+    },
   ];
 
   return (
@@ -65,7 +81,7 @@ export const ContentSlide25: React.FC = () => {
           <BaseCard
             title="下半年展望：进口总量增速或回落"
             delay="240ms"
-            className="!bg-blue-100"
+            titleClassName="!bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
           >
             <p>
               集成电路、算力硬件仍保有结构性韧性，受高基数、AI硬件拉动边际减弱影响，下半年进口整体增速大概率回落。如内需进一步修复，大宗商品进口结构有望改善。

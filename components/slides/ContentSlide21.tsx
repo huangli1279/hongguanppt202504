@@ -64,73 +64,69 @@ export const ContentSlide21: React.FC = () => {
     <BaseContentSlide
       title={
         <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="inline-block bg-blue-100 text-black px-2 py-0.5 rounded font-bold">
-            投资端展望：政策发力叠加盈利滞后传导，固投有望边际改善，仍面地产民间投资约束
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            预测与展望
+          </span>
+          <span className="text-gray-900 font-semibold">
+            政策发力叠加盈利滞后传导，固投有望边际改善，仍面地产民间投资约束
           </span>
         </span>
       }
-      className="bg-blue-100 [&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
       cardColumns={4}
       chartColumns={1}
-      headerChild={
-        <div className="absolute -top-1 -right-6 sm:-right-12 z-20">
-          <div className="bg-gradient-to-b from-blue-600 to-blue-700 shadow-xl rounded-b-lg px-4 py-2.5 flex items-center justify-center">
-            <span className="text-white text-sm font-bold whitespace-nowrap">
-              投资端展望
-            </span>
-          </div>
-        </div>
-      }
       cards={
         <>
-          <BaseCard title="政策支持" delay="0ms" variant="accent" className="!gap-1.5 !p-3 !bg-blue-100">
-            <p className="text-[13px] leading-snug">
+          <BaseCard title="政策支持" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
               <span className="font-bold">8000亿</span>政策工具待落地，市场一致预期将在三季度密集落地，重点投向"六张网"新基建和AI等新质生产力领域。
             </p>
-            <p className="mt-1 text-[13px] leading-snug">
+            <p className="mt-1 text-[11px] leading-snug">
               "两重"项目全部下达。2026年"六张网"及相关领域投资超<span className="font-bold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
             </p>
           </BaseCard>
-          <BaseCard title="专项债发行提速" delay="120ms" className="!gap-1.5 !p-3 !bg-blue-100">
-            <p className="text-[13px] leading-snug">
+          <BaseCard title="专项债发行提速" delay="120ms" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
               6月发行规模创单月新高（5716亿元，达计划的1.65倍），Q3将迎来发行高峰，预计同比增长约30%。
             </p>
-            <p className="mt-1 text-[13px] leading-snug">
+            <p className="mt-1 text-[11px] leading-snug">
               同时需要关注债的结构，土储、特殊新增债占比会影响实际投资形成。
             </p>
           </BaseCard>
-          <BaseCard title="盈利传导" delay="240ms" className="!gap-1.5 !p-3 !bg-blue-100">
-            <p className="text-[13px] leading-snug">
+          <BaseCard title="盈利传导" delay="240ms" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
               企业盈利向资本开支存在2‑3个季度传导时滞。
             </p>
-            <p className="mt-1 text-[13px] leading-snug">
+            <p className="mt-1 text-[11px] leading-snug">
               2025年下半年起工业企业盈利修复，有望对2026下半年投资形成潜在支撑。
             </p>
           </BaseCard>
-          <BaseCard title="机构预测" delay="360ms" className="!gap-1.5 !p-3 !bg-blue-100">
-            <p className="text-[13px] leading-snug">
+          <BaseCard title="机构预测" delay="360ms" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
               主流机构判断固投走势呈前低后高，下半年边际回升。上半年固投弱于预期，机构下调全年定量预测，更多采用定性判断。
             </p>
-            <p className="mt-1 text-[13px] leading-snug">
+            <p className="mt-1 text-[11px] leading-snug">
               主要利好：8000亿政策性金融工具落地、Q3专项债发行提速，同时有去年同期低基数加持；
             </p>
-            <p className="mt-1 text-[13px] leading-snug">
+            <p className="mt-1 text-[11px] leading-snug">
               主要拖累：地产下行、民间投资信心不足。
             </p>
           </BaseCard>
         </>
       }
       charts={
-        <ChartContainer delay="600ms" ariaLabel="政策部署与投资重点" className="!bg-blue-100">
+        <ChartContainer delay="600ms" ariaLabel="政策部署与投资重点">
           <BaseTable
             data={policyTableData}
             columns={policyColumns}
             title="政策部署与投资重点"
             subtitle="资料来源：国务院及部委公开文件"
             rowHeight="dense"
-            cellClassName="px-2 py-1 align-top text-gray-700 !bg-blue-100"
-            headerCellClassName="px-2 py-1.5 text-center font-semibold !bg-blue-100"
-            headerBgColor="#3b82f6"
+            cellClassName="px-2 py-1 align-top text-gray-700"
+            headerCellClassName="px-2 py-1.5 text-center font-semibold"
+            headerBgColor="#6b7280"
             headerTextColor="#000000"
             bordered={true}
           />

@@ -29,29 +29,18 @@ export const ContentSlide40: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
           <BaseCard title="房价持续同比下跌，财富效应承压" delay="0ms" variant="accent">
             <p className="text-xs">
-              高盛测算，26年Q1居民财富中房地产占<span className="text-red-500 font-semibold">52%</span>。社科院26Q2报告指出，居民部门主动去杠杆，住房贷款<span className="text-green-600 font-semibold">连续13个季度负增长</span>，房价下行与收入预期偏弱叠加，房地产仍是内需修复的核心制约。
+              高盛测算，26年Q1居民财富中房地产占<span className="text-red-500 font-semibold">52%</span>。社科院26Q2报告指出，居民部门主动去杠杆，住房贷款<span className="text-green-600 font-semibold">连续13个季度负增长</span>。
             </p>
             <p className="mt-1 text-xs">
               70城新建商品住房价格2024年10月跌幅一度扩大至<span className="text-green-600 font-semibold">-6.2%</span>，2026年上半年仍在<span className="text-green-600 font-semibold">-3.5%</span>左右徘徊。
             </p>
           </BaseCard>
-          <BaseCard title="房价跌幅越大，居民消费越低" delay="120ms">
+          <BaseCard title="消费与房价变化正相关" delay="120ms">
             <p className="text-xs">
-              厦大×蚂蚁集团2025Q4—2026Q1连续两期调查显示，房价跌幅超15%时，一套房家庭月均消费较房价上涨时少<span className="text-green-600 font-semibold">11.9%</span>，多套房家庭少<span className="text-green-600 font-semibold">25.9%</span>。
-            </p>
-            <p className="mt-1 text-xs">
-              文娱与外出餐饮最先收缩。2025Q4报告判断"房价稳定有助于激发消费动力"，2026Q1约<span className="text-webank-blue font-semibold">23%</span>家庭计划缩减消费。
-            </p>
-          </BaseCard>
-          <BaseCard title="稳房价是修复消费预期的关键抓手" delay="240ms">
-            <p className="text-xs">
-              2026年6月《求是》发文提出，加快修复居民资产负债表，着力稳定房地产市场，防止资产价格下跌对消费信心的负向螺旋。
-            </p>
-            <p className="mt-1 text-xs">
-              中国社会科学院金融研究所2026Q2宏观金融季报中建议因城施策、推动核心城市房价率先企稳。
+              厦大×蚂蚁集团调查显示，房价跌幅越大，家庭消费越低，且<span className="text-red-500 font-semibold">所有类别消费均下降</span>。房价跌幅超15%时，一套房家庭消费较房价上涨家庭消费下降<span className="text-green-600 font-semibold">11.9%</span>，多套房家庭下降<span className="text-green-600 font-semibold">25.9%</span>，其中文娱与外出餐饮收缩的幅度最大。
             </p>
           </BaseCard>
         </div>
@@ -81,7 +70,7 @@ export const ContentSlide40: React.FC = () => {
               <BaseBarChart
                 data={housingConsumptionData}
                 title="家庭月均消费：按住房套数×房价涨跌分组"
-                subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》 | 单位：元｜样本量14,967人"
+                subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》 | 单位：元｜样本14,967人"
                 xAxisKey="category"
                 bars={consumptionBars}
                 yAxisDomain={[0, 5500]}
@@ -111,6 +100,10 @@ export const ContentSlide40: React.FC = () => {
                   <span className="w-3 h-3 bg-[#9B72AA] rounded-sm"></span>
                   <span className="text-[#9B72AA] font-bold">多套房: -25.9%</span>
                 </div>
+              </div>
+              {/* 房价波动定义备注 */}
+              <div className="mt-2 px-1 py-1 bg-gray-50 border border-gray-200 rounded text-[9px] text-gray-600 leading-relaxed">
+                <span className="font-medium text-gray-700">注：</span>研究将用户所在城市的房价波动定义为该城市2024年房价相较于2021年房价的变动幅度，即（2024年房价-2021年房价）/2021年房价。
               </div>
             </div>
           </ChartContainer>

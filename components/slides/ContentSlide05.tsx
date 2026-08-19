@@ -15,6 +15,18 @@ const stackedIndustryBars = [
   { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, stackId: 'stack' },
 ];
 
+const greyPalette = {
+  left1: '#94a3b8',   // 25-06 - 浅灰
+  left2: '#64748b',   // 25-09 - 中灰
+  left3: '#475569',   // 25-12 - 深灰
+  left4: '#334155',   // 26-03 - 更深灰
+  left5: '#1e293b',   // 26-06 - 最深灰
+  right1: '#cbd5e1',  // 25-06 - 浅灰蓝
+  right2: '#94a3b8',  // 25-12 - 中灰
+  right3: '#64748b',  // 26-03 - 深灰
+  right4: '#475569',  // 26-06 - 最深灰
+};
+
 const industryLegendOrder = ['第一产业', '第二产业', '第三产业'];
 
 export const ContentSlide05: React.FC = () => {
@@ -61,11 +73,11 @@ export const ContentSlide05: React.FC = () => {
                 subtitle="数据来源: 国家统计局｜单位: %"
                 xAxisKey="industry"
                 bars={[
-                  { dataKey: '2025-06', name: '25-06', color: chartColors.quinary },
-                  { dataKey: '2025-09', name: '25-09', color: chartColors.quaternary },
-                  { dataKey: '2025-12', name: '25-12', color: chartColors.tertiary },
-                  { dataKey: '2026-03', name: '26-03', color: chartColors.secondary },
-                  { dataKey: '2026-06', name: '26-06', color: chartColors.primary },
+                  { dataKey: '2025-06', name: '25-06', color: greyPalette.left1 },
+                  { dataKey: '2025-09', name: '25-09', color: greyPalette.left2 },
+                  { dataKey: '2025-12', name: '25-12', color: greyPalette.left3 },
+                  { dataKey: '2026-03', name: '26-03', color: greyPalette.left4 },
+                  { dataKey: '2026-06', name: '26-06', color: greyPalette.left5 },
                 ]}
                 legendOrder={['25-06', '25-09', '25-12', '26-03', '26-06']}
                 yAxisDomain={[0, 7]}
@@ -111,10 +123,10 @@ export const ContentSlide05: React.FC = () => {
                 subtitle="数据来源: 国家统计局｜单位: %｜注：高技术制造业、装备制造业、数字产品制造业为上半年累计增速"
                 xAxisKey="industry"
                 bars={[
-                  { dataKey: '2025-06', name: '25-06', color: chartColors.quaternary },
-                  { dataKey: '2025-12', name: '25-12', color: chartColors.tertiary },
-                  { dataKey: '2026-03', name: '26-03', color: chartColors.secondary },
-                  { dataKey: '2026-06', name: '26-06', color: chartColors.primary },
+                  { dataKey: '2025-06', name: '25-06', color: greyPalette.right1 },
+                  { dataKey: '2025-12', name: '25-12', color: greyPalette.right2 },
+                  { dataKey: '2026-03', name: '26-03', color: greyPalette.right3 },
+                  { dataKey: '2026-06', name: '26-06', color: greyPalette.right4 },
                 ]}
                 legendOrder={['25-06', '25-12', '26-03', '26-06']}
                 barSize={8}

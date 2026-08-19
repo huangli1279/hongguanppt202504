@@ -58,7 +58,7 @@ export const ContentSlide19: React.FC = () => {
           </BaseCard>
           <BaseCard title="② 企业盈利→投资传导滞后" delay="120ms">
             <p>
-              企业盈利→自筹资金传导滞后约<span className="font-semibold">2-3季度</span>。25年规上工业企业利润同比走弱，虽四季度以来利润大增，但尚未转化为固定资产投资。（图3）
+              企业盈利→自筹资金传导滞后约<span>2-3季度</span>。25年规上工业企业利润同比走弱，虽四季度以来利润大增，但尚未转化为固定资产投资。（图3）
             </p>
           </BaseCard>
           <BaseCard title="③ 专项债节奏错配" delay="240ms">

@@ -52,7 +52,7 @@ export const TableOfContentsSlide: React.FC = () => {
         {contents.map((item, index) => (
           <div
             key={item.id}
-            className="group relative flex items-center gap-4 px-4 py-2.5 rounded-lg border border-slate-100 bg-white/60 backdrop-blur-sm hover:border-webank-blue/40 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(26,58,138,0.25)] transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards overflow-hidden"
+            className="group relative flex items-center gap-5 px-5 py-4 rounded-xl border border-slate-100 bg-white/60 backdrop-blur-sm hover:border-webank-blue/40 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(26,58,138,0.25)] transition-all duration-300 opacity-0 animate-fade-in-up fill-mode-forwards overflow-hidden"
             style={{ animationDelay: `${index * 80}ms` }}
           >
             {/* Left accent bar */}
@@ -65,10 +65,10 @@ export const TableOfContentsSlide: React.FC = () => {
               <div className="mt-1 h-0.5 w-6 bg-webank-blue/30 group-hover:w-10 group-hover:bg-webank-blue transition-all duration-300" />
             </div>
 
-            <div className="w-px h-12 bg-gradient-to-b from-transparent via-slate-200 to-transparent shrink-0" />
+            <div className="w-px h-14 bg-gradient-to-b from-transparent via-slate-200 to-transparent shrink-0" />
 
-            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-webank-blue/[0.08] to-webank-lightBlue/[0.12] text-webank-blue group-hover:from-webank-blue group-hover:to-webank-lightBlue group-hover:text-white transition-all duration-300 shrink-0 ring-1 ring-webank-blue/10 group-hover:ring-webank-blue/30">
-              <item.icon size={22} strokeWidth={1.8} />
+            <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-webank-blue/[0.08] to-webank-lightBlue/[0.12] text-webank-blue group-hover:from-webank-blue group-hover:to-webank-lightBlue group-hover:text-white transition-all duration-300 shrink-0 ring-1 ring-webank-blue/10 group-hover:ring-webank-blue/30">
+              <item.icon size={26} strokeWidth={1.8} />
             </div>
 
             <div className="flex-grow min-w-0">

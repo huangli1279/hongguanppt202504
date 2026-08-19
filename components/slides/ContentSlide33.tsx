@@ -19,7 +19,7 @@ export const ContentSlide33: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="社融总量温和减速" delay="0ms" variant="accent">
             <p>
-              Q2新增社会融资规模<span className="text-webank-blue">6万亿元</span>，同比少增<span className="text-webank-blue">1.67万亿元</span>，存量增速微降至<span className="text-webank-blue">7.4%</span>。其中，人民币贷款增量<span className="text-webank-blue">1.86万亿</span>，同比少增<span className="text-webank-blue">1.18万亿</span>；政府债净融资<span className="text-webank-blue">2.9万亿元</span>，同比少增<span className="text-webank-blue">8862亿元</span>。社融增速微降，主要拖累项来自人民币贷款及政府债券的高基数效应。
+              Q2新增社会融资规模<span className="text-webank-blue">6万亿元</span>，同比少增<span className="text-webank-blue">1.67万亿元</span>，存量增速微降至<span className="text-webank-blue">7.4%</span>。其中，人民币贷款增量<span className="text-webank-blue">1.86万亿</span>，同比少增<span className="text-webank-blue">1.18万亿</span>，实体融资需求偏弱；政府债净融资<span className="text-webank-blue">2.9万亿元</span>，同比少增<span className="text-webank-blue">8862亿元</span>，主要受去年政府债券的高基数影响。
             </p>
           </BaseCard>
           <BaseCard title="企业债券融资" delay="120ms">

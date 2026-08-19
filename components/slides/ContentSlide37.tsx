@@ -18,7 +18,7 @@ export const ContentSlide37: React.FC = () => {
   return (
     <BaseContentSlide
       title="社零增速持续下行，消费信心长期处于收缩区间"
-      cardColumns={2}
+      cardColumns={3}
       chartColumns={2}
       headerClassName="!mb-3"
       cards={
@@ -29,9 +29,7 @@ export const ContentSlide37: React.FC = () => {
               <span className="font-bold text-green-600">1.3%</span>
               ，自2025年中
               <span className="font-bold text-red-600">5.0%</span>
-              高点逐月回落，较年初市场普遍预期的全年约
-              4.5%
-              明显偏低，消费修复显著不及预期。在当前轨迹下，全年社零达到前期市场预期中枢存在难度。消费的疲软主要受：收入、就业和房价财富效应三重约束。
+              高点逐月回落，较年初市场普遍预期的全年约 4.5% 明显偏低，8月预测全年社零增速已下调至1.5%-1.8%，消费修复显著不及预期。
             </p>
           </BaseCard>
           <BaseCard title="消费信心仍处收缩区间" delay="120ms">
@@ -45,6 +43,15 @@ export const ContentSlide37: React.FC = () => {
               。分项中就业信心长期低位徘徊，收入与消费意愿自22年4月低于
               <span className="text-webank-blue">100</span>
               ，整体信心偏弱制约居民消费意愿释放。
+            </p>
+          </BaseCard>
+          <BaseCard title="消费疲软的三重约束" delay="240ms">
+            <p>
+              1. 收入约束
+              <br />
+              2. 就业约束
+              <br />
+              3. 房价财富效应约束
             </p>
           </BaseCard>
         </>

@@ -59,6 +59,8 @@ export interface BaseBarChartProps {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   bars: BarConfig[];
+  /** 按系列分组排列柱子（住户存款的放一起，非银存款的放一起），默认 false */
+  groupBySeries?: boolean;
   lines?: BarLineConfig[];
   xAxisKey?: string;
   yAxisDomain?: [number, number];
@@ -111,6 +113,10 @@ export interface BaseBarChartProps {
   labelNegativeOffsets?: Record<string, number>;
   /** 按行索引的负值偏移量，key 为行索引，value 为偏移量 */
   labelNegativeOffsetsByIndex?: Record<number, number>;
+  /** 垂直分隔线（如在图表中间画一条虚线分割两组柱子） */
+  verticalDividerX?: string;
+  verticalDividerStroke?: string;
+  verticalDividerStrokeDasharray?: string;
 }
 
 const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%', labelMap }: any) => {
@@ -223,6 +229,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   labelPositiveOffset = 8,
   labelNegativeOffsets,
   labelNegativeOffsetsByIndex,
+  groupBySeries = false,
   unit = '%',
   showLineYAxis = false,
   lineAxisDomain,
@@ -238,6 +245,9 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   lineLabelContent,
   categoryGroups,
   highlightAreas,
+  verticalDividerX,
+  verticalDividerStroke = '#94a3b8',
+  verticalDividerStrokeDasharray = '4 4',
 }) => {
   const hasLines = !!lines && lines.length > 0;
   const ChartComponent = hasLines ? ComposedChart : BarChart;
@@ -275,6 +285,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
             data={data}
             margin={{ top: hasCategoryGroups ? 28 : 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
             barSize={barSize}
+            groupBySeries={groupBySeries}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
             {categoryGroups?.map((group) => (
@@ -333,6 +344,15 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               height={xAxisHeight}
               tickFormatter={xAxisTickFormatter}
             />
+            {verticalDividerX && (
+              <ReferenceLine
+                x={verticalDividerX}
+                stroke={verticalDividerStroke}
+                strokeDasharray={verticalDividerStrokeDasharray}
+                strokeWidth={1.5}
+                ifOverflow="extendDomain"
+              />
+            )}
             <YAxis
               hide={!showYAxis}
               domain={yAxisDomain ?? ['auto', 'auto']}

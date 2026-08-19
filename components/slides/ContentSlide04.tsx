@@ -144,33 +144,27 @@ export const ContentSlide04: React.FC = () => {
             </ChartContainer>
 
             <BaseCard
-              title="不同点"
+              title="三轮平减指数回正差异"
               variant="accent"
               delay="960ms"
               className="!p-2.5 !gap-1 flex-shrink-0 min-w-0"
             >
               <div className="flex flex-col gap-1.5">
-                <p className="text-[11px] leading-relaxed">
-                  三轮平减指数回升均以
-                  <span className="font-semibold text-webank-accent">工业品价格</span>
-                  为主要推手，
-                  <span className="font-semibold text-webank-accent">消费品</span>
-                  涨价力度有限，属于
-                  <span className="text-webank-blue">生产端价格修复</span>
-                  ，未出现全面消费通胀。
+                <p className="text-[11px] leading-relaxed font-bold">
+                  <span className="text-webank-blue">共性：</span>均为工业品驱动、消费端涨价有限，无全面通胀。
                 </p>
-                <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] leading-snug text-webank-accent marker:text-webank-accent">
+                <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] leading-snug marker:text-webank-accent">
                   <li>
-                    <span className="font-bold text-webank-accent whitespace-nowrap mr-1">2016–2017</span>
-                    <span className="text-webank-text">国内去产能收缩供给。</span>
+                    <span className="font-bold text-webank-accent whitespace-nowrap mr-1">2016‑17：</span>
+                    <span className="text-webank-text"><strong>国内供给收缩 + 地产投资上行</strong>，供给压缩叠加地产内生需求，国内周期主导。</span>
                   </li>
                   <li>
-                    <span className="font-bold text-webank-accent whitespace-nowrap mr-1">2021</span>
-                    <span className="text-webank-text">全球流动性宽松，海外大宗商品输入涨价，国内限产进一步放大价格波动。</span>
+                    <span className="font-bold text-webank-accent whitespace-nowrap mr-1">2021：</span>
+                    <span className="text-webank-text"><strong>海外输入通胀为主，全球流动性宽松 + 海外大宗商品涨价</strong>，国内限产放大波动，地产已走弱。</span>
                   </li>
                   <li>
-                    <span className="font-bold text-red-600 whitespace-nowrap mr-1">2026Q2</span>
-                    <span className="text-webank-text">主因能源价格上行，叠加 AI 算力等高端制造景气拉动工业需求，消费仅小幅贡献。</span>
+                    <span className="font-bold text-red-600 whitespace-nowrap mr-1">2026Q2：</span>
+                    <span className="text-webank-text"><strong>能源 + AI 高端制造拉动</strong>，地产链缺位，局部产业景气，但整体内需修复温和，缺少传统地产引擎支撑。</span>
                   </li>
                 </ul>
               </div>

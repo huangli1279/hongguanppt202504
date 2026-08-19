@@ -8,27 +8,24 @@ export const ContentSlide07: React.FC = () => {
     <BaseContentSlide
       title={
         <span className="inline-flex items-center gap-2 flex-wrap">
-          <span className="inline-block bg-blue-100 text-black px-2 py-0.5 rounded font-bold">
-            预测与展望：二季度为低点，三、四季度逐步回升，全年预计
-            <span className="font-bold">4.5%-4.8%</span>
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            预测与展望
+          </span>
+          <span className="text-gray-900 font-semibold">
+            二季度为低点，三、四季度逐步回升，全年预计
+            <span className="font-bold text-blue-600">4.5%-4.8%</span>
           </span>
         </span>
       }
-      className="bg-blue-100 [&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
+      className="[&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
       cardColumns={2}
       chartColumns={1}
-      headerChild={
-        <div className="absolute -top-1 -right-6 sm:-right-12 z-20">
-          <div className="bg-gradient-to-b from-blue-600 to-blue-700 shadow-xl rounded-b-lg px-4 py-2.5 flex items-center justify-center">
-            <span className="text-white text-sm font-bold whitespace-nowrap">
-              预测与展望
-            </span>
-          </div>
-        </div>
-      }
       cards={
         <>
-          <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3 !bg-blue-100">
+          <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
             <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
               <li>
 全年增速大概率落在
@@ -48,7 +45,7 @@ export const ContentSlide07: React.FC = () => {
             </ul>
           </BaseCard>
 
-          <BaseCard title="代表机构预测" delay="120ms" className="!gap-1.5 !p-3 !bg-blue-100">
+          <BaseCard title="代表机构预测" delay="120ms" className="!gap-1.5 !p-3">
             <div className="space-y-1.5 text-[13px] leading-snug">
               <div>
                 <span className="font-bold text-webank-blue">IMF：</span>
@@ -72,7 +69,7 @@ export const ContentSlide07: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图" className="!bg-blue-100">
+        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
           <GdpForecastRangeChart />
         </ChartContainer>
       }
