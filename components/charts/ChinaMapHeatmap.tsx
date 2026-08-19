@@ -251,7 +251,7 @@ export const ChinaMapHeatmap: React.FC<ChinaMapHeatmapProps> = ({
           type: 'map',
           map: 'china',
           roam: false,
-          zoom: 1.5,
+          zoom: 1.7,
           center: [105, 36],
           itemStyle: {
             borderColor: '#ffffff',
@@ -313,7 +313,7 @@ export const ChinaMapHeatmap: React.FC<ChinaMapHeatmapProps> = ({
           color: ['#22c55e', '#eab308', '#ef4444'],
         },
         calculable: false,
-        left: 10,
+        left: 20,
         bottom: 10,
         itemWidth: 14,
         itemHeight: 120,

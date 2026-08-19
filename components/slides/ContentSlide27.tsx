@@ -131,12 +131,15 @@ export const ContentSlide27: React.FC = () => {
           <ChartContainer delay="600ms" className="min-h-0 h-full">
             <div className="h-full flex flex-col rounded-lg border border-slate-200 bg-white overflow-hidden">
               <div className="px-3.5 py-2.5 border-b border-slate-200 bg-slate-50 flex-shrink-0">
-                <h3 className="text-sm font-bold text-webank-blue">景气分计算方法</h3>
+                <h3 className="text-webank-blue leading-snug">
+                  <span className="text-sm font-bold">景气分计算</span>
+                  <span className="text-[11px] font-normal">（参考申万宏源行业中观景气跟踪（量价利分位法）、中金五维打分卡（外需维度），采用多指标加权方法对细分行业进行景气评估）</span>
+                </h3>
               </div>
 
               <div className="flex-1 min-h-0 flex flex-col px-3.5 py-3 gap-3">
                 <p className="text-[11px] leading-relaxed text-slate-500 flex-shrink-0">
-                  注：利润和投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。
+                  注：投资已从累计同比换算为当月同比。出口=0 或 -100 视为无效数据已剔除。
                 </p>
 
                 <div className="flex-1 min-h-0 overflow-hidden rounded border border-slate-200 flex flex-col">

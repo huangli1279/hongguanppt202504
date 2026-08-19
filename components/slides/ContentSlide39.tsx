@@ -67,7 +67,12 @@ export const ContentSlide39: React.FC = () => {
               </div>
               <div className="pt-1 border-t border-gray-100">
                 <p className="text-xs">
-                  <span className="font-semibold text-gray-700">AI对岗位类型变化：</span>短期AI替代效应明显，报告表明，AI可能会影响中国约<span className="text-red-500 font-semibold">31%</span>的岗位，未来五年约<span className="text-green-500 font-semibold">7000万</span>岗位面临被替代风险（主要为基础岗位）。上海科技大学研究表明近三年约有<span className="font-semibold text-red-500">2100万</span>个岗位由AI技能任务重组而生。<span className="font-semibold text-red-500">中长期来看AI创造出的新岗位数量会超过减少的岗位数。</span>
+                  <span className="font-semibold text-gray-700">岗位需求变化：</span>基础岗位需求大幅下降，初级机器学习（<span className="text-green-500">-71%</span>）、传统运维（<span className="text-green-500">-60%</span>）等降幅显著；而AI相关岗位爆发式增长，AI销售（<span className="text-red-500">+682%</span>）、提示词工程师（<span className="text-red-500">+487%</span>）等新赛道高速扩张。
+                </p>
+              </div>
+              <div className="pt-1 border-t border-gray-100">
+                <p className="text-xs">
+                  <span className="text-gray-700">结论：</span>短期AI替代效应明显，但中长期来看AI创造出的新岗位数量会超过减少的岗位数。
                 </p>
               </div>
             </div>
@@ -109,40 +114,47 @@ export const ContentSlide39: React.FC = () => {
             />
           </ChartContainer>
 
-          {/* 第2列：岗位替代（负增长岗位） */}
-          <ChartContainer delay="720ms">
-            <JobDemandBarChart
-              data={[
-                { name: '初级机器学习', yoy: -71.4 },
-                { name: '初级图像算法', yoy: -66.7 },
-                { name: '传统运维工程师', yoy: -60 },
-                { name: '初级软件测试', yoy: -52.9 },
-                { name: '编辑/编校', yoy: -29 },
-                { name: '客户服务', yoy: -23 },
-                { name: '视觉交互设计', yoy: -21 },
-              ]}
-              title="岗位需求变化（替代视角）"
-              subtitle="数据来源：BOSS直聘、猎聘"
-              extraCard="短期：约7000万（5年）"
-            />
-          </ChartContainer>
-
-          {/* 第3列：岗位新增（正增长岗位） */}
-          <ChartContainer delay="840ms">
-            <JobGrowthBarChart
-              data={[
-                { name: 'AI伦理社科', yoy: 78.3 },
-                { name: 'AI创意叙事', yoy: 84.2 },
-                { name: 'AI产品经理', yoy: 87.7 },
-                { name: 'AI智能体开发', yoy: 244 },
-                { name: 'AI工程师', yoy: 317 },
-                { name: '提示词工程师', yoy: 486.8 },
-                { name: 'AI销售行政/商务', yoy: 682 },
-              ]}
-              title="岗位需求变化（增长视角）"
-              subtitle="数据来源：BOSS直聘、猎聘"
-              extraCard="短期：2100万（3年）"
-            />
+          {/* 第2-3列：岗位需求变化（合并标题，占两列） */}
+          <ChartContainer delay="720ms" className="col-span-2">
+            <div className="w-full h-full flex flex-col">
+              <div className="mb-2">
+                <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+                  岗位需求变化
+                </h3>
+                <p className="text-[10px] text-webank-subtext mt-1">数据来源：BOSS直聘、智联招聘、猎聘，BOSS直聘为2025年年底同比数据，智联招聘和猎聘为2026年上半年同比数据</p>
+              </div>
+              <div className="flex-grow min-h-0 grid grid-cols-2 gap-2">
+                <div className="h-full">
+                  <JobDemandBarChart
+                    data={[
+                      { name: '初级机器学习', yoy: -71.4 },
+                      { name: '初级图像算法', yoy: -66.7 },
+                      { name: '传统运维工程师', yoy: -60 },
+                      { name: '初级软件测试', yoy: -52.9 },
+                      { name: '编辑/编校', yoy: -29 },
+                      { name: '客户服务', yoy: -23 },
+                      { name: '视觉交互设计', yoy: -21 },
+                      { name: '初级开发', yoy: -21 },
+                    ]}
+                    title="替代视角"
+                  />
+                </div>
+                <div className="h-full">
+                  <JobGrowthBarChart
+                    data={[
+                      { name: 'AI伦理社科', yoy: 78.3 },
+                      { name: 'AI创意叙事', yoy: 84.2 },
+                      { name: 'AI产品经理', yoy: 87.7 },
+                      { name: 'AI智能体开发', yoy: 244 },
+                      { name: 'AI工程师', yoy: 317 },
+                      { name: '提示词工程师', yoy: 486.8 },
+                      { name: 'AI销售/商务', yoy: 682 },
+                    ]}
+                    title="增长视角"
+                  />
+                </div>
+              </div>
+            </div>
           </ChartContainer>
 
           {/* 第4列：不同工作类型总支出 */}
@@ -150,7 +162,8 @@ export const ContentSlide39: React.FC = () => {
             <BaseBarChart
               data={workTypeExpenditureData}
               title="不同工作类型总支出"
-              subtitle="数据来源：调查数据 | 单位：元 | 样本量：14967份"
+              subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》|单位：元|样本量：14967份"
+              subtitleClassName="text-[10px]"
               bars={workTypeExpenditureBars}
               xAxisKey="category"
               showYAxis={true}

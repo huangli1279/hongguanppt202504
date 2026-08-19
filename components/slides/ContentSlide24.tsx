@@ -86,10 +86,10 @@ export const ContentSlide24: React.FC = () => {
             titleClassName="!bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
           >
             <p>
-              机构判断下半年出口增速中枢将回落：基准情景三、四季度分别约<span className="text-black">12.4%</span>、<span className="text-black">7.7%</span>，全年约<span className="text-black">13.7%</span>（乐观 <span className="text-black">17.6%</span> / 悲观 <span className="text-black">9.8%</span>）。
+              机构判断下半年出口增速中枢将回落：基准情景三、四季度分别约<span className="text-black">12.4%</span>、<span className="text-black">7.7%</span>，全年约<span className="text-black">12%-16%</span>（中信 <span className="text-black">13.2%</span>，银河 <span className="text-black">15.8%</span>，中金 <span className="text-black">11.9%</span>）。
             </p>
             <p>
-              结构上呈现 K 型分化：AI 链电子产品、"新三样" 仍保持韧性，传统消费品出口压力较大。
+              结构延续 K 型分化：AI 链电子产品、"新三样" 仍保持韧性，传统消费品出口压力较大。
             </p>
             <p>
               风险来自去年高基数抬升、海外贸易摩擦、地缘局势扰动。

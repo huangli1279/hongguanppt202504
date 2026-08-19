@@ -1,3 +1,4 @@
+import { cn } from '@/utils/cn';
 import React from 'react';
 import {
   BarChart,
@@ -58,6 +59,8 @@ export interface BaseBarChartProps {
   data: any[];
   title: React.ReactNode;
   subtitle?: React.ReactNode;
+  /** 副标题的自定义类名 */
+  subtitleClassName?: string;
   bars: BarConfig[];
   /** 按系列分组排列柱子（住户存款的放一起，非银存款的放一起），默认 false */
   groupBySeries?: boolean;
@@ -207,6 +210,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   data,
   title,
   subtitle,
+  subtitleClassName,
   bars,
   lines,
   xAxisKey = 'period',
@@ -283,7 +287,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
           {title}
         </h3>
         {subtitle && (
-          <p className="text-xs text-webank-subtext mt-1">{subtitle}</p>
+          <p className={cn('text-xs text-webank-subtext mt-1', subtitleClassName)}>{subtitle}</p>
         )}
       </div>
       <div className="flex-grow min-h-0">

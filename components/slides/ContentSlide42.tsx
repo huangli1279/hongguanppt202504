@@ -255,7 +255,7 @@ const cards: {
 export const ContentSlide42: React.FC = () => {
   return (
     <BaseContentSlide
-      title="2026年二季度宏观经济总结：动能放缓、向新向优、分化延续、内需偏弱"
+      title="2026年二季度宏观经济总结：增速放缓、结构调优、分化延续、内需偏弱"
       headerClassName="!mb-4"
     >
       <div className="flex flex-col h-full min-h-0 gap-4 pb-4">

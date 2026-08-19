@@ -8,7 +8,7 @@ export const ContentSlide21: React.FC = () => {
   const policyTableData = [
     {
       area: '"六张网"基础设施建设\n（核心投资方向）',
-      content: '抓紧出台专项规划和实施方案，系统推进六大基础设施网络一体化发展：\n交通网：完善综合立体交通网络，推进城市群、都市圈轨道交通互联互通\n能源网："十五五"投资超5万亿元，加快新型电力系统建设，推进跨省跨区输电通道和储能设施建设\n水利网：实施重大水利工程，提升防洪减灾和水资源配置能力\n信息网：加快5G-A、算力网络、工业互联网建设，布局新一代信息基础设施\n物流网：完善国家物流枢纽网络，推进冷链物流和城乡配送体系建设\n市政网："十五五"投资约5万亿元，结合城市更新建设改造地下管网77万公里、排水防涝等市政设施',
+      content: '抓紧出台专项规划和实施方案，系统推进六大基础设施网络一体化发展：\n水网：实施重大水利工程，提升防洪减灾和水资源配置能力\n新型电网："十五五"投资超5万亿元，加快新型电力系统建设，推进跨省跨区输电通道和储能设施建设\n算力网：“十五五”投资超4万亿，加快全国一体化算力网络建设，推动算力基础设施高质量发展，支撑"东数西算"工程深入实施\n新一代通信网：加快5G-A、算力网络、工业互联网建设，布局新一代信息基础设施\n城市地下管网："十五五"投资约5万亿元，结合城市更新建设改造地下管网77万公里、排水防涝等市政设施\n物流网：完善国家物流枢纽网络，推进冷链物流和城乡配送体系建设',
     },
     {
       area: '人工智能产业',
@@ -41,9 +41,9 @@ export const ContentSlide21: React.FC = () => {
       render: (val: string) => {
         const lines = val.split('\n');
         return (
-          <div className="leading-snug text-caption">
+          <div className="leading-tight text-[10px]">
             {lines.map((line, idx) => {
-              const match = line.match(/^(交通网|能源网|水利网|信息网|物流网|市政网)：/);
+              const match = line.match(/^(水网|新型电网|算力网|新一代通信网|城市地下管网|物流网)：/);
               if (match) {
                 const rest = line.substring(match[0].length);
                 return (
@@ -103,15 +103,18 @@ export const ContentSlide21: React.FC = () => {
               2025年下半年起工业企业盈利修复，有望对2026下半年投资形成潜在支撑。
             </p>
           </BaseCard>
-          <BaseCard title="机构预测" delay="360ms" className="!gap-1.5 !p-3">
+          <BaseCard title="机构预测" delay="360ms" variant="accent" className="!gap-1.5 !p-3">
             <p className="text-[11px] leading-snug">
-              主流机构判断固投走势呈前低后高，下半年边际回升。上半年固投弱于预期，机构下调全年定量预测，更多采用定性判断。
+              主流机构判断固投走势呈<span className="font-bold">前低后高</span>，下半年边际回升。上半年固投弱于预期，机构下调全年定量预测，更多采用定性判断。
             </p>
             <p className="mt-1 text-[11px] leading-snug">
-              主要利好：8000亿政策性金融工具落地、Q3专项债发行提速，同时有去年同期低基数加持；
+              <span className="text-webank-green font-medium">主要利好：</span>8000亿政策性金融工具落地、Q3专项债发行提速，同时有去年同期低基数加持；
             </p>
             <p className="mt-1 text-[11px] leading-snug">
-              主要拖累：地产下行、民间投资信心不足。
+              <span className="font-medium">主要拖累：</span>地产下行、民间投资信心不足。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug text-gray-600">
+              <span className="font-medium">主要参考机构：</span>中金、银河证券、华泰证券、招商证券、申万宏源
             </p>
           </BaseCard>
         </>

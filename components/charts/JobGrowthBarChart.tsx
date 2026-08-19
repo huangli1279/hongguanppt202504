@@ -47,7 +47,7 @@ export const JobGrowthBarChart: React.FC<JobGrowthBarChartProps> = ({
     grid: {
       left: '3%',
       right: '12%',
-      top: '45px',
+      top: '10px',
       bottom: '8%',
       containLabel: true,
     },

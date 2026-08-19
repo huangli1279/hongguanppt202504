@@ -12,13 +12,13 @@ export interface HousingConsumptionDataPoint {
 
 export const housingConsumptionData: HousingConsumptionDataPoint[] = [
   {
-    category: '一套房 <-15%',
-    housingTransport: 969,
-    foodLiving: 799,
-    entertainment: 395,
-    educationMedical: 299,
-    durables: 127,
-    total: 2590,
+    category: '一套房 >=0',
+    housingTransport: 1067,
+    foodLiving: 895,
+    entertainment: 488,
+    educationMedical: 347,
+    durables: 140,
+    total: 2939,
   },
   {
     category: '一套房 [-15%,0)',
@@ -30,22 +30,22 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     total: 2670,
   },
   {
-    category: '一套房 >=0',
-    housingTransport: 1067,
-    foodLiving: 895,
-    entertainment: 488,
-    educationMedical: 347,
-    durables: 140,
-    total: 2939,
+    category: '一套房 <-15%',
+    housingTransport: 969,
+    foodLiving: 799,
+    entertainment: 395,
+    educationMedical: 299,
+    durables: 127,
+    total: 2590,
   },
   {
-    category: '大于一套房 <-15%',
-    housingTransport: 1394,
-    foodLiving: 1020,
-    entertainment: 593,
-    educationMedical: 412,
-    durables: 210,
-    total: 3630,
+    category: '大于一套房 >=0',
+    housingTransport: 1948,
+    foodLiving: 1244,
+    entertainment: 910,
+    educationMedical: 521,
+    durables: 274,
+    total: 4900,
   },
   {
     category: '大于一套房 [-15%,0)',
@@ -57,19 +57,19 @@ export const housingConsumptionData: HousingConsumptionDataPoint[] = [
     total: 4313,
   },
   {
-    category: '大于一套房 >=0',
-    housingTransport: 1948,
-    foodLiving: 1244,
-    entertainment: 910,
-    educationMedical: 521,
-    durables: 274,
-    total: 4900,
+    category: '大于一套房 <-15%',
+    housingTransport: 1394,
+    foodLiving: 1020,
+    entertainment: 593,
+    educationMedical: 412,
+    durables: 210,
+    total: 3630,
   },
 ];
 
 export const housingConsumptionCategoryGroups = [
-  { label: '一套房', x1: '一套房 <-15%', x2: '一套房 >=0', fill: '#94a3b8' },
-  { label: '大于一套房', x1: '大于一套房 <-15%', x2: '大于一套房 >=0', fill: '#94a3b8' },
+  { label: '一套房', x1: '一套房 >=0', x2: '一套房 <-15%', fill: '#94a3b8' },
+  { label: '大于一套房', x1: '大于一套房 >=0', x2: '大于一套房 <-15%', fill: '#94a3b8' },
 ];
 
 export const housingConsumptionNameByCategory = Object.fromEntries(
