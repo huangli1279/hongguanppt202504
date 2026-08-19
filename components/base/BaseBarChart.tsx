@@ -109,8 +109,6 @@ export interface BaseBarChartProps {
   highlightAreas?: HighlightAreaConfig[];
   /** 标签与柱子的偏移量（正值往上，负值往下），默认 2 */
   labelOffset?: number;
-  /** 标签字号，默认 9（非堆叠）/ 10（堆叠） */
-  labelFontSize?: number;
   /** 各数据列的负值偏移量，key 为 dataKey，value 为偏移量 */
   labelNegativeOffsets?: Record<string, number>;
   /** 按行索引的负值偏移量，key 为行索引，value 为偏移量 */
@@ -226,7 +224,6 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   labelFormatter,
   labelDy = 0,
   labelOffset = 2,
-  labelFontSize,
   labelNegativePosition = 'bottom',
   labelNegativeOffset = -10,
   labelPositiveOffset = 8,
@@ -422,7 +419,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                         const fill = bar.stackId
                           ? '#FFFFFF'
                           : (isOrange ? '#E07A5F' : (labelFill ?? '#475569'));
-                        const fontSize = labelFontSize ?? (bar.stackId ? 10 : 9);
+                        const fontSize = bar.stackId ? 10 : 9;
                         const fontWeight = 700;
 
                         let labelY = y;
