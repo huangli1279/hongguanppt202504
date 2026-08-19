@@ -84,7 +84,7 @@ export const ContentSlide25: React.FC = () => {
             titleClassName="!bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
           >
             <p>
-              集成电路、算力硬件仍保有结构性韧性，受高基数、AI硬件拉动边际减弱影响，下半年进口整体增速大概率回落。如内需进一步修复，大宗商品进口结构有望改善。
+              集成电路、算力硬件仍保有结构性韧性，受高基数、AI硬件拉动边际减弱影响，下半年进口整体增速大概率回落。
             </p>
           </BaseCard>
         </div>

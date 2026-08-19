@@ -63,6 +63,8 @@ export interface BaseBarChartProps {
   groupBySeries?: boolean;
   lines?: BarLineConfig[];
   xAxisKey?: string;
+  /** 图表布局方向，默认 'vertical' 垂直（柱子上沿Y轴），设为 'horizontal' 横向（柱子沿X轴） */
+  layout?: 'vertical' | 'horizontal';
   yAxisDomain?: [number, number];
   showYAxis?: boolean;
   yAxisTickFormatter?: (value: any) => string;
@@ -206,6 +208,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   bars,
   lines,
   xAxisKey = 'period',
+  layout = 'vertical',
   yAxisDomain = [0, 8],
   showYAxis = false,
   yAxisTickFormatter,
@@ -265,6 +268,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
   const hasHighlightAreas = !!highlightAreas && highlightAreas.length > 0;
   const useItemFill = data.some((d) => typeof d?.fill === 'string');
+  const isHorizontal = layout === 'horizontal';
   const labelMap = data.reduce((acc, d) => {
     if (d?.[xAxisKey] != null && d?.name != null) acc[d[xAxisKey]] = d.name;
     return acc;
@@ -283,11 +287,13 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <ChartComponent
             data={data}
+            layout={isHorizontal ? 'vertical' : undefined}
             margin={{ top: hasCategoryGroups ? 28 : 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
             barSize={barSize}
+            // @ts-expect-error groupBySeries exists in recharts but not in types
             groupBySeries={groupBySeries}
           >
-            <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
+            <CartesianGrid vertical={isHorizontal ? true : false} stroke={uiColors.grid} strokeDasharray="3 3" />
             {categoryGroups?.map((group) => (
               <ReferenceArea
                 key={`group-${group.label}-${group.x1}-${group.x2}`}
@@ -332,18 +338,55 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 {...(barAxisId ? { yAxisId: barAxisId } : {})}
               />
             )}
-            <XAxis
-              dataKey={xAxisKey}
-              axisLine={showYAxis ? { stroke: uiColors.axis } : false}
-              tickLine={false}
-              tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}
-              dy={xAxisAngle ? 25 : 10}
-              interval={xAxisInterval}
-              angle={xAxisAngle}
-              textAnchor={xAxisAngle && xAxisAngle < 0 ? 'end' : undefined}
-              height={xAxisHeight}
-              tickFormatter={xAxisTickFormatter}
-            />
+            {isHorizontal ? (
+              <>
+                <XAxis
+                  type="number"
+                  dataKey={xAxisKey}
+                  axisLine={showYAxis ? { stroke: uiColors.axis } : false}
+                  tickLine={false}
+                  tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}
+                  dy={10}
+                  interval={xAxisInterval}
+                  tickFormatter={yAxisTickFormatter}
+                  domain={yAxisDomain}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  hide={false}
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+                  width={80}
+                />
+              </>
+            ) : (
+              <>
+                <XAxis
+                  dataKey={xAxisKey}
+                  axisLine={showYAxis ? { stroke: uiColors.axis } : false}
+                  tickLine={false}
+                  tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}
+                  dy={xAxisAngle ? 25 : 10}
+                  interval={xAxisInterval}
+                  angle={xAxisAngle}
+                  textAnchor={xAxisAngle && xAxisAngle < 0 ? 'end' : undefined}
+                  height={xAxisHeight}
+                  tickFormatter={xAxisTickFormatter}
+                />
+                <YAxis
+                  hide={!showYAxis}
+                  domain={yAxisDomain ?? ['auto', 'auto']}
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+                  tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
+                  yAxisId={barAxisId}
+                  width={yAxisWidth}
+                />
+              </>
+            )}
             {verticalDividerX && (
               <ReferenceLine
                 x={verticalDividerX}
@@ -411,8 +454,9 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   {showLabels && (
                     <LabelList
                       dataKey={bar.dataKey}
-                      content={({ x, y, width, height, value, textAnchor, payload, index }) => {
-                        const isNegative = value < 0;
+                      content={({ x, y, width, height, value, textAnchor, payload, index }: any) => {
+                        const numValue = Number(value) || 0;
+                        const isNegative = numValue < 0;
                         const isOrange = (payload?.fill === '#E07A5F') || (isNegative && bar.color === '#1B4F72');
                         let labelText = labelFormatter ? labelFormatter(value) : value;
                         // 堆叠柱：统一用白色标签，确保对比度
@@ -422,26 +466,40 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                         const fontSize = bar.stackId ? 10 : 9;
                         const fontWeight = 700;
 
-                        let labelY = y;
-                        if (bar.stackId) {
-                          const stackBars = bars.filter(b => b.stackId === bar.stackId);
-                          if (stackBars.length > 1) {
-                            // 堆叠柱：y 是分段顶部，height 是分段像素高度
-                            // 居中于分段中间
-                            labelY = y + (height ?? 30) / 2;
-                          }
-                        } else if (isNegative) {
-                          const byIndexOffset = labelNegativeOffsetsByIndex?.[index ?? 0] ?? labelNegativeOffset;
-                          const negOffset = labelNegativeOffsets?.[bar.dataKey] ?? byIndexOffset;
-                          labelY = labelNegativePosition === 'bottom' ? y - height + negOffset : y;
+                        let labelX: number, labelY: number;
+                        const numX = Number(x) || 0;
+                        const numY = Number(y) || 0;
+                        const numWidth = Number(width) || 0;
+                        const numHeight = Number(height) || 0;
+                        
+                        if (isHorizontal) {
+                          // 横向布局：标签放在柱子末端右侧
+                          labelX = numX + numWidth + 5;
+                          labelY = numY + (numHeight || barSize) / 2;
+                          textAnchor = 'start';
                         } else {
-                          labelY = y - labelPositiveOffset;
+                          labelX = numX + numWidth / 2;
+                          labelY = numY;
+                          if (bar.stackId) {
+                            const stackBars = bars.filter(b => b.stackId === bar.stackId);
+                            if (stackBars.length > 1) {
+                              // 堆叠柱：y 是分段顶部，height 是分段像素高度
+                              // 居中于分段中间
+                              labelY = numY + numHeight / 2;
+                            }
+                          } else if (isNegative) {
+                            const byIndexOffset = labelNegativeOffsetsByIndex?.[index ?? 0] ?? labelNegativeOffset;
+                            const negOffset = labelNegativeOffsets?.[bar.dataKey] ?? byIndexOffset;
+                            labelY = labelNegativePosition === 'bottom' ? numY - numHeight + negOffset : numY;
+                          } else {
+                            labelY = numY - labelPositiveOffset;
+                          }
                         }
                         return (
                           <text
-                            x={x! + width! / 2}
+                            x={labelX}
                             y={labelY}
-                            textAnchor={textAnchor ?? 'middle'}
+                            textAnchor={textAnchor ?? (isHorizontal ? 'start' : 'middle')}
                             dominantBaseline="middle"
                             fill={fill}
                             fontSize={fontSize}
@@ -484,7 +542,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                         fill={lineColor}
                         fontSize={9}
                         fontWeight={600}
-                        content={lineLabelContent ? lineLabelContent : undefined}
+                        content={lineLabelContent ? (lineLabelContent as any) : undefined}
                         formatter={lineLabelContent ? undefined : lineLabelFormatter}
                       />
                     )}
