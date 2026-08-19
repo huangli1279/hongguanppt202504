@@ -93,12 +93,12 @@ export const ContentSlide40: React.FC = () => {
               {/* 消费差距标注 - 放在图表上方 */}
               <div className="absolute top-0 right-0 flex gap-6 text-xs">
                 <div className="flex items-center gap-1">
-                  <span className="w-3 h-3 bg-[#DC2626] rounded-sm"></span>
-                  <span className="text-[#DC2626] font-bold">一套房: -11.9%</span>
-                </div>
-                <div className="flex items-center gap-1">
                   <span className="w-3 h-3 bg-[#9B72AA] rounded-sm"></span>
                   <span className="text-[#9B72AA] font-bold">大于一套房: -25.9%</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-3 h-3 bg-[#DC2626] rounded-sm"></span>
+                  <span className="text-[#DC2626] font-bold">一套房: -11.9%</span>
                 </div>
               </div>
               {/* 房价波动定义备注 */}
