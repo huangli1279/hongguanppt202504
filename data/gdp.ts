@@ -24,6 +24,7 @@ export const gdpContributionData = [
   { period: '2025-09', consumption: 54.10, investment: 15.90, netExport: 30.00 },
   { period: '2025-12', consumption: 52.90, investment: 16.00, netExport: 31.10 },
   { period: '2026-03', consumption: 48.00, investment: 38.00, netExport: 16.00 },
+  { period: '2026-06', consumption: 45.20, investment: 34.00, netExport: 20.80 },
 ];
 
 // 三大产业GDP占比数据
@@ -51,7 +52,7 @@ export const gdpIndustryValueData = [
   { period: '2026-03', primary: 1.19, secondary: 11.61, tertiary: 20.61 },
 ];
 
-// Slide05 专用：近 7 期 GDP 不变价/现价同比增速
+// Slide05 专用：近 8 期 GDP 不变价/现价同比增速（2024Q3—2026Q2）
 export const gdpGrowthRecentData = [
   { period: '2024-09', real: 4.6, nominal: 3.96 },
   { period: '2024-12', real: 5.4, nominal: 4.56 },
@@ -60,46 +61,107 @@ export const gdpGrowthRecentData = [
   { period: '2025-09', real: 4.8, nominal: 3.71 },
   { period: '2025-12', real: 4.5, nominal: 3.85 },
   { period: '2026-03', real: 5.0, nominal: 4.94 },
+  { period: '2026-06', real: 4.3, nominal: 5.89 },
 ];
 
-// Slide05 专用：近 7 期 GDP 平减指数（含整体）
+// Slide05 专用：近 8 期 GDP 平减指数分项（含整体，2024Q3—2026Q2）
 export const deflatorRecentData = [
-  { period: '2024-09', primary: 1.25, secondary: -1.66, tertiary: -0.13, overall: -0.61 },
-  { period: '2024-12', primary: -1.05, secondary: -2.28, tertiary: 0.31, overall: -0.8 },
-  { period: '2025-03', primary: -1.24, secondary: -2.35, tertiary: 0.12, overall: -0.78 },
-  { period: '2025-06', primary: -1.41, secondary: -2.93, tertiary: -0.15, overall: -1.24 },
-  { period: '2025-09', primary: -3.85, secondary: -2.67, tertiary: 0.31, overall: -1.04 },
-  { period: '2025-12', primary: -1.12, secondary: -2.02, tertiary: 0.43, overall: -0.62 },
-  { period: '2026-03', primary: -1.97, secondary: -0.75, tertiary: 0.38, overall: -0.06 },
+  { period: '2024-09', primary: 1.24, secondary: -1.62, tertiary: -0.16, overall: -0.61 },
+  { period: '2024-12', primary: -1.07, secondary: -2.27, tertiary: 0.34, overall: -0.80 },
+  { period: '2025-03', primary: -1.24, secondary: -2.39, tertiary: 0.12, overall: -0.78 },
+  { period: '2025-06', primary: -1.40, secondary: -2.89, tertiary: -0.20, overall: -1.24 },
+  { period: '2025-09', primary: -3.89, secondary: -2.64, tertiary: 0.27, overall: -1.04 },
+  { period: '2025-12', primary: -1.16, secondary: -2.05, tertiary: 0.47, overall: -0.62 },
+  { period: '2026-03', primary: -1.93, secondary: -0.75, tertiary: 0.38, overall: -0.06 },
+  { period: '2026-06', primary: -3.19, secondary: 2.93, tertiary: 1.20, overall: 1.53 },
 ];
 
-// Slide06 专用：三大产业 GDP 当季值（万亿）
+// Slide05 专用：GDP 平减指数当季同比长序列（2015Q1—2026Q2）
+export const gdpDeflatorYoyLongData = [
+  { period: '2015-03', value: 0.29 },
+  { period: '2015-06', value: 0.65 },
+  { period: '2015-09', value: -0.16 },
+  { period: '2015-12', value: -0.28 },
+  { period: '2016-03', value: 0.66 },
+  { period: '2016-06', value: 0.87 },
+  { period: '2016-09', value: 1.38 },
+  { period: '2016-12', value: 2.83 },
+  { period: '2017-03', value: 4.48 },
+  { period: '2017-06', value: 3.90 },
+  { period: '2017-09', value: 4.07 },
+  { period: '2017-12', value: 4.09 },
+  { period: '2018-03', value: 3.88 },
+  { period: '2018-06', value: 3.72 },
+  { period: '2018-09', value: 3.25 },
+  { period: '2018-12', value: 3.20 },
+  { period: '2019-03', value: 1.17 },
+  { period: '2019-06', value: 1.75 },
+  { period: '2019-09', value: 1.15 },
+  { period: '2019-12', value: 1.16 },
+  { period: '2020-03', value: 1.59 },
+  { period: '2020-06', value: -0.24 },
+  { period: '2020-09', value: 0.50 },
+  { period: '2020-12', value: 0.43 },
+  { period: '2021-03', value: 2.31 },
+  { period: '2021-06', value: 5.11 },
+  { period: '2021-09', value: 4.64 },
+  { period: '2021-12', value: 5.52 },
+  { period: '2022-03', value: 3.70 },
+  { period: '2022-06', value: 3.04 },
+  { period: '2022-09', value: 1.78 },
+  { period: '2022-12', value: -0.14 },
+  { period: '2023-03', value: 0.75 },
+  { period: '2023-06', value: -0.73 },
+  { period: '2023-09', value: -0.82 },
+  { period: '2023-12', value: -0.90 },
+  { period: '2024-03', value: -1.08 },
+  { period: '2024-06', value: -0.76 },
+  { period: '2024-09', value: -0.61 },
+  { period: '2024-12', value: -0.80 },
+  { period: '2025-03', value: -0.78 },
+  { period: '2025-06', value: -1.24 },
+  { period: '2025-09', value: -1.04 },
+  { period: '2025-12', value: -0.62 },
+  { period: '2026-03', value: -0.06 },
+  { period: '2026-06', value: 1.53 },
+];
+
+// Slide06 专用：三大产业 GDP 增速对比（%，按产业分组，各季度柱子并排）
 export const industryGdpValueRecentData = [
-  { period: '2024-09', primary: 2.70, secondary: 12.28, tertiary: 19.17 },
-  { period: '2024-12', primary: 3.41, secondary: 13.51, tertiary: 20.43 },
-  { period: '2025-03', primary: 1.17, secondary: 11.15, tertiary: 19.52 },
-  { period: '2025-06', primary: 1.95, secondary: 12.67, tertiary: 19.52 },
-  { period: '2025-09', primary: 2.70, secondary: 12.46, tertiary: 20.26 },
-  { period: '2025-12', primary: 3.52, secondary: 13.68, tertiary: 21.59 },
-  { period: '2026-03', primary: 1.19, secondary: 11.61, tertiary: 20.61 },
+  { industry: '第一产业', '2025-06': 3.80, '2025-09': 4.00, '2025-12': 4.20, '2026-03': 3.80, '2026-06': 3.70 },
+  { industry: '第二产业', '2025-06': 4.80, '2025-09': 4.20, '2025-12': 3.40, '2026-03': 4.90, '2026-06': 3.00 },
+  { industry: '第三产业', '2025-06': 5.70, '2025-09': 5.40, '2025-12': 5.20, '2026-03': 5.20, '2026-06': 5.10 },
 ];
 
-// Slide06 专用：三大产业当季同比增速（按产业横排）
+// Slide06 专用：三大产业对 GDP 增长贡献率（%，各产业合计 100，自 2025-06 起）
 export const industryGrowthByQuarterRecentData = [
-  { industry: '第一产业', '2025-06': 3.80, '2025-09': 4.00, '2025-12': 4.20, '2026-03': 3.80 },
-  { industry: '第二产业', '2025-06': 4.80, '2025-09': 4.20, '2025-12': 3.40, '2026-03': 4.90 },
-  { industry: '第三产业', '2025-06': 5.70, '2025-09': 5.40, '2025-12': 5.20, '2026-03': 5.20 },
+  { period: '2025-06', primary: 4.6, secondary: 34.2, tertiary: 61.2 },
+  { period: '2025-09', primary: 7.1, secondary: 31.2, tertiary: 61.7 },
+  { period: '2025-12', primary: 9.1, secondary: 27.6, tertiary: 63.3 },
+  { period: '2026-03', primary: 2.6, secondary: 34.2, tertiary: 63.2 },
+  { period: '2026-06', primary: 4.9, secondary: 25.8, tertiary: 69.4 },
 ];
 
-// Slide06 专用：三大产业 GDP 当季同比拉动（百分点）
+// Slide06 专用：不同行业 GDP 增速对比（%）
+// 排序：第一产业 → 第二产业及分项 → 第三产业及分项（便于分组框）
 export const industryContributionRecentData = [
-  { period: '2024-09', primary: 0.29, secondary: 1.57, tertiary: 2.74 },
-  { period: '2024-12', primary: 0.39, secondary: 1.81, tertiary: 3.20 },
-  { period: '2025-03', primary: 0.14, secondary: 2.06, tertiary: 3.20 },
-  { period: '2025-06', primary: 0.24, secondary: 1.78, tertiary: 3.18 },
-  { period: '2025-09', primary: 0.34, secondary: 1.50, tertiary: 2.97 },
-  { period: '2025-12', primary: 0.41, secondary: 1.24, tertiary: 2.84 },
-  { period: '2026-03', primary: 0.13, secondary: 1.71, tertiary: 3.16 },
+  { industry: '农林牧渔', '2024-06': 3.8, '2024-09': 3.5, '2024-12': 3.9, '2025-03': 3.7, '2025-06': 4.0, '2025-09': 4.1, '2025-12': 4.3, '2026-03': 4.0, '2026-06': 3.9 },
+  // 第二产业及其分项
+  { industry: '工业', '2024-06': 5.9, '2024-09': 5.1, '2024-12': 5.8, '2025-03': 6.3, '2025-06': 6.2, '2025-09': 5.8, '2025-12': 5.0, '2026-03': 6.1, '2026-06': 4.7 },
+  { industry: '工业-制造业', '2024-06': 6.2, '2024-09': 5.0, '2024-12': 6.2, '2025-03': 6.8, '2025-06': 6.5, '2025-09': 6.3, '2025-12': 5.1, '2026-03': 6.3, '2026-06': 4.8 },
+  { industry: '工业-制造业-高技术制造', '2024-06': null, '2024-09': null, '2024-12': null, '2025-03': 9.7, '2025-06': null, '2025-09': null, '2025-12': 9.0, '2026-03': 12.5, '2026-06': 13.3 },
+  { industry: '工业-制造业-装备制造', '2024-06': null, '2024-09': null, '2024-12': null, '2025-03': 10.9, '2025-06': null, '2025-09': null, '2025-12': 9.2, '2026-03': 8.9, '2026-06': 9.3 },
+  { industry: '工业-制造业-数字产品制造', '2024-06': null, '2024-09': null, '2024-12': null, '2025-03': null, '2025-06': null, '2025-09': null, '2025-12': 9.3, '2026-03': 11.2, '2026-06': 12.3 },
+  { industry: '建筑业', '2024-06': 4.3, '2024-09': 3.0, '2024-12': 3.4, '2025-03': 3.1, '2025-06': -0.6, '2025-09': -2.3, '2025-12': -2.5, '2026-03': -3.8, '2026-06': -4.1 },
+  // 第三产业及其分项
+  { industry: '批发零售', '2024-06': 5.3, '2024-09': 5.0, '2024-12': 5.7, '2025-03': 5.8, '2025-06': 6.0, '2025-09': 4.9, '2025-12': 3.7, '2026-03': 4.1, '2026-06': 3.3 },
+  { industry: '交运仓储邮政', '2024-06': 6.5, '2024-09': 6.6, '2024-12': 7.9, '2025-03': 7.2, '2025-06': 5.6, '2025-09': 4.8, '2025-12': 3.4, '2026-03': 4.3, '2026-06': 5.1 },
+  { industry: '住宿餐饮', '2024-06': 5.9, '2024-09': 5.9, '2024-12': 6.6, '2025-03': 5.1, '2025-06': 5.2, '2025-09': 3.6, '2025-12': 5.6, '2026-03': 4.3, '2026-06': 5.8 },
+  { industry: '金融业', '2024-06': 4.3, '2024-09': 6.2, '2024-12': 6.5, '2025-03': 3.8, '2025-06': 5.8, '2025-09': 5.2, '2025-12': 3.3, '2026-03': 6.5, '2026-06': 6.9 },
+  { industry: '房地产业', '2024-06': -3.8, '2024-09': -1.2, '2024-12': 2.0, '2025-03': 1.0, '2025-06': 1.0, '2025-09': -0.2, '2025-12': -1.0, '2026-03': -0.1, '2026-06': -0.2 },
+  { industry: '信息服务业', '2024-06': 10.2, '2024-09': 10.0, '2024-12': 9.6, '2025-03': 10.3, '2025-06': 11.8, '2025-09': 11.7, '2025-12': 10.7, '2026-03': 10.6, '2026-06': 10.8 },
+  { industry: '租赁商务', '2024-06': 8.7, '2024-09': 10.8, '2024-12': 11.0, '2025-03': 10.2, '2025-06': 9.0, '2025-09': 8.6, '2025-12': 12.7, '2026-03': 12.2, '2026-06': 11.6 },
+  { industry: '其他行业', '2024-06': 3.1, '2024-09': 3.0, '2024-12': 3.8, '2025-03': 4.1, '2025-06': 4.4, '2025-09': 5.5, '2025-12': 5.9, '2026-03': 4.0, '2026-06': 3.7 },
 ];
 
 export const deflatorData: DeflatorDataPoint[] = [
@@ -116,4 +178,14 @@ export const deflatorData: DeflatorDataPoint[] = [
   { period: '2025-09', primary: -3.85, secondary: -2.67, tertiary: 0.31 },
   { period: '2025-12', primary: -1.12, secondary: -2.02, tertiary: 0.43 },
   { period: '2026-03', primary: -1.97, secondary: -0.75, tertiary: 0.38 },
+];
+
+// Slide08：国内外机构对中国2026年GDP增速预测对比（%）
+export const gdpForecastByInstitutionData = [
+  { institution: 'IMF (7月)', international: 4.6, domestic: null },
+  { institution: 'OECD (6月)', international: 4.5, domestic: null },
+  { institution: '中信证券 (6月)', international: null, domestic: 4.7 },
+  { institution: '中金公司 (6月)', international: null, domestic: 4.7 },
+  { institution: '华泰证券 (6月)', international: null, domestic: 5.0 },
+  { institution: '招商证券 (6月)', international: null, domestic: 5.0 },
 ];

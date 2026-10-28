@@ -1,97 +1,77 @@
 import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart } from '../base/BaseBarChart';
-import { chartColors } from '@/utils/chartColors';
-import { industryGrowthByIndustryRecentData as allIndustryData } from '../../data';
-
-const mainChartData = allIndustryData.filter(item =>
-  !['制造业', '高技术制造', '装备制造', '数字产品制造'].includes(item.industry)
-);
-
-const rightChartData = allIndustryData.filter(item =>
-  ['制造业', '高技术制造', '装备制造', '数字产品制造'].includes(item.industry)
-).sort((a, b) => {
-  const order = ['制造业', '高技术制造', '装备制造', '数字产品制造'];
-  return order.indexOf(a.industry) - order.indexOf(b.industry);
-});
+import { GdpForecastRangeChart } from '../charts/GdpForecastRangeChart';
 
 export const ContentSlide07: React.FC = () => {
   return (
     <BaseContentSlide
       title={
-        <>
-          高端制造及现代服务增长领跑，显著快于整体，新旧动能分化
-        </>
+        <span className="inline-flex items-center gap-2 flex-wrap">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            预测与展望
+          </span>
+          <span className="text-gray-900 font-semibold">
+            二季度为低点，三、四季度逐步回升，全年预计
+            <span className="font-bold text-blue-600">4.5%-4.8%</span>
+          </span>
+        </span>
       }
-      cardColumns={3}
+      className="[&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
+      cardColumns={2}
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="新动能·高端制造领跑" delay="0ms" variant="accent">
-            <p>
-              工业内部新动能持续突破：<span className="font-bold text-red-600">高技术制造</span>一季度同比增长<span className="text-red-600">12.5%</span>，<span className="font-bold text-red-600">装备制造</span>增长<span className="text-red-600">8.9%</span>，均显著快于<span className="font-bold">工业</span>整体的<span className="font-bold">6.1%</span>和<span className="font-bold">制造业</span>的<span className="font-bold">6.3%</span>。
-            </p>
+          <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
+            <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
+              <li>
+全年增速大概率落在
+<span className="font-bold text-[#b91c1c]">4.5%-4.8%</span>
+区间，处于政府目标（4.5%-5.0%）下限附近
+              </li>
+              <li>
+                下半年GDP增速将逐季回升，
+                <span className="font-bold">二季度是全年低点</span>
+              </li>
+              <li>
+                出口+AI产业链是核心增长支撑，房地产+消费疲弱是核心拖累
+              </li>
+              <li>
+                K型分化延续：新经济强、旧经济弱
+              </li>
+            </ul>
           </BaseCard>
 
-          <BaseCard title="新动能·现代服务高景气" delay="120ms">
-            <p>
-              第三产业中代表新质生产力的现代服务业延续两位数增长：<span className="font-bold text-red-600">信息服务业</span>一季度同比增长<span className="text-red-600">10.6%</span>，<span className="font-bold text-red-600">租赁商务</span>增长<span className="text-red-600">12.2%</span>，构成服务业增长的核心引擎。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="旧动能·地产建筑筑底" delay="600ms">
-            <p>
-              传统动能仍在周期底部运行：<span className="font-bold text-green-600">建筑业</span>增加值同比下降<span className="text-green-600">3.8%</span>，降幅较去年四季度继续扩大；<span className="font-bold text-green-600">房地产业</span>同比下降<span className="text-green-600">0.1%</span>，全国房地产开发投资同比下降<span className="font-bold text-green-600">11.2%</span>，仍是经济的主要拖累项。
-            </p>
+          <BaseCard title="代表机构预测" delay="120ms" className="!gap-1.5 !p-3">
+            <div className="space-y-1.5 text-[13px] leading-snug">
+              <div>
+                <span className="font-bold text-webank-blue">IMF：</span>
+                IMF在7月8日逆势上调
+                <span className="font-bold">4.4%→4.6%</span>
+                ，中国是为数不多被上调的主要经济体，理由是Q1表现超预期（高技术制造业+出口驱动）
+              </div>
+              <div>
+                <span className="font-bold text-webank-blue">OECD：</span>
+                基准情景2026年
+                <span className="font-bold">4.5%</span>
+                （较3月上调0.1pp）下半年能源价格上涨拖累、地产投资继续收缩、反内卷政策压制企业投资，出口受益于关税降低+高科技竞争力提升、基建受重大项目支撑。
+              </div>
+              <div>
+                <span className="font-bold text-webank-blue">国内券商：</span>
+                <span className="font-bold">4.7-5%</span>
+                ，部分机构预测全年增长5%。出口高景气带动，新经济加速抵御供给冲击，内需修复缓慢，AI资本开支+输入型通胀重塑景气。
+              </div>
+            </div>
           </BaseCard>
         </>
       }
       charts={
-        <div className="flex gap-4 sm:gap-6 h-full">
-          <div className="flex-1">
-            <ChartContainer delay="600ms">
-              <BaseBarChart
-                data={mainChartData}
-                title="一二三产业细分行业GDP当季同比数据"
-                subtitle="单位: %；数据来源：国家统计局"
-                xAxisKey="industry"
-                bars={[
-                  { dataKey: '2025-06', name: '2025-06', color: chartColors.quaternary },
-                  { dataKey: '2025-09', name: '2025-09', color: chartColors.tertiary },
-                  { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
-                  { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
-                ]}
-                legendOrder={['2025-06', '2025-09', '2025-12', '2026-03']}
-                barSize={10}
-                showYAxis
-                yAxisDomain={[-5, 14]}
-                showReferenceLine
-                referenceLineY={0}
-              />
-            </ChartContainer>
-          </div>
-          <div className="w-80 flex-shrink-0">
-            <ChartContainer delay="720ms">
-              <BaseBarChart
-                data={rightChartData}
-                title="工业-制造业及其部分细分行业GDP当季同比"
-                subtitle="单位: %；数据来源：国家统计局"
-                xAxisKey="industry"
-                bars={[
-                  { dataKey: '2025-12', name: '2025-12', color: chartColors.secondary },
-                  { dataKey: '2026-03', name: '2026-03', color: chartColors.primary },
-                ]}
-                legendOrder={['2025-12', '2026-03']}
-                barSize={20}
-                showYAxis
-                yAxisDomain={[-5, 14]}
-                showReferenceLine
-                referenceLineY={0}
-              />
-            </ChartContainer>
-          </div>
-        </div>
+        <ChartContainer delay="600ms" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
+          <GdpForecastRangeChart />
+        </ChartContainer>
       }
     />
   );

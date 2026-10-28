@@ -1,79 +1,101 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { chartColors } from '@/utils/chartColors';
-import { exportRegionTrendData, exportCompositionData } from '@/data/exportRegion';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
+import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
 
 export const ContentSlide29: React.FC = () => {
-  // 表格列配置
-  const columns: ColumnConfig[] = [
-    { key: 'period', title: '月份', align: 'center' },
-    { key: 'totalExport', title: '出口总值', align: 'right' },
-    { key: 'toUS', title: '美国', align: 'right' },
-    { key: 'toASEAN', title: '东盟', align: 'right' },
-    { key: 'toAfrica', title: '非洲', align: 'right' },
-    { key: 'toEU', title: '欧盟', align: 'right' },
-    { key: 'toLatinAmerica', title: '拉美', align: 'right' },
+  const lines: LineConfig[] = [
+    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: -18 },
+    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: 22 },
+    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
   ];
 
-  // 柱状图配置
   const bars: BarConfig[] = [
-    { dataKey: 'y2024', name: '25Q1', color: chartColors.tertiary },
-    { dataKey: 'y2025', name: '26Q1', color: chartColors.primary },
+    { dataKey: 'amount', name: '总额', color: '#4A79AA' },
+  ];
+  const growthLines: BarLineConfig[] = [
+    { dataKey: 'growth', name: '增速', color: '#E8913A', strokeWidth: 0, yAxisId: 'right', unit: '%' },
   ];
 
   return (
     <BaseContentSlide
-      title={<>对美出口继续下降，欧盟非洲支撑增长</>}
+      title={<>上半年一般公共预算收入同比增长4.7%，高于年初预算目标，进度略快于近年同期均值</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="对美出口持续下降，份额显著收缩" delay="0ms" variant="accent">
+          <BaseCard title="收入总量超出预期" delay="0ms" variant="accent">
             <p>
-              一季度对美出口降幅持续，1月同比<span className="text-green-600 font-semibold">-23.0%</span>，3月<span className="text-green-600 font-semibold">-26.5%</span>，较去年底<span className="text-green-600 font-semibold">-30.0%</span>虽有收窄；出口份额由去年的13.5%降至约<span className="text-green-600 font-semibold">9.9%</span>，<span className="font-semibold">下降3.6个百分点</span>，收缩显著。
+              上半年价格上行、股市活跃、外贸增势强劲有力支撑全国一般公共预算收入同比增长<span className="text-red-500 font-semibold">4.7%</span>，高于年初<span className="text-red-500 font-semibold">2.2%</span>的预算目标，收入进度达<span className="text-red-500 font-semibold">54.85%</span>，略快于近五年同期均值。
             </p>
           </BaseCard>
-          <BaseCard title="非美地区出口保持强劲" delay="120ms">
+          <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
             <p>
-              一季度我国对新兴市场出口高增长：2月对非<span className="text-red-500 font-semibold">+97.5%</span>、东盟<span className="text-red-500 font-semibold">+38.8%</span>、拉美<span className="text-red-500 font-semibold">+44.1%</span>。东盟、非洲、欧盟合并出口占比提升<span className="text-red-500 font-semibold">2.5个百分点</span>，<span className="font-semibold">部分对冲</span>对美下降。
-              <br />
-              高油价加速海外绿色转型，有望进一步打开新能源汽车、锂电及电力设备的出口空间。
+              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>（对收入增量贡献<span className="text-red-500 font-semibold">40%</span>）；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>（对收入增量贡献<span className="text-red-500 font-semibold">19%</span>）；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>（对收入增量贡献<span className="text-red-500 font-semibold">15%</span>），其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
         <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
-          {/* 表格 */}
           <ChartContainer delay="600ms">
-            <BaseTable
-              data={exportRegionTrendData}
-              columns={columns}
-              title="出口区域当月同比走势"
-              subtitle="数据来源：海关总署 | 单位：%"
-              striped={true}
-              dateColumn="period"
-              highlightRows={[14]}
+            <BaseLineChart
+              data={fiscalRevenueTrendData}
+              title="1—6月一般公共预算收入累计同比，区分税收收入、非税收收入同比增速"
+              subtitle="数据来源：财政部 | 单位：%"
+              lines={lines}
+              yAxisDomain={[-15, 15]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
+              xAxisTickCount={8}
             />
           </ChartContainer>
 
-          {/* 柱状图 */}
           <ChartContainer delay="600ms">
             <BaseBarChart
-              data={exportCompositionData}
-              title="主要国家/地区累计出口占比"
-              subtitle="数据来源：海关总署 | 单位：%"
+              data={fiscalCategoryGrowthData}
+              title="各类税收收入总额与累计同比"
+              subtitle="数据来源：财政部 | 单位：亿元，%"
               bars={bars}
-              xAxisKey="region"
-              yAxisDomain={[0, 20]}
-              showYAxis={false}
-              legendOrder={['25Q1', '26Q1']}
-              barSize={16}
-              showLabels={true}
+              lines={growthLines}
+              xAxisKey="category"
+              yAxisDomain={[0, 45000]}
+              yAxisTickFormatter={(val) => String(val)}
+              unit="亿元"
+              showYAxis={true}
+              showLabels={false}
+              showLineYAxis={true}
+              lineAxisDomain={[-10, 45]}
+              lineUnit="%"
+              lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
+              lineShowDot={true}
+              lineLabelFormatter={(val) => `${Number(val).toFixed(2)}%`}
+              lineLabelContent={(props) => {
+                const val = props.value;
+                const isNegative = Number(val) < 0;
+                return (
+                  <text
+                    x={(props.x ?? 0) + 20}
+                    y={props.y}
+                    textAnchor="start"
+                    dominantBaseline="middle"
+                    fill={isNegative ? '#16a34a' : props.fill}
+                    fontSize={9}
+                    fontWeight={600}
+                  >
+                    {`${Number(val).toFixed(2)}%`}
+                  </text>
+                );
+              }}
+              legendOrder={['总额', '增速']}
+              barSize={22}
+              xAxisAngle={-45}
+              xAxisHeight={70}
             />
           </ChartContainer>
         </div>

@@ -2,106 +2,90 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { equipmentInvestmentData, manufacturingInvestmentData } from '@/data/equipmentInvestment';
+import { foreignTradeCumulativeYoyData } from '@/data/foreignTrade';
 
 export const ContentSlide23: React.FC = () => {
-  const twoLineHeader = (top: string, bottom?: string) => (
-    <span className="leading-tight whitespace-nowrap">
-      {top}
-      {bottom && (
-        <>
-          <br />
-          {bottom}
-        </>
-      )}
-    </span>
-  );
-
-  // 折线图配置
-  const lineConfigs: LineConfig[] = [
-    { dataKey: 'manufacturing', name: '制造业', strokeWidth: 2.5 },
-    { dataKey: 'equipmentPurchase', name: '设备工器具购置', strokeWidth: 2.5 },
-    { dataKey: 'constructionInstall', name: '建筑安装工程', strokeWidth: 2.5 },
+  const tradeLineConfigs: LineConfig[] = [
+    {
+      dataKey: 'exports',
+      name: '出口累计同比',
+      strokeWidth: 2.5,
+      pointOffsets: { '2026-06': -8, '2026-07': 8 },
+    },
+    {
+      dataKey: 'imports',
+      name: '进口累计同比',
+      strokeWidth: 2,
+      pointOffsets: { '2026-06': 16, '2026-07': -8 },
+    },
   ];
 
-  // 表格列配置
-  const columns: ColumnConfig[] = [
-    { key: 'period', title: '月份', align: 'center' },
-    { key: 'autoManufacturing', title: twoLineHeader('汽车', '制造'), align: 'right' },
-    { key: 'chemicals', title: twoLineHeader('化学', '原料'), align: 'right' },
+  const surplusLineConfigs: LineConfig[] = [
     {
-      key: 'highTechManufacturing',
-      title: twoLineHeader('高技术', '制造'),
-      align: 'right',
-      highlight: true,
-      includeInStats: true,
-      render: (val: any, _row: any, _idx: number, defaultRender?: (v: any) => React.ReactNode) => {
-        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
-        const num = typeof val === 'number' ? val : parseFloat(val);
-        if (isNaN(num)) return defaultRender ? defaultRender(val) : val;
-        const formatted = num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return <span className="text-red-500 font-semibold">{formatted}</span>;
+      dataKey: 'surplus',
+      name: '进出口差额累计同比',
+      strokeWidth: 2.5,
+      pointCallouts: {
+        '2026-06': { dx: 20, dy: 16 },
+        '2026-07': { dx: 20, dy: -8 },
       },
     },
-    { key: 'computerOffice', title: twoLineHeader('计算机', '办公'), align: 'right' },
-    { key: 'railwayShipAerospace', title: twoLineHeader('铁路船舶', '航空航天'), align: 'right' },
-    { key: 'nonferrousMetal', title: twoLineHeader('有色金属', '冶炼'), align: 'right' },
-    { key: 'generalEquipment', title: twoLineHeader('通用设备', '制造'), align: 'right' },
-    { key: 'specialEquipment', title: twoLineHeader('专用设备', '制造'), align: 'right' },
-    { key: 'electricalMachinery', title: twoLineHeader('电气机械', '器材'), align: 'right' },
-    { key: 'pharmaceutical', title: twoLineHeader('医药', '制造'), align: 'right' },
   ];
 
   return (
     <BaseContentSlide
-      title={<>制造业投资提速至4.1%，“两新”激发新动能与“反内卷”重塑产能格局</>}
-      cardColumns={3}
+      title="上半年出口同比增长17.6%，贸易顺差增速转负"
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="出口与政策共同托底" delay="0ms" variant="accent">
-            <p>
-              一季度制造业投资同比增长<span className="text-red-500 font-semibold">4.1%</span>，较1-2月加快1.0个百分点。出口超预期与前期稳增长政策显效，共同推动投资回暖。
-            </p>
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="总量持续超预期" delay="0ms" variant="accent">
+            <ul className="list-disc pl-4 space-y-1.5 text-sm">
+              <li>
+                上半年出口累计同比<span className="text-red-500 font-semibold">17.6%</span>，6月出口总额同比增长<span className="text-red-500 font-semibold">27%</span>，在全球经贸需求偏弱、地缘扰动的背景下，出口展现出强大韧性。
+              </li>
+              <li>
+                上半年进口同比<span className="text-red-500 font-semibold">26.6%</span>，6月进口总额同比高增<span className="text-red-500 font-semibold">36%</span>，受大宗商品价格、AI产业链设备零部件进口增加影响，二季度进口增速均保持超20%的增长。
+              </li>
+            </ul>
           </BaseCard>
-          <BaseCard title="设备更新保持高增" delay="120ms">
-            <p>
-              “大规模设备更新”等“两新”政策优化实施、资金接续发力，设备工器具购置（指企业购入机器设备、生产工具与器具的投资）同比增长<span className="text-red-500 font-semibold">13.9%</span>，继续维持两位数增长。
-            </p>
-          </BaseCard>
-          <BaseCard title="新旧动能分化加剧" delay="600ms">
-            <p>
-              高技术制造业投资同比增长<span className="text-red-500 font-semibold">5.2%</span>，计算机及办公设备增长<span className="text-red-500 font-semibold">28.3%</span>，铁路船舶航空航天保持高景气；传统行业在“反内卷”约束下扩产意愿偏弱。
+          <BaseCard title="贸易顺差增速转负" delay="120ms">
+            <p className="text-sm">
+              上半年，贸易顺差为<span className="text-black">5759亿美元</span>，受进口增长速度快于出口影响，顺差同比增速<span className="text-green-600 font-semibold">-1.25%</span>（1-7月回正至<span className="text-red-500 font-semibold">0.99%</span>）。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表和表格区域 */}
+        {/* 图表区域 */}
         <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
           <ChartContainer delay="600ms">
             <BaseLineChart
-              data={equipmentInvestmentData}
-              title="制造业|设备|建筑安装工程投资增速累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={lineConfigs}
-              yAxisDomain={[-15, 25]}
+              data={foreignTradeCumulativeYoyData}
+              title="进出口：累计同比走势"
+              subtitle="数据来源：海关总署 | 单位：%"
+              lines={tradeLineConfigs}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['制造业', '设备工器具购置', '建筑安装工程']}
+              legendOrder={['出口累计同比', '进口累计同比']}
+              xAxisTickCount={10}
+              highlightPeriods={['2026-06', '2026-07']}
             />
           </ChartContainer>
-          <ChartContainer delay="720ms">
-            <BaseTable
-              data={manufacturingInvestmentData}
-              columns={columns}
-              title="制造业细分行业投资增速累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              dateColumn="period"
-              cellClassName="px-1 text-caption"
-              headerCellClassName="px-0.5 py-1 text-caption"
+
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={foreignTradeCumulativeYoyData}
+              title="贸易顺差：累计同比走势"
+              subtitle="数据来源：海关总署 | 单位：%"
+              lines={surplusLineConfigs}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['进出口差额累计同比']}
+              xAxisTickCount={10}
+              highlightPeriods={['2026-06', '2026-07']}
             />
           </ChartContainer>
         </div>

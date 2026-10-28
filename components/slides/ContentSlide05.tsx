@@ -1,71 +1,153 @@
 import React from 'react';
-import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { chartColors } from '@/utils/chartColors';
-import { gdpGrowthRecentData as gdpGrowthData, deflatorRecentData as deflatorData } from '../../data';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { industryColors, chartColors } from '@/utils/chartColors';
+import {
+  industryGdpValueRecentData as industryGdpValueData,
+  industryGrowthByQuarterRecentData as industryGrowthData,
+  industryContributionRecentData as industryContributionData,
+} from '../../data';
+
+const stackedIndustryBars = [
+  { dataKey: 'primary', name: '第一产业', color: industryColors.primary, stackId: 'stack' },
+  { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, stackId: 'stack' },
+  { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, stackId: 'stack' },
+];
+
+const greyPalette = {
+  left1: '#94a3b8',   // 25-06 - 浅灰
+  left2: '#64748b',   // 25-09 - 中灰
+  left3: '#475569',   // 25-12 - 深灰
+  left4: '#334155',   // 26-03 - 更深灰
+  left5: '#1e293b',   // 26-06 - 最深灰
+  right1: '#cbd5e1',  // 25-06 - 浅灰蓝
+  right2: '#94a3b8',  // 25-12 - 中灰
+  right3: '#64748b',  // 26-03 - 深灰
+  right4: '#475569',  // 26-06 - 最深灰
+};
+
+const industryLegendOrder = ['第一产业', '第二产业', '第三产业'];
 
 export const ContentSlide05: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
-          一季度GDP稳增5.0%实现良好开局，
-          <span className="text-webank-accent">名义增速与实际增速差距收窄</span>
+          分化显著：高端制造及现代服务保持高增，
+          <span>传统行业消费及地产链增速低于整体增速</span>
         </>
       }
       cardColumns={2}
+      chartColumns={1}
       cards={
         <>
-          <BaseCard title="总量定调" delay="0ms" variant="accent">
+          <BaseCard title="二产增速回落，三产增速稳定" delay="0ms">
             <p>
-              2026年一季度GDP达 <span className="font-bold">33.4万亿元</span>，按不变价格计算同比增长 <span className="font-bold text-red-600">5.0%</span>，环比增长 <span className="font-bold">1.3%</span>，实现"十五五"开局之年平稳起步。
-              实际GDP增速较去年四季度回升 <span className="font-bold">0.5个百分点</span>，达到全年"4.5%-5.0%"增长目标的上限区域。
+              第二产业同比增长<span>3%</span>，较一季度回落
+              <span>1.9个百分点</span>
+              ，为季度GDP增速放缓主要拖累，主要受制造业、建筑业增速回落影响。第三产业维持稳定增速，对GDP当季同比增长贡献率达
+              <span className="font-bold text-red-500">69.4%</span>
+              ，贡献率较去年同期增长<span className="font-bold text-red-500">8.2个百分点</span>。
             </p>
           </BaseCard>
 
-          <BaseCard title="名义与实际差距收窄" delay="120ms">
+          <BaseCard title="行业分化显著" delay="120ms">
             <p>
-              一季度名义GDP增速大幅修复至 <span className="text-red-600 font-semibold">4.94%</span>，较去年四季度 <span className="font-bold">3.85%</span> 明显回升；GDP平减指数回升至 <span className="font-bold">-0.06%</span>，整体已基本回到零值附近，经济逐步摆脱通缩、向温和通胀区间靠拢，企业盈利与微观体感的“温差”正在改善。
+              高技术制造业（<span className="font-bold text-red-500">13.3%</span>
+              ）、信息传输、软件和信息技术服务业（
+              <span className="font-bold text-red-500">10.7%</span>
+              ）和租赁商务服务（<span className="font-bold text-red-500">11.9%</span>
+              ）仍然保持高增，批发零售增长<span className="font-bold text-red-500">3.3%</span>显著低于整体，建筑、房地产依然为主要拖累。
             </p>
           </BaseCard>
         </>
       }
-      chartColumns={2}
       charts={
-        <>
-          <ChartContainer delay="720ms">
-            <BaseLineChart
-              data={gdpGrowthData}
-              title="GDP不变价与现价当季同比增速"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              yAxisDomain={[0, 8]}
-              showYAxis={true}
-              xAxisTickCount={gdpGrowthData.length}
-              legendOrder={['GDP不变价', 'GDP现价']}
-              lines={[
-                { dataKey: 'real', name: 'GDP不变价', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
-                { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom', labelDY: 14 }
-              ]}
-            />
-          </ChartContainer>
-          <ChartContainer delay="840ms">
-            <BaseLineChart
-              data={deflatorData}
-              title="GDP平减指数"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              yAxisDomain={[-5, 2]}
-              showYAxis={true}
-              xAxisTickCount={deflatorData.length}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['整体']}
-              lines={[
-                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top' }
-              ]}
-            />
-          </ChartContainer>
-        </>
+        <div className="flex gap-4 sm:gap-6 h-full min-h-0">
+          <div className="w-[26%] min-w-0 flex-shrink-0">
+            <ChartContainer delay="600ms">
+              <BaseBarChart
+                data={industryGdpValueData}
+                title="三大产业GDP增速对比"
+                subtitle="数据来源: 国家统计局｜单位: %"
+                xAxisKey="industry"
+                bars={[
+                  { dataKey: '2025-06', name: '25-06', color: greyPalette.left1 },
+                  { dataKey: '2025-09', name: '25-09', color: greyPalette.left2 },
+                  { dataKey: '2025-12', name: '25-12', color: greyPalette.left3 },
+                  { dataKey: '2026-03', name: '26-03', color: greyPalette.left4 },
+                  { dataKey: '2026-06', name: '26-06', color: greyPalette.left5 },
+                ]}
+                legendOrder={['25-06', '25-09', '25-12', '26-03', '26-06']}
+                yAxisDomain={[0, 7]}
+                barSize={12}
+                showYAxis
+                showLabels
+                labelFormatter={(v: any) => Number(v).toFixed(1)}
+                unit="%"
+                yAxisTickFormatter={(v) => `${v}`}
+                xAxisInterval={0}
+              />
+            </ChartContainer>
+          </div>
+          <div className="w-[22%] min-w-0 flex-shrink-0">
+            <ChartContainer delay="600ms">
+              <BaseBarChart
+                data={industryGrowthData.map((d) => ({
+                  ...d,
+                  period: d.period.slice(2),
+                }))}
+                xAxisKey="period"
+                title="三大产业对GDP增长贡献率"
+                subtitle="数据来源: 国家统计局｜单位: %"
+                bars={stackedIndustryBars}
+                legendOrder={industryLegendOrder}
+                yAxisDomain={[0, 100]}
+                barSize={22}
+                showYAxis
+                showLabels
+                labelPosition="center"
+                labelFormatter={(v: any) => Number(v).toFixed(1)}
+                unit="%"
+                yAxisTickFormatter={(v) => `${Math.round(v)}`}
+                xAxisInterval={0}
+              />
+            </ChartContainer>
+          </div>
+          <div className="flex-1 min-w-0">
+            <ChartContainer delay="720ms">
+              <BaseBarChart
+                data={industryContributionData}
+                title="不同行业GDP增速对比"
+                subtitle="数据来源: 国家统计局｜单位: %｜注：高技术制造业、装备制造业、数字产品制造业为上半年累计增速"
+                xAxisKey="industry"
+                bars={[
+                  { dataKey: '2025-06', name: '25-06', color: greyPalette.right1 },
+                  { dataKey: '2025-12', name: '25-12', color: greyPalette.right2 },
+                  { dataKey: '2026-03', name: '26-03', color: greyPalette.right3 },
+                  { dataKey: '2026-06', name: '26-06', color: greyPalette.right4 },
+                ]}
+                legendOrder={['25-06', '25-12', '26-03', '26-06']}
+                barSize={8}
+                showYAxis
+                yAxisDomain={[-5, 14]}
+                showReferenceLine
+                referenceLineY={0}
+                showLabels={false}
+                unit="%"
+                xAxisAngle={-35}
+                xAxisHeight={70}
+                xAxisInterval={0}
+                xAxisTickFontSize={8}
+                categoryGroups={[
+                  { label: '第二产业', x1: '工业', x2: '建筑业' },
+                  { label: '第三产业', x1: '批发零售', x2: '其他行业' },
+                ]}
+              />
+            </ChartContainer>
+          </div>
+        </div>
       }
     />
   );

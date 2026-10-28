@@ -1,86 +1,65 @@
 import React from 'react';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseLineChart } from '../base/BaseLineChart';
-import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
-import { retailMonthlyCategoryData, serviceRetailData, springFestivalTravelData } from '../../data';
+import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { RetailCpiForecastChart } from '../charts/RetailCpiForecastChart';
 
 export const ContentSlide16: React.FC = () => {
   return (
     <BaseContentSlide
-      title="一季度社零稳步回暖至2.4%，服务增速继续快于商品"
+      title={
+        <span className="inline-flex items-center gap-2 flex-wrap">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            预测与展望
+          </span>
+          <span className="text-gray-900 font-semibold">
+            全年社零预计修复至1.5-1.8%，服务与升级品类为发力关键
+          </span>
+        </span>
+      }
+      className="[&>section:first-of-type]:!mb-1 [&>section:first-of-type]:sm:!mb-2"
       cardColumns={2}
-      chartColumns={3}
+      chartColumns={1}
       cards={
         <>
-          <BaseCard title="总量温和修复" delay="0ms" variant="accent">
-            <p>
-              2026年1季度社零累计同比<span className="font-bold text-webank-blue">2.4%</span>（总额<span className="font-bold text-webank-blue">12.8万亿元</span>）。从当月同比看，1-2月维持<span className="font-bold text-webank-blue">4.0%</span>左右，3月受春节后季节性回落影响放缓至<span className="font-bold text-webank-blue">1.7%</span>。
-            </p>
+          <BaseCard title="全年社零与CPI预测" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
+            <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
+              <li>
+                H2 在政策密集落地与高基数压力缓和背景下，全年社零累计增速预测中枢约
+                <span className="font-bold text-[#b91c1c]">1.5%-1.8%</span>
+                （中金5月预测社零
+                <span>2.8%</span>
+                ；Wind8月预测约
+                <span>1.8%</span>，高盛8月预测全年增速1.5%）
+              </li>
+              <li>
+                CPI 全年预计
+                <span>0.9%-1.0%</span>
+                ，上半年已录得
+                <span>1.0%</span>
+                ，下半年继续上行空间有限
+              </li>
+            </ul>
           </BaseCard>
-          <BaseCard title="服务消费仍是核心驱动" delay="120ms">
-            <p>
-              1-3月份服务零售额同比增长<span className="font-bold text-webank-blue">5.5%</span>，持续快于商品零售额（<span className="font-bold text-webank-blue">2.2%</span>），餐饮收入增长<span className="font-bold text-webank-blue">4.2%</span>；春节假期国内出游<span className="font-bold text-red-600">5.96亿人次</span>，总花费超<span className="font-bold text-red-600">8000亿元</span>，均创历史新高。
-            </p>
+
+          <BaseCard title="下半年发力关键" delay="120ms" className="!gap-1.5 !p-3">
+            <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
+              <li>
+                服务消费与升级品类占优，政策支持推动需求释放
+              </li>
+              <li>
+                高基数压力缓和为下半年增长提供更好起点
+              </li>
+            </ul>
           </BaseCard>
         </>
       }
       charts={
-        <>
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              title="社会消费品零售总额及分类当月同比数据"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              data={retailMonthlyCategoryData}
-              lines={[
-                { dataKey: 'totalRetail', name: '社零总额:当月同比', strokeWidth: 2.5 },
-                { dataKey: 'cateringRevenue', name: '餐饮收入:当月同比', labelDY: -8 },
-                { dataKey: 'goodsRetail', name: '商品零售:当月同比', labelDY: 12 },
-              ]}
-              legendOrder={['社零总额:当月同比', '餐饮收入:当月同比', '商品零售:当月同比']}
-              yAxisDomain={[0, 10]}
-              showYAxis={true}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              title="社会消费品零售总额:服务零售额:累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              data={serviceRetailData}
-              lines={[
-                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', strokeWidth: 2.5 },
-              ]}
-              yAxisDomain={[0, 15]}
-              showYAxis={true}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-          <ChartContainer delay="720ms">
-            <BaseBarChart
-              title="春节国内旅游数据对比"
-              subtitle="数据来源：文旅部 | 人次单位：亿；花费单位：亿元"
-              data={springFestivalTravelData}
-              bars={[
-                { dataKey: 'trips', name: '春节国内出游人次' },
-              ]}
-              lines={[
-                { dataKey: 'spending', name: '国内出游总花费', unit: '亿元', strokeWidth: 2.5 },
-              ]}
-              yAxisDomain={[2, 12]}
-              lineAxisDomain={[5000, 8500]}
-              showYAxis={true}
-              showLineYAxis={true}
-              barSize={24}
-              unit="亿"
-              lineUnit="亿元"
-              yAxisTickFormatter={(value) => `${value}亿`}
-              lineYAxisTickFormatter={(value) => `${value}`}
-              lineShowDot={true}
-              lineLabelFormatter={(value) => `${value}`}
-            />
-          </ChartContainer>
-        </>
+        <ChartContainer delay="600ms" ariaLabel="主流机构对2026年社零与CPI预测共识区间图">
+          <RetailCpiForecastChart />
+        </ChartContainer>
       }
     />
   );

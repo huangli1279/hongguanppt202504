@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "input": "/Users/bruce_xbx_cmx/Desktop/hongguanppt202504/bento-demo/macro-q2-2026-deck.json",
+  "shell": "/Users/bruce_xbx_cmx/.agents/skills/qiaomu-bento-ppt/assets/bento/Bento_Slides.bento.html",
+  "output": "/Users/bruce_xbx_cmx/Desktop/hongguanppt202504/bento-demo/macro-q2-2026.bento.html",
+  "identity": {
+    "mode": "new",
+    "input_doc_id": null,
+    "identity_source": null,
+    "source_doc_id": null,
+    "output_doc_id": "2bd5c8fd-f80f-47e5-aaeb-de7538dcc0f9",
+    "preserved": null,
+    "minted_once": true
+  },
+  "validation": {
+    "ok": true,
+    "format": "bento/slides",
+    "doc_id": "2bd5c8fd-f80f-47e5-aaeb-de7538dcc0f9",
+    "slide_count": 7,
+    "errors": [],
+    "warnings": [
+      {
+        "path": "slides[0].elements[0]",
+        "message": "element extends outside the slide bounds"
+      },
+      {
+        "path": "slides[2].elements",
+        "message": "high element count (26)"
+      },
+      {
+        "path": "slides[5].elements[1]",
+        "message": "element extends outside the slide bounds"
+      }
+    ]
+  },
+  "shell_gate": {
+    "internal": {
+      "ok": true,
+      "errors": []
+    },
+    "project": {
+      "ran": false,
+      "ok": null
+    }
+  },
+  "rollback_boundary": "source unchanged; output written separately"
+}

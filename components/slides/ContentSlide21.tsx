@@ -1,79 +1,140 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { fixedAssetInvestmentData, privateInvestmentData } from '@/data/fixedAssetInvestment';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
 
 export const ContentSlide21: React.FC = () => {
-  // 固定资产投资关键分项折线图配置
-  const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'fixedAsset', name: '固定资产投资', strokeWidth: 2.5 },
-    { dataKey: 'manufacturing', name: '制造业投资', strokeWidth: 2 },
-    { dataKey: 'realEstate', name: '房地产开发投资', strokeWidth: 2 },
-    { dataKey: 'infrastructure', name: '基础设施建设投资', strokeWidth: 2 },
+  // 政策部署与投资重点表
+  const policyTableData = [
+    {
+      area: '"六张网"基础设施建设\n（核心投资方向）',
+      content: '抓紧出台专项规划和实施方案，系统推进六大基础设施网络一体化发展：\n水网：实施重大水利工程，提升防洪减灾和水资源配置能力\n新型电网："十五五"投资超5万亿元，加快新型电力系统建设，推进跨省跨区输电通道和储能设施建设\n算力网：“十五五”投资超4万亿，加快全国一体化算力网络建设，推动算力基础设施高质量发展，支撑"东数西算"工程深入实施\n新一代通信网：加快5G-A、算力网络、工业互联网建设，布局新一代信息基础设施\n城市地下管网："十五五"投资约5万亿元，结合城市更新建设改造地下管网77万公里、排水防涝等市政设施\n物流网：完善国家物流枢纽网络，推进冷链物流和城乡配送体系建设',
+    },
+    {
+      area: '人工智能产业',
+      content: '正在谋划出台加快人工智能落地的配套文件，加大要素保障力度；持续推动央国企开放高价值应用场景，打造各行业人工智能标杆应用；支持具身智能领域高质量发展，加速"人工智能+"赋能千行百业',
+    },
+    {
+      area: '能源保供领域',
+      content: '全面部署迎峰度夏能源保供工作，今夏全国最高用电负荷将达16亿千瓦，较去年增加9000万千瓦；推动电力、电煤中长期合同高比例签约和有效履约；加快煤炭先进产能释放，推进油气增储上产；强化省间电力互济，支持新型储能和调峰电源建设',
+    },
+    {
+      area: '营商环境与民间投资',
+      content: '深入整治"内卷式"竞争，规范涉企行政执法；完善民营企业参与国家重大项目建设长效机制；优化数据跨境流动管理，持续扩大高水平对外开放，稳定外资预期',
+    },
+    {
+      area: '生态环保领域',
+      content: '印发《推进生态综合补偿实施方案》，加大对重点生态功能区的转移支付力度；支持生态保护修复工程建设，推动绿色低碳技术研发和产业化应用',
+    },
+    {
+      area: '民生与消费领域',
+      content: '推进完整社区建设，支持养老托育、社区服务等民生设施建设；稳定粮食生产和市场供应，保障重要民生商品价格平稳；促进汽车、家电等大宗消费升级',
+    },
   ];
 
-  // 民间投资与国有控股投资折线图配置
-  const privateLineConfigs: LineConfig[] = [
-    { dataKey: 'stateOwned', name: '国有控股投资', strokeWidth: 2.5 },
-    { dataKey: 'privateInvestment', name: '民间投资', strokeWidth: 2 },
+  const policyColumns: ColumnConfig[] = [
+    { key: 'area', title: '核心领域', align: 'center', width: '16%' },
+    {
+      key: 'content',
+      title: '政策部署与投资重点',
+      align: 'left',
+      render: (val: string) => {
+        const lines = val.split('\n');
+        return (
+          <div className="leading-tight text-[10px]">
+            {lines.map((line, idx) => {
+              const match = line.match(/^(水网|新型电网|算力网|新一代通信网|城市地下管网|物流网)：/);
+              if (match) {
+                const rest = line.substring(match[0].length);
+                return (
+                  <div key={idx} className={idx > 0 ? 'mt-0.5' : ''}>
+                    <span className="font-semibold text-webank-blue">{match[1]}</span>：{rest}
+                  </div>
+                );
+              }
+              return <div key={idx} className={idx > 0 ? 'mt-0.5' : ''}>{line}</div>;
+            })}
+          </div>
+        );
+      },
+    },
   ];
 
   return (
     <BaseContentSlide
-      title="在稳投资的明确定调下，一季度固投温和企稳至1.7%，其中基建投资增长8.9%，发挥托底作用"
-      cardColumns={2}
-    >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="总量温和企稳" delay="0ms" variant="accent">
-            <p>
-              2026年一季度，全国固定资产投资（不含农户）达到<span className="text-black font-semibold">10.27万亿元</span>，同比增长<span className="text-black font-semibold">1.7%</span>。其中，基础设施建设投资同比增长<span className="text-black font-semibold">8.9%</span>，发挥绝对托底作用，房地产投资仍为主要拖累。
+      title={
+        <span className="inline-flex items-center gap-2 flex-wrap">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            预测与展望
+          </span>
+          <span className="text-gray-900 font-semibold">
+            政策发力叠加盈利滞后传导，固投有望边际改善，仍面地产民间投资约束
+          </span>
+        </span>
+      }
+      cardColumns={4}
+      chartColumns={1}
+      cards={
+        <>
+          <BaseCard title="政策支持" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
+              <span className="font-bold">8000亿</span>政策工具待落地，市场一致预期将在三季度密集落地，重点投向"六张网"新基建和AI等新质生产力领域。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              "两重"项目全部下达。2026年"六张网"及相关领域投资超<span className="font-bold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
             </p>
           </BaseCard>
-          <BaseCard title="国有控股投资优于民间投资" delay="120ms">
-            <p>
-              一季度，国有控股投资同比增长<span className="text-red-500 font-semibold">7.1%</span>，与"两重"建设、大规模设备更新及项目资金前置支持有关。民间投资同比下降<span className="text-green-600 font-semibold">2.2%</span>，反映民间投资意愿依然低迷。
+          <BaseCard title="专项债发行提速" delay="120ms" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
+              6月发行规模创单月新高（5716亿元，达计划的1.65倍），Q3将迎来发行高峰，预计同比增长约30%。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              同时需要关注债的结构，土储、特殊新增债占比会影响实际投资形成。
             </p>
           </BaseCard>
-        </div>
-
-        {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
-          {/* 固定资产投资关键分项折线图 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={fixedAssetInvestmentData}
-              title="固定资产投资及分项累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={investmentLineConfigs}
-              yAxisDomain={[-20, 15]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['固定资产投资', '制造业投资', '房地产开发投资', '基础设施建设投资']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-
-          {/* 民间投资与国有控股投资折线图 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={privateInvestmentData}
-              title="国有控股投资与民间投资累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={privateLineConfigs}
-              yAxisDomain={[-10, 10]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['国有控股投资', '民间投资']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
-        </div>
-      </div>
-    </BaseContentSlide>
+          <BaseCard title="盈利传导" delay="240ms" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
+              企业盈利向资本开支存在2‑3个季度传导时滞。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              2025年下半年起工业企业盈利修复，有望对2026下半年投资形成潜在支撑。
+            </p>
+          </BaseCard>
+          <BaseCard title="机构预测" delay="360ms" variant="accent" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug">
+              主流机构判断固投走势呈<span className="font-bold">前低后高</span>，下半年边际回升。上半年固投弱于预期，机构下调全年定量预测，更多采用定性判断。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              <span className="text-webank-green font-medium">主要利好：</span>8000亿政策性金融工具落地、Q3专项债发行提速，同时有去年同期低基数加持；
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              <span className="font-medium">主要拖累：</span>地产下行、民间投资信心不足。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug text-gray-600">
+              <span className="font-medium">主要参考机构：</span>中金、银河证券、华泰证券、招商证券、申万宏源
+            </p>
+          </BaseCard>
+        </>
+      }
+      charts={
+        <ChartContainer delay="600ms" ariaLabel="政策部署与投资重点">
+          <BaseTable
+            data={policyTableData}
+            columns={policyColumns}
+            title="政策部署与投资重点"
+            subtitle="资料来源：国务院及部委公开文件"
+            rowHeight="dense"
+            cellClassName="px-2 py-1 align-top text-gray-700"
+            headerCellClassName="px-2 py-1.5 text-center font-semibold"
+            headerBgColor="#6b7280"
+            headerTextColor="#000000"
+            bordered={true}
+          />
+        </ChartContainer>
+      }
+    />
   );
 };

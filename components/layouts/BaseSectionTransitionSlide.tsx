@@ -3,9 +3,10 @@ import React from 'react';
 interface Props {
   id: string;
   title: string;
+  subtitle?: string;
 }
 
-export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title }) => {
+export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle }) => {
   return (
     <div className="w-full h-full bg-webank-blue flex flex-col justify-center items-center relative overflow-hidden text-white">
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue animate-top-line" />
@@ -21,16 +22,28 @@ export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title }) => {
       <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-webank-lightBlue/40 rounded-full animate-float-3" />
       <div className="absolute bottom-1/4 right-1/5 w-2 h-2 bg-webank-lightBlue/25 rounded-full animate-float-4" />
 
-      <div className="z-10 text-center max-w-4xl px-8">
+      <div className="z-10 text-center max-w-5xl px-8">
         <div className="text-webank-lightBlue font-serif text-h2 mb-6 tracking-[0.2em] border-b border-webank-lightBlue/50 inline-block pb-2 animate-scale-in" style={{ animationDelay: '0.2s' }}>
           章节 {id}
         </div>
 
-        <h1 className="font-serif font-bold mb-8 text-white leading-tight animate-fade-in-up" style={{ fontSize: '72px', animationDelay: '0.4s' }}>
+        <h1
+          className="font-serif font-bold mb-8 text-white leading-tight animate-fade-in-up"
+          style={{ fontSize: subtitle ? '56px' : '72px', animationDelay: '0.4s' }}
+        >
           {title}
         </h1>
 
         <div className="h-1 w-0 bg-webank-lightBlue mx-auto mb-8 animate-line-expand-center" />
+
+        {subtitle && (
+          <p
+            className="text-white/80 font-sans text-[18px] leading-relaxed max-w-4xl mx-auto animate-fade-in-up"
+            style={{ animationDelay: '0.7s' }}
+          >
+            {subtitle}
+          </p>
+        )}
       </div>
 
       <div className="absolute bottom-8 left-12 text-webank-muted font-sans text-caption tracking-wider uppercase animate-fade-in" style={{ animationDelay: '1s' }}>

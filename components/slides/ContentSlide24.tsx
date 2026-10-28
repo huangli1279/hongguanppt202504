@@ -1,112 +1,116 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { investmentData, housePriceYoyData, housePriceMomData } from '../../data';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { exportTableData, ExportTableItem } from '@/data';
+import { cn } from '@/utils/cn';
 
 export const ContentSlide24: React.FC = () => {
-  const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'realEstateInvestment', name: '开发投资', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'newConstruction', name: '新开工', strokeWidth: 2, labelDY: 8 },
-    { dataKey: 'salesArea', name: '销售面积', strokeWidth: 2, labelDY: -8 },
-  ];
-
-  const priceYoyLineConfigs: LineConfig[] = [
-    { dataKey: 'newHousePrice', name: '新建商品住房价格指数同比', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'secondHandPrice', name: '二手住房价格指数同比', strokeWidth: 2, labelDY: 8 },
-  ];
-
-  const priceMomFirstTierConfigs: LineConfig[] = [
-    { dataKey: 'firstTierNew', name: '一线新房', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'firstTierUsed', name: '一线二手房', strokeWidth: 2, labelDY: 8 },
-  ];
-
-  const priceMomSecondTierConfigs: LineConfig[] = [
-    { dataKey: 'secondTierNew', name: '二线新房', strokeWidth: 2.5, labelDY: -8 },
-    { dataKey: 'secondTierUsed', name: '二线二手房', strokeWidth: 2, labelDY: 8 },
+  const columns: ColumnConfig[] = [
+    {
+      key: 'name',
+      title: '商品名称',
+      width: '28%',
+      align: 'left',
+      render: (value, row: ExportTableItem) => {
+        const padding = row.level === 0 ? 'pl-0' : row.level === 1 ? 'pl-4' : 'pl-8';
+        return (
+          <div className={cn(padding, row.isCategory && 'font-bold text-webank-blue')}>
+            {value}
+          </div>
+        );
+      }
+    },
+    {
+      key: 'decAmount',
+      title: '6月金额',
+      align: 'right',
+      render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+    },
+    {
+      key: 'totalAmount',
+      title: '1-6月累计金额',
+      align: 'right',
+      includeInStats: true,
+      render: (val: any) => {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+    },
+    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '集成电路' && val === 7.0) {
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      if (row.name === '成品油') {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-green-600">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      return defaultRender?.(val);
+    }},
+    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true, render: (val: any, row: ExportTableItem, index: number, defaultRender?: (value: any) => React.ReactNode) => {
+      if (row.name === '农产品*' && val === 7.4) {
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      if (row.name === '成品油') {
+        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
+        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
+      }
+      return defaultRender?.(val);
+    }}
   ];
 
   return (
     <BaseContentSlide
-      title="地产投资下行11.2%仍在寻底，新开工面积累计同比降20.3%"
-      cardColumns={2}
+      title="出口端：新动能产品拉动显著"
+      cardColumns={3}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
-          <BaseCard title="核心拖累项仍在筑底阶段" delay="0ms" variant="accent">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
+          <BaseCard title="AI投资周期拉动爆发" delay="0ms" variant="accent">
             <p>
-              一季度，全国房地产开发投资<span className="text-black font-semibold">1.77万亿元</span>，同比<span className="text-green-500 font-semibold">下降11.2%</span>，降幅比1-2月份扩大0.1个百分点。地产投资仍深陷两位数负增长区间，是拖累固定资产投资与内需的主要短板。
+              AI基础设施建设进入高投入期，直接拉动电子信息及高端制造贸易需求。上半年，高新技术产品拉动中国出口增长<span className="text-red-500 font-semibold">9.3</span>个百分点，拉动力度较2025年全年上升<span className="text-red-500 font-semibold">7.4</span>个百分点。1—6月集成电路出口额增长<span className="text-red-500 font-semibold">96.1%</span>，表现持续亮眼。
             </p>
           </BaseCard>
-          <BaseCard title="供需双弱，房价指数维持下行" delay="120ms">
+          <BaseCard title={'能源转型促进"新三样"增长'} delay="120ms">
             <p>
-              居民中长期贷款同比显著少增，与新房销售疲弱相互印证，购房加杠杆意愿尚未实质性恢复。70城房价同比延续下行；环比看一线城市转正，更多来自政策驱动与季节性因素，二线城市仍在下降。
+              中东变局引发的能源安全担忧使全球能源转型加速，上半年汽车出口<span className="text-red-500 font-semibold">509.6万辆</span>，首次突破<span>500万辆</span>大关，汽车（包括底盘）累计同比增长<span className="text-red-500 font-semibold">53%</span>，其中新能源汽车出口同比增长<span className="text-red-500 font-semibold">120%</span>，是核心拉动力量。锂电池出口额<span>486亿美元</span>（<span className="text-red-500 font-semibold">+42.7%</span>），风力发电机组同比<span className="text-red-500 font-semibold">+35.6%</span>。
+            </p>
+          </BaseCard>
+          <BaseCard
+            title="下半年展望：增速回落、结构分化"
+            delay="240ms"
+            titleClassName="!bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
+          >
+            <p>
+              机构判断下半年出口增速中枢将回落：基准情景三、四季度分别约<span className="text-black">12.4%</span>、<span className="text-black">7.7%</span>，全年约<span className="text-black">12%-16%</span>（中信 <span className="text-black">13.2%</span>，银河 <span className="text-black">15.8%</span>，中金 <span className="text-black">11.9%</span>）。
+            </p>
+            <p>
+              结构延续 K 型分化：AI 链电子产品、"新三样" 仍保持韧性，传统消费品出口压力较大。
+            </p>
+            <p>
+              风险来自去年高基数抬升、海外贸易摩擦、地缘局势扰动。
             </p>
           </BaseCard>
         </div>
 
-        <div className="flex-1 grid grid-cols-3 gap-5 min-h-0">
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={investmentData}
-              title="房地产投资累计同比数据"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={investmentLineConfigs}
-              yAxisDomain={[-30, 5]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['开发投资', '新开工', '销售面积', '按揭贷款']}
-              xAxisTickCount={5}
-            />
-          </ChartContainer>
-
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={housePriceYoyData}
-              title="70个大中城市房价指数同比变化"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={priceYoyLineConfigs}
-              yAxisDomain={[-10, 1]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['新建商品住房价格指数同比', '二手住房价格指数同比']}
-              xAxisTickCount={5}
-            />
-          </ChartContainer>
-
-          <div className="flex flex-col gap-5">
-            <ChartContainer delay="720ms">
-              <BaseLineChart
-                data={housePriceMomData}
-                title="一线城市住宅价格指数（环比）"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={priceMomFirstTierConfigs}
-                yAxisDomain={[-1.4, 0.6]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['一线新房', '一线二手房']}
-                xAxisTickCount={5}
-              />
-            </ChartContainer>
-            <ChartContainer delay="720ms">
-              <BaseLineChart
-                data={housePriceMomData}
-                title="二线城市住宅价格指数（环比）"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={priceMomSecondTierConfigs}
-                yAxisDomain={[-1.4, 0.6]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['二线新房', '二线二手房']}
-                xAxisTickCount={5}
-              />
-            </ChartContainer>
-          </div>
-        </div>
+        {/* 表格区域 */}
+        <ChartContainer delay="600ms" className="flex-1 min-h-0">
+          <BaseTable
+            data={exportTableData}
+            columns={columns}
+            title="2026年6月全国出口重点商品量值表"
+            subtitle="数据来源：海关总署 | 金额单位：百万美元"
+            rowHeight="auto"
+            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
+            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
+            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
+            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
+          />
+        </ChartContainer>
       </div>
     </BaseContentSlide>
   );
