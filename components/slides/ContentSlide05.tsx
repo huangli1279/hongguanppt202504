@@ -2,11 +2,11 @@ import React from 'react';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseBarChart } from '../base/BaseBarChart';
-import { industryColors, chartColors } from '@/utils/chartColors';
+import { industryColors } from '@/utils/chartColors';
 import {
   industryGdpValueRecentData as industryGdpValueData,
   industryGrowthByQuarterRecentData as industryGrowthData,
-  industryContributionRecentData as industryContributionData,
+  industryContributionRecentData as industryChartData,
 } from '../../data';
 
 const stackedIndustryBars = [
@@ -15,50 +15,72 @@ const stackedIndustryBars = [
   { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, stackId: 'stack' },
 ];
 
-const greyPalette = {
-  left1: '#94a3b8',   // 25-06 - 浅灰
-  left2: '#64748b',   // 25-09 - 中灰
-  left3: '#475569',   // 25-12 - 深灰
-  left4: '#334155',   // 26-03 - 更深灰
-  left5: '#1e293b',   // 26-06 - 最深灰
-  right1: '#cbd5e1',  // 25-06 - 浅灰蓝
-  right2: '#94a3b8',  // 25-12 - 中灰
-  right3: '#64748b',  // 26-03 - 深灰
-  right4: '#475569',  // 26-06 - 最深灰
-};
-
 const industryLegendOrder = ['第一产业', '第二产业', '第三产业'];
+
+const leftChartData = industryGdpValueData.reduce((acc, row) => {
+  const industryKey =
+    row.industry === '第一产业' ? 'primary' : row.industry === '第二产业' ? 'secondary' : 'tertiary';
+  Object.keys(row).forEach((k) => {
+    if (k === 'industry') return;
+    if (!acc[k]) acc[k] = { period: k.slice(2) };
+    acc[k][industryKey] = (row as any)[k];
+  });
+  return acc;
+}, {} as Record<string, any>);
+const leftChartArray = Object.values(leftChartData);
 
 export const ContentSlide05: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
-          分化显著：高端制造及现代服务保持高增，
-          <span>传统行业消费及地产链增速低于整体增速</span>
+          产业结构：三产贡献率
+          <span className="text-webank-accent">66.5%创新高，高端制造及现代服务保持高增</span>
         </>
       }
       cardColumns={2}
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="二产增速回落，三产增速稳定" delay="0ms">
+          <BaseCard title="二产增速回升，三产维持稳定" delay="0ms">
             <p>
-              第二产业同比增长<span>3%</span>，较一季度回落
-              <span>1.9个百分点</span>
-              ，为季度GDP增速放缓主要拖累，主要受制造业、建筑业增速回落影响。第三产业维持稳定增速，对GDP当季同比增长贡献率达
-              <span className="font-bold text-red-500">69.4%</span>
-              ，贡献率较去年同期增长<span className="font-bold text-red-500">8.2个百分点</span>。
+              三季度一、二、三产业增加值分别增长
+              <span className="font-bold text-red-500">3.6%</span>、
+              <span className="font-bold text-red-500">3.4%</span>、
+              <span className="font-bold text-red-500">5.2%</span>
+              ，第三产业对经济增长的贡献率达
+              <span className="font-bold text-red-500">66.5%</span>
+              ，较上年同期提高
+              <span className="font-bold text-red-500">4.7个百分点</span>
+              。第二产业同比增长
+              <span className="font-bold text-red-500">3.4%</span>
+              ，较二季度回升
+              <span className="font-bold text-red-500">0.4个百分点</span>
+              ，为季度GDP增速回升的主要拉动，主因制造业增速回升。第三产业维持稳定增速，对GDP当季同比增长贡献率达
+              <span className="font-bold text-red-500">66.5%</span>
+              ，贡献率较去年同期增长
+              <span className="font-bold text-red-500">4.7个百分点</span>
+              。
             </p>
           </BaseCard>
 
-          <BaseCard title="行业分化显著" delay="120ms">
+          <BaseCard title="行业分化" delay="120ms">
             <p>
-              高技术制造业（<span className="font-bold text-red-500">13.3%</span>
-              ）、信息传输、软件和信息技术服务业（
-              <span className="font-bold text-red-500">10.7%</span>
-              ）和租赁商务服务（<span className="font-bold text-red-500">11.9%</span>
-              ）仍然保持高增，批发零售增长<span className="font-bold text-red-500">3.3%</span>显著低于整体，建筑、房地产依然为主要拖累。
+              信息传输软件和信息技术服务业（
+              <span className="font-bold text-red-500">+9.8%</span>
+              ）、租赁商务服务业（
+              <span className="font-bold text-red-500">+12.9%</span>
+              ）维持高增，两者增加值合计占GDP比重
+              <span className="font-bold text-red-500">10.1%</span>
+              、同比提高
+              <span className="font-bold text-red-500">0.5个百分点</span>
+              ，AI算力需求和商务活动是两大增长引擎；批发零售、交运仓储、住宿餐饮三季度分别增长
+              <span className="font-bold text-red-500">5.6%</span>、
+              <span className="font-bold text-red-500">5.9%</span>、
+              <span className="font-bold text-red-500">6.3%</span>
+              ，合计再拉动
+              <span className="font-bold text-red-500">1.0个百分点</span>
+              ，较二季度增幅明显提升，与外需及出行需求增长有关；建筑、房地产仍处于负增长；
             </p>
           </BaseCard>
         </>
@@ -68,18 +90,16 @@ export const ContentSlide05: React.FC = () => {
           <div className="w-[26%] min-w-0 flex-shrink-0">
             <ChartContainer delay="600ms">
               <BaseBarChart
-                data={industryGdpValueData}
+                data={leftChartArray}
                 title="三大产业GDP增速对比"
                 subtitle="数据来源: 国家统计局｜单位: %"
-                xAxisKey="industry"
+                xAxisKey="period"
                 bars={[
-                  { dataKey: '2025-06', name: '25-06', color: greyPalette.left1 },
-                  { dataKey: '2025-09', name: '25-09', color: greyPalette.left2 },
-                  { dataKey: '2025-12', name: '25-12', color: greyPalette.left3 },
-                  { dataKey: '2026-03', name: '26-03', color: greyPalette.left4 },
-                  { dataKey: '2026-06', name: '26-06', color: greyPalette.left5 },
+                  { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
+                  { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
+                  { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
                 ]}
-                legendOrder={['25-06', '25-09', '25-12', '26-03', '26-06']}
+                legendOrder={industryLegendOrder}
                 yAxisDomain={[0, 7]}
                 barSize={12}
                 showYAxis
@@ -118,30 +138,37 @@ export const ContentSlide05: React.FC = () => {
           <div className="flex-1 min-w-0">
             <ChartContainer delay="720ms">
               <BaseBarChart
-                data={industryContributionData}
+                data={industryChartData}
                 title="不同行业GDP增速对比"
-                subtitle="数据来源: 国家统计局｜单位: %｜注：高技术制造业、装备制造业、数字产品制造业为上半年累计增速"
+                subtitle="数据来源: 国家统计局｜单位: %"
                 xAxisKey="industry"
                 bars={[
-                  { dataKey: '2025-06', name: '25-06', color: greyPalette.right1 },
-                  { dataKey: '2025-12', name: '25-12', color: greyPalette.right2 },
-                  { dataKey: '2026-03', name: '26-03', color: greyPalette.right3 },
-                  { dataKey: '2026-06', name: '26-06', color: greyPalette.right4 },
+                  { dataKey: '2025-09', name: '25-09', color: '#cbd5e1' },
+                  { dataKey: '2025-12', name: '25-12', color: '#94a3b8' },
+                  { dataKey: '2026-03', name: '26-03', color: '#64748b' },
+                  { dataKey: '2026-06', name: '26-06', color: '#475569' },
+                  { dataKey: '2026-09', name: '26-09', color: '#334155' },
                 ]}
-                legendOrder={['25-06', '25-12', '26-03', '26-06']}
+                legendOrder={['25-09', '25-12', '26-03', '26-06', '26-09']}
+                yAxisDomain={[-5, 14]}
                 barSize={8}
                 showYAxis
-                yAxisDomain={[-5, 14]}
+                yAxisTickFormatter={(v) => `${v}%`}
+                showLabels
+                labelFilter={({ value, dataKey }) =>
+                  dataKey === '2026-09' && (Number(value) === 12.9 || Number(value) === 9.8)
+                }
+                labelFormatter={(v: any) => `${Number(v).toFixed(1)}%`}
+                labelPositiveOffset={10}
+                unit="%"
                 showReferenceLine
                 referenceLineY={0}
-                showLabels={false}
-                unit="%"
                 xAxisAngle={-35}
-                xAxisHeight={70}
+                xAxisHeight={82}
                 xAxisInterval={0}
                 xAxisTickFontSize={8}
                 categoryGroups={[
-                  { label: '第二产业', x1: '工业', x2: '建筑业' },
+                  { label: '第二产业', x1: '农林牧渔', x2: '建筑业' },
                   { label: '第三产业', x1: '批发零售', x2: '其他行业' },
                 ]}
               />

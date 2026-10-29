@@ -1,113 +1,64 @@
 import React from 'react';
-import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { ppiYoyData } from '@/data/ppi';
-import { industrialProfitData } from '@/data/profit';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { pmiByEnterpriseSizeData } from '@/data/pmi';
 
-// PPI 当月同比（2024-01 起）
-const ppiChartData = ppiYoyData.filter((d) => d.period >= '2024-01');
+// PMI 大中小企业数据
+const pmiSizeLines: LineConfig[] = [
+  { dataKey: 'large', name: '大型企业', strokeWidth: 2.5, pointOffsets: { '2026-07': 8 } },
+  { dataKey: 'medium', name: '中型企业', strokeWidth: 2, pointOffsets: { '2026-07': -8 } },
+  { dataKey: 'small', name: '小型企业', strokeWidth: 2 },
+];
 
-const formatNumber = (val: number) => {
-  return val.toLocaleString('en-US', {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1
-  });
-};
+// 企业利润分化数据
+// 数据说明：仅"高技术制造业"无2026-06数据，使用2026-05数据并标注"(5月)"
+const industryProfitGrowthData: Array<{ period: string; newEconomy?: number; oldEconomy?: number; fill: string }> = [
+  { period: '化学纤维', newEconomy: 102.0, fill: '#2563eb' },
+  { period: '计算机通信电子', newEconomy: 96.9, fill: '#2563eb' },
+  { period: '有色金属', newEconomy: 80.0, fill: '#2563eb' },
+  { period: '高技术制造', newEconomy: 44.7, fill: '#2563eb' },
+  { period: '通用设备', newEconomy: 1.5, fill: '#2563eb' },
+  { period: '农副食品', oldEconomy: -12.0, fill: '#ef4444' },
+  { period: '汽车制造', oldEconomy: -19.5, fill: '#ef4444' },
+  { period: '纺织服装', oldEconomy: -28.0, fill: '#ef4444' },
+];
 
-const renderColoredCell = (value: any, row: any) => {
-  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-  const num = Number(value);
-  if (isNaN(num)) return value;
-
-  const formatted = formatNumber(num);
-  // 2026年（2602 起）利润、营收-成本、费用标红
-  if (row.time >= '2602') {
-    return <span className="text-red-500">{formatted}</span>;
-  }
-
-  return <span className="text-slate-600">{formatted}</span>;
-};
-
-const profitColumns: ColumnConfig[] = [
-  { key: 'time', title: '日期', width: '70px', align: 'left' },
-  { key: 'totalProfit', title: '利润', width: '80px', align: 'right', render: renderColoredCell },
-  { key: 'revenue', title: '营收', width: '90px', align: 'right' },
-  { key: 'cost', title: '成本', width: '90px', align: 'right' },
-  { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
-  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right', render: renderColoredCell },
-  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
+const profitBars: BarConfig[] = [
+  { dataKey: 'newEconomy', name: '新经济/装备制造' },
+  { dataKey: 'oldEconomy', name: '传统行业' },
 ];
 
 export const ContentSlide11: React.FC = () => {
   return (
     <BaseContentSlide
-      title="上半年企业利润持续增长，受输入性通胀影响显著"
-      cardColumns={3}
+      title="工业企业K型分化加剧"
+      cardColumns={2}
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="上半年企业利润稳定增长" delay="0ms" variant="accent">
-            <ul className="list-disc pl-5 space-y-1 text-xs">
+          <BaseCard title="企业规模、行业维度双重 K 型分化" delay="0ms" variant="accent">
+            <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
               <li>
-                <span className="font-bold">利润总量：</span>
-                上半年工业企业利润累计同比增长
-                <span className="text-red-500 font-bold">18.7%</span>
-                ，5月增长
-                <span className="text-red-500 font-bold">21.1%</span>
-                ，6月增长
-                <span className="text-red-500 font-bold">15.1%</span>
-                ，拆分各项看，增长的主要贡献为<span>营收-成本</span>，营销管理等费用支出较25年增长。
+                <span className="font-semibold text-webank-blue">企业规模维度</span>：7 月制造业 PMI 整体处于收缩区间，大型企业 <span className="font-bold text-green-500">49.5%</span>、中型 <span className="font-bold text-green-500">49.7%</span>、小型 <span className="font-bold text-green-500">47.4%</span>。大型企业相对韧性更强，但同样未回到扩张区间；小微企业持续深度收缩。
               </li>
               <li>
-                <span className="font-bold">FIFO效应：</span>
-                受"先进先出"成本核算影响，油价飙升初期，低价库存导致石化链利润短期暴涨（4月同比
-                <span className="text-red-500 font-bold">+88.5%</span>
-                ）。随着低价库存耗尽，该效应预计将逐步消退。
-              </li>
-              <li>
-                <span className="font-bold">AI算力需求爆发：</span>
-                AI相关上游产品价格和需求增长迅猛，导致计算机、通信电子设备制造业利润增长
-                <span className="text-red-500 font-bold">96%</span>
-                ，成为利润增长的核心驱动力之一。
+                <span className="font-semibold text-webank-blue">行业结构维度</span>：行业景气分化明显，高技术制造业 PMI <span className="font-bold text-red-500">53.3%</span>、装备制造业 PMI <span className="font-bold text-red-500">51.4%</span> 维持扩张；高耗能行业 PMI <span className="font-bold text-green-500">47.0%</span>、消费品行业 PMI <span className="font-bold text-green-500">47.8%</span> 持续收缩，仅呈现边际放缓。新动能与传统行业景气形成鲜明反差。
               </li>
             </ul>
           </BaseCard>
 
-          <BaseCard title="二季度PPI回升拉动价格增长" delay="120ms">
-            <p className="text-xs">
-              二季度PPI保持上行增长
-              <span className="text-red-500 font-bold">3.6%</span>
-              （6月
-              <span className="text-red-500 font-bold">4.1%</span>
-              ），为 2022 年四季度以来季度涨幅首次转正。生产资料和生活资料剪刀差持续扩大，6月为
-              <span className="text-red-500 font-bold">6.4%</span>
-              ，多数中下游企业盈利空间受到明显挤压。
-            </p>
-          </BaseCard>
-
-          <BaseCard delay="240ms" variant="accent">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md text-xs">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                预测与展望
-              </span>
-            </div>
-            <ul className="list-disc pl-5 space-y-1 text-xs">
+          <BaseCard title="企业利润 K 型分化：新旧行业盈利差异持续扩大" delay="120ms" variant="accent">
+            <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
               <li>
-                <span>PPI：</span>
-                随着地缘因素缓和，年底回落至
-                <span>2–3%</span>
-                ，全年预计落在
-                <span>2.2–3%</span>
-                。（中金预测2.3%，华泰预测2.2%，银河证券预测3.1%）
+                <span className="font-semibold text-webank-blue">新动能行业高增领跑</span>：1‑6 月规上工业企业利润累计同比增长 <span className="font-bold text-red-500">18.7%</span>，行业内部分化显著。电子信息(<span className="font-bold text-red-500">96.9%</span>)、有色金属(<span className="font-bold text-red-500">80.0%</span>)、化工(<span className="font-bold text-red-500">102.0%</span>)等高景气板块拉动整体利润；AI 算力、半导体、新能源带动高技术制造业利润增长 <span className="font-bold text-red-500">44.7%</span>，新经济动能持续释放。
               </li>
               <li>
-                <span className="font-bold">企业利润：</span>
-                受价格传导不畅影响，下半年中下游盈利压力仍大；随着上游价格红利消退、存货 FIFO 效应耗尽，利润增速存在下行风险。
+                <span className="font-semibold text-webank-blue">传统行业承压走弱</span>：地产链、汽车、纺织、农产品加工等传统领域盈利承压，汽车(<span className="font-bold text-green-500">-19.5%</span>)、纺织服装(<span className="font-bold text-green-500">-28.0%</span>)利润明显下滑，旧经济板块仍处于底部运行区间。
+              </li>
+              <li>
+                <span className="font-semibold text-slate-600">分化结果</span>：整体工业利润的拉动高度依赖新动能与上游行业，传统行业尚未形成盈利修复的合力。
               </li>
             </ul>
           </BaseCard>
@@ -115,45 +66,41 @@ export const ContentSlide11: React.FC = () => {
       }
       charts={
         <>
-          <ChartContainer delay="600ms" className="pb-8">
-            <BaseTable
-              data={industrialProfitData}
-              columns={profitColumns}
-              title={
-                <>
-                  工业企业利润分项当月同比增加值
-                  <span className="text-black font-normal normal-case tracking-normal">
-                    （利润（亿）=营收-成本-费用+投资收益+其它收益）
-                  </span>
-                </>
-              }
-              dateColumn="time"
-              colorizeNumbers={false}
-              highlightRows={[industrialProfitData.length - 1]}
-              titleBlockClassName="mb-1"
-              headerCellClassName="!px-1.5 !py-1.5 text-xs leading-tight whitespace-nowrap"
-              cellClassName="!px-1.5 text-xs leading-snug tabular-nums"
-            />
-          </ChartContainer>
-          <ChartContainer delay="720ms" className="pb-8">
+          <ChartContainer delay="400ms" className="min-h-0">
             <BaseLineChart
-              data={ppiChartData}
-              title="PPI、生产资料、生活资料当月同比"
+              data={pmiByEnterpriseSizeData}
+              title="大中小企业PMI：小型企业持续承压"
               subtitle="数据来源：国家统计局 | 单位：%"
-              lines={[
-                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-06': 14 } },
-                { dataKey: 'productionMaterialsYoy', name: '生产资料当月同比', strokeWidth: 2.5 },
-                { dataKey: 'livingGoodsYoy', name: '生活资料当月同比', strokeWidth: 2.5 },
-              ]}
-              yAxisDomain={[-6, 8]}
+              lines={pmiSizeLines}
+              yAxisDomain={[42, 55]}
               showYAxis={true}
               showReferenceLine={true}
+              referenceLineY={50}
+              legendOrder={['大型企业', '中型企业', '小型企业']}
+              xAxisAngle={0}
+            />
+          </ChartContainer>
+          <ChartContainer delay="600ms" className="min-h-0">
+            <BaseBarChart
+              data={industryProfitGrowthData}
+              title="主要行业利润增速：新旧经济分化显著"
+              subtitle={<><span className="text-red-500">注：*高技术制造业仅5月数据</span> | 数据来源：国家统计局 | 单位：%</>}
+              bars={profitBars}
+              xAxisKey="period"
+              yAxisDomain={[-50, 120]}
+              showYAxis={true}
+              yAxisTickFormatter={(val) => `${val}%`}
+              showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['PPI当月同比', '生产资料当月同比', '生活资料当月同比']}
-              highlightPeriods={['2026-06', '2026-07']}
-              xAxisTickCount={7}
-              unit=""
-              yAxisTickFormatter={(val) => `${val}`}
+              showLegend={false}
+              showLabels={true}
+              labelPosition="top"
+              labelFormatter={(val: number | string) => (Number(val) > 0 ? `+${val}%` : `${val}%`)}
+              unit="%"
+              barSize={22}
+              xAxisAngle={-15}
+              xAxisHeight={55}
+              xAxisInterval={0}
             />
           </ChartContainer>
         </>

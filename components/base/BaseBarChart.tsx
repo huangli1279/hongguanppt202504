@@ -114,6 +114,10 @@ export interface BaseBarChartProps {
   categoryGroups?: CategoryGroupConfig[];
   /** 高亮区域（如红框标出组内 Top N），无标签 */
   highlightAreas?: HighlightAreaConfig[];
+  /** 自定义柱状图标签渲染，返回 null 可隐藏指定柱子的标签 */
+  labelContent?: (props: any) => React.ReactNode;
+  /** 标签过滤器，返回 false 可隐藏指定柱子的标签 */
+  labelFilter?: (props: any) => boolean;
   /** 标签与柱子的偏移量（正值往上，负值往下），默认 2 */
   labelOffset?: number;
   /** 各数据列的负值偏移量，key 为 dataKey，value 为偏移量 */
@@ -255,6 +259,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   lineLabelContent,
   categoryGroups,
   highlightAreas,
+  labelFilter,
+  labelContent,
   verticalDividerX,
   verticalDividerStroke = '#94a3b8',
   verticalDividerStrokeDasharray = '4 4',
@@ -463,6 +469,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     <LabelList
                       dataKey={bar.dataKey}
                       content={({ x, y, width, height, value, textAnchor, payload, index }: any) => {
+                        if (labelContent) return labelContent({ x, y, width, height, value, textAnchor, payload, index, dataKey: bar.dataKey, barSize });
+                        if (labelFilter && !labelFilter({ value, payload, index, dataKey: bar.dataKey })) return null;
                         const numValue = Number(value) || 0;
                         const isNegative = numValue < 0;
                         const isOrange = (payload?.fill === '#E07A5F') || (isNegative && bar.color === '#1B4F72');

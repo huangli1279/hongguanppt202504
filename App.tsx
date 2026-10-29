@@ -20,7 +20,7 @@ const lazyNamed = <T extends React.ComponentType<any>>(
 const ContentSlide04 = lazyNamed(() => import('./components/slides/ContentSlide04'), 'ContentSlide04');
 const ContentSlide05 = lazyNamed(() => import('./components/slides/ContentSlide05'), 'ContentSlide05');
 const ContentSlide06 = lazyNamed(() => import('./components/slides/ContentSlide06'), 'ContentSlide06');
-const ContentSlide07 = lazyNamed(() => import('./components/slides/ContentSlide07'), 'ContentSlide07');
+const ContentSlide08 = lazyNamed(() => import('./components/slides/ContentSlide08'), 'ContentSlide08');
 const ContentSlide09 = lazyNamed(() => import('./components/slides/ContentSlide09'), 'ContentSlide09');
 const ContentSlide10 = lazyNamed(() => import('./components/slides/ContentSlide10'), 'ContentSlide10');
 const ContentSlide11 = lazyNamed(() => import('./components/slides/ContentSlide11'), 'ContentSlide11');
@@ -154,8 +154,8 @@ const App: React.FC = () => {
       case 4: return <ContentSlide04 />;
       case 5: return <ContentSlide05 />;
       case 6: return <ContentSlide06 />;
-      case 7: return <ContentSlide07 />;
-      case 8: return <BaseSectionTransitionSlide id="02" title="生产端分析" />;
+      case 7: return <BaseSectionTransitionSlide id="02" title="生产端分析" />;
+      case 8: return <ContentSlide08 />;
       case 9: return <ContentSlide09 />;
       case 10: return <ContentSlide10 />;
       case 11: return <ContentSlide11 />;
