@@ -51,14 +51,15 @@ export const ContentSlide04: React.FC = () => {
               highlightPeriods={['2026-06', '2026-09']}
               categoryGroups={[
                 {
-                  label: '4.3%→4.5%回升',
+                  label: '回升↑',
                   x1: '2026-06',
                   x2: '2026-09',
-                  stroke: '#ef4444',
-                  fill: '#ef4444',
-                  fillOpacity: 0.1,
+                  stroke: 'transparent',
+                  fill: 'transparent',
+                  fillOpacity: 0,
+                  labelFill: '#ef4444',
                   labelPosition: 'insideTop',
-                  labelDy: 24,
+                  labelDy: 16,
                 },
               ]}
               lines={[

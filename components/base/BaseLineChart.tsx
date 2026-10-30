@@ -52,6 +52,11 @@ export interface CategoryGroupConfig {
   stroke?: string;
   fill?: string;
   fillOpacity?: number;
+  /** 可选：Y 轴区间，缺省时覆盖整个 Y 轴高度 */
+  y1?: number;
+  y2?: number;
+  /** 标签颜色，缺省时跟随 stroke */
+  labelFill?: string;
   /** 自定义标签位置，缺省时根据 x1/x2 自动判断（首段左上、末段右上、中段居中） */
   labelPosition?: 'insideTopLeft' | 'insideTopRight' | 'insideTop' | 'insideBottomLeft' | 'insideBottomRight' | 'insideBottom' | 'center';
   /** 标签垂直偏移量（像素）。正值向下。正值大 → 文字更靠 ReferenceArea 内部下方 */
@@ -322,12 +327,14 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                   ? 'insideTopRight'
                   : 'insideTop';
               const labelPos = group.labelPosition ?? autoPosition;
-              const labelFill = group.stroke ?? '#64748b';
+              const labelFill = group.labelFill ?? group.stroke ?? '#64748b';
               return (
                 <ReferenceArea
                   key={`group-${group.label}-${group.x1}-${group.x2}`}
                   x1={group.x1}
                   x2={group.x2}
+                  {...(group.y1 !== undefined ? { y1: group.y1 } : {})}
+                  {...(group.y2 !== undefined ? { y2: group.y2 } : {})}
                   {...(hasDualAxis ? { yAxisId: 'left' as const } : {})}
                   stroke={group.stroke ?? '#94a3b8'}
                   strokeWidth={1.5}

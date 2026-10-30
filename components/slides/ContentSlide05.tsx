@@ -17,25 +17,13 @@ const stackedIndustryBars = [
 
 const industryLegendOrder = ['第一产业', '第二产业', '第三产业'];
 
-const leftChartData = industryGdpValueData.reduce((acc, row) => {
-  const industryKey =
-    row.industry === '第一产业' ? 'primary' : row.industry === '第二产业' ? 'secondary' : 'tertiary';
-  Object.keys(row).forEach((k) => {
-    if (k === 'industry') return;
-    if (!acc[k]) acc[k] = { period: k.slice(2) };
-    acc[k][industryKey] = (row as any)[k];
-  });
-  return acc;
-}, {} as Record<string, any>);
-const leftChartArray = Object.values(leftChartData);
-
 export const ContentSlide05: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
           产业结构：三产贡献率
-          <span className="text-webank-accent">66.5%创新高，高端制造及现代服务保持高增</span>
+          <span className="text-webank-accent">66.5%维持高位，高端制造及现代服务保持高增</span>
         </>
       }
       cardColumns={2}
@@ -48,11 +36,7 @@ export const ContentSlide05: React.FC = () => {
               <span className="font-bold text-red-500">3.6%</span>、
               <span className="font-bold text-red-500">3.4%</span>、
               <span className="font-bold text-red-500">5.2%</span>
-              ，第三产业对经济增长的贡献率达
-              <span className="font-bold text-red-500">66.5%</span>
-              ，较上年同期提高
-              <span className="font-bold text-red-500">4.7个百分点</span>
-              。第二产业同比增长
+              ，第二产业同比增长
               <span className="font-bold text-red-500">3.4%</span>
               ，较二季度回升
               <span className="font-bold text-red-500">0.4个百分点</span>
@@ -90,18 +74,20 @@ export const ContentSlide05: React.FC = () => {
           <div className="w-[26%] min-w-0 flex-shrink-0">
             <ChartContainer delay="600ms">
               <BaseBarChart
-                data={leftChartArray}
+                data={industryGdpValueData}
                 title="三大产业GDP增速对比"
                 subtitle="数据来源: 国家统计局｜单位: %"
-                xAxisKey="period"
+                xAxisKey="industry"
                 bars={[
-                  { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
-                  { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
-                  { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
+                  { dataKey: '2025-09', name: '25-09', color: '#cbd5e1' },
+                  { dataKey: '2025-12', name: '25-12', color: '#94a3b8' },
+                  { dataKey: '2026-03', name: '26-03', color: '#64748b' },
+                  { dataKey: '2026-06', name: '26-06', color: '#475569' },
+                  { dataKey: '2026-09', name: '26-09', color: '#334155' },
                 ]}
-                legendOrder={industryLegendOrder}
+                legendOrder={['25-09', '25-12', '26-03', '26-06', '26-09']}
                 yAxisDomain={[0, 7]}
-                barSize={12}
+                barSize={8}
                 showYAxis
                 showLabels
                 labelFormatter={(v: any) => Number(v).toFixed(1)}
@@ -168,7 +154,7 @@ export const ContentSlide05: React.FC = () => {
                 xAxisInterval={0}
                 xAxisTickFontSize={8}
                 categoryGroups={[
-                  { label: '第二产业', x1: '农林牧渔', x2: '建筑业' },
+                  { label: '第二产业', x1: '工业', x2: '建筑业' },
                   { label: '第三产业', x1: '批发零售', x2: '其他行业' },
                 ]}
               />
