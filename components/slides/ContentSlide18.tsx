@@ -33,8 +33,8 @@ export const ContentSlide18: React.FC = () => {
     { period: '2026-04', cumulative: -1.60, mom: -1.20 },
     { period: '2026-05', cumulative: -4.10, mom: -2.00 },
     { period: '2026-06', cumulative: -5.70, mom: -1.50 },
-    { period: '2026-07', cumulative: -6.20, mom: -0.80 },
-    { period: '2026-08', cumulative: -6.80, mom: -1.00 },
+    { period: '2026-07', cumulative: -6.70, mom: -0.80 },
+    { period: '2026-08', cumulative: -7.20, mom: -1.00 },
     { period: '2026-09', cumulative: -7.20, mom: 0.60 },
   ];
 
