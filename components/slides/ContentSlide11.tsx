@@ -37,10 +37,10 @@ export const ContentSlide11: React.FC = () => {
           <BaseCard title="PPI 预测" delay="120ms">
             <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed">
               <li>
-                随着地缘因素缓和，年底 PPI 回落至 <span className="font-bold">2-3%</span>，全年预计落在 <span className="font-bold">2.2-3%</span>。
+                9 月 PPI 同比已升至 <span className="font-bold">5.0%</span>，Q2 预测（年底 2-3%、全年 2.2-3%）已明显滞后，受地缘与输入性通胀影响，高点或尚未到来。
               </li>
               <li>
-                机构预测：中金 <span className="font-bold">2.3%</span>，华泰 <span className="font-bold">2.2%</span>，银河证券 <span className="font-bold">3.1%</span>。
+                最新判断：年底 PPI 或落于 <span className="font-bold">4-5%</span>，全年预计落在 <span className="font-bold">3.5-4.5%</span>；中下游价格传导不畅，利润压力仍大。
               </li>
             </ul>
           </BaseCard>

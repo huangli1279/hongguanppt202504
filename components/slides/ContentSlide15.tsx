@@ -56,7 +56,7 @@ export const ContentSlide15: React.FC = () => {
         <>
           <BaseCard title="9月结构：能源涨、食品跌、AI终端涨" delay="0ms" variant="accent">
             <p>
-              前三季度CPI同比上涨<span className="font-bold text-red-500">0.9%</span>，核心CPI上涨<span className="font-bold text-red-500">1.1%</span>，仍处于温和通胀区间。9月CPI同比<span className="font-bold text-red-500">+0.9%</span>，核心CPI<span className="font-bold text-red-500">+1.0%</span>。
+              三季度CPI逐步回升，9月CPI同比<span className="font-bold text-red-500">+0.9%</span>，核心CPI<span className="font-bold text-red-500">+1.0%</span>。
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li>

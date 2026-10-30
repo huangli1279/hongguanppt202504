@@ -30,26 +30,18 @@ export const ContentSlide06: React.FC = () => {
                 </div>
               </BaseCard>
 
-              <BaseCard title="共识" delay="120ms" variant="accent" className="!gap-1.5 !p-3 w-full">
+              <BaseCard title="机构共识" delay="120ms" variant="accent" className="!gap-1.5 !p-3 w-full">
                 <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
                   <li>
-                    IMF：
-                    <span className="font-bold text-red-500">4.5%</span>
+                    全年增速大概率落在
+                    <span className="font-bold text-red-500">4.5%-4.6%</span>
+                    区间，处于政府目标（4.5%-5.0%）下限附近
                   </li>
                   <li>
-                    OECD：
-                    <span className="font-bold text-red-500">4.5%</span>
+                    关键驱动力：出口+ 高技术制造业支撑总量，8000 亿新型政策性金融工具 + 六张网 + 5500 亿结存限额支撑投资
                   </li>
                   <li>
-                    花旗：
-                    <span className="font-bold text-red-500">4.6%</span>
-                  </li>
-                  <li>
-                    一财一致预期：
-                    <span className="font-bold text-red-500">4.6%</span>
-                    （10 月最新）——第一财经首席经济学家调研（2026 年 10 月）显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为
-                    <span className="font-bold text-red-500">4.6%</span>
-                    。
+                    K型分化延续：新经济强、旧经济弱
                   </li>
                 </ul>
               </BaseCard>
