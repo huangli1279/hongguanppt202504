@@ -110,7 +110,7 @@ export const ContentSlide18: React.FC = () => {
                 title="国有控股投资与民间投资累计同比"
                 subtitle="数据来源：国家统计局 | 单位：%"
                 lines={privateLineConfigs}
-                yAxisDomain={[-12, 10]}
+                yAxisDomain={[-11, 9]}
                 showYAxis={true}
                 showReferenceLine={true}
                 referenceLineY={0}
@@ -125,7 +125,7 @@ export const ContentSlide18: React.FC = () => {
                 title="建筑安装工程、设备购置、其他费用累计同比"
                 subtitle="数据来源：国家统计局 | 单位：%"
                 lines={breakdownLineConfigs}
-                yAxisDomain={[-12, 20]}
+                yAxisDomain={[-10, 20]}
                 showYAxis={true}
                 showReferenceLine={true}
                 referenceLineY={0}

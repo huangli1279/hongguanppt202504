@@ -63,7 +63,7 @@ export const ContentSlide15: React.FC = () => {
                 交通通信同比<span className="font-bold text-red-500">+4.3%</span>，其中燃料<span className="font-bold text-red-500">+14.9%</span>（8月<span className="text-webank-blue">+8.3%</span>）；医疗保健<span className="font-bold text-red-500">+2.7%</span>；存储设备<span className="font-bold text-red-500">+46.7%</span>、平板电脑<span className="font-bold text-red-500">+23.6%</span>。
               </li>
               <li>
-                猪肉<span className="text-green-600 font-bold">-10.0%</span>、鲜菜<span className="text-green-600 font-bold">-8.1%</span>；食品烟酒9月<span className="text-green-600 font-bold">-0.9%</span>，三季度维持负增长；居住类7-9月均同比<span className="text-green-600 font-bold">-0.3%</span>。
+                食品烟酒<span className="text-green-600 font-bold">-0.9%</span>，猪肉<span className="text-green-600 font-bold">-10.0%</span>、鲜菜<span className="text-green-600 font-bold">-8.1%</span>；三季度维持负增长；居住类7-9月均同比<span className="text-black font-bold">-0.3%</span>。
               </li>
             </ul>
           </BaseCard>

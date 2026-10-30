@@ -80,6 +80,9 @@ export const retailMonthlyCategoryData = [
   { period: '2026-04', totalRetail: 0.2, cateringRevenue: 2.2, goodsRetail: -0.1 },
   { period: '2026-05', totalRetail: -0.6, cateringRevenue: 0.6, goodsRetail: -0.7 },
   { period: '2026-06', totalRetail: 1.0, cateringRevenue: 1.2, goodsRetail: 0.9 },
+  { period: '2026-07', totalRetail: 0.6, cateringRevenue: 1.4, goodsRetail: 0.5 },
+  { period: '2026-08', totalRetail: 0.4, cateringRevenue: 1.1, goodsRetail: 0.3 },
+  { period: '2026-09', totalRetail: 1.1, cateringRevenue: 2.1, goodsRetail: 1.0 },
 ];
 
 export const serviceRetailData = [

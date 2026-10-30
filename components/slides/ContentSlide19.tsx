@@ -18,7 +18,7 @@ const industryYoyData = [
   { name: '基础设施建设投资', value: 2.0, fill: '#b91c1c' },
   { name: '装备制造业', value: 1.3, fill: '#b91c1c' },
   { name: '制造业投资', value: -0.3, fill: '#16a34a' },
-  { name: '房地产开发投资', value: -20.0, fill: '#16a34a' },
+  { name: '房地产开发投资', value: -20.6, fill: '#16a34a' },
   { name: '东北地区', value: -26.0, fill: '#15803d' },
 ];
 

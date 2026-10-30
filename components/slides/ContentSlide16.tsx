@@ -38,7 +38,7 @@ const gapTooltip = ({ active, payload, label }: any) => {
 export const ContentSlide16: React.FC = () => {
   return (
     <BaseContentSlide
-      title="收入与支出：实际收入+4.4%＞实际消费+2.7%，预防性储蓄倾向未解除"
+      title="收入与支出：收入增幅大于消费，预防性储蓄倾向未解除"
       cardColumns={2}
       chartColumns={2}
       cards={
@@ -197,9 +197,9 @@ export const ContentSlide16: React.FC = () => {
               title="就业情况"
               subtitle="数据来源：国家统计局 | 单位：% | 城镇调查失业率"
               lines={[
-                { dataKey: 'overall', name: '城镇调查失业率', color: '#b91c1c', strokeWidth: 2.5 },
-                { dataKey: 'age16_24', name: '16-24岁', color: '#2563eb', strokeWidth: 2 },
-                { dataKey: 'age30_59', name: '30-59岁', color: '#16a34a', strokeWidth: 2 },
+                { dataKey: 'overall', name: '城镇调查失业率', color: '#1e3a8a', strokeWidth: 2.5 },
+                { dataKey: 'age16_24', name: '16-24岁', color: '#dc2626', strokeWidth: 2 },
+                { dataKey: 'age30_59', name: '30-59岁', color: '#6b7280', strokeWidth: 2 },
               ]}
               yAxisDomain={[0, 22]}
               showYAxis
