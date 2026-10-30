@@ -361,6 +361,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}
                   dy={10}
                   interval={xAxisInterval}
+                  tickCount={6}
                   tickFormatter={yAxisTickFormatter}
                   domain={yAxisDomain}
                 />

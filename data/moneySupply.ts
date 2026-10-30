@@ -19,7 +19,7 @@ export interface MoneySupplyCombinedDataPoint {
   m1: number;
   m2: number;
   scissor: number;
-  /** 剔除2025年6月高基数后的剪刀差（仅末段展示） */
+  /** 剔除2025年9月高基数后的剪刀差（仅末段展示） */
   scissorAdj?: number | null;
 }
 
@@ -79,6 +79,9 @@ export const moneySupplyData: MoneySupplyDataPoint[] = [
   { period: '2026-04', m1: 5.0, m2: 8.6 },
   { period: '2026-05', m1: 5.5, m2: 8.6 },
   { period: '2026-06', m1: 4.0, m2: 8.0 },
+  { period: '2026-07', m1: 3.7, m2: 7.9 },
+  { period: '2026-08', m1: 3.4, m2: 7.5 },
+  { period: '2026-09', m1: 3.2, m2: 7.2 },
 ];
 
 // M1-M2剪刀差数据 (2022-2026H1)
@@ -137,6 +140,9 @@ export const moneySupplyScissorData: MoneySupplyScissorDataPoint[] = [
   { period: '2026-04', scissor: -3.6 },
   { period: '2026-05', scissor: -3.1 },
   { period: '2026-06', scissor: -4.0 },
+  { period: '2026-07', scissor: -4.2 },
+  { period: '2026-08', scissor: -4.1 },
+  { period: '2026-09', scissor: -4.0 },
 ];
 
 /** M1、M2同比及剪刀差合并序列（2024-07 ~ 2026-06） */
@@ -163,6 +169,9 @@ export const moneySupplyCombinedRecentData: MoneySupplyCombinedDataPoint[] = [
   { period: '2026-02', m1: 5.9, m2: 9.0, scissor: -3.1 },
   { period: '2026-03', m1: 5.1, m2: 8.5, scissor: -3.4 },
   { period: '2026-04', m1: 5.0, m2: 8.6, scissor: -3.6 },
-  { period: '2026-05', m1: 5.5, m2: 8.6, scissor: -3.1, scissorAdj: -3.1 },
-  { period: '2026-06', m1: 4.0, m2: 8.0, scissor: -4.0, scissorAdj: -2.93 },
+  { period: '2026-05', m1: 5.5, m2: 8.6, scissor: -3.1 },
+  { period: '2026-06', m1: 4.0, m2: 8.0, scissor: -4.0 },
+  { period: '2026-07', m1: 3.7, m2: 7.9, scissor: -4.2 },
+  { period: '2026-08', m1: 3.4, m2: 7.5, scissor: -4.1, scissorAdj: -4.1 },
+  { period: '2026-09', m1: 3.2, m2: 7.2, scissor: -4.0, scissorAdj: -3.1 },
 ];

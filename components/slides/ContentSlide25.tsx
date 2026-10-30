@@ -1,108 +1,32 @@
 import React from 'react';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { BaseContentSlide } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { importTableData, ImportTableItem } from '@/data';
-import { cn } from '@/utils/cn';
 
 export const ContentSlide25: React.FC = () => {
-  const columns: ColumnConfig[] = [
-    {
-      key: 'name',
-      title: '商品名称',
-      width: '28%',
-      align: 'left',
-      render: (value, row: ImportTableItem) => {
-        const padding = row.level === 0 ? 'pl-0' : row.level === 1 ? 'pl-4' : 'pl-8';
-        return (
-          <div className={cn(padding, row.isCategory && 'font-bold text-webank-blue')}>
-            {value}
-          </div>
-        );
-      }
-    },
-    {
-      key: 'decAmount',
-      title: '6月金额',
-      align: 'right',
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
-    },
-    {
-      key: 'totalAmount',
-      title: '1-6月累计金额',
-      align: 'right',
-      includeInStats: true,
-      render: (val: any) => {
-        if (typeof val !== 'number') return <span className="text-slate-400">-</span>;
-        return <span className="text-black">{val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</span>;
-      }
-    },
-    { key: 'yoy12Qty', title: '1-6月数量累计同比', align: 'right', redThreshold: 10, includeInStats: true,
-      render: (val: any) => {
-        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
-        if ([6.3, 8.1].includes(val)) return <span className="text-black">{val.toFixed(1)}</span>;
-        if (val >= 10) return <span className="text-red-500">{val.toFixed(1)}</span>;
-        if (val <= -10) return <span className="text-green-600">{val.toFixed(1)}</span>;
-        return <span className="text-slate-600">{val.toFixed(1)}</span>;
-      }
-    },
-    { key: 'yoy12Amt', title: '1-6月金额累计同比', align: 'right', redThreshold: 10, includeInStats: true,
-      render: (val: any) => {
-        if (val === null || val === undefined) return <span className="text-slate-400">-</span>;
-        if (val === 1.8) return <span className="text-black">{val.toFixed(1)}</span>;
-        if (val >= 10) return <span className="text-red-500">{val.toFixed(1)}</span>;
-        if (val <= -10) return <span className="text-green-600">{val.toFixed(1)}</span>;
-        return <span className="text-slate-600">{val.toFixed(1)}</span>;
-      }
-    },
-  ];
-
   return (
     <BaseContentSlide
-      title="进口端：AI链拉动显著，大宗商品量价分化"
+      title="进口结构：进口持续向高新技术迁移，粮食等传统产品量价齐降"
       cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
-          <BaseCard title="AI产业链贡献近半增量" delay="0ms" variant="accent">
+          <BaseCard title="9月进口：价格驱动的高增" delay="0ms" variant="accent">
             <p>
-              上半年进口历史同期首次突破<span className="font-semibold">10万亿元</span>，同比增长<span className="text-red-500 font-semibold">22.1%</span>（美元计<span className="text-red-500 font-semibold">26.6%</span>），增速高于出口<span className="text-red-500 font-semibold">8.7</span>个百分点。集成电路进口额<span>2980亿美元</span>、同比<span className="text-red-500 font-semibold">55.8%</span>，自动数据处理设备及零部件同比<span className="text-red-500 font-semibold">78.9%</span>；6月二者合计拉动进口约<span className="text-red-500 font-semibold">17.4</span>个百分点，贡献近一半增量。
+              9月进口<span className="text-red-500 font-semibold">+31.0%</span>，但进口量仅<span className="text-red-500 font-semibold">+1.0%</span>——高增几乎全部来自价格；AI链（集成电路+自动数据处理设备）贡献<span className="text-red-500 font-semibold">21.7</span>个百分点，解释了进口增长的七成，"AI强、内需弱"的进口结构未变。
             </p>
           </BaseCard>
-          <BaseCard title="大宗商品量价分化" delay="120ms">
+          <BaseCard title="高新技术：AI链拉动" delay="120ms">
             <p>
-              铁矿砂进口数量<span className="text-red-500 font-semibold">+6.3%</span>，在价格带动下进口金额<span className="text-red-500 font-semibold">+11.4%</span>；原油进口实物量累计下降<span className="text-green-600 font-semibold">11.4%</span>，受国际油价支撑，进口金额小幅增长<span className="text-red-500 font-semibold">1.8%</span>；6月原油进口量回落至近十年低位，地缘冲突扰动全球供给和国内补库节奏。
+              自动数据处理设备及零部件进口金额<span className="text-red-500 font-semibold">+296.5%</span>、集成电路<span className="text-red-500 font-semibold">+74.7%</span>，但剔除价格后集成电路进口数量仅<span className="text-red-500 font-semibold">+1.7%</span>；AI链对进口增速的贡献由8月的<span className="text-red-500 font-semibold">19.7pct</span>升至<span className="text-red-500 font-semibold">21.7pct</span>，解释了总体进口增长的约七成；非货币黄金进口<span className="text-red-500 font-semibold">+77.5%</span>再贡献<span className="text-red-500 font-semibold">3.8pct</span>（上半年拉动<span className="text-red-500 font-semibold">7pct</span>、本季退坡）。
             </p>
           </BaseCard>
-          <BaseCard
-            title="下半年展望：进口总量增速或回落"
-            delay="240ms"
-            titleClassName="!bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
-          >
+          <BaseCard title="传统需求：量价齐降，仍在低位" delay="240ms">
             <p>
-              集成电路、算力硬件仍保有结构性韧性，受高基数、AI硬件拉动边际减弱影响，下半年进口整体增速大概率回落。
+              传统需求偏弱：原油进口量<span className="text-green-600 font-semibold">-21.5%</span>，但价格<span className="text-red-500 font-semibold">+31.5%</span>，推升金额<span className="text-red-500 font-semibold">+3.3%</span>；煤炭、天然气进口金额<span className="text-red-500 font-semibold">+45.3%</span>/<span className="text-red-500 font-semibold">+34.0%</span>但数量分别<span className="text-green-600 font-semibold">-5.7%</span>/<span className="text-green-600 font-semibold">-1.7%</span>；铜矿进口数量<span className="text-green-600 font-semibold">-4.2%</span>，但价格增长<span className="text-red-500 font-semibold">32.6%</span>；液晶平板显示模组进口金额/数量分别<span className="text-green-600 font-semibold">-25.3%</span>/<span className="text-green-600 font-semibold">-24.0%</span>，汽车及零部件<span className="text-green-600 font-semibold">-38.1%</span>/<span className="text-green-600 font-semibold">-47.2%</span>，传统终端制造需求仍在低位。
             </p>
           </BaseCard>
         </div>
-
-        {/* 表格区域 */}
-        <ChartContainer delay="600ms" className="flex-1 min-h-0">
-          <BaseTable
-            data={importTableData}
-            columns={columns}
-            title="2026年6月全国进口重点商品量值表"
-            subtitle="数据来源：海关总署 | 金额单位：百万美元"
-            rowHeight="auto"
-            titleBlockClassName="mb-[clamp(1px,0.3vh,4px)]"
-            subtitleClassName="mt-0 text-[clamp(7px,0.9vh,9px)]"
-            headerCellClassName="py-1 text-[clamp(12px,1.5vh,16px)]"
-            cellClassName="py-0 text-[clamp(11px,1.3vh,15px)] leading-tight"
-          />
-        </ChartContainer>
       </div>
     </BaseContentSlide>
   );

@@ -4,7 +4,7 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { chartColors } from '@/utils/chartColors';
-import { corporateCreditStructureData, householdLoanChangeData } from '@/data/loanData';
+import { corporateCreditStructureQ3Data, householdLoanChangeData } from '@/data/loanData';
 
 const formatTrillion = (val: any) =>
   val === null || val === undefined
@@ -26,7 +26,7 @@ const loanColumns: ColumnConfig[] = [
 
 export const ContentSlide34: React.FC = () => {
   const highlightRows = householdLoanChangeData.reduce<number[]>((acc, item, index) => {
-    if (['2026-04', '2026-05', '2026-06'].includes(item.period)) {
+    if (['2026-07', '2026-08', '2026-09'].includes(item.period)) {
       acc.push(index);
     }
     return acc;
@@ -34,71 +34,75 @@ export const ContentSlide34: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>企业贷款"票据强、中长期弱"，居民端持续缩表</>}
+      title={<>贷款：企业强、居民弱，居民端缩表未缓解</>}
       cardColumns={2}
     >
-      <div className="flex flex-col h-full pb-6">
-        <div className="grid grid-cols-2 gap-3 mb-2 flex-shrink-0">
-          <BaseCard title="Q2企业贷款：票据强、中长期弱" delay="0ms" variant="accent" className="!p-3 gap-1 text-sm">
+      <div className="grid grid-cols-2 grid-rows-[auto_1fr] gap-3 h-full pb-6">
+          <BaseCard title="Q3企业贷款：政策工具落地支撑" delay="0ms" variant="accent" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
+            <p className="mb-1">
+              Q3企业贷款增长<span className="text-webank-blue font-semibold">1.45万亿</span>，中长期贷款增长
+              <span className="text-webank-blue font-semibold">9800亿</span>，同比少增
+              <span className="text-webank-blue font-semibold">1400亿</span>。
+            </p>
+            <p className="mb-1">
+              其中9月企业贷款新增<span className="text-webank-blue font-semibold">1.29万亿</span>，主因9月新型政策性金融工具开始投放，补充重大项目资本金的同时带动银行配套贷款跟进。
+            </p>
+            <p>
+              企业中长贷同比少增额已明显收窄，预计10月对公中长贷继续改善（主要看政策工具落地情况）。
+            </p>
+          </BaseCard>
+          <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
+            <p className="mb-1">
+              Q3居民贷款下降<span className="text-green-600 font-semibold">6669亿</span>，同比多降
+              <span className="text-green-600 font-semibold">5968亿</span>，9月单月居民贷款
+              <span className="text-green-600 font-semibold">0增长</span>；前三季度居民贷款累计下降
+              <span className="text-green-600 font-semibold">1.03万亿</span>，居民信心偏弱，加杠杆意愿不强。
+            </p>
+            <p className="mb-1 font-semibold">从贷款分类看，各类贷款延续Q2趋势：</p>
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                实体融资意愿低迷：Q2非金融企业贷款增长<span className="text-webank-blue">2.5万亿</span>，中长期贷款（剔票据）仅增<span className="text-webank-blue">1300亿</span>，同比少增<span className="text-webank-blue">1.46万亿</span>，为近年低点，与企业资本开支意愿偏弱、项目落地偏慢有关。
+                住房贷款：Q3下降<span className="text-green-600 font-semibold">3800亿</span>，同比多降
+                <span className="text-green-600 font-semibold">800亿</span>，对比上季度下降金额（Q2：下降4300亿）有缓解。前三季度累计下降
+                <span className="text-green-600 font-semibold">1.1万亿</span>，为居民贷款下降的主要原因。后续贴息政策有望带动居民按揭信贷小幅增长，但持续性取决于收入房价预期等。
               </li>
               <li>
-                票据融资独撑增量：Q2票据增长<span className="text-webank-blue">1.9万亿</span>（同比多增<span className="text-webank-blue">1.4万亿</span>），票利率约<span className="text-webank-blue">0.5%</span>，银行"以票充贷"冲量明显。
+                消费贷款（不含房贷）：Q3下降<span className="text-green-600 font-semibold">1370亿</span>，同比多降
+                <span className="text-green-600 font-semibold">2557亿</span>，消费需求修复仍显疲弱。
               </li>
               <li>
-                新旧动能分化：高新技术企业贷款增速<span className="text-red-500 font-semibold">14.6%</span>、绿色贷款<span className="text-red-500 font-semibold">14.5%</span>，显著跑赢企业贷款整体增速<span className="text-webank-blue">5.2%</span>。
+                经营贷款：Q3下降<span className="text-green-600 font-semibold">1505亿</span>，同比多降
+                <span className="text-green-600 font-semibold">2648亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-sm">
-            <p className="mb-1">Q2居民贷款下降<span className="text-green-600 font-semibold">6636亿</span>，同比多降<span className="text-green-600 font-semibold">7898亿</span>，自2025年6月高点后持续收缩。</p>
-            <p className="mb-1 font-semibold">从贷款分类看：</p>
-            <ul className="list-disc pl-4 space-y-0.5">
-              <li>
-                住房贷款：Q2下降<span className="text-green-600 font-semibold">4300亿</span>，同比多降<span className="text-green-600 font-semibold">2700亿</span>，提前还贷潮延续，新增按揭难以对冲存量压缩。
-              </li>
-              <li>
-                消费贷款（不含房贷）：Q2下降<span className="text-green-600 font-semibold">1341亿</span>，同比多降<span className="text-green-600 font-semibold">2934亿</span>，消费需求修复仍显疲弱。
-              </li>
-              <li>
-                经营贷款：Q2下降<span className="text-green-600 font-semibold">995亿</span>，同比多降<span className="text-green-600 font-semibold">2264亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
-              </li>
-            </ul>
-          </BaseCard>
-        </div>
-
-        <div className="flex-[2] grid grid-cols-2 gap-4 min-h-0">
           <ChartContainer delay="600ms" className="min-h-0">
             <BaseBarChart
-              data={corporateCreditStructureData}
-              title="Q2新增人民币贷款结构"
-              subtitle="数据来源：中国人民银行 | 单位：亿元"
+              data={corporateCreditStructureQ3Data}
+              title="Q3新增人民币贷款结构"
+              subtitle="数据来源：中国人民银行 | 单位：万亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'y2024', name: '2024年', color: '#6b7280' },
-                { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
-                { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
+                { dataKey: 'y2025', name: '2025年Q3', color: '#6b7280' },
+                { dataKey: 'y2026', name: '2026年Q3', color: chartColors.primary },
               ]}
-              yAxisDomain={[-6000, 35000]}
+              yAxisDomain={[-2, 2]}
               showYAxis={true}
-              yAxisWidth={50}
-              yAxisTickFormatter={(val) => `${val}`}
+              yAxisWidth={40}
+              yAxisTickFormatter={(val) => Number(val).toFixed(1)}
               showReferenceLine={true}
               referenceLineY={0}
               barSize={14}
               showLabels={true}
-              labelNegativeOffset={-20}
-              labelNegativeOffsets={{ y2024: -20, y2025: -20, y2026: 2 }}
-              labelNegativeOffsetsByIndex={{ 4: -35, 5: -55 }}
-              xAxisAngle={-20}
-              xAxisHeight={55}
-              legendOrder={['2024年', '2025年', '2026年']}
-              unit="亿元"
+              labelFormatter={(val) => Number(val).toFixed(2)}
+              labelFilter={(p) => Number(p.value) >= 0}
+              xAxisAngle={-18}
+              xAxisHeight={52}
+              xAxisTickFontSize={9}
+              legendOrder={['2025年Q3', '2026年Q3']}
+              unit="万亿元"
             />
           </ChartContainer>
-          <ChartContainer delay="600ms" className="min-h-0">
+          <ChartContainer delay="750ms" className="min-h-0">
             <BaseTable
               data={householdLoanChangeData}
               columns={loanColumns}
@@ -108,11 +112,10 @@ export const ContentSlide34: React.FC = () => {
               dateColumn="period"
               highlightRows={highlightRows}
               rowHeight="auto"
-              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[11px] leading-none"
-              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[11px] leading-none"
+              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[10px] leading-none"
+              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[10px] leading-none"
             />
           </ChartContainer>
-        </div>
       </div>
     </BaseContentSlide>
   );

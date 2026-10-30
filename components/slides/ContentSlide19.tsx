@@ -34,7 +34,7 @@ export const ContentSlide19: React.FC = () => {
   const infrastructureLineConfigs: LineConfig[] = [
     { dataKey: 'waterTransport', name: '水上运输业', color: seriesColors[0], strokeWidth: 2.5 },
     { dataKey: 'aviation', name: '航空运输业', color: seriesColors[1], strokeWidth: 2.5 },
-    { dataKey: 'informationTotal', name: '信息传输服务业', color: seriesColors[2], strokeWidth: 2 },
+    { dataKey: 'telecom', name: '信息传输业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-03': 16 } },
     { dataKey: 'publicFacility', name: '公共设施管理业', color: seriesColors[3], strokeWidth: 2, pointOffsets: { '2026-03': 16 } },
     { dataKey: 'infrastructure', name: '基础设施建设投资', color: seriesColors[4], strokeWidth: 2, pointOffsets: { '2026-03': -2 } },
   ];
@@ -96,7 +96,7 @@ export const ContentSlide19: React.FC = () => {
               bars={[{ dataKey: 'value', name: '投资累计同比' }]}
               xAxisKey="value"
               layout="horizontal"
-              yAxisDomain={[-25, 75]}
+              yAxisDomain={[-30, 70]}
               showYAxis={true}
               yAxisWidth={104}
               yAxisTickFormatter={(val) => `${val}%`}
@@ -156,7 +156,7 @@ export const ContentSlide19: React.FC = () => {
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['水上运输业', '航空运输业', '信息传输服务业', '公共设施管理业', '基础设施建设投资']}
+              legendOrder={['水上运输业', '航空运输业', '信息传输业', '公共设施管理业', '基础设施建设投资']}
               xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03']}
             />
           </ChartContainer>

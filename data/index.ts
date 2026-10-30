@@ -82,7 +82,7 @@ export { socialFinancingGrowthData, socialFinancingStructureData, socialFinancin
 export {
   loanStockData,
   loanIncrementData,
-  corporateCreditStructureData,
+  corporateCreditStructureQ3Data,
   householdLoanChangeData,
 } from './loanData';
 export type { LoanStockPoint, LoanIncrementByType, HouseholdLoanChangePoint } from './loanData';

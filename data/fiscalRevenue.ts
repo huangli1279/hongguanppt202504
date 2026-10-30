@@ -37,17 +37,20 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2026-04', taxRevenue: 3.90, nonTaxRevenue: 1.60, total: 3.50 },
   { period: '2026-05', taxRevenue: 4.40, nonTaxRevenue: 2.20, total: 4.00 },
   { period: '2026-06', taxRevenue: 5.30, nonTaxRevenue: 2.30, total: 4.70 },
+  { period: '2026-07', taxRevenue: 5.50, nonTaxRevenue: 1.80, total: 5.20 },
+  { period: '2026-08', taxRevenue: 5.90, nonTaxRevenue: 1.50, total: 5.50 },
+  { period: '2026-09', taxRevenue: 6.10, nonTaxRevenue: 1.20, total: 5.70 },
 ];
 
-// 2026年1-6月主要税种收入总额与累计同比（按增速升序）
+// 2026年1-9月主要税种收入总额与累计同比（按增速升序）
 export const fiscalCategoryGrowthData: FiscalCategoryGrowthDataPoint[] = [
-  { category: '国内消费税', amount: 8673, growth: -3.4 },
-  { category: '企业所得税', amount: 25880, growth: 3.9 },
-  { category: '出口退税', amount: 13387, growth: 5.4 },
-  { category: '国内增值税', amount: 38581, growth: 6.0 },
-  { category: '进口货物增值税、消费税', amount: 9758, growth: 11.8 },
-  { category: '个人所得税', amount: 8982, growth: 13.1 },
-  { category: '印花税', amount: 2752, growth: 40.9 },
+  { category: '国内消费税', amount: 12402, growth: -4.1 },
+  { category: '国内增值税', amount: 55416, growth: 6.1 },
+  { category: '出口退税', amount: 18087, growth: 6.3 },
+  { category: '企业所得税', amount: 34832, growth: 7.1 },
+  { category: '进口货物增值税、消费税', amount: 15171, growth: 12.7 },
+  { category: '个人所得税', amount: 13464, growth: 14.1 },
+  { category: '印花税', amount: 4121, growth: 31.1 },
 ];
 
 // 2026年一季度财政支出各领域同比增速
@@ -83,6 +86,20 @@ export const fiscalExpenditureH1GrowthData: FiscalCategoryGrowthDataPoint[] = [
   { category: '卫生健康', amount: 12191, growth: 10.8 },
 ];
 
+// 2026年1-9月财政支出各领域总额与同比增速（按增速升序）
+export const fiscalExpenditureQ3GrowthData: FiscalCategoryGrowthDataPoint[] = [
+  { category: '节能环保', amount: 3435, growth: -12.5 },
+  { category: '文旅体育', amount: 2494, growth: -6.0 },
+  { category: '农林水', amount: 15257, growth: -5.1 },
+  { category: '交通运输', amount: 8121, growth: -4.1 },
+  { category: '城乡社区', amount: 14004, growth: -1.5 },
+  { category: '教育', amount: 31956, growth: 1.1 },
+  { category: '科学技术', amount: 7317, growth: 3.0 },
+  { category: '债务付息', amount: 10279, growth: 4.7 },
+  { category: '社保就业', amount: 36732, growth: 5.2 },
+  { category: '卫生健康', amount: 16916, growth: 7.7 },
+];
+
 // 2025-2026年一般公共预算支出合计累计同比（按月对比）
 export interface FiscalExpenditureTrendDataPoint {
   period: string;
@@ -96,9 +113,9 @@ export const fiscalExpenditureTrendData: FiscalExpenditureTrendDataPoint[] = [
   { period: '4月', y2025: 4.6, y2026: 1.3 },
   { period: '5月', y2025: 4.2, y2026: 0.8 },
   { period: '6月', y2025: 3.4, y2026: 1.5 },
-  { period: '7月', y2025: 3.4, y2026: null },
-  { period: '8月', y2025: 3.1, y2026: null },
-  { period: '9月', y2025: 3.1, y2026: null },
+  { period: '7月', y2025: 3.4, y2026: 1.3 },
+  { period: '8月', y2025: 3.1, y2026: 1.1 },
+  { period: '9月', y2025: 3.1, y2026: 1.0 },
   { period: '10月', y2025: 2.0, y2026: null },
   { period: '11月', y2025: 1.4, y2026: null },
   { period: '12月', y2025: 1.0, y2026: null },

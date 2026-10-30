@@ -209,6 +209,7 @@ export const quarterlyDepositData: QuarterlyDepositPoint[] = [
   { period: '2025Q4', household: 1.91, householdDemand: 0.69, householdTime: 1.22, nonBankFin: 1.60 },
   { period: '2026Q1', household: 7.70, householdDemand: 1.16, householdTime: 6.53, nonBankFin: 2.32 },
   { period: '2026Q2', household: -0.10, householdDemand: -0.66, householdTime: 0.56, nonBankFin: 2.62 },
+  { period: '2026Q3', household: 1.81, householdDemand: -0.09, householdTime: 1.90, nonBankFin: -0.24 },
 ];
 
 /** Q2 存款增量对比：按类别分组，便于同年份并排对比 */
@@ -217,6 +218,34 @@ export const depositIncrementQ2CompareData = [
   { category: '居民活期存款', q2024: -0.31, q2025: 0.26, q2026: -0.66 },
   { category: '居民定期存款', q2024: 1.02, q2025: 1.30, q2026: 0.56 },
   { category: '非银金融机构存款', q2024: 0.65, q2025: 2.24, q2026: 2.62 },
+];
+
+/** Q3 存款增量对比：按类别分组，便于同年份并排对比 */
+export const depositIncrementQ3CompareData = [
+  { category: '居民存款增量', q2024: 2.58, q2025: 1.96, q2026: 1.81 },
+  { category: '其中：活期存款', q2024: -0.21, q2025: 0.52, q2026: -0.09 },
+  { category: '其中：定期存款', q2024: 2.79, q2025: 1.44, q2026: 1.90 },
+  { category: '非银金融机构存款', q2024: 2.28, q2025: 2.26, q2026: -0.24 },
+];
+
+/** Q3 居民存款分月变化（2025Q3 vs 2026Q3） */
+export const householdDepositMonthlyQ3Data = [
+  { period: '2507', value: -1.11 },
+  { period: '2508', value: 0.11 },
+  { period: '2509', value: 2.96 },
+  { period: '2607', value: -0.63 },
+  { period: '2608', value: 0.04 },
+  { period: '2609', value: 2.40 },
+];
+
+/** Q3 非银机构存款分月变化（2025Q3 vs 2026Q3） */
+export const nonBankDepositMonthlyQ3Data = [
+  { period: '2507', value: 2.15 },
+  { period: '2508', value: 1.17 },
+  { period: '2509', value: -1.06 },
+  { period: '2607', value: 1.11 },
+  { period: '2608', value: 0.55 },
+  { period: '2609', value: -1.91 },
 ];
 
 /** 居民存款分月变化表：25年一组、空行、26年一组，单位与源表一致 */

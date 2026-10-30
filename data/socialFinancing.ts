@@ -31,6 +31,9 @@ export const socialFinancingGrowthData = [
   { period: '2026-04', growth: 7.8 },
   { period: '2026-05', growth: 7.7 },
   { period: '2026-06', growth: 7.4 },
+  { period: '2026-07', growth: 7.3 },
+  { period: '2026-08', growth: 7.2 },
+  { period: '2026-09', growth: 7.1 },
 ];
 
 // 社会融资规模增量（万亿元）
@@ -82,4 +85,16 @@ export const socialFinancingStructureQ2Data = [
   { category: '企业债券融资', q25: 10212, q24: 6258 },
   { category: '政府债券', q25: 28960, q24: 37822 },
   { category: '非金融企业境内股票融资', q25: 1761, q24: 746 },
+];
+
+// 新增社融按三大部门拆分的季度增量（单位：万亿元）
+// household 居民部门、corporate 企业部门、government 政府部门（含政府债券等）
+export const socialFinancingSectorData = [
+  { quarter: '25Q1', household: 0.9, corporate: 8.1, government: 5.6 },
+  { quarter: '25Q2', household: 0.5, corporate: 3.6, government: 3.2 },
+  { quarter: '25Q3', household: 0.4, corporate: 3.4, government: 3.0 },
+  { quarter: '25Q4', household: 0.3, corporate: 2.3, government: 2.4 },
+  { quarter: '26Q1', household: -0.1, corporate: 6.6, government: 7.8 },
+  { quarter: '26Q2', household: -0.2, corporate: 3.0, government: 4.2 },
+  { quarter: '26Q3', household: -0.3, corporate: 2.6, government: 3.8 },
 ];

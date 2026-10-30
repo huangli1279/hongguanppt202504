@@ -21,7 +21,7 @@ export const ContentSlide29: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>上半年一般公共预算收入同比增长4.7%，高于年初预算目标，进度略快于近年同期均值</>}
+      title={<>财政收入：一本账稳、二本账紧，“土地财政+化债”双重约束地方支出</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -29,12 +29,15 @@ export const ContentSlide29: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="收入总量超出预期" delay="0ms" variant="accent">
             <p>
-              上半年价格上行、股市活跃、外贸增势强劲有力支撑全国一般公共预算收入同比增长<span className="text-red-500 font-semibold">4.7%</span>，高于年初<span className="text-red-500 font-semibold">2.2%</span>的预算目标，收入进度达<span className="text-red-500 font-semibold">54.85%</span>，略快于近五年同期均值。
+              1—9月财政收入累计同比增长<span className="text-red-500 font-semibold">5.7%</span>，高于全年目标<span className="text-red-500 font-semibold">2.4%</span>，其中税收收入增长<span className="text-red-500 font-semibold">6.1%</span>，非税收入增长<span className="text-red-500 font-semibold">1.2%</span>，税收成为收入增长的主要拉动。
             </p>
           </BaseCard>
           <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
             <p>
-              税收收入累计增长<span className="text-red-500 font-semibold">5.3%</span>，非税收入同比增长<span className="text-red-500 font-semibold">2.3%</span>。国内增值税受PPI回升与工业生产稳健支撑，累计同比增长<span className="text-red-500 font-semibold">6%</span>（对收入增量贡献<span className="text-red-500 font-semibold">40%</span>）；受外贸进口较快增长带动，进口货物增值税、消费税增长<span className="text-red-500 font-semibold">11.8%</span>（对收入增量贡献<span className="text-red-500 font-semibold">19%</span>）；受资本市场活跃带动，上半年印花税同比增长<span className="text-red-500 font-semibold">40.9%</span>（对收入增量贡献<span className="text-red-500 font-semibold">15%</span>），其中证券交易印花税同比大增<span className="text-red-500 font-semibold">97.3%</span>，延续了Q1趋势。
+              分具体收入类型来看，受PPI回升与工业生产稳健支撑、外贸进口较快增长带动，国内增值税、进口货物增值税、消费税累计同比分别增长<span className="text-red-500 font-semibold">6.1%</span>、<span className="text-red-500 font-semibold">12.7%</span>，对收入增量贡献分别<span className="text-red-500 font-semibold">37%</span>、<span className="text-red-500 font-semibold">20%</span>。
+            </p>
+            <p className="mt-2">
+              受三季度资本市场扰动，1—9月印花税同比增长<span className="text-red-500 font-semibold">31.1%</span>，其中证券交易印花税同比增<span className="text-red-500 font-semibold">65.1%</span>，增幅较二季度回落。
             </p>
           </BaseCard>
         </div>
@@ -44,7 +47,7 @@ export const ContentSlide29: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={fiscalRevenueTrendData}
-              title="1—6月一般公共预算收入累计同比，区分税收收入、非税收收入同比增速"
+              title="1—9月一般公共预算收入累计同比，区分税收收入、非税收收入同比增速"
               subtitle="数据来源：财政部 | 单位：%"
               lines={lines}
               yAxisDomain={[-15, 15]}
@@ -59,18 +62,18 @@ export const ContentSlide29: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseBarChart
               data={fiscalCategoryGrowthData}
-              title="各类税收收入总额与累计同比"
+              title="1—9月各类税收收入总额与累计同比"
               subtitle="数据来源：财政部 | 单位：亿元，%"
               bars={bars}
               lines={growthLines}
               xAxisKey="category"
-              yAxisDomain={[0, 45000]}
+              yAxisDomain={[0, 60000]}
               yAxisTickFormatter={(val) => String(val)}
               unit="亿元"
               showYAxis={true}
               showLabels={false}
               showLineYAxis={true}
-              lineAxisDomain={[-10, 45]}
+              lineAxisDomain={[-10, 35]}
               lineUnit="%"
               lineYAxisTickFormatter={(val) => `${val.toFixed(0)}%`}
               lineShowDot={true}
@@ -93,7 +96,7 @@ export const ContentSlide29: React.FC = () => {
                 );
               }}
               legendOrder={['总额', '增速']}
-              barSize={22}
+              barSize={26}
               xAxisAngle={-45}
               xAxisHeight={70}
             />
