@@ -17,6 +17,29 @@ const stackedIndustryBars = [
 
 const industryLegendOrder = ['第一产业', '第二产业', '第三产业'];
 
+const industryOrder = ['第一产业', '第二产业', '第三产业'] as const;
+const industryKeyMap: Record<string, 'primary' | 'secondary' | 'tertiary'> = {
+  '第一产业': 'primary',
+  '第二产业': 'secondary',
+  '第三产业': 'tertiary',
+};
+const quarterKeys = ['2025-09', '2025-12', '2026-03', '2026-06', '2026-09'];
+const groupedIndustryData = industryOrder.flatMap((ind) =>
+  quarterKeys.map((q) => {
+    const src = industryGdpValueData.find((r) => r.industry === ind) as any;
+    const key = industryKeyMap[ind];
+    const row: Record<string, any> = {
+      key: `${ind}-${q}`,
+      periodLabel: q.slice(2),
+      industry: ind,
+    };
+    row[key] = src?.[q];
+    return row;
+  })
+);
+const groupFirstKey = (ind: string) => `${ind}-${quarterKeys[0]}`;
+const groupLastKey = (ind: string) => `${ind}-${quarterKeys[quarterKeys.length - 1]}`;
+
 export const ContentSlide05: React.FC = () => {
   return (
     <BaseContentSlide
@@ -74,26 +97,35 @@ export const ContentSlide05: React.FC = () => {
           <div className="w-[26%] min-w-0 flex-shrink-0">
             <ChartContainer delay="600ms">
               <BaseBarChart
-                data={industryGdpValueData}
+                data={groupedIndustryData}
                 title="三大产业GDP增速对比"
                 subtitle="数据来源: 国家统计局｜单位: %"
-                xAxisKey="industry"
+                xAxisKey="key"
                 bars={[
-                  { dataKey: '2025-09', name: '25-09', color: '#cbd5e1' },
-                  { dataKey: '2025-12', name: '25-12', color: '#94a3b8' },
-                  { dataKey: '2026-03', name: '26-03', color: '#64748b' },
-                  { dataKey: '2026-06', name: '26-06', color: '#475569' },
-                  { dataKey: '2026-09', name: '26-09', color: '#334155' },
+                  { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
+                  { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
+                  { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
                 ]}
-                legendOrder={['25-09', '25-12', '26-03', '26-06', '26-09']}
+                legendOrder={industryLegendOrder}
                 yAxisDomain={[0, 7]}
-                barSize={8}
+                barSize={12}
                 showYAxis
                 showLabels
+                labelFilter={({ value }: any) => value != null}
                 labelFormatter={(v: any) => Number(v).toFixed(1)}
                 unit="%"
                 yAxisTickFormatter={(v) => `${v}`}
                 xAxisInterval={0}
+                xAxisTickFormatter={(v: any) => {
+                  const parts = String(v).split('-');
+                  const q = parts.slice(1).join('-');
+                  return q.slice(2);
+                }}
+                categoryGroups={[
+                  { label: '第一产业', x1: groupFirstKey('第一产业'), x2: groupLastKey('第一产业') },
+                  { label: '第二产业', x1: groupFirstKey('第二产业'), x2: groupLastKey('第二产业') },
+                  { label: '第三产业', x1: groupFirstKey('第三产业'), x2: groupLastKey('第三产业') },
+                ]}
               />
             </ChartContainer>
           </div>

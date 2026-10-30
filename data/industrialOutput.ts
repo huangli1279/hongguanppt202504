@@ -120,6 +120,8 @@ export const industrialCategoryCumulativeData = [
   { period: '2026-04', mining: 5.5, manufacturing: 5.8, utilities: 4.5, industrial: 5.6 },
   { period: '2026-05', mining: 4.8, manufacturing: 5.5, utilities: 5.1, industrial: 5.4 },
   { period: '2026-06', mining: 3.6, manufacturing: 5.6, utilities: 5.5, industrial: 5.4 },
+  { period: '2026-07', mining: 3.0, manufacturing: 5.5, utilities: 5.5, industrial: 5.3 },
+  { period: '2026-08', mining: 2.5, manufacturing: 5.6, utilities: 5.4, industrial: 5.3 },
   { period: '2026-09', mining: 2.0, manufacturing: 5.7, utilities: 5.4, industrial: 5.3 },
 ];
 

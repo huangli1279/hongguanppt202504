@@ -7,13 +7,13 @@ import { industrialCategoryCumulativeData } from '../../data/industrialOutput';
 import { seriesColors } from '../../utils/chartColors';
 
 const majorIndustrySepData = [
-  { name: '计算机通信电子', value: 16.4, fill: '#dc2626' },
-  { name: '专用设备制造', value: 12.1, fill: '#dc2626' },
-  { name: '铁路航空航天', value: 11.7, fill: '#dc2626' },
-  { name: '高技术制造业', value: 16.2, fill: '#dc2626' },
-  { name: '汽车制造业', value: 6.7, fill: '#dc2626' },
-  { name: '电力热力燃气水', value: 5.4, fill: '#dc2626' },
-  { name: '非金属矿物制品', value: -5.3, fill: '#16a34a' },
+  { name: '计算机通信电子', aug: 15.7, sep: 16.4 },
+  { name: '专用设备制造', aug: 10.0, sep: 12.1 },
+  { name: '铁路航空航天', aug: 18.2, sep: 11.7 },
+  { name: '高技术制造业', aug: 15.0, sep: 16.2 },
+  { name: '汽车制造业', aug: 8.7, sep: 6.7 },
+  { name: '电力热力燃气水', aug: 7.8, sep: 5.4 },
+  { name: '非金属矿物制品', aug: -2.3, sep: -5.3 },
 ];
 
 export const ContentSlide09: React.FC = () => {
@@ -26,7 +26,7 @@ export const ContentSlide09: React.FC = () => {
         <>
           <BaseCard title="工业增加值及分项" delay="0ms" variant="accent">
             <p>
-              前三季度工业增加值累计同比 <span className="font-bold text-red-600">+5.3%</span>，制造业同比 <span className="font-bold text-red-600">+5.7%</span>，采矿业 <span className="font-bold text-green-600">+2.0%</span>，电力、热力、燃气及水生产供应业 <span className="font-bold text-red-600">+5.4%</span>。三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响（7月煤炭开采和洗选业同比 <span className="text-green-600 font-bold">-10.8%</span>，8月 <span className="text-green-600 font-bold">-5.6%</span>，9月 <span className="text-green-600 font-bold">-3.3%</span>）。产能利用率三季度为 <span className="font-bold">73.1%</span>，在一二季度连续下行后边际企稳（环比 <span className="font-bold">+0.1pct</span>），但同比仍低 <span className="text-green-600 font-bold">1.5pct</span>。
+              前三季度工业增加值累计同比 <span className="font-bold text-red-600">+5.3%</span>，制造业同比 <span className="font-bold text-red-600">+5.7%</span>，采矿业 <span className="font-bold text-green-600">+2.0%</span>，电力、热力、燃气及水生产供应业 <span className="font-bold text-red-600">+5.4%</span>。三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响（7月煤炭开采和洗选业同比 <span className="text-green-600 font-bold">-10.8%</span>，8月 <span className="text-green-600 font-bold">-5.6%</span>，9月 <span className="text-green-600 font-bold">-3.3%</span>）。
             </p>
           </BaseCard>
 
@@ -36,9 +36,9 @@ export const ContentSlide09: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="汽车是明显拖累" delay="240ms">
+          <BaseCard title="产能利用率低但企稳，汽车是明显拖累" delay="240ms">
             <p>
-              9月汽车产量 <span className="text-green-600 font-bold">-5.7%</span>、产能利用率仅 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。增加值增速由8月的 <span>8.7%</span> 回落至 <span className="text-green-600 font-bold">6.7%</span>；发电量9月 <span className="text-green-600 font-bold">-1.2%</span>，传统内需行业承压。
+              产能利用率三季度为 <span className="font-bold">73.1%</span>，在一二季度连续下行后边际企稳（环比 <span className="font-bold">+0.1pct</span>），但同比仍低 <span className="text-green-600 font-bold">1.5pct</span>。9月汽车产量 <span className="text-green-600 font-bold">-5.7%</span>、产能利用率仅 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。增加值增速由8月的 <span>8.7%</span> 回落至 <span className="text-green-600 font-bold">6.7%</span>；发电量9月 <span className="text-green-600 font-bold">-1.2%</span>，传统内需行业承压。
             </p>
           </BaseCard>
         </>
@@ -67,10 +67,13 @@ export const ContentSlide09: React.FC = () => {
           <ChartContainer delay="660ms">
             <BaseBarChart
               data={majorIndustrySepData}
-              title="主要行业9月增加值同比"
+              title="主要行业8月与9月增加值同比"
               subtitle="数据来源：国家统计局 | 单位：%"
-              bars={[{ dataKey: 'value', name: '9月同比' }]}
-              xAxisKey="value"
+              bars={[
+                { dataKey: 'aug', name: '8月同比', color: '#94a3b8' },
+                { dataKey: 'sep', name: '9月同比', color: '#dc2626' },
+              ]}
+              xAxisKey="sep"
               layout="horizontal"
               yAxisDomain={[-8, 20]}
               showYAxis={true}
@@ -78,11 +81,11 @@ export const ContentSlide09: React.FC = () => {
               yAxisTickFormatter={(val) => `${val}%`}
               showReferenceLine={true}
               referenceLineY={0}
-              showLegend={false}
+              showLegend={true}
               showLabels={true}
               labelFormatter={(val: any) => `${Number(val) > 0 ? '+' : ''}${Number(val).toFixed(1)}%`}
               unit="%"
-              barSize={14}
+              barSize={10}
               xAxisTickFontSize={10}
             />
           </ChartContainer>

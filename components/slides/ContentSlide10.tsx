@@ -11,7 +11,7 @@ const profitChartData = profitSelfRaisedData.filter((d) => d.period >= '2025-01'
 export const ContentSlide10: React.FC = () => {
   return (
     <BaseContentSlide
-      title="工业企业利润前三季度+15.5%，增收更增利但行业冷暖不均，ppi9月破5"
+      title="工业企业利润前三季度+15.5%，增收更增利但行业冷暖不均，PPI9月破5"
       cardColumns={3}
       chartColumns={2}
       cards={
@@ -64,21 +64,20 @@ export const ContentSlide10: React.FC = () => {
           <ChartContainer delay="600ms" className="pb-8">
             <BaseLineChart
               data={profitChartData}
-              title="规上工业企业利润与自筹资金累计同比"
+              title="规上工业企业利润累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'industrialProfit', name: '规上工业企业利润总额', strokeWidth: 2.5, pointOffsets: { '2026-06': 12 } },
-                { dataKey: 'selfRaised', name: '自筹资金', strokeWidth: 2.5 },
+                { dataKey: 'industrialProfit', name: '规上工业企业利润总额', strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
               ]}
               yAxisDomain={[-5, 25]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['规上工业企业利润总额', '自筹资金']}
-              highlightPeriods={['2026-06']}
+              legendOrder={['规上工业企业利润总额']}
+              highlightPeriods={['2026-09']}
               unit="%"
               yAxisTickFormatter={(val) => `${val}`}
-              xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06']}
+              xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
             />
           </ChartContainer>
           <ChartContainer delay="720ms" className="pb-8">

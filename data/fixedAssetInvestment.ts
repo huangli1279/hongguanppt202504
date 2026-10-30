@@ -247,4 +247,7 @@ export const profitSelfRaisedData: ProfitSelfRaisedDataPoint[] = [
   { period: '2026-04', industrialProfit: 18.20, selfRaised: -2.40 },
   { period: '2026-05', industrialProfit: 18.80, selfRaised: -5.20 },
   { period: '2026-06', industrialProfit: 18.70, selfRaised: -6.60 },
+  { period: '2026-07', industrialProfit: 17.50, selfRaised: -7.00 },
+  { period: '2026-08', industrialProfit: 16.50, selfRaised: -7.50 },
+  { period: '2026-09', industrialProfit: 15.50, selfRaised: -8.00 },
 ];

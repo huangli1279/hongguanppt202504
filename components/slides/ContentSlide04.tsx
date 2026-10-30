@@ -59,7 +59,7 @@ export const ContentSlide04: React.FC = () => {
                   fillOpacity: 0,
                   labelFill: '#ef4444',
                   labelPosition: 'insideTop',
-                  labelDy: 16,
+                  labelDy: 90,
                 },
               ]}
               lines={[

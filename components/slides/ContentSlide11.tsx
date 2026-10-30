@@ -1,29 +1,14 @@
 import React from 'react';
+import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { gdpForecastByInstitutionData } from '@/data/gdp';
 
-interface IndustrialForecastRow {
-  institution: string;
-  q4: string;
-  annual: string;
-  source: string;
-}
-
-const industrialForecastData: IndustrialForecastRow[] = [
-  { institution: '中金', q4: '工业增加值 Q4 4.8%-5.2%', annual: '5.0%-5.2%', source: 'Q3数据点评' },
-  { institution: '华泰', q4: 'Q4 4.5%-5.0%', annual: '5.0%', source: 'Q3数据点评' },
-  { institution: '申万', q4: 'Q4 4.8%-5.3%', annual: '5.2%', source: '三季度数据点评' },
-  { institution: '中信', q4: 'Q4 4.6%-5.0%', annual: '5.0%', source: '三季度数据点评' },
-  { institution: '广发', q4: 'Q4 4.5%-5.0%', annual: '5.0%', source: '三季度数据点评' },
-];
-
-const industrialForecastColumns: ColumnConfig[] = [
-  { key: 'institution', title: '机构', width: '90px', align: 'center' },
-  { key: 'q4', title: 'Q4 预测', width: '220px', align: 'left' },
-  { key: 'annual', title: '全年预测', width: '120px', align: 'center' },
-  { key: 'source', title: '口径/时间', width: '150px', align: 'center' },
-];
+const gdpForecastLineData = gdpForecastByInstitutionData.map((d) => ({
+  period: d.institution,
+  international: d.international,
+  domestic: d.domestic,
+}));
 
 export const ContentSlide11: React.FC = () => {
   return (
@@ -81,15 +66,21 @@ export const ContentSlide11: React.FC = () => {
       }
       charts={
         <ChartContainer delay="600ms" className="min-h-0 pb-8">
-          <BaseTable
-            data={industrialForecastData}
-            columns={industrialForecastColumns}
-            title="主要机构工业增加值预测"
-            subtitle="数据来源：各机构 Q3 数据点评 | 单位：%"
-            colorizeNumbers={false}
-            titleBlockClassName="mb-1"
-            headerCellClassName="!px-2 !py-1.5 text-xs leading-tight whitespace-nowrap"
-            cellClassName="!px-2 text-xs leading-snug"
+          <BaseLineChart
+            data={gdpForecastLineData}
+            title="主要机构GDP预测"
+            subtitle="数据来源：各机构 | 单位：%"
+            lines={[
+              { dataKey: 'international', name: '国际组织', color: '#4A79AA', strokeWidth: 2.5 },
+              { dataKey: 'domestic', name: '国内券商', color: '#2F5F5A', strokeWidth: 2.5 },
+            ]}
+            yAxisDomain={[4, 5.5]}
+            showYAxis={true}
+            legendOrder={['国际组织', '国内券商']}
+            highlightPeriods={gdpForecastLineData.map((d) => d.period)}
+            xAxisAngle={-30}
+            unit="%"
+            yAxisTickFormatter={(val) => `${val}`}
           />
         </ChartContainer>
       }
