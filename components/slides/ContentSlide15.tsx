@@ -49,7 +49,7 @@ export const ContentSlide15: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="CPI：物价：前三季度CPI+0.9%、核心+1.1%，仍处于温和通胀区间"
+      title="CPI：前三季度CPI+0.9%、核心+1.1%，仍处于温和通胀区间"
       cardColumns={2}
       chartColumns={2}
       cards={
