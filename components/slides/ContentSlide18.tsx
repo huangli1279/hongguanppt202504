@@ -15,8 +15,8 @@ export const ContentSlide18: React.FC = () => {
 
   // 民间投资与国有控股投资折线图配置
   const privateLineConfigs: LineConfig[] = [
-    { dataKey: 'stateOwned', name: '国有控股投资', color: seriesColors[0], strokeWidth: 2.5 },
-    { dataKey: 'privateInvestment', name: '民间投资', color: seriesColors[1], strokeWidth: 2 },
+    { dataKey: 'stateOwned', name: '国有控股投资', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -10 } },
+    { dataKey: 'privateInvestment', name: '民间投资', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -10 } },
   ];
 
   // 投资拆分：建筑安装工程、设备购置、其他费用折线图配置
@@ -66,24 +66,43 @@ export const ContentSlide18: React.FC = () => {
           </BaseCard>
         </div>
 
-        {/* 图表区域 - 三列布局，右列上下两个图 */}
+        {/* 图表区域 - 三列布局，左列上下两个图 */}
         <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
-          {/* 左图：固投累计同比+环比双线 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={cumulativeMomData}
-              title="固定资产投资累计同比与单月环比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={cumulativeMomConfigs}
-              yAxisDomain={[-8, 4]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['固投累计同比', '固投单月环比']}
-              highlightPeriods={['2026-09']}
-              xAxisTicks={['2026-02', '2026-03', '2026-06', '2026-09']}
-            />
-          </ChartContainer>
+          {/* 左列：上下两个图 */}
+          <div className="flex flex-col gap-4 min-h-0">
+            <ChartContainer delay="600ms" className="flex-1 min-h-0">
+              <BaseLineChart
+                data={cumulativeMomData}
+                title="固定资产投资累计同比与单月环比"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={cumulativeMomConfigs}
+                yAxisDomain={[-8, 4]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['固投累计同比', '固投单月环比']}
+                highlightPeriods={['2026-09']}
+                xAxisTicks={['2026-02', '2026-03', '2026-06', '2026-09']}
+                compact
+              />
+            </ChartContainer>
+            <ChartContainer delay="600ms" className="flex-1 min-h-0">
+              <BaseLineChart
+                data={investmentBreakdownData}
+                title="建筑安装工程、设备购置、其他费用累计同比"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={breakdownLineConfigs}
+                yAxisDomain={[-10, 20]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
+                highlightPeriods={['2026-09']}
+                xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
+                compact
+              />
+            </ChartContainer>
+          </div>
 
           {/* 中图：三大支柱累计同比 */}
           <ChartContainer delay="600ms">
@@ -102,39 +121,22 @@ export const ContentSlide18: React.FC = () => {
             />
           </ChartContainer>
 
-          {/* 右列：上下两个图 */}
-          <div className="flex flex-col gap-4 min-h-0">
-            <ChartContainer delay="600ms" className="flex-1 min-h-0">
-              <BaseLineChart
-                data={privateInvestmentData}
-                title="国有控股投资与民间投资累计同比"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={privateLineConfigs}
-                yAxisDomain={[-11, 9]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['国有控股投资', '民间投资']}
-                highlightPeriods={['2026-09']}
-                xAxisTickCount={6}
-              />
-            </ChartContainer>
-            <ChartContainer delay="600ms" className="flex-1 min-h-0">
-              <BaseLineChart
-                data={investmentBreakdownData}
-                title="建筑安装工程、设备购置、其他费用累计同比"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={breakdownLineConfigs}
-                yAxisDomain={[-10, 20]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
-                highlightPeriods={['2026-09']}
-                xAxisTickCount={6}
-              />
-            </ChartContainer>
-          </div>
+          {/* 右图：国有控股与民间投资，整列高度，拉开两线间距 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={privateInvestmentData}
+              title="国有控股投资与民间投资累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={privateLineConfigs}
+              yAxisDomain={[-11, 8]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['国有控股投资', '民间投资']}
+              highlightPeriods={['2026-09']}
+              xAxisTickCount={6}
+            />
+          </ChartContainer>
         </div>
       </div>
     </BaseContentSlide>

@@ -94,6 +94,8 @@ export interface BaseLineChartProps {
   rightYAxisTickFormatter?: (value: any) => string;
   /** 区间标注框（如政策窗口） */
   categoryGroups?: CategoryGroupConfig[];
+  /** 紧凑模式：压缩标题、图例与边距，为数值留出更多绘图高度（适合上下堆叠的小图） */
+  compact?: boolean;
 }
 
 const CustomTooltip = ({ active, payload, label, unit = '%', unitByKey }: any) => {
@@ -189,7 +191,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   rightYAxisDomain = ['auto', 'auto'],
   rightYAxisTickFormatter,
   categoryGroups,
-  xAxisAngle = -45
+  xAxisAngle = -45,
+  compact = false
 }) => {
   const hasDualAxis = showRightYAxis || lines.some((line) => line.yAxisId === 'right');
   const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
@@ -302,19 +305,19 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
 
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="mb-4">
+      <div className={compact ? 'mb-1' : 'mb-4'}>
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
           {title}
         </h3>
         {subtitle && (
-          <p className="text-xs text-webank-subtext mt-1">{subtitle}</p>
+          <p className={compact ? 'text-[10px] text-webank-subtext mt-0.5' : 'text-xs text-webank-subtext mt-1'}>{subtitle}</p>
         )}
       </div>
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: hasCategoryGroups ? 36 : 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: 5 }}
+            margin={{ top: hasCategoryGroups ? 36 : compact ? 10 : 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: compact ? 2 : 5 }}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
             {categoryGroups?.map((group, groupIndex) => {
@@ -481,7 +484,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                 content={<CustomLegend legendOrder={legendOrder} />}
                 verticalAlign="bottom"
                 align="center"
-                wrapperStyle={{ paddingBottom: '10px', paddingTop: '20px' }}
+                wrapperStyle={compact ? { paddingBottom: '0px', paddingTop: '2px' } : { paddingBottom: '10px', paddingTop: '20px' }}
               />
             )}
             

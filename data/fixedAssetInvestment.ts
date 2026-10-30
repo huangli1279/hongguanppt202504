@@ -62,9 +62,9 @@ export const privateInvestmentData: PrivateInvestmentDataPoint[] = [
   { period: '2026-04', privateInvestment: -5.20, stateOwned: 2.50 },
   { period: '2026-05', privateInvestment: -7.10, stateOwned: -0.40 },
   { period: '2026-06', privateInvestment: -8.50, stateOwned: -2.30 },
-  { period: '2026-07', privateInvestment: -9.00, stateOwned: -2.80 },
-  { period: '2026-08', privateInvestment: -9.60, stateOwned: -2.50 },
-  { period: '2026-09', privateInvestment: -10.20, stateOwned: -1.80 },
+  { period: '2026-07', privateInvestment: -9.40, stateOwned: -3.30 },
+  { period: '2026-08', privateInvestment: -10.10, stateOwned: -3.60 },
+  { period: '2026-09', privateInvestment: -10.40, stateOwned: -3.20 },
 ];
 
 // 投资拆分：建筑安装工程、设备购置、其他费用累计同比数据
