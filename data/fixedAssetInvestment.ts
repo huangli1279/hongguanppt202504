@@ -34,14 +34,14 @@ export const fixedAssetInvestmentData: FixedAssetInvestmentDataPoint[] = [
   { period: '2025-10', fixedAsset: -1.70, manufacturing: 2.70, realEstate: -14.70, infrastructure: 1.51 },
   { period: '2025-11', fixedAsset: -2.60, manufacturing: 1.90, realEstate: -15.90, infrastructure: 0.13 },
   { period: '2025-12', fixedAsset: -3.80, manufacturing: 0.60, realEstate: -17.20, infrastructure: -1.48 },
-  { period: '2026-02', fixedAsset: 1.80, manufacturing: 3.10, realEstate: -10.40, infrastructure: 11.40 },
+  { period: '2026-02', fixedAsset: 1.80, manufacturing: 3.10, realEstate: -11.10, infrastructure: 11.40 },
   { period: '2026-03', fixedAsset: 1.70, manufacturing: 4.10, realEstate: -11.20, infrastructure: 8.90 },
   { period: '2026-04', fixedAsset: -1.60, manufacturing: 1.20, realEstate: -13.70, infrastructure: 4.30 },
   { period: '2026-05', fixedAsset: -4.10, manufacturing: -0.40, realEstate: -16.20, infrastructure: 0.60 },
-  { period: '2026-06', fixedAsset: -5.70, manufacturing: -1.20, realEstate: -18.00, infrastructure: -2.40 },
-  { period: '2026-07', fixedAsset: -6.20, manufacturing: -1.40, realEstate: -19.20, infrastructure: -1.00 },
-  { period: '2026-08', fixedAsset: -6.80, manufacturing: -0.90, realEstate: -19.90, infrastructure: 0.50 },
-  { period: '2026-09', fixedAsset: -7.20, manufacturing: -0.30, realEstate: -20.60, infrastructure: 2.00 },
+  { period: '2026-06', fixedAsset: -5.70, manufacturing: -1.20, realEstate: -18.00, infrastructure: -2.00 },
+  { period: '2026-07', fixedAsset: -6.70, manufacturing: -1.70, realEstate: -19.20, infrastructure: -3.60 },
+  { period: '2026-08', fixedAsset: -7.20, manufacturing: -2.30, realEstate: -19.90, infrastructure: -4.00 },
+  { period: '2026-09', fixedAsset: -7.20, manufacturing: -2.10, realEstate: -20.60, infrastructure: -4.20 },
 ];
 
 // 民间投资与国有控股投资累计同比数据

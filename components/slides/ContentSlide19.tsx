@@ -96,7 +96,7 @@ export const ContentSlide19: React.FC = () => {
               bars={[{ dataKey: 'value', name: '投资累计同比' }]}
               xAxisKey="value"
               layout="horizontal"
-              yAxisDomain={[-30, 70]}
+              yAxisDomain={[-28, 60]}
               showYAxis={true}
               yAxisWidth={104}
               yAxisTickFormatter={(val) => `${val}%`}
@@ -125,7 +125,7 @@ export const ContentSlide19: React.FC = () => {
                 { value: 'AI产业链', color: '#7f1d1d' },
                 { value: '负增长', color: '#16a34a' },
               ]}
-              barSize={12}
+              barSize={16}
             />
           </ChartContainer>
 

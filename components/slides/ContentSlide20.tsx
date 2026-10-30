@@ -33,7 +33,7 @@ const nationalPriceMomLineConfigs: LineConfig[] = [
 export const ContentSlide20: React.FC = () => {
   return (
     <BaseContentSlide
-      title="地产（投资端）：开发投资-20.6%且降幅逐月走阔，供给收缩快于需求"
+      title="房地产开发投资-20.6%且降幅逐月走阔，供给收缩快于需求"
       cardColumns={3}
     >
       <div className="flex flex-col h-full">

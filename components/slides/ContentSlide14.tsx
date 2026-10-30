@@ -77,7 +77,7 @@ export const ContentSlide14: React.FC = () => {
               bars={[{ dataKey: 'value', name: '增速' }]}
               xAxisKey="value"
               layout="horizontal"
-              yAxisDomain={[-25, 35]}
+              yAxisDomain={[-22, 32]}
               showYAxis={true}
               yAxisWidth={80}
               showReferenceLine={true}
@@ -86,7 +86,7 @@ export const ContentSlide14: React.FC = () => {
               showLabels={true}
               labelFormatter={(v: any) => `${Number(v) > 0 ? '+' : ''}${Number(v).toFixed(1)}%`}
               unit="%"
-              barSize={14}
+              barSize={16}
               xAxisTickFontSize={10}
             />
           </ChartContainer>

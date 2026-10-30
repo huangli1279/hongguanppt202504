@@ -43,7 +43,9 @@ export const retailTrendData: RetailTrendDataPoint[] = [
   { period: '2026-04', totalRetail: 1.90, serviceRetail: 5.6, goodsRetail: 1.0 },
   { period: '2026-05', totalRetail: 1.40, serviceRetail: 5.4, goodsRetail: 0.4 },
   { period: '2026-06', totalRetail: 1.30, serviceRetail: 5.3, goodsRetail: 0.2 },
-  { period: '2026-07', totalRetail: 1.20, serviceRetail: 5.0, goodsRetail: 0.0 },
+  { period: '2026-07', totalRetail: 1.20, serviceRetail: 5.2, goodsRetail: 0.0 },
+  { period: '2026-08', totalRetail: 1.10, serviceRetail: 5.1, goodsRetail: 1.0 },
+  { period: '2026-09', totalRetail: 1.10, serviceRetail: 5.0, goodsRetail: 1.0 },
 ];
 
 /** 社会消费品零售总额:累计同比（专题一开篇） */
