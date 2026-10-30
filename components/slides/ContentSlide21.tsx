@@ -7,28 +7,24 @@ export const ContentSlide21: React.FC = () => {
   // 政策部署与投资重点表
   const policyTableData = [
     {
-      area: '"六张网"基础设施建设\n（核心投资方向）',
-      content: '抓紧出台专项规划和实施方案，系统推进六大基础设施网络一体化发展：\n水网：实施重大水利工程，提升防洪减灾和水资源配置能力\n新型电网："十五五"投资超5万亿元，加快新型电力系统建设，推进跨省跨区输电通道和储能设施建设\n算力网：“十五五”投资超4万亿，加快全国一体化算力网络建设，推动算力基础设施高质量发展，支撑"东数西算"工程深入实施\n新一代通信网：加快5G-A、算力网络、工业互联网建设，布局新一代信息基础设施\n城市地下管网："十五五"投资约5万亿元，结合城市更新建设改造地下管网77万公里、排水防涝等市政设施\n物流网：完善国家物流枢纽网络，推进冷链物流和城乡配送体系建设',
+      area: '“六张网”基础设施建设',
+      content: '8000 亿工具首批落地浙江、四川、湖北；PSL 将“六张网”纳入支持；9 月项目建设专项债多增 2527 亿',
     },
     {
-      area: '人工智能产业',
-      content: '正在谋划出台加快人工智能落地的配套文件，加大要素保障力度；持续推动央国企开放高价值应用场景，打造各行业人工智能标杆应用；支持具身智能领域高质量发展，加速"人工智能+"赋能千行百业',
+      area: '人工智能',
+      content: '9 月信息服务业投资 +20.2%、电子通信设备 +7.6%，但体量对冲不了建安 -10.0%',
     },
     {
-      area: '能源保供领域',
-      content: '全面部署迎峰度夏能源保供工作，今夏全国最高用电负荷将达16亿千瓦，较去年增加9000万千瓦；推动电力、电煤中长期合同高比例签约和有效履约；加快煤炭先进产能释放，推进油气增储上产；强化省间电力互济，支持新型储能和调峰电源建设',
+      area: '能源保供',
+      content: '抽水蓄能、新型储能纳入工具支持（浙江建德项目为首批）',
     },
     {
-      area: '营商环境与民间投资',
-      content: '深入整治"内卷式"竞争，规范涉企行政执法；完善民营企业参与国家重大项目建设长效机制；优化数据跨境流动管理，持续扩大高水平对外开放，稳定外资预期',
+      area: '民间投资',
+      content: '8000 亿工具明确全部投向民间项目（进出口银行 123 个项目、超 220 亿、拉动总投资超 4000 亿）',
     },
     {
-      area: '生态环保领域',
-      content: '印发《推进生态综合补偿实施方案》，加大对重点生态功能区的转移支付力度；支持生态保护修复工程建设，推动绿色低碳技术研发和产业化应用',
-    },
-    {
-      area: '民生与消费领域',
-      content: '推进完整社区建设，支持养老托育、社区服务等民生设施建设；稳定粮食生产和市场供应，保障重要民生商品价格平稳；促进汽车、家电等大宗消费升级',
+      area: '民生',
+      content: '9 月 29 日结构性再贷款+房贷贴息（中央财政首次贴息）',
     },
   ];
 
@@ -38,25 +34,6 @@ export const ContentSlide21: React.FC = () => {
       key: 'content',
       title: '政策部署与投资重点',
       align: 'left',
-      render: (val: string) => {
-        const lines = val.split('\n');
-        return (
-          <div className="leading-tight text-[10px]">
-            {lines.map((line, idx) => {
-              const match = line.match(/^(水网|新型电网|算力网|新一代通信网|城市地下管网|物流网)：/);
-              if (match) {
-                const rest = line.substring(match[0].length);
-                return (
-                  <div key={idx} className={idx > 0 ? 'mt-0.5' : ''}>
-                    <span className="font-semibold text-webank-blue">{match[1]}</span>：{rest}
-                  </div>
-                );
-              }
-              return <div key={idx} className={idx > 0 ? 'mt-0.5' : ''}>{line}</div>;
-            })}
-          </div>
-        );
-      },
     },
   ];
 
@@ -71,50 +48,25 @@ export const ContentSlide21: React.FC = () => {
             预测与展望
           </span>
           <span className="text-gray-900 font-semibold">
-            政策发力叠加盈利滞后传导，固投有望边际改善，仍面地产民间投资约束
+            固投降幅趋稳，地产与民间投资仍是核心约束
           </span>
         </span>
       }
-      cardColumns={4}
+      cardColumns={2}
       chartColumns={1}
       cards={
         <>
           <BaseCard title="政策支持" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
             <p className="text-[11px] leading-snug">
-              <span className="font-bold">8000亿</span>政策工具待落地，市场一致预期将在三季度密集落地，重点投向"六张网"新基建和AI等新质生产力领域。
+              <span className="font-bold">8,000 亿</span>新型政策性金融工具 9 月才加速投放、<span className="font-bold">5,500 亿</span>结存限额 10 月落地。
             </p>
             <p className="mt-1 text-[11px] leading-snug">
-              "两重"项目全部下达。2026年"六张网"及相关领域投资超<span className="font-bold">7万亿元</span>。上半年处于前期准备阶段的项目，下半年进入建设实施阶段。
+              专项债发行提速：9 月国债净发行+新增专项债 <span className="font-bold">1.15 万亿</span>、同比多增 <span className="font-bold">2918 亿</span>；项目建设专项债同比多增 <span className="font-bold">2527 亿</span>；特殊专项债占比 <span className="font-bold">47.3%→29.6%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="专项债发行提速" delay="120ms" className="!gap-1.5 !p-3">
+          <BaseCard title="机构预测" delay="120ms" variant="accent" className="!gap-1.5 !p-3">
             <p className="text-[11px] leading-snug">
-              6月发行规模创单月新高（5716亿元，达计划的1.65倍），Q3将迎来发行高峰，预计同比增长约30%。
-            </p>
-            <p className="mt-1 text-[11px] leading-snug">
-              同时需要关注债的结构，土储、特殊新增债占比会影响实际投资形成。
-            </p>
-          </BaseCard>
-          <BaseCard title="盈利传导" delay="240ms" className="!gap-1.5 !p-3">
-            <p className="text-[11px] leading-snug">
-              企业盈利向资本开支存在2‑3个季度传导时滞。
-            </p>
-            <p className="mt-1 text-[11px] leading-snug">
-              2025年下半年起工业企业盈利修复，有望对2026下半年投资形成潜在支撑。
-            </p>
-          </BaseCard>
-          <BaseCard title="机构预测" delay="360ms" variant="accent" className="!gap-1.5 !p-3">
-            <p className="text-[11px] leading-snug">
-              主流机构判断固投走势呈<span className="font-bold">前低后高</span>，下半年边际回升。上半年固投弱于预期，机构下调全年定量预测，更多采用定性判断。
-            </p>
-            <p className="mt-1 text-[11px] leading-snug">
-              <span className="text-webank-green font-medium">主要利好：</span>8000亿政策性金融工具落地、Q3专项债发行提速，同时有去年同期低基数加持；
-            </p>
-            <p className="mt-1 text-[11px] leading-snug">
-              <span className="font-medium">主要拖累：</span>地产下行、民间投资信心不足。
-            </p>
-            <p className="mt-1 text-[11px] leading-snug text-gray-600">
-              <span className="font-medium">主要参考机构：</span>中金、银河证券、华泰证券、招商证券、申万宏源
+              机构都不再给 2026 年全年投资点位，全部转为定性表述：中金“四季度温和修复”、华泰“弱企稳、压力可控”、招商“年内投资形势边际改善”、中信“内需改善仍待政策显效”。
             </p>
           </BaseCard>
         </>
@@ -126,7 +78,7 @@ export const ContentSlide21: React.FC = () => {
             columns={policyColumns}
             title="政策部署与投资重点"
             subtitle="资料来源：国务院及部委公开文件"
-            rowHeight="dense"
+            rowHeight="auto"
             cellClassName="px-2 py-1 align-top text-gray-700"
             headerCellClassName="px-2 py-1.5 text-center font-semibold"
             headerBgColor="#6b7280"

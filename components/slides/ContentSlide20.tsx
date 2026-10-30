@@ -2,10 +2,9 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 import { investmentData, unsoldAreaData, housePriceMomData, nationalHousePriceMomData } from '@/data/realEstateExtra';
 
-// 房地产销售面积 vs 开发投资 vs 新开工折线图配置
+// 房地产开发投资/销售面积/新开工折线图配置
 const investmentLineConfigs: LineConfig[] = [
   { dataKey: 'salesArea', name: '商品房销售面积', strokeWidth: 2.5 },
   { dataKey: 'realEstateInvestment', name: '房地产开发投资', strokeWidth: 2 },
@@ -17,7 +16,7 @@ const unsoldAreaLineConfigs: LineConfig[] = [
   { dataKey: 'unsoldArea', name: '商品房待售面积', strokeWidth: 2.5 },
 ];
 
-// 房价环比折线图配置
+// 房价环比折线图配置（一二线）
 const priceMomLineConfigs: LineConfig[] = [
   { dataKey: 'firstTierNew', name: '一线新建', strokeWidth: 2 },
   { dataKey: 'secondTierNew', name: '二线新建', strokeWidth: 2 },
@@ -34,34 +33,41 @@ const nationalPriceMomLineConfigs: LineConfig[] = [
 export const ContentSlide20: React.FC = () => {
   return (
     <BaseContentSlide
-      title="地产投资开发端跌幅扩大至18%，商品待售面积连续4个月同比下降，一线城市价格端出现企稳信号"
-      cardColumns={2}
+      title="地产（投资端）：开发投资-20.6%且降幅逐月走阔，供给收缩快于需求"
+      cardColumns={3}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="① 开发投资延续惯性下探" delay="0ms" variant="accent">
+        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="① 开发投资降幅逐月走阔" delay="0ms" variant="accent">
             <p>
-              上半年房地产开发投资同比跌幅扩大至<span className="text-green-600 font-bold">18%</span>（1-2月为<span className="text-green-600 font-bold">10.4%</span>），新开工面积降幅约<span className="text-green-600 font-bold">23%</span>，拖累固投整体表现（图1）。
+              1-9月房地产开发投资<span className="text-black">5.34万亿元</span>，同比<span className="text-green-600 font-bold">-20.6%</span>（1-7月<span className="text-green-600 font-bold">-19.2%</span>、1-8月<span className="text-green-600 font-bold">-19.9%</span>，降幅逐月扩大）；新开工<span className="text-green-600 font-bold">-24.9%</span>、竣工<span className="text-green-600 font-bold">-25.1%</span>、施工<span className="text-green-600 font-bold">-12.8%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="② 库存去化与价格端出现积极信号" delay="120ms">
+          <BaseCard title="② 供给收缩快于需求" delay="120ms">
             <p>
-              商品房待售面积累计同比从2025年中的<span>+4%以上</span>降至2026年6月的<span>-0.9%</span>，进入负增长区间，为近年来首次，主因供应收缩（图2）。
+              新开工降幅（<span className="text-green-600 font-bold">-24.9%</span>）持续大于新建商品房销售面积降幅（<span className="text-green-600 font-bold">-13.2%</span>），9月末待售面积<span className="text-black">7.48亿平方米</span>，同比<span className="text-green-600 font-bold">-1.5%</span>。
             </p>
             <p className="mt-2">
-              整体新房二手房环比仍下降，一线城市新建和二手住宅价格环比已连续4个月正增长。（图3、图4）
+              二手房交易网签面积<span className="text-black">6.17亿平方米</span>，同比<span className="text-red-500 font-bold">+10.7%</span>（住建部数据）——"新房冷、二手房热"的存量房时代特征进一步强化。
+            </p>
+          </BaseCard>
+          <BaseCard title="③ 政策影响与价格端" delay="240ms">
+            <p>
+              8月28日现房销售新政在地方细则落地过程中，政策"拉长回款周期、压低房企拿地和新开工意愿"的影响尚未充分体现；9月房企信用融资增速<span className="text-green-600 font-bold">-17.2%</span>仍低迷。9月29日贴息政策，十一正式执行，预计...
+            </p>
+            <p className="mt-2">
+              从房价来看，整体仍然负增；一线城市新房、二手房连续8月环比上升，二线城市环比降幅下降。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 - 4列：图1左、图2、图3中、图4右 */}
+        {/* 图表区域 - 4列 */}
         <div className="flex-1 grid grid-cols-4 gap-3 min-h-0">
-          {/* 左列：图1 - 房地产销售面积 vs 开发投资 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={investmentData}
-              title="图1 房地产销售面积 vs 开发投资 vs 新开工施工面积"
+              title="图1 房地产开发投资/销售面积/新开工累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={investmentLineConfigs}
               yAxisDomain={[-35, 5]}
@@ -69,11 +75,11 @@ export const ContentSlide20: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['商品房销售面积', '房地产开发投资', '新开工施工面积']}
-              xAxisTicks={['2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06']}
+              xAxisTicks={['2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              highlightPeriods={['2026-09']}
             />
           </ChartContainer>
 
-          {/* 中列：图2 - 商品房待售面积 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={unsoldAreaData}
@@ -85,11 +91,11 @@ export const ContentSlide20: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['商品房待售面积']}
-              xAxisTicks={['2025-06', '2025-09', '2025-12', '2026-03', '2026-06']}
+              xAxisTicks={['2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              highlightPeriods={['2026-09']}
             />
           </ChartContainer>
 
-          {/* 图3 - 70城房价环比 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={nationalHousePriceMomData}
@@ -101,11 +107,11 @@ export const ContentSlide20: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['全国新建', '全国二手']}
-              xAxisTicks={['2024-05', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06']}
+              xAxisTicks={['2024-05', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              highlightPeriods={['2026-09']}
             />
           </ChartContainer>
 
-          {/* 右列：图4 - 房价环比 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={housePriceMomData}
@@ -117,7 +123,8 @@ export const ContentSlide20: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['一线新建', '二线新建', '一线二手', '二线二手']}
-              xAxisTicks={['2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06']}
+              xAxisTicks={['2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              highlightPeriods={['2026-09']}
             />
           </ChartContainer>
         </div>

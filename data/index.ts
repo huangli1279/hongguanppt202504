@@ -3,7 +3,7 @@
 export { gdpTrendData, deflatorData, gdpContributionData, gdpIndustryShareData, gdpIndustryValueData, gdpGrowthRecentData, gdpCumulativeYoyData, deflatorRecentData, gdpDeflatorYoyLongData, industryGdpValueRecentData, industryGrowthByQuarterRecentData, industryContributionRecentData, gdpForecastByInstitutionData } from './gdp';
 export { industryGrowthData, industryContributionData, industryContributionData2024, industryGrowthByIndustryData, detailedIndustryGrowthData, industrialProductionData, industrialDifferentiationData, industryGrowthByIndustryRecentData } from './industry';
 export type { IndustryGrowthDataPoint, IndustryContributionDataPoint, IndustryByQuarterDataPoint, DetailedIndustryDataPoint, IndustrialProductionDataPoint, IndustrialDifferentiationDataPoint } from './industry';
-export { pmiTrendData, pmiByEnterpriseSizeData } from './pmi';
+export { pmiTrendData, pmiByEnterpriseSizeData, pmiQ3Data } from './pmi';
 export type { PmiDataPoint, PmiByEnterpriseSize } from './pmi';
 export { industrialMonthlyData, industrialCumulativeData, industrialCategoryData, industrialCategoryCumulativeData, industryDetailMonthlyData, miningSubsectorMonthlyData } from './industrialOutput';
 export { industrialProfitData } from './profit';

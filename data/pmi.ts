@@ -7,6 +7,7 @@ export interface PmiDataPoint {
   newOrders: number;
   outputPrice?: number | null;
   rawMaterialPurchasePrice?: number | null;
+  servicePmi?: number | null;
 }
 
 export interface PmiByEnterpriseSize {
@@ -48,7 +49,9 @@ export const pmiTrendData: PmiDataPoint[] = [
   { period: '2026-04', pmi: 50.3, production: 51.5, newOrders: 50.6, outputPrice: 55.1, rawMaterialPurchasePrice: 63.7 },
   { period: '2026-05', pmi: 50.0, production: 51.2, newOrders: 49.9, outputPrice: 51.9, rawMaterialPurchasePrice: 60.5 },
   { period: '2026-06', pmi: 50.3, production: 51.4, newOrders: 51.2, outputPrice: 48.2, rawMaterialPurchasePrice: 54.2 },
-  { period: '2026-07', pmi: 49.2, production: 49.9, newOrders: 48.5, outputPrice: 47.8, rawMaterialPurchasePrice: 53.2 },
+  { period: '2026-07', pmi: 49.2, production: 49.9, newOrders: 48.5, outputPrice: 47.8, rawMaterialPurchasePrice: 53.2, servicePmi: 49.9 },
+  { period: '2026-08', pmi: 49.6, production: 50.4, newOrders: 49.6, outputPrice: 50.5, rawMaterialPurchasePrice: 57.0, servicePmi: 50.1 },
+  { period: '2026-09', pmi: 50.1, production: 51.7, newOrders: 50.5, outputPrice: 54.0, rawMaterialPurchasePrice: 60.8, servicePmi: 50.2 },
 ];
 
 // 按企业规模分类的PMI数据
@@ -81,4 +84,11 @@ export const pmiByEnterpriseSizeData: PmiByEnterpriseSize[] = [
   { period: '2026-02', small: 44.8, medium: 47.5, large: 51.5 },
   { period: '2026-03', small: 49.3, medium: 49.0, large: 51.6 },
   { period: '2026-07', small: 47.4, medium: 49.7, large: 49.5 },
+];
+
+// 三季度制造业PMI及服务业商务活动指数（7-9月）
+export const pmiQ3Data: PmiDataPoint[] = [
+  { period: '2026-07', pmi: 49.2, production: 49.9, newOrders: 48.5, outputPrice: 47.8, rawMaterialPurchasePrice: 53.2, servicePmi: 49.9 },
+  { period: '2026-08', pmi: 49.6, production: 50.4, newOrders: 49.6, outputPrice: 50.5, rawMaterialPurchasePrice: 57.0, servicePmi: 50.1 },
+  { period: '2026-09', pmi: 50.1, production: 51.7, newOrders: 50.5, outputPrice: 54.0, rawMaterialPurchasePrice: 60.8, servicePmi: 50.2 },
 ];

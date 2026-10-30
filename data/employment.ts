@@ -33,6 +33,9 @@ export const unemploymentRateData: UnemploymentRateDataPoint[] = [
   { period: '2026-04', overall: 5.2, age16_24: 16.3, age25_29: 7.4, age30_59: 4.2 },
   { period: '2026-05', overall: 5.1, age16_24: 15.6, age25_29: 7.2, age30_59: 4.1 },
   { period: '2026-06', overall: 5.0, age16_24: 14.9, age25_29: 7.1, age30_59: 4.0 },
+  { period: '2026-07', overall: 5.2, age16_24: 17.8, age25_29: 7.0, age30_59: 3.9 },
+  { period: '2026-08', overall: 5.3, age16_24: 18.9, age25_29: 7.2, age30_59: 3.9 },
+  { period: '2026-09', overall: 5.2, age16_24: 18.0, age25_29: 7.1, age30_59: 3.9 },
 ];
 
 // 近5年全国就业人员数据（万人）；来源：国家统计局

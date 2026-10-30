@@ -345,7 +345,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               ))}
             {showReferenceLine && (
               <ReferenceLine
-                y={referenceLineY}
+                {...(isHorizontal ? { x: referenceLineY } : { y: referenceLineY })}
                 stroke={uiColors.tick}
                 strokeWidth={1}
                 {...(barAxisId ? { yAxisId: barAxisId } : {})}
@@ -368,10 +368,11 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   type="category"
                   dataKey="name"
                   hide={false}
+                  interval={0}
                   axisLine={false}
                   tickLine={false}
                   tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
-                  width={80}
+                  width={yAxisWidth ?? 80}
                 />
               </>
             ) : (
@@ -409,17 +410,19 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 ifOverflow="extendDomain"
               />
             )}
-            <YAxis
-              hide={!showYAxis}
-              domain={yAxisDomain ?? ['auto', 'auto']}
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
-              tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
-              yAxisId={barAxisId}
-              width={yAxisWidth}
-            />
-            {hasLines && (
+            {!isHorizontal && (
+              <YAxis
+                hide={!showYAxis}
+                domain={yAxisDomain ?? ['auto', 'auto']}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+                tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
+                yAxisId={barAxisId}
+                width={yAxisWidth}
+              />
+            )}
+            {hasLines && !isHorizontal && (
               <YAxis
                 yAxisId={lineAxisId}
                 orientation="right"

@@ -40,15 +40,8 @@ const categoryColumns: ColumnConfig[] = [
   { key: 'otherGoodsServices', title: '其他', align: 'right', render: renderSigned2026 },
 ];
 
-const tableData = cpiCategoryData;
-const highlight2026Rows = tableData.reduce<number[]>((acc, row, index) => {
-  if (row.period.startsWith('2026')) acc.push(index);
-  return acc;
-}, []);
-
 export const ContentSlide15: React.FC = () => {
-  const filteredCpiTrendData = cpiTrendData.filter(d => d.period !== '2026-07');
-  const filteredCpiCategoryData = cpiCategoryData.filter(d => d.period !== '2026-07');
+  const filteredCpiCategoryData = cpiCategoryData;
   const filteredHighlight2026Rows = filteredCpiCategoryData.reduce<number[]>((acc, row, index) => {
     if (row.period.startsWith('2026')) acc.push(index);
     return acc;
@@ -56,28 +49,28 @@ export const ContentSlide15: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="核心CPI回落印证内生动能不足"
+      title="CPI：物价：前三季度CPI+0.9%、核心+1.1%，仍处于温和通胀区间"
       cardColumns={2}
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="物价温差显著" delay="0ms" variant="accent">
+          <BaseCard title="9月结构：能源涨、食品跌、AI终端涨" delay="0ms" variant="accent">
             <p>
-              上半年CPI同比上涨<span className="font-bold text-red-500">1.0%</span>（7月<span className="font-bold text-red-500">0.5%</span>），剔除食品能源的核心CPI上涨<span className="font-bold text-red-500">1.2%</span>（7月<span className="font-bold text-red-500">0.9%</span>），仍处于温和通胀区间，印证内生增长动能及居民购买力仍待修复。
+              前三季度CPI同比上涨<span className="font-bold text-red-500">0.9%</span>，核心CPI上涨<span className="font-bold text-red-500">1.1%</span>，仍处于温和通胀区间。9月CPI同比<span className="font-bold text-red-500">+0.9%</span>，核心CPI<span className="font-bold text-red-500">+1.0%</span>。
             </p>
-          </BaseCard>
-          <BaseCard title="二季度分项分化" delay="120ms">
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                交通通信由一季度末<span className="text-webank-blue">0.9%</span>跃升至5月<span className="font-bold text-red-500">5.4%</span>（6月<span className="text-webank-blue">4.1%</span>），因国际油价波动（7月已回落至<span className="text-webank-blue">0.4%</span>）。
+                交通通信同比<span className="font-bold text-red-500">+4.3%</span>，其中燃料<span className="font-bold text-red-500">+14.9%</span>（8月<span className="text-webank-blue">+8.3%</span>）；医疗保健<span className="font-bold text-red-500">+2.7%</span>；存储设备<span className="font-bold text-red-500">+46.7%</span>、平板电脑<span className="font-bold text-red-500">+23.6%</span>。
               </li>
               <li>
-                食品烟酒自4月起连续负增长，猪肉等畜肉价格拖累明显。
-              </li>
-              <li>
-                受国际金价冲高回落影响，金饰品价格二季度下滑，影响"其他用品和服务"CPI的增长。
+                猪肉<span className="text-green-600 font-bold">-10.0%</span>、鲜菜<span className="text-green-600 font-bold">-8.1%</span>；食品烟酒9月<span className="text-green-600 font-bold">-0.9%</span>，三季度维持负增长；居住类7-9月均同比<span className="text-green-600 font-bold">-0.3%</span>。
               </li>
             </ul>
+          </BaseCard>
+          <BaseCard title="温和但来源高度输入性与结构性" delay="120ms">
+            <p>
+              通胀读数温和，但来源高度输入性与结构性；居民端的"涨价感"主要来自油价和黄金饰品（<span className="font-bold text-red-500">+22.5%</span>），核心商品与服务价格仍稳。
+            </p>
           </BaseCard>
         </>
       }
@@ -85,7 +78,7 @@ export const ContentSlide15: React.FC = () => {
         <>
           <ChartContainer delay="600ms" className="min-h-0">
             <BaseLineChart
-              data={filteredCpiTrendData}
+              data={cpiTrendData}
               title="CPI当月同比、剔除食品能源CPI当月同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={cpiLines}
@@ -95,7 +88,7 @@ export const ContentSlide15: React.FC = () => {
               referenceLineY={0}
               legendOrder={['CPI:当月同比', '剔除食品能源CPI:当月同比']}
               xAxisTickCount={7}
-              highlightPeriods={['2026-06']}
+              highlightPeriods={['2026-09']}
             />
           </ChartContainer>
           <ChartContainer delay="720ms" className="min-h-0 pb-8">

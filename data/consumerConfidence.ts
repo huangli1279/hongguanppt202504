@@ -96,6 +96,7 @@ export const incomeExpenditureData: IncomeExpenditureDataPoint[] = [
   { period: '2025-12', incomeReal: 5.00, wageIncome: 5.30, operatingIncome: 5.00, propertyIncome: 1.60, transferIncome: 5.70, consumptionReal: 4.40 },
   { period: '2026-03', incomeReal: 4.00, wageIncome: 4.90, operatingIncome: 6.60, propertyIncome: 1.60, transferIncome: 5.10, consumptionReal: 2.60 },
   { period: '2026-06', incomeReal: 4.20, wageIncome: 5.30, operatingIncome: 6.50, propertyIncome: 1.10, transferIncome: 5.80, consumptionReal: 2.70 },
+  { period: '2026-09', incomeReal: 4.40, wageIncome: 5.30, operatingIncome: 6.60, propertyIncome: 1.60, transferIncome: 5.70, consumptionReal: 2.70 },
 ];
 
 // 分行业城镇非私营单位就业人员年平均工资（万元）

@@ -2,137 +2,83 @@ import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { ppiYoyData } from '@/data/ppi';
-import { industrialProfitData } from '@/data/profit';
+import { profitSelfRaisedData } from '@/data/fixedAssetInvestment';
 
-// PPI 当月同比（2024-01 起）
 const ppiChartData = ppiYoyData.filter((d) => d.period >= '2024-01');
-
-const formatNumber = (val: number) => {
-  return val.toLocaleString('en-US', {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1
-  });
-};
-
-const renderColoredCell = (value: any, row: any) => {
-  if (value === null || value === undefined) return <span className="text-slate-400">-</span>;
-  const num = Number(value);
-  if (isNaN(num)) return value;
-
-  const formatted = formatNumber(num);
-  // 2026年（2602 起）利润、营收-成本、费用标红
-  if (row.time >= '2602') {
-    return <span className="text-red-500">{formatted}</span>;
-  }
-
-  return <span className="text-slate-600">{formatted}</span>;
-};
-
-const profitColumns: ColumnConfig[] = [
-  { key: 'time', title: '日期', width: '70px', align: 'left' },
-  { key: 'totalProfit', title: '利润', width: '80px', align: 'right', render: renderColoredCell },
-  { key: 'revenue', title: '营收', width: '90px', align: 'right' },
-  { key: 'cost', title: '成本', width: '90px', align: 'right' },
-  { key: 'revenueMinusCost', title: '营收 - 成本', width: '100px', align: 'right', render: renderColoredCell },
-  { key: 'expenses', title: '费用(不含研发费用)', width: '140px', align: 'right', render: renderColoredCell },
-  { key: 'investmentIncome', title: '投资收益', width: '90px', align: 'right' },
-];
+const profitChartData = profitSelfRaisedData.filter((d) => d.period >= '2025-01');
 
 export const ContentSlide10: React.FC = () => {
   return (
     <BaseContentSlide
-      title="上半年企业利润持续增长，受输入性通胀影响显著"
+      title="工业企业利润前三季度+15.5%，增收更增利但行业冷暖不均，ppi9月破5"
       cardColumns={3}
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="上半年企业利润稳定增长" delay="0ms" variant="accent">
-            <ul className="list-disc pl-5 space-y-1 text-xs">
-              <li>
-                <span className="font-bold">利润总量：</span>
-                上半年工业企业利润累计同比增长
-                <span className="text-red-500 font-bold">18.7%</span>
-                ，5月增长
-                <span className="text-red-500 font-bold">21.1%</span>
-                ，6月增长
-                <span className="text-red-500 font-bold">15.1%</span>
-                ，拆分各项看，增长的主要贡献为<span>营收-成本</span>，营销管理等费用支出较25年增长。
-              </li>
-              <li>
-                <span className="font-bold">FIFO效应：</span>
-                受"先进先出"成本核算影响，油价飙升初期，低价库存导致石化链利润短期暴涨（4月同比
-                <span className="text-red-500 font-bold">+88.5%</span>
-                ）。随着低价库存耗尽，该效应预计将逐步消退。
-              </li>
-              <li>
-                <span className="font-bold">AI算力需求爆发：</span>
-                AI相关上游产品价格和需求增长迅猛，导致计算机、通信电子设备制造业利润增长
-                <span className="text-red-500 font-bold">96%</span>
-                ，成为利润增长的核心驱动力之一。
-              </li>
-            </ul>
-          </BaseCard>
-
-          <BaseCard title="二季度PPI回升拉动价格增长" delay="120ms">
-            <p className="text-xs">
-              二季度PPI保持上行增长
-              <span className="text-red-500 font-bold">3.6%</span>
-              （6月
-              <span className="text-red-500 font-bold">4.1%</span>
-              ），为 2022 年四季度以来季度涨幅首次转正。生产资料和生活资料剪刀差持续扩大，6月为
-              <span className="text-red-500 font-bold">6.4%</span>
-              ，多数中下游企业盈利空间受到明显挤压。
+          <BaseCard title="利润总额与营收成本" delay="0ms" variant="accent">
+            <p>
+              1-9月规上工业企业利润总额
+              <span className="font-bold">6.03万亿元</span>
+              ，同比
+              <span className="text-red-500 font-bold">+15.5%</span>
+              ；1-9月规上工业企业营收同比增长
+              <span className="text-red-500 font-bold">6.6%</span>
+              ，营业成本同比增长
+              <span className="text-red-500 font-bold">6.1%</span>
+              ，增收更增利。
             </p>
           </BaseCard>
 
-          <BaseCard delay="240ms" variant="accent">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-lg font-bold shadow-md text-xs">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                预测与展望
-              </span>
-            </div>
-            <ul className="list-disc pl-5 space-y-1 text-xs">
-              <li>
-                <span>PPI：</span>
-                随着地缘因素缓和，年底回落至
-                <span>2–3%</span>
-                ，全年预计落在
-                <span>2.2–3%</span>
-                。（中金预测2.3%，华泰预测2.2%，银河证券预测3.1%）
-              </li>
-              <li>
-                <span className="font-bold">企业利润：</span>
-                受价格传导不畅影响，下半年中下游盈利压力仍大；随着上游价格红利消退、存货 FIFO 效应耗尽，利润增速存在下行风险。
-              </li>
-            </ul>
+          <BaseCard title="分行业利润分化" delay="120ms">
+            <p>
+              1-9月份计算机、通信和其他电子设备制造业利润同比增长
+              <span className="text-red-500 font-bold">103.8%</span>
+              ，有色金属冶炼和压延加工业增长
+              <span className="text-red-500 font-bold">79.7%</span>
+              ；电力、热力生产和供应业下降
+              <span className="text-green-600 font-bold">17.9%</span>
+              ，汽车制造业下降
+              <span className="text-green-600 font-bold">22.8%</span>
+              ，黑色金属冶炼和压延加工业受房地产下行和25年同期"反内卷"高基数影响，下降
+              <span className="text-green-600 font-bold">73.3%</span>
+              。
+            </p>
+          </BaseCard>
+
+          <BaseCard title="PPI破5与剪刀差" delay="240ms" variant="accent">
+            <p>
+              PPI：9月同比
+              <span className="text-red-500 font-bold">5.0%</span>
+              ，为22年7月以来首次破5，受到外部战争等因素影响，输入性通胀严重。9月生产资料PPI同比
+              <span className="text-red-500 font-bold">6.5%</span>
+              ，生活资料
+              <span className="text-green-600 font-bold">-0.1%</span>
+              ，上下游之间的剪刀差持续走廓。
+            </p>
           </BaseCard>
         </>
       }
       charts={
         <>
           <ChartContainer delay="600ms" className="pb-8">
-            <BaseTable
-              data={industrialProfitData}
-              columns={profitColumns}
-              title={
-                <>
-                  工业企业利润分项当月同比增加值
-                  <span className="text-black font-normal normal-case tracking-normal">
-                    （利润（亿）=营收-成本-费用+投资收益+其它收益）
-                  </span>
-                </>
-              }
-              dateColumn="time"
-              colorizeNumbers={false}
-              highlightRows={[industrialProfitData.length - 1]}
-              titleBlockClassName="mb-1"
-              headerCellClassName="!px-1.5 !py-1.5 text-xs leading-tight whitespace-nowrap"
-              cellClassName="!px-1.5 text-xs leading-snug tabular-nums"
+            <BaseLineChart
+              data={profitChartData}
+              title="规上工业企业利润与自筹资金累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={[
+                { dataKey: 'industrialProfit', name: '规上工业企业利润总额', strokeWidth: 2.5, pointOffsets: { '2026-06': 12 } },
+                { dataKey: 'selfRaised', name: '自筹资金', strokeWidth: 2.5 },
+              ]}
+              yAxisDomain={[-5, 25]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['规上工业企业利润总额', '自筹资金']}
+              highlightPeriods={['2026-06']}
+              unit="%"
+              yAxisTickFormatter={(val) => `${val}`}
+              xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06']}
             />
           </ChartContainer>
           <ChartContainer delay="720ms" className="pb-8">
@@ -141,16 +87,16 @@ export const ContentSlide10: React.FC = () => {
               title="PPI、生产资料、生活资料当月同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-06': 14 } },
+                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-09': 14 } },
                 { dataKey: 'productionMaterialsYoy', name: '生产资料当月同比', strokeWidth: 2.5 },
                 { dataKey: 'livingGoodsYoy', name: '生活资料当月同比', strokeWidth: 2.5 },
               ]}
-              yAxisDomain={[-6, 8]}
+              yAxisDomain={[-3, 8]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['PPI当月同比', '生产资料当月同比', '生活资料当月同比']}
-              highlightPeriods={['2026-06', '2026-07']}
+              highlightPeriods={['2026-09']}
               xAxisTickCount={7}
               unit=""
               yAxisTickFormatter={(val) => `${val}`}

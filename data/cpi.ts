@@ -53,6 +53,8 @@ export const cpiTrendData: CpiTrendDataPoint[] = [
   { period: '2026-05', cpi: 1.20, coreCpi: 1.10 },
   { period: '2026-06', cpi: 1.00, coreCpi: 1.00 },
   { period: '2026-07', cpi: 0.50, coreCpi: 0.90 },
+  { period: '2026-08', cpi: 0.70, coreCpi: 1.00 },
+  { period: '2026-09', cpi: 0.90, coreCpi: 1.00 },
 ];
 
 // CPI八大类当月同比数据 (2025-01 至 2026-07)
@@ -77,4 +79,6 @@ export const cpiCategoryData: CpiCategoryDataPoint[] = [
   { period: '2026-05', foodTobaccoAlcohol: -0.90, transportation: 5.40, housing: -0.20, education: 1.30, clothing: 1.40, healthcare: 2.10, householdServices: 1.80, otherGoodsServices: 9.90 },
   { period: '2026-06', foodTobaccoAlcohol: -0.80, transportation: 4.10, housing: -0.30, education: 1.40, clothing: 1.40, healthcare: 2.30, householdServices: 1.30, otherGoodsServices: 6.60 },
   { period: '2026-07', foodTobaccoAlcohol: -0.80, transportation: 0.40, housing: -0.30, education: 1.30, clothing: 1.40, healthcare: 2.90, householdServices: 0.80, otherGoodsServices: 5.80 },
+  { period: '2026-08', foodTobaccoAlcohol: -0.90, transportation: 2.30, housing: -0.30, education: 1.30, clothing: 1.40, healthcare: 2.80, householdServices: 0.80, otherGoodsServices: 8.00 },
+  { period: '2026-09', foodTobaccoAlcohol: -0.90, transportation: 4.30, housing: -0.30, education: 1.30, clothing: 1.40, healthcare: 2.70, householdServices: 0.80, otherGoodsServices: 12.00 },
 ];
