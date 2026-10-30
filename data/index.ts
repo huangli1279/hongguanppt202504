@@ -32,6 +32,14 @@ export {
   GOVERNMENT_TARGET,
 } from './gdpForecast';
 export type { GdpForecastMetric } from './gdpForecast';
+export {
+  industrialForecastConsensus,
+  industrialForecastByInstitution,
+  industrialForecastByInstitutionNew,
+  INDUSTRIAL_TARGET,
+  INDUSTRIAL_GOVERNMENT_TARGET,
+} from './industrialForecast';
+export type { IndustrialForecastMetric } from './industrialForecast';
 export { consumerConfidenceData, incomeExpenditureData, industryAvgSalaryData, incomeSentimentData } from './consumerConfidence';
 export type { ConsumerConfidenceDataPoint, IncomeExpenditureDataPoint, IndustryAvgSalaryDataPoint, IncomeSentimentDataPoint } from './consumerConfidence';
 export { unemploymentRateData, flexibleEmploymentData, workTypeExpenditureData } from './employment';

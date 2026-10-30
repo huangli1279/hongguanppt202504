@@ -116,6 +116,9 @@ export const ContentSlide05: React.FC = () => {
                 unit="%"
                 yAxisTickFormatter={(v) => `${v}`}
                 xAxisInterval={0}
+                xAxisAngle={-90}
+                xAxisHeight={70}
+                xAxisTickFontSize={8}
                 xAxisTickFormatter={(v: any) => {
                   const parts = String(v).split('-');
                   const q = parts.slice(1).join('-');

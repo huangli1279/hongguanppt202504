@@ -1,6 +1,6 @@
 /**
- * Slide08：国内外机构对中国2026年GDP增速预测 + 政府目标区间
- * 数据来源：IMF（7月）、OECD（6月）、中信/中金/华泰/招商证券（6月）
+ * Slide06：国内外机构对中国2026年GDP增速预测 + 政府目标区间
+ * 数据来源：IMF、OECD、花旗、一财一致预期
  */
 
 export interface GdpForecastMetric {
@@ -35,12 +35,10 @@ export const gdpForecastConsensus: GdpForecastMetric[] = [
 /** 政府工作目标区间（4.5%–5.0%） */
 export const GOVERNMENT_TARGET: [number, number] = [4.5, 5.0];
 
-/** 代表机构点预测 */
+/** 代表机构点预测（与共识一致） */
 export const gdpForecastByInstitutionNew = [
-  { institution: 'IMF', value: 4.6, note: '7月上调' },
+  { institution: 'IMF', value: 4.5, note: '7月' },
   { institution: 'OECD', value: 4.5, note: '6月基准情景' },
-  { institution: '中信', value: 4.7 },
-  { institution: '中金', value: 4.7 },
-  { institution: '华泰', value: 5.0 },
-  { institution: '招商', value: 5.0 },
+  { institution: '花旗', value: 4.6, note: '10月' },
+  { institution: '一财一致预期', value: 4.6, note: '10月最新' },
 ];

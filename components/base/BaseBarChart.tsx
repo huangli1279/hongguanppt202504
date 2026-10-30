@@ -355,7 +355,6 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
               <>
                 <XAxis
                   type="number"
-                  dataKey={xAxisKey}
                   axisLine={showYAxis ? { stroke: uiColors.axis } : false}
                   tickLine={false}
                   tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}

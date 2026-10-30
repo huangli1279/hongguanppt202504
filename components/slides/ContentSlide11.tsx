@@ -1,14 +1,7 @@
 import React from 'react';
-import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { gdpForecastByInstitutionData } from '@/data/gdp';
-
-const gdpForecastLineData = gdpForecastByInstitutionData.map((d) => ({
-  period: d.institution,
-  international: d.international,
-  domestic: d.domestic,
-}));
+import { IndustrialForecastRangeChart } from '../charts/IndustrialForecastRangeChart';
 
 export const ContentSlide11: React.FC = () => {
   return (
@@ -41,7 +34,7 @@ export const ContentSlide11: React.FC = () => {
             </ul>
           </BaseCard>
 
-          <BaseCard title="ppi预测" delay="120ms">
+          <BaseCard title="PPI 预测" delay="120ms">
             <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed">
               <li>
                 随着地缘因素缓和，年底 PPI 回落至 <span className="font-bold">2-3%</span>，全年预计落在 <span className="font-bold">2.2-3%</span>。
@@ -66,22 +59,7 @@ export const ContentSlide11: React.FC = () => {
       }
       charts={
         <ChartContainer delay="600ms" className="min-h-0 pb-8">
-          <BaseLineChart
-            data={gdpForecastLineData}
-            title="主要机构GDP预测"
-            subtitle="数据来源：各机构 | 单位：%"
-            lines={[
-              { dataKey: 'international', name: '国际组织', color: '#4A79AA', strokeWidth: 2.5 },
-              { dataKey: 'domestic', name: '国内券商', color: '#2F5F5A', strokeWidth: 2.5 },
-            ]}
-            yAxisDomain={[4, 5.5]}
-            showYAxis={true}
-            legendOrder={['国际组织', '国内券商']}
-            highlightPeriods={gdpForecastLineData.map((d) => d.period)}
-            xAxisAngle={-30}
-            unit="%"
-            yAxisTickFormatter={(val) => `${val}`}
-          />
+          <IndustrialForecastRangeChart />
         </ChartContainer>
       }
     />

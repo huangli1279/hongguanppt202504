@@ -1,5 +1,6 @@
 import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
+import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { ppiYoyData } from '@/data/ppi';
@@ -8,12 +9,20 @@ import { profitSelfRaisedData } from '@/data/fixedAssetInvestment';
 const ppiChartData = ppiYoyData.filter((d) => d.period >= '2024-01');
 const profitChartData = profitSelfRaisedData.filter((d) => d.period >= '2025-01');
 
+const industryProfitSepData = [
+  { name: '计算机、通信和其他电子设备制造业', value: 103.8, fill: '#ef4444' },
+  { name: '有色金属冶炼和压延加工业', value: 79.7, fill: '#ef4444' },
+  { name: '电力、热力生产和供应业', value: -17.9, fill: '#16a34a' },
+  { name: '汽车制造业', value: -22.8, fill: '#16a34a' },
+  { name: '黑色金属冶炼和压延加工业', value: -73.3, fill: '#16a34a' },
+];
+
 export const ContentSlide10: React.FC = () => {
   return (
     <BaseContentSlide
       title="工业企业利润前三季度+15.5%，增收更增利但行业冷暖不均，PPI9月破5"
       cardColumns={3}
-      chartColumns={2}
+      chartColumns={3}
       cards={
         <>
           <BaseCard title="利润总额与营收成本" delay="0ms" variant="accent">
@@ -78,6 +87,28 @@ export const ContentSlide10: React.FC = () => {
               unit="%"
               yAxisTickFormatter={(val) => `${val}`}
               xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+            />
+          </ChartContainer>
+          <ChartContainer delay="660ms" className="pb-8">
+            <BaseBarChart
+              data={industryProfitSepData}
+              title="分行业利润9月同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              bars={[{ dataKey: 'value', name: '利润同比' }]}
+              xAxisKey="value"
+              layout="horizontal"
+              yAxisDomain={[-80, 120]}
+              showYAxis={true}
+              yAxisWidth={130}
+              yAxisTickFormatter={(val) => `${val}%`}
+              showReferenceLine={true}
+              referenceLineY={0}
+              showLegend={false}
+              showLabels={true}
+              labelFormatter={(val: any) => `${Number(val) > 0 ? '+' : ''}${Number(val).toFixed(1)}%`}
+              unit="%"
+              barSize={12}
+              xAxisTickFontSize={9}
             />
           </ChartContainer>
           <ChartContainer delay="720ms" className="pb-8">

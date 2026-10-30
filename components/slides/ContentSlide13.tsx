@@ -7,6 +7,13 @@ import { seriesColors } from '../../utils/chartColors';
 
 // 左图：社零累计同比 vs 除汽车外社零累计同比（%）
 const retailDualData = [
+  { period: '2025-02', totalRetail: 4.0, exAutoRetail: 4.3 },
+  { period: '2025-03', totalRetail: 4.6, exAutoRetail: 4.9 },
+  { period: '2025-04', totalRetail: 4.7, exAutoRetail: 5.0 },
+  { period: '2025-05', totalRetail: 5.0, exAutoRetail: 5.3 },
+  { period: '2025-06', totalRetail: 5.0, exAutoRetail: 5.3 },
+  { period: '2025-07', totalRetail: 4.8, exAutoRetail: 5.1 },
+  { period: '2025-08', totalRetail: 4.6, exAutoRetail: 4.9 },
   { period: '2025-09', totalRetail: 4.5, exAutoRetail: 4.8 },
   { period: '2025-12', totalRetail: 3.69, exAutoRetail: 4.0 },
   { period: '2026-02', totalRetail: 2.8, exAutoRetail: 3.3 },
@@ -21,8 +28,8 @@ const retailDualData = [
 
 // 中图：分地区社零累计同比（%）
 const cityRetailSepData = [
-  { period: '北京', value: -0.7, fill: '#16a34a' },
-  { period: '上海', value: -1.1, fill: '#16a34a' },
+  { period: '北京', value: -0.7, fill: '#005c8f' },
+  { period: '上海', value: -1.1, fill: '#005c8f' },
   { period: '广州', value: 2.7, fill: '#dc2626' },
   { period: '深圳', value: 2.3, fill: '#dc2626' },
 ];
@@ -44,7 +51,7 @@ export const ContentSlide13: React.FC = () => {
         <>
           <BaseCard title="社零总量：9月回升" delay="0ms" variant="accent">
             <p>
-              1—9月社零累计<span className="font-bold">37.0万亿元</span>，9月单月<span className="font-bold">4.24万亿元</span>，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="font-bold text-green-600">+1.0%</span>，网上零售<span className="font-bold text-red-500">+4.4%</span>，服务增速继续快于商品。
+              1—9月社零累计<span className="font-bold">37.0万亿元</span>，9月单月<span className="font-bold">4.24万亿元</span>，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="font-bold text-green-600">+1.0%</span>，网上零售<span className="font-bold text-red-500">+4.4%</span>，服务增速继续快于商品。需注意9月同比部分受中秋错位（今年中秋落在9月、去年在10月）提振，10月或面临高基数与错位回吐压力。
             </p>
           </BaseCard>
 
@@ -84,7 +91,7 @@ export const ContentSlide13: React.FC = () => {
           <ChartContainer delay="720ms" ariaLabel="分地区社零累计同比柱状图">
             <BaseBarChart
               data={cityRetailSepData}
-              title="分地区社零累计同比"
+              title="1-9月分地区社零累计同比"
               subtitle="数据来源：各地统计局 | 单位：%"
               xAxisKey="period"
               bars={[{ dataKey: 'value', name: '累计同比' }]}

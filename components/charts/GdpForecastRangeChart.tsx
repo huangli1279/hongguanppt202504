@@ -54,12 +54,21 @@ export const GdpForecastRangeChart: React.FC = () => {
     labelY: number;
   };
 
-  const isIntl = (name: string) => ['IMF', 'OECD'].includes(name);
+  const isIntl = (name: string) => ['IMF', 'OECD', '花旗'].includes(name);
 
-  // 国际组织标签强制错开 Y：IMF 在上，OECD 在下
-  const EXPLICIT_INTL_Y: Record<string, number> = {
+  // 国际/国内机构标签强制错开 Y：同值点上下分布
+  const EXPLICIT_LABEL_Y: Record<string, number> = {
     IMF: dotY - 18,
     OECD: dotY - 34,
+    花旗: dotY - 18,
+    '一财一致预期': dotY - 34,
+  };
+
+  const EXPLICIT_ANCHOR: Record<string, 'start' | 'end'> = {
+    IMF: 'start',
+    OECD: 'end',
+    花旗: 'start',
+    '一财一致预期': 'start',
   };
 
   const positioned: Positioned[] = sortedDots.map((d, i, arr) => {
@@ -68,9 +77,10 @@ export const GdpForecastRangeChart: React.FC = () => {
     const nextX = i < arr.length - 1 ? xOf(arr[i + 1].value, plotLeft, plotWidth) : Infinity;
     const distLeft = x - prevX;
     const distRight = nextX - x;
-    // 距离较小的一侧 —— 标签伸向另一侧
-    let anchor: 'start' | 'end';
-    if (distLeft < distRight) {
+let anchor: 'start' | 'end';
+    if (EXPLICIT_ANCHOR[d.institution]) {
+      anchor = EXPLICIT_ANCHOR[d.institution] as 'start' | 'end';
+    } else if (distLeft < distRight) {
       anchor = 'end';
     } else {
       anchor = 'start';
@@ -80,8 +90,8 @@ export const GdpForecastRangeChart: React.FC = () => {
     // 同值点错开 y（国际组织已由 EXPLICIT_INTL_Y 预设，直接覆盖）
     const sameValueBefore = arr.slice(0, i).filter((p) => Math.abs(p.value - d.value) < 0.001).length;
     const labelY =
-      d.institution in EXPLICIT_INTL_Y
-        ? EXPLICIT_INTL_Y[d.institution]
+      d.institution in EXPLICIT_LABEL_Y
+        ? EXPLICIT_LABEL_Y[d.institution]
         : dotY - 18 - sameValueBefore * 14;
     return {
       institution: d.institution,
@@ -104,7 +114,7 @@ export const GdpForecastRangeChart: React.FC = () => {
     <div className="w-full h-full flex flex-col min-h-0">
       <div className="mb-2 flex-shrink-0">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          国内外机构对2026年GDP增速预测：共识处于政府目标下限
+          国内外机构对2026年GDP增速预测：IMF 4.5%、OECD 4.5%、花旗 4.6%、一财一致预期 4.6%
         </h3>
         <p className="text-xs text-webank-subtext mt-1 leading-relaxed">
           注：蓝框为政府工作报告目标（4.5%–5.0%）；红框为机构共识（4.5%–4.8%）；上排为机构点预测，下方为共识条｜单位：%
@@ -138,7 +148,7 @@ export const GdpForecastRangeChart: React.FC = () => {
             className="inline-block w-2 h-2 rounded-full"
             style={{ backgroundColor: DOM_COLOR }}
           />
-          国内券商
+          国内机构
         </span>
         <span className="flex items-center gap-1.5 text-[10px] text-[#666]">
           <span

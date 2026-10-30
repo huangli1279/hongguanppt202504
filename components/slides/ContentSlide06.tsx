@@ -22,37 +22,42 @@ export const ContentSlide06: React.FC = () => {
       chartColumns={1}
       children={
         <div className="flex flex-col h-full min-h-0 gap-3">
-          <BaseCard title="机构预测共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3 w-full">
-            <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
-              <li>
-                IMF：
-                <span className="font-bold text-red-500">4.5%</span>
-              </li>
-              <li>
-                OECD：
-                <span className="font-bold text-red-500">4.5%</span>
-              </li>
-              <li>
-                花旗：
-                <span className="font-bold text-red-500">4.6%</span>
-              </li>
-              <li>
-                一财一致预期：
-                <span className="font-bold text-red-500">4.6%</span>
-                （10 月最新）——第一财经首席经济学家调研（2026 年 10 月）显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为
-                <span className="font-bold text-red-500">4.6%</span>
-                。
-              </li>
-            </ul>
-            <div className="mt-2 text-[13px] leading-snug">
-              <span className="font-bold text-webank-blue">代表机构预测：</span>
-              券商的"最新观点"已从点位转向定性：10 月下旬招商（张静静）的表述是"出口再提速、消费改善、基建回暖，增长目标完成基本无虞"。
-            </div>
-          </BaseCard>
+            <div className="grid grid-cols-2 gap-3">
+              <BaseCard title="机构预测" delay="0ms" variant="accent" className="!gap-1.5 !p-3 w-full">
+                <div className="text-[13px] leading-snug">
+                  <span className="font-bold text-webank-blue">代表机构预测：</span>
+                  券商的"最新观点"已从点位转向定性：10 月下旬招商"出口再提速、消费改善、基建回暖，增长目标完成基本无虞"。
+                </div>
+              </BaseCard>
 
-          <ChartContainer delay="600ms" className="flex-1 min-h-0" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
-            <GdpForecastRangeChart />
-          </ChartContainer>
+              <BaseCard title="共识" delay="120ms" variant="accent" className="!gap-1.5 !p-3 w-full">
+                <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
+                  <li>
+                    IMF：
+                    <span className="font-bold text-red-500">4.5%</span>
+                  </li>
+                  <li>
+                    OECD：
+                    <span className="font-bold text-red-500">4.5%</span>
+                  </li>
+                  <li>
+                    花旗：
+                    <span className="font-bold text-red-500">4.6%</span>
+                  </li>
+                  <li>
+                    一财一致预期：
+                    <span className="font-bold text-red-500">4.6%</span>
+                    （10 月最新）——第一财经首席经济学家调研（2026 年 10 月）显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为
+                    <span className="font-bold text-red-500">4.6%</span>
+                    。
+                  </li>
+                </ul>
+              </BaseCard>
+            </div>
+
+            <ChartContainer delay="600ms" className="flex-1 min-h-0" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
+              <GdpForecastRangeChart />
+            </ChartContainer>
         </div>
       }
     />

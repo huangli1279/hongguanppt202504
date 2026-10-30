@@ -112,9 +112,9 @@ export const ContentSlide04: React.FC = () => {
               referenceLineY={0}
               legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
               lines={[
-                { dataKey: 'overall', name: '整体', color: chartColors.senary, strokeWidth: 3, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'overall', name: '整体', color: '#dc2626', strokeWidth: 2.5, labelPosition: 'top', labelDY: -8 },
                 { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 12 },
-                { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'secondary', name: '第二产业', color: '#eab308', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
                 { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
               ]}
             />
