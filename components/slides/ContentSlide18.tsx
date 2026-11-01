@@ -20,10 +20,11 @@ export const ContentSlide18: React.FC = () => {
   ];
 
   // 投资拆分：建筑安装工程、设备购置、其他费用折线图配置
+  // 建筑安装工程与其他费用末值相近，用引线标注错开避免重叠
   const breakdownLineConfigs: LineConfig[] = [
-    { dataKey: 'construction', name: '建筑安装工程', color: seriesColors[0], strokeWidth: 2.5 },
-    { dataKey: 'equipment', name: '设备工器具购置', color: seriesColors[1], strokeWidth: 2 },
-    { dataKey: 'otherExpenses', name: '其他费用', color: seriesColors[2], strokeWidth: 2 },
+    { dataKey: 'construction', name: '建筑安装工程', color: seriesColors[0], strokeWidth: 2.5, pointCallouts: { '2026-09': { dx: 14, dy: -20 } } },
+    { dataKey: 'equipment', name: '设备工器具购置', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -8 } },
+    { dataKey: 'otherExpenses', name: '其他费用', color: seriesColors[2], strokeWidth: 2, pointCallouts: { '2026-09': { dx: 14, dy: -4 } } },
   ];
 
   // 左图：固投累计同比 + 单月环比
@@ -92,13 +93,13 @@ export const ContentSlide18: React.FC = () => {
                 title="建筑安装工程、设备购置、其他费用累计同比"
                 subtitle="数据来源：国家统计局 | 单位：%"
                 lines={breakdownLineConfigs}
-                yAxisDomain={[-10, 20]}
+                yAxisDomain={[-13, 20]}
                 showYAxis={true}
                 showReferenceLine={true}
                 referenceLineY={0}
                 legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
                 highlightPeriods={['2026-09']}
-                xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
+                xAxisTicks={['2024-06', '2025-03', '2025-09', '2026-03', '2026-09']}
                 compact
               />
             </ChartContainer>

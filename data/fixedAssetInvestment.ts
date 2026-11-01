@@ -76,6 +76,17 @@ export interface InvestmentBreakdownDataPoint {
 }
 
 export const investmentBreakdownData: InvestmentBreakdownDataPoint[] = [
+  { period: '2024-02', construction: 4.00, equipment: 17.00, otherExpenses: -2.40 },
+  { period: '2024-03', construction: 4.60, equipment: 17.60, otherExpenses: -2.10 },
+  { period: '2024-04', construction: 4.20, equipment: 17.20, otherExpenses: -1.90 },
+  { period: '2024-05', construction: 3.80, equipment: 17.50, otherExpenses: -2.00 },
+  { period: '2024-06', construction: 3.80, equipment: 17.50, otherExpenses: -2.50 },
+  { period: '2024-07', construction: 3.60, equipment: 17.30, otherExpenses: -3.10 },
+  { period: '2024-08', construction: 3.40, equipment: 16.80, otherExpenses: -3.50 },
+  { period: '2024-09', construction: 3.50, equipment: 16.40, otherExpenses: -3.30 },
+  { period: '2024-10', construction: 3.50, equipment: 16.10, otherExpenses: -3.90 },
+  { period: '2024-11', construction: 3.50, equipment: 15.80, otherExpenses: -4.10 },
+  { period: '2024-12', construction: 3.50, equipment: 15.70, otherExpenses: -4.20 },
   { period: '2025-02', construction: 1.10, equipment: 18.00, otherExpenses: 3.60 },
   { period: '2025-03', construction: 1.50, equipment: 19.00, otherExpenses: 2.40 },
   { period: '2025-04', construction: 1.40, equipment: 18.20, otherExpenses: 2.30 },
@@ -91,10 +102,10 @@ export const investmentBreakdownData: InvestmentBreakdownDataPoint[] = [
   { period: '2026-03', construction: -0.40, equipment: 13.90, otherExpenses: -1.70 },
   { period: '2026-04', construction: -4.40, equipment: 11.50, otherExpenses: -3.40 },
   { period: '2026-05', construction: -6.60, equipment: 9.30, otherExpenses: -6.40 },
-  { period: '2026-06', construction: -8.00, equipment: 8.10, otherExpenses: -8.90 },
-  { period: '2026-07', construction: -8.50, equipment: 7.50, otherExpenses: -9.20 },
-  { period: '2026-08', construction: -9.00, equipment: 7.00, otherExpenses: -9.50 },
-  { period: '2026-09', construction: -9.50, equipment: 6.50, otherExpenses: -9.80 },
+  { period: '2026-06', construction: -8.00, equipment: 8.10, otherExpenses: -8.80 },
+  { period: '2026-07', construction: -8.00, equipment: 9.10, otherExpenses: -10.90 },
+  { period: '2026-08', construction: -9.80, equipment: 9.30, otherExpenses: -12.00 },
+  { period: '2026-09', construction: -10.00, equipment: 9.70, otherExpenses: -12.10 },
 ];
 
 // 新开工项目计划总投资累计同比

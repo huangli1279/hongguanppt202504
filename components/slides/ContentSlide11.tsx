@@ -58,7 +58,7 @@ export const ContentSlide11: React.FC = () => {
         </>
       }
       charts={
-        <ChartContainer delay="600ms" className="min-h-0 pb-8">
+        <ChartContainer delay="600ms" className="min-h-0 pb-2">
           <IndustrialForecastRangeChart />
         </ChartContainer>
       }

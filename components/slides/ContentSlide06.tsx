@@ -47,7 +47,7 @@ export const ContentSlide06: React.FC = () => {
               </BaseCard>
             </div>
 
-            <ChartContainer delay="600ms" className="flex-1 min-h-0" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
+            <ChartContainer delay="600ms" className="min-h-0 pb-2" ariaLabel="国内外机构对中国2026年GDP增速预测与政府目标区间图">
               <GdpForecastRangeChart />
             </ChartContainer>
         </div>

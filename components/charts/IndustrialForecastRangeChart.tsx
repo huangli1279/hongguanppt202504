@@ -22,7 +22,7 @@ function xOf(value: number, left: number, width: number) {
 
 export const IndustrialForecastRangeChart: React.FC = () => {
   const vbW = 920;
-  const vbH = 360;
+  const vbH = 250;
   const plotLeft = 96;
   const plotWidth = 760;
   const metric = industrialForecastConsensus[0];
