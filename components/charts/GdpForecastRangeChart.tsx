@@ -265,17 +265,19 @@ let anchor: 'start' | 'end';
                 {p.institution}
               </text>
               {/* 数值 */}
-              <text
-                x={p.labelX}
-                y={p.labelY + 12}
-                textAnchor={p.anchor}
-                fill={p.color}
-                fontSize={10}
-                fontWeight={600}
-                opacity={0.85}
-              >
-                {p.value.toFixed(1)}%
-              </text>
+              {p.institution !== '一财一致预期' && (
+                <text
+                  x={p.labelX}
+                  y={p.labelY + 12}
+                  textAnchor={p.anchor}
+                  fill={p.color}
+                  fontSize={10}
+                  fontWeight={600}
+                  opacity={0.85}
+                >
+                  {p.value.toFixed(1)}%
+                </text>
+              )}
               {/* 圆点 */}
               <circle cx={p.x} cy={dotY} r={4} fill="#fff" stroke={p.color} strokeWidth={2} />
             </g>

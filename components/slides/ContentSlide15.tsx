@@ -91,7 +91,7 @@ export const ContentSlide15: React.FC = () => {
               highlightPeriods={['2026-09']}
             />
           </ChartContainer>
-          <ChartContainer delay="720ms" className="min-h-0 pb-8">
+          <ChartContainer delay="720ms" className="min-h-0">
             <BaseTable
               data={filteredCpiCategoryData}
               columns={categoryColumns}

@@ -54,17 +54,9 @@ export const IndustrialForecastRangeChart: React.FC = () => {
 
   const positioned: Positioned[] = sortedDots.map((d, i, arr) => {
     const x = xOf(d.value, plotLeft, plotWidth);
-    const prevX = i > 0 ? xOf(arr[i - 1].value, plotLeft, plotWidth) : -Infinity;
-    const nextX = i < arr.length - 1 ? xOf(arr[i + 1].value, plotLeft, plotWidth) : Infinity;
-    const distLeft = x - prevX;
-    const distRight = nextX - x;
-    let anchor: 'start' | 'end';
-    if (distLeft < distRight) {
-      anchor = 'end';
-    } else {
-      anchor = 'start';
-    }
-    const labelX = anchor === 'end' ? x - 8 : x + 8;
+    // 统一朝右放置标签，避免相邻标签互相指向导致重叠
+    const anchor: 'start' | 'end' = 'start';
+    const labelX = x + 8;
     const sameValueBefore = arr.slice(0, i).filter((p) => Math.abs(p.value - d.value) < 0.001).length;
     const labelY = dotY - 18 - sameValueBefore * 14;
     return {
@@ -226,7 +218,7 @@ export const IndustrialForecastRangeChart: React.FC = () => {
               </text>
               <text
                 x={p.labelX}
-                y={p.labelY + 12}
+                y={p.labelY + 14}
                 textAnchor={p.anchor}
                 fill={p.color}
                 fontSize={10}
