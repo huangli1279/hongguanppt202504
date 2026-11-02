@@ -7,13 +7,13 @@ import { industrialCategoryCumulativeData } from '../../data/industrialOutput';
 import { seriesColors } from '../../utils/chartColors';
 
 const majorIndustrySepData = [
-  { name: '计算机通信电子', aug: 17.2, sep: 16.4 },
-  { name: '专用设备制造', aug: 11.4, sep: 12.1 },
-  { name: '铁路航空航天', aug: 13.4, sep: 11.7 },
-  { name: '高技术制造业', aug: 16.7, sep: 15.3 },
+  { name: '计算机通信电子', aug: 15.7, sep: 16.4 },
+  { name: '专用设备制造', aug: 10.0, sep: 12.1 },
+  { name: '铁路航空航天', aug: 18.2, sep: 11.7 },
+  { name: '高技术制造业', aug: 15.0, sep: 16.2 },
   { name: '汽车制造业', aug: 8.7, sep: 6.7 },
-  { name: '电力热力燃气水', aug: 4.9, sep: 5.6 },
-  { name: '非金属矿物制品', aug: -4.1, sep: -2.4 },
+  { name: '电力热力燃气水', aug: 7.8, sep: 5.4 },
+  { name: '非金属矿物制品', aug: -2.3, sep: -5.3 },
 ];
 
 export const ContentSlide09: React.FC = () => {
@@ -32,13 +32,13 @@ export const ContentSlide09: React.FC = () => {
 
           <BaseCard title="新动能仍是主引擎" delay="120ms">
             <p>
-              前三季度高技术制造业增加值 <span className="font-bold text-red-600">+14.3%</span>（Q3为 <span className="font-bold text-red-600">16.2%</span>）；9月计算机通信电子行业 <span className="font-bold text-red-600">+16.4%</span>，对全部规上工业增长贡献率连续居各大类行业首位，9月专用设备制造业 <span className="font-bold text-red-600">12.1%</span>，铁路航空航天设备制造 <span className="font-bold text-red-600">11.7%</span>，均保持高增长。
+              前三季度高技术制造业增加值 +14.3%（Q3为 16.2%）；9月计算机通信电子行业 +16.4%，对全部规上工业增长贡献率连续居各大类行业首位，9月专用设备制造业 12.1%，铁路航空航天设备制造 11.7%，均保持高增长。
             </p>
           </BaseCard>
 
           <BaseCard title="产能利用率低但企稳，汽车是明显拖累" delay="240ms">
             <p>
-              产能利用率三季度为 <span className="font-bold">73.1%</span>，在一二季度连续下行后边际企稳（环比 <span className="font-bold">+0.1pct</span>），但同比仍低 <span className="text-green-600 font-bold">1.5pct</span>。9月汽车产量 <span className="text-green-600 font-bold">-5.7%</span>、产能利用率仅 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。增加值增速由8月的 <span>8.7%</span> 回落至 <span className="text-green-600 font-bold">6.7%</span>；发电量9月 <span className="text-green-600 font-bold">-1.2%</span>，传统内需行业承压。
+              产能利用率三季度为 73.1%，在一二季度连续下行后边际企稳（环比 +0.1pct），但同比仍低 1.5pct。9月汽车产量 <span className="text-green-600 font-bold">-5.7%</span>、产能利用率仅 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。增加值增速由8月的 8.7% 回落至 6.7%；发电量9月 -1.2%，传统内需行业承压。
             </p>
           </BaseCard>
         </>

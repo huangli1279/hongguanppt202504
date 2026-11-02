@@ -115,7 +115,7 @@ export const ppiYoyData: PpiDataPoint[] = [
   { period: '2026-05', ppiYoy: 3.9, productionMaterialsYoy: 5.2, livingGoodsYoy: -0.8 },
   { period: '2026-06', ppiYoy: 4.1, productionMaterialsYoy: 5.5, livingGoodsYoy: -0.9 },
   { period: '2026-07', ppiYoy: 3.5, productionMaterialsYoy: 4.8, livingGoodsYoy: -0.8 },
-  { period: '2026-08', ppiYoy: 4.3, productionMaterialsYoy: 5.7, livingGoodsYoy: -0.4 },
+  { period: '2026-08', ppiYoy: 3.8, productionMaterialsYoy: 5.0, livingGoodsYoy: -0.5 },
   { period: '2026-09', ppiYoy: 5.0, productionMaterialsYoy: 6.5, livingGoodsYoy: -0.1 },
 ];
 

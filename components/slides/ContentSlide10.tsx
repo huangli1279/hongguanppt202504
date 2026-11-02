@@ -12,8 +12,14 @@ const profitChartData = profitSelfRaisedData.filter((d) => d.period >= '2025-01'
 const industryProfitSepData = [
   { name: '计算机、通信和其他电子设备制造业', value: 103.8, fill: '#ef4444' },
   { name: '有色金属冶炼和压延加工业', value: 79.7, fill: '#ef4444' },
+  { name: '煤炭开采和洗选业', value: 57.0, fill: '#ef4444' },
+  { name: '化学原料和化学制品制造业', value: 49.2, fill: '#ef4444' },
+  { name: '通用设备制造业', value: 1.9, fill: '#ef4444' },
+  { name: '专用设备制造业', value: -1.3, fill: '#16a34a' },
+  { name: '电气机械和器材制造业', value: -5.9, fill: '#16a34a' },
   { name: '电力、热力生产和供应业', value: -17.9, fill: '#16a34a' },
   { name: '汽车制造业', value: -22.8, fill: '#16a34a' },
+  { name: '非金属矿物制品业', value: -46.9, fill: '#16a34a' },
   { name: '黑色金属冶炼和压延加工业', value: -73.3, fill: '#16a34a' },
 ];
 
@@ -27,9 +33,7 @@ export const ContentSlide10: React.FC = () => {
         <>
           <BaseCard title="利润总额与营收成本" delay="0ms" variant="accent">
             <p>
-              1-9月规上工业企业利润总额
-              <span className="font-bold">6.03万亿元</span>
-              ，同比
+              1-9月规上工业企业利润总额6.03万亿元，同比
               <span className="text-red-500 font-bold">+15.5%</span>
               ；1-9月规上工业企业营收同比增长
               <span className="text-red-500 font-bold">6.6%</span>
@@ -55,15 +59,17 @@ export const ContentSlide10: React.FC = () => {
             </p>
           </BaseCard>
 
-          <BaseCard title="PPI破5与剪刀差" delay="240ms" variant="accent">
+          <BaseCard title="PPI破5与剪刀差走阔" delay="240ms" variant="accent">
             <p>
               PPI：9月同比
               <span className="text-red-500 font-bold">5.0%</span>
-              ，为22年7月以来首次破5，受到外部战争等因素影响，输入性通胀严重。9月生产资料PPI同比
+              ，为22年7月以来首次破5，受到外部战争等因素影响，输入性通胀为上游企业带来利润高增但持续挤压中下游企业利润。9月生产资料PPI同比
               <span className="text-red-500 font-bold">6.5%</span>
               ，生活资料
               <span className="text-green-600 font-bold">-0.1%</span>
-              ，上下游之间的剪刀差持续走廓。
+              ，上下游之间的剪刀差今年以来持续走扩至
+              <span className="font-bold">6.6%</span>
+              。
             </p>
           </BaseCard>
         </>
@@ -92,7 +98,7 @@ export const ContentSlide10: React.FC = () => {
           <ChartContainer delay="660ms" className="pb-8">
             <BaseBarChart
               data={industryProfitSepData}
-              title="分行业利润9月同比"
+              title="分行业利润1-9月累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               bars={[{ dataKey: 'value', name: '利润同比' }]}
               xAxisKey="value"
@@ -107,7 +113,9 @@ export const ContentSlide10: React.FC = () => {
               showLabels={true}
               labelFormatter={(val: any) => `${Number(val) > 0 ? '+' : ''}${Number(val).toFixed(1)}%`}
               unit="%"
-              barSize={12}
+              barSize={9}
+              labelPositiveOffset={5}
+              labelNegativeOffset={-5}
               xAxisTickFontSize={9}
             />
           </ChartContainer>

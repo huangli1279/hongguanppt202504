@@ -7,23 +7,25 @@ import { seriesColors } from '../../utils/chartColors';
 
 // 左图：社零累计同比 vs 除汽车外社零累计同比（%）
 const retailDualData = [
-  { period: '2025-02', totalRetail: 4.0, exAutoRetail: 4.3 },
-  { period: '2025-03', totalRetail: 4.6, exAutoRetail: 4.9 },
-  { period: '2025-04', totalRetail: 4.7, exAutoRetail: 5.0 },
-  { period: '2025-05', totalRetail: 5.0, exAutoRetail: 5.3 },
-  { period: '2025-06', totalRetail: 5.0, exAutoRetail: 5.3 },
-  { period: '2025-07', totalRetail: 4.8, exAutoRetail: 5.1 },
-  { period: '2025-08', totalRetail: 4.6, exAutoRetail: 4.9 },
-  { period: '2025-09', totalRetail: 4.5, exAutoRetail: 4.8 },
-  { period: '2025-12', totalRetail: 3.69, exAutoRetail: 4.0 },
-  { period: '2026-02', totalRetail: 2.8, exAutoRetail: 3.3 },
-  { period: '2026-03', totalRetail: 2.4, exAutoRetail: 2.8 },
+  { period: '2025-02', totalRetail: 4.0, exAutoRetail: 4.8 },
+  { period: '2025-03', totalRetail: 4.6, exAutoRetail: 5.1 },
+  { period: '2025-04', totalRetail: 4.7, exAutoRetail: 5.2 },
+  { period: '2025-05', totalRetail: 5.0, exAutoRetail: 5.6 },
+  { period: '2025-06', totalRetail: 5.0, exAutoRetail: 5.5 },
+  { period: '2025-07', totalRetail: 4.8, exAutoRetail: 5.3 },
+  { period: '2025-08', totalRetail: 4.6, exAutoRetail: 5.1 },
+  { period: '2025-09', totalRetail: 4.5, exAutoRetail: 4.9 },
+  { period: '2025-10', totalRetail: 4.3, exAutoRetail: 4.86 },
+  { period: '2025-11', totalRetail: 4.0, exAutoRetail: 4.6 },  
+  { period: '2025-12', totalRetail: 3.69, exAutoRetail: 4.4},
+  { period: '2026-02', totalRetail: 2.8, exAutoRetail: 3.7 },
+  { period: '2026-03', totalRetail: 2.4, exAutoRetail: 3.6 },
   { period: '2026-04', totalRetail: 1.9, exAutoRetail: 3.1 },
-  { period: '2026-05', totalRetail: 1.4, exAutoRetail: 2.9 },
+  { period: '2026-05', totalRetail: 1.4, exAutoRetail: 2.7 },
   { period: '2026-06', totalRetail: 1.3, exAutoRetail: 2.8 },
-  { period: '2026-07', totalRetail: 1.2, exAutoRetail: 3.0 },
-  { period: '2026-08', totalRetail: 1.15, exAutoRetail: 3.5 },
-  { period: '2026-09', totalRetail: 1.1, exAutoRetail: 3.9 },
+  { period: '2026-07', totalRetail: 1.2, exAutoRetail: 2.74 },
+  { period: '2026-08', totalRetail: 1.1, exAutoRetail: 2.7 },
+  { period: '2026-09', totalRetail: 1.1, exAutoRetail: 2.8 },
 ];
 
 // 中图：分地区社零累计同比（%）
@@ -51,7 +53,7 @@ export const ContentSlide13: React.FC = () => {
         <>
           <BaseCard title="社零总量：9月回升" delay="0ms" variant="accent">
             <p>
-              1—9月社零累计<span className="font-bold">37.0万亿元</span>，9月单月<span className="font-bold">4.24万亿元</span>，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="font-bold text-green-600">+1.0%</span>，网上零售<span className="font-bold text-red-500">+4.4%</span>，服务增速继续快于商品。需注意9月同比部分受中秋错位（今年中秋落在9月、去年在10月）提振，10月或面临高基数与错位回吐压力。
+              1—9月社零累计<span className="font-bold">37.0万亿元</span>，9月单月<span className="font-bold">4.24万亿元</span>，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="font-bold text-green-600">+1.0%</span>，服务增速继续快于商品。9月受中秋错位（去年中秋在10月）影响，10月社零面临高基数与错位回吐压力。
             </p>
           </BaseCard>
 

@@ -15,7 +15,7 @@ export const ContentSlide11: React.FC = () => {
             预测与展望
           </span>
           <span className="text-gray-900 font-semibold">
-            生产：四季度及全年指标预测
+            生产：四季度指标预测
           </span>
         </span>
       }
@@ -26,10 +26,10 @@ export const ContentSlide11: React.FC = () => {
           <BaseCard title="工业增加值预测" delay="0ms" variant="accent">
             <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed">
               <li>
-                工业增加值全年预计 <span className="font-bold text-blue-600">5.0%-5.5%</span>，Q4 增速回落至 <span className="font-bold text-green-600">4.8%-5.2%</span>。
+                Q4 工业增加值增速预计回落至 <span className="font-bold text-green-600">4.8%-5.2%</span>。
               </li>
               <li>
-                Q4 工业生产边际放缓，全年仍有望落在 5.0%-5.5% 区间。
+                Q4 工业生产边际放缓，机构共识区间为 <span className="font-bold text-blue-600">5.0%-5.5%</span>。
               </li>
             </ul>
           </BaseCard>

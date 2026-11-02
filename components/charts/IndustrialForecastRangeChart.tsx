@@ -2,13 +2,10 @@ import React from 'react';
 import {
   industrialForecastConsensus,
   industrialForecastByInstitutionNew as industrialForecastByInstitution,
-  INDUSTRIAL_TARGET,
 } from '@/data/industrialForecast';
 
 const CONSENSUS_FILL = 'rgba(185, 28, 28, 0.10)';
 const CONSENSUS_STROKE = '#b91c1c';
-const TARGET_FILL = 'rgba(0, 92, 143, 0.08)';
-const TARGET_STROKE = '#005c8f';
 const ACTUAL_COLOR = '#64748b';
 const INTL_COLOR = '#4A79AA';
 const DOM_COLOR = '#2F5F5A';
@@ -32,14 +29,11 @@ export const IndustrialForecastRangeChart: React.FC = () => {
   const xLow = xOf(metric.low, plotLeft, plotWidth);
   const xHigh = xOf(metric.high, plotLeft, plotWidth);
   const xMid = xOf(metric.mid, plotLeft, plotWidth);
-  const xTargetLow = xOf(INDUSTRIAL_TARGET[0], plotLeft, plotWidth);
-  const xTargetHigh = xOf(INDUSTRIAL_TARGET[1], plotLeft, plotWidth);
   const barW = Math.max(xHigh - xLow, 48);
 
   const dotY = 55;
   const sortedDots = [...industrialForecastByInstitution].sort((a, b) => a.value - b.value);
 
-  const minLabelGap = 70;
   type Positioned = {
     institution: string;
     value: number;
@@ -70,8 +64,6 @@ export const IndustrialForecastRangeChart: React.FC = () => {
     };
   });
 
-  const targetBoxTop = axisY - 75;
-  const targetBoxBottom = axisY + 70;
   const consensusBoxTop = axisY - 48;
   const consensusBoxBottom = axisY + 48;
 
@@ -79,21 +71,14 @@ export const IndustrialForecastRangeChart: React.FC = () => {
     <div className="w-full h-full flex flex-col min-h-0">
       <div className="mb-2 flex-shrink-0">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          国内外机构对2026年工业增加值增速预测：机构共识 5.0%–5.5%
+          国内外机构对2026年工业增加值增速预测
         </h3>
         <p className="text-xs text-webank-subtext mt-1 leading-relaxed">
-          注：蓝框为全年目标/情景区间（4.8%–5.6%）；红框为机构共识（5.0%–5.5%）；Q4 增速预计回落至 4.8%–5.2%；上排为机构点预测，下方为共识条｜单位：%
+          注：红框为机构共识（5.0%–5.5%）；Q4 增速预计回落至 4.8%–5.2%；上排为机构点预测，下方为共识条｜单位：%
         </p>
       </div>
 
       <div className="flex justify-center gap-5 mb-1 flex-shrink-0 flex-wrap">
-        <span className="flex items-center gap-1.5 text-[10px] text-[#666]">
-          <span
-            className="inline-block w-3 h-2 rounded-sm border"
-            style={{ borderColor: TARGET_STROKE, backgroundColor: TARGET_FILL }}
-          />
-          全年目标 4.8%–5.6%
-        </span>
         <span className="flex items-center gap-1.5 text-[10px] text-[#666]">
           <span
             className="inline-block w-3 h-2 rounded-sm border"
@@ -122,30 +107,8 @@ export const IndustrialForecastRangeChart: React.FC = () => {
           viewBox={`0 0 ${vbW} ${vbH}`}
           className="w-full h-full"
           preserveAspectRatio="xMidYMid meet"
-          aria-label="国内外机构对2026年工业增加值增速预测与全年目标区间图"
+          aria-label="国内外机构对2026年工业增加值增速预测图"
         >
-          <rect
-            x={xTargetLow - 8}
-            y={targetBoxTop}
-            width={xTargetHigh - xTargetLow + 16}
-            height={targetBoxBottom - targetBoxTop}
-            fill={TARGET_FILL}
-            stroke={TARGET_STROKE}
-            strokeWidth={1.2}
-            strokeDasharray="6 3"
-            rx={6}
-          />
-          <text
-            x={(xTargetLow + xTargetHigh) / 2}
-            y={targetBoxTop - 8}
-            textAnchor="middle"
-            fill={TARGET_STROKE}
-            fontSize={12}
-            fontWeight={700}
-          >
-            全年目标 4.8%–5.6%
-          </text>
-
           <rect
             x={xLow - 6}
             y={consensusBoxTop}
@@ -271,17 +234,6 @@ export const IndustrialForecastRangeChart: React.FC = () => {
           >
             {metric.low.toFixed(1)}–{metric.high.toFixed(1)}%
           </text>
-
-          <line
-            x1={xTargetHigh}
-            y1={targetBoxTop}
-            x2={xTargetHigh}
-            y2={axisY + barH / 2 + 2}
-            stroke={TARGET_STROKE}
-            strokeWidth={1}
-            strokeDasharray="2 3"
-            opacity={0.55}
-          />
         </svg>
       </div>
     </div>

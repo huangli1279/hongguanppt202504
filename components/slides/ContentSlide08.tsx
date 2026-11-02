@@ -24,13 +24,13 @@ export const ContentSlide08: React.FC = () => {
               制造业PMI从7月的 <span className="text-green-600 font-bold">49.2%</span> 回升至9月 <span className="text-red-500 font-bold">50.1%</span>，重返荣枯线上；服务业商务活动指数9月 <span className="text-red-500 font-bold">50.2%</span> 同步扩张。
             </p>
             <p className="mt-2">
-              PMI 7月回落至 <span className="font-bold">49.2%</span>，主要因素：前期基数较高+传统生产淡季+极端天气（统计局霍丽慧解读），8-9月逐步回升，9月装备制造业PMI <span className="text-red-500 font-bold">51.0%</span>、高技术制造业 <span className="text-red-500 font-bold">52.5%</span>，服务业生产活动积极向好。
+              PMI 7月回落至 49.2%，主要因素：前期基数较高+传统生产淡季+极端天气（统计局霍丽慧解读），8-9月逐步回升，9月装备制造业PMI 51.0%、高技术制造业 52.5%，服务业生产活动积极向好。
             </p>
           </BaseCard>
 
           <BaseCard title="生产活动回升结构健康，价格抬升信号强烈" delay="120ms">
             <p>
-              9月生产指数 <span className="text-red-500 font-bold">51.7%</span>（<span className="text-red-500 font-bold">+1.3pct</span>）、新订单指数 <span className="text-red-500 font-bold">50.5%</span>，景气面扩大。主要原材料购进价格指数 <span className="text-red-500 font-bold">60.8%</span>、出厂价格指数 <span className="text-red-500 font-bold">54.0%</span>，连续两个月大幅回升，表明外部通胀的因素导致成本抬升尚未充分向下游转嫁。
+              9月生产指数 51.7%（+1.3pct）、新订单指数 50.5%，景气面扩大。主要原材料购进价格指数 <span className="text-red-500 font-bold">60.8%</span>、出厂价格指数 <span className="text-red-500 font-bold">54.0%</span>，连续两个月大幅回升，表明外部通胀的因素导致成本抬升尚未充分向下游转嫁。
             </p>
           </BaseCard>
         </>
