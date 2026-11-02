@@ -114,6 +114,8 @@ export interface BaseBarChartProps {
   lineLabelFormatter?: (value: any) => string;
   /** 自定义折线标签渲染，优先级高于 lineLabelFormatter */
   lineLabelContent?: (props: any) => React.ReactNode;
+  /** 折线标签位置，默认 'right' */
+  lineLabelPosition?: 'top' | 'bottom' | 'left' | 'right' | 'inside' | 'center';
   /** Gray/outline bands grouping contiguous x-axis categories (e.g. 第二产业 / 第三产业) */
   categoryGroups?: CategoryGroupConfig[];
   /** 高亮区域（如红框标出组内 Top N），无标签 */
@@ -263,6 +265,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   lineShowDot = false,
   lineLabelFormatter,
   lineLabelContent,
+  lineLabelPosition,
   categoryGroups,
   highlightAreas,
   labelFilter,
@@ -565,7 +568,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     {lineShowDot && (lineLabelFormatter || lineLabelContent) && (
                       <LabelList
                         dataKey={line.dataKey}
-                        position="right"
+                        position={lineLabelPosition ?? 'right'}
                         fill={lineColor}
                         fontSize={9}
                         fontWeight={600}

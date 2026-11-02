@@ -48,7 +48,7 @@ export const ContentSlide21: React.FC = () => {
             预测与展望
           </span>
           <span className="text-gray-900 font-semibold">
-            固投降幅趋稳，地产与民间投资仍是核心约束
+            四季度固投预计温和修复，地产与民间投资仍是核心约束
           </span>
         </span>
       }

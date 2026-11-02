@@ -57,8 +57,8 @@ export const cpiTrendData: CpiTrendDataPoint[] = [
   { period: '2026-09', cpi: 0.90, coreCpi: 1.00 },
 ];
 
-// CPI八大类当月同比数据 (2025-01 至 2026-07)
-// 数据来源：国家统计局月度发布（2025年为“食品烟酒”，2026年起为“食品烟酒及在外餐饮”）
+// CPI八大类当月同比数据 (2025-01 至 2026-09)
+// 数据来源：国家统计局月度发布（食品烟酒为“食品烟酒”大类口径，其余分项按最新导出数据更新）
 export const cpiCategoryData: CpiCategoryDataPoint[] = [
   { period: '2025-01', foodTobaccoAlcohol: 0.60, transportation: -0.60, housing: 0.10, education: 1.70, clothing: 1.10, healthcare: 0.70, householdServices: -1.10, otherGoodsServices: 5.40 },
   { period: '2025-02', foodTobaccoAlcohol: -1.90, transportation: -2.50, housing: 0.10, education: -0.50, clothing: 1.20, healthcare: 0.20, householdServices: -0.70, otherGoodsServices: 6.50 },
@@ -79,6 +79,6 @@ export const cpiCategoryData: CpiCategoryDataPoint[] = [
   { period: '2026-05', foodTobaccoAlcohol: -0.90, transportation: 5.40, housing: -0.20, education: 1.30, clothing: 1.40, healthcare: 2.10, householdServices: 1.80, otherGoodsServices: 9.90 },
   { period: '2026-06', foodTobaccoAlcohol: -0.80, transportation: 4.10, housing: -0.30, education: 1.40, clothing: 1.40, healthcare: 2.30, householdServices: 1.30, otherGoodsServices: 6.60 },
   { period: '2026-07', foodTobaccoAlcohol: -0.80, transportation: 0.40, housing: -0.30, education: 1.30, clothing: 1.40, healthcare: 2.90, householdServices: 0.80, otherGoodsServices: 5.80 },
-  { period: '2026-08', foodTobaccoAlcohol: -0.90, transportation: 2.30, housing: -0.30, education: 1.30, clothing: 1.40, healthcare: 2.80, householdServices: 0.80, otherGoodsServices: 8.00 },
-  { period: '2026-09', foodTobaccoAlcohol: -0.90, transportation: 4.30, housing: -0.30, education: 1.30, clothing: 1.40, healthcare: 2.70, householdServices: 0.80, otherGoodsServices: 12.00 },
+  { period: '2026-08', foodTobaccoAlcohol: -0.70, transportation: 2.50, housing: -0.30, education: 1.40, clothing: 1.30, healthcare: 2.70, householdServices: 0.70, otherGoodsServices: 7.30 },
+  { period: '2026-09', foodTobaccoAlcohol: -0.90, transportation: 4.30, housing: -0.30, education: 1.40, clothing: 1.20, healthcare: 2.70, householdServices: 0.20, otherGoodsServices: 5.90 },
 ];

@@ -23,24 +23,24 @@ export const ContentSlide11: React.FC = () => {
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="工业增加值预测" delay="0ms" variant="accent">
+            <BaseCard title="工业增加值预测" delay="0ms" variant="accent">
             <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed">
               <li>
-                Q4 工业增加值增速预计回落至 <span className="font-bold text-green-600">4.8%-5.2%</span>。
+                Q4 工业增加值增速预计回落至 <span className="text-black">4.8%-5.2%</span>。
               </li>
               <li>
-                Q4 工业生产边际放缓，机构共识区间为 <span className="font-bold text-blue-600">5.0%-5.5%</span>。
+                Q4 工业生产边际放缓，机构共识区间为 <span className="text-black">5.0%-5.5%</span>。
               </li>
             </ul>
           </BaseCard>
 
-          <BaseCard title="PPI 预测" delay="120ms">
+            <BaseCard title="PPI 预测" delay="120ms">
             <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed">
               <li>
-                9 月 PPI 同比已升至 <span className="font-bold">5.0%</span>，Q2 预测（年底 2-3%、全年 2.2-3%）已明显滞后，受地缘与输入性通胀影响，高点或尚未到来。
+                9 月 PPI 同比已升至 <span className="text-black">5.0%</span>，Q2 预测（年底 2-3%、全年 2.2-3%）已明显滞后，受地缘与输入性通胀影响，高点或尚未到来。
               </li>
               <li>
-                最新判断：年底 PPI 或落于 <span className="font-bold">4-5%</span>，全年预计落在 <span className="font-bold">3.5-4.5%</span>；中下游价格传导不畅，利润压力仍大。
+                最新判断：年底 PPI 或落于 <span className="text-black">4-5%</span>，全年预计落在 <span className="text-black">3.5-4.5%</span>；中下游价格传导不畅，利润压力仍大。
               </li>
             </ul>
           </BaseCard>

@@ -54,20 +54,20 @@ export const ContentSlide15: React.FC = () => {
       chartColumns={2}
       cards={
         <>
-          <BaseCard title="9月结构：能源涨、食品跌、AI终端涨" delay="0ms" variant="accent">
+          <BaseCard title="9月结构：能源与AI终端涨、食品跌" delay="0ms" variant="accent">
             <p>
-              三季度CPI逐步回升，9月CPI同比<span className="font-bold text-red-500">+0.9%</span>，核心CPI<span className="font-bold text-red-500">+1.0%</span>。
+              三季度CPI逐步回升，9月CPI同比+0.9%，核心CPI+1.0%。
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                交通通信同比<span className="font-bold text-red-500">+4.3%</span>，其中燃料<span className="font-bold text-red-500">+14.9%</span>（8月<span className="text-webank-blue">+8.3%</span>）；医疗保健<span className="font-bold text-red-500">+2.7%</span>；存储设备<span className="font-bold text-red-500">+46.7%</span>、平板电脑<span className="font-bold text-red-500">+23.6%</span>。
+                交通通信同比<span className="font-bold text-red-500">+4.3%</span>，其中燃料<span className="font-bold text-red-500">+14.9%</span>（8月<span className="text-webank-blue">+8.3%</span>）；医疗保健+2.7%；存储设备<span className="font-bold text-red-500">+46.7%</span>、平板电脑<span className="font-bold text-red-500">+23.6%</span>。
               </li>
               <li>
-                食品烟酒<span className="text-green-600 font-bold">-0.9%</span>，猪肉<span className="text-green-600 font-bold">-10.0%</span>、鲜菜<span className="text-green-600 font-bold">-8.1%</span>；三季度维持负增长；居住类7-9月均同比<span className="text-black font-bold">-0.3%</span>。
+                食品烟酒-0.9%，猪肉<span className="text-green-600 font-bold">-10.0%</span>、鲜菜<span className="text-green-600 font-bold">-8.1%</span>；三季度维持负增长；居住类7-9月均同比-0.3%。
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="温和但来源高度输入性与结构性" delay="120ms">
+          <BaseCard title="温和通胀但来源输入性" delay="120ms">
             <p>
               通胀读数温和，但来源高度输入性与结构性；居民端的"涨价感"主要来自油价和黄金饰品（<span className="font-bold text-red-500">+22.5%</span>），核心商品与服务价格仍稳。
             </p>

@@ -35,6 +35,32 @@ const gapTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
+const incomeSeptemberDot = (props: any) => {
+  if (props.payload?.period !== '2026-09') return null;
+
+  return (
+    <g>
+      <circle cx={props.cx} cy={props.cy} r={3} fill="#b91c1c" stroke="white" strokeWidth={1.5} />
+      <text x={props.cx} y={props.cy} dx={8} dy={4} fill="#b91c1c" fontSize={10} fontWeight={600} textAnchor="start">
+        {props.payload.incomeReal}
+      </text>
+    </g>
+  );
+};
+
+const consumptionSeptemberDot = (props: any) => {
+  if (props.payload?.period !== '2026-09') return null;
+
+  return (
+    <g>
+      <circle cx={props.cx} cy={props.cy} r={3} fill="#2563eb" stroke="white" strokeWidth={1.5} />
+      <text x={props.cx} y={props.cy} dx={8} dy={4} fill="#2563eb" fontSize={10} fontWeight={600} textAnchor="start">
+        {props.payload.consumptionReal}
+      </text>
+    </g>
+  );
+};
+
 export const ContentSlide16: React.FC = () => {
   return (
     <BaseContentSlide
@@ -175,7 +201,7 @@ export const ContentSlide16: React.FC = () => {
                       name="居民人均可支配收入:实际"
                       stroke="#b91c1c"
                       strokeWidth={2.5}
-                      dot={{ r: 3, fill: '#b91c1c', stroke: 'white', strokeWidth: 1.5 }}
+                      dot={incomeSeptemberDot}
                     />
                     <Line
                       type="monotone"
@@ -183,7 +209,7 @@ export const ContentSlide16: React.FC = () => {
                       name="居民人均消费支出:实际"
                       stroke="#2563eb"
                       strokeWidth={2.5}
-                      dot={{ r: 3, fill: '#2563eb', stroke: 'white', strokeWidth: 1.5 }}
+                      dot={consumptionSeptemberDot}
                     />
                   </ComposedChart>
                 </ResponsiveContainer>

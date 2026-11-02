@@ -34,11 +34,11 @@ export const ContentSlide20: React.FC = () => {
   return (
     <BaseContentSlide
       title="房地产开发投资-20.6%且降幅逐月走阔，供给收缩快于需求"
-      cardColumns={3}
+      cardColumns={4}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-3 mb-3 flex-shrink-0">
+        <div className="grid grid-cols-4 gap-3 mb-2 flex-shrink-0">
           <BaseCard title="① 开发投资降幅逐月走阔" delay="0ms" variant="accent">
             <p>
               1-9月房地产开发投资<span className="text-black">5.34万亿元</span>，同比<span className="text-green-600 font-bold">-20.6%</span>（1-7月<span className="text-green-600 font-bold">-19.2%</span>、1-8月<span className="text-green-600 font-bold">-19.9%</span>，降幅逐月扩大）；新开工<span className="text-green-600 font-bold">-24.9%</span>、竣工<span className="text-green-600 font-bold">-25.1%</span>、施工<span className="text-green-600 font-bold">-12.8%</span>。
@@ -52,18 +52,19 @@ export const ContentSlide20: React.FC = () => {
               二手房交易网签面积<span className="text-black">6.17亿平方米</span>，同比<span className="text-red-500 font-bold">+10.7%</span>（住建部数据）——"新房冷、二手房热"的存量房时代特征进一步强化。
             </p>
           </BaseCard>
-          <BaseCard title="③ 政策影响与价格端" delay="240ms">
+          <BaseCard title="③ 价格端" delay="240ms">
             <p>
-              8月28日现房销售新政在地方细则落地过程中，政策"拉长回款周期、压低房企拿地和新开工意愿"的影响尚未充分体现；9月房企信用融资增速<span className="text-green-600 font-bold">-17.2%</span>仍低迷。9月29日贴息政策，十一正式执行，预计...
-            </p>
-            <p className="mt-2">
-              从房价来看，整体仍然负增；一线城市新房、二手房连续8月环比上升，二线城市环比降幅下降。
+              从房价来看，整体仍然负增；一线城市新房、二手房连续8月环比上升，二线城市环比降幅下降。            </p>
+          </BaseCard>
+          <BaseCard title="④ 政策影响" delay="360ms">
+            <p>
+              8月28日现房销售新政地方细则落地中，拉长回款周期、压低房企拿地与新开工的影响尚未充分体现；9月房企信用融资增速<span className="text-green-600 font-bold">-17.2%</span>仍低迷。9月29日贴息政策十一执行，预计按揭信贷边际改善、核心城市成交量小幅回升，但持续性取决于收入与房价预期，开发投资降幅或继续走阔，市场整体仍处探底。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 - 4列 */}
-        <div className="flex-1 grid grid-cols-4 gap-3 min-h-0">
+        <div className="flex-1 grid grid-cols-4 gap-2 min-h-0">
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={investmentData}
@@ -77,6 +78,7 @@ export const ContentSlide20: React.FC = () => {
               legendOrder={['商品房销售面积', '房地产开发投资', '新开工施工面积']}
               xAxisTicks={['2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
               highlightPeriods={['2026-09']}
+              compact={true}
             />
           </ChartContainer>
 

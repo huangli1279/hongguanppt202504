@@ -5,35 +5,50 @@ import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { seriesColors } from '../../utils/chartColors';
 
-// 左图：社零累计同比 vs 除汽车外社零累计同比（%）
+// 左图：社零当月同比 vs 除汽车外社零当月同比（%）
 const retailDualData = [
   { period: '2025-02', totalRetail: 4.0, exAutoRetail: 4.8 },
-  { period: '2025-03', totalRetail: 4.6, exAutoRetail: 5.1 },
-  { period: '2025-04', totalRetail: 4.7, exAutoRetail: 5.2 },
-  { period: '2025-05', totalRetail: 5.0, exAutoRetail: 5.6 },
-  { period: '2025-06', totalRetail: 5.0, exAutoRetail: 5.5 },
-  { period: '2025-07', totalRetail: 4.8, exAutoRetail: 5.3 },
-  { period: '2025-08', totalRetail: 4.6, exAutoRetail: 5.1 },
-  { period: '2025-09', totalRetail: 4.5, exAutoRetail: 4.9 },
-  { period: '2025-10', totalRetail: 4.3, exAutoRetail: 4.86 },
-  { period: '2025-11', totalRetail: 4.0, exAutoRetail: 4.6 },  
-  { period: '2025-12', totalRetail: 3.69, exAutoRetail: 4.4},
+  { period: '2025-03', totalRetail: 5.9, exAutoRetail: 6.0 },
+  { period: '2025-04', totalRetail: 5.1, exAutoRetail: 5.6 },
+  { period: '2025-05', totalRetail: 6.4, exAutoRetail: 7.0 },
+  { period: '2025-06', totalRetail: 4.8, exAutoRetail: 4.8 },
+  { period: '2025-07', totalRetail: 3.7, exAutoRetail: 4.3 },
+  { period: '2025-08', totalRetail: 3.4, exAutoRetail: 3.7 },
+  { period: '2025-09', totalRetail: 3.05, exAutoRetail: 3.2 },
+  { period: '2025-10', totalRetail: 2.93, exAutoRetail: 4.0 },
+  { period: '2025-11', totalRetail: 1.3, exAutoRetail: 2.5 },
+  { period: '2025-12', totalRetail: 0.9, exAutoRetail: 1.7 },
   { period: '2026-02', totalRetail: 2.8, exAutoRetail: 3.7 },
-  { period: '2026-03', totalRetail: 2.4, exAutoRetail: 3.6 },
-  { period: '2026-04', totalRetail: 1.9, exAutoRetail: 3.1 },
-  { period: '2026-05', totalRetail: 1.4, exAutoRetail: 2.7 },
-  { period: '2026-06', totalRetail: 1.3, exAutoRetail: 2.8 },
-  { period: '2026-07', totalRetail: 1.2, exAutoRetail: 2.74 },
-  { period: '2026-08', totalRetail: 1.1, exAutoRetail: 2.7 },
-  { period: '2026-09', totalRetail: 1.1, exAutoRetail: 2.8 },
+  { period: '2026-03', totalRetail: 1.7, exAutoRetail: 3.2 },
+  { period: '2026-04', totalRetail: 0.2, exAutoRetail: 1.8 },
+  { period: '2026-05', totalRetail: -0.6, exAutoRetail: 1.1 },
+  { period: '2026-06', totalRetail: 1.0, exAutoRetail: 3.0 },
+  { period: '2026-07', totalRetail: 0.6, exAutoRetail: 2.52 },
+  { period: '2026-08', totalRetail: 0.4, exAutoRetail: 2.5 },
+  { period: '2026-09', totalRetail: 1.1, exAutoRetail: 3.9 },
 ];
 
-// 中图：分地区社零累计同比（%）
-const cityRetailSepData = [
-  { period: '北京', value: -0.7, fill: '#005c8f' },
-  { period: '上海', value: -1.1, fill: '#005c8f' },
-  { period: '广州', value: 2.7, fill: '#dc2626' },
-  { period: '深圳', value: 2.3, fill: '#dc2626' },
+// 中图：分地区社零累计同比（%），广州口径为1—8月，故2026-09无值
+const cityRetailTrendData = [
+  { period: '2025-02', beijing: -0.1, shanghai: -1.0, guangzhou: 1.2, shenzhen: 1.66 },
+  { period: '2025-03', beijing: -3.3, shanghai: -1.1, guangzhou: 3.5, shenzhen: 3.05 },
+  { period: '2025-04', beijing: -3.7, shanghai: -0.3, guangzhou: 4.0, shenzhen: 3.66 },
+  { period: '2025-05', beijing: -3.1, shanghai: 1.4, guangzhou: 5.1, shenzhen: 4.66 },
+  { period: '2025-06', beijing: -3.8, shanghai: 1.7, guangzhou: 5.9, shenzhen: 3.47 },
+  { period: '2025-07', beijing: -4.2, shanghai: 2.5, guangzhou: 5.4, shenzhen: 3.6 },
+  { period: '2025-08', beijing: -5.1, shanghai: 3.7, guangzhou: 4.9, shenzhen: 3.83 },
+  { period: '2025-09', beijing: -5.1, shanghai: 4.3, guangzhou: 4.1, shenzhen: 3.63 },
+  { period: '2025-10', beijing: -3.2, shanghai: 4.8, guangzhou: 3.8, shenzhen: 4.02 },
+  { period: '2025-11', beijing: -3.1, shanghai: 5.0, guangzhou: 4.2, shenzhen: 2.77 },
+  { period: '2025-12', beijing: -2.9, shanghai: 4.6, guangzhou: 5.5, shenzhen: 2.34 },
+  { period: '2026-02', beijing: -0.3, shanghai: 7.2, guangzhou: 10.7, shenzhen: 2.6 },
+  { period: '2026-03', beijing: -0.6, shanghai: 5.5, guangzhou: 6.6, shenzhen: 0.47 },
+  { period: '2026-04', beijing: -1.5, shanghai: 3.9, guangzhou: 4.4, shenzhen: -0.58 },
+  { period: '2026-05', beijing: -2.5, shanghai: 2.0, guangzhou: 2.4, shenzhen: 0.27 },
+  { period: '2026-06', beijing: -2.2, shanghai: 0.7, guangzhou: 2.9, shenzhen: 1.16 },
+  { period: '2026-07', beijing: -2.0, shanghai: -0.2, guangzhou: 2.7, shenzhen: 1.09 },
+  { period: '2026-08', beijing: -2.1, shanghai: -1.0, guangzhou: 2.7, shenzhen: 1.63 },
+  { period: '2026-09', beijing: -0.7, shanghai: -1.1, guangzhou: null, shenzhen: 2.3 },
 ];
 
 // 右图：国庆期间出游人次与人均消费
@@ -46,7 +61,7 @@ const nationalDayData = [
 export const ContentSlide13: React.FC = () => {
   return (
     <BaseContentSlide
-      title="消费总览：社零9月回升至1.1%"
+      title="消费总览：前三季度社零累计同比1.1%，剔除汽车累计增长2.8%"
       cardColumns={3}
       chartColumns={3}
       cards={
@@ -59,7 +74,10 @@ export const ContentSlide13: React.FC = () => {
 
           <BaseCard title="分地区：一线城市分化" delay="120ms">
             <p>
-              北京前三季度社零<span className="font-bold text-green-600">-0.7%</span>、上海<span className="font-bold text-green-600">-1.1%</span>均为负增长；广州（1—8月）增长<span className="font-bold text-red-500">2.7%</span>；深圳受AI快速发展影响，1—9月社零增长<span className="font-bold text-red-500">2.3%</span>。
+              北京前三季度社零<span className="font-bold text-green-600">-0.7%</span>、上海受汽车销量拖累同比<span className="font-bold text-green-600">-1.1%</span>均为负增长；广州（1—8月）增长<span className="font-bold text-red-500">2.7%</span>；深圳受AI快速发展影响，1—9月社零增长<span className="font-bold text-red-500">2.3%</span>，其中通讯器材累计<span className="font-bold text-red-500">+56.8%</span>。
+            </p>
+            <p className="mt-2">
+        
             </p>
           </BaseCard>
 
@@ -72,17 +90,17 @@ export const ContentSlide13: React.FC = () => {
       }
       charts={
         <>
-          <ChartContainer delay="600ms" ariaLabel="社零累计同比与除汽车外社零双线图">
+          <ChartContainer delay="600ms" ariaLabel="社零当月同比与除汽车外社零双线图">
             <BaseLineChart
               data={retailDualData}
-              title="社零累计同比与除汽车外社零"
+              title="社零当月同比与除汽车外社零"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'totalRetail', name: '社零累计同比', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 } },
-                { dataKey: 'exAutoRetail', name: '除汽车外社零累计同比', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                { dataKey: 'totalRetail', name: '社零当月同比', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 } },
+                { dataKey: 'exAutoRetail', name: '除汽车外社零当月同比', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
               ]}
-              legendOrder={['社零累计同比', '除汽车外社零累计同比']}
-              yAxisDomain={[0, 6]}
+              legendOrder={['社零当月同比', '除汽车外社零当月同比']}
+              yAxisDomain={[-1, 8]}
               showYAxis
               showReferenceLine
               referenceLineY={0}
@@ -90,20 +108,23 @@ export const ContentSlide13: React.FC = () => {
             />
           </ChartContainer>
 
-          <ChartContainer delay="720ms" ariaLabel="分地区社零累计同比柱状图">
-            <BaseBarChart
-              data={cityRetailSepData}
-              title="1-9月分地区社零累计同比"
-              subtitle="数据来源：各地统计局 | 单位：%"
-              xAxisKey="period"
-              bars={[{ dataKey: 'value', name: '累计同比' }]}
-              yAxisDomain={[-2, 4]}
+          <ChartContainer delay="720ms" ariaLabel="分地区社零累计同比折线图">
+            <BaseLineChart
+              data={cityRetailTrendData}
+              title="分地区社零累计同比"
+              subtitle="数据来源：各地统计局 | 单位：%（广州为1—8月口径）"
+              lines={[
+                { dataKey: 'beijing', name: '北京', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': -12 } },
+                { dataKey: 'shanghai', name: '上海', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': 14 } },
+                { dataKey: 'guangzhou', name: '广州', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-08': -10 } },
+                { dataKey: 'shenzhen', name: '深圳', color: seriesColors[3], strokeWidth: 2 },
+              ]}
+              yAxisDomain={[-6, 12]}
               showYAxis
               showReferenceLine
               referenceLineY={0}
-              showLabels
-              labelFormatter={(v: any) => `${Number(v).toFixed(1)}%`}
-              barSize={40}
+              highlightPeriods={['2026-09']}
+              legendOrder={['北京', '上海', '广州', '深圳']}
             />
           </ChartContainer>
 
@@ -126,6 +147,7 @@ export const ContentSlide13: React.FC = () => {
               lineUnit="元"
               lineShowDot
               lineLabelFormatter={(v: any) => `${Math.round(v)}`}
+              lineLabelPosition="bottom"
               legendOrder={['出游人次', '人均消费']}
             />
           </ChartContainer>
