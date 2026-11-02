@@ -57,7 +57,7 @@ export const ContentSlide18: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="投资：1-9月累计同比-7.2%，9月单月降幅年内最大幅度收窄"
+      title="投资：1-9月累计同比-7.2%，9月单月降幅收窄，环比自2月以来首次上升"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
@@ -65,15 +65,15 @@ export const ContentSlide18: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="投资累计同比仍负增，9月单月降幅已收窄" delay="0ms" variant="accent">
             <p>
-              前三季度全国固定资产投资（不含农户）<span className="text-black">33.41万亿</span>，同比下降<span className="text-green-600 font-semibold">7.2%</span>，较二季度回落<span className="text-black">1.5个百分点</span>。分月来看，9月环比正增，为今年自2月以来首次正增，9月累计同比降幅未继续扩大，与财政支出加快有关。9月制造业投资累计同比降幅收窄，为最大改善项；房地产投资降幅进一步扩大，仍是固投最主要拖累。
+              前三季度固投33.41万亿元、同比<span className="text-green-600 font-semibold">-7.2%</span>，降幅较上半年扩大1.5pp，但9月环比转正（2月以来首次）、累计降幅未继续走阔，投资端边际企稳，主因季末财政支出与专项债拨付提速；结构上是"制造业改善、地产拖累"——制造业累计降幅收窄为最大贡献（8月:-2.3%vs 9月:-2.1%），房地产降幅继续扩大仍是首要拖累
             </p>
           </BaseCard>
           <BaseCard title="分类投资仍偏弱" delay="120ms">
             <p>
-              从投资主体看：国有控股、民间投资同步走弱，民间投资降幅显著高于国有控股，民营资本扩投意愿偏弱。
+              从投资主体看：国有控股投资降幅收窄0.4pct至<span className="text-black">-3.2%</span>，政策托底增强；民间投资降幅扩大0.3pct至<span className="text-green-600 font-semibold">-10.4%</span>，民营资本扩投意愿偏弱。剔除地产后民间投资-6.7%，降幅明显收窄，显示弱势中相当部分来自地产链条拖累
             </p>
             <p className="mt-2 text-black">
-              从投资构成看：建筑安装工程、其他费用降幅进一步扩大；仅设备工器具购置维持正增长，但增势边际回落。
+              从投资构成看：建筑安装工程、其他费用降幅小幅走阔；仅设备工器具购置维持正增，但增势边际回落。设备工器具购置同比<span className="text-red-600 font-semibold">+9.7%</span>、增速较1-8月加快0.4个百分点是三大构成中唯一正增项
             </p>
           </BaseCard>
         </div>
