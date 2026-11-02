@@ -54,21 +54,18 @@ export const GdpForecastRangeChart: React.FC = () => {
     labelY: number;
   };
 
-  const isIntl = (name: string) => ['IMF', 'OECD', '花旗'].includes(name);
+  const isIntl = (name: string) => ['IMF', 'OECD'].includes(name);
 
   // 国际/国内机构标签强制错开 Y：同值点上下分布
   const EXPLICIT_LABEL_Y: Record<string, number> = {
     IMF: dotY - 18,
     OECD: dotY - 34,
-    花旗: dotY - 18,
-    '一财一致预期': dotY - 34,
   };
 
   const EXPLICIT_ANCHOR: Record<string, 'start' | 'end'> = {
     IMF: 'start',
     OECD: 'end',
-    花旗: 'start',
-    '一财一致预期': 'start',
+    '花旗、高盛、一财一致预期': 'start',
   };
 
   const positioned: Positioned[] = sortedDots.map((d, i, arr) => {
@@ -114,10 +111,10 @@ let anchor: 'start' | 'end';
     <div className="w-full h-full flex flex-col min-h-0">
       <div className="mb-2 flex-shrink-0">
         <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          国内外机构对2026年GDP增速预测：IMF 4.5%、OECD 4.5%、花旗 4.6%、一财一致预期 4.6%
+          国内外机构对2026年GDP增速预测
         </h3>
         <p className="text-xs text-webank-subtext mt-1 leading-relaxed">
-          注：蓝框为政府工作报告目标（4.5%–5.0%）；红框为机构共识（4.5%–4.8%）；上排为机构点预测，下方为共识条｜单位：%
+          注：蓝框为政府工作报告目标（4.5%–5.0%）；红框为机构共识（4.5%–4.6%）；上排为机构点预测，下方为共识条｜单位：%
         </p>
       </div>
 
@@ -134,7 +131,7 @@ let anchor: 'start' | 'end';
             className="inline-block w-3 h-2 rounded-sm border"
             style={{ borderColor: CONSENSUS_STROKE, backgroundColor: CONSENSUS_FILL }}
           />
-          共识区间 4.5%–4.8%
+          共识区间 4.5%–4.6%
         </span>
         <span className="flex items-center gap-1.5 text-[10px] text-[#666]">
           <span
@@ -265,19 +262,17 @@ let anchor: 'start' | 'end';
                 {p.institution}
               </text>
               {/* 数值 */}
-              {p.institution !== '一财一致预期' && (
-                <text
-                  x={p.labelX}
-                  y={p.labelY + 12}
-                  textAnchor={p.anchor}
-                  fill={p.color}
-                  fontSize={10}
-                  fontWeight={600}
-                  opacity={0.85}
-                >
-                  {p.value.toFixed(1)}%
-                </text>
-              )}
+              <text
+                x={p.labelX}
+                y={p.labelY + 12}
+                textAnchor={p.anchor}
+                fill={p.color}
+                fontSize={10}
+                fontWeight={600}
+                opacity={0.85}
+              >
+                {p.value.toFixed(1)}%
+              </text>
               {/* 圆点 */}
               <circle cx={p.x} cy={dotY} r={4} fill="#fff" stroke={p.color} strokeWidth={2} />
             </g>

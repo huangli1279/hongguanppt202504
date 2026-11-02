@@ -43,8 +43,8 @@ export const ContentSlide08: React.FC = () => {
                 title="制造业PMI / 服务业商务活动指数"
                 subtitle="数据来源：国家统计局 | 单位：%"
                 lines={[
-                  { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -10 } },
-                  { dataKey: 'servicePmi', name: '服务业商务活动指数', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                  { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointCallouts: { '2026-09': { dx: -18, dy: 14 } } },
+                  { dataKey: 'servicePmi', name: '服务业商务活动指数', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -2 } },
                 ]}
                 yAxisDomain={[48, 52]}
                 showYAxis={true}
@@ -62,8 +62,8 @@ export const ContentSlide08: React.FC = () => {
                   title="PMI分项：生产与新订单指数"
                   subtitle="数据来源：国家统计局 | 单位：%"
                   lines={[
-                    { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -10 } },
-                    { dataKey: 'newOrders', name: '新订单', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                    { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointCallouts: { '2026-09': { dx: -18, dy: -24 } } },
+                    { dataKey: 'newOrders', name: '新订单', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 24 } },
                   ]}
                   yAxisDomain={[47, 53]}
                   showYAxis={true}
@@ -81,8 +81,8 @@ export const ContentSlide08: React.FC = () => {
                   title="PMI分项：原材料购进价格与出厂价格指数"
                   subtitle="数据来源：国家统计局 | 单位：%"
                   lines={[
-                    { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -10 } },
-                    { dataKey: 'outputPrice', name: '出厂价格', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                    { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointCallouts: { '2026-09': { dx: -18, dy: 14 } } },
+                    { dataKey: 'outputPrice', name: '出厂价格', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 } },
                   ]}
                   yAxisDomain={[44, 65]}
                   showYAxis={true}

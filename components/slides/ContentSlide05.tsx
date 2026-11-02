@@ -24,17 +24,17 @@ const industryKeyMap: Record<string, 'primary' | 'secondary' | 'tertiary'> = {
   '第三产业': 'tertiary',
 };
 const quarterKeys = ['2025-09', '2025-12', '2026-03', '2026-06', '2026-09'];
+// 每个季度只展示一个产业，用单一柱子按产业着色，避免出现 3 个空槽位把柱子挤细
 const groupedIndustryData = industryOrder.flatMap((ind) =>
   quarterKeys.map((q) => {
     const src = industryGdpValueData.find((r) => r.industry === ind) as any;
-    const key = industryKeyMap[ind];
-    const row: Record<string, any> = {
+    return {
       key: `${ind}-${q}`,
       periodLabel: q.slice(2),
       industry: ind,
+      value: src?.[q],
+      fill: industryColors[industryKeyMap[ind]],
     };
-    row[key] = src?.[q];
-    return row;
   })
 );
 const groupFirstKey = (ind: string) => `${ind}-${quarterKeys[0]}`;
@@ -73,7 +73,7 @@ export const ContentSlide05: React.FC = () => {
 
           <BaseCard title="行业分化" delay="120ms">
             <p>
-              信息传输软件和信息技术服务业（
+              第二产业中装备制造、高技术制造业增加值增速较快，成为二产回升的重要支撑；信息传输软件和信息技术服务业（
               <span className="font-bold text-red-500">+9.8%</span>
               ）、租赁商务服务业（
               <span className="font-bold text-red-500">+12.9%</span>
@@ -85,8 +85,6 @@ export const ContentSlide05: React.FC = () => {
               <span className="text-black">5.6%</span>、
               <span className="text-black">5.9%</span>、
               <span className="text-black">6.3%</span>
-              ，合计再拉动
-              <span className="text-black">1.0个百分点</span>
               ，较二季度增幅明显提升，与外需及出行需求增长有关；建筑、房地产仍处于负增长；
             </p>
           </BaseCard>
@@ -101,14 +99,14 @@ export const ContentSlide05: React.FC = () => {
                 title="三大产业GDP增速对比"
                 subtitle="数据来源: 国家统计局｜单位: %"
                 xAxisKey="key"
-                bars={[
-                  { dataKey: 'primary', name: '第一产业', color: industryColors.primary },
-                  { dataKey: 'secondary', name: '第二产业', color: industryColors.secondary },
-                  { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary },
+                bars={[{ dataKey: 'value', name: 'GDP增速' }]}
+                legendItems={[
+                  { value: '第一产业', color: industryColors.primary },
+                  { value: '第二产业', color: industryColors.secondary },
+                  { value: '第三产业', color: industryColors.tertiary },
                 ]}
-                legendOrder={industryLegendOrder}
                 yAxisDomain={[0, 7]}
-                barSize={8}
+                barSize={12}
                 showYAxis
                 showLabels
                 labelFilter={({ value }: any) => value != null}
@@ -176,11 +174,26 @@ export const ContentSlide05: React.FC = () => {
                 showYAxis
                 yAxisTickFormatter={(v) => `${v}%`}
                 showLabels
-                labelFilter={({ value, dataKey }) =>
-                  dataKey === '2026-09' && (Number(value) === 12.9 || Number(value) === 9.8)
-                }
+                labelContent={({ x, y, width, value, dataKey }: any) => {
+                  if (dataKey !== '2026-09' || value == null) return null;
+                  if (![9.8, 12.9, 10.2, 13.6, 14.3].includes(Number(value))) return null;
+                  const labelX = Number(x) + Number(width) / 2;
+                  const labelY = Number(y) - (Number(value) === 12.9 ? 25 : 10);
+                  return (
+                    <text
+                      x={labelX}
+                      y={labelY}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fill="#475569"
+                      fontSize={9}
+                      fontWeight={700}
+                    >
+                      {`${Number(value).toFixed(1)}%`}
+                    </text>
+                  );
+                }}
                 labelFormatter={(v: any) => `${Number(v).toFixed(1)}%`}
-                labelPositiveOffset={10}
                 unit="%"
                 showReferenceLine
                 referenceLineY={0}

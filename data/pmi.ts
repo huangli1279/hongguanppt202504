@@ -50,8 +50,9 @@ export const pmiTrendData: PmiDataPoint[] = [
   { period: '2026-05', pmi: 50.0, production: 51.2, newOrders: 49.9, outputPrice: 51.9, rawMaterialPurchasePrice: 60.5, servicePmi: 50.3 },
   { period: '2026-06', pmi: 50.3, production: 51.4, newOrders: 51.2, outputPrice: 48.2, rawMaterialPurchasePrice: 54.2, servicePmi: 50.4 },
   { period: '2026-07', pmi: 49.2, production: 49.9, newOrders: 48.5, outputPrice: 47.8, rawMaterialPurchasePrice: 53.2, servicePmi: 49.3 },
-  { period: '2026-08', pmi: 49.6, production: 50.4, newOrders: 49.6, outputPrice: 50.5, rawMaterialPurchasePrice: 57.0, servicePmi: 49.3 },
+  { period: '2026-08', pmi: 49.8, production: 50.4, newOrders: 50.6, outputPrice: 50.4, rawMaterialPurchasePrice: 56.6, servicePmi: 49.3 },
   { period: '2026-09', pmi: 50.1, production: 51.7, newOrders: 50.5, outputPrice: 54.0, rawMaterialPurchasePrice: 60.8, servicePmi: 50.2 },
+  { period: '2026-10', pmi: 49.3, production: 49.8, newOrders: 49.4, outputPrice: 51.7, rawMaterialPurchasePrice: 56.8, servicePmi: 50.0 },
 ];
 
 // 按企业规模分类的PMI数据

@@ -1,6 +1,6 @@
 /**
  * Slide06：国内外机构对中国2026年GDP增速预测 + 政府目标区间
- * 数据来源：IMF、OECD、花旗、一财一致预期
+ * 数据来源：IMF、OECD、花旗、高盛、一财一致预期
  */
 
 export interface GdpForecastMetric {
@@ -26,8 +26,8 @@ export const gdpForecastConsensus: GdpForecastMetric[] = [
     actual: 4.65,
     actualLabel: '上半年均值',
     low: 4.5,
-    high: 4.8,
-    mid: 4.65,
+    high: 4.6,
+    mid: 4.55,
     color: '#4A79AA',
   },
 ];
@@ -39,6 +39,5 @@ export const GOVERNMENT_TARGET: [number, number] = [4.5, 5.0];
 export const gdpForecastByInstitutionNew = [
   { institution: 'IMF', value: 4.5, note: '7月' },
   { institution: 'OECD', value: 4.5, note: '6月基准情景' },
-  { institution: '花旗', value: 4.6, note: '10月' },
-  { institution: '一财一致预期', value: 4.6, note: '10月最新' },
+  { institution: '花旗、高盛、一财一致预期', value: 4.6, note: '10月' },
 ];

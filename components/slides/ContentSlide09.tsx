@@ -7,32 +7,32 @@ import { industrialCategoryCumulativeData } from '../../data/industrialOutput';
 import { seriesColors } from '../../utils/chartColors';
 
 const majorIndustrySepData = [
-  { name: '计算机通信电子', aug: 15.7, sep: 16.4 },
-  { name: '专用设备制造', aug: 10.0, sep: 12.1 },
-  { name: '铁路航空航天', aug: 18.2, sep: 11.7 },
-  { name: '高技术制造业', aug: 15.0, sep: 16.2 },
+  { name: '计算机通信电子', aug: 17.2, sep: 16.4 },
+  { name: '专用设备制造', aug: 11.4, sep: 12.1 },
+  { name: '铁路航空航天', aug: 13.4, sep: 11.7 },
+  { name: '高技术制造业', aug: 16.7, sep: 15.3 },
   { name: '汽车制造业', aug: 8.7, sep: 6.7 },
-  { name: '电力热力燃气水', aug: 7.8, sep: 5.4 },
-  { name: '非金属矿物制品', aug: -2.3, sep: -5.3 },
+  { name: '电力热力燃气水', aug: 4.9, sep: 5.6 },
+  { name: '非金属矿物制品', aug: -4.1, sep: -2.4 },
 ];
 
 export const ContentSlide09: React.FC = () => {
   return (
     <BaseContentSlide
-      title="规上工业增加值维持高增，新旧动能增速差开始收敛"
+      title="规上工业增加值维持高增"
       cardColumns={3}
       chartColumns={2}
       cards={
         <>
           <BaseCard title="工业增加值及分项" delay="0ms" variant="accent">
             <p>
-              前三季度工业增加值累计同比 <span className="font-bold text-red-600">+5.3%</span>，制造业同比 <span className="font-bold text-red-600">+5.7%</span>，采矿业 <span className="font-bold text-green-600">+2.0%</span>，电力、热力、燃气及水生产供应业 <span className="font-bold text-red-600">+5.4%</span>。三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响（7月煤炭开采和洗选业同比 <span className="text-green-600 font-bold">-10.8%</span>，8月 <span className="text-green-600 font-bold">-5.6%</span>，9月 <span className="text-green-600 font-bold">-3.3%</span>）。
+              前三季度工业增加值累计同比 +5.3%，制造业同比 +5.7%，采矿业 +2.0%，电力、热力、燃气及水生产供应业 +5.4%。三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响（7月煤炭开采和洗选业同比 <span className="text-green-600 font-bold">-10.8%</span>，8月 -5.6%，9月 -3.3%）。
             </p>
           </BaseCard>
 
           <BaseCard title="新动能仍是主引擎" delay="120ms">
             <p>
-              前三季度高技术制造业增加值 <span className="font-bold text-red-600">+14.3%</span>（Q3为 <span className="font-bold text-red-600">16.2%</span>）；9月计算机通信电子行业 <span className="font-bold text-red-600">+16.4%</span>，对全部规上工业增长贡献率连续居各大类行业首位，9月专用设备制造业 <span className="font-bold text-red-600">12.1%</span>，铁路航空航天设备制造 <span className="font-bold text-red-600">11.7%</span>，均保持高增长。新旧动能增速差开始收敛。
+              前三季度高技术制造业增加值 <span className="font-bold text-red-600">+14.3%</span>（Q3为 <span className="font-bold text-red-600">16.2%</span>）；9月计算机通信电子行业 <span className="font-bold text-red-600">+16.4%</span>，对全部规上工业增长贡献率连续居各大类行业首位，9月专用设备制造业 <span className="font-bold text-red-600">12.1%</span>，铁路航空航天设备制造 <span className="font-bold text-red-600">11.7%</span>，均保持高增长。
             </p>
           </BaseCard>
 
