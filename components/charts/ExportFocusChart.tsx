@@ -29,9 +29,9 @@ const ChartTable: React.FC = () => {
     <div className="h-full flex flex-col min-h-0">
       <div className={`grid ${gridCols} bg-webank-blue text-white text-[11px] font-semibold flex-shrink-0`}>
         <div className="px-2 py-1.5 text-left">商品</div>
-        <div className="px-1 py-1.5 text-right">9月金额</div>
-        <div className="px-1 py-1.5 text-right">9月同比</div>
-        <div className="px-1 py-1.5 text-right">1-9月累计</div>
+        <div className="px-1 py-1 text-right whitespace-nowrap leading-tight">9月金额<span className="block text-[9.5px] font-normal">亿美元</span></div>
+        <div className="px-1 py-1.5 text-right whitespace-nowrap">9月同比</div>
+        <div className="px-1 py-1 text-right whitespace-nowrap leading-tight">1-9月累计<span className="block text-[9.5px] font-normal">亿美元</span></div>
         <div className="px-1 py-1.5 text-right">累计同比</div>
       </div>
       <div className="flex-1 flex flex-col min-h-0">

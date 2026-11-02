@@ -10,7 +10,7 @@ const contents = [
   { id: '05', title: '进出口分析', subtitle: '第 05 章', icon: Globe },
   { id: '06', title: '财政分析', subtitle: '第 06 章', icon: Landmark },
   { id: '07', title: '金融数据分析', subtitle: '第 07 章', icon: Activity },
-  { id: '08', title: '消费现状及趋势', subtitle: '专题一', icon: TrendingUp },
+  { id: '08', title: '专题（待定）', subtitle: '专题一', icon: TrendingUp },
 ];
 
 export const TableOfContentsSlide: React.FC = () => {

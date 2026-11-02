@@ -27,16 +27,27 @@ export const ContentSlide18: React.FC = () => {
     { dataKey: 'otherExpenses', name: '其他费用', color: seriesColors[2], strokeWidth: 2, pointCallouts: { '2026-09': { dx: 14, dy: -4 } } },
   ];
 
-  // 左图：固投累计同比 + 单月环比
+  // 左图：固投累计同比 + 单月环比（单月环比为季调数据）
   const cumulativeMomData = [
-    { period: '2026-02', cumulative: 1.80, mom: 2.50 },
-    { period: '2026-03', cumulative: 1.70, mom: -0.50 },
-    { period: '2026-04', cumulative: -1.60, mom: -1.20 },
-    { period: '2026-05', cumulative: -4.10, mom: -2.00 },
-    { period: '2026-06', cumulative: -5.70, mom: -1.50 },
-    { period: '2026-07', cumulative: -6.70, mom: -0.80 },
-    { period: '2026-08', cumulative: -7.20, mom: -1.00 },
-    { period: '2026-09', cumulative: -7.20, mom: 0.60 },
+    { period: '2025-02', cumulative: 4.10, mom: 0.27 },
+    { period: '2025-03', cumulative: 4.20, mom: -1.90 },
+    { period: '2025-04', cumulative: 4.00, mom: 1.67 },
+    { period: '2025-05', cumulative: 3.70, mom: -0.33 },
+    { period: '2025-06', cumulative: 2.80, mom: -1.41 },
+    { period: '2025-07', cumulative: 1.60, mom: -0.38 },
+    { period: '2025-08', cumulative: 0.50, mom: -1.52 },
+    { period: '2025-09', cumulative: -0.50, mom: -1.34 },
+    { period: '2025-10', cumulative: -1.70, mom: -0.69 },
+    { period: '2025-11', cumulative: -2.60, mom: -0.69 },
+    { period: '2025-12', cumulative: -3.80, mom: -1.52 },
+    { period: '2026-02', cumulative: 1.80, mom: 0.47 },
+    { period: '2026-03', cumulative: 1.70, mom: -0.68 },
+    { period: '2026-04', cumulative: -1.60, mom: -2.83 },
+    { period: '2026-05', cumulative: -4.10, mom: -0.99 },
+    { period: '2026-06', cumulative: -5.70, mom: -0.04 },
+    { period: '2026-07', cumulative: -6.70, mom: -1.25 },
+    { period: '2026-08', cumulative: -7.20, mom: -0.55 },
+    { period: '2026-09', cumulative: -7.20, mom: 0.07 },
   ];
 
   const cumulativeMomConfigs: LineConfig[] = [
@@ -67,43 +78,24 @@ export const ContentSlide18: React.FC = () => {
           </BaseCard>
         </div>
 
-        {/* 图表区域 - 三列布局，左列上下两个图 */}
+        {/* 图表区域 - 三列布局，右列上下两个图 */}
         <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
-          {/* 左列：上下两个图 */}
-          <div className="flex flex-col gap-4 min-h-0">
-            <ChartContainer delay="600ms" className="flex-1 min-h-0">
-              <BaseLineChart
-                data={cumulativeMomData}
-                title="固定资产投资累计同比与单月环比"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={cumulativeMomConfigs}
-                yAxisDomain={[-8, 4]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['固投累计同比', '固投单月环比']}
-                highlightPeriods={['2026-09']}
-                xAxisTicks={['2026-02', '2026-03', '2026-06', '2026-09']}
-                compact
-              />
-            </ChartContainer>
-            <ChartContainer delay="600ms" className="flex-1 min-h-0">
-              <BaseLineChart
-                data={investmentBreakdownData}
-                title="建筑安装工程、设备购置、其他费用累计同比"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={breakdownLineConfigs}
-                yAxisDomain={[-13, 20]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
-                highlightPeriods={['2026-09']}
-                xAxisTicks={['2024-06', '2025-03', '2025-09', '2026-03', '2026-09']}
-                compact
-              />
-            </ChartContainer>
-          </div>
+          {/* 左图：固投累计同比 + 单月环比，单独占整列 */}
+          <ChartContainer delay="600ms">
+            <BaseLineChart
+              data={cumulativeMomData}
+              title="固定资产投资累计同比与单月环比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={cumulativeMomConfigs}
+              yAxisDomain={[-8, 5]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['固投累计同比', '固投单月环比']}
+              highlightPeriods={['2026-09']}
+              xAxisTickCount={6}
+            />
+          </ChartContainer>
 
           {/* 中图：三大支柱累计同比 */}
           <ChartContainer delay="600ms">
@@ -122,22 +114,41 @@ export const ContentSlide18: React.FC = () => {
             />
           </ChartContainer>
 
-          {/* 右图：国有控股与民间投资，整列高度，拉开两线间距 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={privateInvestmentData}
-              title="国有控股投资与民间投资累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={privateLineConfigs}
-              yAxisDomain={[-11, 8]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['国有控股投资', '民间投资']}
-              highlightPeriods={['2026-09']}
-              xAxisTickCount={6}
-            />
-          </ChartContainer>
+          {/* 右列：上为投资构成，下为国有控股与民间投资 */}
+          <div className="flex flex-col gap-4 min-h-0">
+            <ChartContainer delay="600ms" className="flex-1 min-h-0">
+              <BaseLineChart
+                data={investmentBreakdownData}
+                title="建筑安装工程、设备购置、其他费用累计同比"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={breakdownLineConfigs}
+                yAxisDomain={[-13, 20]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
+                highlightPeriods={['2026-09']}
+                xAxisTicks={['2025-03', '2025-06', '2025-09', '2026-03', '2026-09']}
+                compact
+              />
+            </ChartContainer>
+            <ChartContainer delay="600ms" className="flex-1 min-h-0">
+              <BaseLineChart
+                data={privateInvestmentData}
+                title="国有控股投资与民间投资累计同比"
+                subtitle="数据来源：国家统计局 | 单位：%"
+                lines={privateLineConfigs}
+                yAxisDomain={[-11, 8]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['国有控股投资', '民间投资']}
+                highlightPeriods={['2026-09']}
+                xAxisTicks={['2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+                compact
+              />
+            </ChartContainer>
+          </div>
         </div>
       </div>
     </BaseContentSlide>

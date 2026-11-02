@@ -16,13 +16,6 @@ export interface PrivateInvestmentDataPoint {
 
 // 固定资产投资及相关分项累计同比数据
 export const fixedAssetInvestmentData: FixedAssetInvestmentDataPoint[] = [
-  { period: '2024-06', fixedAsset: 3.90, manufacturing: 9.50, realEstate: -10.10, infrastructure: 7.70 },
-  { period: '2024-07', fixedAsset: 3.60, manufacturing: 9.30, realEstate: -10.20, infrastructure: 8.14 },
-  { period: '2024-08', fixedAsset: 3.40, manufacturing: 9.10, realEstate: -10.20, infrastructure: 7.87 },
-  { period: '2024-09', fixedAsset: 3.40, manufacturing: 9.20, realEstate: -10.10, infrastructure: 9.26 },
-  { period: '2024-10', fixedAsset: 3.40, manufacturing: 9.30, realEstate: -10.30, infrastructure: 9.35 },
-  { period: '2024-11', fixedAsset: 3.30, manufacturing: 9.30, realEstate: -10.40, infrastructure: 9.39 },
-  { period: '2024-12', fixedAsset: 3.20, manufacturing: 9.20, realEstate: -10.60, infrastructure: 9.19 },
   { period: '2025-02', fixedAsset: 4.10, manufacturing: 9.00, realEstate: -9.80, infrastructure: 9.94 },
   { period: '2025-03', fixedAsset: 4.20, manufacturing: 9.10, realEstate: -9.90, infrastructure: 11.50 },
   { period: '2025-04', fixedAsset: 4.00, manufacturing: 8.80, realEstate: -10.30, infrastructure: 10.85 },
@@ -76,17 +69,6 @@ export interface InvestmentBreakdownDataPoint {
 }
 
 export const investmentBreakdownData: InvestmentBreakdownDataPoint[] = [
-  { period: '2024-02', construction: 4.00, equipment: 17.00, otherExpenses: -2.40 },
-  { period: '2024-03', construction: 4.60, equipment: 17.60, otherExpenses: -2.10 },
-  { period: '2024-04', construction: 4.20, equipment: 17.20, otherExpenses: -1.90 },
-  { period: '2024-05', construction: 3.80, equipment: 17.50, otherExpenses: -2.00 },
-  { period: '2024-06', construction: 3.80, equipment: 17.50, otherExpenses: -2.50 },
-  { period: '2024-07', construction: 3.60, equipment: 17.30, otherExpenses: -3.10 },
-  { period: '2024-08', construction: 3.40, equipment: 16.80, otherExpenses: -3.50 },
-  { period: '2024-09', construction: 3.50, equipment: 16.40, otherExpenses: -3.30 },
-  { period: '2024-10', construction: 3.50, equipment: 16.10, otherExpenses: -3.90 },
-  { period: '2024-11', construction: 3.50, equipment: 15.80, otherExpenses: -4.10 },
-  { period: '2024-12', construction: 3.50, equipment: 15.70, otherExpenses: -4.20 },
   { period: '2025-02', construction: 1.10, equipment: 18.00, otherExpenses: 3.60 },
   { period: '2025-03', construction: 1.50, equipment: 19.00, otherExpenses: 2.40 },
   { period: '2025-04', construction: 1.40, equipment: 18.20, otherExpenses: 2.30 },

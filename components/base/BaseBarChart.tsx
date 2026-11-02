@@ -83,6 +83,10 @@ export interface BaseBarChartProps {
   /** 图例间距，默认 12 */
   legendGap?: number;
   barSize?: number;
+  /** 同一分组内柱子之间的间距（px），默认使用 recharts 的 4 */
+  barGap?: number | string;
+  /** 不同分组之间的间距（px 或百分比），默认使用 recharts 的 10% */
+  barCategoryGap?: number | string;
   showLabels?: boolean;
   labelPosition?: 'top' | 'center' | 'inside' | 'insideTop' | 'insideBottom';
   labelFill?: string;
@@ -231,6 +235,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   legendFontSize = 10,
   legendGap = 12,
   barSize = 16,
+  barGap,
+  barCategoryGap,
   showLabels = true,
   labelPosition = 'top',
   labelFill,
@@ -303,6 +309,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
             layout={isHorizontal ? 'vertical' : undefined}
             margin={{ top: hasCategoryGroups ? 28 : 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
             barSize={barSize}
+            barGap={barGap}
+            barCategoryGap={barCategoryGap}
             // @ts-expect-error groupBySeries exists in recharts but not in types
             groupBySeries={groupBySeries}
           >

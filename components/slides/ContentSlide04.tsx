@@ -23,7 +23,7 @@ export const ContentSlide04: React.FC = () => {
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">
           <BaseCard title="GDP增速回升" delay="0ms" variant="accent">
             <p>
-              在中东冲突推高油价、国际机构普遍下调主要经济体三季度增速的背景下，2026年三季度GDP <span>37.54万亿</span>，同比增长 <span className="font-bold text-red-600">4.5%</span>，较二季度 <span className="font-bold">4.3%</span> 回升
+              在中东冲突推高油价、国际机构普遍下调主要经济体三季度增速的背景下，2026年三季度GDP <span>37.54万亿</span>，同比增长 <span className="font-bold text-red-600">4.5%</span>，较二季度 <span>4.3%</span> 回升
 ，主要受出口高增及工业增加值增长带动。
               前三季度GDP增速达 <span className="font-bold text-red-600">4.6%</span>，处于全年"4.5%-5.0%"目标区间。
             </p>
@@ -33,7 +33,7 @@ export const ContentSlide04: React.FC = () => {
             <p>
               三季度 GDP 名义增速 <span className="text-red-600 font-semibold">6%</span>、实际增速 <span className="font-bold text-red-600">4.5%</span>，平减指数 <span className="font-bold text-red-600">1.44%</span> 连续两个季度维持回正。
               核心由 AI 产业链景气扩张、能源价格上行拉动，延续二季度行业集中、局部产业景气的态势。
-              本轮为2015年以来第三轮回正，与前两轮不同，地产链全程缺位。
+              
             </p>
           </BaseCard>
         </section>
@@ -66,7 +66,7 @@ export const ContentSlide04: React.FC = () => {
                 {
                   dataKey: 'real',
                   name: 'GDP不变价',
-                  strokeWidth: 2.5,
+                  strokeWidth: 2,
                   labelPosition: 'top',
                   labelDY: -8,
                   pointOffsets: { '2026-06': 18 },
@@ -91,7 +91,7 @@ export const ContentSlide04: React.FC = () => {
                   dataKey: 'value',
                   name: 'GDP累计同比',
                   color: chartColors.primary,
-                  strokeWidth: 2.5,
+                  strokeWidth: 2,
                   labelPosition: 'top',
                   labelDY: -8,
                   pointOffsets: { '2026-03': -14, '2026-06': 18 },
@@ -112,7 +112,7 @@ export const ContentSlide04: React.FC = () => {
               referenceLineY={0}
               legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
               lines={[
-                { dataKey: 'overall', name: '整体', color: '#dc2626', strokeWidth: 2.5, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'overall', name: '整体', color: '#dc2626', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
                 { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 12 },
                 { dataKey: 'secondary', name: '第二产业', color: '#eab308', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
                 { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },

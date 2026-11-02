@@ -56,17 +56,17 @@ export const ContentSlide05: React.FC = () => {
           <BaseCard title="二产增速回升，三产维持稳定" delay="0ms">
             <p>
               三季度一、二、三产业增加值分别增长
-              <span className="font-bold text-red-500">3.6%</span>、
-              <span className="font-bold text-red-500">3.4%</span>、
-              <span className="font-bold text-red-500">5.2%</span>
+              <span className="text-black">3.6%</span>、
+              <span className="text-black">3.4%</span>、
+              <span className="text-black">5.2%</span>
               ，第二产业同比增长
-              <span className="font-bold text-red-500">3.4%</span>
+              <span className="text-black">3.4%</span>
               ，较二季度回升
-              <span className="font-bold text-red-500">0.4个百分点</span>
+              <span className="text-black">0.4个百分点</span>
               ，为季度GDP增速回升的主要拉动，主因制造业增速回升。第三产业维持稳定增速，对GDP当季同比增长贡献率达
-              <span className="font-bold text-red-500">66.5%</span>
+              <span className="text-black">66.5%</span>
               ，贡献率较去年同期增长
-              <span className="font-bold text-red-500">4.7个百分点</span>
+              <span className="text-black">4.7个百分点</span>
               。
             </p>
           </BaseCard>
@@ -78,15 +78,15 @@ export const ContentSlide05: React.FC = () => {
               ）、租赁商务服务业（
               <span className="font-bold text-red-500">+12.9%</span>
               ）维持高增，两者增加值合计占GDP比重
-              <span className="font-bold text-red-500">10.1%</span>
+              <span className="text-black">10.1%</span>
               、同比提高
-              <span className="font-bold text-red-500">0.5个百分点</span>
+              <span className="text-black">0.5个百分点</span>
               ，AI算力需求和商务活动是两大增长引擎；批发零售、交运仓储、住宿餐饮三季度分别增长
-              <span className="font-bold text-red-500">5.6%</span>、
-              <span className="font-bold text-red-500">5.9%</span>、
-              <span className="font-bold text-red-500">6.3%</span>
+              <span className="text-black">5.6%</span>、
+              <span className="text-black">5.9%</span>、
+              <span className="text-black">6.3%</span>
               ，合计再拉动
-              <span className="font-bold text-red-500">1.0个百分点</span>
+              <span className="text-black">1.0个百分点</span>
               ，较二季度增幅明显提升，与外需及出行需求增长有关；建筑、房地产仍处于负增长；
             </p>
           </BaseCard>
@@ -108,7 +108,7 @@ export const ContentSlide05: React.FC = () => {
                 ]}
                 legendOrder={industryLegendOrder}
                 yAxisDomain={[0, 7]}
-                barSize={12}
+                barSize={8}
                 showYAxis
                 showLabels
                 labelFilter={({ value }: any) => value != null}
