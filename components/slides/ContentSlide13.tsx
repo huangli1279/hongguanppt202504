@@ -53,7 +53,7 @@ export const ContentSlide13: React.FC = () => {
         <>
           <BaseCard title="社零总量：9月回升" delay="0ms" variant="accent">
             <p>
-              1—9月社零累计<span className="font-bold">37.0万亿元</span>，9月单月<span className="font-bold">4.24万亿元</span>，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="font-bold text-green-600">+1.0%</span>，服务增速继续快于商品。9月受中秋错位（去年中秋在10月）影响，10月社零面临高基数与错位回吐压力。
+              1—9月社零累计<span className="font-bold">37.0万亿元</span>，9月单月<span className="font-bold">4.24万亿元</span>，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="text-black">+1.0%</span>，服务增速继续快于商品。9月受中秋错位（去年中秋在10月）影响，10月社零面临高基数与错位回吐压力。
             </p>
           </BaseCard>
 
