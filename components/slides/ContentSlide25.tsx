@@ -1,12 +1,14 @@
 import React from 'react';
-import { BaseContentSlide } from '../layouts/BaseContentSlide';
+import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
+import { ImportStructureChart } from '../charts/ImportStructureChart';
 
 export const ContentSlide25: React.FC = () => {
   return (
     <BaseContentSlide
       title="进口结构：进口持续向高新技术迁移，粮食等传统产品量价齐降"
       cardColumns={3}
+      chartColumns={1}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
@@ -27,6 +29,11 @@ export const ContentSlide25: React.FC = () => {
             </p>
           </BaseCard>
         </div>
+
+        {/* 图表区域 */}
+        <ChartContainer delay="360ms" className="flex-1 min-h-0">
+          <ImportStructureChart />
+        </ChartContainer>
       </div>
     </BaseContentSlide>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { exportShareItems, exportShareSummary } from '../../data/exportShare';
 
 // 主要地区出口增速：9月 vs 8月
 const regionExportData = [
@@ -18,18 +18,17 @@ const regionExportBars: BarConfig[] = [
   { dataKey: 'sep', name: '9月', color: '#b91c1c' },
 ];
 
-// 7—9月三地月度出口增速
-const threeRegionMonthlyData = [
-  { period: '2026-07', asean: 30.4, korea: 46.9, taiwan: null },
-  { period: '2026-08', asean: 30.2, korea: 49.3, taiwan: null },
-  { period: '2026-09', asean: 52.3, korea: 68.2, taiwan: 68.9 },
+const exportShareData = exportShareItems.map((item) => ({
+  name: item.name,
+  share: item.share,
+  fill: item.name === '其他' ? '#94a3b8' : item.isBri ? '#b91c1c' : '#005c8f',
+}));
+
+const exportShareBars: BarConfig[] = [
+  { dataKey: 'share', name: '出口份额', color: '#005c8f' },
 ];
 
-const threeRegionLineConfigs: LineConfig[] = [
-  { dataKey: 'asean', name: '东盟', color: '#b91c1c', strokeWidth: 2.5 },
-  { dataKey: 'korea', name: '韩国', color: '#2563eb', strokeWidth: 2.5 },
-  { dataKey: 'taiwan', name: '台湾', color: '#f59e0b', strokeWidth: 2.5 },
-];
+const briShareDelta = exportShareSummary.briShareDelta.toFixed(1);
 
 export const ContentSlide26: React.FC = () => {
   return (
@@ -42,18 +41,18 @@ export const ContentSlide26: React.FC = () => {
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
           <BaseCard title="AI链区域内分工加速" delay="0ms" variant="accent">
-            <p className="text-sm leading-snug">
+            <p>
               9月对东盟<span className="text-red-500 font-semibold">+52.3%</span>（较8月+22.1pct）、对韩国<span className="text-red-500 font-semibold">+68.2%</span>（+18.9pct）、对台湾<span className="text-red-500 font-semibold">+68.9%</span>（+25.1pct），三地增速均创年内新高；集成电路<span className="text-red-500 font-semibold">+136.0%</span>、自动数据处理设备<span className="text-red-500 font-semibold">+92.9%</span>直接对应这三条航线——AI产业链的区域内分工（存储-封装-组装）在加速，低基数也有贡献（去年9月对东盟出口增速较前值低7pct左右）。
             </p>
           </BaseCard>
           <BaseCard title="新兴市场同步回升" delay="120ms">
-            <p className="text-sm leading-snug">
+            <p>
               俄罗斯<span className="text-red-500 font-semibold">+51.3%</span>（+12.4pct）、拉美<span className="text-red-500 font-semibold">+24.9%</span>（+7.2pct）同步回升。
             </p>
           </BaseCard>
-          <BaseCard title="7—9月三地增速逐月抬升" delay="240ms">
-            <p className="text-sm leading-snug">
-              东盟：<span className="text-red-500 font-semibold">30.4%→52.3%</span>，韩国：<span className="text-red-500 font-semibold">46.9%→68.2%</span>，台湾未披露7/8月读数；AI链景气在加速段。
+          <BaseCard title="出口份额：一带一路占过半" delay="240ms">
+            <p>
+              1-9月东盟占出口<span className="text-red-500 font-semibold">18.8%</span>、欧盟<span className="text-red-500 font-semibold">14.5%</span>、美国<span className="text-red-500 font-semibold">10.6%</span>；共建“一带一路”国家合计占<span className="text-red-500 font-semibold">{exportShareSummary.briShare}%</span>，较上半年提高<span className="text-red-500 font-semibold">{briShareDelta}pct</span>，出口市场多元化继续推进。
             </p>
           </BaseCard>
         </div>
@@ -80,19 +79,38 @@ export const ContentSlide26: React.FC = () => {
             />
           </ChartContainer>
 
-          <ChartContainer delay="720ms" ariaLabel="七至九月三地出口增速走势">
-            <BaseLineChart
-              data={threeRegionMonthlyData}
-              title="图2 7—9月三地月度出口增速"
-              subtitle="数据来源：海关总署 | 单位：%"
-              lines={threeRegionLineConfigs}
-              yAxisDomain={[20, 80]}
+          <ChartContainer delay="720ms" ariaLabel="2026年1至9月主要出口目的地份额">
+            <BaseBarChart
+              data={exportShareData}
+              title={
+                <span>
+                  图2 主要出口份额
+                </span>
+              }
+              subtitle={
+                <>
+                  数据来源：海关总署 | 占1-9月出口总值比重；较上半年
+                  <span className="text-red-600 font-semibold">+{briShareDelta}pct</span>
+                  ，含东盟、非洲、拉美等分项
+                </>
+              }
+              bars={exportShareBars}
+              layout="horizontal"
+              yAxisDomain={[0, 22]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['东盟', '韩国', '台湾']}
-              xAxisTicks={['2026-07', '2026-08', '2026-09']}
-              xAxisAngle={0}
+              yAxisWidth={68}
+              yAxisTickFormatter={(val) => `${val}%`}
+              legendItems={[
+                { value: '一带一路主要分项', color: '#b91c1c' },
+                { value: '其他主要目的地', color: '#005c8f' },
+                { value: '其余', color: '#94a3b8' },
+              ]}
+              legendFontSize={9}
+              legendGap={8}
+              barSize={11}
+              showLabels={true}
+              labelFormatter={(val) => `${val}%`}
+              labelFill="#334155"
             />
           </ChartContainer>
         </div>

@@ -68,11 +68,17 @@ const App: React.FC = () => {
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const goToNextSlide = useCallback(() => {
-    setCurrentSlide(prev => (prev < TOTAL_SLIDES ? prev + 1 : 1));
+    setCurrentSlide(prev => {
+      if (prev === 35) return 43;
+      return prev < TOTAL_SLIDES ? prev + 1 : 1;
+    });
   }, []);
 
   const goToPrevSlide = useCallback(() => {
-    setCurrentSlide(prev => (prev > 1 ? prev - 1 : TOTAL_SLIDES));
+    setCurrentSlide(prev => {
+      if (prev === 43) return 35;
+      return prev > 1 ? prev - 1 : TOTAL_SLIDES;
+    });
   }, []);
 
   const handleResize = useCallback(() => {
