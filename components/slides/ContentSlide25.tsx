@@ -1,38 +1,49 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { ImportStructureChart } from '../charts/ImportStructureChart';
+import { ExportFocusChart } from '../charts/ExportFocusChart';
 
 export const ContentSlide25: React.FC = () => {
   return (
     <BaseContentSlide
-      title="进口结构：进口持续向高新技术迁移，粮食等传统产品量价齐降"
+      title="出口结构：AI链贡献13个百分点的拉动"
       cardColumns={3}
       chartColumns={1}
     >
       <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
-          <BaseCard title="9月进口：价格驱动的高增" delay="0ms" variant="accent">
-            <p>
-              9月进口<span className="text-red-500 font-semibold">+31.0%</span>，但进口量仅<span className="text-red-500 font-semibold">+1.0%</span>——高增几乎全部来自价格；AI链（集成电路+自动数据处理设备）贡献<span className="text-red-500 font-semibold">21.7</span>个百分点，解释了进口增长的七成，"AI强、内需弱"的进口结构未变。
+          <BaseCard title="核心结论" delay="0ms" variant="accent">
+            <p className="text-sm">
+              9月AI链（集成电路+计算机零部件）出口同比
+              <span className="text-red-500 font-semibold">+115%</span>，对整体出口增速的拉动约
+              <span className="text-red-500 font-semibold">13</span>个百分点；但出口较8月加快的11.3pct中，非AI品类贡献了八成以上。
             </p>
           </BaseCard>
-          <BaseCard title="高新技术：AI链拉动" delay="120ms">
-            <p>
-              自动数据处理设备及零部件进口金额<span className="text-red-500 font-semibold">+296.5%</span>、集成电路<span className="text-red-500 font-semibold">+74.7%</span>，但剔除价格后集成电路进口数量仅<span className="text-red-500 font-semibold">+1.7%</span>；AI链对进口增速的贡献由8月的<span className="text-red-500 font-semibold">19.7pct</span>升至<span className="text-red-500 font-semibold">21.7pct</span>，解释了总体进口增长的约七成；非货币黄金进口<span className="text-red-500 font-semibold">+77.5%</span>再贡献<span className="text-red-500 font-semibold">3.8pct</span>（上半年拉动<span className="text-red-500 font-semibold">7pct</span>、本季退坡）。
+
+          <BaseCard title="1. 高技术出口量价齐升" delay="120ms">
+            <p className="text-sm leading-snug">
+              集成电路9月出口金额<span className="text-red-500 font-semibold">+136.8%</span>、数量仅
+              <span className="text-red-500 font-semibold">+2.6%</span>，价格环比8月下降
+              <span className="text-green-600 font-semibold">1.86%</span>，需关注价格是否见顶；汽车金额
+              <span className="text-red-500 font-semibold">+61.9%</span>、数量
+              <span className="text-red-500 font-semibold">+56.3%</span>；工业机器人金额
+              <span className="text-red-500 font-semibold">+56.4%</span>、数量
+              <span className="text-red-500 font-semibold">+64.1%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="传统需求：量价齐降，仍在低位" delay="240ms">
-            <p>
-              传统需求偏弱：原油进口量<span className="text-green-600 font-semibold">-21.5%</span>，但价格<span className="text-red-500 font-semibold">+31.5%</span>，推升金额<span className="text-red-500 font-semibold">+3.3%</span>；煤炭、天然气进口金额<span className="text-red-500 font-semibold">+45.3%</span>/<span className="text-red-500 font-semibold">+34.0%</span>但数量分别<span className="text-green-600 font-semibold">-5.7%</span>/<span className="text-green-600 font-semibold">-1.7%</span>；铜矿进口数量<span className="text-green-600 font-semibold">-4.2%</span>，但价格增长<span className="text-red-500 font-semibold">32.6%</span>；液晶平板显示模组进口金额/数量分别<span className="text-green-600 font-semibold">-25.3%</span>/<span className="text-green-600 font-semibold">-24.0%</span>，汽车及零部件<span className="text-green-600 font-semibold">-38.1%</span>/<span className="text-green-600 font-semibold">-47.2%</span>，传统终端制造需求仍在低位。
+
+          <BaseCard title='2. 消费品与"抢出口"' delay="240ms">
+            <p className="text-sm leading-snug">
+              玩具<span className="text-red-500 font-semibold">+40.8%</span>、家电
+              <span className="text-red-500 font-semibold">+31.7%</span>、服装
+              <span className="text-red-500 font-semibold">+24.1%</span>明显回升，背后对应美国零售商补库、进口同比转正的回升周期，叠加欧盟限制混动车出口在12月生效引发的"抢出口"（对欧增速回升
+              <span className="text-red-500 font-semibold">18.6</span>pct）。
             </p>
           </BaseCard>
         </div>
 
-        {/* 图表区域 */}
         <ChartContainer delay="360ms" className="flex-1 min-h-0">
-          <ImportStructureChart />
+          <ExportFocusChart />
         </ChartContainer>
       </div>
     </BaseContentSlide>

@@ -2,15 +2,18 @@ import React from 'react';
 import {
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
+  ReferenceLine,
   ResponsiveContainer,
   LabelList,
 } from 'recharts';
 import {
   exportFocusData,
   exportFocusSummary,
+  exportPriceData,
 } from '@/data/customsExportFocus';
 
 const fmtPct = (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(1)}%`;
@@ -73,31 +76,27 @@ const ChartTable: React.FC = () => {
   );
 };
 
-const GrowthBars: React.FC = () => {
-  const data = exportFocusData.map((d) => ({
-    name: d.name === '自动数据处理设备及零部件' ? '计算机零部件' : d.name,
-    sepYoy: d.sepYoy,
-    cumYoy: d.cumYoy,
-  }));
+const PriceBars: React.FC = () => {
+  const data = exportPriceData;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         data={data}
         layout="vertical"
-        margin={{ top: 4, right: 46, left: 0, bottom: 18 }}
-        barCategoryGap="26%"
-        barGap={2}
+        margin={{ top: 4, right: 44, left: 0, bottom: 16 }}
+        barCategoryGap="30%"
       >
         <CartesianGrid horizontal={false} stroke="#e5e7eb" strokeDasharray="3 3" />
+        <ReferenceLine x={0} stroke="#94a3b8" strokeWidth={1} />
         <XAxis
           type="number"
-          domain={[0, 150]}
+          domain={[-30, 165]}
+          ticks={[0, 50, 100, 150]}
           tick={{ fontSize: 10, fill: '#94a3b8' }}
           axisLine={false}
           tickLine={false}
           tickFormatter={(v) => `${v}%`}
-          tickCount={4}
         />
         <YAxis
           type="category"
@@ -107,11 +106,16 @@ const GrowthBars: React.FC = () => {
           axisLine={false}
           tickLine={false}
         />
-        <Bar dataKey="sepYoy" name="9月同比" fill="#b91c1c" barSize={9} radius={[0, 2, 2, 0]}>
-          <LabelList dataKey="sepYoy" position="right" formatter={(v: number) => `${v}%`} style={{ fontSize: 9, fontWeight: 700, fill: '#b91c1c' }} />
-        </Bar>
-        <Bar dataKey="cumYoy" name="1-9月累计同比" fill="#005c8f" barSize={9} radius={[0, 2, 2, 0]}>
-          <LabelList dataKey="cumYoy" position="right" formatter={(v: number) => `${v}%`} style={{ fontSize: 9, fontWeight: 700, fill: '#005c8f' }} />
+        <Bar dataKey="priceYoy" name="隐含价格同比" barSize={11} radius={[0, 2, 2, 0]}>
+          {data.map((d) => (
+            <Cell key={d.name} fill={d.priceYoy >= 0 ? '#b91c1c' : '#0f766e'} />
+          ))}
+          <LabelList
+            dataKey="priceYoy"
+            position="right"
+            formatter={(v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(1)}%`}
+            style={{ fontSize: 9, fontWeight: 700, fill: '#334155' }}
+          />
         </Bar>
       </BarChart>
     </ResponsiveContainer>
@@ -122,7 +126,7 @@ export const ExportFocusChart: React.FC = () => (
   <div className="h-full flex flex-col min-h-0 overflow-hidden border border-webank-line/60 rounded-card bg-white p-2.5">
     <div className="mb-1.5 flex-shrink-0">
       <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-        出口量值：AI链高增，重点商品9月与累计同比
+        出口量值：AI链高增，重点商品量价与同比
       </h3>
       <div className="flex items-center justify-between mt-1 gap-3">
         <p className="text-xs text-webank-subtext">
@@ -130,8 +134,8 @@ export const ExportFocusChart: React.FC = () => (
           <span className="text-red-500 font-semibold">13.0</span>个百分点（集成电路7.9 + 计算机5.1）
         </p>
         <div className="flex gap-3 text-[10px] text-[#666] shrink-0">
-          <span><i className="inline-block w-3 h-2 mr-1 bg-red-700 align-middle" />9月同比</span>
-          <span><i className="inline-block w-3 h-2 mr-1 bg-webank-blue align-middle" />1-9月累计同比</span>
+          <span><i className="inline-block w-2.5 h-2 mr-1 bg-sky-200 align-middle rounded-sm" />AI链</span>
+          <span><i className="inline-block w-2.5 h-2 mr-1 bg-red-100 align-middle rounded-sm" />合计</span>
         </div>
       </div>
     </div>
@@ -141,8 +145,18 @@ export const ExportFocusChart: React.FC = () => (
         <ChartTable />
       </div>
       <div className="min-h-0 flex flex-col border-l border-slate-200 pl-2">
+        <div className="flex items-center justify-between flex-shrink-0">
+          <span className="text-[11px] font-bold text-webank-blue whitespace-nowrap">9月隐含价格同比（金额同比-数量同比）</span>
+          <div className="flex gap-2 text-[9px] text-[#666] shrink-0">
+            <span><i className="inline-block w-2.5 h-2 mr-0.5 bg-red-700 align-middle" />涨价</span>
+            <span><i className="inline-block w-2.5 h-2 mr-0.5 bg-teal-700 align-middle" />降价</span>
+          </div>
+        </div>
+        <p className="text-[9.5px] text-slate-500 leading-tight flex-shrink-0 mb-0.5">
+          涨价集中在AI链；手机、计算机设备、半导体器件量减价升，工业机器人、液晶模组价格同比下降
+        </p>
         <div className="flex-1 min-h-0">
-          <GrowthBars />
+          <PriceBars />
         </div>
         <p className="text-[9px] text-slate-400 leading-tight mt-0.5 flex-shrink-0">
           数据来源：海关总署《2026年9月出口主要商品量值表（美元值）》｜金额单位：亿美元

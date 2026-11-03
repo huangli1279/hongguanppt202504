@@ -20,6 +20,26 @@ export const exportFocusData: ExportFocusItem[] = [
   { name: '家用电器', sepAmount: 101.8, sepYoy: 31.7, cumAmount: 804.1, cumYoy: 9.4, isAiChain: false },
 ];
 
+// 9月量价拆分：金额同比、数量同比与隐含价格同比（= 金额同比 - 数量同比）
+export interface ExportPriceItem {
+  name: string;
+  amountYoy: number;
+  volumeYoy: number;
+  priceYoy: number;
+}
+
+export const exportPriceData: ExportPriceItem[] = [
+  { name: '集成电路', amountYoy: 136.8, volumeYoy: 1.2, priceYoy: 135.6 },
+  { name: '自动数据处理设备', amountYoy: 6.7, volumeYoy: -21.8, priceYoy: 28.5 },
+  { name: '手机', amountYoy: 14.4, volumeYoy: -12.2, priceYoy: 26.6 },
+  { name: '二极管及半导体器件', amountYoy: 16.2, volumeYoy: -3.0, priceYoy: 19.2 },
+  { name: '太阳能电池', amountYoy: 19.4, volumeYoy: 11.3, priceYoy: 8.1 },
+  { name: '家用电器', amountYoy: 31.7, volumeYoy: 25.4, priceYoy: 6.3 },
+  { name: '汽车（含底盘）', amountYoy: 61.9, volumeYoy: 56.3, priceYoy: 5.6 },
+  { name: '工业机器人', amountYoy: 56.4, volumeYoy: 64.1, priceYoy: -7.7 },
+  { name: '液晶平板显示模组', amountYoy: 7.4, volumeYoy: 17.5, priceYoy: -10.1 },
+];
+
 export const exportFocusSummary = {
   aiChain: { sepAmount: 799.4, sepYoy: 115.0, cumAmount: 5331.5, cumYoy: 80.8 },
   total: { sepAmount: 4471.8, sepYoy: 36.3, cumAmount: 33707.0, cumYoy: 21.3 },

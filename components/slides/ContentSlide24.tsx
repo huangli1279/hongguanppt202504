@@ -1,50 +1,151 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { ExportFocusChart } from '../charts/ExportFocusChart';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+
+// 图1：出口/进口当月同比（折线图，美元计价，当月同比 %）
+const monthlyTradeExportsImportsData = [
+  { period: '2024-01', exports: 7.7, imports: 15.6 },
+  { period: '2024-02', exports: 6.2, imports: -8.1 },
+  { period: '2024-03', exports: -7.7, imports: -2.1 },
+  { period: '2024-04', exports: 1.3, imports: 8.3 },
+  { period: '2024-05', exports: 7.4, imports: 2.1 },
+  { period: '2024-06', exports: 8.4, imports: -2.6 },
+  { period: '2024-07', exports: 6.9, imports: 6.6 },
+  { period: '2024-08', exports: 8.6, imports: 0.0 },
+  { period: '2024-09', exports: 2.3, imports: 0.1 },
+  { period: '2024-10', exports: 12.6, imports: -2.4 },
+  { period: '2024-11', exports: 6.6, imports: -4.0 },
+  { period: '2024-12', exports: 10.7, imports: 0.8 },
+  { period: '2025-01', exports: 5.9, imports: -16.3 },
+  { period: '2025-02', exports: -3.1, imports: 1.6 },
+  { period: '2025-03', exports: 12.2, imports: -4.3 },
+  { period: '2025-04', exports: 8.0, imports: -0.3 },
+  { period: '2025-05', exports: 4.6, imports: -3.3 },
+  { period: '2025-06', exports: 5.8, imports: 1.2 },
+  { period: '2025-07', exports: 7.1, imports: 4.2 },
+  { period: '2025-08', exports: 4.3, imports: 1.4 },
+  { period: '2025-09', exports: 8.2, imports: 7.4 },
+  { period: '2025-10', exports: -1.2, imports: 0.9 },
+  { period: '2025-11', exports: 5.9, imports: 1.9 },
+  { period: '2025-12', exports: 6.6, imports: 5.7 },
+  { period: '2026-01', exports: 10.0, imports: 25.7 },
+  { period: '2026-02', exports: 39.6, imports: 13.9 },
+  { period: '2026-03', exports: 2.5, imports: 27.8 },
+  { period: '2026-04', exports: 12.0, imports: 24.0 },
+  { period: '2026-05', exports: 18.0, imports: 25.0 },
+  { period: '2026-06', exports: 20.0, imports: 26.0 },
+  { period: '2026-07', exports: 22.0, imports: 27.0 },
+  { period: '2026-08', exports: 25.0, imports: 28.0 },
+  { period: '2026-09', exports: 36.3, imports: 31.0 },
+];
+
+const monthlyTradeExportsImportsLines: LineConfig[] = [
+  { dataKey: 'exports', name: '出口同比', color: '#b91c1c', strokeWidth: 2.5 },
+  { dataKey: 'imports', name: '进口同比', color: '#2563eb', strokeWidth: 2.5 },
+];
+
+// 图2：贸易顺差当月同比（折线图，美元计价，当月同比 %）
+const monthlyTradeSurplusData = [
+  { period: '2024-01', surplus: -8.9 },
+  { period: '2024-02', surplus: 241.0 },
+  { period: '2024-03', surplus: -24.0 },
+  { period: '2024-04', surplus: -15.5 },
+  { period: '2024-05', surplus: 24.9 },
+  { period: '2024-06', surplus: 42.4 },
+  { period: '2024-07', surplus: 7.7 },
+  { period: '2024-08', surplus: 36.2 },
+  { period: '2024-09', surplus: 8.8 },
+  { period: '2024-10', surplus: 71.3 },
+  { period: '2024-11', surplus: 40.9 },
+  { period: '2024-12', surplus: 40.7 },
+  { period: '2025-01', surplus: 64.9 },
+  { period: '2025-02', surplus: -23.8 },
+  { period: '2025-03', surplus: 74.0 },
+  { period: '2025-04', surplus: 33.4 },
+  { period: '2025-05', surplus: 26.2 },
+  { period: '2025-06', surplus: 15.3 },
+  { period: '2025-07', surplus: 14.1 },
+  { period: '2025-08', surplus: 11.0 },
+  { period: '2025-09', surplus: 10.4 },
+  { period: '2025-10', surplus: -6.1 },
+  { period: '2025-11', surplus: 14.6 },
+  { period: '2025-12', surplus: 8.5 },
+  { period: '2026-01', surplus: -11.3 },
+  { period: '2026-02', surplus: 190.8 },
+  { period: '2026-03', surplus: -49.8 },
+  { period: '2026-04', surplus: -37.4 },
+  { period: '2026-05', surplus: -27.0 },
+  { period: '2026-06', surplus: -21.2 },
+  { period: '2026-07', surplus: 7.7 },
+  { period: '2026-08', surplus: 18.1 },
+  { period: '2026-09', surplus: 50.5 },
+];
+
+const monthlyTradeSurplusLines: LineConfig[] = [
+  { dataKey: 'surplus', name: '贸易顺差同比', color: '#1e3a8a', strokeWidth: 2.5 },
+];
 
 export const ContentSlide24: React.FC = () => {
   return (
     <BaseContentSlide
-      title="出口结构：AI链贡献13个百分点的拉动"
-      cardColumns={3}
-      chartColumns={1}
+      title="1-9月出口总值同比增长21.3%，贸易顺差增长7.2%"
+      cardColumns={2}
+      chartColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
-          <BaseCard title="核心结论" delay="0ms" variant="accent">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="出口、进口保持高增长" delay="0ms" variant="accent">
             <p className="text-sm">
-              9月AI链（集成电路+计算机零部件）出口同比
-              <span className="text-red-500 font-semibold">+115%</span>，对整体出口增速的拉动约
-              <span className="text-red-500 font-semibold">13</span>个百分点；但出口较8月加快的11.3pct中，非AI品类贡献了八成以上。
+              9月出口（美元计）同比<span className="text-red-500 font-semibold">+36.3%</span>，较8月的25.0%持续上行；进口同比<span className="text-red-500 font-semibold">+31.0%</span>。
+            </p>
+            <p className="text-sm mt-2">
+              前三季度出口整体同比<span className="text-red-500 font-semibold">+21.3%</span>；进口总值同比<span className="text-red-500 font-semibold">+27.5%</span>，仍受到AI热潮和价格驱动，保持高增长。
             </p>
           </BaseCard>
-
-          <BaseCard title="1. 高技术出口量价齐升" delay="120ms">
-            <p className="text-sm leading-snug">
-              集成电路9月出口金额<span className="text-red-500 font-semibold">+136.8%</span>、数量仅
-              <span className="text-red-500 font-semibold">+2.6%</span>，价格环比8月下降
-              <span className="text-green-600 font-semibold">1.86%</span>，需关注价格是否见顶；汽车金额
-              <span className="text-red-500 font-semibold">+61.9%</span>、数量
-              <span className="text-red-500 font-semibold">+56.3%</span>；工业机器人金额
-              <span className="text-red-500 font-semibold">+56.4%</span>、数量
-              <span className="text-red-500 font-semibold">+64.1%</span>。
+          <BaseCard title="三季度贸易顺差大超预期，9月顺差+50.5%" delay="120ms">
+            <p className="text-sm">
+              9月当月顺差<span className="text-black">1335.3亿美元</span>，同比<span className="text-red-500 font-semibold">+50.5%</span>；前三季度顺差<span className="text-black">9381亿美元</span>，同比<span className="text-red-500 font-semibold">+7.2%</span>。
             </p>
-          </BaseCard>
-
-          <BaseCard title='2. 消费品与"抢出口"' delay="240ms">
-            <p className="text-sm leading-snug">
-              玩具<span className="text-red-500 font-semibold">+40.8%</span>、家电
-              <span className="text-red-500 font-semibold">+31.7%</span>、服装
-              <span className="text-red-500 font-semibold">+24.1%</span>明显回升，对应美国进口回升周期与欧盟限制混动车出口引发的12月前"抢出口"（对欧增速回升
-              <span className="text-red-500 font-semibold">18.6</span>pct）。
+            <p className="text-sm mt-2">
+              华泰估算三季度商品贸易顺差对名义GDP同比拉动<span className="text-red-500 font-semibold">+1.2个百分点</span>，对比二季度的<span className="text-green-600 font-semibold">-0.25%</span>，贸易顺差对GDP增长的贡献显著抬升。
             </p>
           </BaseCard>
         </div>
 
-        <ChartContainer delay="360ms" className="flex-1 min-h-0">
-          <ExportFocusChart />
-        </ChartContainer>
+        {/* 图表区域 */}
+        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
+          <ChartContainer delay="600ms" ariaLabel="出口进口当月同比折线图">
+            <BaseLineChart
+              data={monthlyTradeExportsImportsData}
+              title="图1 出口/进口当月同比"
+              subtitle="数据来源：海关总署 | 单位：%"
+              lines={monthlyTradeExportsImportsLines}
+              yAxisDomain={[-10, 45]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['出口同比', '进口同比']}
+              unit="%"
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="720ms" ariaLabel="贸易顺差当月同比折线图">
+            <BaseLineChart
+              data={monthlyTradeSurplusData}
+              title="图2 贸易顺差当月同比"
+              subtitle="数据来源：海关总署 | 单位：%"
+              lines={monthlyTradeSurplusLines}
+              yAxisDomain={[-60, 260]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['贸易顺差同比']}
+              unit="%"
+            />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );

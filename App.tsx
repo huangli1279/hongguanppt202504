@@ -7,7 +7,7 @@ import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 45;
+const TOTAL_SLIDES = 44;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -31,28 +31,25 @@ const ContentSlide16 = lazyNamed(() => import('./components/slides/ContentSlide1
 const ContentSlide18 = lazyNamed(() => import('./components/slides/ContentSlide18'), 'ContentSlide18');
 const ContentSlide19 = lazyNamed(() => import('./components/slides/ContentSlide19'), 'ContentSlide19');
 const ContentSlide20 = lazyNamed(() => import('./components/slides/ContentSlide20'), 'ContentSlide20');
-const ContentSlide23 = lazyNamed(() => import('./components/slides/ContentSlide23'), 'ContentSlide23');
+const ContentSlide21 = lazyNamed(() => import('./components/slides/ContentSlide21'), 'ContentSlide21');
+const ContentSlide22 = lazyNamed(() => import('./components/slides/ContentSlide22'), 'ContentSlide22');
 const ContentSlide24 = lazyNamed(() => import('./components/slides/ContentSlide24'), 'ContentSlide24');
 const ContentSlide25 = lazyNamed(() => import('./components/slides/ContentSlide25'), 'ContentSlide25');
 const ContentSlide26 = lazyNamed(() => import('./components/slides/ContentSlide26'), 'ContentSlide26');
 const ContentSlide27 = lazyNamed(() => import('./components/slides/ContentSlide27'), 'ContentSlide27');
-const ContentSlide29 = lazyNamed(() => import('./components/slides/ContentSlide29'), 'ContentSlide29');
+const ContentSlide28 = lazyNamed(() => import('./components/slides/ContentSlide28'), 'ContentSlide28');
 const ContentSlide30 = lazyNamed(() => import('./components/slides/ContentSlide30'), 'ContentSlide30');
-const ContentSlide32 = lazyNamed(() => import('./components/slides/ContentSlide32'), 'ContentSlide32');
+const ContentSlide31 = lazyNamed(() => import('./components/slides/ContentSlide31'), 'ContentSlide31');
 const ContentSlide33 = lazyNamed(() => import('./components/slides/ContentSlide33'), 'ContentSlide33');
 const ContentSlide34 = lazyNamed(() => import('./components/slides/ContentSlide34'), 'ContentSlide34');
 const ContentSlide35 = lazyNamed(() => import('./components/slides/ContentSlide35'), 'ContentSlide35');
-const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
+const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
 const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
 const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
 const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide40'), 'ContentSlide40');
 const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
-const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
-const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
-const ContentSlide45 = lazyNamed(() => import('./components/slides/ContentSlide45'), 'ContentSlide45');
-const ContentSlide46 = lazyNamed(() => import('./components/slides/ContentSlide46'), 'ContentSlide46');
 const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
-const ContentSlide21 = lazyNamed(() => import('./components/slides/ContentSlide21'), 'ContentSlide21');
+const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -69,14 +66,14 @@ const App: React.FC = () => {
 
   const goToNextSlide = useCallback(() => {
     setCurrentSlide(prev => {
-      if (prev === 35) return 43;
+      if (prev === 36) return 44;
       return prev < TOTAL_SLIDES ? prev + 1 : 1;
     });
   }, []);
 
   const goToPrevSlide = useCallback(() => {
     setCurrentSlide(prev => {
-      if (prev === 43) return 35;
+      if (prev === 44) return 36;
       return prev > 1 ? prev - 1 : TOTAL_SLIDES;
     });
   }, []);
@@ -175,34 +172,35 @@ const App: React.FC = () => {
       case 19: return <ContentSlide19 />;
       case 20: return <ContentSlide20 />;
       case 21: return <ContentSlide21 />;
-      case 22: return <BaseSectionTransitionSlide id="05" title="进出口分析" />;
-      case 23: return <ContentSlide23 />;
+      case 22: return <ContentSlide22 />;
+      case 23: return <BaseSectionTransitionSlide id="05" title="进出口分析" />;
       case 24: return <ContentSlide24 />;
       case 25: return <ContentSlide25 />;
       case 26: return <ContentSlide26 />;
       case 27: return <ContentSlide27 />;
-      case 28: return <BaseSectionTransitionSlide id="06" title="财政分析" />;
-      case 29: return <ContentSlide29 />;
+      case 28: return <ContentSlide28 />;
+      case 29: return <BaseSectionTransitionSlide id="06" title="财政分析" />;
       case 30: return <ContentSlide30 />;
-      case 31: return <BaseSectionTransitionSlide id="07" title="金融数据分析" />;
-      case 32: return <ContentSlide32 />;
+      case 31: return <ContentSlide31 />;
+      case 32: return <BaseSectionTransitionSlide id="07" title="金融数据分析" />;
       case 33: return <ContentSlide33 />;
       case 34: return <ContentSlide34 />;
       case 35: return <ContentSlide35 />;
-      case 36: return (
+      case 36: return <ContentSlide36 />;
+      case 37: return (
         <BaseSectionTransitionSlide
           id="08"
           title="消费现状及趋势"
           subtitle="本轮消费疲弱不止因周期回落，更是收入预期下修、就业不稳与房价财富效应三重约束下的结构性收缩；总量修复仍慢，增量则向体验、情绪与健康等「软消费」迁移。"
         />
       );
-      case 37: return <ContentSlide37 />;
       case 38: return <ContentSlide38 />;
       case 39: return <ContentSlide39 />;
       case 40: return <ContentSlide40 />;
       case 41: return <ContentSlide41 />;
       case 42: return <ContentSlide42 />;
-      case 43: return <ThankYouSlide />;
+      case 43: return <ContentSlide43 />;
+      case 44: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);
