@@ -196,7 +196,7 @@ export const IndustryProsperityScatterChart: React.FC = () => (
 
     <div className="flex-1 min-h-0">
       <ResponsiveContainer width="100%" height="100%">
-        <ScatterChart margin={{ top: 10, right: 14, bottom: 26, left: 0 }}>
+        <ScatterChart margin={{ top: 10, right: 14, bottom: 26, left: 16 }}>
           <CartesianGrid stroke={uiColors.grid} strokeDasharray="3 3" />
 
           {/* 象限角标 */}
@@ -230,7 +230,7 @@ export const IndustryProsperityScatterChart: React.FC = () => (
             tick={{ fill: uiColors.tick, fontSize: 9 }}
             width={30}
             tickFormatter={(v) => `${v}`}
-            label={{ value: '2026-09 景气分', angle: -90, position: 'insideLeft', offset: 14, fontSize: 9, fill: '#64748b' }}
+            label={{ value: '2026-09 景气分', angle: -90, position: 'insideLeft', offset: -4, fontSize: 9, fill: '#64748b' }}
           />
 
           <Tooltip content={<ScatterTooltip />} cursor={{ strokeDasharray: '3 3', stroke: uiColors.cursor }} />
