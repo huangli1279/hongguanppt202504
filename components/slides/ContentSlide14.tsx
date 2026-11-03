@@ -12,7 +12,7 @@ const retailCategoryGrowthData = [
   { name: '通讯器材', value: 31.1, fill: '#dc2626' },
   { name: '粮食食品', value: 6.7, fill: '#dc2626' },
   { name: '中西药品', value: 5.0, fill: '#dc2626' },
-  { name: '建筑材料', value: -11.8, fill: '#16a34a' },
+  { name: '建筑材料', value: -9.2, fill: '#16a34a' },
   { name: '汽车', value: -21.2, fill: '#16a34a' },
 ];
 
@@ -72,7 +72,7 @@ export const ContentSlide14: React.FC = () => {
           <ChartContainer delay="720ms">
             <BaseBarChart
               data={retailCategoryGrowthData}
-              title="商品零售额分项增速"
+              title="9月商品零售额分项同比增速"
               subtitle="数据来源：国家统计局 | 单位：%"
               bars={[{ dataKey: 'value', name: '增速' }]}
               xAxisKey="value"

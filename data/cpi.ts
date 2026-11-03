@@ -53,7 +53,7 @@ export const cpiTrendData: CpiTrendDataPoint[] = [
   { period: '2026-05', cpi: 1.20, coreCpi: 1.10 },
   { period: '2026-06', cpi: 1.00, coreCpi: 1.00 },
   { period: '2026-07', cpi: 0.50, coreCpi: 0.90 },
-  { period: '2026-08', cpi: 0.70, coreCpi: 1.00 },
+  { period: '2026-08', cpi: 0.80, coreCpi: 1.00 },
   { period: '2026-09', cpi: 0.90, coreCpi: 1.00 },
 ];
 

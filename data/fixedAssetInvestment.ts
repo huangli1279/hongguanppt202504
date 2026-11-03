@@ -31,7 +31,7 @@ export const fixedAssetInvestmentData: FixedAssetInvestmentDataPoint[] = [
   { period: '2026-03', fixedAsset: 1.70, manufacturing: 4.10, realEstate: -11.20, infrastructure: 8.90 },
   { period: '2026-04', fixedAsset: -1.60, manufacturing: 1.20, realEstate: -13.70, infrastructure: 4.30 },
   { period: '2026-05', fixedAsset: -4.10, manufacturing: -0.40, realEstate: -16.20, infrastructure: 0.60 },
-  { period: '2026-06', fixedAsset: -5.70, manufacturing: -1.20, realEstate: -18.00, infrastructure: -2.00 },
+  { period: '2026-06', fixedAsset: -5.70, manufacturing: -1.20, realEstate: -18.00, infrastructure: -2.40 },
   { period: '2026-07', fixedAsset: -6.70, manufacturing: -1.70, realEstate: -19.20, infrastructure: -3.60 },
   { period: '2026-08', fixedAsset: -7.20, manufacturing: -2.30, realEstate: -19.90, infrastructure: -4.00 },
   { period: '2026-09', fixedAsset: -7.20, manufacturing: -2.10, realEstate: -20.60, infrastructure: -4.20 },
@@ -85,7 +85,7 @@ export const investmentBreakdownData: InvestmentBreakdownDataPoint[] = [
   { period: '2026-04', construction: -4.40, equipment: 11.50, otherExpenses: -3.40 },
   { period: '2026-05', construction: -6.60, equipment: 9.30, otherExpenses: -6.40 },
   { period: '2026-06', construction: -8.00, equipment: 8.10, otherExpenses: -8.80 },
-  { period: '2026-07', construction: -8.00, equipment: 9.10, otherExpenses: -10.90 },
+  { period: '2026-07', construction: -9.20, equipment: 9.00, otherExpenses: -10.90 },
   { period: '2026-08', construction: -9.80, equipment: 9.30, otherExpenses: -12.00 },
   { period: '2026-09', construction: -10.00, equipment: 9.70, otherExpenses: -12.10 },
 ];
