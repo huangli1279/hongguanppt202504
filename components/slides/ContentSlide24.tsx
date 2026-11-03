@@ -42,7 +42,7 @@ const monthlyTradeExportsImportsData = [
 
 const monthlyTradeExportsImportsLines: LineConfig[] = [
   { dataKey: 'exports', name: '出口同比', color: '#b91c1c', strokeWidth: 2.5 },
-  { dataKey: 'imports', name: '进口同比', color: '#2563eb', strokeWidth: 2.5 },
+  { dataKey: 'imports', name: '进口同比', color: '#1e3a8a', strokeWidth: 2.5 },
 ];
 
 // 图2：贸易顺差当月同比（折线图，美元计价，当月同比 %）

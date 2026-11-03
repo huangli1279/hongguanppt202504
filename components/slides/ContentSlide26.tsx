@@ -1,39 +1,59 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { ImportStructureChart } from '../charts/ImportStructureChart';
+import { SemiExportLineChart, TraditionalImportBarChart } from '../charts/ImportStructureChart';
 
 export const ContentSlide26: React.FC = () => {
   return (
     <BaseContentSlide
-      title="进口结构：进口持续向高新技术迁移，粮食等传统产品量价齐降"
+      title="三季度进口结构：AI链拉动、价格走高与传统需求偏弱"
       cardColumns={3}
-      chartColumns={1}
+      chartColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-3 gap-3 mb-4 flex-shrink-0">
-          <BaseCard title="9月进口：价格驱动的高增" delay="0ms" variant="accent">
-            <p>
-              9月进口<span className="text-red-500 font-semibold">+31.0%</span>，但进口量仅<span className="text-red-500 font-semibold">+1.0%</span>——高增几乎全部来自价格；AI链（集成电路+自动数据处理设备）贡献<span className="text-red-500 font-semibold">21.7</span>个百分点，解释了进口增长的七成，"AI强、内需弱"的进口结构未变。
+          <BaseCard title="AI相关：进口价格增长" delay="0ms" variant="accent">
+            <p className="text-sm leading-snug">
+              9月自动数据处理设备及零部件进口金额同比
+              <span className="text-red-500 font-semibold">+296.5%</span>，集成电路
+              <span className="text-red-500 font-semibold">+74.7%</span>，但数量仅+1.7%。AI链（集成电路与计算机设备）合计拉动进口增速
+              <span className="text-red-500 font-semibold">21.7</span>个百分点，约贡献整体增幅七成。韩国半导体出口额10月受存储价格影响已环比下降，预计四季度AI进口增速将回落。
             </p>
           </BaseCard>
-          <BaseCard title="高新技术：AI链拉动" delay="120ms">
-            <p>
-              自动数据处理设备及零部件进口金额<span className="text-red-500 font-semibold">+296.5%</span>、集成电路<span className="text-red-500 font-semibold">+74.7%</span>，但剔除价格后集成电路进口数量仅<span className="text-red-500 font-semibold">+1.7%</span>；AI链对进口增速的贡献由8月的<span className="text-red-500 font-semibold">19.7pct</span>升至<span className="text-red-500 font-semibold">21.7pct</span>，解释了总体进口增长的约七成；非货币黄金进口<span className="text-red-500 font-semibold">+77.5%</span>再贡献<span className="text-red-500 font-semibold">3.8pct</span>（上半年拉动<span className="text-red-500 font-semibold">7pct</span>、本季退坡）。
+          <BaseCard title="通胀影响：价格抬升进口金额" delay="120ms">
+            <p className="text-sm leading-snug">
+              9月进口金额同比
+              <span className="text-red-500 font-semibold">+31.0%</span>，进口量仅
+              +1.0%，显示实际需求未明显改善。原油进口量
+              <span className="text-green-600 font-semibold">-21.5%</span>，但价格
+              <span className="text-red-500 font-semibold">+31.5%</span>，金额增长
+              +3.3%；煤炭、天然气金额分别增长
+              <span className="text-red-500 font-semibold">+45.3%</span>、
+              <span className="text-red-500 font-semibold">+34.0%</span>，但数量均下滑。
             </p>
           </BaseCard>
-          <BaseCard title="传统需求：量价齐降，仍在低位" delay="240ms">
-            <p>
-              传统需求偏弱：原油进口量<span className="text-green-600 font-semibold">-21.5%</span>，但价格<span className="text-red-500 font-semibold">+31.5%</span>，推升金额<span className="text-red-500 font-semibold">+3.3%</span>；煤炭、天然气进口金额<span className="text-red-500 font-semibold">+45.3%</span>/<span className="text-red-500 font-semibold">+34.0%</span>但数量分别<span className="text-green-600 font-semibold">-5.7%</span>/<span className="text-green-600 font-semibold">-1.7%</span>；铜矿进口数量<span className="text-green-600 font-semibold">-4.2%</span>，但价格增长<span className="text-red-500 font-semibold">32.6%</span>；液晶平板显示模组进口金额/数量分别<span className="text-green-600 font-semibold">-25.3%</span>/<span className="text-green-600 font-semibold">-24.0%</span>，汽车及零部件<span className="text-green-600 font-semibold">-38.1%</span>/<span className="text-green-600 font-semibold">-47.2%</span>，传统终端制造需求仍在低位。
+          <BaseCard title="传统行业下行：进口数量普遍走弱" delay="240ms">
+            <p className="text-sm leading-snug">
+              能源与原材料进口量偏弱：铜矿数量
+              <span className="text-green-600 font-semibold">-4.2%</span>，终端制造相关品类降幅更明显：液晶平板显示模组进口金额/数量分别
+              <span className="text-green-600 font-semibold">-25.3%</span>/
+              <span className="text-green-600 font-semibold">-24.0%</span>，汽车及零部件分别
+              <span className="text-green-600 font-semibold">-38.1%</span>/
+              <span className="text-green-600 font-semibold">-47.2%</span>，反映传统制造链需求仍处低位。
             </p>
           </BaseCard>
         </div>
 
         {/* 图表区域 */}
-        <ChartContainer delay="360ms" className="flex-1 min-h-0">
-          <ImportStructureChart />
-        </ChartContainer>
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-3">
+          <ChartContainer delay="360ms" className="min-w-0 min-h-0">
+            <SemiExportLineChart />
+          </ChartContainer>
+          <ChartContainer delay="480ms" className="min-w-0 min-h-0">
+            <TraditionalImportBarChart />
+          </ChartContainer>
+        </div>
       </div>
     </BaseContentSlide>
   );

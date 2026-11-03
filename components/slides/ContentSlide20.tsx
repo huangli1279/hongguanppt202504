@@ -49,11 +49,6 @@ const manufacturingTableColumns: Array<{ key: keyof Omit<ManufacturingTableRow, 
 ];
 
 const manufacturingTableData: ManufacturingTableRow[] = [
-  { period: '2025-02', auto: 27.0, chemicals: 6.0, computerComm: 9.6, railwayShipAerospace: 37.3, nonferrous: 16.1, generalEquipment: 21.6, specialEquipment: 9.0, electricalMachinery: -8.6, pharmaceutical: 3.5 },
-  { period: '2025-03', auto: 24.5, chemicals: 2.1, computerComm: 10.5, railwayShipAerospace: 37.9, nonferrous: 17.9, generalEquipment: 17.2, specialEquipment: 8.1, electricalMachinery: -7.4, pharmaceutical: 4.4 },
-  { period: '2025-04', auto: 23.6, chemicals: 1.3, computerComm: 9.0, railwayShipAerospace: 29.6, nonferrous: 16.4, generalEquipment: 17.9, specialEquipment: 8.4, electricalMachinery: -7.5, pharmaceutical: 2.8 },
-  { period: '2025-05', auto: 23.4, chemicals: 0.4, computerComm: 7.0, railwayShipAerospace: 26.1, nonferrous: 14.3, generalEquipment: 17.5, specialEquipment: 7.9, electricalMachinery: -8.6, pharmaceutical: 0.8 },
-  { period: '2025-06', auto: 22.2, chemicals: -1.1, computerComm: 4.8, railwayShipAerospace: 27.3, nonferrous: 9.1, generalEquipment: 16.6, specialEquipment: 6.2, electricalMachinery: -7.8, pharmaceutical: -3.9 },
   { period: '2025-07', auto: 21.7, chemicals: -4.7, computerComm: 7.2, railwayShipAerospace: 29.3, nonferrous: 4.9, generalEquipment: 14.8, specialEquipment: 4.6, electricalMachinery: -8.7, pharmaceutical: -6.6 },
   { period: '2025-08', auto: 20.2, chemicals: -5.2, computerComm: -0.1, railwayShipAerospace: 26.2, nonferrous: 2.2, generalEquipment: 13.7, specialEquipment: 1.6, electricalMachinery: -8.8, pharmaceutical: -8.5 },
   { period: '2025-09', auto: 19.2, chemicals: -5.5, computerComm: -2.1, railwayShipAerospace: 22.3, nonferrous: 0.4, generalEquipment: 11.8, specialEquipment: -0.7, electricalMachinery: -9.5, pharmaceutical: -9.8 },
@@ -97,11 +92,6 @@ const infrastructureTableColumns: Array<{ key: keyof Omit<InfrastructureTableRow
 ];
 
 const infrastructureTableData: InfrastructureTableRow[] = [
-  { period: '2025-02', railway: 0.2, road: -3.2, pipeline: 19.7, handlingStorage: 7.5, aviation: 13.4, waterTransport: 36.9, waterEnvironment: 8.5, powerUtility: 25.4, telecom: 11.7 },
-  { period: '2025-03', railway: 0.5, road: -0.2, pipeline: 69.2, handlingStorage: 8.3, aviation: 0.0, waterTransport: 25.9, waterEnvironment: 9.8, powerUtility: 26.0, telecom: 10.1 },
-  { period: '2025-04', railway: 1.6, road: -0.9, pipeline: 62.1, handlingStorage: 7.7, aviation: 13.9, waterTransport: 26.9, waterEnvironment: 8.6, powerUtility: 25.5, telecom: 9.5 },
-  { period: '2025-05', railway: 2.3, road: -0.4, pipeline: 38.4, handlingStorage: 8.2, aviation: 4.7, waterTransport: 27.2, waterEnvironment: 7.2, powerUtility: 25.4, telecom: 14.1 },
-  { period: '2025-06', railway: 4.2, road: 0.6, pipeline: 22.9, handlingStorage: 11.6, aviation: 4.0, waterTransport: 21.8, waterEnvironment: 3.5, powerUtility: 22.8, telecom: 13.0 },
   { period: '2025-07', railway: 5.9, road: -2.0, pipeline: 14.0, handlingStorage: 10.0, aviation: 2.9, waterTransport: 18.9, waterEnvironment: 2.0, powerUtility: 21.5, telecom: 12.8 },
   { period: '2025-08', railway: 4.5, road: -3.3, pipeline: 14.8, handlingStorage: 9.5, aviation: 1.0, waterTransport: 15.9, waterEnvironment: -0.2, powerUtility: 18.8, telecom: 10.9 },
   { period: '2025-09', railway: 4.2, road: -2.7, pipeline: 14.9, handlingStorage: 4.9, aviation: 0.2, waterTransport: 12.8, waterEnvironment: -2.4, powerUtility: 15.3, telecom: 11.5 },
@@ -216,7 +206,11 @@ export const ContentSlide20: React.FC = () => {
                 <table className="w-full h-full border-collapse text-[8px] leading-[1.1] table-fixed">
                   <thead>
                     <tr className="bg-webank-blue/10 text-webank-blue">
-                      <th className="border border-slate-300 px-[1px] py-[2px] font-bold w-[34px]">时间</th>
+                      <th rowSpan={2} className="border border-slate-300 px-[1px] py-[2px] font-bold w-[34px]">时间</th>
+                      <th colSpan={manufacturingTableColumns.length} className="border border-slate-300 px-[1px] py-[2px] font-bold">制造业</th>
+                      <th colSpan={infrastructureTableColumns.length} className="border border-slate-300 px-[1px] py-[2px] font-bold">基建</th>
+                    </tr>
+                    <tr className="bg-webank-blue/10 text-webank-blue">
                       {mergedTableColumns.map((col) => (
                         <th
                           key={col.key}
