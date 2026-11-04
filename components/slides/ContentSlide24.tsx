@@ -106,7 +106,7 @@ export const ContentSlide24: React.FC = () => {
           </BaseCard>
           <BaseCard title="三季度贸易顺差大超预期，9月顺差+50.5%" delay="120ms">
             <p className="text-sm">
-              9月当月顺差<span className="text-black">1335.3亿美元</span>，同比<span className="text-red-500 font-semibold">+50.5%</span>；前三季度顺差<span className="text-black">9381亿美元</span>，同比<span className="text-red-500 font-semibold">+7.2%</span>。
+              9月当月顺差<span className="text-black">1,335.3亿美元</span>，同比<span className="text-red-500 font-semibold">+50.5%</span>；前三季度顺差<span className="text-black">9,381亿美元</span>，同比<span className="text-red-500 font-semibold">+7.2%</span>。
             </p>
             <p className="text-sm mt-2">
               华泰估算三季度商品贸易顺差对名义GDP同比拉动<span className="text-red-500 font-semibold">+1.2个百分点</span>，对比二季度的<span className="text-green-600 font-semibold">-0.25%</span>，贸易顺差对GDP增长的贡献显著抬升。

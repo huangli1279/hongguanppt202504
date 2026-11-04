@@ -41,8 +41,8 @@ export const ContentSlide35: React.FC = () => {
           <BaseCard title="Q3企业贷款：政策工具落地支撑" delay="0ms" variant="accent" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
             <p className="mb-1">
               Q3企业贷款增长<span className="text-webank-blue font-semibold">1.45万亿</span>，中长期贷款增长
-              <span className="text-webank-blue font-semibold">9800亿</span>，同比少增
-              <span className="text-webank-blue font-semibold">1400亿</span>。
+              <span className="text-webank-blue font-semibold">9,800亿</span>，同比少增
+              <span className="text-webank-blue font-semibold">1,400亿</span>。
             </p>
             <p className="mb-1">
               其中9月企业贷款新增<span className="text-webank-blue font-semibold">1.29万亿</span>，主因9月新型政策性金融工具开始投放，补充重大项目资本金的同时带动银行配套贷款跟进。
@@ -53,25 +53,25 @@ export const ContentSlide35: React.FC = () => {
           </BaseCard>
           <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
             <p className="mb-1">
-              Q3居民贷款下降<span className="text-green-600 font-semibold">6669亿</span>，同比多降
-              <span className="text-green-600 font-semibold">5968亿</span>，9月单月居民贷款
+              Q3居民贷款下降<span className="text-green-600 font-semibold">6,669亿</span>，同比多降
+              <span className="text-green-600 font-semibold">5,968亿</span>，9月单月居民贷款
               <span className="text-green-600 font-semibold">0增长</span>；前三季度居民贷款累计下降
               <span className="text-green-600 font-semibold">1.03万亿</span>，居民信心偏弱，加杠杆意愿不强。
             </p>
             <p className="mb-1 font-semibold">从贷款分类看，各类贷款延续Q2趋势：</p>
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                住房贷款：Q3下降<span className="text-green-600 font-semibold">3800亿</span>，同比多降
-                <span className="text-green-600 font-semibold">800亿</span>，对比上季度下降金额（Q2：下降4300亿）有缓解。前三季度累计下降
+                住房贷款：Q3下降<span className="text-green-600 font-semibold">3,800亿</span>，同比多降
+                <span className="text-green-600 font-semibold">800亿</span>，对比上季度下降金额（Q2：下降4,300亿）有缓解。前三季度累计下降
                 <span className="text-green-600 font-semibold">1.1万亿</span>，为居民贷款下降的主要原因。后续贴息政策有望带动居民按揭信贷小幅增长，但持续性取决于收入房价预期等。
               </li>
               <li>
-                消费贷款（不含房贷）：Q3下降<span className="text-green-600 font-semibold">1370亿</span>，同比多降
-                <span className="text-green-600 font-semibold">2557亿</span>，消费需求修复仍显疲弱。
+                消费贷款（不含房贷）：Q3下降<span className="text-green-600 font-semibold">1,370亿</span>，同比多降
+                <span className="text-green-600 font-semibold">2,557亿</span>，消费需求修复仍显疲弱。
               </li>
               <li>
-                经营贷款：Q3下降<span className="text-green-600 font-semibold">1505亿</span>，同比多降
-                <span className="text-green-600 font-semibold">2648亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
+                经营贷款：Q3下降<span className="text-green-600 font-semibold">1,505亿</span>，同比多降
+                <span className="text-green-600 font-semibold">2,648亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
               </li>
             </ul>
           </BaseCard>

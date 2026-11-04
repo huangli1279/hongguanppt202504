@@ -19,8 +19,6 @@ export interface MoneySupplyCombinedDataPoint {
   m1: number;
   m2: number;
   scissor: number;
-  /** 剔除2025年9月高基数后的剪刀差（仅末段展示） */
-  scissorAdj?: number | null;
 }
 
 // M1/M2同比增速数据 (2022-2026H1)
@@ -172,6 +170,6 @@ export const moneySupplyCombinedRecentData: MoneySupplyCombinedDataPoint[] = [
   { period: '2026-05', m1: 5.5, m2: 8.6, scissor: -3.1 },
   { period: '2026-06', m1: 4.0, m2: 8.0, scissor: -4.0 },
   { period: '2026-07', m1: 3.7, m2: 7.9, scissor: -4.2 },
-  { period: '2026-08', m1: 3.4, m2: 7.5, scissor: -4.1, scissorAdj: -4.1 },
-  { period: '2026-09', m1: 3.2, m2: 7.2, scissor: -4.0, scissorAdj: -3.1 },
+  { period: '2026-08', m1: 3.4, m2: 7.5, scissor: -4.1 },
+  { period: '2026-09', m1: 3.2, m2: 7.2, scissor: -4.0 },
 ];

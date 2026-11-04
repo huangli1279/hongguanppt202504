@@ -15,6 +15,7 @@ import {
   useYAxisDomain,
 } from 'recharts';
 import { uiColors, getSeriesColor, chartColors } from '@/utils/chartColors';
+import { formatThousands } from '@/utils/numberFormat';
 
 export interface StackedBarConfig {
   dataKey: string;
@@ -143,7 +144,7 @@ const GapAnnotationsLayer: React.FC<{
 const CustomTooltip = ({ active, payload, label, unit = '', valueFormatter }: any) => {
   if (active && payload && payload.length) {
     const total = payload.reduce((sum: number, entry: any) => sum + entry.value, 0);
-    const formatValue = (val: number) => valueFormatter ? valueFormatter(val) : val;
+    const formatValue = (val: number) => valueFormatter ? valueFormatter(val) : formatThousands(val);
     
     return (
       <div className="bg-white p-2 shadow-lg text-xs font-sans" style={{ border: `1px solid ${uiColors.tooltipBorder}` }}>
@@ -343,7 +344,7 @@ export const BaseStackedBarChart: React.FC<BaseStackedBarChartProps> = ({
                       fill="#fff"
                       fontSize={8}
                       fontWeight={600}
-                      formatter={valueFormatter}
+                      formatter={valueFormatter ?? ((value: any) => (typeof value === 'number' ? formatThousands(value) : value))}
                     />
                   )}
                   {showTotalLabel && isTopBar && (

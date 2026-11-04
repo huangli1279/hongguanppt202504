@@ -86,7 +86,7 @@ export { governmentFundRevenueData, landSaleRevenueShareData } from './governmen
 export type { GovernmentFundRevenueDataPoint, LandSaleRevenueShareDataPoint } from './governmentFund';
 export { moneySupplyData, moneySupplyScissorData, moneySupplyCombinedRecentData } from './moneySupply';
 export type { MoneySupplyDataPoint, MoneySupplyScissorDataPoint, MoneySupplyCombinedDataPoint } from './moneySupply';
-export { socialFinancingGrowthData, socialFinancingStructureData, socialFinancingStructureQ2Data } from './socialFinancing';
+export { socialFinancingGrowthData, socialFinancingStructureData, socialFinancingStructureQ2Data, socialFinancingStructureQ3Data } from './socialFinancing';
 export {
   loanStockData,
   loanIncrementData,

@@ -5,6 +5,7 @@ import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { fiscalExpenditureQ3GrowthData, fiscalExpenditureTrendData } from '@/data/fiscalRevenue';
 import { chartColors } from '@/utils/chartColors';
+import { formatThousands } from '@/utils/numberFormat';
 
 export const ContentSlide31: React.FC = () => {
   const trendLines: LineConfig[] = [
@@ -87,7 +88,7 @@ export const ContentSlide31: React.FC = () => {
               lines={growthLines}
               xAxisKey="category"
               yAxisDomain={[0, 40000]}
-              yAxisTickFormatter={(val) => String(val)}
+              yAxisTickFormatter={(val) => formatThousands(Number(val))}
               unit="亿元"
               showYAxis={true}
               showLabels={false}

@@ -4,6 +4,7 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 import { fiscalRevenueTrendData, fiscalCategoryGrowthData } from '@/data/fiscalRevenue';
+import { formatThousands } from '@/utils/numberFormat';
 
 export const ContentSlide30: React.FC = () => {
   const lines: LineConfig[] = [
@@ -68,7 +69,7 @@ export const ContentSlide30: React.FC = () => {
               lines={growthLines}
               xAxisKey="category"
               yAxisDomain={[0, 60000]}
-              yAxisTickFormatter={(val) => String(val)}
+              yAxisTickFormatter={(val) => formatThousands(Number(val))}
               unit="亿元"
               showYAxis={true}
               showLabels={false}

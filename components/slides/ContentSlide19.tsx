@@ -3,6 +3,7 @@ import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart } from '../base/BaseBarChart';
 import { seriesColors } from '../../utils/chartColors';
+import { formatThousands } from '@/utils/numberFormat';
 
 const specialBondData = [
   { period: '2025-01', planned: 1686, actual: 2048, completion: 1.21 },
@@ -83,6 +84,7 @@ export const ContentSlide19: React.FC = () => (
             lines={[{ dataKey: 'completion', name: '完成率', color: '#8A8A8A', yAxisId: 'right', unit: '', dotsOnly: true }]}
             showYAxis={true}
             yAxisDomain={[0, 7000]}
+            yAxisTickFormatter={(value) => formatThousands(Number(value))}
             showLineYAxis={true}
             lineAxisDomain={[0, 2.4]}
             lineYAxisWidth={34}
@@ -119,7 +121,7 @@ export const ContentSlide19: React.FC = () => (
             lineAxisDomain={[0, 7000]}
             lineYAxisWidth={36}
             lineUnit="亿元"
-            lineYAxisTickFormatter={(value) => `${value}`}
+            lineYAxisTickFormatter={(value) => formatThousands(Number(value))}
             showReferenceLine={false}
             legendOrder={['特殊新增专项债占比', '土地储备专项债占比', '其他', '专项债金额']}
             unit="%"

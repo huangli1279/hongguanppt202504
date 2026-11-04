@@ -72,9 +72,9 @@ export const ContentSlide16: React.FC = () => {
           <BaseCard title="居民端印证与收入结构" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
             <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
               <li>
-                居民端印证：前三季度全国居民人均可支配收入34230元，实际
+                居民端印证：前三季度全国居民人均可支配收入34,230元，实际
                 <span className="font-bold text-red-500">+4.4%</span>
-                ；人均消费支出22354元，实际
+                ；人均消费支出22,354元，实际
                 <span className="font-bold text-green-600">+2.7%</span>
                 。
               </li>

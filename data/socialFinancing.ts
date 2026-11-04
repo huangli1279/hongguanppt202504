@@ -87,6 +87,35 @@ export const socialFinancingStructureQ2Data = [
   { category: '非金融企业境内股票融资', q25: 1761, q24: 746 },
 ];
 
+// 新增社融分项结构：2025Q3 与 2026Q3 对比
+// 社融增量单位为万亿元，其余分项单位为亿元
+export const socialFinancingStructureQ3Data = [
+  {
+    quarter: '2025Q3',
+    total: 6.84,
+    rmbLoan: 18038,
+    fxLoan: -307,
+    entrustedLoan: -59,
+    trustLoan: 561,
+    undiscountedBill: 3569,
+    corporateBond: 4222,
+    governmentBond: 38047,
+    equity: 1460,
+  },
+  {
+    quarter: '2026Q3',
+    total: 6.11,
+    rmbLoan: 7390,
+    fxLoan: 842,
+    entrustedLoan: 1011,
+    trustLoan: -937,
+    undiscountedBill: 2005,
+    corporateBond: 6855,
+    governmentBond: 38635,
+    equity: 2425,
+  },
+];
+
 // 新增社融按三大部门拆分的季度增量（单位：万亿元）
 // household 居民部门、corporate 企业部门、government 政府部门（含政府债券等）
 export const socialFinancingSectorData = [

@@ -17,6 +17,7 @@ import {
   Cell
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
+import { formatThousands } from '@/utils/numberFormat';
 
 export interface BarConfig {
   dataKey: string;
@@ -71,6 +72,8 @@ export interface BaseBarChartProps {
   /** 图表布局方向，默认 'vertical' 垂直（柱子上沿Y轴），设为 'horizontal' 横向（柱子沿X轴） */
   layout?: 'vertical' | 'horizontal';
   yAxisDomain?: [number, number];
+  /** 允许柱体/折线超出坐标轴范围时被截断（用于压缩异常大值，突出较小柱体） */
+  yAxisAllowDataOverflow?: boolean;
   showYAxis?: boolean;
   yAxisTickFormatter?: (value: any) => string;
   yAxisWidth?: number;
@@ -123,7 +126,7 @@ export interface BaseBarChartProps {
   /** 高亮区域（如红框标出组内 Top N），无标签 */
   highlightAreas?: HighlightAreaConfig[];
   /** 自定义柱状图标签渲染，返回 null 可隐藏指定柱子的标签 */
-  labelContent?: (props: any) => React.ReactNode;
+  labelContent?: (props: any) => React.ReactElement | null;
   /** 标签过滤器，返回 false 可隐藏指定柱子的标签 */
   labelFilter?: (props: any) => boolean;
   /** 标签与柱子的偏移量（正值往上，负值往下），默认 2 */
@@ -147,7 +150,8 @@ const CustomTooltip = ({ active, payload, label, unitByKey, defaultUnit = '%', l
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
             {entry.payload?.ageGroup ? `${entry.payload.ageGroup}: ` : `${entry.name}: `}
-            {entry.value}{unitByKey?.[entry.dataKey] ?? defaultUnit}
+            {typeof entry.value === 'number' ? formatThousands(entry.value) : entry.value}
+            {unitByKey?.[entry.dataKey] ?? defaultUnit}
           </p>
         ))}
       </div>
@@ -228,6 +232,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   xAxisKey = 'period',
   layout = 'vertical',
   yAxisDomain = [0, 8],
+  yAxisAllowDataOverflow = false,
   showYAxis = false,
   yAxisTickFormatter,
   yAxisWidth,
@@ -411,6 +416,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
                   yAxisId={barAxisId}
                   width={yAxisWidth}
+                  allowDataOverflow={yAxisAllowDataOverflow}
                 />
               </>
             )}
@@ -490,7 +496,9 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                         const numValue = Number(value) || 0;
                         const isNegative = numValue < 0;
                         const isOrange = (payload?.fill === '#E07A5F') || (isNegative && bar.color === '#1B4F72');
-                        let labelText = labelFormatter ? labelFormatter(value) : value;
+                        const labelText: string = labelFormatter
+                          ? labelFormatter(value)
+                          : (typeof value === 'number' ? formatThousands(value) : String(value ?? ''));
                         // 堆叠柱：统一用白色标签，确保对比度
                         const fill = bar.stackId
                           ? '#FFFFFF'

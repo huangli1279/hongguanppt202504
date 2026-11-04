@@ -4,6 +4,7 @@ import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
 import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
 import { housingConsumptionData, housingConsumptionCategoryGroups, housingConsumptionNameByCategory, newHousePriceYoyData, newHousePriceYoyXTicks } from '@/data/housingConsumption';
+import { formatThousands } from '@/utils/numberFormat';
 
 const consumptionBars: BarConfig[] = [
   { dataKey: 'housingTransport', name: '住房与交通', color: '#1B4F72', stackId: 'consumption' },
@@ -76,7 +77,7 @@ export const ContentSlide41: React.FC = () => {
                 yAxisDomain={[0, 5500]}
                 showYAxis={true}
                 yAxisWidth={50}
-                yAxisTickFormatter={(val) => `${val}`}
+                yAxisTickFormatter={(val) => formatThousands(Number(val))}
                 unit="元"
                 barSize={30}
                 showLabels={true}

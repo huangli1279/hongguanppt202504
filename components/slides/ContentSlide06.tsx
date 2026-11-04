@@ -31,7 +31,7 @@ export const ContentSlide06: React.FC = () => {
                     区间，处于政府目标（4.5%-5.0%）下限附近
                   </li>
                   <li>
-                    关键驱动力：出口+ 高技术制造业支撑总量，8000 亿新型政策性金融工具 + 六张网 + 5500 亿结存限额支撑投资
+                    关键驱动力：出口+ 高技术制造业支撑总量，8,000 亿新型政策性金融工具 + 六张网 + 5,500 亿结存限额支撑投资
                   </li>
                   <li>
                     K型分化延续：新经济强、旧经济弱
@@ -55,7 +55,7 @@ export const ContentSlide06: React.FC = () => {
                   </li>
                   <li>
                     <span className="font-bold text-webank-blue">一财一致预期：</span>
-                    4.6%（10 月最新）——第一财经首席经济学家调研（2026 年 10 月）显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为 4.6%
+                    4.6%（10 月最新）——第一财经首席经济学家调研显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为 4.6%
                   </li>
                   <li>
                     <span className="font-bold text-webank-blue">财信研究院：</span>

@@ -40,7 +40,7 @@ export const ContentSlide36: React.FC = () => {
           <BaseCard title="存款搬家放缓" delay="0ms" variant="accent">
             <p className="text-sm">
               三季度居民存款增长<span className="text-webank-blue font-semibold">1.81万亿</span>，同比少增
-              <span className="text-webank-blue font-semibold">1453亿</span>；非银机构存款
+              <span className="text-webank-blue font-semibold">1,453亿</span>；非银机构存款
               <span className="text-red-600 font-semibold">6个季度以来首次下降</span>（-0.24万亿）。存款搬家放缓，或源于三季度资本市场波动加大。
             </p>
           </BaseCard>
@@ -49,11 +49,11 @@ export const ContentSlide36: React.FC = () => {
               存款结构呈现季末资金回流银行的特征。9月居民存款增加
               <span className="text-webank-blue font-semibold whitespace-nowrap">2.4万亿</span>，非银存款减少
               <span className="text-red-600 font-semibold whitespace-nowrap">1.91万亿</span>、同比多减
-              <span className="text-webank-blue font-semibold whitespace-nowrap">8500亿</span>。普益标准统计的9月理财规模环比下降
+              <span className="text-webank-blue font-semibold whitespace-nowrap">8,500亿</span>。普益标准统计的9月理财规模环比下降
               <span className="text-webank-blue font-semibold whitespace-nowrap">0.85%</span>，与季末回表方向一致。
             </p>
             <p className="text-sm mt-2">
-              不过9月居民存款仍同比少增<span className="text-webank-blue font-semibold whitespace-nowrap">5600亿</span>，理财规模降幅也远小于非银存款收缩，可能源于季末再配置；10月季节性因素消退后，部分资金仍可能重新流向理财和基金。
+              不过9月居民存款仍同比少增<span className="text-webank-blue font-semibold whitespace-nowrap">5,600亿</span>，理财规模降幅也远小于非银存款收缩，可能源于季末再配置；10月季节性因素消退后，部分资金仍可能重新流向理财和基金。
             </p>
           </BaseCard>
         </div>

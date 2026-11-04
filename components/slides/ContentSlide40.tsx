@@ -5,6 +5,7 @@ import { JobDemandBarChart } from '../charts/JobDemandBarChart';
 import { JobGrowthBarChart } from '../charts/JobGrowthBarChart';
 import { BaseCard } from '../base/BaseCard';
 import { chartColors, seriesColors } from '@/utils/chartColors';
+import { formatThousands } from '@/utils/numberFormat';
 import { workTypeExpenditureData, jobDemandYoyData } from '@/data/employment';
 
 export const ContentSlide40: React.FC = () => {
@@ -55,14 +56,14 @@ export const ContentSlide40: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="失业率" delay="0ms" variant="accent">
             <p className="text-xs">
-              二季度失业率维持在<span className="text-green-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，但16-24岁失业率长期维持在<span className="text-green-500 font-semibold">15%</span>的高位。2026年毕业生预计<span className="text-green-500 font-semibold">1270万</span>，继续创历史新高。
+              二季度失业率维持在<span className="text-green-500 font-semibold">5.0%-5.2%</span>，全年龄段失业率均较一季度呈现季节性回落，但16-24岁失业率长期维持在<span className="text-green-500 font-semibold">15%</span>的高位。2026年毕业生预计<span className="text-green-500 font-semibold">1,270万</span>，继续创历史新高。
             </p>
           </BaseCard>
           <BaseCard title="就业结构变化" delay="120ms">
             <div className="space-y-2">
               <div>
                 <p className="text-xs">
-                  <span className="font-semibold text-gray-700">就业状态变化：</span>近五年，全国就业人数减少<span className="text-green-500 font-semibold">2600万</span>。灵活就业人数从21年的<span>2亿</span>拓展到25年<span>2.8亿</span>，26年预计<span className="text-green-500 font-semibold">3.2亿</span>，增长迅猛。
+                  <span className="font-semibold text-gray-700">就业状态变化：</span>近五年，全国就业人数减少<span className="text-green-500 font-semibold">2,600万</span>。灵活就业人数从21年的<span>2亿</span>拓展到25年<span>2.8亿</span>，26年预计<span className="text-green-500 font-semibold">3.2亿</span>，增长迅猛。
                 </p>
               </div>
               <div className="pt-1 border-t border-gray-100">
@@ -79,7 +80,7 @@ export const ContentSlide40: React.FC = () => {
           </BaseCard>
           <BaseCard title="失业对支出的影响" delay="240ms">
             <p className="text-xs">
-              调查显示，全职工作群体月均总支出<span>3521</span>元，失业3个月以内、3个月以上分别降低<span className="text-green-500 font-semibold">14.0%</span>、<span className="text-green-500 font-semibold">16.9%</span>，失业时间越长压制越明显。
+              调查显示，全职工作群体月均总支出<span>3,521</span>元，失业3个月以内、3个月以上分别降低<span className="text-green-500 font-semibold">14.0%</span>、<span className="text-green-500 font-semibold">16.9%</span>，失业时间越长压制越明显。
             </p>
           </BaseCard>
         </div>
@@ -162,16 +163,16 @@ export const ContentSlide40: React.FC = () => {
             <BaseBarChart
               data={workTypeExpenditureData}
               title="不同工作类型总支出"
-              subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》|单位：元|样本量：14967份"
+              subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》|单位：元|样本量：14,967份"
               subtitleClassName="text-[10px]"
               bars={workTypeExpenditureBars}
               xAxisKey="category"
               showYAxis={true}
               yAxisDomain={[0, 4000]}
-              yAxisTickFormatter={(val) => `${val}`}
+              yAxisTickFormatter={(val) => formatThousands(Number(val))}
               unit="元"
               showLabels={true}
-              labelFormatter={(val) => `${val}`}
+              labelFormatter={(val) => formatThousands(Number(val))}
               legendOrder={['总支出']}
               barSize={28}
               xAxisHeight={30}

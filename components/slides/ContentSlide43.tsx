@@ -204,7 +204,7 @@ const cards: {
         tone: 'blue',
         content: (
           <>
-            二季度居民存款净减 <span className="font-bold text-webank-blue">1049 亿</span>（2018 年来首次），非银存款增{' '}
+            二季度居民存款净减 <span className="font-bold text-webank-blue">1,049 亿</span>（2018 年来首次），非银存款增{' '}
             <span className="font-bold text-webank-blue">2.62 万亿</span>，趋势延续。
           </>
         ),

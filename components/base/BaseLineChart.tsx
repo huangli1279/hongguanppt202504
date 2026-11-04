@@ -13,6 +13,7 @@ import {
   LabelList
 } from 'recharts';
 import { uiColors, getSeriesColor } from '@/utils/chartColors';
+import { formatThousands } from '@/utils/numberFormat';
 
 export interface LineConfig {
   dataKey: string;
@@ -105,7 +106,7 @@ const CustomTooltip = ({ active, payload, label, unit = '%', unitByKey }: any) =
         <p className="font-bold text-webank-blue mb-1">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}{unitByKey?.[entry.dataKey] ?? unit}
+            {entry.name}: {typeof entry.value === 'number' ? formatThousands(entry.value) : entry.value}{unitByKey?.[entry.dataKey] ?? unit}
           </p>
         ))}
       </div>
@@ -240,7 +241,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
           fontWeight={600}
           textAnchor={textAnchor}
         >
-          {value}
+          {typeof value === 'number' ? formatThousands(value) : value}
         </text>
       </g>
     );
@@ -298,7 +299,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
         fontWeight={600} 
         textAnchor={textAnchor}
       >
-        {value}
+        {typeof value === 'number' ? formatThousands(value) : value}
       </text>
     );
   };
