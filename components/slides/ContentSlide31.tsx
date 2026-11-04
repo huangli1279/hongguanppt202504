@@ -57,7 +57,7 @@ export const ContentSlide31: React.FC = () => {
           </BaseCard>
           <BaseCard title="三个约束：土地、化债、监管" delay="240ms">
             <p>
-              一是土地财政收缩；二是隐性债务化解刚性，专项债付息占地方本级政府性基金收入比重升至 <span className="text-red-500 font-semibold">18%</span> 以上（申万）；三是 9 月 11 日中纪委与财政部联合通报六起隐债问责案例，再度释放强监管信号。
+              一是土地财政收缩；二是隐性债务化解刚性，专项债付息占地方本级政府性基金收入比重升至 <span className="text-red-500 font-semibold">18%</span> 以上；三是 9 月 11 日中纪委与财政部联合通报六起隐债问责案例，再度释放强监管信号。
             </p>
           </BaseCard>
         </div>

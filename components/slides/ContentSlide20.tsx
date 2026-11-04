@@ -118,47 +118,53 @@ const mergedTableData = manufacturingTableData.map((row, index) => ({
 export const ContentSlide20: React.FC = () => {
   return (
     <BaseContentSlide
-      title="制造业与基建固投：行业分化持续，增长集中在战略类基建、AI产业链"
+      title="制造业与基建固投：战略基建与AI产业链领跑，传统制造和公共设施承压"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
-          <BaseCard title="① 正增长集中在三类行业" delay="0ms" variant="accent">
+          <BaseCard title="① 增长集中在战略基建与电子产业链" delay="0ms" variant="accent">
             <p>
-              分行业看，前三季度投资正增长的集中在三类：战略类基建（水上运输
-              <span className="text-red-500 font-semibold">+13.5%</span>、航空运输
-              <span className="text-red-500 font-semibold">+13.8%</span>、信息传输
-              <span className="text-red-500 font-semibold">+30.8%</span>）、AI产业链（电子电路
-              <span className="text-red-500 font-semibold">+58.7%</span>、计算机通信电子
-              <span className="text-red-500 font-semibold">+9.6%</span>）。
+              前三季度，水上运输（
+              <span className="text-red-500 font-semibold">+13.5%</span>
+              ）、航空运输（
+              <span className="text-red-500 font-semibold">+13.8%</span>
+              ）、信息传输（
+              <span className="text-red-500 font-semibold">+30.8%</span>
+              ）等“六张网”相关基建投资保持较快增长；电子电路（
+              <span className="text-red-500 font-semibold">+58.7%</span>
+              ）、集成电路（
+              <span className="text-red-500 font-semibold">+14.2%</span>
+              ）、计算机通信电子（
+              <span className="text-red-500 font-semibold">+9.6%</span>
+              ）等电子产业链投资表现亮眼。
             </p>
             <p className="mt-2">
               高技术制造业投资同比增长
               <span className="text-red-500 font-semibold">4.0%</span>
-              ，增速比1—8月份加快0.5个百分点。其中，电子电路制造业投资增长
-              <span className="text-red-500 font-semibold">58.7%</span>
-              ，持续保持高速增长；锂离子电池制造业投资增长
-              <span className="text-red-500 font-semibold">20.9%</span>
-              ，增速加快0.3个百分点；集成电路制造业投资增长
-              14.2%
-              ，增速加快2.2个百分点；电子专用材料制造业投资增长
-              9.5%
-              ，增速加快1.0个百分点。
+              ，增速较1—8月加快0.5个百分点。主要受“两重”“六张网”项目推进、AI算力/终端需求扩张以及设备更新政策拉动。
             </p>
           </BaseCard>
 
-          <BaseCard title="② “两重”项目建设推进，重点领域基础设施投资较快增长" delay="120ms">
+          <BaseCard title="② 传统制造与公共设施管理继续承压" delay="120ms">
             <p>
-              今年以来，包括“六张网”在内的一大批重大工程项目加快落地建设，带动现代化基础设施体系相关投资较快增长。前三季度，互联网和相关服务业投资同比增长
-              <span className="text-red-500 font-semibold">46.7%</span>
-              ，增速比1—8月份加快4.7个百分点；航空运输业投资增长
-              13.8%
-              ；水上运输业投资增长
-              13.5%
-              ；电力供应业投资增长
-              11.2%
+              前三季度，汽车制造（
+              <span className="text-green-600 font-semibold">-6.3%</span>
+              ）、专用设备（
+              <span className="text-green-600 font-semibold">-8.9%</span>
+              ）、医药制造（
+              <span className="text-green-600 font-semibold">-8.1%</span>
+              ）、化学原料（
+              <span className="text-green-600 font-semibold">-7.5%</span>
+              ）等制造业投资负增长；基建中的水利环境和公共设施管理业投资下降
+              <span className="text-green-600 font-semibold">12.8%</span>
+              ，道路运输业下降
+              <span className="text-green-600 font-semibold">9.9%</span>
               。
+            </p>
+            <p className="mt-2">
+              拖累因素包括产能利用率偏低、终端需求不足、PPI低迷压制盈利预期，以及地方财政紧平衡下公共设施项目推进偏慢。
             </p>
           </BaseCard>
         </div>

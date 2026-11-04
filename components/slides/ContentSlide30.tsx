@@ -21,7 +21,7 @@ export const ContentSlide30: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>财政收入：一本账稳、二本账紧，“土地财政+化债”双重约束地方支出</>}
+      title={<>财政收入：前三季度一般公共预算收入同比增长5.7%，高于年初预算目标，完成进度78%快于今年同期</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">

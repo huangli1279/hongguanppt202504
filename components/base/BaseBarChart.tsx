@@ -34,6 +34,8 @@ export interface BarLineConfig {
   unit?: string;
   /** 虚线样式，如 "6 4" 表示预测段 */
   strokeDasharray?: string;
+  /** 只显示数据点、不绘制连接线 */
+  dotsOnly?: boolean;
 }
 
 export interface CategoryGroupConfig {
@@ -556,7 +558,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                     type="monotone"
                     dataKey={line.dataKey}
                     stroke={lineColor}
-                    strokeWidth={line.strokeWidth ?? 2}
+                    strokeWidth={line.dotsOnly ? 0 : (line.strokeWidth ?? 2)}
                     strokeDasharray={line.strokeDasharray}
                     connectNulls={false}
                     dot={lineShowDot ? { r: 4, fill: lineColor, stroke: lineColor, strokeWidth: 0 } : false}

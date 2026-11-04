@@ -8,23 +8,28 @@ export const ContentSlide22: React.FC = () => {
   const policyTableData = [
     {
       area: '“六张网”基础设施建设',
-      content: '8000 亿工具首批落地浙江、四川、湖北；PSL 将“六张网”纳入支持；9 月项目建设专项债多增 2527 亿',
+      content:
+        '8000 亿工具首批落地浙江、四川、湖北；PSL 将“六张网”纳入支持；9 月项目建设专项债多增 2527 亿；截至 10 月 28 日，8000 亿工具已全部投放完成，对 11 个经济大省倾斜',
     },
     {
       area: '人工智能',
-      content: '9 月信息服务业投资 +20.2%、电子通信设备 +7.6%，但体量对冲不了建安 -10.0%',
+      content: '人工智能、数字经济等纳入新型政策性金融工具和科技创新再贷款重点支持领域',
     },
     {
       area: '能源保供',
-      content: '抽水蓄能、新型储能纳入工具支持（浙江建德项目为首批）',
+      content: '抽水蓄能、新型储能纳入新型政策性金融工具支持范围（浙江建德项目为首批）',
     },
     {
       area: '民间投资',
-      content: '8000 亿工具明确全部投向民间项目（进出口银行 123 个项目、超 220 亿、拉动总投资超 4000 亿）',
+      content: '8000 亿工具加大对民间投资和民间资本参与项目的支持力度',
     },
     {
-      area: '民生',
-      content: '9 月 29 日结构性再贷款+房贷贴息（中央财政首次贴息）',
+      area: '民生·货币政策',
+      content: '9 月 29 日科技创新再贷款 +2000 亿、支农支小再贷款 +5000 亿',
+    },
+    {
+      area: '民生·财政政策',
+      content: '10 月 1 日起中央财政首次对首套房贷贴息',
     },
   ];
 
@@ -56,12 +61,18 @@ export const ContentSlide22: React.FC = () => {
       chartColumns={1}
       cards={
         <>
-          <BaseCard title="政策支持" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
-            <p className="text-[11px] leading-snug">
-              <span className="font-bold">8,000 亿</span>新型政策性金融工具 9 月才加速投放、<span className="font-bold">5,500 亿</span>结存限额 10 月落地。
+          <BaseCard title="政策资金端" delay="0ms" variant="accent" className="!gap-1.5 !p-3">
+            <p className="text-[11px] leading-snug font-semibold text-webank-blue">
+              政策资金端加速发力，结构边际改善，但传导仍有时滞。
             </p>
             <p className="mt-1 text-[11px] leading-snug">
-              专项债发行提速：9 月国债净发行+新增专项债 <span className="font-bold">1.15 万亿</span>、同比多增 <span className="font-bold">2918 亿</span>；项目建设专项债同比多增 <span className="font-bold">2527 亿</span>；特殊专项债占比 <span className="font-bold">47.3%→29.6%</span>。
+              <span className="font-bold">财政端：</span>9月单月发行<span className="font-bold">6,339亿元</span>、同比多增<span className="font-bold">2,148亿元</span>，提速最为明显，特殊专项债占比由<span className="font-bold">47.3%降至29.6%</span>，投向实体项目的比重提升。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              <span className="font-bold">金融工具端：</span><span className="font-bold">8,000亿元</span>新型政策性金融工具10月28日已全部投放，全部补充项目资本金，撬动总投资超<span className="font-bold">11万亿元</span>，约<span className="font-bold">35%</span>支持民间资本参与项目。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug">
+              <span className="font-bold">货币端：</span>9月29日PSL降至<span className="font-bold">1.5%</span>并扩围“六张网”，科技创新、支农支小再贷款分别增额<span className="font-bold">2,000亿</span>、<span className="font-bold">5,000亿元</span>。
             </p>
           </BaseCard>
           <BaseCard title="机构预测" delay="120ms" variant="accent" className="!gap-1.5 !p-3">
