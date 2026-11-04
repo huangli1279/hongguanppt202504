@@ -32,13 +32,13 @@ export const investmentData = [
   { period: '2025-10', realEstateInvestment: -14.7, salesArea: -6.8, newConstruction: -19.8 },
   { period: '2025-11', realEstateInvestment: -15.9, salesArea: -7.8, newConstruction: -20.5 },
   { period: '2025-12', realEstateInvestment: -17.2, salesArea: -8.7, newConstruction: -20.4 },
-  { period: '2026-02', realEstateInvestment: -10.4, salesArea: -13.5, newConstruction: -23.1 },
-  { period: '2026-03', realEstateInvestment: -11.2, salesArea: -10.2, newConstruction: -20.3 },
+  { period: '2026-02', realEstateInvestment: -11.1, salesArea: -13.5, newConstruction: -23.1 },
+  { period: '2026-03', realEstateInvestment: -11.2, salesArea: -10.4, newConstruction: -20.3 },
   { period: '2026-04', realEstateInvestment: -13.7, salesArea: -10.8, newConstruction: -22.0 },
   { period: '2026-05', realEstateInvestment: -16.2, salesArea: -10.8, newConstruction: -22.6 },
   { period: '2026-06', realEstateInvestment: -18.0, salesArea: -11.6, newConstruction: -23.4 },
-  { period: '2026-07', realEstateInvestment: -19.2, salesArea: -12.2, newConstruction: -23.8 },
-  { period: '2026-08', realEstateInvestment: -19.9, salesArea: -12.7, newConstruction: -24.3 },
+  { period: '2026-07', realEstateInvestment: -19.2, salesArea: -11.8, newConstruction: -24.0 },
+  { period: '2026-08', realEstateInvestment: -19.9, salesArea: -12.1, newConstruction: -24.8 },
   { period: '2026-09', realEstateInvestment: -20.6, salesArea: -13.2, newConstruction: -24.9 },
 ];
 
@@ -103,7 +103,7 @@ export const housePriceMomData = [
   { period: '2026-06', firstTierNew: 0.10, secondTierNew: 0.00, firstTierUsed: 0.30, secondTierUsed: -0.30 },
   { period: '2026-07', firstTierNew: 0.15, secondTierNew: -0.05, firstTierUsed: 0.35, secondTierUsed: -0.25 },
   { period: '2026-08', firstTierNew: 0.12, secondTierNew: -0.02, firstTierUsed: 0.32, secondTierUsed: -0.22 },
-  { period: '2026-09', firstTierNew: 0.10, secondTierNew: 0.00, firstTierUsed: 0.30, secondTierUsed: -0.20 },
+  { period: '2026-09', firstTierNew: 0.10, secondTierNew: 0.00, firstTierUsed: 0.20, secondTierUsed: -0.20 },
 ];
 
 // 70个大中城市房价环比
@@ -136,6 +136,6 @@ export const nationalHousePriceMomData = [
   { period: '2026-06', nationalNew: -0.20, nationalUsed: -0.30 },
   { period: '2026-07', nationalNew: -0.18, nationalUsed: -0.28 },
   { period: '2026-08', nationalNew: -0.15, nationalUsed: -0.25 },
-  { period: '2026-09', nationalNew: -0.12, nationalUsed: -0.22 },
+  { period: '2026-09', nationalNew: -0.1, nationalUsed: -0.3 },
 ];
 

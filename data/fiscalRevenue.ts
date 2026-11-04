@@ -37,9 +37,9 @@ export const fiscalRevenueTrendData: FiscalRevenueTrendDataPoint[] = [
   { period: '2026-04', taxRevenue: 3.90, nonTaxRevenue: 1.60, total: 3.50 },
   { period: '2026-05', taxRevenue: 4.40, nonTaxRevenue: 2.20, total: 4.00 },
   { period: '2026-06', taxRevenue: 5.30, nonTaxRevenue: 2.30, total: 4.70 },
-  { period: '2026-07', taxRevenue: 5.50, nonTaxRevenue: 1.80, total: 5.20 },
-  { period: '2026-08', taxRevenue: 5.90, nonTaxRevenue: 1.50, total: 5.50 },
-  { period: '2026-09', taxRevenue: 6.10, nonTaxRevenue: 1.20, total: 5.70 },
+  { period: '2026-07', taxRevenue: 6.7, nonTaxRevenue: 1.60, total: 5.80 },
+  { period: '2026-08', taxRevenue: 6.60, nonTaxRevenue: 1.50, total: 5.70 },
+  { period: '2026-09', taxRevenue: 6.10, nonTaxRevenue: 1.20, total: 5.10 },
 ];
 
 // 2026年1-9月主要税种收入总额与累计同比（按增速升序）
@@ -114,7 +114,7 @@ export const fiscalExpenditureTrendData: FiscalExpenditureTrendDataPoint[] = [
   { period: '5月', y2025: 4.2, y2026: 0.8 },
   { period: '6月', y2025: 3.4, y2026: 1.5 },
   { period: '7月', y2025: 3.4, y2026: 1.3 },
-  { period: '8月', y2025: 3.1, y2026: 1.1 },
+  { period: '8月', y2025: 3.1, y2026: 1.2 },
   { period: '9月', y2025: 3.1, y2026: 1.0 },
   { period: '10月', y2025: 2.0, y2026: null },
   { period: '11月', y2025: 1.4, y2026: null },

@@ -31,7 +31,7 @@ export const socialFinancingGrowthData = [
   { period: '2026-04', growth: 7.8 },
   { period: '2026-05', growth: 7.7 },
   { period: '2026-06', growth: 7.4 },
-  { period: '2026-07', growth: 7.3 },
+  { period: '2026-07', growth: 7.4 },
   { period: '2026-08', growth: 7.2 },
   { period: '2026-09', growth: 7.1 },
 ];

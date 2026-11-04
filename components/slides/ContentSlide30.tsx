@@ -29,12 +29,12 @@ export const ContentSlide30: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="收入总量超出预期" delay="0ms" variant="accent">
             <p>
-              1—9月财政收入累计同比增长<span className="text-red-500 font-semibold">5.7%</span>，高于全年目标<span className="text-red-500 font-semibold">2.4%</span>，其中税收收入增长<span className="text-red-500 font-semibold">6.1%</span>，非税收入增长<span className="text-red-500 font-semibold">1.2%</span>，税收成为收入增长的主要拉动。
+              1—9月财政收入累计同比增长<span className="text-red-500 font-semibold">5.1%</span>，高于全年目标<span className="text-red-500 font-semibold">1.6%</span>，其中税收收入增长<span className="text-red-500 font-semibold">6.1%</span>，非税收入增长<span className="text-red-500 font-semibold">1.2%</span>，税收成为收入增长的主要拉动。
             </p>
           </BaseCard>
           <BaseCard title="税收增速温和，对收入增长贡献显著" delay="120ms">
             <p>
-              分具体收入类型来看，受PPI回升与工业生产稳健支撑、外贸进口较快增长带动，国内增值税、进口货物增值税、消费税累计同比分别增长<span className="text-red-500 font-semibold">6.1%</span>、<span className="text-red-500 font-semibold">12.7%</span>，对收入增量贡献分别<span className="text-red-500 font-semibold">37%</span>、<span className="text-red-500 font-semibold">20%</span>。
+              分具体收入类型来看，受PPI回升与工业生产稳健支撑、外贸进口较快增长带动，国内增值税、进口货物增值税、消费税累计同比分别增长<span className="text-red-500 font-semibold">6.0%</span>、<span className="text-red-500 font-semibold">12.7%</span>，对收入增量贡献分别<span className="text-red-500 font-semibold">37%</span>、<span className="text-red-500 font-semibold">20%</span>。
             </p>
             <p className="mt-2">
               受三季度资本市场扰动，1—9月印花税同比增长<span className="text-red-500 font-semibold">31.1%</span>，其中证券交易印花税同比增<span className="text-red-500 font-semibold">65.1%</span>，增幅较二季度回落。
