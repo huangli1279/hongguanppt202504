@@ -16,8 +16,8 @@ const growthLineConfigs: LineConfig[] = [
 const [structure2025, structure2026] = socialFinancingStructureQ3Data;
 
 const structureBars: BarConfig[] = [
-  { dataKey: 'y2025', name: '2025Q3', color: '#4A79AA' },
-  { dataKey: 'y2026', name: '2026Q3', color: '#DC2626' },
+  { dataKey: 'y2025', name: '2025Q3', color: '#1B4F72' },
+  { dataKey: 'y2026', name: '2026Q3', color: '#991B1B' },
 ];
 
 const structureChartData = [
@@ -32,7 +32,6 @@ const structureChartData = [
 ];
 
 const renderStructureBarLabel = ({ x, y, width, value, dataKey }: any) => {
-  if (Math.abs(Number(value)) < 1000) return null;
   const is2026 = dataKey === 'y2026';
   return (
     <text
@@ -40,7 +39,7 @@ const renderStructureBarLabel = ({ x, y, width, value, dataKey }: any) => {
       y={Math.abs(Number(value)) > 10000 ? 18 : Number(y) - (is2026 ? 18 : 6)}
       textAnchor="middle"
       dominantBaseline="middle"
-      fill={is2026 ? '#DC2626' : '#4A79AA'}
+      fill={is2026 ? '#991B1B' : '#1B4F72'}
       fontSize={9}
       fontWeight={600}
     >
@@ -86,7 +85,10 @@ export const ContentSlide33: React.FC = () => {
               <span className="text-red-500 font-semibold">588亿</span>
               。其中9月人民币贷款、政府债净融明显放量，政府债融资多增
               <span className="text-red-500 font-semibold">3,469亿</span>
-              ，或反映财政端融资节奏正在加快。7月政治局会议提出“充分发挥各项存量政策效能”、加快债券资金使用进度的要求，或是推动9月政府债净融资放量的因素之一。受发行节奏后移和低基数影响，机构测算四季度政府债净融资同比多增约
+              ，或反映财政端融资节奏正在加快。7月政治局会议提出“充分发挥各项存量政策效能”、加快债券资金使用进度的要求，或是推动9月政府债净融资放量的因素之一。
+            </p>
+            <p className="mt-2">
+              受发行节奏后移和低基数影响，申万测算四季度政府债净融资同比多增约
               <span className="text-red-500 font-semibold">1.2万亿元</span>
               ，但全年总量基本持平；资金集中到位能否转化为实物工作量，仍待项目开工验证。
             </p>
@@ -125,7 +127,7 @@ export const ContentSlide33: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               unit="亿元"
-              barSize={12}
+              barSize={18}
               xAxisInterval={0}
               xAxisAngle={-20}
               xAxisHeight={58}

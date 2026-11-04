@@ -48,7 +48,7 @@ export const ContentSlide31: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="支出进度慢" delay="0ms" variant="accent">
             <p>
-              1—9月全国一般公共预算支出 <span className="text-red-500 font-semibold">21.02万亿元</span>，同比增长 <span className="text-red-500 font-semibold">1%</span>，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间。支出进度 <span className="text-red-500 font-semibold">70.0%</span>，偏慢，低于收入进度 8 个百分点。
+              1—9月全国一般公共预算支出 <span className="text-red-500 font-semibold">21.02万亿元</span>，同比增长1%，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间。支出进度 <span className="text-red-500 font-semibold">70.0%</span>，偏慢，低于收入进度 8 个百分点。
             </p>
           </BaseCard>
           <BaseCard title="结构：民生托底、科创加力、基建边际修复" delay="120ms">

@@ -35,8 +35,9 @@ export const ContentSlide26: React.FC = () => {
           </BaseCard>
           <BaseCard title="传统行业下行：进口数量普遍走弱" delay="240ms">
             <p className="text-sm leading-snug">
-              能源与原材料进口量偏弱：铜矿数量
-              <span className="text-green-600 font-semibold">-4.2%</span>，终端制造相关品类降幅更明显：液晶平板显示模组进口金额/数量分别
+              能源与原材料进口量偏弱：铜矿9月数量
+              <span className="text-green-600 font-semibold">-3.7%</span>，金额
+              <span className="text-red-500 font-semibold">+14.1%</span>。终端制造相关品类降幅更明显：液晶平板显示模组进口金额/数量分别
               <span className="text-green-600 font-semibold">-25.3%</span>/
               <span className="text-green-600 font-semibold">-24.0%</span>，汽车及零部件分别
               <span className="text-green-600 font-semibold">-38.1%</span>/

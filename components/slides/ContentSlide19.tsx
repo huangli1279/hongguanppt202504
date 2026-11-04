@@ -96,6 +96,7 @@ export const ContentSlide19: React.FC = () => (
             lineShowDot={true}
             showLabels={false}
             barSize={7}
+            barGap={1}
             barCategoryGap="18%"
             xAxisAngle={-55}
             xAxisHeight={55}
@@ -109,11 +110,11 @@ export const ContentSlide19: React.FC = () => (
             title="图2 专项债资金投向结构"
             subtitle="备注：土地储备专项债用于收储土地，不直接计入当期固定资产投资；特殊新增专项债主要用于置换隐性债务及清欠。"
             bars={[
-              { dataKey: 'special', name: '特殊新增专项债占比', color: '#B85E5B', stackId: 'stack' },
+              { dataKey: 'special', name: '特殊新增专项债占比', color: seriesColors[3], stackId: 'stack' },
               { dataKey: 'land', name: '土地储备专项债占比', color: '#8CB27A', stackId: 'stack' },
-              { dataKey: 'other', name: '其他', color: '#8B7BA8', stackId: 'stack' },
+              { dataKey: 'other', name: '其他', color: seriesColors[1], stackId: 'stack' },
             ]}
-            lines={[{ dataKey: 'amount', name: '专项债金额', color: seriesColors[1], yAxisId: 'right', unit: '亿元', strokeWidth: 2 }]}
+            lines={[{ dataKey: 'amount', name: '专项债金额', color: seriesColors[0], yAxisId: 'right', unit: '亿元', strokeWidth: 2 }]}
             yAxisDomain={[0, 105]}
             showYAxis={true}
             yAxisTickFormatter={(value) => `${value}%`}

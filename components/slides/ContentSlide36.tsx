@@ -40,15 +40,14 @@ export const ContentSlide36: React.FC = () => {
           <BaseCard title="存款搬家放缓" delay="0ms" variant="accent">
             <p className="text-sm">
               三季度居民存款增长<span className="text-webank-blue font-semibold">1.81万亿</span>，同比少增
-              <span className="text-webank-blue font-semibold">1,453亿</span>；非银机构存款
-              <span className="text-red-600 font-semibold">6个季度以来首次下降</span>（-0.24万亿）。存款搬家放缓，或源于三季度资本市场波动加大。
+              <span className="text-webank-blue font-semibold">1,453亿</span>；非银机构存款6个季度以来首次下降（-0.24万亿）。存款搬家放缓，或源于三季度资本市场波动加大。
             </p>
           </BaseCard>
           <BaseCard title="季末资金回流银行" delay="120ms">
             <p className="text-sm">
               存款结构呈现季末资金回流银行的特征。9月居民存款增加
               <span className="text-webank-blue font-semibold whitespace-nowrap">2.4万亿</span>，非银存款减少
-              <span className="text-red-600 font-semibold whitespace-nowrap">1.91万亿</span>、同比多减
+              <span className="text-green-600 font-semibold whitespace-nowrap">1.91万亿</span>、同比多减
               <span className="text-webank-blue font-semibold whitespace-nowrap">8,500亿</span>。普益标准统计的9月理财规模环比下降
               <span className="text-webank-blue font-semibold whitespace-nowrap">0.85%</span>，与季末回表方向一致。
             </p>

@@ -11,7 +11,6 @@ const industryYoyData = [
   { name: '航空运输', value: 13.8, fill: '#b91c1c' },
   { name: '水上运输', value: 13.5, fill: '#b91c1c' },
   { name: '计算机通信电子', value: 9.6, fill: '#b91c1c' },
-  { name: '高技术制造', value: 4.0, fill: '#b91c1c' },
   { name: '有色金属冶炼', value: -5.1, fill: '#16a34a' },
   { name: '汽车制造', value: -6.3, fill: '#16a34a' },
   { name: '电力热力燃气水', value: -6.8, fill: '#16a34a' },
@@ -138,12 +137,9 @@ export const ContentSlide20: React.FC = () => {
               <span className="text-red-500 font-semibold">+14.2%</span>
               ）、计算机通信电子（
               <span className="text-red-500 font-semibold">+9.6%</span>
-              ）等电子产业链投资表现亮眼。
-            </p>
-            <p className="mt-2">
-              高技术制造业投资同比增长
+              ）等电子产业链投资表现亮眼；高技术制造业投资同比增长
               <span className="text-red-500 font-semibold">4.0%</span>
-              ，增速较1—8月加快0.5个百分点。主要受“两重”“六张网”项目推进、AI算力/终端需求扩张以及设备更新政策拉动。
+              ，增速较1—8月加快0.5个百分点，主要受“两重”“六张网”项目推进、AI算力/终端需求扩张以及设备更新政策拉动。
             </p>
           </BaseCard>
 

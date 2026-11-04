@@ -33,8 +33,7 @@ export const ContentSlide34: React.FC = () => {
               <span className="text-green-600 font-semibold">-3.6%</span>），资金活化放缓。
             </p>
             <p className="mt-2">
-              <strong>M2同比回落：</strong>信贷派生放缓、政府债发行节奏偏慢等现实因素，共同压制了 M2
-              总量的扩张。信贷派生放缓，叠加政府债发行提速后资金沉淀于财政存款、拨付偏慢，共同拖累M2增速。
+              <strong>M2同比回落：</strong>信贷派生放缓，叠加政府债发行提速后资金沉淀于财政存款、拨付偏慢，共同拖累M2增速。
             </p>
           </BaseCard>
           <BaseCard delay="200ms" variant="accent" title="剪刀差走阔 · 四季度展望">

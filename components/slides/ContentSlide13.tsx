@@ -83,7 +83,7 @@ export const ContentSlide13: React.FC = () => {
 
           <BaseCard title="国庆数据：入境游亮点" delay="240ms">
             <p>
-              2026年国庆节假期7天，全国国内出游<span className="font-bold">8.26亿人次</span>，出游总花费<span className="font-bold">7,383.75亿元</span>，日均同比分别增长<span className="font-bold text-red-500">6.3%</span>、<span className="font-bold text-red-500">4.3%</span>（25年较24年同比人次+1.6%、消费+1.0%）。入境游成亮点，三季度免签入境外国人增速<span className="font-bold text-red-500">+48.3%</span>，中信测算1位外国游客在华花费约为16人次国内出游，政策效果初现。
+              2026年国庆节假期7天，全国国内出游<span className="font-bold">8.26亿人次</span>，出游总花费<span className="font-bold">7,383.75亿元</span>，日均同比分别增长<span className="font-bold text-red-500">6.3%</span>、<span className="font-bold text-red-500">4.3%</span>（25年较24年同比人次+1.6%、消费+1.0%）。入境游成亮点，三季度免签入境外国人增速<span className="font-bold text-red-500">+48.3%</span>，中信测算1位外国游客在华花费约为16人次国内出游，促消费政策效果初现。
             </p>
           </BaseCard>
         </>

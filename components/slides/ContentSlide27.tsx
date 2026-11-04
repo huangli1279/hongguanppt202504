@@ -43,7 +43,7 @@ const regionalExportColumns: ColumnConfig[] = [
 export const ContentSlide27: React.FC = () => {
   return (
     <BaseContentSlide
-      title="三季度出口地区结构：增速回升、市场多元与中美关系变化"
+      title="三季度出口地区结构：增速回升、市场多元与中美关系缓和"
       cardColumns={3}
       chartColumns={2}
     >

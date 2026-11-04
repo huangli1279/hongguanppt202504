@@ -76,7 +76,7 @@ export const ContentSlide16: React.FC = () => {
                 <span className="font-bold text-red-500">+4.4%</span>
                 ；人均消费支出22,354元，实际
                 <span className="font-bold text-green-600">+2.7%</span>
-                。
+                ，收入预期仍低于100。
               </li>
               <li>
                 收入结构：工资性收入
@@ -109,7 +109,7 @@ export const ContentSlide16: React.FC = () => {
                 就业：前三季度城镇调查失业率均值5.2%
                 ，与上年持平；16-24岁劳动力失业率为
                 <span className="font-bold text-red-500">18%</span>
-                ，较8月下降0.9个百分点。30-59岁劳动力失业率3.9%，基本稳定。
+                ，较8月下降0.9个百分点。30-59岁劳动力失业率3.9%，基本稳定，就业预期也处于低位未改。
               </li>
             </ul>
           </BaseCard>

@@ -37,11 +37,11 @@ export const ContentSlide35: React.FC = () => {
       title={<>贷款：企业强、居民弱，居民端缩表未缓解</>}
       cardColumns={2}
     >
-      <div className="grid grid-cols-2 grid-rows-[auto_1fr] gap-3 h-full pb-6">
+      <div className="grid grid-cols-2 grid-rows-[auto_1fr] gap-3 h-full pb-2">
           <BaseCard title="Q3企业贷款：政策工具落地支撑" delay="0ms" variant="accent" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
             <p className="mb-1">
-              Q3企业贷款增长<span className="text-webank-blue font-semibold">1.45万亿</span>，中长期贷款增长
-              <span className="text-webank-blue font-semibold">9,800亿</span>，同比少增
+              Q3企业贷款增长<span className="text-red-600 font-semibold">1.45万亿</span>，中长期贷款增长
+              <span className="text-red-600 font-semibold">9,800亿</span>，同比少增
               <span className="text-webank-blue font-semibold">1,400亿</span>。
             </p>
             <p className="mb-1">
@@ -61,31 +61,32 @@ export const ContentSlide35: React.FC = () => {
             <p className="mb-1 font-semibold">从贷款分类看，各类贷款延续Q2趋势：</p>
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                住房贷款：Q3下降<span className="text-green-600 font-semibold">3,800亿</span>，同比多降
-                <span className="text-green-600 font-semibold">800亿</span>，对比上季度下降金额（Q2：下降4,300亿）有缓解。前三季度累计下降
+                住房贷款：Q3下降3,800亿，同比多降
+                800亿，对比上季度下降金额（Q2：下降4,300亿）有缓解。前三季度累计下降
                 <span className="text-green-600 font-semibold">1.1万亿</span>，为居民贷款下降的主要原因。后续贴息政策有望带动居民按揭信贷小幅增长，但持续性取决于收入房价预期等。
               </li>
               <li>
-                消费贷款（不含房贷）：Q3下降<span className="text-green-600 font-semibold">1,370亿</span>，同比多降
-                <span className="text-green-600 font-semibold">2,557亿</span>，消费需求修复仍显疲弱。
+                消费贷款（不含房贷）：Q3下降1,370亿，同比多降
+                2,557亿，消费需求修复仍显疲弱。
               </li>
               <li>
-                经营贷款：Q3下降<span className="text-green-600 font-semibold">1,505亿</span>，同比多降
-                <span className="text-green-600 font-semibold">2,648亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
+                经营贷款：Q3下降1,505亿，同比多降
+                2,648亿，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
               </li>
             </ul>
           </BaseCard>
           <ChartContainer delay="600ms" className="min-h-0">
             <BaseBarChart
               data={corporateCreditStructureQ3Data}
-              title="Q3新增人民币贷款结构"
+              title="新增人民币贷款结构"
               subtitle="数据来源：中国人民银行 | 单位：万亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'y2025', name: '2025年Q3', color: '#6b7280' },
-                { dataKey: 'y2026', name: '2026年Q3', color: chartColors.primary },
+                { dataKey: 'y2024', name: '2024年', color: '#6b7280' },
+                { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
+                { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
               ]}
-              yAxisDomain={[-2, 2]}
+              yAxisDomain={[-1, 3]}
               showYAxis={true}
               yAxisWidth={40}
               yAxisTickFormatter={(val) => Number(val).toFixed(1)}
@@ -98,7 +99,7 @@ export const ContentSlide35: React.FC = () => {
               xAxisAngle={-18}
               xAxisHeight={52}
               xAxisTickFontSize={9}
-              legendOrder={['2025年Q3', '2026年Q3']}
+              legendOrder={['2024年', '2025年', '2026年']}
               unit="万亿元"
             />
           </ChartContainer>

@@ -67,9 +67,9 @@ export const ContentSlide15: React.FC = () => {
               </li>
             </ul>
           </BaseCard>
-          <BaseCard title="温和通胀但来源输入性" delay="120ms">
+          <BaseCard title="通胀受输入性因素影响" delay="120ms">
             <p>
-              通胀读数温和，但来源高度输入性与结构性；居民端的"涨价感"主要来自油价和黄金饰品（<span className="font-bold text-red-500">+22.5%</span>），核心商品与服务价格仍稳。
+              核心CPI稳定上涨，居民端的"涨价感"主要来自输入性通胀相关的油价和黄金饰品（<span className="font-bold text-red-500">+22.5%</span>），核心商品与服务价格仍稳。
             </p>
           </BaseCard>
         </>

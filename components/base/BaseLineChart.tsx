@@ -485,7 +485,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                 content={<CustomLegend legendOrder={legendOrder} />}
                 verticalAlign="bottom"
                 align="center"
-                wrapperStyle={compact ? { paddingBottom: '0px', paddingTop: '2px' } : { paddingBottom: '10px', paddingTop: '20px' }}
+                wrapperStyle={compact ? { paddingBottom: '0px', paddingTop: '10px' } : { paddingBottom: '10px', paddingTop: '20px' }}
               />
             )}
             
