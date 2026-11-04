@@ -18,7 +18,12 @@ export const ContentSlide26: React.FC = () => {
               9月自动数据处理设备及零部件进口金额同比
               <span className="text-red-500 font-semibold">+296.5%</span>，集成电路
               <span className="text-red-500 font-semibold">+74.7%</span>，但数量仅+1.7%。AI链（集成电路与计算机设备）合计拉动进口增速
-              <span className="text-red-500 font-semibold">21.7</span>个百分点，约贡献整体增幅七成。韩国半导体出口额10月受存储价格影响已环比下降，预计四季度AI进口增速将回落。
+              <span className="text-red-500 font-semibold">21.7</span>个百分点，约贡献整体增幅七成。
+            </p>
+            <p className="text-sm leading-snug mt-2">
+              根据韩国官方数据，9月半导体出口总量
+              <span className="text-red-500 font-semibold">605亿美元</span>，其中中国占
+              <span className="text-red-500 font-semibold">44%</span>，半导体出口额10月已环比下降，四季度AI进口增速或将回落。
             </p>
           </BaseCard>
           <BaseCard title="通胀影响：价格抬升进口金额" delay="120ms">
