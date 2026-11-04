@@ -16,12 +16,30 @@ const majorIndustrySepData = [
   { name: '非金属矿物制品', aug: -2.3, sep: -5.3 },
 ];
 
+const capacityUtilizationData = [
+  { period: '2023-03', auto: 72.0, manufacturing: 74.5 },
+  { period: '2023-06', auto: 73.3, manufacturing: 74.8 },
+  { period: '2023-09', auto: 75.6, manufacturing: 75.8 },
+  { period: '2023-12', auto: 76.9, manufacturing: 76.0 },
+  { period: '2024-03', auto: 64.87, manufacturing: 73.76 },
+  { period: '2024-06', auto: 73.0, manufacturing: 75.2 },
+  { period: '2024-09', auto: 73.2, manufacturing: 75.2 },
+  { period: '2024-12', auto: 77.2, manufacturing: 76.4 },
+  { period: '2025-03', auto: 71.9, manufacturing: 74.08 },
+  { period: '2025-06', auto: 71.3, manufacturing: 74.3 },
+  { period: '2025-09', auto: 73.3, manufacturing: 74.8 },
+  { period: '2025-12', auto: 75.98, manufacturing: 75.17 },
+  { period: '2026-03', auto: 70.29, manufacturing: 73.86 },
+  { period: '2026-06', auto: 70.8, manufacturing: 73.48 },
+  { period: '2026-09', auto: 66.23, manufacturing: 73.29 },
+];
+
 export const ContentSlide09: React.FC = () => {
   return (
     <BaseContentSlide
       title="规上工业增加值维持高增"
       cardColumns={3}
-      chartColumns={2}
+      chartColumns={3}
       cards={
         <>
           <BaseCard title="工业增加值及分项" delay="0ms" variant="accent">
@@ -87,6 +105,24 @@ export const ContentSlide09: React.FC = () => {
               unit="%"
               barSize={10}
               xAxisTickFontSize={10}
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="720ms">
+            <BaseLineChart
+              data={capacityUtilizationData}
+              title="工业产能利用率"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={[
+                { dataKey: 'auto', name: '汽车制造业', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': 14 } },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 } },
+              ]}
+              yAxisDomain={[60, 80]}
+              showYAxis={true}
+              legendOrder={['汽车制造业', '制造业']}
+              highlightPeriods={['2026-09']}
+              xAxisTicks={['2023-03', '2023-12', '2024-09', '2025-06', '2026-03', '2026-09']}
+              xAxisAngle={0}
             />
           </ChartContainer>
         </>
