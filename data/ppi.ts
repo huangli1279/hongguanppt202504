@@ -3,8 +3,8 @@
 export interface PpiDataPoint {
   period: string;
   ppiYoy: number;
-  productionMaterialsYoy: number;
-  livingGoodsYoy: number;
+  productionMaterialsYoy: number | null;
+  livingGoodsYoy: number | null;
 }
 
 // PPI 分行业环比数据点
@@ -117,6 +117,7 @@ export const ppiYoyData: PpiDataPoint[] = [
   { period: '2026-07', ppiYoy: 3.5, productionMaterialsYoy: 4.8, livingGoodsYoy: -0.8 },
   { period: '2026-08', ppiYoy: 3.8, productionMaterialsYoy: 5.0, livingGoodsYoy: -0.5 },
   { period: '2026-09', ppiYoy: 5.0, productionMaterialsYoy: 6.5, livingGoodsYoy: -0.1 },
+  { period: '2026-10', ppiYoy: 5.7, productionMaterialsYoy: 7.4, livingGoodsYoy: -0.1 },
 ];
 
 // PPI 月度同比明细数据

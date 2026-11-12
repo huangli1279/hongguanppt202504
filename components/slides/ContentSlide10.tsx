@@ -1,145 +1,112 @@
 import React from 'react';
 import { BaseLineChart } from '../base/BaseLineChart';
-import { BaseBarChart } from '../base/BaseBarChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { ppiYoyData } from '@/data/ppi';
-import { profitSelfRaisedData } from '@/data/fixedAssetInvestment';
-
-const ppiChartData = ppiYoyData.filter((d) => d.period >= '2024-01');
-const profitChartData = profitSelfRaisedData.filter((d) => d.period >= '2025-01');
-
-const industryProfitSepData = [
-  { name: '计算机、通信和其他电子设备制造业', value: 103.8, fill: '#ef4444' },
-  { name: '有色金属冶炼和压延加工业', value: 79.7, fill: '#ef4444' },
-  { name: '煤炭开采和洗选业', value: 57.0, fill: '#ef4444' },
-  { name: '化学原料和化学制品制造业', value: 49.2, fill: '#ef4444' },
-  { name: '通用设备制造业', value: 1.9, fill: '#ef4444' },
-  { name: '专用设备制造业', value: -1.3, fill: '#16a34a' },
-  { name: '电气机械和器材制造业', value: -5.9, fill: '#16a34a' },
-  { name: '电力、热力生产和供应业', value: -17.9, fill: '#16a34a' },
-  { name: '汽车制造业', value: -22.8, fill: '#16a34a' },
-  { name: '非金属矿物制品业', value: -46.9, fill: '#16a34a' },
-  { name: '黑色金属冶炼和压延加工业', value: -73.3, fill: '#16a34a' },
-];
+import { pmiTrendData } from '../../data';
+import { seriesColors } from '../../utils/chartColors';
 
 export const ContentSlide10: React.FC = () => {
+  const pmiData = pmiTrendData.filter((d) => d.period >= '2025-01');
+  const pmiData2026 = pmiTrendData.filter((d) => d.period >= '2026-01');
   return (
     <BaseContentSlide
-      title="工业企业利润前三季度+15.5%，增收更增利但行业冷暖不均，PPI9月破5"
-      cardColumns={3}
-      chartColumns={3}
-      cards={
+      title={
         <>
-          <BaseCard title="利润总额与营收成本" delay="0ms" variant="accent">
+          制造业与服务业景气三季度同步回升，
+          <span className="text-webank-accent">9月重返扩张区间</span>
+        </>
+      }
+      headerClassName="!mb-3"
+    >
+      <div className="flex flex-col h-full">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
+          <BaseCard title="生产活动受季节性因素扰动" delay="0ms" variant="accent">
             <p>
-              1-9月规上工业企业利润总额6.03万亿元，同比
-              <span className="text-red-500 font-bold">+15.5%</span>
-              ；1-9月规上工业企业营收同比增长
-              6.6%，营业成本同比增长
-              6.1%，增收更增利。但较二季度高点已出现回落，预计四季度持续回落。
+              制造业PMI从7月的 <span className="text-green-600 font-bold">49.2%</span> 回升至9月 <span className="text-red-500 font-bold">50.1%</span>，重返荣枯线上；服务业PMI9月 <span className="text-red-500 font-bold">50.2%</span> 同步扩张，服务业生产活动积极向好。7月回落受传统生产淡季及极端天气（洪涝、台风等）影响，8-9月逐步回升，9月装备制造业PMI升至51.0%、高技术制造业 52.5%。
+            </p>
+            <p className="mt-2">
+              10月制造业PMI回落至 <span className="text-green-600 font-bold">49.3%</span>，重回收缩区间，生产指数、新订单指数分别降至49.8%和49.4%；主要受国庆假期、工作日减少及生产安排调整等季节性因素影响，后续仍需观察需求与生产修复情况。
             </p>
           </BaseCard>
 
-          <BaseCard title="分行业利润分化" delay="120ms">
+          <BaseCard title="生产活动回升结构健康，价格抬升信号强烈" delay="120ms">
             <p>
-              1-9月份计算机、通信和其他电子设备制造业利润同比增长
-              <span className="text-red-500 font-bold">103.8%</span>
-              ，有色金属冶炼和压延加工业增长
-              <span className="text-red-500 font-bold">79.7%</span>
-              ；电力、热力生产和供应业下降
-              <span className="text-green-600 font-bold">17.9%</span>
-              ，汽车制造业下降
-              <span className="text-green-600 font-bold">22.8%</span>
-              ，黑色金属冶炼和压延加工业受房地产下行和25年同期"反内卷"高基数影响，下降
-              <span className="text-green-600 font-bold">73.3%</span>
-              。
+              9月生产指数 51.7%（+1.3pct）、新订单指数 50.5%，景气面扩大。主要原材料购进价格指数 <span className="text-red-500 font-bold">60.8%</span>、出厂价格指数 <span className="text-red-500 font-bold">54.0%</span>，连续两个月大幅回升，表明外部通胀的因素导致成本抬升尚未充分向下游转嫁。
+            </p>
+            <p className="mt-2">
+              10月生产、新订单指数分别回落至49.8%和49.4%，价格指数虽有所收窄（原材料购进价格 <span className="text-red-500 font-bold">56.8%</span>、出厂价格 <span className="text-red-500 font-bold">51.7%</span>）但仍处高位。
             </p>
           </BaseCard>
+        </div>
 
-          <BaseCard title="PPI破5与剪刀差走阔" delay="240ms" variant="accent">
-            <p>
-              PPI：9月同比
-              <span className="text-red-500 font-bold">5.0%</span>
-              ，为22年7月以来首次破5，受到外部战争等因素影响，输入性通胀为上游企业带来利润高增但持续挤压中下游企业利润。9月生产资料PPI同比
-              <span className="text-red-500 font-bold">6.5%</span>
-              ，生活资料
-              <span className="text-green-600 font-bold">-0.1%</span>
-              ，上下游之间的剪刀差今年以来持续走扩至
-              <span className="font-bold">6.6%</span>
-              。
-            </p>
-          </BaseCard>
-        </>
-      }
-      charts={
-        <>
-          <ChartContainer delay="600ms" className="pb-8">
+        {/* 图表区域：4 列横向排列，左侧跨两列占 1/2，右侧两张各占 1/4 */}
+        <div className="flex-1 grid grid-cols-4 gap-3 min-h-0">
+          {/* 左侧 1/2：制造业PMI / 服务业PMI */}
+          <ChartContainer delay="600ms" className="col-span-2 min-h-0">
             <BaseLineChart
-              data={profitChartData}
-              title="规上工业企业利润累计同比"
+              data={pmiData}
+              title="制造业PMI / 服务业PMI"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'industrialProfit', name: '规上工业企业利润总额', strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -16 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'servicePmi', name: '服务业PMI', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 28 }, hiddenLabelPeriods: ['2026-10'] },
               ]}
-              yAxisDomain={[-5, 25]}
+              yAxisDomain={[48, 52]}
               showYAxis={true}
               showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['规上工业企业利润总额']}
+              referenceLineY={50}
+              legendOrder={['制造业PMI', '服务业PMI']}
               highlightPeriods={['2026-09']}
-              unit="%"
-              yAxisTickFormatter={(val) => `${val}`}
-              xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              xAxisAngle={0}
             />
           </ChartContainer>
-          <ChartContainer delay="660ms" className="pb-8">
-            <BaseBarChart
-              data={industryProfitSepData}
-              title="分行业利润1-9月累计同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              bars={[{ dataKey: 'value', name: '利润同比' }]}
-              xAxisKey="value"
-              layout="horizontal"
-              yAxisDomain={[-80, 120]}
-              showYAxis={true}
-              yAxisWidth={130}
-              yAxisTickFormatter={(val) => `${val}%`}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLegend={false}
-              showLabels={true}
-              labelFormatter={(val: any) => `${Number(val) > 0 ? '+' : ''}${Number(val).toFixed(1)}%`}
-              unit="%"
-              barSize={9}
-              labelPositiveOffset={5}
-              labelNegativeOffset={-5}
-              xAxisTickFontSize={9}
-            />
-          </ChartContainer>
-          <ChartContainer delay="720ms" className="pb-8">
+
+          {/* 右侧一：PMI分项：生产与新订单指数（占 1/4，横向紧邻左图） */}
+          <ChartContainer delay="660ms" className="min-h-0">
             <BaseLineChart
-              data={ppiChartData}
-              title="PPI、生产资料、生活资料当月同比"
+              data={pmiData2026}
+              title="制造业PMI分项：生产与新订单指数"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-09': 14 } },
-                { dataKey: 'productionMaterialsYoy', name: '生产资料当月同比', strokeWidth: 2.5 },
-                { dataKey: 'livingGoodsYoy', name: '生活资料当月同比', strokeWidth: 2.5 },
+                { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'newOrders', name: '新订单', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 }, hiddenLabelPeriods: ['2026-10'] },
               ]}
-              yAxisDomain={[-3, 8]}
+              yAxisDomain={[47, 53]}
               showYAxis={true}
               showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['PPI当月同比', '生产资料当月同比', '生活资料当月同比']}
+              referenceLineY={50}
+              legendOrder={['生产', '新订单']}
               highlightPeriods={['2026-09']}
-              xAxisTickCount={7}
-              unit=""
-              yAxisTickFormatter={(val) => `${val}`}
+              xAxisAngle={0}
+              xAxisTicks={['2026-03', '2026-06', '2026-09']}
+              compact={true}
             />
           </ChartContainer>
-        </>
-      }
-    />
+
+          {/* 右侧二：PMI分项：原材料购进价格与出厂价格指数（占 1/4，横向紧邻左图） */}
+          <ChartContainer delay="720ms" className="min-h-0">
+            <BaseLineChart
+              data={pmiData2026}
+              title="制造业PMI分项：原材料购进价格与出厂价格"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={[
+                { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'outputPrice', name: '出厂价格', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 }, hiddenLabelPeriods: ['2026-10'] },
+              ]}
+              yAxisDomain={[44, 65]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={50}
+              legendOrder={['原材料购进价格', '出厂价格']}
+              highlightPeriods={['2026-09']}
+              xAxisAngle={0}
+              xAxisTicks={['2026-03', '2026-06', '2026-09']}
+              compact={true}
+            />
+          </ChartContainer>
+        </div>
+      </div>
+    </BaseContentSlide>
   );
 };

@@ -11,6 +11,8 @@ export type { IndustrialProfitDataPoint } from './profit';
 export { ppiYoyData, commodityPriceData, ppiIndustryMomData } from './ppi';
 export type { PpiDataPoint, CommodityPriceDataPoint, PpiIndustryMomDataPoint } from './ppi';
 export { retailTrendData, retailMonthlyData, retailCumulativeYoyData } from './retail';
+export { cpcaRetailYoyData } from './cpca';
+export type { CpcaRetailYoyDataPoint } from './cpca';
 export { retailMonthlyCategoryData, serviceRetailData, springFestivalTravelData, retailCategoryDetailData, retailMomVsLoanData } from './retailExtra';
 export type { RetailMomVsLoanDataPoint } from './retailExtra';
 export type { RetailTrendDataPoint, RetailMonthlyDataPoint, RetailCumulativeYoyDataPoint } from './retail';

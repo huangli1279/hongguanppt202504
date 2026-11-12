@@ -1,87 +1,122 @@
 import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { moneySupplyCombinedRecentData } from '@/data/moneySupply';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
 import { chartColors } from '@/utils/chartColors';
+import { corporateCreditStructureQ3Data, householdLoanChangeData } from '@/data/loanData';
 
-// 左图：M1、M2同比走势
-const m1m2Lines: LineConfig[] = [
-  { dataKey: 'm1', name: 'M1同比', color: chartColors.primary, strokeWidth: 2.5 },
-  { dataKey: 'm2', name: 'M2同比', color: chartColors.secondary, strokeWidth: 2 },
-];
+const formatTrillion = (val: any) =>
+  val === null || val === undefined
+    ? '-'
+    : typeof val === 'number'
+      ? Number(val).toFixed(2)
+      : String(val);
 
-// 右图：M1-M2剪刀差折线
-const scissorLines: LineConfig[] = [
-  { dataKey: 'scissor', name: 'M1-M2剪刀差', color: chartColors.primary, strokeWidth: 2.5 },
+const loanColumns: ColumnConfig[] = [
+  { key: 'period', title: '月份', align: 'center', width: '0.7fr' },
+  { key: 'consumerLoan', title: '消费贷款', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'shortTermConsumer', title: '短期消费', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'longTermConsumer', title: '中长期消费', align: 'right', width: '1fr', render: formatTrillion },
+  { key: 'housingLoan', title: '其中:房贷', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'consumerLoanExHousing', title: '消费贷(不含房贷)', align: 'right', width: '1.15fr', render: formatTrillion },
+  { key: 'businessLoan', title: '经营贷款', align: 'right', width: '0.9fr', render: formatTrillion },
+  { key: 'totalLoan', title: '贷款合计', align: 'right', width: '0.9fr', render: formatTrillion },
 ];
 
 export const ContentSlide34: React.FC = () => {
+  const highlightRows = householdLoanChangeData.reduce<number[]>((acc, item, index) => {
+    if (['2026-07', '2026-08', '2026-09'].includes(item.period)) {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
+
   return (
     <BaseContentSlide
-      title="M1M2：M1回落至3.2%主要是高基数扰动，资金活化度仍低"
+      title={<>贷款：企业强、居民弱，居民端缩表未缓解</>}
       cardColumns={2}
     >
-      <div className="flex flex-col h-full">
-        <div className="mb-4 flex-shrink-0 grid grid-cols-2 gap-6">
-          <BaseCard delay="0ms" variant="accent" title="M1 与 M2 双双回落，原因各异">
-            <p>
-              <strong>M1回落的三个原因：</strong>①去年9月M1环比大增
-              <span className="text-red-600 font-bold">1.92万亿</span>、同比跳升至
-              <span className="text-red-600 font-bold">7.2%</span>（55个月新高），今年同期仅增约
-              <span className="text-webank-blue font-semibold">0.99万亿</span>，高基数是主要拖累；②9月股市调整（上证单月
-              <span className="text-green-600 font-semibold">-3.6%</span>），资金活化放缓。
+      <div className="grid grid-cols-2 grid-rows-[auto_1fr] gap-3 h-full pb-2">
+          <BaseCard title="Q3企业贷款：政策工具落地支撑" delay="0ms" variant="accent" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
+            <p className="mb-1">
+              Q3企业贷款增长<span className="text-red-600 font-semibold">1.45万亿</span>，中长期贷款增长
+              <span className="text-red-600 font-semibold">9,800亿</span>，同比少增
+              <span className="text-webank-blue font-semibold">1,400亿</span>。
             </p>
-            <p className="mt-2">
-              <strong>M2同比回落：</strong>信贷派生放缓，叠加政府债发行提速后资金沉淀于财政存款、拨付偏慢，共同拖累M2增速。
+            <p className="mb-1">
+              其中9月企业贷款新增<span className="text-webank-blue font-semibold">1.29万亿</span>，主因9月新型政策性金融工具开始投放，补充重大项目资本金的同时带动银行配套贷款跟进。
+            </p>
+            <p>
+              企业中长贷同比少增额已明显收窄，预计10月对公中长贷继续改善（主要看政策工具落地情况）。
             </p>
           </BaseCard>
-          <BaseCard delay="200ms" variant="accent" title="剪刀差走阔 · 四季度展望">
-            <p>
-              M1-M2负向剪刀差重新走阔至4个百分点，资金活化程度明显减弱，微观主体经营活跃度和投资意愿待修复。
+          <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
+            <p className="mb-1">
+              Q3居民贷款下降<span className="text-green-600 font-semibold">6,669亿</span>，同比多降
+              <span className="text-green-600 font-semibold">5,968亿</span>，9月单月居民贷款
+              <span className="text-green-600 font-semibold">0增长</span>；前三季度居民贷款累计下降
+              <span className="text-green-600 font-semibold">1.03万亿</span>，居民信心偏弱，加杠杆意愿不强。
             </p>
-            <p className="mt-2">
-              四季度展望：政府债剩余额度与
-              <span className="text-webank-blue font-semibold">5,500亿</span>
-              结存限额待发、前期财政存款加快拨付、
-              <span className="text-webank-blue font-semibold">8,000亿</span>
-              政策性金融工具已投放完毕并进入配套融资落地期，共同推动社融增速企稳、M2增速温和回升。
-            </p>
+            <p className="mb-1 font-semibold">从贷款分类看，各类贷款延续Q2趋势：</p>
+            <ul className="list-disc pl-4 space-y-0.5">
+              <li>
+                住房贷款：Q3下降3,800亿，同比多降
+                800亿，对比上季度下降金额（Q2：下降4,300亿）有缓解。前三季度累计下降
+                <span className="text-green-600 font-semibold">1.1万亿</span>，为居民贷款下降的主要原因。后续贴息政策有望带动居民按揭信贷小幅增长，但持续性取决于收入房价预期等。
+              </li>
+              <li>
+                消费贷款（不含房贷）：Q3下降1,370亿，同比多降
+                2,557亿，消费需求修复仍显疲弱。
+              </li>
+              <li>
+                经营贷款：Q3下降1,505亿，同比多降
+                2,648亿，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
+              </li>
+            </ul>
           </BaseCard>
-        </div>
-
-        <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
-          <ChartContainer delay="600ms" ariaLabel="M1、M2同比走势图">
-            <BaseLineChart
-              data={moneySupplyCombinedRecentData}
-              title="M1、M2同比增速走势"
-              subtitle="数据来源：中国人民银行 | 单位：%"
-              lines={m1m2Lines}
-              yAxisDomain={[-4, 10]}
+          <ChartContainer delay="600ms" className="min-h-0">
+            <BaseBarChart
+              data={corporateCreditStructureQ3Data}
+              title="新增人民币贷款结构"
+              subtitle="数据来源：中国人民银行 | 单位：万亿元"
+              xAxisKey="category"
+              bars={[
+                { dataKey: 'y2024', name: '2024年', color: '#6b7280' },
+                { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
+                { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
+              ]}
+              yAxisDomain={[-1, 3]}
               showYAxis={true}
+              yAxisWidth={40}
+              yAxisTickFormatter={(val) => Number(val).toFixed(1)}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['M1同比', 'M2同比']}
-              xAxisTickCount={8}
-              highlightPeriods={['2026-09']}
+              barSize={14}
+              showLabels={true}
+              labelFormatter={(val) => Number(val).toFixed(2)}
+              labelFilter={(p) => Number(p.value) >= 0}
+              xAxisAngle={-18}
+              xAxisHeight={52}
+              xAxisTickFontSize={9}
+              legendOrder={['2024年', '2025年', '2026年']}
+              unit="万亿元"
             />
           </ChartContainer>
-          <ChartContainer delay="700ms" ariaLabel="M1-M2剪刀差走势图">
-            <BaseLineChart
-              data={moneySupplyCombinedRecentData}
-              title="M1-M2剪刀差走势"
-              subtitle="数据来源：中国人民银行 | 单位：%"
-              lines={scissorLines}
-              yAxisDomain={[-11, 0]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              legendOrder={['M1-M2剪刀差']}
-              xAxisTickCount={8}
-              highlightPeriods={['2026-09']}
+          <ChartContainer delay="750ms" className="min-h-0">
+            <BaseTable
+              data={householdLoanChangeData}
+              columns={loanColumns}
+              title="居民贷款变化情况"
+              subtitle="数据来源：中国人民银行｜单位：万亿元"
+              colorizeNumbers={false}
+              dateColumn="period"
+              highlightRows={highlightRows}
+              rowHeight="auto"
+              cellClassName="!px-1 whitespace-nowrap tabular-nums text-[10px] leading-none"
+              headerCellClassName="!px-1 !py-1 whitespace-nowrap text-[10px] leading-none"
             />
           </ChartContainer>
-        </div>
       </div>
     </BaseContentSlide>
   );

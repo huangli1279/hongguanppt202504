@@ -1,112 +1,119 @@
 import React from 'react';
-import { BaseLineChart } from '../base/BaseLineChart';
 import { BaseCard } from '../base/BaseCard';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { pmiTrendData } from '../../data';
+import { BaseLineChart } from '../base/BaseLineChart';
+import { industrialCategoryCumulativeData } from '../../data/industrialOutput';
 import { seriesColors } from '../../utils/chartColors';
 
+// 数据来源：国家统计局（工业产能利用率当季值，%）
+const capacityUtilizationData = [
+  { period: '2023-03', auto: 72.0, manufacturing: 74.5, industrial: 74.3, mining: 75.2, utilities: 71.9, electronics: 73.7, specialEquipment: 77.0, electrical: 75.8 },
+  { period: '2023-06', auto: 73.3, manufacturing: 74.8, industrial: 74.5, mining: 74.8, utilities: 71.4, electronics: 74.6, specialEquipment: 78.1, electrical: 77.1 },
+  { period: '2023-09', auto: 75.6, manufacturing: 75.8, industrial: 75.6, mining: 75.4, utilities: 74.2, electronics: 76.5, specialEquipment: 77.5, electrical: 77.8 },
+  { period: '2023-12', auto: 76.9, manufacturing: 76.0, industrial: 75.9, mining: 77.07, utilities: 74.37, electronics: 77.63, specialEquipment: 77.52, electrical: 77.12 },
+  { period: '2024-03', auto: 64.87, manufacturing: 73.76, industrial: 73.6, mining: 75.01, utilities: 71.17, electronics: 74.72, specialEquipment: 77.01, electrical: 72.74 },
+  { period: '2024-06', auto: 73.0, manufacturing: 75.2, industrial: 74.9, mining: 76.0, utilities: 71.4, electronics: 76.2, specialEquipment: 76.5, electrical: 74.7 },
+  { period: '2024-09', auto: 73.2, manufacturing: 75.2, industrial: 75.1, mining: 74.6, utilities: 74.3, electronics: 77.9, specialEquipment: 75.8, electrical: 75.6 },
+  { period: '2024-12', auto: 77.2, manufacturing: 76.4, industrial: 76.2, mining: 75.6, utilities: 74.8, electronics: 79.4, specialEquipment: 76.7, electrical: 76.8 },
+  { period: '2025-03', auto: 71.9, manufacturing: 74.08, industrial: 74.06, mining: 74.62, utilities: 73.61, electronics: 74.74, specialEquipment: 75.55, electrical: 71.68 },
+  { period: '2025-06', auto: 71.3, manufacturing: 74.3, industrial: 74.0, mining: 72.7, utilities: 71.5, electronics: 77.3, specialEquipment: 76.5, electrical: 73.5 },
+  { period: '2025-09', auto: 73.3, manufacturing: 74.8, industrial: 74.6, mining: 72.5, utilities: 74.3, electronics: 79.0, specialEquipment: 75.5, electrical: 74.9 },
+  { period: '2025-12', auto: 75.98, manufacturing: 75.17, industrial: 74.92, mining: 71.65, utilities: 74.02, electronics: 79.73, specialEquipment: 76.43, electrical: 74.98 },
+  { period: '2026-03', auto: 70.29, manufacturing: 73.86, industrial: 73.6, mining: 72.14, utilities: 71.92, electronics: 75.44, specialEquipment: 76.62, electrical: 71.61 },
+  { period: '2026-06', auto: 70.8, manufacturing: 73.48, industrial: 73.0, mining: 69.15, utilities: 70.41, electronics: 78.7, specialEquipment: 76.7, electrical: 70.3 },
+  { period: '2026-09', auto: 66.23, manufacturing: 73.29, industrial: 73.06, mining: 69.48, utilities: 72.57, electronics: 80.25, specialEquipment: 77.75, electrical: 72.93 },
+];
+
 export const ContentSlide08: React.FC = () => {
-  const pmiData = pmiTrendData.filter((d) => d.period >= '2025-01');
-  const pmiData2026 = pmiTrendData.filter((d) => d.period >= '2026-01');
   return (
     <BaseContentSlide
-      title={
+      title="三季度工业产量和产能利用率同步增长，新旧动能分化持续"
+      cardColumns={3}
+      chartColumns={3}
+      cards={
         <>
-          制造业与服务业景气三季度同步回升，
-          <span className="text-webank-accent">9月重返扩张区间</span>
+          <BaseCard title="工业增长稳定，采矿业受停产拖累" delay="0ms" variant="accent">
+            <p>
+              前三季度工业增加值累计同比 +5.3%，制造业同比 +5.7%，采矿业 +2.0%，电力、热力、燃气及水生产供应业 +5.4%。三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响（7月煤炭开采和洗选业同比 <span className="text-green-600 font-bold">-10.8%</span>，8月 -5.6%，9月 -3.3%）。
+            </p>
+          </BaseCard>
+
+          <BaseCard title="三季度产能利用率仍偏低但企稳" delay="120ms">
+            <p>
+              三季度工业产能利用率为 73.1%，在一二季度连续下行后边际企稳（环比 +0.1pct），但同比仍低 1.5pct。电热燃气水生产供应业环比上升2.2%到达72.57%，采矿业仍处于低位。
+            </p>
+          </BaseCard>
+
+          <BaseCard title="新动能增长迅猛，汽车成为明显拖累" delay="240ms">
+            <p>
+              高技术制造业增加值 Q3 单季同比 <span className="text-red-600 font-bold">+16.2%</span>（Q1/Q2/Q3分别为 12.5%/14.0%/16.2%，逐季抬升）；电子行业同比 <span className="text-red-600 font-bold">+17.5%</span>，计算机通信产能利用率达 <span className="text-red-600 font-bold">80.3%</span>，专用设备制造业工业增加值 +12.0%，较 Q2 加快 3.5pct，产能利用率 77.8%；铁路船舶航空航天设备制造业 +12.8%。汽车产能利用率下降至 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。增加值增速由8月的 8.7% 回落至9月 6.7%，但9月产量同比 <span className="text-green-600 font-bold">-5.7%</span>。
+            </p>
+          </BaseCard>
         </>
       }
-      headerClassName="!mb-3"
-    >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="生产活动受季节性因素扰动" delay="0ms" variant="accent">
-            <p>
-              制造业PMI从7月的 <span className="text-green-600 font-bold">49.2%</span> 回升至9月 <span className="text-red-500 font-bold">50.1%</span>，重返荣枯线上；服务业PMI9月 <span className="text-red-500 font-bold">50.2%</span> 同步扩张，服务业生产活动积极向好。7月回落受传统生产淡季及极端天气（洪涝、台风等）影响，8-9月逐步回升，9月装备制造业PMI升至51.0%、高技术制造业 52.5%。
-            </p>
-            <p className="mt-2">
-              10月制造业PMI回落至 <span className="text-green-600 font-bold">49.3%</span>，重回收缩区间，生产指数、新订单指数分别降至49.8%和49.4%；主要受国庆假期、工作日减少及生产安排调整等季节性因素影响，后续仍需观察需求与生产修复情况。
-            </p>
-          </BaseCard>
-
-          <BaseCard title="生产活动回升结构健康，价格抬升信号强烈" delay="120ms">
-            <p>
-              9月生产指数 51.7%（+1.3pct）、新订单指数 50.5%，景气面扩大。主要原材料购进价格指数 <span className="text-red-500 font-bold">60.8%</span>、出厂价格指数 <span className="text-red-500 font-bold">54.0%</span>，连续两个月大幅回升，表明外部通胀的因素导致成本抬升尚未充分向下游转嫁。
-            </p>
-            <p className="mt-2">
-              10月生产、新订单指数分别回落至49.8%和49.4%，价格指数虽有所收窄（原材料购进价格 <span className="text-red-500 font-bold">56.8%</span>、出厂价格 <span className="text-red-500 font-bold">51.7%</span>）但仍处高位。
-            </p>
-          </BaseCard>
-        </div>
-
-        {/* 图表区域：4 列横向排列，左侧跨两列占 1/2，右侧两张各占 1/4 */}
-        <div className="flex-1 grid grid-cols-4 gap-3 min-h-0">
-          {/* 左侧 1/2：制造业PMI / 服务业PMI */}
-          <ChartContainer delay="600ms" className="col-span-2 min-h-0">
+      charts={
+        <>
+          <ChartContainer delay="600ms">
             <BaseLineChart
-              data={pmiData}
-              title="制造业PMI / 服务业PMI"
+              data={industrialCategoryCumulativeData}
+              title="规上工业分行业增加值累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -16 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'servicePmi', name: '服务业PMI', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 28 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'industrial', name: '全部', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -22 } },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -5 } },
+                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': 28 } },
+                { dataKey: 'utilities', name: '电力热力燃气水', color: seriesColors[3], strokeWidth: 1.8, pointOffsets: { '2026-09': -38 } },
               ]}
-              yAxisDomain={[48, 52]}
+              yAxisDomain={[0, 8]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={50}
-              legendOrder={['制造业PMI', '服务业PMI']}
+              legendOrder={['全部', '制造业', '采矿业', '电力热力燃气水']}
               highlightPeriods={['2026-09']}
+              xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-09']}
               xAxisAngle={0}
             />
           </ChartContainer>
 
-          {/* 右侧一：PMI分项：生产与新订单指数（占 1/4，横向紧邻左图） */}
-          <ChartContainer delay="660ms" className="min-h-0">
+          <ChartContainer delay="660ms">
             <BaseLineChart
-              data={pmiData2026}
-              title="制造业PMI分项：生产与新订单指数"
-              subtitle="数据来源：国家统计局 | 单位：%"
+              data={capacityUtilizationData}
+              title="工业产能利用率"
+              subtitle="分行业当季值 | 数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'newOrders', name: '新订单', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'industrial', name: '全部工业', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': 2 } },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -16 } },
+                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': 4 } },
+                { dataKey: 'utilities', name: '电力热力燃气水', color: seriesColors[3], strokeWidth: 2, pointOffsets: { '2026-09': 16 } },
               ]}
-              yAxisDomain={[47, 53]}
+              yAxisDomain={[60, 80]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={50}
-              legendOrder={['生产', '新订单']}
+              legendOrder={['全部工业', '制造业', '采矿业', '电力热力燃气水']}
               highlightPeriods={['2026-09']}
+              xAxisTicks={['2023-03', '2024-06', '2025-09', '2026-09']}
               xAxisAngle={0}
-              xAxisTicks={['2026-03', '2026-06', '2026-09']}
-              compact={true}
             />
           </ChartContainer>
 
-          {/* 右侧二：PMI分项：原材料购进价格与出厂价格指数（占 1/4，横向紧邻左图） */}
-          <ChartContainer delay="720ms" className="min-h-0">
+          <ChartContainer delay="720ms">
             <BaseLineChart
-              data={pmiData2026}
-              title="制造业PMI分项：原材料购进价格与出厂价格"
+              data={capacityUtilizationData}
+              title="工业产能利用率分行业"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'outputPrice', name: '出厂价格', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'auto', name: '汽车', color: seriesColors[0], strokeWidth: 2.5 },
+                { dataKey: 'electronics', name: '计算机通信电子', color: seriesColors[1], strokeWidth: 2 },
+                { dataKey: 'specialEquipment', name: '专用设备', color: seriesColors[2], strokeWidth: 2 },
+                { dataKey: 'electrical', name: '电气机械', color: seriesColors[3], strokeWidth: 2 },
               ]}
-              yAxisDomain={[44, 65]}
+              yAxisDomain={[64, 84]}
               showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={50}
-              legendOrder={['原材料购进价格', '出厂价格']}
+              legendOrder={['汽车', '计算机通信电子', '专用设备', '电气机械']}
               highlightPeriods={['2026-09']}
+              xAxisTicks={['2023-03', '2024-06', '2025-09', '2026-09']}
               xAxisAngle={0}
-              xAxisTicks={['2026-03', '2026-06', '2026-09']}
-              compact={true}
             />
           </ChartContainer>
-        </div>
-      </div>
-    </BaseContentSlide>
+        </>
+      }
+    />
   );
 };

@@ -62,7 +62,10 @@ export const consumerConfidenceData: ConsumerConfidenceDataPoint[] = [
   { period: '2026-03', confidence: 90.00, employment: 74.40, income: 98.90, willingness: 96.80 },
   { period: '2026-04', confidence: 89.00, employment: 73.40, income: 97.90, willingness: 95.60 },
   { period: '2026-05', confidence: 89.90, employment: 74.60, income: 98.80, willingness: 96.40 },
-  { period: '2026-06', confidence: 89.40, employment: null, income: null, willingness: null },
+  { period: '2026-06', confidence: 89.40, employment: 73.70, income: 98.50, willingness: 96.00 },
+  { period: '2026-07', confidence: 89.20, employment: 73.40, income: 98.20, willingness: 96.00 },
+  { period: '2026-08', confidence: 89.50, employment: 74.40, income: 98.00, willingness: 96.10 },
+  { period: '2026-09', confidence: 89.00, employment: 74.00, income: 97.90, willingness: 95.10 },
 ];
 
 // 居民收入与消费支出数据
