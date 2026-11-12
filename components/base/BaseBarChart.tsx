@@ -62,7 +62,8 @@ export interface HighlightAreaConfig {
 
 export interface BaseBarChartProps {
   data: any[];
-  title: React.ReactNode;
+  /** 图表标题，省略时不渲染标题行 */
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
   /** 副标题的自定义类名 */
   subtitleClassName?: string;
@@ -307,14 +308,18 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   }, {} as Record<string, string>);
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="mb-4">
-        <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-          {title}
-        </h3>
-        {subtitle && (
-          <p className={cn('text-xs text-webank-subtext mt-1', subtitleClassName)}>{subtitle}</p>
-        )}
-      </div>
+      {(title || subtitle) && (
+        <div className="mb-4">
+          {title && (
+            <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+              {title}
+            </h3>
+          )}
+          {subtitle && (
+            <p className={cn('text-xs text-webank-subtext', title ? 'mt-1' : undefined, subtitleClassName)}>{subtitle}</p>
+          )}
+        </div>
+      )}
       <div className="flex-grow min-h-0">
         <ResponsiveContainer width="100%" height="100%">
           <ChartComponent

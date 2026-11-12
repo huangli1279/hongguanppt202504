@@ -23,7 +23,7 @@ export const ContentSlide08: React.FC = () => {
         <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
           <BaseCard title="生产活动受季节性因素扰动" delay="0ms" variant="accent">
             <p>
-              制造业PMI从7月的 <span className="text-green-600 font-bold">49.2%</span> 回升至9月 <span className="text-red-500 font-bold">50.1%</span>，重返荣枯线上；服务业商务活动指数9月 <span className="text-red-500 font-bold">50.2%</span> 同步扩张，服务业生产活动积极向好。7月回落受传统生产淡季及极端天气（洪涝、台风等）影响，8-9月逐步回升，9月装备制造业PMI升至51.0%、高技术制造业 52.5%。
+              制造业PMI从7月的 <span className="text-green-600 font-bold">49.2%</span> 回升至9月 <span className="text-red-500 font-bold">50.1%</span>，重返荣枯线上；服务业PMI9月 <span className="text-red-500 font-bold">50.2%</span> 同步扩张，服务业生产活动积极向好。7月回落受传统生产淡季及极端天气（洪涝、台风等）影响，8-9月逐步回升，9月装备制造业PMI升至51.0%、高技术制造业 52.5%。
             </p>
             <p className="mt-2">
               10月制造业PMI回落至 <span className="text-green-600 font-bold">49.3%</span>，重回收缩区间，生产指数、新订单指数分别降至49.8%和49.4%；主要受国庆假期、工作日减少及生产安排调整等季节性因素影响，后续仍需观察需求与生产修复情况。
@@ -42,21 +42,21 @@ export const ContentSlide08: React.FC = () => {
 
         {/* 图表区域：4 列横向排列，左侧跨两列占 1/2，右侧两张各占 1/4 */}
         <div className="flex-1 grid grid-cols-4 gap-3 min-h-0">
-          {/* 左侧 1/2：制造业PMI / 服务业商务活动指数 */}
+          {/* 左侧 1/2：制造业PMI / 服务业PMI */}
           <ChartContainer delay="600ms" className="col-span-2 min-h-0">
             <BaseLineChart
               data={pmiData}
-              title="制造业PMI / 服务业商务活动指数"
+              title="制造业PMI / 服务业PMI"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -16 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'servicePmi', name: '服务业商务活动指数', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 28 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'servicePmi', name: '服务业PMI', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 28 }, hiddenLabelPeriods: ['2026-10'] },
               ]}
               yAxisDomain={[48, 52]}
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={50}
-              legendOrder={['制造业PMI', '服务业商务活动指数']}
+              legendOrder={['制造业PMI', '服务业PMI']}
               highlightPeriods={['2026-09']}
               xAxisAngle={0}
             />
@@ -66,7 +66,7 @@ export const ContentSlide08: React.FC = () => {
           <ChartContainer delay="660ms" className="min-h-0">
             <BaseLineChart
               data={pmiData2026}
-              title="PMI分项：生产与新订单指数"
+              title="制造业PMI分项：生产与新订单指数"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
@@ -88,7 +88,7 @@ export const ContentSlide08: React.FC = () => {
           <ChartContainer delay="720ms" className="min-h-0">
             <BaseLineChart
               data={pmiData2026}
-              title="PMI分项：原材料购进价格与出厂价格指数"
+              title="制造业PMI分项：原材料购进价格与出厂价格"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },

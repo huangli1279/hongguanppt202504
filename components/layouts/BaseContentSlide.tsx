@@ -8,7 +8,7 @@ export interface BaseContentSlideProps {
   charts?: React.ReactNode;
   footer?: string;
   cardColumns?: 2 | 3 | 4;
-  chartColumns?: 1 | 2 | 3;
+  chartColumns?: 1 | 2 | 3 | 4;
   className?: string;
   headerClassName?: string;
   children?: React.ReactNode;
@@ -40,6 +40,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
     1: 'grid-cols-1',
     2: 'grid-cols-1 sm:grid-cols-2',
     3: 'grid-cols-1 sm:grid-cols-3',
+    4: 'grid-cols-1 sm:grid-cols-4',
   }[chartColumns];
 
   return (

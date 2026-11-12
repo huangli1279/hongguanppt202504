@@ -36,10 +36,8 @@ export const ContentSlide10: React.FC = () => {
               1-9月规上工业企业利润总额6.03万亿元，同比
               <span className="text-red-500 font-bold">+15.5%</span>
               ；1-9月规上工业企业营收同比增长
-              <span className="text-red-500 font-bold">6.6%</span>
-              ，营业成本同比增长
-              <span className="text-red-500 font-bold">6.1%</span>
-              ，增收更增利。
+              6.6%，营业成本同比增长
+              6.1%，增收更增利。但较二季度高点已出现回落，预计四季度持续回落。
             </p>
           </BaseCard>
 
