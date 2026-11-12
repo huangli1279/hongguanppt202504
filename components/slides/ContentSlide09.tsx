@@ -50,7 +50,7 @@ export const ContentSlide09: React.FC = () => {
 
           <BaseCard title="新动能仍是主引擎" delay="120ms">
             <p>
-              前三季度高技术制造业增加值 +14.3%（Q3为 16.2%）；9月计算机通信电子行业 +16.4%，对全部规上工业增长贡献率连续居各大类行业首位，9月专用设备制造业 12.1%，铁路航空航天设备制造 11.7%，均保持高增长。
+              三季度新动能加速：高技术制造业增加值 Q3 单季同比 <span className="text-red-600 font-bold">+16.2%</span>（Q1/Q2/Q3分别为 12.5%/14.0%/16.2%，逐季抬升）；电子行业同比 <span className="text-red-600 font-bold">+17.5%</span>，专用设备制造业 +12.0%，较 Q2 加快 3.5pct；铁路船舶航空航天设备制造业 +12.8%。
             </p>
           </BaseCard>
 

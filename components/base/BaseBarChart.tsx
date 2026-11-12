@@ -24,6 +24,8 @@ export interface BarConfig {
   name: string;
   color?: string;
   stackId?: string;
+  /** 指定该柱子所在的 Y 轴，默认 left；设为 'right' 可与左侧柱子形成双轴对比 */
+  yAxisId?: 'left' | 'right';
 }
 
 export interface BarLineConfig {
@@ -282,6 +284,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   verticalDividerStrokeDasharray = '4 4',
 }) => {
   const hasLines = !!lines && lines.length > 0;
+  const hasBarRightAxis = bars.some((bar) => bar.yAxisId === 'right');
   const ChartComponent = hasLines ? ComposedChart : BarChart;
   const unitByKey = bars.reduce((acc, bar) => {
     acc[bar.dataKey] = unit;
@@ -292,7 +295,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
       unitByKey[line.dataKey] = line.unit ?? lineUnit;
     });
   }
-  const barAxisId = hasLines ? 'left' : undefined;
+  const barAxisId = hasLines || hasBarRightAxis ? 'left' : undefined;
   const lineAxisId = 'right';
   const hasCategoryGroups = !!categoryGroups && categoryGroups.length > 0;
   const hasHighlightAreas = !!highlightAreas && highlightAreas.length > 0;
@@ -441,7 +444,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 width={yAxisWidth}
               />
             )}
-            {hasLines && !isHorizontal && (
+            {(hasLines || hasBarRightAxis) && !isHorizontal && (
               <YAxis
                 yAxisId={lineAxisId}
                 orientation="right"
@@ -477,7 +480,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   dataKey={bar.dataKey}
                   fill={barColor}
                   stackId={bar.stackId}
-                  yAxisId={barAxisId}
+                  yAxisId={bar.yAxisId ?? barAxisId}
                   animationDuration={800}
                   animationBegin={0}
                   animationEasing="ease-out"

@@ -66,14 +66,12 @@ const App: React.FC = () => {
 
   const goToNextSlide = useCallback(() => {
     setCurrentSlide(prev => {
-      if (prev === 36) return 44;
       return prev < TOTAL_SLIDES ? prev + 1 : 1;
     });
   }, []);
 
   const goToPrevSlide = useCallback(() => {
     setCurrentSlide(prev => {
-      if (prev === 44) return 36;
       return prev > 1 ? prev - 1 : TOTAL_SLIDES;
     });
   }, []);
