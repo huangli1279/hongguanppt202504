@@ -68,7 +68,8 @@ export const ContentSlide09: React.FC = () => {
               showYAxis={true}
               legendOrder={['全部', '制造业', '采矿业', '电力热力燃气水']}
               highlightPeriods={['2026-09']}
-              xAxisTicks={['2024-03', '2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-09']}
+              xAxisAngle={0}
             />
           </ChartContainer>
 
