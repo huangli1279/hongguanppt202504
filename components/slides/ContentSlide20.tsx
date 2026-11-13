@@ -44,21 +44,32 @@ export const ContentSlide20: React.FC = () => {
               1-9月房地产开发投资<span className="text-black">5.34万亿元</span>，同比<span className="text-green-600 font-bold">-20.6%</span>（1-7月<span className="text-green-600 font-bold">-19.2%</span>、1-8月<span className="text-green-600 font-bold">-19.9%</span>，降幅逐月扩大）；新开工<span className="text-green-600 font-bold">-24.9%</span>、竣工<span className="text-green-600 font-bold">-25.1%</span>、施工<span className="text-green-600 font-bold">-12.8%</span>。
             </p>
           </BaseCard>
-          <BaseCard title="② 供给收缩快于需求" delay="120ms">
+          <BaseCard
+            title="② 待售面积同比连续7月下降，主因供给收缩，二手房销售好于新房"
+            titleClassName="text-[13px] leading-tight"
+            delay="120ms"
+          >
             <p>
-              新开工降幅（<span className="text-green-600 font-bold">-24.9%</span>）持续大于新建商品房销售面积降幅（<span className="text-green-600 font-bold">-13.2%</span>），9月末待售面积<span className="text-black">7.48亿平方米</span>，同比<span className="text-green-600 font-bold">-1.5%</span>。
+              新开工降幅（<span className="text-green-600 font-bold">-24.9%</span>，供给）持续大于新建商品房销售面积降幅（<span className="text-green-600 font-bold">-13.2%</span>），9月末待售面积<span className="text-black">7.48亿平方米</span>，同比<span className="text-green-600 font-bold">-1.5%</span>；
             </p>
             <p className="mt-2">
-              二手房交易网签面积<span className="text-black">6.17亿平方米</span>，同比<span className="text-red-500 font-bold">+10.7%</span>（住建部数据）——"新房冷、二手房热"的存量房时代特征进一步强化。
+              新建商品房销售面积持续下降，二手房交易网签面积<span className="text-black">6.17亿平方米</span>，同比<span className="text-red-500 font-bold">+10.7%</span>（住建部数据）——"新房冷、二手房热"的存量房时代特征进一步强化。
             </p>
           </BaseCard>
           <BaseCard title="③ 价格端" delay="240ms">
             <p>
-              从房价来看，整体仍然负增；一线城市新房、二手房连续8月环比上升，二线城市环比降幅收窄。            </p>
+              从房价来看，整体仍然负增；一线城市新房、二手房连续<span className="text-red-500 font-bold">7月</span>环比上升，二线城市环比降幅收窄。
+            </p>
           </BaseCard>
           <BaseCard title="④ 政策影响" delay="360ms">
             <p>
-              8月28日现房销售新政地方细则落地中，拉长回款周期、压低房企拿地与新开工的影响尚未充分体现；9月房企信用融资增速 <span className="text-green-600 font-bold">-17.2%</span>仍低迷。9月29日贴息政策十一执行，预计按揭信贷边际改善、核心城市成交量小幅回升，但持续性取决于收入与房价预期，开发投资降幅或继续走阔，市场整体仍处探底。
+              8月28日现房销售新政地方细则落地中，拉长回款周期、压低房企拿地与新开工的影响尚未充分体现；9月房企信用融资增速 <span className="text-green-600 font-bold">-17.2%</span>仍低迷。
+            </p>
+            <p className="mt-2">
+              9月29日贴息政策十一执行，政策主要惠及<span className="text-black">二三线城市及以下刚需</span>，<span className="font-bold">非全面刺激</span>。
+            </p>
+            <p className="mt-1 text-[11px] leading-snug text-gray-500">
+              （首套房、面积≤120㎡、总价≤150万元、不含存量置换，年化1个百分点、期限≤5年贴息，单户可享受贴息的贷款规模上限100万元）
             </p>
           </BaseCard>
         </div>

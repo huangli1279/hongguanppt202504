@@ -70,7 +70,7 @@ export const ContentSlide17: React.FC = () => {
           </BaseCard>
           <BaseCard title="分类投资仍偏弱" delay="120ms">
             <p>
-              从投资主体看：国有控股投资降幅收窄0.4pct至<span className="text-black">-3.2%</span>，政策托底增强；民间投资降幅扩大0.3pct至<span className="text-green-600 font-semibold">-10.4%</span>，民营资本扩投意愿偏弱。剔除地产后民间投资-6.7%，降幅明显收窄，显示弱势中相当部分来自地产链条拖累
+              从投资主体看：国有控股投资降幅收窄0.4pct至<span className="text-black">-3.2%</span>，政策托底增强；民间投资降幅扩大0.3pct至<span className="text-green-600 font-semibold">-10.4%</span>，民营资本扩投意愿偏弱。
             </p>
             <p className="mt-2 text-black">
               从投资构成看：建筑安装工程、其他费用降幅小幅走阔；受两新政策影响，仅设备工器具购置维持正增，但增势边际回落。设备工器具购置同比<span className="text-red-600 font-semibold">+9.7%</span>、增速较1-8月加快0.4个百分点是三大构成中唯一正增项
@@ -78,13 +78,13 @@ export const ContentSlide17: React.FC = () => {
           </BaseCard>
         </div>
 
-        {/* 图表区域 - 三列布局，右列上下两个图 */}
-        <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
-          {/* 左图：固投累计同比 + 单月环比，单独占整列 */}
+        {/* 图表区域 - 四列横向排列 */}
+        <div className="flex-1 grid grid-cols-4 gap-4 min-h-0">
+          {/* 图1：固投累计同比 + 单月环比 */}
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={cumulativeMomData}
-              title="固定资产投资累计同比与单月环比"
+              title="固投累计同比与单月环比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={cumulativeMomConfigs}
               yAxisDomain={[-8, 5]}
@@ -92,13 +92,14 @@ export const ContentSlide17: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['固投累计同比', '固投单月环比']}
-              highlightPeriods={['2026-08', '2026-09']}
-              xAxisTickCount={6}
+              highlightPeriods={['2026-09']}
+              xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
+              compact
             />
           </ChartContainer>
 
-          {/* 中图：三大支柱累计同比 */}
-          <ChartContainer delay="600ms">
+          {/* 图2：三大支柱累计同比 */}
+          <ChartContainer delay="700ms">
             <BaseLineChart
               data={fixedAssetInvestmentData}
               title="制造业/基建/地产投资累计同比"
@@ -110,45 +111,46 @@ export const ContentSlide17: React.FC = () => {
               referenceLineY={0}
               legendOrder={['制造业投资', '基础设施建设投资', '房地产开发投资']}
               highlightPeriods={['2026-09']}
-              xAxisTickCount={6}
+              xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
+              compact
             />
           </ChartContainer>
 
-          {/* 右列：上为国有控股与民间投资，下为投资构成 */}
-          <div className="flex flex-col gap-4 min-h-0">
-            <ChartContainer delay="600ms" className="flex-1 min-h-0">
-              <BaseLineChart
-                data={privateInvestmentData}
-                title="国有控股投资与民间投资累计同比"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={privateLineConfigs}
-                yAxisDomain={[-11, 8]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['国有控股投资', '民间投资']}
-                highlightPeriods={['2026-09']}
-                xAxisTicks={['2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
-                compact
-              />
-            </ChartContainer>
-            <ChartContainer delay="600ms" className="flex-1 min-h-0">
-              <BaseLineChart
-                data={investmentBreakdownData}
-                title="建筑安装工程、设备购置、其他费用累计同比"
-                subtitle="数据来源：国家统计局 | 单位：%"
-                lines={breakdownLineConfigs}
-                yAxisDomain={[-13, 20]}
-                showYAxis={true}
-                showReferenceLine={true}
-                referenceLineY={0}
-                legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
-                highlightPeriods={['2026-09']}
-                xAxisTicks={['2025-03', '2025-06', '2025-09', '2026-03', '2026-09']}
-                compact
-              />
-            </ChartContainer>
-          </div>
+          {/* 图3：国有控股与民间投资累计同比 */}
+          <ChartContainer delay="800ms">
+            <BaseLineChart
+              data={privateInvestmentData}
+              title="国有控股与民间投资累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={privateLineConfigs}
+              yAxisDomain={[-11, 8]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['国有控股投资', '民间投资']}
+              highlightPeriods={['2026-09']}
+              xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
+              compact
+            />
+          </ChartContainer>
+
+          {/* 图4：投资构成累计同比 */}
+          <ChartContainer delay="900ms">
+            <BaseLineChart
+              data={investmentBreakdownData}
+              title="建筑安装/设备购置/其他费用累计同比"
+              subtitle="数据来源：国家统计局 | 单位：%"
+              lines={breakdownLineConfigs}
+              yAxisDomain={[-13, 20]}
+              showYAxis={true}
+              showReferenceLine={true}
+              referenceLineY={0}
+              legendOrder={['建筑安装工程', '设备工器具购置', '其他费用']}
+              highlightPeriods={['2026-09']}
+              xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
+              compact
+            />
+          </ChartContainer>
         </div>
       </div>
     </BaseContentSlide>

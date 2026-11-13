@@ -23,7 +23,7 @@ export const ContentSlide33: React.FC = () => {
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="mb-4 flex-shrink-0 grid grid-cols-2 gap-6">
+        <div className="mb-4 flex-shrink-0 grid grid-cols-3 gap-6">
           <BaseCard delay="0ms" variant="accent" title="M1 与 M2 双双回落，原因各异">
             <p>
               <strong>M1回落的三个原因：</strong>①去年9月M1环比大增
@@ -36,12 +36,14 @@ export const ContentSlide33: React.FC = () => {
               <strong>M2同比回落：</strong>信贷派生放缓，叠加政府债发行提速后资金沉淀于财政存款、拨付偏慢，共同拖累M2增速。
             </p>
           </BaseCard>
-          <BaseCard delay="200ms" variant="accent" title="剪刀差走阔 · 四季度展望">
+          <BaseCard delay="100ms" variant="accent" title="剪刀差走阔">
             <p>
               M1-M2负向剪刀差重新走阔至4个百分点，资金活化程度明显减弱，微观主体经营活跃度和投资意愿待修复。
             </p>
-            <p className="mt-2">
-              四季度展望：政府债剩余额度与
+          </BaseCard>
+          <BaseCard delay="200ms" variant="accent" title="四季度展望：M2增速温和回升">
+            <p>
+              政府债剩余额度与
               <span className="text-webank-blue font-semibold">5,500亿</span>
               结存限额待发、前期财政存款加快拨付、
               <span className="text-webank-blue font-semibold">8,000亿</span>

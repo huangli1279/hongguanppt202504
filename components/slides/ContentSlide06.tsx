@@ -28,13 +28,9 @@ export const ContentSlide06: React.FC = () => {
                   <li>
                     全年增速大概率落在
                     <span className="font-bold text-red-500">4.5%-4.6%</span>
-                    区间，处于政府目标（4.5%-5.0%）下限附近
-                  </li>
-                  <li>
-                    关键驱动力：出口+ 高技术制造业支撑总量，8,000 亿新型政策性金融工具 + 六张网 + 5,500 亿结存限额支撑投资
-                  </li>
-                  <li>
-                    K型分化延续：新经济强、旧经济弱
+                    区间，处于政府目标（4.5%-5.0%）下限附近，较二季度预测区间
+                    <span className="font-bold text-red-500">4.5%-4.8%</span>
+                    下修
                   </li>
                 </ul>
               </BaseCard>
@@ -54,16 +50,21 @@ export const ContentSlide06: React.FC = () => {
                     4.6%，Q3 好于预期，9 月经济改善
                   </li>
                   <li>
-                    <span className="font-bold text-webank-blue">一财一致预期：</span>
-                    4.6%（10 月最新）——第一财经首席经济学家调研显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为 4.6%
-                  </li>
-                  <li>
-                    <span className="font-bold text-webank-blue">财信研究院：</span>
-                    4.6%，延续前期预测，出口高韧性，投资降幅收窄，消费触底回升（双 11），财政提速
-                  </li>
-                  <li>
-                    <span className="font-bold text-webank-blue">国内券商：</span>
-                    "最新观点"已从点位转向定性，10 月下旬招商"出口再提速、消费改善、基建回暖，增长目标完成基本无虞"
+                    <span className="font-bold text-webank-blue">国内机构：</span>
+                    <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] mt-0.5">
+                      <li>
+                        <span className="font-semibold">一财一致预期：</span>
+                        4.6%（10 月最新）——第一财经首席经济学家调研显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为 4.6%
+                      </li>
+                      <li>
+                        <span className="font-semibold">财信研究院：</span>
+                        4.6%，延续前期预测，出口高韧性，投资降幅收窄，消费触底回升（双 11），财政提速
+                      </li>
+                      <li>
+                        <span className="font-semibold">券商：</span>
+                        未更新前期预测，仅招商证券定性描述“10 月下旬出口再提速、消费改善、基建回暖，增长目标完成基本无虞”
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </BaseCard>

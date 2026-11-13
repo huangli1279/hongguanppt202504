@@ -41,11 +41,11 @@ export const ContentSlide30: React.FC = () => {
   return (
     <BaseContentSlide
       title={<>财政支出进度偏慢：增长1%未达目标，结构延续民生托底、科创加力、基建边际修复</>}
-      cardColumns={3}
+      cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-3 gap-4 mb-6 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
           <BaseCard title="支出进度慢" delay="0ms" variant="accent">
             <p>
               1—9月全国一般公共预算支出 <span className="text-red-500 font-semibold">21.02万亿元</span>，同比增长1%，距离年初 <span className="text-red-500 font-semibold">4.4%</span> 的目标仍有空间。支出进度 <span className="text-red-500 font-semibold">70.0%</span>，偏慢，低于收入进度 8 个百分点。
@@ -54,11 +54,6 @@ export const ContentSlide30: React.FC = () => {
           <BaseCard title="结构：民生托底、科创加力、基建边际修复" delay="120ms">
             <p>
               卫生健康支出增长 <span className="text-red-500 font-semibold">7.7%</span>，主要是发放育儿补贴增加；社会保障和就业增长 <span className="text-red-500 font-semibold">5.2%</span>，住房保障增长 <span className="text-red-500 font-semibold">3.1%</span>，科学技术增长 <span className="text-red-500 font-semibold">3%</span>，教育增长 <span className="text-red-500 font-semibold">1.1%</span>。投资于人相关支出得到较好保障，传统基建支出弱化但降幅收窄（Q2 <span className="text-green-600 font-semibold">-5.3%</span> → Q3 <span className="text-green-600 font-semibold">-4.41%</span>）。
-            </p>
-          </BaseCard>
-          <BaseCard title="三个约束：土地、化债、监管" delay="240ms">
-            <p>
-              一是土地财政收缩；二是隐性债务化解刚性，专项债付息占地方本级政府性基金收入比重升至 <span className="text-red-500 font-semibold">18%</span> 以上；三是 9 月 11 日中纪委与财政部联合通报六起隐债问责案例，再度释放强监管信号。
             </p>
           </BaseCard>
         </div>

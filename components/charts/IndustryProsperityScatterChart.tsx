@@ -205,11 +205,10 @@ export const IndustryProsperityScatterChart: React.FC = () => (
           <ReferenceArea x1={AXIS_MIN} x2={50} y1={AXIS_MIN} y2={50} fill="none" stroke="none" label={quadrantLabel(`持续低位 · ${quadCounts.lowLow}家`, 'bl')} />
           <ReferenceArea x1={50} x2={AXIS_MAX} y1={AXIS_MIN} y2={50} fill="none" stroke="none" label={quadrantLabel(`高位回落 · ${quadCounts.highFall}家`, 'br')} />
 
-          {/* 高景气行业（油气开采/计算机电子/煤矿开采/电气机械/仪器仪表）灰色高亮框 */}
-          <ReferenceArea x1={45} x2={87} y1={68} y2={98} fill="#94a3b8" fillOpacity={0.06} stroke="#64748b" strokeDasharray="4 3" strokeWidth={1} />
-
-          {/* 2026-09景气分低于40分的行业灰色高亮框 */}
-          <ReferenceArea x1={16} x2={59} y1={18} y2={40} fill="#94a3b8" fillOpacity={0.06} stroke="#64748b" strokeDasharray="4 3" strokeWidth={1} />
+          {/* 三色景气分区：按 70分 / 40分 划分高景气、中性、低迷三档 */}
+          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={70} y2={AXIS_MAX} fill="#3b82f6" fillOpacity={0.06} stroke="none" />
+          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={40} y2={70} fill="#f59e0b" fillOpacity={0.05} stroke="none" />
+          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={AXIS_MIN} y2={40} fill="#ef4444" fillOpacity={0.05} stroke="none" />
 
           {/* 持平线与强弱分界 */}
           <ReferenceLine segment={[{ x: AXIS_MIN, y: AXIS_MIN }, { x: AXIS_MAX, y: AXIS_MAX }]} stroke={DIAG} strokeDasharray="4 4" strokeWidth={1} />

@@ -2,6 +2,8 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
+import { seriesColors } from '../../utils/chartColors';
 
 // 图1：1-9月分行业投资累计同比（竖向柱状图）
 const industryYoyData = [
@@ -35,18 +37,6 @@ interface ManufacturingTableRow {
   pharmaceutical: number;
 }
 
-const manufacturingTableColumns: Array<{ key: keyof Omit<ManufacturingTableRow, 'period'>; name: string }> = [
-  { key: 'auto', name: '汽车' },
-  { key: 'chemicals', name: '化学原料化学制品' },
-  { key: 'computerComm', name: '计算机通信和其他电子设备' },
-  { key: 'railwayShipAerospace', name: '铁路船舶航空航天和其他' },
-  { key: 'nonferrous', name: '有色金属冶炼和压延' },
-  { key: 'generalEquipment', name: '通用设备' },
-  { key: 'specialEquipment', name: '专用设备' },
-  { key: 'electricalMachinery', name: '电气机械和器材' },
-  { key: 'pharmaceutical', name: '医药' },
-];
-
 const manufacturingTableData: ManufacturingTableRow[] = [
   { period: '2025-07', auto: 21.7, chemicals: -4.7, computerComm: 2.2, railwayShipAerospace: 29.3, nonferrous: 4.9, generalEquipment: 14.8, specialEquipment: 4.6, electricalMachinery: -8.7, pharmaceutical: -6.6 },
   { period: '2025-08', auto: 20.2, chemicals: -5.2, computerComm: -0.1, railwayShipAerospace: 26.2, nonferrous: 2.2, generalEquipment: 13.7, specialEquipment: 1.6, electricalMachinery: -8.8, pharmaceutical: -8.5 },
@@ -78,18 +68,6 @@ interface InfrastructureTableRow {
   telecom: number;
 }
 
-const infrastructureTableColumns: Array<{ key: keyof Omit<InfrastructureTableRow, 'period'>; name: string }> = [
-  { key: 'railway', name: '铁路运输' },
-  { key: 'road', name: '道路运输' },
-  { key: 'pipeline', name: '管道运输' },
-  { key: 'handlingStorage', name: '装卸搬运和仓储' },
-  { key: 'aviation', name: '航空运输' },
-  { key: 'waterTransport', name: '水上运输' },
-  { key: 'waterEnvironment', name: '水利、环境和公共设施管理' },
-  { key: 'powerUtility', name: '电力、热力、燃气及水生产和供应' },
-  { key: 'telecom', name: '信息传输、软件和信息技术服务' },
-];
-
 const infrastructureTableData: InfrastructureTableRow[] = [
   { period: '2025-07', railway: 5.9, road: -2.0, pipeline: 14.0, handlingStorage: 10.0, aviation: 2.9, waterTransport: 18.9, waterEnvironment: 2.0, powerUtility: 21.5, telecom: 12.8 },
   { period: '2025-08', railway: 4.5, road: -3.3, pipeline: 14.8, handlingStorage: 9.5, aviation: 1.0, waterTransport: 15.9, waterEnvironment: -0.2, powerUtility: 18.8, telecom: 10.9 },
@@ -107,12 +85,27 @@ const infrastructureTableData: InfrastructureTableRow[] = [
   { period: '2026-09', railway: 2.3, road: -9.9, pipeline: 55.5, handlingStorage: 16.9, aviation: 13.8, waterTransport: 13.5, waterEnvironment: -12.8, powerUtility: -6.8, telecom: 4.3 },
 ];
 
-// 合并表：制造业 + 基建 细分行业投资累计同比
-const mergedTableColumns = [...manufacturingTableColumns, ...infrastructureTableColumns];
-const mergedTableData = manufacturingTableData.map((row, index) => ({
-  ...row,
-  ...infrastructureTableData[index],
-}));
+// 合并表：制造业 + 基建 细分行业投资累计同比（已拆分为两张折线图，行业范围与原表一致）
+const xAxisQuarterTicks = ['2025-09', '2025-12', '2026-03', '2026-06', '2026-09'];
+
+const manufacturingLineConfigs: LineConfig[] = [
+  { dataKey: 'auto', name: '汽车', color: seriesColors[0], strokeWidth: 2, labelDY: -10 },
+  { dataKey: 'chemicals', name: '化学原料化学制品', color: seriesColors[3], strokeWidth: 2, labelDY: 0, pointDXOffsets: { '2026-09': 30 } },
+  { dataKey: 'computerComm', name: '计算机通信电子', color: seriesColors[1], strokeWidth: 2 },
+  { dataKey: 'railwayShipAerospace', name: '铁路船舶航空航天', color: seriesColors[2], strokeWidth: 2 },
+  { dataKey: 'nonferrous', name: '有色金属冶炼压延', color: seriesColors[4], strokeWidth: 2, labelDY: -22 },
+  { dataKey: 'specialEquipment', name: '专用设备', color: seriesColors[5], strokeWidth: 2, labelDY: 22 },
+  { dataKey: 'pharmaceutical', name: '医药', color: seriesColors[6], strokeWidth: 2, labelDY: 12, pointDXOffsets: { '2026-09': 30 } },
+];
+
+const infrastructureLineConfigs: LineConfig[] = [
+  { dataKey: 'road', name: '道路运输', color: seriesColors[0], strokeWidth: 2, labelDY: -14 },
+  { dataKey: 'pipeline', name: '管道运输', color: seriesColors[1], strokeWidth: 2 },
+  { dataKey: 'handlingStorage', name: '装卸搬运仓储', color: seriesColors[3], strokeWidth: 2 },
+  { dataKey: 'aviation', name: '航空运输', color: seriesColors[2], strokeWidth: 2, labelDY: -14, pointDXOffsets: { '2026-09': 30 } },
+  { dataKey: 'waterTransport', name: '水上运输', color: seriesColors[5], strokeWidth: 2, labelDY: 16, pointDXOffsets: { '2026-09': 30 } },
+  { dataKey: 'waterEnvironment', name: '水利环境公共设施', color: seriesColors[6], strokeWidth: 2, labelDY: 16 },
+];
 
 export const ContentSlide19: React.FC = () => {
   return (
@@ -125,21 +118,19 @@ export const ContentSlide19: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
           <BaseCard title="① 增长集中在战略基建与电子产业链" delay="0ms" variant="accent">
             <p>
-              前三季度，水上运输（
+              受“两重”“六张网”项目推进、AI算力/终端需求扩张以及设备更新政策拉动，水上运输（
               <span className="text-red-500 font-semibold">+13.5%</span>
               ）、航空运输（
               <span className="text-red-500 font-semibold">+13.8%</span>
               ）、信息传输（
               <span className="text-red-500 font-semibold">+30.8%</span>
-              ）等“六张网”相关基建投资保持较快增长；电子电路（
+              ）、电子电路（
               <span className="text-red-500 font-semibold">+58.7%</span>
               ）、集成电路（
               <span className="text-red-500 font-semibold">+14.2%</span>
               ）、计算机通信电子（
               <span className="text-red-500 font-semibold">+9.6%</span>
-              ）等电子产业链投资表现亮眼；高技术制造业投资同比增长
-              <span className="text-red-500 font-semibold">4.0%</span>
-              ，增速较1—8月加快0.5个百分点，主要受“两重”“六张网”项目推进、AI算力/终端需求扩张以及设备更新政策拉动。
+              ）投资表现亮眼；
             </p>
           </BaseCard>
 
@@ -195,68 +186,39 @@ export const ContentSlide19: React.FC = () => {
             />
           </ChartContainer>
 
-          {/* 右侧合并表：制造业 + 基建 细分行业投资累计同比 */}
-          <ChartContainer delay="720ms" ariaLabel="制造业与基建细分行业投资累计同比合并表格" className="col-span-2">
-            <div className="h-full flex flex-col">
-              <div className="mb-2">
-                <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-                  图2 制造业与基建细分行业投资累计同比（1-9月）
-                </h3>
-                <p className="text-xs text-webank-subtext mt-1">数据来源：国家统计局 | 单位：% | 仅近三个月标注红绿</p>
-              </div>
-              <div className="flex-1 min-h-0 overflow-hidden">
-                <table className="w-full h-full border-collapse text-[8px] leading-[1.1] table-fixed">
-                  <thead>
-                    <tr className="bg-webank-blue/10 text-webank-blue">
-                      <th rowSpan={2} className="border border-slate-300 px-[1px] py-[2px] font-bold w-[34px]">时间</th>
-                      <th colSpan={manufacturingTableColumns.length} className="border border-slate-300 px-[1px] py-[2px] font-bold">制造业</th>
-                      <th colSpan={infrastructureTableColumns.length} className="border border-slate-300 px-[1px] py-[2px] font-bold">基建</th>
-                    </tr>
-                    <tr className="bg-webank-blue/10 text-webank-blue">
-                      {mergedTableColumns.map((col) => (
-                        <th
-                          key={col.key}
-                          className="border border-slate-300 px-[1px] py-[2px] font-bold align-middle"
-                        >
-                          {col.name}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {mergedTableData.map((row, rowIndex) => {
-                      const isLatest = rowIndex >= mergedTableData.length - 3;
-                      return (
-                        <tr key={row.period} className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-                          <td className="border border-slate-300 px-[1px] py-[1px] text-center font-semibold text-slate-700 whitespace-nowrap">
-                            {row.period}
-                          </td>
-                          {mergedTableColumns.map((col) => {
-                            const value = Number(row[col.key as keyof typeof row]);
-                            const colorClass = !isLatest
-                              ? 'text-slate-800 font-semibold'
-                              : value > 0
-                                ? 'text-red-600'
-                                : value < 0
-                                  ? 'text-green-600'
-                                  : 'text-slate-500';
-                            return (
-                              <td
-                                key={col.key}
-                                className={`border border-slate-300 px-[1px] py-[1px] text-center tabular-nums ${colorClass}`}
-                              >
-                                {value.toFixed(1)}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </ChartContainer>
+          {/* 右侧：制造业与基建细分行业投资累计同比（两张折线图） */}
+          <div className="col-span-2 grid grid-cols-2 gap-3 min-h-0">
+            <ChartContainer delay="720ms" ariaLabel="制造业细分行业投资累计同比折线图">
+              <BaseLineChart
+                data={manufacturingTableData}
+                title="图2 制造业细分行业固投累计同比（1-9月）"
+                subtitle="数据来源：国家统计局 | 单位：% | 仅含红框标注行业"
+                lines={manufacturingLineConfigs}
+                yAxisDomain={[-16, 34]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['计算机通信电子', '铁路船舶航空航天', '汽车', '化学原料化学制品', '有色金属冶炼压延', '专用设备', '医药']}
+                xAxisTicks={xAxisQuarterTicks}
+                unit="%"
+              />
+            </ChartContainer>
+            <ChartContainer delay="840ms" ariaLabel="基建细分行业投资累计同比折线图">
+              <BaseLineChart
+                data={infrastructureTableData}
+                title="图3 基建细分行业固投累计同比（1-9月）"
+                subtitle="数据来源：国家统计局 | 单位：% | 仅含红框标注行业"
+                lines={infrastructureLineConfigs}
+                yAxisDomain={[-20, 160]}
+                showYAxis={true}
+                showReferenceLine={true}
+                referenceLineY={0}
+                legendOrder={['管道运输', '装卸搬运仓储', '航空运输', '水上运输', '道路运输', '水利环境公共设施']}
+                xAxisTicks={xAxisQuarterTicks}
+                unit="%"
+              />
+            </ChartContainer>
+          </div>
         </div>
       </div>
     </BaseContentSlide>

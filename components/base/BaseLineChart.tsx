@@ -137,7 +137,7 @@ const CustomLegend: React.FC<CustomLegendProps> = ({ payload, legendOrder }) => 
   }
 
   return (
-    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', justifyContent: 'center', gap: '24px' }}>
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: '12px', rowGap: '2px' }}>
       {sortedPayload.map((entry, index) => {
         const dash = entry.payload?.strokeDasharray;
         return (

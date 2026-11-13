@@ -24,8 +24,12 @@ const loanColumns: ColumnConfig[] = [
   { key: 'totalLoan', title: '贷款合计', align: 'right', width: '0.9fr', render: formatTrillion },
 ];
 
+const householdLoanTableData = householdLoanChangeData.filter(
+  (item) => !(item.period >= '2025-01' && item.period <= '2025-11')
+);
+
 export const ContentSlide34: React.FC = () => {
-  const highlightRows = householdLoanChangeData.reduce<number[]>((acc, item, index) => {
+  const highlightRows = householdLoanTableData.reduce<number[]>((acc, item, index) => {
     if (['2026-07', '2026-08', '2026-09'].includes(item.period)) {
       acc.push(index);
     }
@@ -48,21 +52,21 @@ export const ContentSlide34: React.FC = () => {
               其中9月企业贷款新增<span className="text-webank-blue font-semibold">1.29万亿</span>，主因9月新型政策性金融工具开始投放，补充重大项目资本金的同时带动银行配套贷款跟进。
             </p>
             <p>
-              企业中长贷同比少增额已明显收窄，预计10月对公中长贷继续改善（主要看政策工具落地情况）。
+              企业中长贷同比少增额已明显收窄，预计10月对公中长贷继续改善（政策性金融工具投放）。
             </p>
           </BaseCard>
           <BaseCard title="居民信贷持续收缩" delay="120ms" className="!p-3 gap-1 text-[11px] leading-snug [&>div]:leading-snug">
             <p className="mb-1">
               Q3居民贷款下降<span className="text-green-600 font-semibold">6,669亿</span>，同比多降
-              <span className="text-green-600 font-semibold">5,968亿</span>，9月单月居民贷款
-              <span className="text-green-600 font-semibold">0增长</span>；前三季度居民贷款累计下降
+              5,968亿，三季度末9月单月居民贷款
+              <span className="text-green-600 font-semibold">0增长</span>；前三季度居民贷款较年初下降
               <span className="text-green-600 font-semibold">1.03万亿</span>，居民信心偏弱，加杠杆意愿不强。
             </p>
             <p className="mb-1 font-semibold">从贷款分类看，各类贷款延续Q2趋势：</p>
             <ul className="list-disc pl-4 space-y-0.5">
               <li>
-                住房贷款：Q3下降3,800亿，同比多降
-                800亿，对比上季度下降金额（Q2：下降4,300亿）有缓解。前三季度累计下降
+                住房贷款：Q3下降<span className="text-green-600 font-semibold">3,800亿</span>，同比多降
+                800亿，对比上季度下降金额（Q2：下降4,300亿）有缓解。前三季度较年初下降
                 <span className="text-green-600 font-semibold">1.1万亿</span>，为居民贷款下降的主要原因。后续贴息政策有望带动居民按揭信贷小幅增长，但持续性取决于收入房价预期等。
               </li>
               <li>
@@ -71,7 +75,7 @@ export const ContentSlide34: React.FC = () => {
               </li>
               <li>
                 经营贷款：Q3下降1,505亿，同比多降
-                2,648亿，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
+                <span className="text-green-600 font-semibold">2,648亿</span>，以短期经营贷为主，反映个体工商户和小微企业经营活力不足。
               </li>
             </ul>
           </BaseCard>
@@ -82,9 +86,9 @@ export const ContentSlide34: React.FC = () => {
               subtitle="数据来源：中国人民银行 | 单位：万亿元"
               xAxisKey="category"
               bars={[
-                { dataKey: 'y2024', name: '2024年', color: '#6b7280' },
-                { dataKey: 'y2025', name: '2025年', color: chartColors.tertiary },
-                { dataKey: 'y2026', name: '2026年', color: chartColors.primary },
+                { dataKey: 'y2024', name: '2024Q3', color: '#6b7280' },
+                { dataKey: 'y2025', name: '2025Q3', color: chartColors.tertiary },
+                { dataKey: 'y2026', name: '2026Q3', color: chartColors.primary },
               ]}
               yAxisDomain={[-1, 3]}
               showYAxis={true}
@@ -105,7 +109,7 @@ export const ContentSlide34: React.FC = () => {
           </ChartContainer>
           <ChartContainer delay="750ms" className="min-h-0">
             <BaseTable
-              data={householdLoanChangeData}
+              data={householdLoanTableData}
               columns={loanColumns}
               title="居民贷款变化情况"
               subtitle="数据来源：中国人民银行｜单位：万亿元"

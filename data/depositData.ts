@@ -222,9 +222,9 @@ export const depositIncrementQ2CompareData = [
 
 /** Q3 存款增量对比：按类别分组，便于同年份并排对比 */
 export const depositIncrementQ3CompareData = [
-  { category: '居民存款增量', q2024: 2.58, q2025: 1.96, q2026: 1.81 },
-  { category: '其中：活期存款', q2024: -0.21, q2025: 0.52, q2026: -0.09 },
-  { category: '其中：定期存款', q2024: 2.79, q2025: 1.44, q2026: 1.90 },
+  { category: '居民存款', q2024: 2.58, q2025: 1.96, q2026: 1.81 },
+  { category: '企业存款', q2024: -0.67, q2025: -0.24, q2026: -0.04 },
+  { category: '财政存款', q2024: 0.97, q2025: 0.11, q2026: 0.66 },
   { category: '非银金融机构存款', q2024: 2.28, q2025: 2.26, q2026: -0.24 },
 ];
 
@@ -257,6 +257,21 @@ export const householdDepositMonthlyChangeData = [
   { period: '2026-04', household: -1.94, nonFinancial: -1.25, nonBankFin: 2.46 },
   { period: '2026-05', household: -0.11, nonFinancial: -0.16, nonBankFin: 1.14 },
   { period: '2026-06', household: 1.94, nonFinancial: 1.94, nonBankFin: -0.99 },
+];
+
+/** 季度非银机构存款增量（2024Q1–2026Q3），单位：万亿 */
+export const nonBankDepositQuarterlyIncrementData = [
+  { period: '2024Q1', value: 1.63 },
+  { period: '2024Q2', value: 0.65 },
+  { period: '2024Q3', value: 2.28 },
+  { period: '2024Q4', value: -1.9 },
+  { period: '2025Q1', value: 0.31 },
+  { period: '2025Q2', value: 2.24 },
+  { period: '2025Q3', value: 2.26 },
+  { period: '2025Q4', value: 1.6 },
+  { period: '2026Q1', value: 2.32 },
+  { period: '2026Q2', value: 2.62 },
+  { period: '2026Q3', value: -0.24 },
 ];
 
 export const nonBankFinQuarterlyData = [

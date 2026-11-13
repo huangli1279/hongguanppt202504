@@ -16,10 +16,10 @@ export const ContentSlide24: React.FC = () => {
             <p className="text-sm leading-snug">
               9月AI产业链（集成电路及计算机零部件）出口同比增长
               <span className="text-red-500 font-semibold">+115%</span>，拉动整体出口增速约
-              <span className="text-red-500 font-semibold">13</span>个百分点，成为出口增长的重要引擎。集成电路出口金额同比
-              <span className="text-red-500 font-semibold">+136.8%</span>，但出口数量仅
-              <span className="text-red-500 font-semibold">+2.6%</span>，且价格较8月环比下降
-              <span className="text-green-600 font-semibold">1.86%</span>，显示当前增长更多由价格因素支撑，四季度需关注价格走势。
+              <span className="text-red-500 font-semibold">13</span>个百分点，成为出口增长的重要引擎。集成电路出口金额
+              <span className="text-red-500 font-semibold">+136.8%</span>，出口数量
+              <span className="text-red-500 font-semibold">+2.6%</span>，价格环比下降
+              <span className="text-green-600 font-semibold">1.86%</span>，当前增长主要由价格因素支撑，四季度需关注价格走势。
             </p>
           </BaseCard>
 
@@ -27,14 +27,17 @@ export const ContentSlide24: React.FC = () => {
             <p className="text-sm leading-snug">
               9月玩具出口同比
               <span className="text-red-500 font-semibold">+40.8%</span>（8月+15.3%）、家电
-              <span className="text-red-500 font-semibold">+31.7%</span>、服装+24.1%，均明显回升，背后对应中美洽谈后美国零售商补库需求。汽车9月出口同比
+              <span className="text-red-500 font-semibold">+31.7%</span>、服装+24.1%，均明显回升，中美洽谈后美国零售商补库需求旺盛。
+            </p>
+            <p className="text-sm leading-snug mt-1">
+              汽车9月出口同比
               <span className="text-red-500 font-semibold">+61.9%</span>；叠加欧盟限制混动车出口将于12月生效，带动“抢出口”效应，对欧出口增速升至
               <span className="text-red-500 font-semibold">25.3%</span>（8月+6.6%）。
             </p>
           </BaseCard>
 
           <BaseCard
-            title="下半年展望：增速回落、结构分化"
+            title="四季度展望：增速回落、结构分化"
             delay="240ms"
             titleClassName="!inline-block !bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
           >

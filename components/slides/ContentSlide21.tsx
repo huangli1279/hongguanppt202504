@@ -76,14 +76,29 @@ export const ContentSlide21: React.FC = () => {
             </p>
           </BaseCard>
           <BaseCard title="机构预测" delay="120ms" variant="accent" className="!gap-1.5 !p-3">
-            <p className="text-[11px] leading-snug">
-              新开工降幅（-24.9%）持续大于新建商品房销售面积降幅（-13.2%），9月末新建商品房待售面积7.48亿平方米，同比-1.5%，反映供给收缩快于需求但现房库存去化仍偏慢。需求结构持续分化：二手房交易网签面积6.17亿平方米，同比+10.7%（住建部网签数据），占一二手合计交易面积约52.2%、较上年同期提升约6个百分点，“新房缩量、二手房放量”的存量房格局进一步确认。
+            <p className="text-[11px] leading-snug font-semibold text-webank-blue">
+              机构均不再给出 2026 年全年投资点位，全部转为定性表述：
             </p>
+            <ul className="mt-2 space-y-1.5">
+              {[
+                { org: '中金', view: '四季度温和修复' },
+                { org: '华泰', view: '弱企稳、压力可控' },
+                { org: '招商', view: '年内投资形势边际改善' },
+                { org: '中信', view: '内需改善仍待政策显效' },
+              ].map(({ org, view }) => (
+                <li key={org} className="flex items-center gap-2 text-[11px] leading-snug">
+                  <span className="inline-flex w-10 flex-shrink-0 items-center justify-center rounded bg-webank-blue px-1.5 py-0.5 text-[10px] font-bold text-white">
+                    {org}
+                  </span>
+                  <span className="text-gray-700">“{view}”</span>
+                </li>
+              ))}
+            </ul>
           </BaseCard>
         </>
       }
       charts={
-        <ChartContainer delay="600ms" ariaLabel="政策部署与投资重点">
+        <ChartContainer delay="600ms" ariaLabel="政策部署与投资重点" className="px-6 sm:px-12">
           <BaseTable
             data={policyTableData}
             columns={policyColumns}

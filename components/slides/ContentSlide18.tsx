@@ -59,19 +59,16 @@ export const ContentSlide18: React.FC = () => (
       <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
         <BaseCard title="三季度资金端明显加力" variant="accent" delay="0ms">
           <p>
-            1—9月新增专项债发行<span className="font-semibold">3.56万亿元</span>、进度<span className="font-semibold">81%</span>，9月同比多增<span className="font-semibold">2,148亿元</span>，叠加特别国债、政策性金融工具等多元工具协同。但专项债中化债、土储等非直接投资类占比仍处高位，“资金到位→实物工作量”的传导存在时滞，四季度是验证窗口。
+            1—9月新增专项债发行<span className="font-semibold">3.56万亿元</span>、进度<span className="font-semibold">81%</span>，9月同比多增<span className="font-semibold">2,148亿元</span>，叠加特别国债、政策性金融工具等多元工具协同。但专项债中化债、土储等非直接投资类占比仍处高位（图2），“资金到位→实物工作量”的传导存在时滞，四季度仍需观察。
           </p>
         </BaseCard>
-        <BaseCard title="专项债相关情况" delay="120ms">
+        <BaseCard title="专项债提速，多元工具协同" delay="120ms">
           <p>
-            <span className="font-semibold">发行提速。</span>1—9月全国发行新增专项债35,608亿元，发行进度81%，快于时间进度；9月单月发行6,339亿元、同比多增2,148亿元，提速最为明显。
-          </p>
-          <p className="mt-2">
-            <span className="font-semibold">多元工具协同。</span>超长期特别国债1.3万亿元收官（10月16日）：8,000亿元支持“两重”建设、2,500亿元支持消费品以旧换新、2,000亿元支持大规模设备更新。新型政策性金融工具8,000亿元9月开闸，投放超1,000亿元，涉及项目总投资约2.1万亿元，有效补充项目资本金；截至10月28日已全部投放完毕，涉及项目总投资约11万亿元。PSL降息扩围，“六张网”纳入支持；地方债结存限额5,500亿元（其中专项债2,500亿元）向经济大省倾斜，可用作项目资本金。
+            专项债发行提速，1—9月全国发行新增专项债<span className="font-semibold">35,608亿元</span>，发行进度<span className="font-semibold">81%</span>，快于时间进度；9月单月发行<span className="font-semibold">6,339亿元</span>、同比多增<span className="font-semibold">2,148亿元</span>，提速最为明显。多元工具超长特别国债、新型政策性金融工具、PSL降息扩围、地方债结存限额等协同，助力稳投资。（图3）
           </p>
         </BaseCard>
       </div>
-      <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
+      <div className="flex-1 grid grid-cols-3 gap-4 min-h-0">
         <ChartContainer delay="600ms">
           <BaseBarChart
             data={specialBondData}
@@ -135,6 +132,73 @@ export const ContentSlide18: React.FC = () => (
             xAxisTickFontSize={9}
             xAxisTickFormatter={(value) => String(value).slice(2)}
           />
+        </ChartContainer>
+        <ChartContainer delay="840ms">
+          <div className="w-full h-full flex flex-col">
+            <div className="mb-4">
+              <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+                图3 政策工具
+              </h3>
+              <p className="text-xs text-webank-subtext mt-1">数据来源：公开资料整理</p>
+            </div>
+            <div className="flex-grow min-h-0 overflow-hidden">
+              <table className="w-full h-full text-[10px] leading-tight border-collapse table-fixed">
+                <colgroup>
+                  <col className="w-[19%]" />
+                  <col className="w-[21%]" />
+                  <col className="w-[27%]" />
+                  <col className="w-[33%]" />
+                </colgroup>
+                <thead>
+                  <tr className="bg-webank-accent/10 text-webank-blue">
+                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">政策工具</th>
+                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">总规模</th>
+                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">资金投向 / 用途</th>
+                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">进度与时点</th>
+                  </tr>
+                </thead>
+                <tbody className="text-webank-text align-top">
+                  <tr className="even:bg-slate-50/70">
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">超长期特别国债</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold tabular-nums">1.3万亿元</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5">
+                      8,000亿→“两重”建设；<br />
+                      2,500亿→消费品以旧换新；<br />
+                      2,000亿→大规模设备更新
+                    </td>
+                    <td className="border border-slate-300 px-1.5 py-1.5">
+                      4月24日开始，10月16日发行结束
+                      <div className="mt-1 text-webank-subtext">二季度 5,720亿｜三季度 6,050亿｜四季度 1,230亿</div>
+                    </td>
+                  </tr>
+                  <tr className="even:bg-slate-50/70">
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">新型政策性金融工具</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold tabular-nums">8,000亿元</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5">补充项目资本金</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5">
+                      9月开闸 → 10月28日全部投放完毕
+                      <div className="mt-1 text-webank-subtext">撬动项目总投资约11万亿元</div>
+                    </td>
+                  </tr>
+                  <tr className="even:bg-slate-50/70">
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">PSL</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold">降息扩围</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5">“六张网”纳入支持范围</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5 text-webank-subtext">—</td>
+                  </tr>
+                  <tr className="even:bg-slate-50/70">
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">地方债结存限额</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold tabular-nums">
+                      5,500亿元
+                      <div className="text-webank-subtext font-normal">（其中专项债2,500亿）</div>
+                    </td>
+                    <td className="border border-slate-300 px-1.5 py-1.5">可用作项目资本金</td>
+                    <td className="border border-slate-300 px-1.5 py-1.5 text-webank-subtext">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </ChartContainer>
       </div>
     </div>
