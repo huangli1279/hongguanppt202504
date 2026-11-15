@@ -121,9 +121,9 @@ export const ContentSlide15: React.FC = () => {
           <BaseCard title="消费者信心低位小幅回落" delay="240ms" className="!gap-1.5 !p-3">
             <p className="text-[13px] leading-snug">
               9月消费者信心指数
-              <span className="font-bold text-red-500">89.0</span>
+              89.0
               ，较二季度均值（89.4）小幅回落，仍在100荣枯线下方低位徘徊；分项中就业信心最低（
-              <span className="font-bold text-red-500">74.0</span>
+              74.0
               ），收入信心97.9、消费意愿95.1，同样偏弱。
             </p>
           </BaseCard>

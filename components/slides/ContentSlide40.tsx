@@ -1,115 +1,126 @@
 import React from 'react';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { BaseContentSlide } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { housingConsumptionData, housingConsumptionCategoryGroups, housingConsumptionNameByCategory, newHousePriceYoyData, newHousePriceYoyXTicks } from '@/data/housingConsumption';
-import { formatThousands } from '@/utils/numberFormat';
 
-const consumptionBars: BarConfig[] = [
-  { dataKey: 'housingTransport', name: '住房与交通', color: '#1B4F72', stackId: 'consumption' },
-  { dataKey: 'foodLiving', name: '居家食品与生活', color: '#DC2626', stackId: 'consumption' },
-  { dataKey: 'educationMedical', name: '教育与医疗', color: '#F4D35E', stackId: 'consumption' },
-  { dataKey: 'durables', name: '耐用品', color: '#81B29A', stackId: 'consumption' },
-  { dataKey: 'entertainment', name: '文娱与外出餐饮', color: '#9B72AA', stackId: 'consumption' },
-];
-
-const priceLineConfigs: LineConfig[] = [
-  {
-    dataKey: 'newHousePrice',
-    name: '新建商品住宅价格指数同比',
-    strokeWidth: 2.5,
-  },
-];
-
-export const ContentSlide40: React.FC = () => {
-  return (
-    <BaseContentSlide
-      title={<>房价财富效应：房价下行背景下，居民消费受抑制</>}
-      cardColumns={3}
-    >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域 */}
-        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
-          <BaseCard title="房价持续同比下跌，财富效应承压" delay="0ms" variant="accent">
-            <p className="text-sm">
-              高盛测算，26年Q1居民财富中房地产占<span className="text-red-500 font-semibold">52%</span>。社科院26Q2报告指出，居民部门主动去杠杆，住房贷款<span className="text-green-600 font-semibold">连续13个季度负增长</span>。
-            </p>
-            <p className="mt-1 text-sm">
-              70城新建商品住房价格2024年10月跌幅一度扩大至<span className="text-green-600 font-semibold">-6.2%</span>，2026年上半年仍在<span className="text-green-600 font-semibold">-3.5%</span>左右徘徊。
-            </p>
-          </BaseCard>
-          <BaseCard title="消费与房价变化正相关" delay="120ms">
-            <p className="text-sm">
-              厦大×蚂蚁集团调查显示，房价跌幅越大，家庭消费越低，且<span className="text-red-500 font-semibold">所有类别消费均下降</span>。房价跌幅超15%时，大于一套房消费较房价上涨家庭消费下降<span className="text-green-600 font-semibold">25.9%</span>，一套房家庭下降<span className="text-green-600 font-semibold">11.9%</span>，其中文娱与外出餐饮收缩的幅度最大。
-            </p>
-          </BaseCard>
-        </div>
-
-        {/* 图表区域 */}
-        <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
-          {/* 左侧：房价同比折线图 */}
-          <ChartContainer delay="600ms">
-            <BaseLineChart
-              data={newHousePriceYoyData}
-              title="70城新建商品住宅价格指数同比"
-              subtitle="数据来源：国家统计局 | 单位：%"
-              lines={priceLineConfigs}
-              yAxisDomain={[-7, 0]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              xAxisTicks={newHousePriceYoyXTicks}
-              legendOrder={['新建商品住宅价格指数同比']}
-              unit="%"
-            />
-          </ChartContainer>
-
-          {/* 右侧：消费结构堆叠柱状图 */}
-          <ChartContainer delay="600ms">
-            <div className="relative w-full h-full">
-              <BaseBarChart
-                data={housingConsumptionData}
-                title="家庭月均消费：按住房套数×房价涨跌分组"
-                subtitle="数据来源：厦门大学×蚂蚁集团研究院《2026年一季度中国家庭财富与消费报告》 | 单位：元｜样本14,967人"
-                xAxisKey="category"
-                bars={consumptionBars}
-                yAxisDomain={[0, 5500]}
-                showYAxis={true}
-                yAxisWidth={50}
-                yAxisTickFormatter={(val) => formatThousands(Number(val))}
-                unit="元"
-                barSize={30}
-                showLabels={true}
-                labelPosition="outside"
-                labelFill="#333333"
-                labelDy={-8}
-                legendOrder={['住房与交通', '居家食品与生活', '教育与医疗', '耐用品', '文娱与外出餐饮']}
-                categoryGroups={housingConsumptionCategoryGroups}
-                xAxisInterval={0}
-                xAxisAngle={-35}
-                xAxisHeight={90}
-                xAxisTickFormatter={(v) => housingConsumptionNameByCategory[String(v)] ?? String(v)}
-              />
-              {/* 消费差距标注 - 放在图表上方 */}
-              <div className="absolute top-0 right-0 flex gap-6 text-xs">
-                <div className="flex items-center gap-1">
-                  <span className="w-3 h-3 bg-[#9B72AA] rounded-sm"></span>
-                  <span className="text-[#9B72AA] font-bold">大于一套房: -25.9%</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-3 h-3 bg-[#DC2626] rounded-sm"></span>
-                  <span className="text-[#DC2626] font-bold">一套房: -11.9%</span>
-                </div>
-              </div>
-              {/* 房价波动定义备注 */}
-              <div className="mt-2 px-1 py-1 bg-gray-50 border border-gray-200 rounded text-[9px] text-gray-600 leading-relaxed">
-                <span className="font-medium text-gray-700">注：</span>研究将用户所在城市的房价波动定义为该城市2024年房价相较于2021年房价的变动幅度，即（2024年房价-2021年房价）/2021年房价。
-              </div>
+export const ContentSlide40: React.FC = () => (
+  <BaseContentSlide
+    title={<>特点二：AI参与消费决策——海外及国内企业的应对方式</>}
+  >
+    <div className="flex h-full flex-col gap-4">
+      {/* 上方说明卡片 */}
+      <div className="flex-shrink-0">
+        <BaseCard
+          title="从传统做法到 GEO、Agentic Commerce"
+          variant="accent"
+          className="h-full"
+          animated={false}
+        >
+          <div className="space-y-2 text-sm leading-relaxed">
+            <div className="border-l-4 border-gray-400 pl-2">
+              <span className="font-semibold text-webank-blue">传统做法：</span>
+              <span>
+                四个环节全是“人”干，AI 不参与；企业靠买搜索广告（SEO/SEM）抢排名。
+              </span>
             </div>
-          </ChartContainer>
+            <div className="border-t border-gray-200 pt-2 border-l-4 pl-2 border-l-[#4A79AA]">
+              <span className="font-semibold text-webank-blue">GEO：</span>
+              <span>
+                AI 开始介入，但只做“推荐”——它给清单、引用品牌，人不放手，还是自己点、自己买；企业靠“让 AI 引用你”获利。
+              </span>
+            </div>
+            <div className="border-t border-gray-200 pt-2 border-l-4 pl-2 border-l-[#C09A4A]">
+              <span className="font-semibold text-webank-blue">Agentic Commerce：</span>
+              <span>
+                AI 变成“代执行”——比价、叠券、下单、付款全包，人放手；企业靠“被代理优先路由”获利（联盟佣金/交易抽成）。
+              </span>
+            </div>
+          </div>
+        </BaseCard>
+      </div>
+
+      {/* 三种做法对比表 */}
+      <div className="flex-1 min-h-0 overflow-x-auto">
+        <div className="flex flex-col h-full min-w-full border border-webank-line rounded-lg overflow-hidden text-[13px]">
+          <table className="w-full h-full text-left border-collapse leading-snug">
+            <thead>
+              <tr className="border-b border-webank-line">
+                <th className="px-3 py-2 bg-[#f0f0f0] text-webank-text font-semibold uppercase tracking-wider w-24">
+                  环节
+                </th>
+                <th className="px-3 py-2 bg-[#e8e2d4] text-webank-blue font-semibold uppercase tracking-wider">
+                  传统做法
+                </th>
+                <th className="px-3 py-2 bg-[#cdddf0] text-webank-blue font-semibold uppercase tracking-wider">
+                  GEO（生成式引擎优化）
+                </th>
+                <th className="px-3 py-2 bg-[#aec6dd] text-webank-blue font-semibold uppercase tracking-wider">
+                  Agentic Commerce（代理式商务）
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-webank-line">
+              {/* ① 找商品 */}
+              <tr>
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">① 找商品</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己搜关键词</td>
+                <td className="px-3 py-2 bg-[#eef4fa]">用户问 AI，AI 给答案并引用品牌</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">用户只说目标（“百元内跑鞋”）</td>
+              </tr>
+              {/* ② 比价 */}
+              <tr>
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">② 比价</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己比价、看评论</td>
+                <td className="px-3 py-2 bg-[#eef4fa]">用户看 AI 推荐，再自己比</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">AI 代理自动比价、挑最优</td>
+              </tr>
+              {/* ③ 下单 */}
+              <tr>
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">③ 下单</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己填地址、下单</td>
+                <td className="px-3 py-2 bg-[#eef4fa]">用户自己点链接下单</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">AI 代理自动登录、下单</td>
+              </tr>
+              {/* ④ 付款 */}
+              <tr>
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">④ 付款</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己付款</td>
+                <td className="px-3 py-2 bg-[#eef4fa]">用户自己付款</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">AI 代理直接付款</td>
+              </tr>
+              {/* AI 的角色 */}
+              <tr className="bg-[#e0e6f0]">
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">AI 的角色</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">无（人找信息）</td>
+                <td className="px-3 py-2 bg-[#eef4fa]">只“推荐”（给清单，你自己点）</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">“代执行”（走完交易闭环）</td>
+              </tr>
+              {/* 企业怎么赚钱 */}
+              <tr className="bg-[#e0e6f0]">
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">企业怎么赚钱</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">买搜索广告（SEO / SEM）</td>
+                <td className="px-3 py-2 bg-[#eef4fa]">让 AI 引用你（GEO 服务 / 按效果付费）</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">被代理优先路由（联盟佣金 / 交易抽成）</td>
+              </tr>
+              {/* 代表企业 */}
+              <tr className="bg-[#e0e6f0]">
+                <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">代表企业 海外 / 国内</td>
+                <td className="px-3 py-2 bg-[#f7f4ed]">
+                  海外：Google Ads、Amazon、搜索引擎；国内：百度推广、淘宝/天猫、京东（试燃）
+                </td>
+                <td className="px-3 py-2 bg-[#eef4fa]">
+                  海外：Profound、Scrunch AI；ChatGPT / Perplexity；国内：360、微豁、迈迈；包含文心DeepSeek（早期起步）
+                </td>
+                <td className="px-3 py-2 bg-[#e4eef8]">
+                  海外：Shopify / Amazon / Walmart；Google、OpenAI、Visa；国内：淘宝/京东 AI 导购、美团（未成形）
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="px-3 py-1.5 border-t border-webank-line bg-[#f0f0f0] text-[10px] text-webank-subtext leading-snug">
+            灰色 = 人干活 · 浅蓝 = AI 只推荐 · 深蓝 = AI 代执行
+          </div>
         </div>
       </div>
-    </BaseContentSlide>
-  );
-};
+    </div>
+  </BaseContentSlide>
+);

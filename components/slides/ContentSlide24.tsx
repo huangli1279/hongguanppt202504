@@ -41,18 +41,20 @@ export const ContentSlide24: React.FC = () => {
             delay="240ms"
             titleClassName="!inline-block !bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-3 !py-1.5 !shadow-md"
           >
-            <p className="text-sm leading-snug">
-              机构判断四季度出口增速中枢较三季度回落：中金
-              <span className="text-black">10%–12%</span>、华泰
-              <span className="text-black">8%–10%</span>、中信
-              <span className="text-black">9%–11%</span>。
-            </p>
-            <p className="text-sm leading-snug mt-1">
-              结构上呈现 K 型分化：AI 链电子产品、"新三样"仍保持韧性，传统消费品出口压力较大。
-            </p>
-            <p className="text-sm leading-snug mt-1">
-              风险来自去年高基数抬升、集成电路等价格环比回落，名义增速或阶段性承压。
-            </p>
+            <ul className="list-disc pl-5 space-y-1.5 text-sm leading-snug marker:text-blue-500">
+              <li>
+                机构判断四季度出口增速中枢较三季度回落：中金
+                <span className="text-black font-medium">10%–12%</span>、华泰
+                <span className="text-black font-medium">8%–10%</span>、中信
+                <span className="text-black font-medium">9%–11%</span>。
+              </li>
+              <li>
+                结构上呈现 K 型分化：AI 链电子产品、"新三样"仍保持韧性，传统消费品出口压力较大。
+              </li>
+              <li>
+                风险来自去年高基数抬升、集成电路等价格环比回落，名义增速或阶段性承压。
+              </li>
+            </ul>
           </BaseCard>
         </div>
 

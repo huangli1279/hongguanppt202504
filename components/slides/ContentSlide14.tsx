@@ -55,7 +55,7 @@ const MiniCategoryChart: React.FC<{
   const lastIndex = data.length - 1;
 
   return (
-    <div className="flex min-h-0 min-w-0 flex-col">
+    <div className="flex min-h-0 min-w-0 flex-col rounded-md border border-blue-200 bg-blue-50/40 px-1.5 pb-1 pt-1">
       <div className="mb-0.5 flex items-baseline justify-between gap-1 text-[10px] leading-none">
         <span className="font-semibold text-webank-blue whitespace-nowrap">{name}</span>
         <span className={`font-bold tabular-nums ${latestTone}`}>
@@ -178,7 +178,7 @@ export const ContentSlide14: React.FC = () => {
                   数据来源：国家统计局 | 单位：%
                 </p>
               </div>
-              <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-4 gap-x-2 gap-y-1">
+              <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-4 gap-x-2 gap-y-1.5">
                 {miniCategories.map((category, index) => (
                   <MiniCategoryChart
                     key={category.key}

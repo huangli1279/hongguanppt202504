@@ -38,7 +38,7 @@ export const ContentSlide09: React.FC = () => {
       chartColumns={3}
       cards={
         <>
-          <BaseCard title="利润总额与营收成本" delay="0ms" variant="accent">
+          <BaseCard title="利润总额主要受营收增长影响" delay="0ms" variant="accent">
             <p>
               1-9月规上工业企业利润总额6.03万亿元，同比
               <span className="text-red-500 font-bold">+15.5%</span>

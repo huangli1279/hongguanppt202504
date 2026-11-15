@@ -10,8 +10,9 @@ const CONSENSUS_STROKE = '#b91c1c';
 const TARGET_FILL = 'rgba(0, 92, 143, 0.08)';
 const TARGET_STROKE = '#005c8f';
 const ACTUAL_COLOR = '#64748b';
-const INTL_COLOR = '#4A79AA';
-const DOM_COLOR = '#2F5F5A';
+const INSTITUTION_COLOR = '#4A79AA';
+const INTL_COLOR = INSTITUTION_COLOR;
+const DOM_COLOR = INSTITUTION_COLOR;
 
 const DOMAIN: [number, number] = [4.0, 5.4];
 
@@ -65,7 +66,7 @@ export const GdpForecastRangeChart: React.FC = () => {
   const EXPLICIT_ANCHOR: Record<string, 'start' | 'end'> = {
     IMF: 'start',
     OECD: 'end',
-    '花旗、高盛、一财一致预期': 'start',
+    '花旗、高盛、第一财经': 'start',
   };
 
   const positioned: Positioned[] = sortedDots.map((d, i, arr) => {

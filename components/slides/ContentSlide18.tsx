@@ -6,18 +6,6 @@ import { seriesColors } from '../../utils/chartColors';
 import { formatThousands } from '@/utils/numberFormat';
 
 const specialBondData = [
-  { period: '2025-01', planned: 1686, actual: 2048, completion: 1.21 },
-  { period: '2025-02', planned: 3503, actual: 3920, completion: 1.12 },
-  { period: '2025-03', planned: 3383, actual: 3635, completion: 1.07 },
-  { period: '2025-04', planned: 3293, actual: 2301, completion: 0.70 },
-  { period: '2025-05', planned: 3598, actual: 4432, completion: 1.23 },
-  { period: '2025-06', planned: 5147, actual: 5271, completion: 1.02 },
-  { period: '2025-07', planned: 6440, actual: 6169, completion: 0.96 },
-  { period: '2025-08', planned: 5122, actual: 4890, completion: 0.95 },
-  { period: '2025-09', planned: 3412, actual: 4191, completion: 1.23 },
-  { period: '2025-10', planned: 2755, actual: 2949, completion: 1.07 },
-  { period: '2025-11', planned: 3222, actual: 4922, completion: 1.53 },
-  { period: '2025-12', planned: 584, actual: 1349, completion: null },
   { period: '2026-01', planned: 3221, actual: 3677, completion: 1.14 },
   { period: '2026-02', planned: 2691, actual: 4565, completion: 1.70 },
   { period: '2026-03', planned: 3349, actual: 3357, completion: 1.00 },
@@ -30,18 +18,6 @@ const specialBondData = [
 ];
 
 const specialBondCompositionData = [
-  { period: '2025-01', special: 7, land: 0, other: 93, amount: 2048 },
-  { period: '2025-02', special: 17, land: 8, other: 75, amount: 3920 },
-  { period: '2025-03', special: 10, land: 0, other: 90, amount: 3635 },
-  { period: '2025-04', special: 8, land: 12, other: 80, amount: 2301 },
-  { period: '2025-05', special: 23, land: 10, other: 67, amount: 4432 },
-  { period: '2025-06', special: 21, land: 34, other: 45, amount: 5271 },
-  { period: '2025-07', special: 5, land: 46, other: 49, amount: 6169 },
-  { period: '2025-08', special: 4, land: 52, other: 44, amount: 4890 },
-  { period: '2025-09', special: 12, land: 50, other: 38, amount: 4191 },
-  { period: '2025-10', special: 5, land: 43, other: 52, amount: 2949 },
-  { period: '2025-11', special: 32, land: 5, other: 63, amount: 4922 },
-  { period: '2025-12', special: 17, land: 14, other: 69, amount: 1349 },
   { period: '2026-01', special: 10, land: 5, other: 85, amount: 3677 },
   { period: '2026-02', special: 25, land: 0, other: 75, amount: 4565 },
   { period: '2026-03', special: 10, land: 21, other: 69, amount: 3357 },

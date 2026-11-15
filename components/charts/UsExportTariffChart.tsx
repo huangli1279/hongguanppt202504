@@ -116,7 +116,7 @@ const tariffEvents: TariffEvent[] = [
 const toneClass: Record<ImpactTone, string> = {
   up: 'text-red-600',
   down: 'text-green-600',
-  flat: 'text-amber-600',
+  flat: 'text-black',
 };
 
 const formatPct = (value: number) => `${value > 0 ? '+' : ''}${value.toFixed(1)}%`;

@@ -46,14 +46,6 @@ export const ContentSlide27: React.FC = () => {
               </p>
             </BaseCard>
           </div>
-
-          <div className="flex-shrink-0">
-            <BaseCard title="备注" delay="1000ms" variant="default" className="!p-2.5 gap-0.5 border-l-2 border-l-webank-blue">
-              <p className="text-[11px] leading-relaxed text-slate-600">
-                景气评估参考申万宏源行业中观景气跟踪（量价利分位法）、中金五维打分卡，采用多指标（投资、利润、营收、工增、出口、PPI）加权方法对细分行业进行景气评估。
-              </p>
-            </BaseCard>
-          </div>
           </div>
       </div>
     </BaseContentSlide>

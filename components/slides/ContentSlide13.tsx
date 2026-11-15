@@ -72,9 +72,9 @@ export const ContentSlide13: React.FC = () => {
               lines={[
                 { dataKey: 'fuelRetailYoy', name: '燃油车', color: seriesColors[0], strokeWidth: 2.5, labelDY: 8 },
                 { dataKey: 'nevRetailYoy', name: '新能源汽车', color: seriesColors[1], strokeWidth: 2.5, labelDY: -12 },
-                { dataKey: 'narrowPassengerCarYoy', name: '狭义乘用车:累计同比', color: seriesColors[2], strokeWidth: 2.5, labelDY: 14 },
+                { dataKey: 'narrowPassengerCarYoy', name: '乘用车:累计同比', color: seriesColors[2], strokeWidth: 2.5, labelDY: 14 },
               ]}
-              legendOrder={['燃油车', '新能源汽车', '狭义乘用车:累计同比']}
+              legendOrder={['燃油车', '新能源汽车', '乘用车:累计同比']}
               yAxisDomain={[-40, 40]}
               showYAxis
               showReferenceLine

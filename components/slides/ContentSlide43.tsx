@@ -1,205 +1,241 @@
 import React from 'react';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseCard } from '../base/BaseCard';
-import { BaseBarChart } from '../base/BaseBarChart';
-import { BaseTable, ColumnConfig } from '../base/BaseTable';
-import { aiChainExportData } from '@/data/aiChainExport';
-import { aiChainGlobalParticipationData } from '@/data/aiChainGlobal';
+import type { LucideIcon } from 'lucide-react';
+import { Landmark, ShoppingBag, CreditCard, Recycle, Home } from 'lucide-react';
+import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
-const keptExportCategories = [
-  '晶圆制造设备',
-  '处理器/控制器IC',
-  '计算机存储单元',
-  '存储器IC',
-  '光模块及光通信零件',
-  'PCB',
-  '液冷模块/冷却塔',
-];
+const NumBadge: React.FC<{ n: string; tone?: 'blue' | 'amber' }> = ({ n, tone = 'blue' }) => (
+  <span
+    className={`flex items-center justify-center w-5 h-5 flex-shrink-0 rounded-md text-[11px] font-bold text-white ${
+      tone === 'amber'
+        ? 'bg-gradient-to-br from-amber-400 to-amber-600'
+        : 'bg-gradient-to-br from-webank-accent to-webank-blue'
+    }`}
+  >
+    {n}
+  </span>
+);
 
-const filteredExportData = keptExportCategories
-  .map((category) => aiChainExportData.find((d) => d.category === category))
-  .filter((d): d is NonNullable<typeof d> => Boolean(d));
-
-const globalColumns: ColumnConfig[] = [
-  { key: 'country', title: '国家或地区', align: 'center', width: '85px' },
-  { key: 'region', title: '产业链环节', align: 'center', width: '75px' },
-  { key: 'advantage', title: '核心分工', align: 'left', width: '120px' },
-  {
-    key: 'industries',
-    title: '代表企业',
-    align: 'left',
-    render: (value: string[]) => (
-      <div className="flex flex-col gap-0.5">
-        {value.map((item, i) => (
-          <p key={i} className="leading-[1.25]">
-            {item}
-          </p>
-        ))}
+const PolicyCard: React.FC<{
+  index: string;
+  icon: LucideIcon;
+  title: string;
+  meta: string;
+  delay: string;
+  children: React.ReactNode;
+}> = ({ index, icon: Icon, title, meta, delay, children }) => (
+  <div
+    className="flex flex-col min-h-0 rounded-lg bg-white border border-webank-line shadow-card overflow-hidden animate-fade-in-up fill-mode-forwards opacity-0"
+    style={{ animationDelay: delay }}
+  >
+    <div className="flex items-start gap-2 px-2.5 py-1.5 border-b border-slate-100 bg-slate-50/80 flex-shrink-0">
+      <NumBadge n={index} />
+      <Icon size={15} className="text-webank-accent mt-0.5 flex-shrink-0" />
+      <div className="min-w-0">
+        <h3 className="text-[12px] font-bold text-webank-blue leading-tight">{title}</h3>
+        <p className="text-[8.5px] text-webank-subtext leading-tight mt-0.5 truncate">{meta}</p>
       </div>
-    ),
-  },
+    </div>
+    <div className="flex-1 min-h-0 overflow-auto px-2.5 py-1.5 text-[10.5px] leading-snug text-slate-700">
+      {children}
+    </div>
+  </div>
+);
+
+const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <li className="flex gap-1">
+    <span className="text-webank-accent leading-tight flex-shrink-0">•</span>
+    <span className="min-w-0">{children}</span>
+  </li>
+);
+
+const planFacets = [
+  { n: '①', t: '服务消费提质惠民', d: '养老、托育、文旅、健康置于突出位置' },
+  { n: '②', t: '商品消费扩容升级', d: '推动大宗耐用与升级类商品消费' },
+  { n: '③', t: '培育新业态新模式新场景', d: '数字、绿色、首发、体验式、入境消费' },
+  { n: '④', t: '着力提升消费能力', d: '就业、增收、社保、合理增加公共消费' },
+  { n: '⑤', t: '大力优化消费环境', d: '营造放心安心消费环境' },
+  { n: '⑥', t: '完善促进消费制度机制', d: '加力完善促消费长效机制' },
 ];
 
 export const ContentSlide43: React.FC = () => {
   return (
     <BaseContentSlide
-      title="上述高景气行业背后，核心驱动力是AI产业链的全球扩张"
+      title="三季度消费政策：扩内需、促消费政策持续加码"
+      subtitle="2026年三季度宏观经济报告 · 中央政策（2026年7—9月）"
+      cardColumns={2}
     >
-      <div className="flex flex-col h-full">
-        {/* 顶部：分组小标题 + 叙述 BaseCard */}
-        <div className="flex-shrink-0 mb-1.5">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-1.5 h-4 bg-webank-blue rounded-sm" />
-            <h2 className="text-sm font-bold text-gray-800">全球AI产业链：</h2>
-          </div>
-
-          <BaseCard delay="0ms" variant="accent" className="!p-2.5 gap-1">
-            <p className="text-[12.5px] leading-snug">
-              中国在AI全球产业链中处于
-              <span className="font-semibold text-webank-blue">"中游主导、下游追赶"</span>
-              的格局。今年以来国内AI产业链高景气，主要受益于海外 AI 资本开支扩张带来的全球需求外溢。
-            </p>
-          </BaseCard>
-        </div>
-
-        {/* 主体：AI产业链框架结构（上游+中游并排，下游在右侧） */}
-        <div className="flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm flex flex-col animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '120ms' }}>
-          {/* 标题栏 + 来源 */}
-          <div className="flex items-center justify-between px-2.5 py-1 border-b border-slate-200 bg-slate-50 flex-shrink-0">
-            <h3 className="text-[11px] font-bold text-slate-700 tracking-wide">
-              半导体产业链结构
-            </h3>
-            <div className="flex items-center gap-2">
-              <span className="text-[9px] text-slate-400">来源：公开资料整理</span>
+      <div className="flex flex-col h-full min-h-0 gap-2.5">
+        {/* 重点：国务院批复《扩大消费"十五五"规划》 */}
+        <div
+          className="flex-shrink-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-3 animate-fade-in-up fill-mode-forwards opacity-0"
+          style={{ animationDelay: '0ms' }}
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <NumBadge n="1" tone="amber" />
+            <Landmark size={18} className="text-webank-blue flex-shrink-0" />
+            <div className="min-w-0">
+              <h3 className="text-[13.5px] font-bold text-webank-blue leading-tight">
+                国务院批复《扩大消费“十五五”规划》
+              </h3>
+              <p className="text-[9.5px] text-webank-subtext leading-tight mt-0.5">
+                2026年7月13日 · 我国首份国家级消费领域五年专项规划
+              </p>
+            </div>
+            <div className="ml-auto flex items-center gap-2 flex-shrink-0">
+              <div className="rounded-md bg-red-50 border border-red-200 px-2 py-1 text-center">
+                <p className="text-[8px] text-red-400 leading-none">2030年社零总额</p>
+                <p className="text-[12px] font-bold text-red-600 leading-tight">≈ 60万亿元</p>
+              </div>
+              <div className="rounded-md bg-emerald-50 border border-emerald-200 px-2 py-1 text-center">
+                <p className="text-[8px] text-emerald-500 leading-none">到2030年</p>
+                <p className="text-[11px] font-bold text-emerald-700 leading-tight">居民消费率明显提高</p>
+              </div>
             </div>
           </div>
 
-          {/* 框架主体：半导体产业链结构 */}
-          <div className="flex flex-1 min-h-0 p-1.5 gap-1.5">
-            {/* 上游：半导体核心链 */}
-            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
-              <div className="bg-[#1B4F72] text-white text-center text-[10px] font-bold py-0.5">
-                半导体核心链（上游）
+          {/* 6方面 */}
+          <div className="grid grid-cols-3 gap-1.5">
+            {planFacets.map((f) => (
+              <div key={f.n} className="rounded-md border border-slate-200 bg-white px-2 py-1">
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] font-bold text-webank-accent leading-none">{f.n}</span>
+                  <span className="text-[10px] font-bold text-webank-blue leading-tight">{f.t}</span>
+                </div>
+                <p className="text-[9px] text-slate-500 leading-tight mt-0.5">{f.d}</p>
               </div>
-              <div className="p-1 space-y-1 bg-blue-50">
-                {/* 芯片设计 */}
-                <div className="rounded border border-blue-200 bg-white overflow-hidden">
-                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    芯片设计
-                  </div>
-                </div>
-                {/* 晶圆制造 */}
-                <div className="rounded border border-blue-200 bg-white overflow-hidden">
-                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    晶圆制造
-                  </div>
-                </div>
-                {/* 封测 */}
-                <div className="rounded border border-blue-200 bg-white overflow-hidden">
-                  <div className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    封测
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
+          </div>
 
-            {/* 中游：算力硬件中游 */}
-            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
-              <div className="bg-[#8ECAE6] text-slate-800 text-center text-[10px] font-bold py-0.5">
-                算力硬件中游
-              </div>
-              <div className="p-1 space-y-1 bg-sky-50">
-                {/* 光模块 */}
-                <div className="rounded border border-sky-200 bg-white overflow-hidden">
-                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    光模块
-                  </div>
-                </div>
-                {/* 连接器 / PCB / 电源 */}
-                <div className="rounded border border-sky-200 bg-white overflow-hidden">
-                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    连接器 / PCB / 电源
-                  </div>
-                </div>
-                {/* 服务器整机 */}
-                <div className="rounded border border-sky-200 bg-white overflow-hidden">
-                  <div className="bg-sky-100 text-sky-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    服务器整机
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 下游：软件与下游 */}
-            <div className="flex-1 rounded-md overflow-hidden border border-slate-100">
-              <div className="bg-[#E8B923] text-slate-800 text-center text-[10px] font-bold py-0.5">
-                软件与下游
-              </div>
-              <div className="p-1 space-y-1 bg-amber-50">
-                {/* 算力集群 */}
-                <div className="rounded border border-amber-200 bg-white overflow-hidden">
-                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    算力集群
-                  </div>
-                </div>
-                {/* 大模型 */}
-                <div className="rounded border border-amber-200 bg-white overflow-hidden">
-                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    大模型
-                  </div>
-                </div>
-                {/* AI行业应用 */}
-                <div className="rounded border border-amber-200 bg-white overflow-hidden">
-                  <div className="bg-amber-100 text-amber-800 text-[9px] font-bold px-1 py-0.5 text-center">
-                    AI行业应用
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* 底部要点 */}
+          <div className="mt-1.5 flex items-center gap-1.5 flex-wrap border-t border-slate-200 pt-1.5 text-[9.5px] text-slate-600">
+            <span className="rounded bg-webank-blue/10 text-webank-blue font-semibold px-1.5 py-0.5">
+              6方面 · 28条重点任务
+            </span>
+            <span>稳步提高最低工资标准</span>
+            <span className="text-slate-300">|</span>
+            <span>深入实施提振消费专项行动</span>
+            <span className="text-slate-300">|</span>
+            <span>各省区市把扩大消费作为“十五五”时期重要任务</span>
           </div>
         </div>
 
-        {/* 底部：AI产业链分工体系 + BarChart 并列 */}
-        <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
-          {/* 左侧：AI产业链分工体系 表格 */}
-          <ChartContainer delay="600ms" className="h-full">
-            <BaseTable
-              data={aiChainGlobalParticipationData}
-              columns={globalColumns}
-              title="AI产业链分工体系"
-              subtitle="数据来源：公开资料整理"
-              colorizeNumbers={false}
-              striped
-              rowHeight="auto"
-              cellClassName="!px-1.5 !py-0.5 text-[9px] leading-tight align-top"
-              headerCellClassName="!px-1.5 !py-1 whitespace-nowrap text-[9px] leading-tight"
-            />
-          </ChartContainer>
+        {/* 其余4项政策 */}
+        <div className="grid grid-cols-2 gap-2.5 flex-1 min-h-0">
+          <PolicyCard
+            index="2"
+            icon={ShoppingBag}
+            title="《关于推动商品消费扩容升级的实施意见》"
+            meta="商务部等7部门 · 2026年8月 · 提出20项具体举措"
+            delay="120ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>
+                <span className="font-semibold text-webank-blue">大宗耐用品：</span>
+                推进汽车流通消费改革试点、全链条扩大汽车消费、加快智能家居应用推广
+              </Bullet>
+              <Bullet>
+                <span className="font-semibold text-webank-blue">生活日用提质：</span>
+                食品饮料、纺织服装、文体娱乐用品
+              </Bullet>
+              <Bullet>
+                <span className="font-semibold text-webank-blue">聚焦“一老一小”：</span>
+                支持银发、婴童产品消费
+              </Bullet>
+              <Bullet>促进国货“潮品”、外贸优品、国际精品消费</Bullet>
+              <Bullet>培育绿色、智能、健康等升级类商品消费</Bullet>
+            </ul>
+          </PolicyCard>
 
-          {/* 右侧：BarChart */}
-          <ChartContainer delay="720ms" className="h-full">
-            <BaseBarChart
-              data={filteredExportData}
-              title="中国AI链参与情况：出口同比增速"
-              subtitle="数据来源：海关总署 | 单位：%"
-              xAxisKey="category"
-              bars={[
-                { dataKey: 'y2024', name: "'24年出口同比增速", color: '#1B4F72' },
-                { dataKey: 'y2025', name: "'25年出口同比增速", color: '#8ECAE6' },
-                { dataKey: 'y2026q1', name: "'26-Q1出口同比增速", color: '#E8B923' },
-              ]}
-              legendOrder={["'24年出口同比增速", "'25年出口同比增速", "'26-Q1出口同比增速"]}
-              yAxisDomain={[-40, 160]}
-              showYAxis={true}
-              showReferenceLine={true}
-              referenceLineY={0}
-              showLabels={false}
-              barSize={12}
-              xAxisAngle={-90}
-              xAxisHeight={70}
-              xAxisInterval={0}
-            />
-          </ChartContainer>
+          <PolicyCard
+            index="3"
+            icon={CreditCard}
+            title="《财政金融协同促内需政策通知》"
+            meta="财政部等三部门 · 2026年8月 · 优化消费贷款贴息"
+            delay="240ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>购车、装修等新发生信用卡分期消费纳入贴息支持范围</Bullet>
+              <Bullet>
+                实施机构扩至
+                <span className="font-semibold text-webank-blue">21家全国性银行</span>
+                及监管评级
+                <span className="font-semibold text-webank-blue">3A及以上</span>
+                城商行、农村合作金融机构、民营银行、外资银行
+              </Bullet>
+              <Bullet>
+                个人消费贷款贴息上限
+                <span className="font-semibold text-red-600">3000元→5000元</span>
+                ；相关贷款单户规模上限
+                <span className="font-semibold text-red-600">5000万元→7500万元</span>
+              </Bullet>
+              <Bullet>下半年继续推出财政金融协同促内需新政策新举措</Bullet>
+            </ul>
+          </PolicyCard>
+
+          <PolicyCard
+            index="4"
+            icon={Recycle}
+            title="第四批消费品以旧换新资金下达"
+            meta="国家发展改革委、财政部 · 2026年9月末"
+            delay="360ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>
+                下达第四批
+                <span className="font-semibold text-red-600">625亿元</span>
+                超长期特别国债，全年
+                <span className="font-semibold text-red-600">2500亿元</span>
+                资金已全部下达
+              </Bullet>
+              <Bullet>
+                1-8月以旧换新销售额
+                <span className="font-semibold text-webank-blue">1.55万亿元</span>
+                ，惠及
+                <span className="font-semibold text-webank-blue">2.08亿人次</span>
+              </Bullet>
+              <Bullet>
+                汽车以旧换新
+                <span className="font-semibold text-webank-blue">535.3万辆</span>
+                、6类家电
+                <span className="font-semibold text-webank-blue">9145.8万台</span>
+                、数码智能产品
+                <span className="font-semibold text-webank-blue">1.08亿件</span>
+                ；新能源乘用车占新车零售比重连续5个月超
+                <span className="font-semibold text-red-600">60%</span>
+              </Bullet>
+              <Bullet>
+                基调由“加力扩围”转向精细化管理与资金使用效率：合理把握节奏、优化资金计划、严格审核兑付、打击骗补套补
+              </Bullet>
+            </ul>
+          </PolicyCard>
+
+          <PolicyCard
+            index="5"
+            icon={Home}
+            title="《关于实施居民购房贷款贴息政策的通知》"
+            meta="财政部、人民银行、金融监管总局 · 2026年9月发布，10月1日实施"
+            delay="480ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>
+                对购买
+                <span className="font-semibold text-webank-blue">首套住房</span>
+                （建筑面积≤120㎡、房价≤150万元）的居民家庭给予贴息
+              </Bullet>
+              <Bullet>
+                可享贴息贷款规模最高
+                <span className="font-semibold text-red-600">100万元</span>
+                ，财政给予年化
+                <span className="font-semibold text-red-600">1个百分点</span>
+                贴息
+              </Bullet>
+              <Bullet>
+                贴息期限最长
+                <span className="font-semibold text-red-600">5年</span>
+              </Bullet>
+              <Bullet>属住房消费支持政策</Bullet>
+            </ul>
+          </PolicyCard>
         </div>
       </div>
     </BaseContentSlide>

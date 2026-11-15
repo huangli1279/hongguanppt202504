@@ -26,6 +26,8 @@ export interface BarConfig {
   stackId?: string;
   /** 指定该柱子所在的 Y 轴，默认 left；设为 'right' 可与左侧柱子形成双轴对比 */
   yAxisId?: 'left' | 'right';
+  /** 该柱子的数值单位（用于 tooltip），默认取图表级 unit */
+  unit?: string;
 }
 
 export interface BarLineConfig {
@@ -288,7 +290,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   const hasBarRightAxis = bars.some((bar) => bar.yAxisId === 'right');
   const ChartComponent = hasLines ? ComposedChart : BarChart;
   const unitByKey = bars.reduce((acc, bar) => {
-    acc[bar.dataKey] = unit;
+    acc[bar.dataKey] = bar.unit ?? unit;
     return acc;
   }, {} as Record<string, string>);
   if (hasLines && lines) {
@@ -521,10 +523,12 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                         const numHeight = Number(height) || 0;
                         
                         if (isHorizontal) {
-                          // 横向布局：标签放在柱子末端右侧
-                          labelX = numX + numWidth + 5;
+                          // 横向布局：标签放在柱子外侧——正值在右侧，负值在左侧
+                          // recharts 横向柱的宽度为带符号值（负值向左延伸），x 为零轴像素位置
+                          const barEndX = numX + numWidth;
+                          labelX = isNegative ? barEndX - 5 : barEndX + 5;
                           labelY = numY + (numHeight || barSize) / 2;
-                          textAnchor = 'start';
+                          textAnchor = isNegative ? 'end' : 'start';
                         } else {
                           labelX = numX + numWidth / 2;
                           labelY = numY;

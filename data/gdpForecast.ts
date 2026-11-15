@@ -39,5 +39,5 @@ export const GOVERNMENT_TARGET: [number, number] = [4.5, 5.0];
 export const gdpForecastByInstitutionNew = [
   { institution: 'IMF', value: 4.5, note: '7月' },
   { institution: 'OECD', value: 4.5, note: '6月基准情景' },
-  { institution: '花旗、高盛、一财一致预期', value: 4.6, note: '10月' },
+  { institution: '花旗、高盛、第一财经', value: 4.6, note: '10月' },
 ];

@@ -49,7 +49,7 @@ export const ContentSlide25: React.FC = () => {
             </p>
           </BaseCard>
           <BaseCard
-            title="进口预测"
+            title="四季度进口展望"
             delay="360ms"
             titleClassName="!inline-block !bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-2.5 !py-1 !text-sm"
             className="!p-3"
@@ -58,35 +58,20 @@ export const ContentSlide25: React.FC = () => {
               四季度进口同比或回落至
               <span className="text-red-500">15%—25%</span>
             </p>
-            <div className="mt-1 flex flex-col gap-1.5">
-              <div className="flex items-start gap-1.5">
-                <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-webank-accent text-[10px] font-bold text-white">
-                  1
-                </span>
-                <p className="text-[13px] leading-tight">
-                  WTO下调2026年全球货物贸易增速预测至
-                  <span className="font-bold text-red-500">1.9%</span>。
-                </p>
-              </div>
-              <div className="flex items-start gap-1.5">
-                <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-webank-accent text-[10px] font-bold text-white">
-                  2
-                </span>
-                <p className="text-[13px] leading-tight">
-                  高能源价格情境下，亚洲进口增速
-                  <span className="font-bold text-red-500">3.3%→2.6%</span>。
-                </p>
-              </div>
-              <div className="flex items-start gap-1.5">
-                <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-webank-accent text-[10px] font-bold text-white">
-                  3
-                </span>
-                <p className="text-[13px] leading-tight">
-                  11—12月进口同比大概率回落至
-                  <span className="font-bold text-red-500">15%—25%</span>区间。
-                </p>
-              </div>
-            </div>
+            <ul className="mt-1 flex list-disc flex-col gap-1.5 pl-4 marker:text-webank-accent">
+              <li className="text-[13px] leading-tight pl-0.5">
+                WTO下调2026年全球货物贸易增速预测至
+                <span className="font-bold text-red-500">1.9%</span>。
+              </li>
+              <li className="text-[13px] leading-tight pl-0.5">
+                高能源价格情境下，亚洲进口增速
+                <span className="font-bold text-red-500">3.3%→2.6%</span>。
+              </li>
+              <li className="text-[13px] leading-tight pl-0.5">
+                11—12月进口同比大概率回落至
+                <span className="font-bold text-red-500">15%—25%</span>区间。
+              </li>
+            </ul>
           </BaseCard>
         </div>
 

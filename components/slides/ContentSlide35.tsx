@@ -50,14 +50,12 @@ export const ContentSlide35: React.FC = () => {
             <p className="text-sm mt-1">
               · 结构性——9 月政府债发行 1.53 万亿，而银行体系购债占比为 2017 年以来次低，大量债券由非银承接，非银动用存款缴款，叠加理财等资管产品到期赎回回流。
             </p>
-            <p className="text-sm mt-2">两条传导链：</p>
-            <p className="text-sm mt-1">
-              ① 非银存款 →（承接政府债缴款）→ 财政存款（过渡，9月净减4,300亿）→（财政支出）→ 企业/居民存款；
-            </p>
-            <p className="text-sm mt-1">② 非银存款 →（理财等产品到期赎回）→ 企业/居民存款。</p>
             <p className="text-sm mt-2">
               分月看，存款结构呈典型季末特征：非银存款在 3/6/9 月净减、居民存款同步回升。（图3）
             </p>
+            <div className="mt-3 pt-2 border-t border-webank-line/50 text-xs text-slate-500 leading-relaxed">
+              <span className="font-semibold text-slate-600">备注：</span>两条传导链：① 非银存款 →（承接政府债缴款）→ 财政存款（过渡，9月净减4,300亿）→（财政支出）→ 企业/居民存款；② 非银存款 →（理财等产品到期赎回）→ 企业/居民存款。
+            </div>
           </BaseCard>
         </div>
 

@@ -24,13 +24,25 @@ export const ContentSlide06: React.FC = () => {
         <div className="flex flex-col h-full min-h-0 gap-3">
             <div className="grid grid-cols-2 gap-3">
               <BaseCard title="机构共识" delay="0ms" variant="accent" className="!gap-1.5 !p-3 w-full">
-                <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
+                <ul className="list-disc pl-5 space-y-1.5 text-[12.5px] leading-snug">
                   <li>
                     全年增速大概率落在
                     <span className="font-bold text-red-500">4.5%-4.6%</span>
                     区间，处于政府目标（4.5%-5.0%）下限附近，较二季度预测区间
                     <span className="font-bold text-red-500">4.5%-4.8%</span>
                     下修
+                  </li>
+                  <li>
+                    <span className="font-semibold">关键驱动力：</span>
+                    出口+ 高技术制造业支撑总量，
+                    <span className="font-semibold text-webank-blue">8,000 亿</span>
+                    新型政策性金融工具 + 六张网 +
+                    <span className="font-semibold text-webank-blue">5,500 亿</span>
+                    结存限额支撑投资
+                  </li>
+                  <li>
+                    <span className="font-semibold">K型分化延续：</span>
+                    新经济强、旧经济弱
                   </li>
                 </ul>
               </BaseCard>
@@ -53,7 +65,7 @@ export const ContentSlide06: React.FC = () => {
                     <span className="font-bold text-webank-blue">国内机构：</span>
                     <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] mt-0.5">
                       <li>
-                        <span className="font-semibold">一财一致预期：</span>
+                        <span className="font-semibold">第一财经：</span>
                         4.6%（10 月最新）——第一财经首席经济学家调研显示，受访首席经济学家对 2026 年全年 GDP 增速的预测均值为 4.6%
                       </li>
                       <li>
