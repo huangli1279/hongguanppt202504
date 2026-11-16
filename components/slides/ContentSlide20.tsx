@@ -18,10 +18,10 @@ const unsoldAreaLineConfigs: LineConfig[] = [
 
 // 房价环比折线图配置（一二线）
 const priceMomLineConfigs: LineConfig[] = [
-  { dataKey: 'firstTierNew', name: '一线新建', strokeWidth: 2 },
-  { dataKey: 'secondTierNew', name: '二线新建', strokeWidth: 2 },
-  { dataKey: 'firstTierUsed', name: '一线二手', strokeWidth: 1.5, labelDY: 10 },
-  { dataKey: 'secondTierUsed', name: '二线二手', strokeWidth: 1.5, labelDY: 10 },
+  { dataKey: 'firstTierNew', name: '一线新建', strokeWidth: 2, pointOffsets: { '2026-09': 6 } },
+  { dataKey: 'secondTierNew', name: '二线新建', strokeWidth: 2, pointOffsets: { '2026-09': 18 } },
+  { dataKey: 'firstTierUsed', name: '一线二手', strokeWidth: 1.5, labelDY: 10, pointOffsets: { '2026-09': -12 } },
+  { dataKey: 'secondTierUsed', name: '二线二手', strokeWidth: 1.5, labelDY: 10, pointOffsets: { '2026-09': 14 } },
 ];
 
 // 70城房价环比折线图配置

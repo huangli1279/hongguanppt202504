@@ -43,7 +43,7 @@ const consumeChange = [
   },
 ];
 
-const CHART_H2 = 88;
+const CHART_H2 = 76;
 const h2 = (v: number) => `${(v / 30) * CHART_H2}px`;
 
 type MiniDatum = { label: string; value: number; accent?: boolean };
@@ -196,16 +196,16 @@ export const ContentSlide42: React.FC = () => {
               <li>
                 <span className="font-bold text-webank-blue">1. 健身：</span>
                 商业健身市场 2025 年 <span className="font-semibold text-webank-accent">3,827 亿</span>（
-                <span className="font-semibold text-emerald-700">+34.2%</span>），Z世代成消费主力、月均轻中端支出{' '}
+                <span className="font-semibold text-red-500">+34.2%</span>），Z世代成消费主力、月均轻中端支出{' '}
                 <span className="font-semibold">300–500 元</span>，县域增速{' '}
-                <span className="font-semibold text-emerald-700">40%</span>。
+                <span className="font-semibold text-red-500">40%</span>。
               </li>
               <li>
                 <span className="font-bold text-webank-blue">2. 智能穿戴：</span>
                 健康设备 <span className="font-semibold text-webank-accent">711 亿</span>（CAGR{' '}
                 <span className="font-semibold">14.4%</span>），腕戴出货{' '}
                 <span className="font-semibold">7,390 万台</span>（
-                <span className="font-semibold text-emerald-700">+20.8%</span>）；
+                <span className="font-semibold text-red-500">+20.8%</span>）；
                 <span className="font-semibold">45%</span> 为健康监测而买、国补{' '}
                 <span className="font-semibold">15%</span>——技术让健康可测量。Z世代使用智能设备监测健康问题{' '}
                 <span className="font-semibold text-webank-accent">75%</span>，
@@ -214,7 +214,7 @@ export const ContentSlide42: React.FC = () => {
               <li>
                 <span className="font-bold text-webank-blue">3. 心理咨询/情绪：</span>
                 心理咨询 <span className="font-semibold text-webank-accent">1,450 亿</span>（年均{' '}
-                <span className="font-semibold text-emerald-700">+27%</span>）；Z世代{' '}
+                <span className="font-semibold text-red-500">+27%</span>）；Z世代{' '}
                 <span className="font-semibold text-webank-accent">68.3%</span> 向 AI 倾诉。
               </li>
             </ol>
@@ -313,16 +313,17 @@ export const ContentSlide42: React.FC = () => {
                       {grp.label}
                     </span>
                     <div className="relative h-[88px] border border-[#41508f] rounded-[2px] px-1.5 flex items-end justify-around gap-1.5">
-                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ top: '33%' }} />
-                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ top: '66%' }} />
+                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(10) }} />
+                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(20) }} />
                       {grp.bars.map((b) => (
-                        <div key={b.name} className="flex-1 flex justify-center">
+                        <div key={b.name} className="flex-1 flex flex-col items-center justify-end min-w-0">
+                          <span className="relative z-10 text-[7.5px] font-semibold text-slate-700 leading-none mb-[1px] whitespace-nowrap bg-white px-[1px]">
+                            {b.v}%
+                          </span>
                           <div
-                            className="w-full max-w-[16px] flex justify-center"
+                            className="w-full max-w-[16px] rounded-t-[1px]"
                             style={{ height: h2(b.v), background: b.color }}
-                          >
-                            <span className="text-[6.5px] text-white leading-none mt-0.5">{b.v}%</span>
-                          </div>
+                          />
                         </div>
                       ))}
                     </div>

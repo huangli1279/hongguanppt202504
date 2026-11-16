@@ -18,7 +18,7 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
     tone: 'blue',
     body: (
       <>
-        人均可支配收入 2.3 万元、实际 <b className="text-webank-blue">+4.2%</b>，人均消费支出 1.48 万元、实际仅{' '}
+        二季度人均可支配收入 2.3 万元、实际 <b className="text-webank-blue">+4.2%</b>，人均消费支出 1.48 万元、实际仅{' '}
         <b className="text-webank-blue">+2.7%</b>，剪刀差走阔、新增收入更多转为储蓄。
       </>
     ),
@@ -29,7 +29,7 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
     tone: 'amber',
     body: (
       <>
-        失业率 <b className="text-amber-600">5.0%–5.2%</b>，16–24 岁长期15%；2026 届毕业生
+        二季度失业率 <b className="text-amber-600">5.0%–5.2%</b>，16–24 岁长期15%；2026 届毕业生
         1270 万创新高，AI 5 年内或替代约 <b className="text-amber-600">7000 万</b>岗位。
       </>
     ),
@@ -51,7 +51,7 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
 const dimensions: { num: string; tag: string; title: string; body: string }[] = [
   { num: '①', tag: '特点一', title: '体验与情绪消费', body: '从「占有物品」到「为体验和情绪付费」' },
   { num: '②', tag: '特点二', title: 'AI 参与消费决策', body: 'AI 进入搜索、比价与决策，重塑消费链路' },
-  { num: '③', tag: '特点三', title: '精明的消费者', body: '从追求价格到追求性价比' },
+  { num: '③', tag: '特点三', title: '消费者更倾向有性价比的消费', body: '从追求价格到追求性价比，二手和快消市场增长' },
   { num: '④', tag: '特点四', title: '健康消费刚性凸显', body: '收缩周期下健康支出的刚性凸显' },
 ];
 
