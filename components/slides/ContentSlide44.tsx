@@ -1,257 +1,196 @@
 import React from 'react';
-import { BaseCard } from '../base/BaseCard';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseLineChart, LineConfig } from '../base/BaseLineChart';
-import { BaseBarChart } from '../base/BaseBarChart';
+import type { LucideIcon } from 'lucide-react';
 import {
-  aiPenetrationCurveData,
-  aiSmePenetrationData,
-  aiModelArrOverseasData,
-  aiModelArrDomesticData,
-} from '@/data/aiRiskJudgment';
+  AlertTriangle,
+  ArrowLeftRight,
+  Building2,
+  Factory,
+  Landmark,
+  ShieldCheck,
+  ShoppingCart,
+  Sparkles,
+  TrendingUp,
+} from 'lucide-react';
+import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
-const COLORS = {
-  blue: '#1B4F72',
-  yellow: '#E8B923',
-  grey: '#9CA3AF',
+interface SummaryCardProps {
+  icon: LucideIcon;
+  eyebrow: string;
+  title: string;
+  metric: string;
+  metricLabel: string;
+  detail: string;
+  tone?: 'blue' | 'amber' | 'green' | 'red';
+  delay: string;
+}
+
+const toneStyles = {
+  blue: {
+    icon: 'bg-blue-50 text-webank-blue',
+    metric: 'text-webank-blue',
+    border: 'border-webank-accent/30',
+  },
+  amber: {
+    icon: 'bg-amber-50 text-amber-600',
+    metric: 'text-amber-600',
+    border: 'border-amber-200',
+  },
+  green: {
+    icon: 'bg-emerald-50 text-emerald-600',
+    metric: 'text-emerald-600',
+    border: 'border-emerald-200',
+  },
+  red: {
+    icon: 'bg-red-50 text-red-600',
+    metric: 'text-red-600',
+    border: 'border-red-200',
+  },
 };
 
-/** 季度系列配色（对齐上传图例风格） */
-const ARR_Q_COLORS = {
-  '2023Q3': '#9DC3E6',
-  '2024Q4': '#ED7D31',
-  '2025Q2': '#A5A5A5',
-  '2025Q4': '#FFC000',
-  '2026Q1': '#5B9BD5',
-  '2026Q2': '#70AD47',
-  '2026Q3': '#FFC000',
-} as const;
+const SummaryCard: React.FC<SummaryCardProps> = ({
+  icon: Icon,
+  eyebrow,
+  title,
+  metric,
+  metricLabel,
+  detail,
+  tone = 'blue',
+  delay,
+}) => {
+  const styles = toneStyles[tone];
 
-const overseasArrBars = [
-  { dataKey: '2023Q3', name: '23Q3', color: ARR_Q_COLORS['2023Q3'] },
-  { dataKey: '2024Q4', name: '24Q4', color: ARR_Q_COLORS['2024Q4'] },
-  { dataKey: '2025Q2', name: '25Q2', color: ARR_Q_COLORS['2025Q2'] },
-  { dataKey: '2025Q4', name: '25Q4', color: ARR_Q_COLORS['2025Q4'] },
-  { dataKey: '2026Q1', name: '26Q1', color: ARR_Q_COLORS['2026Q1'] },
-  { dataKey: '2026Q2', name: '26Q2', color: ARR_Q_COLORS['2026Q2'] },
-];
-
-const domesticArrBars = [
-  { dataKey: '2025Q4', name: '25Q4', color: ARR_Q_COLORS['2023Q3'] },
-  { dataKey: '2026Q1', name: '26Q1', color: ARR_Q_COLORS['2024Q4'] },
-  { dataKey: '2026Q2', name: '26Q2', color: ARR_Q_COLORS['2025Q2'] },
-  { dataKey: '2026Q3', name: '26Q3', color: ARR_Q_COLORS['2025Q4'] },
-];
-
-const overseasPeakLabels = new Set([250, 140, 470, 200]);
-const domesticPeakLabels = new Set([10, 3]);
-
-const penetrationLines: LineConfig[] = [
-  {
-    dataKey: 'ai',
-    name: 'AI渗透率',
-    color: COLORS.blue,
-    strokeWidth: 2,
-    pointCallouts: { '3': { dx: -24, dy: -14 } },
-  },
-  {
-    dataKey: 'aiForecast',
-    name: 'AI预测',
-    color: COLORS.blue,
-    strokeWidth: 2,
-    strokeDasharray: '6 4',
-    hiddenLabelPeriods: ['3'],
-  },
-  {
-    dataKey: 'internet',
-    name: '互联网',
-    color: COLORS.yellow,
-    strokeWidth: 2,
-    pointCallouts: { '3': { dx: -24, dy: 14 } },
-  },
-  {
-    dataKey: 'pc',
-    name: 'PC',
-    color: COLORS.grey,
-    strokeWidth: 2,
-    pointCallouts: { '3': { dx: 24, dy: 14 } },
-  },
-];
-
-const smeLines: LineConfig[] = [
-  { dataKey: 'ramp', name: 'Ramp(大企业)', color: COLORS.blue, strokeWidth: 2 },
-  { dataKey: 'gov', name: '政府口径(含中小)', color: COLORS.yellow, strokeWidth: 2 },
-];
+  return (
+    <article
+      className={`flex min-h-0 flex-col rounded-xl border bg-white p-4 shadow-card animate-fade-in-up fill-mode-forwards opacity-0 ${styles.border}`}
+      style={{ animationDelay: delay }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[10px] font-bold tracking-[0.14em] text-webank-subtext uppercase">{eyebrow}</p>
+          <h2 className="mt-1 text-[15px] font-bold leading-tight text-webank-blue">{title}</h2>
+        </div>
+        <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${styles.icon}`}>
+          <Icon size={19} strokeWidth={2.2} />
+        </div>
+      </div>
+      <div className="mt-3 flex items-baseline gap-2">
+        <strong className={`text-[26px] font-bold leading-none tabular-nums ${styles.metric}`}>{metric}</strong>
+        <span className="text-[11px] text-webank-subtext">{metricLabel}</span>
+      </div>
+      <p className="mt-2 text-[10.5px] leading-relaxed text-slate-600">{detail}</p>
+    </article>
+  );
+};
 
 export const ContentSlide44: React.FC = () => {
   return (
     <BaseContentSlide
-      title="风险判断：当前AI尚不能被简单定义为全面泡沫，更接近局部风险积聚"
-      cardColumns={2}
-      headerClassName="!mb-2"
+      title={
+        <>
+          三季度重要指标总结：增长韧性延续，
+          <span className="text-webank-accent">结构升级与政策发力</span>
+          形成主线
+        </>
+      }
+      subtitle="2026年三季度宏观经济报告 · 结论页"
+      headerClassName="!mb-4"
       className="!p-8 sm:!p-10"
     >
-      <div className="flex flex-col h-full min-h-0 pb-2">
-        <div className="grid grid-cols-3 gap-2.5 mb-2 flex-shrink-0">
-          <BaseCard
-            title="市场背离与泡沫担忧"
+      <div className="flex h-full min-h-0 flex-col gap-3">
+        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-2.5">
+          <SummaryCard
+            icon={TrendingUp}
+            eyebrow="增长"
+            title="经济增速回升"
+            metric="4.5%"
+            metricLabel="Q3实际GDP同比"
+            detail="较二季度回升0.2个百分点；前三季度累计增长4.6%，处于全年目标区间。"
+            tone="blue"
             delay="0ms"
-            variant="accent"
-            className="!p-2.5 !gap-1"
-          >
-            <div className="text-[13px] leading-snug space-y-1.5">
-              <p>
-                近期科技股呈现"基本面不差、股价照跌"的背离：美国降息预期推迟、美债收益率上行压制成长股估值，叠加海外AI算力资本开支扩张节奏边际放缓，国内科技板块前期涨幅偏大、抱团资金集中止盈。
-              </p>
-              <p>
-                同时围绕资本开支高企、商业化回报待验、融资渠道扩散、估值高位且交易拥挤，市场产生AI泡沫担忧。
-              </p>
-            </div>
-          </BaseCard>
-
-          <BaseCard
-            title="为何更接近局部风险积聚（1/2）"
-            delay="120ms"
-            className="!p-2.5 !gap-1"
-          >
-            <div className="text-[13px] leading-snug space-y-2">
-              <p>
-                AI泡沫论主流共识："局部泡沫 + 结构性分化"，而非全面泡沫。
-              </p>
-              <p>
-                <span className="font-semibold">1. 估值有热度，但远不及互联网泡沫。</span>
-                资本支出占GDP约
-                <span className="text-red-500 font-semibold">2%</span>
-                接近互联网泡沫峰值，但头部公司P/E、PEG均低于互联网泡沫时期，盈利驱动特征更显著。
-              </p>
-              <p>
-                <span className="font-semibold">2. 渗透率未到拐点，需求仍超供给。</span>
-                过往泡沫破裂多在渗透率中后段（电气
-                <span className="text-red-500 font-semibold">80%</span>
-                、互联网
-                <span className="text-red-500 font-semibold">50%</span>
-                ），2026年初美国企业AI渗透率仅约
-                <span className="text-red-500 font-semibold">20%</span>
-                。数据中心空置率仅
-                <span className="text-red-500 font-semibold">1.6%</span>
-                ，产能仍偏紧。
-              </p>
-            </div>
-          </BaseCard>
-
-          <BaseCard
-            title="为何更接近局部风险积聚（2/2）"
-            delay="240ms"
-            className="!p-2.5 !gap-1"
-          >
-            <div className="text-[13px] leading-snug space-y-2">
-              <p>
-                <span className="font-semibold">3. 资本开支集中，但产业逻辑未逆转。</span>
-                AI产业呈现"模型→云→端侧→行业应用→知识生产"的多层递进，每一层成熟后才催生下一层需求，周期更长、更具阶段性。
-              </p>
-              <p>
-                <span className="font-semibold">4. 结构性分化：</span>
-                龙头企业多有成熟业务现金流反哺，头部模型ARR持续上调；但应用层部分公司估值虚高（Palantir P/E超
-                <span className="text-red-500 font-semibold">100x</span>
-                ，软件行业平均
-                <span className="text-red-500 font-semibold">30-40x</span>
-                ），高利率环境下未盈利公司造血压力更大。
-              </p>
-            </div>
-          </BaseCard>
+          />
+          <SummaryCard
+            icon={Factory}
+            eyebrow="生产"
+            title="新动能加速释放"
+            metric="16.2%"
+            metricLabel="高技术制造业Q3同比"
+            detail="电子行业增长17.5%，计算机通信产能利用率达80.3%，新旧动能分化延续。"
+            tone="green"
+            delay="100ms"
+          />
+          <SummaryCard
+            icon={ShoppingCart}
+            eyebrow="消费"
+            title="促消费政策加码"
+            metric="1.55万亿"
+            metricLabel="1—8月以旧换新销售额"
+            detail="惠及2.08亿人次；服务消费、耐用品升级与居民消费能力成为政策抓手。"
+            tone="amber"
+            delay="200ms"
+          />
+          <SummaryCard
+            icon={ArrowLeftRight}
+            eyebrow="外贸"
+            title="出口保持韧性"
+            metric="36.3%"
+            metricLabel="9月出口同比"
+            detail="出口增速在三季度继续抬升，对经济增长形成支撑；全球需求、关税与地缘风险仍需关注。"
+            tone="blue"
+            delay="300ms"
+          />
+          <SummaryCard
+            icon={Landmark}
+            eyebrow="价格与金融"
+            title="价格信号改善"
+            metric="1.44%"
+            metricLabel="Q3 GDP平减指数"
+            detail="名义增速6%，平减指数连续两个季度回正；政策仍需兼顾需求修复与信用扩张。"
+            tone="green"
+            delay="400ms"
+          />
+          <SummaryCard
+            icon={Sparkles}
+            eyebrow="新产业"
+            title="AI景气仍在扩散"
+            metric="20%"
+            metricLabel="美国企业AI渗透率"
+            detail="需求尚未触及历史拐点，模型与算力产业链保持活跃，但应用层估值分化加剧。"
+            tone="amber"
+            delay="500ms"
+          />
+          <SummaryCard
+            icon={Building2}
+            eyebrow="地产与投资"
+            title="地产仍是修复短板"
+            metric="托底"
+            metricLabel="政策持续加力"
+            detail="投资与居民预期修复仍偏慢，首套住房贷款贴息等增量政策落地，重点在于稳定需求与改善现金流。"
+            tone="blue"
+            delay="600ms"
+          />
+          <SummaryCard
+            icon={AlertTriangle}
+            eyebrow="风险观察"
+            title="风险呈现结构性"
+            metric="分化"
+            metricLabel="而非全面失速"
+            detail="外部冲击、供需错配与局部资产估值是主要变量；增长底盘稳定，但修复斜率仍取决于内需接力。"
+            tone="red"
+            delay="700ms"
+          />
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-4 gap-1.5">
-          <ChartContainer delay="360ms" ariaLabel="渗透率速度较快但仍有空间">
-            <BaseLineChart
-              data={aiPenetrationCurveData}
-              title="图表1：渗透率速度较快但仍有空间"
-              subtitle="来源：Microsoft、华泰研究"
-              lines={penetrationLines}
-              yAxisDomain={[0, 1]}
-              showYAxis
-              unit=""
-              yAxisTickFormatter={(v) => Number(v).toFixed(1)}
-              legendOrder={['AI渗透率', 'AI预测', '互联网', 'PC']}
-              highlightPeriods={['3']}
-              xAxisTicks={['0', '4', '8', '12', '16', '20', '24']}
-            />
-          </ChartContainer>
-
-          <ChartContainer delay="420ms" ariaLabel="中小企业渗透率落后">
-            <BaseLineChart
-              data={aiSmePenetrationData}
-              title="图表2：中小企业渗透率落后"
-              subtitle="来源：Ramp、华泰研究 | %"
-              lines={smeLines}
-              yAxisDomain={[0, 60]}
-              showYAxis
-              unit="%"
-              legendOrder={['Ramp(大企业)', '政府口径(含中小)']}
-              highlightPeriods={['25-11']}
-              xAxisTicks={['23-01', '23-11', '24-09', '25-07', '26-05']}
-            />
-          </ChartContainer>
-
-          <ChartContainer
-            delay="480ms"
-            ariaLabel="模型公司ARR连续上调"
-            className="col-span-2"
-          >
-            <div className="flex flex-col h-full min-h-0 gap-1 [&_.mb-4]:!mb-1">
-              <div className="flex-1 min-h-0">
-                <BaseBarChart
-                  data={aiModelArrOverseasData}
-                  title="图表3：模型公司ARR连续上调"
-                  subtitle="海外 | 来源：公开资料 | 亿美元"
-                  bars={overseasArrBars}
-                  xAxisKey="company"
-                  legendOrder={['23Q3', '24Q4', '25Q2', '25Q4', '26Q1', '26Q2']}
-                  legendFontSize={8}
-                  legendGap={6}
-                  yAxisDomain={[0, 500]}
-                  showYAxis
-                  yAxisTickFormatter={(v) => `${v}`}
-                  showLabels
-                  labelFormatter={(v: any) =>
-                    v != null && overseasPeakLabels.has(Number(v)) ? String(v) : ''
-                  }
-                  barSize={8}
-                  unit="亿"
-                  xAxisInterval={0}
-                  xAxisTickFontSize={9}
-                />
-              </div>
-              <div className="flex-1 min-h-0">
-                <BaseBarChart
-                  data={aiModelArrDomesticData}
-                  title="国内模型公司ARR"
-                  subtitle="来源：公开资料 | 亿美元"
-                  bars={domesticArrBars}
-                  xAxisKey="company"
-                  legendOrder={['25Q4', '26Q1', '26Q2', '26Q3']}
-                  legendFontSize={8}
-                  legendGap={6}
-                  yAxisDomain={[0, 12]}
-                  showYAxis
-                  yAxisTickFormatter={(v) => `${v}`}
-                  showLabels
-                  labelFormatter={(v: any) =>
-                    v != null && domesticPeakLabels.has(Number(v)) ? String(v) : ''
-                  }
-                  barSize={10}
-                  unit="亿"
-                  xAxisInterval={0}
-                  xAxisTickFontSize={9}
-                />
-              </div>
-            </div>
-          </ChartContainer>
+        <div className="flex flex-shrink-0 items-center gap-3 rounded-xl bg-webank-blue px-5 py-3 text-white shadow-card animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '600ms' }}>
+          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/15">
+            <ShieldCheck size={20} />
+          </div>
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold tracking-[0.16em] text-blue-100 uppercase">季度判断</p>
+            <p className="mt-0.5 text-[15px] font-semibold leading-snug">
+              经济处于“总量稳、结构变、政策托底”的修复阶段：短期看出口与新动能，中期看消费回升和地产企稳，风险关注外部冲击与结构性供需错配。
+            </p>
+          </div>
         </div>
-
-        <p className="mt-1.5 flex-shrink-0 text-[10px] leading-snug text-slate-500">
-          备注：数据来源：公开财报、美国人口普查局 BTOS、摩根大通资产管理报告、华泰证券等。主流共识为"局部泡沫+结构性分化"，而非2000年式全面泡沫。该判断得到多家中外机构支撑：摩根大通认为未达经典泡沫标准且数据中心空置率仅1.6%（CBRE）；摩根士丹利称"泡沫只在谈论中"；高盛指出Mag7净利率超25%、英伟达P/E仅31倍（vs 思科2000年472倍），基本面与2000年本质不同；华泰柏瑞、工银国际、银河国际等国内机构均指向"结构性分化"而非整体泡沫。
-        </p>
       </div>
     </BaseContentSlide>
   );

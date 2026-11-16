@@ -3,7 +3,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CoverSlide } from './components/layouts/CoverSlide';
 import { TableOfContentsSlide } from './components/layouts/TableOfContentsSlide';
 import { BaseSectionTransitionSlide } from './components/layouts/BaseSectionTransitionSlide';
-import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
@@ -50,6 +49,7 @@ const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide4
 const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
 const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
 const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
+const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -198,7 +198,7 @@ const App: React.FC = () => {
       case 41: return <ContentSlide41 />;
       case 42: return <ContentSlide42 />;
       case 43: return <ContentSlide43 />;
-      case 44: return <ThankYouSlide />;
+      case 44: return <ContentSlide44 />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);

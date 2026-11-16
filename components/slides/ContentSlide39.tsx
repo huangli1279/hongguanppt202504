@@ -17,19 +17,15 @@ export const ContentSlide39: React.FC = () => (
         <BaseCard title="AI进入消费决策" variant="accent" className="h-full !py-3" animated={false}>
           <div className="space-y-1.5 text-xs leading-relaxed">
             <p>
-              AI 逐渐进入消费决策各环节，重塑消费者搜索、比价、选择和购后评价的全流程。据中国中小商业企业协会与立信数据研究院《2026年二季度中国消费者消费意愿调查报告》，近八成消费者认为 AI 对消费决策产生了影响。
-            </p>
-            <p>
               <span className="font-semibold text-webank-blue">国内：</span>
               79.4% 消费者购物时主动咨询 AI 工具；认为 AI 咨询“很有影响/较有影响”的合计 43.7%，超过传统媒体广告的 42.6%——AI 对消费决策的影响力首次超过传统媒体广告。
             </p>
             <p>
-              <span className="font-semibold text-webank-blue">海外：</span>
-              从独立 AI 平台开始做购买研究的比例由 25%（2024）升至 46%（2026），从传统搜索开始的比例由 43% 降至 24%。
+              AI 逐渐进入消费决策各环节，重塑消费者搜索、比价、选择和购后评价的全流程。据中国中小商业企业协会与立信数据研究院《2026年二季度中国消费者消费意愿调查报告》，近八成消费者认为 AI 对消费决策产生了影响。
             </p>
             <p>
-              <span className="font-semibold text-webank-blue">财富管理：</span>
-              清华×蚂蚁调研显示，超四成个人投资者已在财富管理中使用 AI 工具，呈现高使用率、低信任度。
+              <span className="font-semibold text-webank-blue">海外：</span>
+              从独立 AI 平台开始做购买研究的比例由 25%（2024）升至 46%（2026），从传统搜索开始的比例由 43% 降至 24%。
             </p>
           </div>
         </BaseCard>

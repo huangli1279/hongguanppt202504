@@ -62,21 +62,21 @@ export const ContentSlide37: React.FC = () => {
       subtitle="2026年三季度宏观经济报告"
       headerClassName="!mb-3"
     >
-      <div className="flex flex-col h-full gap-2.5">
-        {/* 底部：二季度归因 → 三季度研究四个特点 */}
-        <div className="flex-1 min-h-0 flex items-stretch gap-2">
+      <div className="flex h-full items-center justify-center pb-6">
+        {/* 二季度归因 → 三季度研究四个特点 */}
+        <div className="flex h-[80%] max-h-[560px] w-[94%] min-h-0 items-stretch gap-4">
           {/* 左：二季度归因 */}
           <div
-            className="flex-1 rounded-lg border border-webank-line bg-white shadow-card p-2.5 flex flex-col gap-1.5 animate-fade-in-up fill-mode-forwards opacity-0"
+            className="flex-1 min-w-0 rounded-xl border border-webank-line bg-white shadow-card p-4 flex flex-col gap-3 animate-fade-in-up fill-mode-forwards opacity-0"
             style={{ animationDelay: '180ms' }}
           >
             <div className="flex items-center gap-2">
               <span className="w-1 h-3.5 bg-webank-blue rounded-sm" />
               <h3 className="text-[18px] font-bold text-webank-blue">二季度归因：三重约束压缩总消费大盘</h3>
             </div>
-            <div className="flex-1 min-h-0 flex flex-col gap-1.5">
+            <div className="flex-1 min-h-0 flex flex-col gap-2.5">
               {constraints.map((c) => (
-                <div key={c.label} className="flex-1 flex items-start gap-2 rounded-md bg-slate-50 px-2 py-1.5">
+                <div key={c.label} className="flex-1 flex items-center gap-2.5 rounded-lg bg-slate-50 px-3 py-2">
                   <c.icon size={15} className={`${toneText[c.tone]} mt-0.5 flex-shrink-0`} />
                   <div className="min-w-0">
                     <p className={`text-[16px] font-bold leading-tight ${toneText[c.tone]}`}>{c.label}</p>
@@ -88,25 +88,24 @@ export const ContentSlide37: React.FC = () => {
           </div>
 
           {/* 中：承接箭头 二季度 → 三季度 */}
-          <div className="flex-shrink-0 flex flex-col items-center justify-center w-12 gap-0.5">
-            <span className="text-[14px] font-semibold text-webank-subtext text-center leading-tight">
-              二季度
-              <br />
-              归因
-            </span>
-            <div className="my-0.5 w-9 h-9 rounded-full bg-webank-accent text-white flex items-center justify-center shadow-md">
-              <ArrowRight size={18} />
+          <div className="w-24 flex-shrink-0 flex flex-col items-center justify-center gap-3 text-center">
+            <span className="text-[13px] font-semibold tracking-wider text-webank-subtext">研究视角</span>
+            <div className="w-full rounded-xl border border-slate-200 bg-slate-50 px-2 py-3">
+              <p className="text-[14px] font-medium text-webank-subtext">二季度</p>
+              <p className="mt-1 text-[22px] font-bold leading-tight text-webank-blue">归因</p>
             </div>
-            <span className="text-[14px] font-semibold text-webank-accent text-center leading-tight">
-              三季度
-              <br />
-              研究
-            </span>
+            <div className="relative my-1 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-webank-blue to-webank-accent text-white shadow-lg ring-4 ring-webank-accent/10">
+              <ArrowRight size={30} strokeWidth={2.5} />
+            </div>
+            <div className="w-full rounded-xl border border-webank-accent/30 bg-webank-accent/10 px-2 py-3 shadow-sm">
+              <p className="text-[12px] font-semibold text-webank-accent">三季度</p>
+              <p className="mt-1 text-[18px] font-bold leading-tight text-webank-accent">消费趋势</p>
+            </div>
           </div>
 
           {/* 右：三季度研究四个特点 */}
           <div
-            className="flex-[1.15] rounded-lg border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-2.5 flex flex-col gap-1 animate-fade-in-up fill-mode-forwards opacity-0"
+            className="flex-[1.15] min-w-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-4 flex flex-col gap-2 animate-fade-in-up fill-mode-forwards opacity-0"
             style={{ animationDelay: '240ms' }}
           >
             <div className="flex items-center gap-2">
@@ -116,11 +115,11 @@ export const ContentSlide37: React.FC = () => {
             <p className="text-[15px] text-webank-subtext leading-tight pl-3 -mt-0.5">
               承接二季度归因，我们继续研究到三季度 →
             </p>
-            <div className="flex-1 min-h-0 flex flex-col gap-1.5 pt-0.5">
+            <div className="flex-1 min-h-0 flex flex-col gap-2.5 pt-1">
               {dimensions.map((d) => (
                 <div
                   key={d.num}
-                  className="flex-1 group flex items-center gap-2 rounded-md border border-slate-200 bg-white px-2 py-1"
+                  className="flex-1 group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2"
                 >
                   <span className="flex items-center justify-center w-7 h-7 flex-shrink-0 rounded-md bg-gradient-to-br from-webank-accent to-webank-blue text-white text-[16px] font-bold">
                     {d.num}
