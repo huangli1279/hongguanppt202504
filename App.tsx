@@ -187,7 +187,7 @@ const App: React.FC = () => {
       case 36: return (
         <BaseSectionTransitionSlide
           id="08"
-          title="消费趋势"
+          title="消费特点"
           subtitle="体验与情绪消费崛起、情绪经济提速；AI深度介入搜索、比价与决策，重塑消费链路；消费者更精明，从追求价格转向追求性价比；收缩周期下健康支出刚性凸显，医疗、健身与智能穿戴逆势增长。"
         />
       );

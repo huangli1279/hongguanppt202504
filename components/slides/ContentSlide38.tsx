@@ -90,7 +90,7 @@ export const ContentSlide38: React.FC = () => {
                   旅游、演出与情绪经济市场规模
                 </h3>
                 <p className="text-[10px] text-webank-subtext mt-1">
-                  数据来源：文旅部、国家统计局公报；中国演出行业协会；艾媒咨询｜仅展示市场规模/收入，未绘制同比线
+                  数据来源：文旅部、国家统计局公报；中国演出行业协会；艾媒咨询
                 </p>
               </div>
               <div className="flex-1 min-h-0 grid grid-cols-3 gap-2">

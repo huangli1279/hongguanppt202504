@@ -150,7 +150,7 @@ const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
 export const ContentSlide42: React.FC = () => {
   return (
     <BaseContentSlide
-      title={<>特点四：收缩周期下健康支出的刚性凸显</>}
+      title={<>特点四：消费可以缓一缓，健康支出不能等</>}
       cardColumns={3}
     >
       <div className="flex flex-col h-full min-h-0">
