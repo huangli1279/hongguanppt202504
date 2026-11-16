@@ -87,7 +87,7 @@ export const ContentSlide44: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          三季度重要指标总结：增长韧性延续，
+          三季度总结：增长韧性延续，
           <span className="text-webank-accent">结构升级与政策发力</span>
           形成主线
         </>
