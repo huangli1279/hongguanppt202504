@@ -199,17 +199,17 @@ export interface QuarterlyDepositPoint {
 }
 
 export const quarterlyDepositData: QuarterlyDepositPoint[] = [
-  { period: '2024Q1', household: 8.56, householdDemand: 1.36, householdTime: 7.19, nonBankFin: 1.63 },
-  { period: '2024Q2', household: 0.72, householdDemand: -0.31, householdTime: 1.02, nonBankFin: 0.65 },
-  { period: '2024Q3', household: 2.58, householdDemand: -0.21, householdTime: 2.79, nonBankFin: 2.28 },
-  { period: '2024Q4', household: 2.41, householdDemand: 1.49, householdTime: 0.92, nonBankFin: -1.90 },
-  { period: '2025Q1', household: 9.22, householdDemand: 1.27, householdTime: 7.95, nonBankFin: 0.31 },
-  { period: '2025Q2', household: 1.55, householdDemand: 0.26, householdTime: 1.30, nonBankFin: 2.24 },
-  { period: '2025Q3', household: 1.96, householdDemand: 0.52, householdTime: 1.44, nonBankFin: 2.26 },
-  { period: '2025Q4', household: 1.91, householdDemand: 0.69, householdTime: 1.22, nonBankFin: 1.60 },
-  { period: '2026Q1', household: 7.70, householdDemand: 1.16, householdTime: 6.53, nonBankFin: 2.32 },
-  { period: '2026Q2', household: -0.10, householdDemand: -0.66, householdTime: 0.56, nonBankFin: 2.62 },
-  { period: '2026Q3', household: 1.81, householdDemand: -0.09, householdTime: 1.90, nonBankFin: -0.24 },
+  { period: '24Q1', household: 8.56, householdDemand: 1.36, householdTime: 7.19, nonBankFin: 1.63 },
+  { period: '24Q2', household: 0.72, householdDemand: -0.31, householdTime: 1.02, nonBankFin: 0.65 },
+  { period: '24Q3', household: 2.58, householdDemand: -0.21, householdTime: 2.79, nonBankFin: 2.28 },
+  { period: '24Q4', household: 2.41, householdDemand: 1.49, householdTime: 0.92, nonBankFin: -1.90 },
+  { period: '25Q1', household: 9.22, householdDemand: 1.27, householdTime: 7.95, nonBankFin: 0.31 },
+  { period: '25Q2', household: 1.55, householdDemand: 0.26, householdTime: 1.30, nonBankFin: 2.24 },
+  { period: '25Q3', household: 1.96, householdDemand: 0.52, householdTime: 1.44, nonBankFin: 2.26 },
+  { period: '25Q4', household: 1.91, householdDemand: 0.69, householdTime: 1.22, nonBankFin: 1.60 },
+  { period: '26Q1', household: 7.70, householdDemand: 1.16, householdTime: 6.53, nonBankFin: 2.32 },
+  { period: '26Q2', household: -0.10, householdDemand: -0.66, householdTime: 0.56, nonBankFin: 2.62 },
+  { period: '26Q3', household: 1.81, householdDemand: -0.09, householdTime: 1.90, nonBankFin: -0.24 },
 ];
 
 /** Q2 存款增量对比：按类别分组，便于同年份并排对比 */
@@ -261,17 +261,17 @@ export const householdDepositMonthlyChangeData = [
 
 /** 季度非银机构存款增量（2024Q1–2026Q3），单位：万亿 */
 export const nonBankDepositQuarterlyIncrementData = [
-  { period: '2024Q1', value: 1.63 },
-  { period: '2024Q2', value: 0.65 },
-  { period: '2024Q3', value: 2.28 },
-  { period: '2024Q4', value: -1.9 },
-  { period: '2025Q1', value: 0.31 },
-  { period: '2025Q2', value: 2.24 },
-  { period: '2025Q3', value: 2.26 },
-  { period: '2025Q4', value: 1.6 },
-  { period: '2026Q1', value: 2.32 },
-  { period: '2026Q2', value: 2.62 },
-  { period: '2026Q3', value: -0.24 },
+  { period: '24Q1', value: 1.63 },
+  { period: '24Q2', value: 0.65 },
+  { period: '24Q3', value: 2.28 },
+  { period: '24Q4', value: -1.9 },
+  { period: '25Q1', value: 0.31 },
+  { period: '25Q2', value: 2.24 },
+  { period: '25Q3', value: 2.26 },
+  { period: '25Q4', value: 1.6 },
+  { period: '26Q1', value: 2.32 },
+  { period: '26Q2', value: 2.62 },
+  { period: '26Q3', value: -0.24 },
 ];
 
 export const nonBankFinQuarterlyData = [

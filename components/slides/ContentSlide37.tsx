@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wallet, Briefcase, Home, ArrowRight, Lightbulb } from 'lucide-react';
+import { Wallet, Briefcase, Home, ArrowRight } from 'lucide-react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
 type Tone = 'red' | 'green' | 'blue' | 'amber';
@@ -10,35 +10,7 @@ const toneText: Record<Tone, string> = {
   amber: 'text-amber-600',
 };
 
-// 顶部小框：本次消费专题的研究思路
-const thinking: { step: string; body: React.ReactNode }[] = [
-  {
-    step: '起点',
-    body: (
-      <>
-        二季度归因：收入预期、就业、房价财富效应<b className="text-webank-blue">三重约束</b>压缩大盘，不是「不消费」而是
-        <b className="text-webank-blue">换方式花钱</b>。
-      </>
-    ),
-  },
-  {
-    step: '追问',
-    body: (
-      <>
-        为什么看<b className="text-webank-blue">消费习惯</b>：需拆解收入往哪流。
-      </>
-    ),
-  },
-  {
-    step: '目的',
-    body: (
-      <>
-        产生<b className="text-webank-accent">增量消费</b>：识别逆势方向，把结构性变化转为可捕捉的增量。
-      </>
-    ),
-  },
-];
-
+// 二季度归因约束
 const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React.ReactNode }[] = [
   {
     icon: Wallet,
@@ -57,8 +29,8 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
     tone: 'amber',
     body: (
       <>
-        失业率 <b className="text-amber-600">5.0%–5.2%</b>，16–24 岁长期 <b className="text-amber-600">15%</b>；2026 届毕业生{' '}
-        <b className="text-amber-600">1270 万</b>创新高，AI 5 年内或替代约 <b className="text-amber-600">7000 万</b>岗位。
+        失业率 <b className="text-amber-600">5.0%–5.2%</b>，16–24 岁长期15%；2026 届毕业生
+        1270 万创新高，AI 5 年内或替代约 <b className="text-amber-600">7000 万</b>岗位。
       </>
     ),
   },
@@ -86,32 +58,11 @@ const dimensions: { num: string; tag: string; title: string; body: string }[] = 
 export const ContentSlide37: React.FC = () => {
   return (
     <BaseContentSlide
-      title={<>三重约束压缩二季度消费大盘，四个特点勾勒三季度消费习惯</>}
+      title={<></>}
       subtitle="2026年三季度宏观经济报告"
       headerClassName="!mb-3"
     >
       <div className="flex flex-col h-full gap-2.5">
-        {/* 顶部小框：研究思路总结 */}
-        <div
-          className="flex-shrink-0 rounded-lg border border-webank-line bg-gradient-to-r from-webank-accent/10 via-white to-white shadow-card px-3 py-2 animate-fade-in-up fill-mode-forwards opacity-0"
-          style={{ animationDelay: '0ms' }}
-        >
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <Lightbulb size={14} className="text-webank-accent" />
-            <h3 className="text-[12px] font-bold text-webank-blue">本次消费专题研究思路</h3>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {thinking.map((t) => (
-              <div key={t.step} className="flex items-start gap-1.5">
-                <span className="flex-shrink-0 mt-0.5 rounded bg-webank-accent/10 text-webank-accent text-[9px] font-bold px-1.5 py-0.5 leading-none">
-                  {t.step}
-                </span>
-                <p className="text-[10.5px] leading-snug text-slate-600">{t.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* 底部：二季度归因 → 三季度研究四个特点 */}
         <div className="flex-1 min-h-0 flex items-stretch gap-2">
           {/* 左：二季度归因 */}
@@ -121,15 +72,15 @@ export const ContentSlide37: React.FC = () => {
           >
             <div className="flex items-center gap-2">
               <span className="w-1 h-3.5 bg-webank-blue rounded-sm" />
-              <h3 className="text-[12.5px] font-bold text-webank-blue">二季度归因：三重约束压缩总消费大盘</h3>
+              <h3 className="text-[18px] font-bold text-webank-blue">二季度归因：三重约束压缩总消费大盘</h3>
             </div>
             <div className="flex-1 min-h-0 flex flex-col gap-1.5">
               {constraints.map((c) => (
                 <div key={c.label} className="flex-1 flex items-start gap-2 rounded-md bg-slate-50 px-2 py-1.5">
                   <c.icon size={15} className={`${toneText[c.tone]} mt-0.5 flex-shrink-0`} />
                   <div className="min-w-0">
-                    <p className={`text-[11px] font-bold leading-tight ${toneText[c.tone]}`}>{c.label}</p>
-                    <p className="text-[10.5px] leading-snug text-slate-600 mt-0.5">{c.body}</p>
+                    <p className={`text-[16px] font-bold leading-tight ${toneText[c.tone]}`}>{c.label}</p>
+                    <p className="text-[16px] leading-snug text-slate-600 mt-0.5">{c.body}</p>
                   </div>
                 </div>
               ))}
@@ -138,7 +89,7 @@ export const ContentSlide37: React.FC = () => {
 
           {/* 中：承接箭头 二季度 → 三季度 */}
           <div className="flex-shrink-0 flex flex-col items-center justify-center w-12 gap-0.5">
-            <span className="text-[8px] font-semibold text-webank-subtext text-center leading-tight">
+            <span className="text-[14px] font-semibold text-webank-subtext text-center leading-tight">
               二季度
               <br />
               归因
@@ -146,7 +97,7 @@ export const ContentSlide37: React.FC = () => {
             <div className="my-0.5 w-9 h-9 rounded-full bg-webank-accent text-white flex items-center justify-center shadow-md">
               <ArrowRight size={18} />
             </div>
-            <span className="text-[8px] font-semibold text-webank-accent text-center leading-tight">
+            <span className="text-[14px] font-semibold text-webank-accent text-center leading-tight">
               三季度
               <br />
               研究
@@ -160,9 +111,9 @@ export const ContentSlide37: React.FC = () => {
           >
             <div className="flex items-center gap-2">
               <span className="w-1 h-3.5 bg-webank-accent rounded-sm" />
-              <h3 className="text-[12.5px] font-bold text-webank-blue">三季度研究：消费趋势的四个特点</h3>
+              <h3 className="text-[18px] font-bold text-webank-blue">三季度研究：消费趋势的四个特点</h3>
             </div>
-            <p className="text-[9.5px] text-webank-subtext leading-tight pl-3 -mt-0.5">
+            <p className="text-[15px] text-webank-subtext leading-tight pl-3 -mt-0.5">
               承接二季度归因，我们继续研究到三季度 →
             </p>
             <div className="flex-1 min-h-0 flex flex-col gap-1.5 pt-0.5">
@@ -171,17 +122,17 @@ export const ContentSlide37: React.FC = () => {
                   key={d.num}
                   className="flex-1 group flex items-center gap-2 rounded-md border border-slate-200 bg-white px-2 py-1"
                 >
-                  <span className="flex items-center justify-center w-5 h-5 flex-shrink-0 rounded-md bg-gradient-to-br from-webank-accent to-webank-blue text-white text-[11px] font-bold">
+                  <span className="flex items-center justify-center w-7 h-7 flex-shrink-0 rounded-md bg-gradient-to-br from-webank-accent to-webank-blue text-white text-[16px] font-bold">
                     {d.num}
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
-                      <p className="text-[11.5px] font-bold text-webank-blue leading-tight truncate">{d.title}</p>
-                      <span className="flex-shrink-0 rounded bg-webank-accent/10 text-webank-accent text-[8px] font-semibold px-1 py-0.5 leading-none">
+                      <p className="text-[18px] font-bold text-webank-blue leading-tight truncate">{d.title}</p>
+                      <span className="flex-shrink-0 rounded bg-webank-accent/10 text-webank-accent text-[14px] font-semibold px-1 py-0.5 leading-none">
                         {d.tag}
                       </span>
                     </div>
-                    <p className="text-[10px] leading-snug text-slate-500 mt-0.5 truncate">{d.body}</p>
+                    <p className="text-[15px] leading-snug text-slate-500 mt-0.5 truncate">{d.body}</p>
                   </div>
                   <ArrowRight size={13} className="flex-shrink-0 text-slate-300 group-hover:text-webank-accent transition-colors" />
                 </div>

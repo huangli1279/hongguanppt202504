@@ -14,6 +14,18 @@ export const ContentSlide27: React.FC = () => {
       }
       headerClassName="!mb-4"
     >
+      {/* 右上角专栏书签 — 紧贴页面最右上角，区分本页为“行业分析”专栏 */}
+      <div className="absolute top-0 right-0 z-20">
+        <div className="[clip-path:polygon(0_0,100%_0,100%_100%,50%_78%,0_100%)] bg-gradient-to-b from-webank-darkBlue via-webank-blue to-webank-midBlue px-6 pt-3 pb-6 text-center drop-shadow-[0_6px_16px_rgba(5,28,44,0.32)]">
+          <span className="block text-[15px] font-semibold leading-none tracking-[0.3em] pl-[0.3em] text-white">
+            行业分析
+          </span>
+          <span className="mt-1 block text-[8px] font-medium leading-none tracking-[0.2em] pl-[0.2em] text-white/65">
+            INDUSTRY
+          </span>
+        </div>
+      </div>
+
       <div className="h-full min-h-0 grid grid-cols-[1.6fr_1fr] gap-3">
           <ChartContainer delay="400ms" className="min-h-0">
             <IndustryProsperityScatterChart />

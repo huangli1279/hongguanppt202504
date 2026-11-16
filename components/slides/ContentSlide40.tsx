@@ -105,7 +105,7 @@ export const ContentSlide40: React.FC = () => (
               <tr className="bg-[#e0e6f0]">
                 <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">代表企业 海外 / 国内</td>
                 <td className="px-3 py-2 bg-[#f7f4ed]">
-                  海外：Google Ads、Amazon、搜索引擎；国内：百度推广、淘宝/天猫、京东（试燃）
+                  海外：Google Ads、Amazon、搜索引擎；国内：百度推广、淘宝/天猫、京东
                 </td>
                 <td className="px-3 py-2 bg-[#eef4fa]">
                   海外：Profound、Scrunch AI；ChatGPT / Perplexity；国内：360、微豁、迈迈；包含文心DeepSeek（早期起步）

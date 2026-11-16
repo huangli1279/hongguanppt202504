@@ -13,7 +13,7 @@ export const ContentSlide06: React.FC = () => {
           </span>
           <span className="text-gray-900 font-semibold">
             三季度增长回升，全年预计增长
-            <span className="font-bold text-blue-600">4.5%-4.6%</span>
+            <span className="font-bold text-red-600">4.5%-4.6%</span>
             ，完成目标最低值
           </span>
         </span>

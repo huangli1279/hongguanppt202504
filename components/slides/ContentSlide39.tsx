@@ -6,7 +6,7 @@ import { ZGenInfoChannelChart } from '../charts/ZGenInfoChannelChart';
 
 export const ContentSlide39: React.FC = () => (
   <BaseContentSlide
-    title={<>特点二：AI参与消费决策：AI 已进入决策链，但还没成为信任的终点。</>}
+    title={<>特点二：AI参与消费决策</>}
     cardColumns={2}
   >
     <div className="flex h-full flex-col gap-3">

@@ -35,7 +35,7 @@ export interface BarLineConfig {
   name: string;
   color?: string;
   strokeWidth?: number;
-  yAxisId?: 'left' | 'right';
+  yAxisId?: 'left' | 'right' | 'lineExtra';
   unit?: string;
   /** 虚线样式，如 "6 4" 表示预测段 */
   strokeDasharray?: string;
@@ -92,6 +92,8 @@ export interface BaseBarChartProps {
   legendFontSize?: number;
   /** 图例间距，默认 12 */
   legendGap?: number;
+  /** 图例容器的内联样式，用于微调图例位置（如 { bottom: -6 } 向下偏移） */
+  legendWrapperStyle?: React.CSSProperties;
   barSize?: number;
   /** 同一分组内柱子之间的间距（px），默认使用 recharts 的 4 */
   barGap?: number | string;
@@ -115,6 +117,13 @@ export interface BaseBarChartProps {
   lineAxisDomain?: [number, number];
   lineUnit?: string;
   lineYAxisTickFormatter?: (value: any) => string;
+  /** 为 yAxisId 为 'lineExtra' 的折线单独提供的第三根 Y 轴，使其与柱子分离、位于图表上半区 */
+  lineExtraAxis?: {
+    domain?: [number, number];
+    unit?: string;
+    width?: number;
+    tickFormatter?: (value: any) => string;
+  };
   xAxisAngle?: number;
   xAxisHeight?: number;
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
@@ -248,6 +257,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   showLegend = true,
   legendFontSize = 10,
   legendGap = 12,
+  legendWrapperStyle,
   barSize = 16,
   barGap,
   barCategoryGap,
@@ -278,6 +288,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   lineLabelFormatter,
   lineLabelContent,
   lineLabelPosition,
+  lineExtraAxis,
   categoryGroups,
   highlightAreas,
   labelFilter,
@@ -464,9 +475,22 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 width={lineYAxisWidth}
               />
             )}
+            {lineExtraAxis && !isHorizontal && (
+              <YAxis
+                yAxisId="lineExtra"
+                orientation="right"
+                domain={lineExtraAxis.domain ?? ['auto', 'auto']}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+                tickFormatter={lineExtraAxis.tickFormatter || ((val) => `${val}${lineExtraAxis.unit ?? ''}`)}
+                width={lineExtraAxis.width ?? 40}
+              />
+            )}
             <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} labelMap={labelMap} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />
             {showLegend && (
               <Legend
+                wrapperStyle={legendWrapperStyle}
                 content={(props) => (
                   <CustomLegend
                     legendOrder={legendOrder}

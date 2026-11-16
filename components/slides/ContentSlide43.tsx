@@ -24,18 +24,18 @@ const PolicyCard: React.FC<{
   children: React.ReactNode;
 }> = ({ index, icon: Icon, title, meta, delay, children }) => (
   <div
-    className="flex flex-col min-h-0 rounded-lg bg-white border border-webank-line shadow-card overflow-hidden animate-fade-in-up fill-mode-forwards opacity-0"
+    className="flex flex-col rounded-lg bg-white border border-webank-line shadow-card animate-fade-in-up fill-mode-forwards opacity-0 px-2.5 py-1.5"
     style={{ animationDelay: delay }}
   >
-    <div className="flex items-start gap-2 px-2.5 py-1.5 border-b border-slate-100 bg-slate-50/80 flex-shrink-0">
+    <div className="flex items-start gap-2 px-2 py-1.5 border-b border-slate-100 bg-slate-50/80">
       <NumBadge n={index} />
-      <Icon size={15} className="text-webank-accent mt-0.5 flex-shrink-0" />
+      <Icon size={14} className="text-webank-accent mt-0.5 flex-shrink-0" />
       <div className="min-w-0">
         <h3 className="text-[12px] font-bold text-webank-blue leading-tight">{title}</h3>
-        <p className="text-[8.5px] text-webank-subtext leading-tight mt-0.5 truncate">{meta}</p>
+        <p className="text-[8.5px] text-webank-subtext leading-tight mt-0.5">{meta}</p>
       </div>
     </div>
-    <div className="flex-1 min-h-0 overflow-auto px-2.5 py-1.5 text-[10.5px] leading-snug text-slate-700">
+    <div className="px-2 py-1.5 text-[10.5px] leading-snug text-slate-700">
       {children}
     </div>
   </div>
@@ -61,10 +61,10 @@ export const ContentSlide43: React.FC = () => {
   return (
     <BaseContentSlide
       title="三季度消费政策：扩内需、促消费政策持续加码"
-      subtitle="2026年三季度宏观经济报告 · 中央政策（2026年7—9月）"
+      subtitle="2026年三季度宏观经济报告"
       cardColumns={2}
     >
-      <div className="flex flex-col h-full min-h-0 gap-2.5">
+      <div className="flex flex-col h-full min-h-0 gap-2">
         {/* 重点：国务院批复《扩大消费"十五五"规划》 */}
         <div
           className="flex-shrink-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-3 animate-fade-in-up fill-mode-forwards opacity-0"
@@ -77,7 +77,7 @@ export const ContentSlide43: React.FC = () => {
               <h3 className="text-[13.5px] font-bold text-webank-blue leading-tight">
                 国务院批复《扩大消费“十五五”规划》
               </h3>
-              <p className="text-[9.5px] text-webank-subtext leading-tight mt-0.5">
+              <p className="text-[10px] text-webank-subtext leading-tight mt-0.5">
                 2026年7月13日 · 我国首份国家级消费领域五年专项规划
               </p>
             </div>
@@ -94,7 +94,7 @@ export const ContentSlide43: React.FC = () => {
           </div>
 
           {/* 6方面 */}
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-3 gap-1">
             {planFacets.map((f) => (
               <div key={f.n} className="rounded-md border border-slate-200 bg-white px-2 py-1">
                 <div className="flex items-center gap-1">
@@ -107,7 +107,7 @@ export const ContentSlide43: React.FC = () => {
           </div>
 
           {/* 底部要点 */}
-          <div className="mt-1.5 flex items-center gap-1.5 flex-wrap border-t border-slate-200 pt-1.5 text-[9.5px] text-slate-600">
+          <div className="mt-1 flex items-center gap-1.5 flex-wrap border-t border-slate-200 pt-1 text-[9.5px] text-slate-600">
             <span className="rounded bg-webank-blue/10 text-webank-blue font-semibold px-1.5 py-0.5">
               6方面 · 28条重点任务
             </span>
@@ -120,7 +120,7 @@ export const ContentSlide43: React.FC = () => {
         </div>
 
         {/* 其余4项政策 */}
-        <div className="grid grid-cols-2 gap-2.5 flex-1 min-h-0">
+        <div className="grid grid-cols-2 gap-2 flex-1 min-h-0">
           <PolicyCard
             index="2"
             icon={ShoppingBag}

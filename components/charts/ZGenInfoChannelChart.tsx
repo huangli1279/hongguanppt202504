@@ -93,8 +93,6 @@ export const ZGenInfoChannelChart: React.FC = () => (
     <div className="mt-1 shrink-0 space-y-0.5 text-[8px] leading-snug text-slate-500">
       <p>注：百分比数值为回答人次后的占比</p>
       <p>数据来源：埃森哲 2025 年中国消费者调研（全年龄样本 N=5000，18-29 岁 N=986，占比 20%）</p>
-      <p>问题1：为了探索新的解决方案，或者改善生活的方法，您一般从哪里获得信息？</p>
-      <p>问题2：当您有明确的购买需求时，您会通过哪些方式来查找商品/服务信息？</p>
     </div>
   </div>
 );

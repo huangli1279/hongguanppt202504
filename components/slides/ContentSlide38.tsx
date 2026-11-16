@@ -111,6 +111,7 @@ export const ContentSlide38: React.FC = () => {
                   legendOrder={['出游总花费', '出游人次']}
                   legendFontSize={8}
                   legendGap={8}
+                  legendWrapperStyle={{ bottom: -6 }}
                   barSize={8}
                   barGap={2}
                   barCategoryGap="26%"

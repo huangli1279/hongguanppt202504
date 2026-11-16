@@ -46,6 +46,107 @@ const consumeChange = [
 const CHART_H2 = 88;
 const h2 = (v: number) => `${(v / 30) * CHART_H2}px`;
 
+type MiniDatum = { label: string; value: number; accent?: boolean };
+
+const fitnessData: MiniDatum[] = [
+  { label: '2024', value: 2851 },
+  { label: '2025', value: 3827, accent: true },
+];
+const wearableData: MiniDatum[] = [
+  { label: '2020', value: 364 },
+  { label: '2025', value: 711, accent: true },
+  { label: '2026E', value: 820, accent: true },
+];
+const therapyData: MiniDatum[] = [
+  { label: '2020', value: 386 },
+  { label: '2021', value: 512 },
+  { label: '2022', value: 678 },
+  { label: '2023', value: 912 },
+  { label: '2024', value: 972 },
+  { label: '2025', value: 1450, accent: true },
+  { label: '2026E', value: 1800 },
+  { label: '2030E', value: 2000, accent: true },
+];
+
+const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, height = 64 }) => {
+  const max = Math.max(...data.map((d) => d.value));
+  return (
+    <div className="flex flex-col h-full">
+      <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
+        {data.map((d) => (
+          <div key={d.label} className="flex flex-col items-center justify-end flex-1 min-w-0">
+            <span className="text-[7px] font-medium text-slate-600 leading-none mb-0.5">{d.value.toLocaleString()}</span>
+            <div
+              className={`w-full max-w-[28px] rounded-t-[2px] ${d.accent ? 'bg-webank-blue' : 'bg-[#a9c3e2]'}`}
+              style={{ height: `${(d.value / max) * height}px` }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-around gap-1 border-t border-slate-200 pt-0.5">
+        {data.map((d) => (
+          <span key={d.label} className="flex-1 text-center text-[7px] text-slate-700 leading-none truncate">{d.label}</span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
+  const n = data.length;
+  const max = Math.max(...data.map((d) => d.value));
+  const padX = 8;
+  const padTop = 20;
+  const padBottom = 16;
+  const usableW = 100 - 2 * padX;
+  const usableH = 100 - padTop - padBottom;
+  const px = (i: number) => padX + (i / (n - 1)) * usableW;
+  const py = (v: number) => padTop + (1 - v / max) * usableH;
+  const line = data.map((d, i) => `${px(i)},${py(d.value)}`).join(' ');
+  const baseY = 100 - padBottom;
+  const area = `${px(0)},${baseY} ${line} ${px(n - 1)},${baseY}`;
+  return (
+    <div className="relative w-full h-full">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
+        <polygon points={area} fill="rgba(47,109,181,0.10)" />
+        <polyline
+          points={line}
+          fill="none"
+          stroke="#2f6db5"
+          strokeWidth={1.4}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+      {data.map((d, i) => (
+        <React.Fragment key={d.label}>
+          <span
+            className={`absolute -translate-x-1/2 -translate-y-full text-[6px] font-medium leading-none ${
+              d.accent ? 'text-webank-blue' : 'text-slate-600'
+            }`}
+            style={{ left: `${px(i)}%`, top: `${py(d.value) - 5}%` }}
+          >
+            {d.value.toLocaleString()}
+          </span>
+          <span
+            className={`absolute -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full border ${
+              d.accent ? 'bg-webank-blue border-webank-blue' : 'bg-white border-webank-blue'
+            }`}
+            style={{ left: `${px(i)}%`, top: `${py(d.value)}%` }}
+          />
+          <span
+            className="absolute -translate-x-1/2 bottom-0 text-[6px] leading-none text-slate-700 whitespace-nowrap"
+            style={{ left: `${px(i)}%` }}
+          >
+            {d.label}
+          </span>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
 export const ContentSlide42: React.FC = () => {
   return (
     <BaseContentSlide
@@ -69,7 +170,7 @@ export const ContentSlide42: React.FC = () => {
               <p>
                 北大汇丰调研中，26年Q2身体健康居「最愿意花钱领域」第一选择（
                 <span className="font-semibold text-webank-accent">37%</span>），Q3仍以{' '}
-                <span className="font-semibold text-webank-accent">39%</span> 稳居第二选择首位。
+                <span className="font-semibold text-webank-accent">39%</span> 稳居第二选择。
               </p>
               <div className="rounded-md bg-red-50/70 border-l-4 border-red-400 pl-3 py-2">
                 <p className="font-semibold text-red-600 mb-1">收缩周期里的支出顺序</p>
@@ -141,14 +242,7 @@ export const ContentSlide42: React.FC = () => {
                   <span className="font-semibold text-webank-blue">AI 处理健康问题：</span>
                   <span className="font-semibold text-webank-accent">22%</span> 的消费者用大语言模型处理健康问题（Z世代 26%）。
                 </li>
-                <li>
-                  <span className="font-semibold text-webank-blue">行为改变：</span>
-                  实时反馈可能更快带来行为改变：如看到饮酒后可穿戴设备“睡眠分”下降，可能减少再次饮酒。
-                </li>
               </ul>
-              <p className="text-[10px] text-gray-500 leading-snug border-t border-gray-200 pt-2">
-                脚注：2024 调研中 59% 的婴儿潮一代向医生获取健康信息，Z世代仅 42%；38% 的 Z 世代转向社交媒体获取健康信息。
-              </p>
             </div>
           </BaseCard>
         </div>
@@ -251,105 +345,57 @@ export const ContentSlide42: React.FC = () => {
             </div>
           </FigureCard>
 
-          {/* 图3 健身市场规模表 */}
+          {/* 图3 健身市场规模柱状图 */}
           <FigureCard label="图3" title="商业健身市场规模（单位：亿元）">
             <div className="flex flex-col h-full text-[8px]">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 text-slate-500">
-                    <th className="text-left font-medium px-1 py-0.5 border-b border-slate-200">年份</th>
-                    <th className="text-left font-medium px-1 py-0.5 border-b border-slate-200">规模</th>
-                    <th className="text-left font-medium px-1 py-0.5 border-b border-slate-200">备注</th>
-                  </tr>
-                </thead>
-                <tbody className="text-slate-700">
-                  <tr>
-                    <td className="px-1 py-1 border-b border-slate-100">2024</td>
-                    <td className="px-1 py-1 border-b border-slate-100">2,851</td>
-                    <td className="px-1 py-1 border-b border-slate-100 text-slate-500">实际（=3,827÷1.342）</td>
-                  </tr>
-                  <tr>
-                    <td className="px-1 py-1 border-b border-slate-100">2025</td>
-                    <td className="px-1 py-1 border-b border-slate-100 font-semibold">3,827</td>
-                    <td className="px-1 py-1 border-b border-slate-100 text-slate-500">实际（+34.2%，较2024 +975亿）</td>
-                  </tr>
-                </tbody>
-              </table>
-              <ul className="mt-1.5 space-y-1 text-[7px] leading-snug text-slate-600">
+              <div className="flex-1 min-h-0">
+                <MiniBarChart data={fitnessData} height={64} />
+              </div>
+              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
                 <li className="flex gap-1">
                   <span className="text-webank-blue leading-none">•</span>
                   <span>
-                    托衬：人均年消费 <b>4,284 元（+32.3%）</b>；县域成交额增速 <b>40%</b>；Z世代（18–24 岁）成消费主力、月均轻中端 300–500 元。
+                    <span className="text-red-500 font-semibold">人均消费（元）4,284（+32.3%）</span>
+                    ；县域增速 <b>40%</b>；Z世代成消费主力、月均 300–500 元。
                   </span>
                 </li>
               </ul>
             </div>
           </FigureCard>
 
-          {/* 图4 心理咨询规模表 */}
-          <FigureCard label="图4" title="心理咨询行业规模（单位：亿元，宽口径）">
-            <div className="flex flex-col h-full text-[7.5px]">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 text-slate-500">
-                    <th className="text-left font-medium px-1 py-[1px] border-b border-slate-200">年份</th>
-                    <th className="text-left font-medium px-1 py-[1px] border-b border-slate-200">规模</th>
-                    <th className="text-left font-medium px-1 py-[1px] border-b border-slate-200">备注</th>
-                  </tr>
-                </thead>
-                <tbody className="text-slate-700">
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2020</td><td className="px-1 py-[1px] border-b border-slate-100">386</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">实际</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2021</td><td className="px-1 py-[1px] border-b border-slate-100">512</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">实际</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2022</td><td className="px-1 py-[1px] border-b border-slate-100">678</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">实际</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2023</td><td className="px-1 py-[1px] border-b border-slate-100">912</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">实际</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2024</td><td className="px-1 py-[1px] border-b border-slate-100">972</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">实际</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2025</td><td className="px-1 py-[1px] border-b border-slate-100 font-semibold">1,450</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">实际（宽口径）</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2026E</td><td className="px-1 py-[1px] border-b border-slate-100">1,800</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">预测</td></tr>
-                  <tr><td className="px-1 py-[1px] border-b border-slate-100">2030E</td><td className="px-1 py-[1px] border-b border-slate-100">2,000</td><td className="px-1 py-[1px] border-b border-slate-100 text-slate-500">预测</td></tr>
-                </tbody>
-              </table>
-              <ul className="mt-1 space-y-[2px] text-[7px] leading-snug text-slate-600">
+          {/* 图4 智能可穿戴规模柱状图 */}
+          <FigureCard label="图4" title="智能可穿戴健康设备（单位：亿元）">
+            <div className="flex flex-col h-full text-[8px]">
+              <div className="flex-1 min-h-0">
+                <MiniBarChart data={wearableData} height={58} />
+              </div>
+              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
                 <li className="flex gap-1">
                   <span className="text-webank-blue leading-none">•</span>
-                  <span>五年增幅约 <b>3.8 倍</b>；年均增速约 <b>27%</b>。</span>
+                  <span>腕带出货 <b>7,390 万台（+20.8%）</b>；智能手表 5,061 万台、手环 2,329 万台。</span>
                 </li>
                 <li className="flex gap-1">
                   <span className="text-webank-blue leading-none">•</span>
-                  <span>托衬：Z世代占情绪经济 <b>77.5%</b>；<b>56.3%</b> 愿为情绪价值买单；<b>68.3%</b> 曾向 AI 倾诉。</span>
+                  <span><b>45.48%</b> 以「健康监测」为购买首因；2026 起 <b>15%</b> 国补。</span>
                 </li>
               </ul>
             </div>
           </FigureCard>
 
-          {/* 图5 智能穿戴规模表 */}
-          <FigureCard label="图5" title="智能可穿戴健康设备（单位：亿元）">
+          {/* 图5 心理咨询规模折线图 */}
+          <FigureCard label="图5" title="心理咨询行业规模（单位：亿元，宽口径）">
             <div className="flex flex-col h-full text-[8px]">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 text-slate-500">
-                    <th className="text-left font-medium px-1 py-0.5 border-b border-slate-200">年份</th>
-                    <th className="text-left font-medium px-1 py-0.5 border-b border-slate-200">规模</th>
-                    <th className="text-left font-medium px-1 py-0.5 border-b border-slate-200">备注</th>
-                  </tr>
-                </thead>
-                <tbody className="text-slate-700">
-                  <tr><td className="px-1 py-1 border-b border-slate-100">2020</td><td className="px-1 py-1 border-b border-slate-100">364</td><td className="px-1 py-1 border-b border-slate-100 text-slate-500">实际</td></tr>
-                  <tr><td className="px-1 py-1 border-b border-slate-100">2025</td><td className="px-1 py-1 border-b border-slate-100 font-semibold">711</td><td className="px-1 py-1 border-b border-slate-100 text-slate-500">实际（2020–2025 CAGR 14.4%）</td></tr>
-                  <tr><td className="px-1 py-1 border-b border-slate-100">2026E</td><td className="px-1 py-1 border-b border-slate-100">820</td><td className="px-1 py-1 border-b border-slate-100 text-slate-500">预测（约 817–826 亿）</td></tr>
-                </tbody>
-              </table>
-              <ul className="mt-1.5 space-y-1 text-[7px] leading-snug text-slate-600">
+              <div className="flex-1 min-h-0">
+                <MiniLineChart data={therapyData} />
+              </div>
+              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
                 <li className="flex gap-1">
                   <span className="text-webank-blue leading-none">•</span>
-                  <span>托衬指标：腕带设备出货 <b>7,390 万台（+20.8%）</b>；智能手表 5,061 万台（+17.2%）、手环 2,329 万台（+29.4%）。</span>
+                  <span>五年增幅约 <b>3.8 倍</b>，年均增速约 <b>27%</b>。</span>
                 </li>
                 <li className="flex gap-1">
                   <span className="text-webank-blue leading-none">•</span>
-                  <span><b>45.48%</b> 以「健康监测」为购买首因；2026 起智能手表/手环/眼镜享 <b>15%</b> 国补。</span>
-                </li>
-                <li className="flex gap-1">
-                  <span className="text-webank-blue leading-none">•</span>
-                  <span>来源：中商产业研究院、IDC《中国可穿戴设备市场季度跟踪报告》、艾媒咨询。</span>
+                  <span>Z世代占情绪经济 <b>77.5%</b>；<b>68.3%</b> 曾向 AI 倾诉。</span>
                 </li>
               </ul>
             </div>
