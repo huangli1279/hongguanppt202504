@@ -250,10 +250,11 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   const renderCustomLabel = (props: any, color: string, dataKey: string, line: LineConfig) => {
     const { x, y, value, index } = props;
     
-    // 找到该系列最后一个非空值的索引
+    // 找到该系列最后一个有效（非空且非 NaN）值的索引
     let lastValidIndex = -1;
     for (let i = data.length - 1; i >= 0; i--) {
-      if (data[i][dataKey] != null) {
+      const v = data[i][dataKey];
+      if (v != null && !(typeof v === 'number' && !Number.isFinite(v))) {
         lastValidIndex = i;
         break;
       }
@@ -265,6 +266,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
     const isHighlighted = highlightPeriods.includes(period);
     
     if ((!isLastPoint && !isHighlighted) || value == null) return null;
+    // 跳过 NaN / 非有限数值，避免渲染 "NaN"
+    if (typeof value === 'number' && !Number.isFinite(value)) return null;
     if (line.hiddenLabelPeriods?.includes(period)) return null;
 
     const callout = line.pointCallouts?.[period];
@@ -493,10 +496,11 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               const lineColor = line.color ?? getSeriesColor(index);
               const axisId = hasDualAxis ? (line.yAxisId || 'left') : undefined;
               
-              // 找到该系列最后一个非空值的索引
+              // 找到该系列最后一个有效（非空且非 NaN）值的索引
               let lastValidIndex = -1;
               for (let i = data.length - 1; i >= 0; i--) {
-                if (data[i][line.dataKey] != null) {
+                const v = data[i][line.dataKey];
+                if (v != null && !(typeof v === 'number' && !Number.isFinite(v))) {
                   lastValidIndex = i;
                   break;
                 }

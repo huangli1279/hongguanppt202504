@@ -1,5 +1,4 @@
 import React from 'react';
-import { HeartPulse, Dumbbell, Watch } from 'lucide-react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 
@@ -158,7 +157,6 @@ export const ContentSlide42: React.FC = () => {
           {/* 左框：健康支出刚性 */}
           <BaseCard
             title="健康支出：各年龄段首要"
-            icon={HeartPulse}
             variant="accent"
             className="h-full overflow-auto"
           >
@@ -188,8 +186,7 @@ export const ContentSlide42: React.FC = () => {
           {/* 中框：三大细分赛道 */}
           <BaseCard
             title="三大健康消费赛道"
-            icon={Dumbbell}
-            variant="subtle"
+            variant="accent"
             className="h-full overflow-auto"
           >
             <ol className="space-y-3 text-[13px] leading-relaxed text-slate-600">
@@ -223,8 +220,7 @@ export const ContentSlide42: React.FC = () => {
           {/* 右框：技术让健康“可测量” */}
           <BaseCard
             title="技术让健康“可测量”"
-            icon={Watch}
-            variant="default"
+            variant="accent"
             className="h-full overflow-auto"
           >
             <div className="space-y-2.5 text-[13px] leading-relaxed text-slate-600">

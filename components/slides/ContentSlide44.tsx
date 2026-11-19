@@ -1,9 +1,9 @@
 import React from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
-  AlertTriangle,
   ArrowLeftRight,
   Building2,
+  Coins,
   Factory,
   Landmark,
   ShieldCheck,
@@ -88,8 +88,7 @@ export const ContentSlide44: React.FC = () => {
       title={
         <>
           三季度总结：增长韧性延续，
-          <span className="text-webank-accent">结构升级与政策发力</span>
-          形成主线
+          <span className="text-webank-accent">结构加速升级、政策持续发力</span>
         </>
       }
       subtitle="2026年三季度宏观经济报告 · 结论页"
@@ -104,9 +103,19 @@ export const ContentSlide44: React.FC = () => {
             title="经济增速回升"
             metric="4.5%"
             metricLabel="Q3实际GDP同比"
-            detail="较二季度回升0.2个百分点；前三季度累计增长4.6%，处于全年目标区间。"
+            detail="较二季度回升0.2个百分点；前三季度累计增长4.6%，处于全年4.5%—5.0%目标区间。"
             tone="blue"
             delay="0ms"
+          />
+          <SummaryCard
+            icon={Coins}
+            eyebrow="价格"
+            title="平减指数回正"
+            metric="1.44%"
+            metricLabel="Q3 GDP平减指数"
+            detail="名义增速6%，平减指数连续两个季度回正，核心受AI产业链景气与能源价格上行拉动。"
+            tone="green"
+            delay="100ms"
           />
           <SummaryCard
             icon={Factory}
@@ -114,68 +123,58 @@ export const ContentSlide44: React.FC = () => {
             title="新动能加速释放"
             metric="16.2%"
             metricLabel="高技术制造业Q3同比"
-            detail="电子行业增长17.5%，计算机通信产能利用率达80.3%，新旧动能分化延续。"
+            detail="电子行业增长17.5%、计算机通信产能利用率达80.3%；1—9月规上工业利润增长15.5%。"
             tone="green"
-            delay="100ms"
+            delay="200ms"
           />
           <SummaryCard
             icon={ShoppingCart}
             eyebrow="消费"
-            title="促消费政策加码"
-            metric="1.55万亿"
-            metricLabel="1—8月以旧换新销售额"
-            detail="惠及2.08亿人次；服务消费、耐用品升级与居民消费能力成为政策抓手。"
+            title="社零温和修复"
+            metric="1.1%"
+            metricLabel="前三季度社零累计同比"
+            detail="剔除汽车后累计增长2.8%；以旧换新1—8月销售额1.55万亿元，惠及2.08亿人次。"
             tone="amber"
-            delay="200ms"
+            delay="300ms"
           />
           <SummaryCard
             icon={ArrowLeftRight}
             eyebrow="外贸"
             title="出口保持韧性"
             metric="36.3%"
-            metricLabel="9月出口同比"
-            detail="出口增速在三季度继续抬升，对经济增长形成支撑；全球需求、关税与地缘风险仍需关注。"
+            metricLabel="9月出口同比（美元计）"
+            detail="前三季度出口累计增长21.3%，9月贸易顺差同比+50.5%，外需对经济增长形成支撑。"
             tone="blue"
-            delay="300ms"
-          />
-          <SummaryCard
-            icon={Landmark}
-            eyebrow="价格与金融"
-            title="价格信号改善"
-            metric="1.44%"
-            metricLabel="Q3 GDP平减指数"
-            detail="名义增速6%，平减指数连续两个季度回正；政策仍需兼顾需求修复与信用扩张。"
-            tone="green"
             delay="400ms"
           />
           <SummaryCard
-            icon={Sparkles}
-            eyebrow="新产业"
-            title="AI景气仍在扩散"
-            metric="20%"
-            metricLabel="美国企业AI渗透率"
-            detail="需求尚未触及历史拐点，模型与算力产业链保持活跃，但应用层估值分化加剧。"
-            tone="amber"
+            icon={Landmark}
+            eyebrow="财政与金融"
+            title="收支与信用平稳"
+            metric="5.1%"
+            metricLabel="前三季度一般公共预算收入同比"
+            detail="税收增长6.1%、印花税+31.1%；社融增速回落至7.1%，增量主要靠政府债与政策工具。"
+            tone="green"
             delay="500ms"
           />
           <SummaryCard
             icon={Building2}
-            eyebrow="地产与投资"
+            eyebrow="投资"
             title="地产仍是修复短板"
-            metric="托底"
-            metricLabel="政策持续加力"
-            detail="投资与居民预期修复仍偏慢，首套住房贷款贴息等增量政策落地，重点在于稳定需求与改善现金流。"
-            tone="blue"
+            metric="-7.2%"
+            metricLabel="Q3固投累计同比"
+            detail="民间投资-10.4%、国有控股-3.2%；9月单月环比转正，地产降幅仍在扩大是主要拖累。"
+            tone="amber"
             delay="600ms"
           />
           <SummaryCard
-            icon={AlertTriangle}
-            eyebrow="风险观察"
-            title="风险呈现结构性"
-            metric="分化"
-            metricLabel="而非全面失速"
-            detail="外部冲击、供需错配与局部资产估值是主要变量；增长底盘稳定，但修复斜率仍取决于内需接力。"
-            tone="red"
+            icon={Sparkles}
+            eyebrow="新消费"
+            title="AI重塑消费决策"
+            metric="79.4%"
+            metricLabel="消费者购物主动咨询AI"
+            detail="43.7%认为AI咨询有影响，首超传统媒体广告（42.6%）；服务零售+5.0%快于商品。"
+            tone="amber"
             delay="700ms"
           />
         </div>

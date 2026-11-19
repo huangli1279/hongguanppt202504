@@ -52,6 +52,7 @@ const manufacturingTableData: ManufacturingTableRow[] = [
   { period: '2026-07', auto: -5.3, chemicals: -7.4, computerComm: 7.8, railwayShipAerospace: 18.7, nonferrous: -3.9, generalEquipment: 1.4, specialEquipment: -9.2, electricalMachinery: 1.4, pharmaceutical: -9.8 },
   { period: '2026-08', auto: -6.0, chemicals: -8.1, computerComm: 8.1, railwayShipAerospace: 16.3, nonferrous: -4.1, generalEquipment: 0.9, specialEquipment: -9.0, electricalMachinery: 0.8, pharmaceutical: -8.3 },
   { period: '2026-09', auto: -6.3, chemicals: -7.5, computerComm: 9.6, railwayShipAerospace: 15.8, nonferrous: -5.1, generalEquipment: 1.1, specialEquipment: -8.9, electricalMachinery: 1.2, pharmaceutical: -8.1 },
+  { period: '2026-10', auto: -7.9, chemicals: -8.4, computerComm: 9.9, railwayShipAerospace: 14.1, nonferrous: -4.9, generalEquipment: -1.2, specialEquipment: -9.0, electricalMachinery: -0.1, pharmaceutical: -9.2 },
 ];
 
 // 基建细分行业投资累计同比（表格）
@@ -83,28 +84,32 @@ const infrastructureTableData: InfrastructureTableRow[] = [
   { period: '2026-07', railway: 0.7, road: -7.5, pipeline: 79.5, handlingStorage: 12.9, aviation: 15.7, waterTransport: 16.2, waterEnvironment: -9.1, powerUtility: -5.3, telecom: 0.1 },
   { period: '2026-08', railway: 0.6, road: -8.0, pipeline: 72.1, handlingStorage: 15.1, aviation: 16.7, waterTransport: 14.7, waterEnvironment: -11.0, powerUtility: -6.9, telecom: 5.2 },
   { period: '2026-09', railway: 2.3, road: -9.9, pipeline: 55.5, handlingStorage: 16.9, aviation: 13.8, waterTransport: 13.5, waterEnvironment: -12.8, powerUtility: -6.8, telecom: 4.3 },
+  { period: '2026-10', railway: NaN, road: -10.9, pipeline: NaN, handlingStorage: NaN, aviation: 12.5, waterTransport: 12.5, waterEnvironment: -14.4, powerUtility: -7.7, telecom: NaN },  
 ];
 
 // 合并表：制造业 + 基建 细分行业投资累计同比（已拆分为两张折线图，行业范围与原表一致）
-const xAxisQuarterTicks = ['2025-09', '2025-12', '2026-03', '2026-06', '2026-09'];
+const xAxisQuarterTicks = ['2025-09', '2025-12', '2026-03', '2026-06', '2026-09', '2026-10'];
+const labeledPeriods = ['2026-09'];
+// 2026-10 数据保留在折线中，但不做数值标注与数据点强调
+const unlabeledPeriods = ['2026-10'];
 
 const manufacturingLineConfigs: LineConfig[] = [
-  { dataKey: 'auto', name: '汽车', color: seriesColors[0], strokeWidth: 2, labelDY: -10 },
-  { dataKey: 'chemicals', name: '化学原料化学制品', color: seriesColors[3], strokeWidth: 2, labelDY: 0, pointDXOffsets: { '2026-09': 30 } },
-  { dataKey: 'computerComm', name: '计算机通信电子', color: seriesColors[1], strokeWidth: 2 },
-  { dataKey: 'railwayShipAerospace', name: '铁路船舶航空航天', color: seriesColors[2], strokeWidth: 2 },
-  { dataKey: 'nonferrous', name: '有色金属冶炼压延', color: seriesColors[4], strokeWidth: 2, labelDY: -22 },
-  { dataKey: 'specialEquipment', name: '专用设备', color: seriesColors[5], strokeWidth: 2, labelDY: 22 },
-  { dataKey: 'pharmaceutical', name: '医药', color: seriesColors[6], strokeWidth: 2, labelDY: 12, pointDXOffsets: { '2026-09': 30 } },
+  { dataKey: 'auto', name: '汽车', color: seriesColors[0], strokeWidth: 2, labelDY: -10, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'chemicals', name: '化学原料化学制品', color: seriesColors[3], strokeWidth: 2, labelDY: 0, pointDXOffsets: { '2026-09': -12 }, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'computerComm', name: '计算机通信电子', color: seriesColors[1], strokeWidth: 2, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'railwayShipAerospace', name: '铁路船舶航空航天', color: seriesColors[2], strokeWidth: 2, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'nonferrous', name: '有色金属冶炼压延', color: seriesColors[4], strokeWidth: 2, labelDY: -22, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'specialEquipment', name: '专用设备', color: seriesColors[5], strokeWidth: 2, labelDY: 22, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'pharmaceutical', name: '医药', color: seriesColors[6], strokeWidth: 2, labelDY: 12, pointDXOffsets: { '2026-09': -12 }, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
 ];
 
 const infrastructureLineConfigs: LineConfig[] = [
-  { dataKey: 'road', name: '道路运输', color: seriesColors[0], strokeWidth: 2, labelDY: -14 },
-  { dataKey: 'pipeline', name: '管道运输', color: seriesColors[1], strokeWidth: 2 },
-  { dataKey: 'handlingStorage', name: '装卸搬运仓储', color: seriesColors[3], strokeWidth: 2 },
-  { dataKey: 'aviation', name: '航空运输', color: seriesColors[2], strokeWidth: 2, labelDY: -14, pointDXOffsets: { '2026-09': 30 } },
-  { dataKey: 'waterTransport', name: '水上运输', color: seriesColors[5], strokeWidth: 2, labelDY: 16, pointDXOffsets: { '2026-09': 30 } },
-  { dataKey: 'waterEnvironment', name: '水利环境公共设施', color: seriesColors[6], strokeWidth: 2, labelDY: 16 },
+  { dataKey: 'road', name: '道路运输', color: seriesColors[0], strokeWidth: 2, labelDY: -14, pointDXOffsets: { '2026-09': -12 }, pointOffsets: { '2026-09': -24 }, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'pipeline', name: '管道运输', color: seriesColors[1], strokeWidth: 2, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'handlingStorage', name: '装卸搬运仓储', color: seriesColors[3], strokeWidth: 2, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'aviation', name: '航空运输', color: seriesColors[2], strokeWidth: 2, labelDY: -14, pointDXOffsets: { '2026-09': -12 }, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'waterTransport', name: '水上运输', color: seriesColors[5], strokeWidth: 2, labelDY: 16, pointDXOffsets: { '2026-09': -12 }, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
+  { dataKey: 'waterEnvironment', name: '水利环境公共设施', color: seriesColors[6], strokeWidth: 2, labelDY: 16, hiddenLabelPeriods: unlabeledPeriods, hiddenDotPeriods: unlabeledPeriods },
 ];
 
 export const ContentSlide19: React.FC = () => {
@@ -200,6 +205,7 @@ export const ContentSlide19: React.FC = () => {
                 referenceLineY={0}
                 legendOrder={['计算机通信电子', '铁路船舶航空航天', '汽车', '化学原料化学制品', '有色金属冶炼压延', '专用设备', '医药']}
                 xAxisTicks={xAxisQuarterTicks}
+                highlightPeriods={labeledPeriods}
                 unit="%"
               />
             </ChartContainer>
@@ -215,6 +221,7 @@ export const ContentSlide19: React.FC = () => {
                 referenceLineY={0}
                 legendOrder={['管道运输', '装卸搬运仓储', '航空运输', '水上运输', '道路运输', '水利环境公共设施']}
                 xAxisTicks={xAxisQuarterTicks}
+                highlightPeriods={labeledPeriods}
                 unit="%"
               />
             </ChartContainer>

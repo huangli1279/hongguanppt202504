@@ -58,9 +58,9 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   animated = true,
 }) => {
   const variantStyles = {
-    default: 'bg-slate-50 border-l-4 border-webank-accent/20 hover:border-webank-accent',
+    default: 'bg-webank-accent/5 border-l-4 border-webank-accent hover:border-webank-blue',
     accent: 'bg-webank-accent/5 border-l-4 border-webank-accent hover:border-webank-blue',
-    subtle: 'bg-white border border-webank-line hover:border-webank-accent',
+    subtle: 'bg-webank-accent/5 border-l-4 border-webank-accent hover:border-webank-blue',
   };
 
   return (

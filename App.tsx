@@ -245,7 +245,7 @@ const App: React.FC = () => {
         </Suspense>
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
-          <span className="font-serif text-webank-blue font-medium text-meta">
+          <span className={`font-serif font-medium text-meta ${currentSlide === 1 ? 'text-white/50' : 'text-webank-blue'}`}>
             {String(currentSlide).padStart(2, '0')}
           </span>
         </div>

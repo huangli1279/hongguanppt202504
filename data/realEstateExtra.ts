@@ -40,6 +40,7 @@ export const investmentData = [
   { period: '2026-07', realEstateInvestment: -19.2, salesArea: -11.8, newConstruction: -24.0 },
   { period: '2026-08', realEstateInvestment: -19.9, salesArea: -12.1, newConstruction: -24.8 },
   { period: '2026-09', realEstateInvestment: -20.6, salesArea: -13.2, newConstruction: -24.9 },
+  { period: '2026-10', realEstateInvestment: -21.6, salesArea: -13.7, newConstruction: -24.4 },
 ];
 
 export const housePriceYoyData = [

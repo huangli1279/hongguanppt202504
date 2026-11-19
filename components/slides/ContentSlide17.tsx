@@ -24,7 +24,7 @@ export const ContentSlide17: React.FC = () => {
   const breakdownLineConfigs: LineConfig[] = [
     { dataKey: 'construction', name: '建筑安装工程', color: seriesColors[0], strokeWidth: 2.5, pointCallouts: { '2026-09': { dx: 14, dy: -20 } } },
     { dataKey: 'equipment', name: '设备工器具购置', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -8 } },
-    { dataKey: 'otherExpenses', name: '其他费用', color: seriesColors[2], strokeWidth: 2, pointCallouts: { '2026-09': { dx: 14, dy: -4 } } },
+    { dataKey: 'otherExpenses', name: '其他费用', color: seriesColors[2], strokeWidth: 2, pointCallouts: { '2026-09': { dx: 14, dy: -18 } } },
   ];
 
   // 左图：固投累计同比 + 单月环比（单月环比为季调数据）
@@ -57,23 +57,23 @@ export const ContentSlide17: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="投资：1-9月累计同比-7.2%，9月单月降幅收窄，环比自2月以来首次转正"
+      title="投资：Q3累计同比-7.2%，单月环比转正但基础不牢——10月环比转负、降幅走阔"
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-4 flex-shrink-0">
-          <BaseCard title="投资累计同比仍负增，9月单月降幅已收窄" delay="0ms" variant="accent">
+          <BaseCard title="投资累计同比仍负增，9月环比转正，10月再度转弱" delay="0ms" variant="accent">
             <p>
-              前三季度固投33.41万亿元、同比<span className="text-green-600 font-semibold">-7.2%</span>，降幅较上半年扩大1.5pp，但9月环比转正（2月以来首次）、累计降幅未继续走阔，投资端边际企稳，主因季末财政支出与专项债拨付提速；结构上是"制造业改善、地产拖累"——制造业累计降幅收窄为最大贡献（8月:-2.3%vs 9月:-2.1%），房地产降幅继续扩大仍是首要拖累
+              前三季度固投33.41万亿元、累计同比<span className="text-green-600 font-semibold">-7.2%</span>，降幅较上半年扩大1.5pp；9月环比转正（2月以来首次），降幅未继续走阔，主因季末财政支出与专项债拨付提速。结构呈"制造业改善、地产拖累"：制造业降幅收窄（-2.3%→-2.1%），地产降幅仍在扩大。但10月数据显示累计降幅扩至<span className="text-green-600 font-semibold">-8.1%</span>、单月环比<span className="text-green-600 font-semibold">-2.93%</span>，三大类投资同步走弱，9月企稳未能延续。
             </p>
           </BaseCard>
           <BaseCard title="分类投资仍偏弱" delay="120ms">
             <p>
-              从投资主体看：国有控股投资降幅收窄0.4pct至<span className="text-black">-3.2%</span>，政策托底增强；民间投资降幅扩大0.3pct至<span className="text-green-600 font-semibold">-10.4%</span>，民营资本扩投意愿偏弱。
+              从投资主体看：国有控股投资降幅收窄0.4pct至<span className="text-black">-3.2%</span>，政策托底增强；民间投资降幅扩大0.3pct至<span className="text-green-600 font-semibold">-10.4%</span>，民营资本扩投意愿偏弱。10月两类投资主体投资降幅均走阔。
             </p>
             <p className="mt-2 text-black">
-              从投资构成看：建筑安装工程、其他费用降幅小幅走阔；受两新政策影响，仅设备工器具购置维持正增，但增势边际回落。设备工器具购置同比<span className="text-red-600 font-semibold">+9.7%</span>、增速较1-8月加快0.4个百分点是三大构成中唯一正增项
+              从投资构成看：建筑安装工程、其他费用降幅走阔；受两新政策影响，仅设备工器具购置维持正增，但增势边际回落。
             </p>
           </BaseCard>
         </div>

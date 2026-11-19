@@ -35,6 +35,7 @@ export const fixedAssetInvestmentData: FixedAssetInvestmentDataPoint[] = [
   { period: '2026-07', fixedAsset: -6.70, manufacturing: -1.70, realEstate: -19.20, infrastructure: -3.60 },
   { period: '2026-08', fixedAsset: -7.20, manufacturing: -2.30, realEstate: -19.90, infrastructure: -4.00 },
   { period: '2026-09', fixedAsset: -7.20, manufacturing: -2.10, realEstate: -20.60, infrastructure: -4.20 },
+  { period: '2026-10', fixedAsset: -8.10, manufacturing: -2.90, realEstate: -21.60, infrastructure: -5.10 },
 ];
 
 // 民间投资与国有控股投资累计同比数据
@@ -58,6 +59,7 @@ export const privateInvestmentData: PrivateInvestmentDataPoint[] = [
   { period: '2026-07', privateInvestment: -9.40, stateOwned: -3.30 },
   { period: '2026-08', privateInvestment: -10.10, stateOwned: -3.60 },
   { period: '2026-09', privateInvestment: -10.40, stateOwned: -3.20 },
+  { period: '2026-10', privateInvestment: -11.40, stateOwned: -4.00 },
 ];
 
 // 投资拆分：建筑安装工程、设备购置、其他费用累计同比数据
@@ -88,6 +90,7 @@ export const investmentBreakdownData: InvestmentBreakdownDataPoint[] = [
   { period: '2026-07', construction: -9.20, equipment: 9.00, otherExpenses: -10.90 },
   { period: '2026-08', construction: -9.80, equipment: 9.30, otherExpenses: -12.00 },
   { period: '2026-09', construction: -10.00, equipment: 9.70, otherExpenses: -12.10 },
+  { period: '2026-10', construction: -11.00, equipment: 8.90, otherExpenses: -13.20 },  
 ];
 
 // 新开工项目计划总投资累计同比

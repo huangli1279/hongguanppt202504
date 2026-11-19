@@ -4,7 +4,7 @@ import { BaseCard } from '../base/BaseCard';
 
 export const ContentSlide40: React.FC = () => (
   <BaseContentSlide
-    title={<>特点二：AI参与消费决策——海外及国内企业的应对方式</>}
+    title={<>特点二（续）：AI参与消费决策——从传统做法到 GEO 与代理式商务</>}
   >
     <div className="flex h-full flex-col gap-4">
       {/* 上方说明卡片 */}
@@ -40,7 +40,7 @@ export const ContentSlide40: React.FC = () => (
 
       {/* 三种做法对比表 */}
       <div className="flex-1 min-h-0 overflow-x-auto">
-        <div className="flex flex-col h-full min-w-full border border-webank-line rounded-lg overflow-hidden text-[13px]">
+        <div className="flex flex-col h-full min-w-full border border-webank-line rounded-lg overflow-hidden text-[11px]">
           <table className="w-full h-full text-left border-collapse leading-snug">
             <thead>
               <tr className="border-b border-webank-line">
@@ -54,7 +54,7 @@ export const ContentSlide40: React.FC = () => (
                   GEO（生成式引擎优化）
                 </th>
                 <th className="px-3 py-2 bg-[#aec6dd] text-webank-blue font-semibold uppercase tracking-wider">
-                  Agentic Commerce（代理式商务）
+                  Agentic Commerce（代理式商务，收费模式仍在快速演进，结算口径尚未统一）
                 </th>
               </tr>
             </thead>
@@ -99,7 +99,7 @@ export const ContentSlide40: React.FC = () => (
                 <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">企业怎么赚钱</td>
                 <td className="px-3 py-2 bg-[#f7f4ed]">买搜索广告（SEO / SEM）</td>
                 <td className="px-3 py-2 bg-[#eef4fa]">让 AI 引用你（GEO 服务 / 按效果付费）</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">被代理优先路由（联盟佣金 / 交易抽成）</td>
+                <td className="px-3 py-2 bg-[#e4eef8]">被代理优先路由——联盟佣金 / 交易抽成（费率演进中）</td>
               </tr>
               {/* 代表企业 */}
               <tr className="bg-[#e0e6f0]">
@@ -108,10 +108,10 @@ export const ContentSlide40: React.FC = () => (
                   海外：Google Ads、Amazon、搜索引擎；国内：百度推广、淘宝/天猫、京东
                 </td>
                 <td className="px-3 py-2 bg-[#eef4fa]">
-                  海外：Profound、Scrunch AI；ChatGPT / Perplexity；国内：360、微豁、迈迈；包含文心DeepSeek（早期起步）
+                海外：Profound、Scrum AI，ChatGPT / Perplexity（广告产品）；国内：智推时代、蓝色光标、新榜智汇、迈富时（按效果付费已商业化）。
                 </td>
                 <td className="px-3 py-2 bg-[#e4eef8]">
-                  海外：Shopify / Amazon / Walmart；Google、OpenAI、Visa；国内：淘宝/京东 AI 导购、美团（未成形）
+                海外：Shopify / Amazon / Walmart，Google、OpenAI、Visa；国内：淘宝/京东 AI 导购、美团（未成形）（国内 AI 助手多为电商/流量平台自营，预计内生态闭环为主）。
                 </td>
               </tr>
             </tbody>

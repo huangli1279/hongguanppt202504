@@ -210,7 +210,7 @@ export const ContentSlide38: React.FC = () => {
 
         {/* 备注 */}
         <div className="mt-4 text-xs text-gray-500 border-t border-gray-200 pt-3 text-left">
-          注：三张图均展示规模/收入数据，未绘制同比增速线；情绪经济 2026E 为预测值。
+          注：三张图均展示规模/收入数据；情绪经济 2026E 为预测值。
         </div>
       </div>
     </BaseContentSlide>
