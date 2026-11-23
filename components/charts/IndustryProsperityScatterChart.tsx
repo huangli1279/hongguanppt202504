@@ -228,7 +228,6 @@ export const IndustryProsperityScatterChart: React.FC = () => (
     </div>
 
     <p className="flex-shrink-0 text-[10px] text-slate-500 leading-snug pt-1">
-      景气分≥50的行业：6月{junAbove50}家 → 9月{sepAbove50}家；最大改善 {best.full} {fmt(best.delta)}，最大下滑 {worst.full} {fmt(worst.delta)}。
       备注: 景气评估参考申万宏源行业中观景气跟踪（量价利分位法）、中金五维打分卡，采用多指标（投资、利润、营收、工增、出口、PPI）加权方法对细分行业进行景气评估。
     </p>
   </div>
