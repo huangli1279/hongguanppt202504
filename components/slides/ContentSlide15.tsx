@@ -91,8 +91,7 @@ export const ContentSlide15: React.FC = () => {
                 居民端：前三季度全国居民人均可支配收入34,230元，实际
                 <span className="font-bold text-red-500">+4.4%</span>
                 ；人均消费支出22,354元，实际
-                <span className="font-bold text-green-600">+2.7%</span>
-                ，收入预期仍低于100。
+                <span className="font-bold text-green-600">+2.7%</span>。
               </li>
               <li>
                 农村收入实际
@@ -111,10 +110,12 @@ export const ContentSlide15: React.FC = () => {
           <BaseCard title="失业率维持稳定" delay="120ms" className="!gap-1.5 !p-3">
             <ul className="list-disc pl-5 space-y-1 text-[13px] leading-snug">
               <li>
-                就业：前三季度城镇调查失业率均值5.2%
-                ，与上年持平；16-24岁劳动力失业率为
+                就业：前三季度城镇调查失业率均值5.2%，与上年持平；16-24岁劳动力失业率为
                 <span className="font-bold text-red-500">18%</span>
-                ，较8月下降0.9个百分点。30-59岁劳动力失业率3.9%，基本稳定，就业预期也处于低位未改。
+                ，较8月下降0.9个百分点。
+              </li>
+              <li>
+                分年龄看（不含在校生）：9月25-29岁失业率7.1%、30-59岁3.9%，明显低于16-24岁的18.0%，就业结构性压力仍集中在青年端。
               </li>
             </ul>
           </BaseCard>
@@ -230,19 +231,22 @@ export const ContentSlide15: React.FC = () => {
             </div>
           </ChartContainer>
 
-          <ChartContainer delay="720ms" ariaLabel="就业情况折线图">
+          <ChartContainer delay="720ms" ariaLabel="分年龄失业率折线图">
             <BaseLineChart
               data={unemploymentRateData.filter((d) => d.period >= '2025-01')}
-              title="失业率"
-              subtitle="数据来源：国家统计局 | 单位：% | 城镇调查失业率"
+              title="分年龄失业率"
+              subtitle="数据来源：国家统计局 | 单位：% | 不含在校生"
               lines={[
+                { dataKey: 'age16_24', name: '16-24岁', color: LINE_RED, strokeWidth: 2.5 },
+                { dataKey: 'age25_29', name: '25-29岁', color: LINE_YELLOW, strokeWidth: 2.5 },
+                { dataKey: 'age30_59', name: '30-59岁', color: LINE_GREEN, strokeWidth: 2.5 },
                 { dataKey: 'overall', name: '城镇调查失业率', color: LINE_BLUE, strokeWidth: 2.5 },
               ]}
-              yAxisDomain={[0, 8]}
+              yAxisDomain={[0, 22]}
               showYAxis
               showReferenceLine
               referenceLineY={0}
-              legendOrder={['城镇调查失业率']}
+              legendOrder={['16-24岁', '25-29岁', '30-59岁', '城镇调查失业率']}
               xAxisTickCount={8}
             />
           </ChartContainer>
@@ -251,7 +255,7 @@ export const ContentSlide15: React.FC = () => {
             <BaseLineChart
               data={confidenceData}
               title="消费者信心指数及分项"
-              subtitle="数据来源：国家统计局 | 信心指数（100为荣枯线）"
+              subtitle="数据来源：国家统计局中国经济景气监测中心（消费者信心调查，分项经数据库整理）| 信心指数（100为荣枯线）"
               lines={confidenceLines}
               yAxisDomain={[65, 105]}
               showYAxis

@@ -14,7 +14,7 @@ export const ContentSlide04: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          三季度GDP实际增速回升至4.5%，前三季度累计增长4.6%，
+          前三季度累计增长回落至4.6%，
           <span className="text-webank-accent">平减指数连续两季回正</span>
         </>
       }
@@ -23,8 +23,9 @@ export const ContentSlide04: React.FC = () => {
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">
           <BaseCard title="GDP增速回升" delay="0ms" variant="accent">
             <p>
-              在中东冲突推高油价、国际机构普遍下调主要经济体三季度增速的背景下，2026年三季度GDP <span>37.54万亿</span>，同比增长 <span className="font-bold text-red-600">4.5%</span>，较二季度 <span>4.3%</span> 回升
-，主要受出口高增及工业增加值增长带动。
+              在中东冲突推高油价、国际机构普遍下调主要经济体三季度增速的背景下，2026年三季度GDP <span>37.54万亿（现价）</span>，同比增长 <span className="font-bold text-red-600">4.5%</span>（不变价），较二季度 <span>4.3%</span> 回升，主要受出口高增及工业增加值增长带动。
+            </p>
+            <p className="mt-1">
               前三季度GDP增速达 <span className="font-bold text-red-600">4.6%</span>，处于全年"4.5%-5.0%"目标区间。
             </p>
           </BaseCard>

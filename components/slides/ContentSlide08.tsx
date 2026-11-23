@@ -46,7 +46,7 @@ export const ContentSlide08: React.FC = () => {
 
           <BaseCard title="新动能增长迅猛，汽车成为明显拖累" delay="240ms">
             <p>
-              高技术制造业增加值 Q3 单季同比 <span className="text-red-600 font-bold">+16.2%</span>（Q1/Q2/Q3为12.5%/14.0%/16.2%逐季抬升）；电子行业同比 <span className="text-red-600 font-bold">+17.5%</span>，计算机通信产能利用率达 <span className="text-red-600 font-bold">80.3%</span>，专用设备制造业工业增加值 +12.0%，较Q2加快3.5pct，产能利用率 77.8%。汽车产能利用率下降至 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。增加值增速由8月的8.7%回落至9月 6.7%，9月产量同比 <span className="text-green-600 font-bold">-5.7%</span>。
+              新动能相关的高技术制造业增加值 Q3 单季同比 <span className="text-red-600 font-bold">+16.2%</span>，计算机通信产能利用率三季度上升 1.6% 达 <span className="text-red-600 font-bold">80.3%</span>。汽车产能利用率下降至 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>，9月产量同比 <span className="text-green-600 font-bold">-5.7%</span>，拖累整体工业效率和产量。
             </p>
           </BaseCard>
         </>

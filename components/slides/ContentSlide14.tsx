@@ -123,7 +123,7 @@ const MiniCategoryChart: React.FC<{
 export const ContentSlide14: React.FC = () => {
   return (
     <BaseContentSlide
-      title="CPI：前三季度CPI+0.9%、核心+1.1%，仍处于温和通胀区间"
+      title="前三季度CPI+0.9%、核心+1.1%；9月CPI+0.9%、核心+1.0%，仍处于温和通胀区间"
       cardColumns={2}
       chartColumns={2}
       cards={

@@ -66,7 +66,7 @@ export const GdpForecastRangeChart: React.FC = () => {
   const EXPLICIT_ANCHOR: Record<string, 'start' | 'end'> = {
     IMF: 'start',
     OECD: 'end',
-    '花旗、高盛、第一财经': 'start',
+    '高盛、第一财经、财信研究院': 'start',
   };
 
   const positioned: Positioned[] = sortedDots.map((d, i, arr) => {

@@ -54,8 +54,8 @@ export const ContentSlide06: React.FC = () => {
                     10 月 13 日下修 4.6%→4.5%，理由是 Q2 表现不及预期，地产拖累下消费与投资放缓
                   </li>
                   <li>
-                    <span className="font-bold text-webank-blue">花旗：</span>
-                    维持 4.6%，增量政策及 9 月数据显示内需略优于预期
+                    <span className="font-bold text-webank-blue">OECD：</span>
+                    4.5%，与 Q2 持平，外部环境与内需修复仍面临不确定性
                   </li>
                   <li>
                     <span className="font-bold text-webank-blue">高盛：</span>

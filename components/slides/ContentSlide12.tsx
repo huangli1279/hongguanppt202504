@@ -61,7 +61,7 @@ const nationalDayData = [
 export const ContentSlide12: React.FC = () => {
   return (
     <BaseContentSlide
-      title="前三季度社零累计同比1.1%，剔除汽车累计增长2.8%，内需企稳但仍偏弱"
+      title="9月社零同比增长1.1%，较7月8月回升，剔除汽车后增长3.9%，内需企稳但仍偏弱"
       cardColumns={3}
       chartColumns={3}
       cards={
@@ -82,18 +82,12 @@ export const ContentSlide12: React.FC = () => {
           </BaseCard>
 
           <BaseCard title="旅游数据：国庆潜力释放，三季度入境游亮点" delay="240ms">
-            <ul className="space-y-2 text-meta">
-              <li className="flex gap-2">
-                <span className="mt-[0.6em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-webank-accent" />
-                <span>
-                  2026年国庆节假期7天，全国国内出游<span className="font-bold text-red-500">8.26亿人次</span>，出游总花费7,383.75亿元，日均同比分别增长<span className="font-bold text-red-500">6.3%</span>、<span className="font-bold text-red-500">4.3%</span>（25年较24年同比人次+1.6%、消费+1.0%）。
-                </span>
+            <ul className="list-disc pl-5 space-y-2 text-meta">
+              <li>
+                2026年国庆节假期7天，全国国内出游<span className="font-bold text-red-500">8.26亿人次</span>，出游总花费7,383.75亿元，日均同比分别增长<span className="font-bold text-red-500">6.3%</span>、<span className="font-bold text-red-500">4.3%</span>（25年较24年同比人次+1.6%、消费+1.0%）。
               </li>
-              <li className="flex gap-2">
-                <span className="mt-[0.6em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-webank-accent" />
-                <span>
-                  入境游成亮点，三季度免签入境外国人增速<span className="font-bold text-red-500">+48.3%</span>，中信测算1位外国游客在华花费约为16人次国内出游，促消费政策效果初现。文旅部数据显示，2025年入境游总花费1311亿美元，《旅游强国建设“十五五”规划》提到2030年目标为超过1500亿美元，预计入境游潜力将持续释放。
-                </span>
+              <li>
+                入境游成亮点，三季度免签入境外国人增速<span className="font-bold text-red-500">+48.3%</span>，中信测算1位外国游客在华花费约为16人次国内出游，促消费政策效果初现。文旅部数据显示，2025年入境游总花费1311亿美元，《旅游强国建设“十五五”规划》提到2030年目标为超过1500亿美元，预计入境游潜力将持续释放。
               </li>
             </ul>
           </BaseCard>

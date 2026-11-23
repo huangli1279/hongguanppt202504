@@ -20,27 +20,18 @@ export const ContentSlide13: React.FC = () => {
             <p>
               前三季度服务零售额<span className="font-bold text-red-500">+5.0%</span>、商品零售额<span className="text-black">+1.0%</span>，服务增速继续快于商品。
             </p>
-            <ul className="mt-2 space-y-2">
-              <li className="flex gap-2">
-                <span className="mt-[0.6em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-webank-accent" />
-                <span>
-                  服务里面最强的仍是"体验类"：旅游咨询租赁服务类、文体休闲服务类零售额增速分别为<span className="font-bold text-red-500">10.7%</span>和<span className="font-bold text-red-500">9.7%</span>。
-                </span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[0.6em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-webank-accent" />
-                <span>
-                  政策动向：7月政治局会议对消费的表述转向"挖掘服务消费潜力"，而非新增大宗补贴。
-                </span>
+            <ul className="list-disc pl-5 space-y-2 mt-2">
+              <li>
+                服务里面最强的仍是"体验类"：旅游咨询租赁服务类、文体休闲服务类零售额增速分别为<span className="font-bold text-red-500">10.7%</span>和<span className="font-bold text-red-500">9.7%</span>。
               </li>
             </ul>
           </BaseCard>
           <BaseCard title="汽车零售持续低迷，补贴透支后内需疲软" delay="120ms">
             <p>
-              前三季度汽车类零售额<span className="font-bold text-green-600">2.9万亿元</span>、同比下降<span className="font-bold text-green-600">14.9%</span>；根据乘联会数据，1-10月乘用车销量<span className="font-bold text-green-600">-22.3%</span>，今年以来汽车受高基数压制和内需不足影响持续负增长。
+              前三季度汽车类零售额<span className="font-bold text-green-600">2.9万亿元</span>、同比下降<span className="font-bold text-green-600">14.9%</span>；根据乘联会数据（零售口径，不含出口），1-10月乘用车销量<span className="font-bold text-green-600">-22.3%</span>，今年以来汽车受高基数压制和内需不足影响持续负增长。
             </p>
             <p>
-              燃油车受到新能源和油价上升双重压制，1-10月累计同比<span className="font-bold text-green-600">-31.5%</span>，补贴退坡后的内需仍然疲软。华泰估算8月汽车对社零同比的拖累<span className="font-bold text-green-600">1.88</span>个百分点，9月约<span className="font-bold text-green-600">2.33</span>个百分点。
+              燃油车受到新能源和油价上升双重压制，1-10月累计同比<span className="font-bold text-green-600">-31.5%</span>，补贴退坡后的内需仍然疲软。
             </p>
           </BaseCard>
         </>
@@ -67,8 +58,8 @@ export const ContentSlide13: React.FC = () => {
           <ChartContainer delay="720ms">
             <BaseLineChart
               data={cpcaRetailYoyData}
-              title="乘用车零售销量累计同比：燃油、新能源与狭义乘用车"
-              subtitle="数据来源：乘联会 | 单位：%"
+              title="乘用车及分项零售销量累计同比：燃油、新能源"
+              subtitle="数据来源：乘联会（零售口径，不含出口） | 单位：%"
               lines={[
                 { dataKey: 'fuelRetailYoy', name: '燃油车', color: seriesColors[0], strokeWidth: 2.5, labelDY: 8 },
                 { dataKey: 'nevRetailYoy', name: '新能源汽车', color: seriesColors[1], strokeWidth: 2.5, labelDY: -12 },
