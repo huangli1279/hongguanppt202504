@@ -7,19 +7,17 @@ export const ContentSlide24: React.FC = () => {
   return (
     <BaseContentSlide
       title="三季度进口结构：AI链拉动、价格走高与传统需求偏弱"
-      cardColumns={4}
+      cardColumns={3}
       chartColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
-        <div className="grid grid-cols-4 gap-3 mb-2 flex-shrink-0">
+        <div className="grid grid-cols-3 gap-3 mb-2 flex-shrink-0">
           <BaseCard title="AI进口价格增长但数量稳定" delay="0ms" variant="accent" className="!p-3">
             <p className="text-sm leading-snug">
               9月自动数据处理设备及零部件进口金额同比
               <span className="text-red-500 font-semibold">+296.5%</span>，集成电路
-              <span className="text-red-500 font-semibold">+74.7%</span>，数量仅+1.7%。集成电路与计算机设备合计拉动进口增速
-              21.7个百分点，约贡献整体增幅
-              <span className="text-red-500 font-semibold">七成</span>。
+              <span className="text-red-500 font-semibold">+74.7%</span>，数量仅+1.7%。
             </p>
             <p className="text-sm leading-snug mt-2">
               根据韩国官方数据，9月半导体出口总量
@@ -47,31 +45,6 @@ export const ContentSlide24: React.FC = () => {
               <span className="text-green-600 font-semibold">-38.1%</span>/
               <span className="text-green-600 font-semibold">-47.2%</span>，反映传统制造链需求仍处低位。
             </p>
-          </BaseCard>
-          <BaseCard
-            title="四季度进口展望"
-            delay="360ms"
-            titleClassName="!inline-block !bg-gradient-to-r !from-red-600 !to-blue-600 !text-white !rounded-lg !px-2.5 !py-1 !text-sm"
-            className="!p-3"
-          >
-            <p className="text-sm font-semibold leading-snug text-webank-blue">
-              四季度进口同比或回落至
-              <span className="text-red-500">15%—25%</span>
-            </p>
-            <ul className="mt-1 flex list-disc flex-col gap-1.5 pl-4 marker:text-webank-accent">
-              <li className="text-[13px] leading-tight pl-0.5">
-                WTO下调2026年全球货物贸易增速预测至
-                <span className="font-bold text-red-500">1.9%</span>。
-              </li>
-              <li className="text-[13px] leading-tight pl-0.5">
-                高能源价格情境下，亚洲进口增速
-                <span className="font-bold text-red-500">3.3%→2.6%</span>。
-              </li>
-              <li className="text-[13px] leading-tight pl-0.5">
-                11—12月进口同比大概率回落至
-                <span className="font-bold text-red-500">15%—25%</span>区间。
-              </li>
-            </ul>
           </BaseCard>
         </div>
 

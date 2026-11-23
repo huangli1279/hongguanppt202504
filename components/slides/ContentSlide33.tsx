@@ -59,7 +59,7 @@ export const ContentSlide33: React.FC = () => {
             <p className="mb-1">
               Q3居民贷款下降<span className="text-green-600 font-semibold">6,669亿</span>，同比多降
               5,968亿，三季度末9月单月居民贷款
-              <span className="text-green-600 font-semibold">0增长</span>；前三季度居民贷款较年初下降
+              <span className="text-green-600 font-semibold">0增长</span>（近5年首次）；前三季度居民贷款较年初下降
               <span className="text-green-600 font-semibold">1.03万亿</span>，居民信心偏弱，加杠杆意愿不强。
             </p>
             <p className="mb-1 font-semibold">从贷款分类看，各类贷款延续Q2趋势：</p>

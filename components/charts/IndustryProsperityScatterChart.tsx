@@ -4,7 +4,6 @@ import {
   Scatter,
   XAxis,
   YAxis,
-  CartesianGrid,
   ReferenceLine,
   ReferenceArea,
   Tooltip,
@@ -15,14 +14,11 @@ import { uiColors } from '@/utils/chartColors';
 const UP = '#c0392b';
 const DOWN = '#1e8449';
 const FLAT = '#64748b';
-const DIAG = '#94a3b8';
 const THRESHOLD = '#cbd5e1';
 
 /** 与参考图一致采用 0-100 全域坐标，便于呈现四象限分布 */
 const AXIS_MIN = 0;
 const AXIS_MAX = 100;
-const AXIS_TICKS = [0, 20, 40, 60, 80, 100];
-
 type Direction = 'up' | 'down' | 'flat';
 
 interface IndustryPoint {
@@ -93,13 +89,6 @@ const upCount = data.filter((d) => d.dir === 'up').length;
 const downCount = data.filter((d) => d.dir === 'down').length;
 const flatCount = data.filter((d) => d.dir === 'flat').length;
 
-const quadCounts = {
-  lowJump: data.filter((d) => d.jun < 50 && d.sep >= 50).length,
-  highStrong: data.filter((d) => d.jun >= 50 && d.sep >= 50).length,
-  lowLow: data.filter((d) => d.jun < 50 && d.sep < 50).length,
-  highFall: data.filter((d) => d.jun >= 50 && d.sep < 50).length,
-};
-
 const junAbove50 = data.filter((d) => d.jun >= 50).length;
 const sepAbove50 = data.filter((d) => d.sep >= 50).length;
 
@@ -152,23 +141,20 @@ const ScatterTooltip = ({ active, payload }: any) => {
   );
 };
 
-/** 象限角标（用透明 ReferenceArea 承载，读取 viewBox 定位） */
-const quadrantLabel = (text: string, corner: 'tl' | 'tr' | 'bl' | 'br') => (props: any) => {
+/** 景气区间左侧文字标注（高/中/低景气），基于分区 viewBox 定位 */
+const bandLabel = (text: string) => (props: any) => {
   const vb = props.viewBox ?? {};
-  const { x, y, width, height } = vb;
-  if (x == null || y == null) return null;
-  const isTop = corner === 'tl' || corner === 'tr';
-  const isLeft = corner === 'tl' || corner === 'bl';
-  const tx = isLeft ? x + 5 : x + width - 5;
-  const ty = isTop ? y + 12 : y + height - 5;
+  const { x, y, height } = vb;
+  if (x == null || y == null || height == null) return null;
   return (
     <text
-      x={tx}
-      y={ty}
-      textAnchor={isLeft ? 'start' : 'end'}
-      fontSize={9}
+      x={x - 6}
+      y={y + height / 2}
+      textAnchor="end"
+      dominantBaseline="middle"
+      fontSize={10}
       fontWeight={600}
-      fill="#94a3b8"
+      fill="#64748b"
       style={{ pointerEvents: 'none', userSelect: 'none' }}
     >
       {text}
@@ -190,55 +176,45 @@ export const IndustryProsperityScatterChart: React.FC = () => (
         行业景气分变化象限图
       </h3>
       <p className="text-[10.5px] text-webank-subtext mt-0.5 leading-snug">
-        2026-06 → 2026-09（剔除PMI · 37行业）；横轴为6月景气分，纵轴为9月景气分，斜虚线为持平线，线上方=走强、下方=走弱，50分为景气强弱分界
+        2026-06 → 2026-09（剔除PMI · 37行业）；横轴为6月景气分，纵轴为9月景气分，按0-40、40-60、60-100分划分景气区间
       </p>
     </div>
 
     <div className="flex-1 min-h-0">
       <ResponsiveContainer width="100%" height="100%">
-        <ScatterChart margin={{ top: 10, right: 14, bottom: 26, left: 16 }}>
-          <CartesianGrid stroke={uiColors.grid} strokeDasharray="3 3" />
+        <ScatterChart margin={{ top: 10, right: 14, bottom: 26, left: 40 }}>
+          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={60} y2={AXIS_MAX} fill="#3b82f6" fillOpacity={0.06} stroke="none" label={bandLabel('高景气')} />
+          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={40} y2={60} fill="#f59e0b" fillOpacity={0.05} stroke="none" label={bandLabel('中景气')} />
+          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={AXIS_MIN} y2={40} fill="#ef4444" fillOpacity={0.05} stroke="none" label={bandLabel('低景气')} />
 
-          {/* 象限角标 */}
-          <ReferenceArea x1={AXIS_MIN} x2={50} y1={50} y2={AXIS_MAX} fill="none" stroke="none" label={quadrantLabel(`低位跃升 · ${quadCounts.lowJump}家`, 'tl')} />
-          <ReferenceArea x1={50} x2={AXIS_MAX} y1={50} y2={AXIS_MAX} fill="none" stroke="none" label={quadrantLabel(`高位走强 · ${quadCounts.highStrong}家`, 'tr')} />
-          <ReferenceArea x1={AXIS_MIN} x2={50} y1={AXIS_MIN} y2={50} fill="none" stroke="none" label={quadrantLabel(`持续低位 · ${quadCounts.lowLow}家`, 'bl')} />
-          <ReferenceArea x1={50} x2={AXIS_MAX} y1={AXIS_MIN} y2={50} fill="none" stroke="none" label={quadrantLabel(`高位回落 · ${quadCounts.highFall}家`, 'br')} />
-
-          {/* 三色景气分区：按 70分 / 40分 划分高景气、中性、低迷三档 */}
-          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={70} y2={AXIS_MAX} fill="#3b82f6" fillOpacity={0.06} stroke="none" />
-          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={40} y2={70} fill="#f59e0b" fillOpacity={0.05} stroke="none" />
-          <ReferenceArea x1={AXIS_MIN} x2={AXIS_MAX} y1={AXIS_MIN} y2={40} fill="#ef4444" fillOpacity={0.05} stroke="none" />
-
-          {/* 持平线与强弱分界 */}
-          <ReferenceLine segment={[{ x: AXIS_MIN, y: AXIS_MIN }, { x: AXIS_MAX, y: AXIS_MAX }]} stroke={DIAG} strokeDasharray="4 4" strokeWidth={1} />
-          <ReferenceLine x={50} stroke={THRESHOLD} strokeDasharray="3 3" strokeWidth={1} />
-          <ReferenceLine y={50} stroke={THRESHOLD} strokeDasharray="3 3" strokeWidth={1} />
+          <ReferenceLine segment={[{ x: AXIS_MIN, y: AXIS_MIN }, { x: AXIS_MAX, y: AXIS_MAX }]} stroke="#94a3b8" strokeDasharray="4 4" strokeWidth={1} />
+          <ReferenceLine y={40} stroke={THRESHOLD} strokeWidth={1} />
+          <ReferenceLine y={60} stroke={THRESHOLD} strokeWidth={1} />
 
           <XAxis
             type="number"
             dataKey="jun"
             domain={[AXIS_MIN, AXIS_MAX]}
-            ticks={AXIS_TICKS}
+            ticks={[]}
             tickLine={false}
             axisLine={{ stroke: uiColors.axis }}
             tick={{ fill: uiColors.tick, fontSize: 9 }}
-            label={{ value: '2026-06 景气分', position: 'insideBottom', offset: -2, fontSize: 9, fill: '#64748b' }}
+            label={{ value: '2026-06 景气分', position: 'insideBottom', offset: -2, fontSize: 12, fill: '#64748b' }}
           />
           <YAxis
             type="number"
             dataKey="sep"
             domain={[AXIS_MIN, AXIS_MAX]}
-            ticks={AXIS_TICKS}
+            ticks={[]}
             tickLine={false}
             axisLine={{ stroke: uiColors.axis }}
             tick={{ fill: uiColors.tick, fontSize: 9 }}
-            width={30}
+            width={44}
             tickFormatter={(v) => `${v}`}
-            label={{ value: '2026-09 景气分', angle: -90, position: 'insideLeft', offset: -4, fontSize: 9, fill: '#64748b' }}
+            label={{ value: '2026-09 景气分', angle: -90, position: 'insideLeft', offset: -2, fontSize: 12, fill: '#64748b' }}
           />
 
-          <Tooltip content={<ScatterTooltip />} cursor={{ strokeDasharray: '3 3', stroke: uiColors.cursor }} />
+          <Tooltip content={<ScatterTooltip />} cursor={false} />
 
           <Scatter data={data} shape={renderDot} isAnimationActive={false} />
         </ScatterChart>

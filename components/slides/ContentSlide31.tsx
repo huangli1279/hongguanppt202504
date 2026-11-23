@@ -90,13 +90,6 @@ export const ContentSlide31: React.FC = () => {
               <span className="text-red-500 font-semibold">7.1%</span>
               。
             </p>
-            <p className="mt-2">
-              结构上，社融对
-              <span className="text-red-500 font-semibold">政府债与政策工具</span>
-              的依赖上升，居民端融资已
-              <span className="text-green-600 font-semibold">连续三个季度收缩</span>
-              。
-            </p>
           </BaseCard>
           <BaseCard delay="200ms" variant="accent" title="结构：贷款靠政府与政策工具支撑">
             <p>

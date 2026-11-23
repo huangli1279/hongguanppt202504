@@ -53,7 +53,7 @@ export const ContentSlide29: React.FC = () => {
           </BaseCard>
           <BaseCard title="结构：民生托底、科创加力、基建边际修复" delay="120ms">
             <p>
-              卫生健康支出增长 <span className="text-red-500 font-semibold">7.7%</span>，主要是发放育儿补贴增加；社会保障和就业增长 <span className="text-red-500 font-semibold">5.2%</span>，住房保障增长 <span className="text-red-500 font-semibold">3.1%</span>，科学技术增长 <span className="text-red-500 font-semibold">3%</span>，教育增长 <span className="text-red-500 font-semibold">1.1%</span>。投资于人相关支出得到较好保障，传统基建支出弱化但降幅收窄（Q2 <span className="text-green-600 font-semibold">-5.3%</span> → Q3 <span className="text-green-600 font-semibold">-4.41%</span>）。
+              卫生健康支出增长 <span className="text-red-500 font-semibold">7.7%</span>，主要是发放育儿补贴增加；社会保障和就业增长 <span className="text-red-500 font-semibold">5.2%</span>，科学技术增长 <span className="text-red-500 font-semibold">3%</span>，教育增长 <span className="text-red-500 font-semibold">1.1%</span>。投资于人相关支出得到较好保障，传统基建支出弱化但降幅收窄（Q2 <span className="text-green-600 font-semibold">-5.3%</span> → Q3 <span className="text-green-600 font-semibold">-4.41%</span>）。
             </p>
           </BaseCard>
         </div>

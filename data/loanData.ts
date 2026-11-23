@@ -52,8 +52,8 @@ export const loanIncrementData: LoanIncrementByType[] = [
 export const corporateCreditStructureQ3Data = [
   { category: '新增人民币贷款', y2024: 2.7398, y2025: 1.6548, y2026: 0.5926 },
   { category: '对公：中长期', y2024: 1.58, y2025: 1.12, y2026: 0.98 },
-  { category: '对公：短期+票据', y2024: -0.24, y2025: 0.23, y2026: 0.05 },
-  { category: '票据融资', y2024: 1.1723, y2025: 0.5216, y2026: 0.4257 },
+  { category: '对公：短期', y2024: -0.24, y2025: 0.23, y2026: 0.05 },
+  { category: '对公：票据融资', y2024: 1.1723, y2025: 0.5216, y2026: 0.4257 },
   { category: '居民：中长期', y2024: 0.36, y2025: 0.16, y2026: -0.115 },
   { category: '居民：短期', y2024: 0.126, y2025: -0.2301, y2026: -0.5519 },
 ];

@@ -23,14 +23,13 @@ export const ContentSlide32: React.FC = () => {
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
-        <div className="mb-4 flex-shrink-0 grid grid-cols-3 gap-6">
+        <div className="mb-4 flex-shrink-0 grid grid-cols-2 gap-6">
           <BaseCard delay="0ms" variant="accent" title="M1 与 M2 双双回落，原因各异">
             <p>
-              <strong>M1回落的三个原因：</strong>①去年9月M1环比大增
+              <strong>M1回落的原因：</strong>去年9月M1环比大增
               <span className="text-red-600 font-bold">1.92万亿</span>、同比跳升至
               <span className="text-red-600 font-bold">7.2%</span>（55个月新高），今年同期仅增约
-              <span className="text-webank-blue font-semibold">0.99万亿</span>，高基数是主要拖累；②9月股市调整（上证单月
-              <span className="text-green-600 font-semibold">-3.6%</span>），资金活化放缓。
+              <span className="text-webank-blue font-semibold">0.99万亿</span>，高基数是主要拖累。
             </p>
             <p className="mt-2">
               <strong>M2同比回落：</strong>信贷派生放缓，叠加政府债发行提速后资金沉淀于财政存款、拨付偏慢，共同拖累M2增速。
@@ -39,15 +38,6 @@ export const ContentSlide32: React.FC = () => {
           <BaseCard delay="100ms" variant="accent" title="剪刀差走阔">
             <p>
               M1-M2负向剪刀差重新走阔至4个百分点，资金活化程度明显减弱，微观主体经营活跃度和投资意愿待修复。
-            </p>
-          </BaseCard>
-          <BaseCard delay="200ms" variant="accent" title="四季度展望：M2增速温和回升">
-            <p>
-              政府债剩余额度与
-              <span className="text-webank-blue font-semibold">5,500亿</span>
-              结存限额待发、前期财政存款加快拨付、
-              <span className="text-webank-blue font-semibold">8,000亿</span>
-              政策性金融工具已投放完毕并进入配套融资落地期，共同推动社融增速企稳、M2增速温和回升。
             </p>
           </BaseCard>
         </div>

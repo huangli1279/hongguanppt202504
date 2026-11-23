@@ -40,22 +40,83 @@ export const ContentSlide26: React.FC = () => {
             </BaseCard>
           </div>
 
-          <div className="flex-shrink-0">
-            <BaseCard title="高位回落行业" delay="600ms" variant="accent" className="!p-2.5 gap-0.5">
-              <p className="text-xs leading-snug text-slate-700">
-                <span className="font-semibold">黑色金属冶炼</span>：高位回落−10.8分，系PPI转负后利润累计降幅逐月扩大至−73.3%、成本刚性致利润率坍塌（收入−1.5%但成本仅−0.6%），属价格红利消退下的盈利问题而非需求塌方。
-              </p>
-              <p className="text-xs leading-snug text-slate-700 mt-1">
-                <span className="font-semibold">铁路船舶航空航天</span>：高位回落−21.1分，系6月量、投资、出口三因素的均值回归叠加造船周期高基数（利润+10%但仅处自身7.6分位），民船订单仍强，回落是结构性口径问题而非景气恶化。
-              </p>
-            </BaseCard>
-          </div>
-
-          <div className="flex-shrink-0">
-            <BaseCard title="低位跃升行业" delay="800ms" variant="accent" className="!p-2.5 gap-0.5">
-              <p className="text-xs leading-snug text-slate-700">
-                <span className="font-semibold">仪器仪表</span>低位跃升+23.3分，系出口放量、PPI回升、利润收窄与固投转正四项共振，属“强量弱价”格局中价格与盈利的滞后修复，利润尚未转正是主要保留项。
-              </p>
+          <div className="flex-shrink-0 min-h-0">
+            <BaseCard title="行业变化" delay="600ms" variant="accent" className="!p-2.5 gap-1">
+              <div className="flex flex-col gap-2">
+                <p className="text-[12px] leading-snug text-slate-600">按照两月景气分变动大于13.1(备注)作为显著波动行业标准，总结景气上升、下降行业驱动共性</p>
+                <table className="w-full table-fixed border-collapse text-[11px] leading-tight text-slate-700">
+                  <thead>
+                    <tr className="bg-slate-100 text-slate-800">
+                      <th className="w-[28%] border border-slate-400 px-1 py-1 text-left font-semibold">上升行业</th>
+                      <th className="w-[22%] border border-slate-400 px-1 py-1 font-semibold">6→9月</th>
+                      <th className="w-[16%] border border-slate-400 px-1 py-1 font-semibold">档位</th>
+                      <th className="w-[34%] border border-slate-400 px-1 py-1 font-semibold">驱动</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">仪器仪表</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">47.9→71.2</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">中→高</td>
+                      <td rowSpan={4} className="border border-slate-300 px-1 py-1 align-middle">①出口是第一驱动<br />②价格上升，利润增速高位<br />③固投持续改善</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">石油天然气开采</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">74.7→94.9</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">高→高</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">化学纤维</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">39.7→56.3</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">低→中</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">纺织服装</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">40.8→55.3</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">中→中</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-fixed border-collapse text-[11px] leading-tight text-slate-700">
+                  <thead>
+                    <tr className="bg-slate-100 text-slate-800">
+                      <th className="w-[28%] border border-slate-400 px-1 py-1 text-left font-semibold">下降行业</th>
+                      <th className="w-[22%] border border-slate-400 px-1 py-1 font-semibold">6→9月</th>
+                      <th className="w-[16%] border border-slate-400 px-1 py-1 font-semibold">档位</th>
+                      <th className="w-[34%] border border-slate-400 px-1 py-1 font-semibold">驱动</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">铁路船舶航空航天</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">56.7→35.6</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">中→低</td>
+                      <td rowSpan={5} className="border border-slate-300 px-1 py-1 align-middle">①利润增速遭遇下降或转负<br />②涨价红利消退<br />③工增回落</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">食品制造</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">66.2→49.3</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">高→中</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">黑色金属矿采选</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">41.4→25.4</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">中→低</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">水的生产供应</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">38.4→22.5</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">低→低</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 px-1 py-1">橡胶塑料</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center tabular-nums">56.5→41.4</td>
+                      <td className="border border-slate-300 px-1 py-1 text-center">中→中</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="text-[9px] leading-snug text-slate-500">注:按3个月分数变化幅度的前25%大波动计为显著异动，切分线为13.1分。</p>
+              </div>
             </BaseCard>
           </div>
           </div>
