@@ -1,196 +1,354 @@
 import React from 'react';
-import type { LucideIcon } from 'lucide-react';
+import { BaseCard } from '../base/BaseCard';
+import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { BaseBarChart } from '../base/BaseBarChart';
+import { BaseTable, ColumnConfig } from '../base/BaseTable';
+import { jobDemandYoyData } from '@/data/employment';
 import {
-  ArrowLeftRight,
-  Building2,
-  Coins,
-  Factory,
-  Landmark,
-  ShieldCheck,
-  ShoppingCart,
-  Sparkles,
-  TrendingUp,
-} from 'lucide-react';
-import { BaseContentSlide } from '../layouts/BaseContentSlide';
+  industrialRevolutionTableRows,
+  irPhaseStyles,
+  IRTableRow,
+  IRTone,
+} from '@/data/industrialRevolutionEmployment';
 
-interface SummaryCardProps {
-  icon: LucideIcon;
-  eyebrow: string;
-  title: string;
-  metric: string;
-  metricLabel: string;
-  detail: string;
-  tone?: 'blue' | 'amber' | 'green' | 'red';
-  delay: string;
-}
+const employmentStages = [
+  {
+    phase: '未来5年',
+    effect: '替代效应占主导',
+    netImpact: '净就业影响为负',
+    detail: '标准化认知岗位承压明显，初级、重复性岗位需求率先收缩。',
+    tone: 'negative' as const,
+  },
+  {
+    phase: '5—10年',
+    effect: '互补效应逐步显现',
+    netImpact: '净就业影响转正',
+    detail: 'AI作为工具提升劳动者生产率，人机协作成为主流工作形态。',
+    tone: 'neutral' as const,
+  },
+  {
+    phase: '10年以上',
+    effect: '创造效应占主导',
+    netImpact: '结构性错配并存',
+    detail: '"有岗位、缺技能"与"有技能、缺岗位"可能并存。',
+    tone: 'positive' as const,
+  },
+];
 
 const toneStyles = {
-  blue: {
-    icon: 'bg-blue-50 text-webank-blue',
-    metric: 'text-webank-blue',
-    border: 'border-webank-accent/30',
+  negative: {
+    card: 'bg-gradient-to-b from-red-50 to-orange-50/70 border-red-200',
+    badge: 'bg-red-500 text-white',
+    effect: 'text-red-600',
+    impact: 'text-red-500',
   },
-  amber: {
-    icon: 'bg-amber-50 text-amber-600',
-    metric: 'text-amber-600',
-    border: 'border-amber-200',
+  neutral: {
+    card: 'bg-gradient-to-b from-sky-50 to-blue-50/60 border-sky-200',
+    badge: 'bg-webank-blue text-white',
+    effect: 'text-webank-blue',
+    impact: 'text-webank-accent',
   },
-  green: {
-    icon: 'bg-emerald-50 text-emerald-600',
-    metric: 'text-emerald-600',
-    border: 'border-emerald-200',
-  },
-  red: {
-    icon: 'bg-red-50 text-red-600',
-    metric: 'text-red-600',
-    border: 'border-red-200',
+  positive: {
+    card: 'bg-gradient-to-b from-emerald-50 to-teal-50/60 border-emerald-200',
+    badge: 'bg-emerald-600 text-white',
+    effect: 'text-emerald-700',
+    impact: 'text-emerald-600',
   },
 };
 
-const SummaryCard: React.FC<SummaryCardProps> = ({
-  icon: Icon,
-  eyebrow,
-  title,
-  metric,
-  metricLabel,
-  detail,
-  tone = 'blue',
-  delay,
-}) => {
-  const styles = toneStyles[tone];
+const StageArrow: React.FC = () => (
+  <div className="flex items-center justify-center flex-shrink-0 w-4 self-center">
+    <svg viewBox="0 0 20 12" className="w-4 h-3" fill="none">
+      <path
+        d="M1 6 H15 M12 2 L16 6 L12 10"
+        stroke="#7EB8D8"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
 
+// 阶段徽章渲染
+const PhaseBadge: React.FC<{ phase: string; tone: IRTone }> = ({ phase, tone }) => {
+  const style = irPhaseStyles[tone];
   return (
-    <article
-      className={`flex min-h-0 flex-col rounded-xl border bg-white p-4 shadow-card animate-fade-in-up fill-mode-forwards opacity-0 ${styles.border}`}
-      style={{ animationDelay: delay }}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-[10px] font-bold tracking-[0.14em] text-webank-subtext uppercase">{eyebrow}</p>
-          <h2 className="mt-1 text-[15px] font-bold leading-tight text-webank-blue">{title}</h2>
-        </div>
-        <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${styles.icon}`}>
-          <Icon size={19} strokeWidth={2.2} />
-        </div>
-      </div>
-      <div className="mt-3 flex items-baseline gap-2">
-        <strong className={`text-[26px] font-bold leading-none tabular-nums ${styles.metric}`}>{metric}</strong>
-        <span className="text-[11px] text-webank-subtext">{metricLabel}</span>
-      </div>
-      <p className="mt-2 text-[10.5px] leading-relaxed text-slate-600">{detail}</p>
-    </article>
+    <span className={`inline-block rounded px-0.5 py-0.5 text-[8px] font-semibold leading-none ${style.badge}`}>
+      {phase}
+    </span>
   );
 };
+
+// 本次AI革命与前几次工业革命的核心差异（精简版）
+const differencePoints: { num: string; title: string; content: string }[] = [
+  {
+    num: '1',
+    title: '替代白领脑力工作',
+    content: '前几次替代体力劳动；AI直接冲击法律、会计、编程等知识型岗位。',
+  },
+  {
+    num: '2',
+    title: '速度数量级差异',
+    content: 'ChatGPT 2个月破亿用户，远超历史技术普及速度。',
+  },
+  {
+    num: '3',
+    title: '转型门槛抬高',
+    content: '初级白领岗位收缩，晋升阶梯断裂，再培训成本高。',
+  },
+  {
+    num: '4',
+    title: '同步冲击',
+    content: '跨行业、跨城市同时爆发，缺少地理与产业缓冲。',
+  },
+  {
+    num: '5',
+    title: 'K型撕裂',
+    content: '受益高度集中于少数人，财富不平等显著加剧。',
+  },
+];
+
+const concernsList: string[] = [
+  '供需错配问题严重；白领里的"流水线岗位"塌了，中产上升路也断了',
+];
+
+// 历次工业革命表格列配置：每行 = 一次工业革命，三列展示三阶段
+const irTableColumns: ColumnConfig[] = [
+  {
+    key: 'epoch',
+    title: '工业革命',
+    width: 68,
+    align: 'center',
+    render: (value: string, row: IRTableRow) => (
+      <div className="flex flex-col items-center leading-tight">
+        <span className="text-[9px] font-bold text-slate-800 whitespace-pre-line">{value}</span>
+        <span className="text-[8px] text-slate-500 mt-0.5">{row.period}</span>
+      </div>
+    ),
+  },
+  {
+    key: 'phase1',
+    title: '替代主导',
+    width: 130,
+    align: 'center',
+    children: [
+      {
+        key: 'phase1_inner',
+        title: '替代主导',
+        width: 130,
+        align: 'center',
+        render: (_: any, row: IRTableRow) => (
+          <div className="flex flex-col gap-0.5 w-full">
+            <PhaseBadge phase={row.phase1} tone={row.tone1} />
+            <div className="text-[8px] text-slate-500 leading-tight">{row.duration1}</div>
+            <div className="text-[8px] text-red-500 leading-tight mt-0.5">↓ {row.displaced1}</div>
+            <div className="text-[8px] text-slate-500 leading-tight">净：<span className="text-red-600 font-medium">{row.net1}</span></div>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    key: 'phase2',
+    title: '互补显现',
+    width: 130,
+    align: 'center',
+    children: [
+      {
+        key: 'phase2_inner',
+        title: '互补显现',
+        width: 130,
+        align: 'center',
+        render: (_: any, row: IRTableRow) => (
+          <div className="flex flex-col gap-0.5 w-full">
+            <PhaseBadge phase={row.phase2} tone={row.tone2} />
+            <div className="text-[8px] text-slate-500 leading-tight">{row.duration2}</div>
+            <div className="text-[8px] text-webank-blue leading-tight">↑ {row.emerging2}</div>
+            <div className="text-[8px] text-slate-500 leading-tight">净：<span className="text-webank-blue font-medium">{row.net2}</span></div>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    key: 'phase3',
+    title: '创造主导',
+    width: 130,
+    align: 'center',
+    children: [
+      {
+        key: 'phase3_inner',
+        title: '创造主导',
+        width: 130,
+        align: 'center',
+        render: (_: any, row: IRTableRow) => (
+          <div className="flex flex-col gap-0.5 w-full">
+            <PhaseBadge phase={row.phase3} tone={row.tone3} />
+            <div className="text-[8px] text-slate-500 leading-tight">{row.duration3}</div>
+            <div className="text-[8px] text-emerald-600 leading-tight">↑ {row.emerging3}</div>
+            <div className="text-[8px] text-slate-500 leading-tight">净：<span className="text-emerald-700 font-medium">{row.net3}</span></div>
+          </div>
+        ),
+      },
+    ],
+  },
+];
 
 export const ContentSlide44: React.FC = () => {
   return (
     <BaseContentSlide
-      title={
-        <>
-          三季度总结：增长韧性延续，
-          <span className="text-webank-accent">结构加速升级、政策持续发力</span>
-        </>
-      }
-      subtitle="2026年三季度宏观经济报告 · 结论页"
-      headerClassName="!mb-4"
-      className="!p-8 sm:!p-10"
+      title="风险判断：对就业的影响是阶段式，主要体现为替代、互补和创造三种效应，三者权重将随时间推移而变化"
+      cardColumns={1}
+      headerClassName="!mb-1.5"
+      className="!p-6 sm:!p-8"
     >
-      <div className="flex h-full min-h-0 flex-col gap-3">
-        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-2.5">
-          <SummaryCard
-            icon={TrendingUp}
-            eyebrow="增长"
-            title="经济增速回升"
-            metric="4.5%"
-            metricLabel="Q3实际GDP同比"
-            detail="较二季度回升0.2个百分点；前三季度累计增长4.6%，处于全年4.5%—5.0%目标区间。"
-            tone="blue"
-            delay="0ms"
-          />
-          <SummaryCard
-            icon={Coins}
-            eyebrow="价格"
-            title="平减指数回正"
-            metric="1.44%"
-            metricLabel="Q3 GDP平减指数"
-            detail="名义增速6%，平减指数连续两个季度回正，核心受AI产业链景气与能源价格上行拉动。"
-            tone="green"
-            delay="100ms"
-          />
-          <SummaryCard
-            icon={Factory}
-            eyebrow="生产"
-            title="新动能加速释放"
-            metric="16.2%"
-            metricLabel="高技术制造业Q3同比"
-            detail="电子行业增长17.5%、计算机通信产能利用率达80.3%；1—9月规上工业利润增长15.5%。"
-            tone="green"
-            delay="200ms"
-          />
-          <SummaryCard
-            icon={ShoppingCart}
-            eyebrow="消费"
-            title="社零温和修复"
-            metric="1.1%"
-            metricLabel="前三季度社零累计同比"
-            detail="剔除汽车后累计增长2.8%；以旧换新1—8月销售额1.55万亿元，惠及2.08亿人次。"
-            tone="amber"
-            delay="300ms"
-          />
-          <SummaryCard
-            icon={ArrowLeftRight}
-            eyebrow="外贸"
-            title="出口保持韧性"
-            metric="36.3%"
-            metricLabel="9月出口同比（美元计）"
-            detail="前三季度出口累计增长21.3%，9月贸易顺差同比+50.5%，外需对经济增长形成支撑。"
-            tone="blue"
-            delay="400ms"
-          />
-          <SummaryCard
-            icon={Landmark}
-            eyebrow="财政与金融"
-            title="收支与信用平稳"
-            metric="5.1%"
-            metricLabel="前三季度一般公共预算收入同比"
-            detail="税收增长6.1%、印花税+31.1%；社融增速回落至7.1%，增量主要靠政府债与政策工具。"
-            tone="green"
-            delay="500ms"
-          />
-          <SummaryCard
-            icon={Building2}
-            eyebrow="投资"
-            title="地产仍是修复短板"
-            metric="-7.2%"
-            metricLabel="Q3固投累计同比"
-            detail="民间投资-10.4%、国有控股-3.2%；9月单月环比转正，地产降幅仍在扩大是主要拖累。"
-            tone="amber"
-            delay="600ms"
-          />
-          <SummaryCard
-            icon={Sparkles}
-            eyebrow="新消费"
-            title="AI重塑消费决策"
-            metric="79.4%"
-            metricLabel="消费者购物主动咨询AI"
-            detail="43.7%认为AI咨询有影响，首超传统媒体广告（42.6%）；服务零售+5.0%快于商品。"
-            tone="amber"
-            delay="700ms"
-          />
+      <div className="flex flex-col h-full min-h-0">
+        {/* 左右双栏布局 */}
+        <div className="flex gap-1.5 mb-1.5 flex-shrink-0">
+          {/* 左侧：导语 + 三阶段时间轴（约55%） */}
+          <div className="w-[55%] flex flex-col gap-1.5 min-h-0">
+            {/* 导语卡片 */}
+            <BaseCard
+              title="对就业影响是阶段式"
+              delay="0ms"
+              variant="accent"
+              className="!p-2 !gap-0.5"
+            >
+              <p className="text-[11px] leading-snug">
+                AI对就业并非单向冲击，而是
+                <span className="font-semibold text-webank-blue">替代、互补、创造</span>
+                三种效应随时间权重切换：近端替代主导、中端互补抬升、远端创造接力，但技能结构错配将贯穿全过程。
+              </p>
+            </BaseCard>
+
+            {/* 三阶段时间轴卡片 */}
+            <div className="flex items-stretch gap-0">
+              {employmentStages.map((stage, i) => {
+                const style = toneStyles[stage.tone];
+                return (
+                  <React.Fragment key={stage.phase}>
+                    <div
+                      className={`flex-1 rounded-lg border px-2 py-1.5 flex flex-col
+                        animate-fade-in-up fill-mode-forwards opacity-0 ${style.card}`}
+                      style={{ animationDelay: `${120 + i * 80}ms` }}
+                    >
+                      <span
+                        className={`inline-flex self-start rounded px-1 py-0.5 text-[9px] font-bold ${style.badge}`}
+                      >
+                        {stage.phase}
+                      </span>
+                      <p className={`mt-1 text-[12px] font-bold leading-tight ${style.effect}`}>
+                        {stage.effect}
+                      </p>
+                      <p className={`mt-0.5 text-[10px] font-semibold ${style.impact}`}>
+                        {stage.netImpact}
+                      </p>
+                      <p className="mt-0.5 text-[9px] leading-snug text-slate-600">
+                        {stage.detail}
+                      </p>
+                    </div>
+                    {i < employmentStages.length - 1 && <StageArrow />}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 右侧：本次与前几次不同（约45%） */}
+          <div className="flex-1 flex flex-col min-h-0">
+            <BaseCard
+              title="本次与前几次工业革命的核心差异"
+              delay="360ms"
+              variant="accent"
+              className="!p-2 !gap-1 h-full flex-1 min-h-0 overflow-hidden"
+            >
+              <div className="flex flex-col gap-1 overflow-y-auto pr-1">
+                {differencePoints.map((point) => (
+                  <div
+                    key={point.num}
+                    className="text-[9.5px] leading-snug"
+                  >
+                    <span className="font-bold text-webank-blue">
+                      {point.num}. {point.title}
+                    </span>
+                    <span className="text-slate-600 ml-1">— {point.content}</span>
+                  </div>
+                ))}
+
+                {/* 担忧内容 */}
+                <div className="mt-1.5 pt-1.5 border-t border-red-200">
+                  <p className="text-[9.5px] font-bold text-red-600 mb-1">
+                    核心担忧
+                  </p>
+                  <ul className="text-[8.5px] text-slate-700 space-y-0.5 leading-snug">
+                    {concernsList.map((item, idx) => (
+                      <li key={idx} className="flex gap-1">
+                        <span className="text-red-500 flex-shrink-0">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </BaseCard>
+          </div>
         </div>
 
-        <div className="flex flex-shrink-0 items-center gap-3 rounded-xl bg-webank-blue px-5 py-3 text-white shadow-card animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '600ms' }}>
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/15">
-            <ShieldCheck size={20} />
-          </div>
-          <div className="min-w-0">
-            <p className="text-[10px] font-bold tracking-[0.16em] text-blue-100 uppercase">季度判断</p>
-            <p className="mt-0.5 text-[15px] font-semibold leading-snug">
-              经济处于“总量稳、结构变、政策托底”的修复阶段：短期看出口与新动能，中期看消费回升和地产企稳，风险关注外部冲击与结构性供需错配。
-            </p>
-          </div>
+        {/* 下方：左侧历史对照表格 + 右侧柱状图 */}
+        <div className="flex-1 min-h-0 flex gap-1.5">
+          {/* 左侧：历次工业革命历史对照表格 */}
+          <ChartContainer
+            delay="480ms"
+            ariaLabel="历次工业革命就业三段式影响参照"
+            className="w-[38%] min-h-0 flex flex-col"
+          >
+            <BaseTable
+              data={industrialRevolutionTableRows}
+              columns={irTableColumns}
+              title="历次工业革命：就业三段式影响参照"
+              rowHeight="auto"
+              titleBlockClassName="!mb-0.5"
+              cellClassName="!px-1 !py-1 text-[8px] leading-tight"
+              headerCellClassName="!px-1 !py-1 text-[8px] leading-tight"
+              headerBgColor="#1B4F72"
+              stickyHeader
+            />
+          </ChartContainer>
+
+          {/* 右侧：柱状图 */}
+          <ChartContainer delay="400ms" ariaLabel="国内招聘网站岗位需求同比变化" className="flex-1 min-h-0">
+            <BaseBarChart
+              data={jobDemandYoyData}
+              title="国内招聘网站：初级/重复岗位需求下降，AI相关岗位大幅上升"
+              subtitle="数据来源：BOSS直聘、猎聘、IMF《一场新的工业革命？》(2025)｜Frey &amp; Osborne (2013)｜WEF《未来就业报告》(2023)｜Goldin &amp; Katz (1998)｜单位：%"
+              subtitleClassName="!text-[5px]"
+              xAxisKey="category"
+              bars={[{ dataKey: 'yoy', name: '同比变化', color: '#1B4F72' }]}
+              yAxisDomain={[-100, 250]}
+              showYAxis
+              showReferenceLine
+              referenceLineY={0}
+              showLabels={false}
+              showLegend
+              barSize={8}
+              xAxisAngle={-55}
+              xAxisHeight={50}
+              xAxisInterval={0}
+              xAxisTickFontSize={7}
+              legendItems={[
+                { value: 'AI/增长岗位', color: '#1B4F72' },
+                { value: '初级/重复岗位', color: '#E07A5F' },
+              ]}
+              legendFontSize={8}
+              legendGap={8}
+            />
+          </ChartContainer>
         </div>
       </div>
+
+      {/* 底部空位，保持布局 */}
+      <div className="h-4" />
     </BaseContentSlide>
   );
 };

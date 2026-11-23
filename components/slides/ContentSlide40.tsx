@@ -1,126 +1,249 @@
 import React from 'react';
-import { BaseContentSlide } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
+import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 
-export const ContentSlide40: React.FC = () => (
-  <BaseContentSlide
-    title={<>特点二（续）：AI参与消费决策——从传统做法到 GEO 与代理式商务</>}
-  >
-    <div className="flex h-full flex-col gap-4">
-      {/* 上方说明卡片 */}
-      <div className="flex-shrink-0">
-        <BaseCard
-          title="从传统做法到 GEO、Agentic Commerce"
-          variant="accent"
-          className="h-full"
-          animated={false}
-        >
-          <div className="space-y-2 text-sm leading-relaxed">
-            <div className="border-l-4 border-gray-400 pl-2">
-              <span className="font-semibold text-webank-blue">传统做法：</span>
-              <span>
-                四个环节全是“人”干，AI 不参与；企业靠买搜索广告（SEO/SEM）抢排名。
-              </span>
-            </div>
-            <div className="border-t border-gray-200 pt-2 border-l-4 pl-2 border-l-[#4A79AA]">
-              <span className="font-semibold text-webank-blue">GEO：</span>
-              <span>
-                AI 开始介入，但只做“推荐”——它给清单、引用品牌，人不放手，还是自己点、自己买；企业靠“让 AI 引用你”获利。
-              </span>
-            </div>
-            <div className="border-t border-gray-200 pt-2 border-l-4 pl-2 border-l-[#C09A4A]">
-              <span className="font-semibold text-webank-blue">Agentic Commerce：</span>
-              <span>
-                AI 变成“代执行”——比价、叠券、下单、付款全包，人放手；企业靠“被代理优先路由”获利（联盟佣金/交易抽成）。
-              </span>
-            </div>
-          </div>
-        </BaseCard>
-      </div>
+// 三大长假：出游人数（亿人次）、总花费（亿元）、人均花费（元），按 2024 / 2025 / 2026 年排列
+const YEARS = ['2024', '2025', '2026'] as const;
+const festivalOrder = ['春节', '五一', '十一'] as const;
+const festivalColor: Record<string, string> = {
+  春节: '#1B4F72', // 深蓝
+  五一: '#DC2626', // 红
+  十一: '#C09A4A', // 琥珀
+};
 
-      {/* 三种做法对比表 */}
-      <div className="flex-1 min-h-0 overflow-x-auto">
-        <div className="flex flex-col h-full min-w-full border border-webank-line rounded-lg overflow-hidden text-[11px]">
-          <table className="w-full h-full text-left border-collapse leading-snug">
-            <thead>
-              <tr className="border-b border-webank-line">
-                <th className="px-3 py-2 bg-[#f0f0f0] text-webank-text font-semibold uppercase tracking-wider w-24">
-                  环节
-                </th>
-                <th className="px-3 py-2 bg-[#e8e2d4] text-webank-blue font-semibold uppercase tracking-wider">
-                  传统做法
-                </th>
-                <th className="px-3 py-2 bg-[#cdddf0] text-webank-blue font-semibold uppercase tracking-wider">
-                  GEO（生成式引擎优化）
-                </th>
-                <th className="px-3 py-2 bg-[#aec6dd] text-webank-blue font-semibold uppercase tracking-wider">
-                  Agentic Commerce（代理式商务，收费模式仍在快速演进，结算口径尚未统一）
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-webank-line">
-              {/* ① 找商品 */}
-              <tr>
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">① 找商品</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己搜关键词</td>
-                <td className="px-3 py-2 bg-[#eef4fa]">用户问 AI，AI 给答案并引用品牌</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">用户只说目标（“百元内跑鞋”）</td>
-              </tr>
-              {/* ② 比价 */}
-              <tr>
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">② 比价</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己比价、看评论</td>
-                <td className="px-3 py-2 bg-[#eef4fa]">用户看 AI 推荐，再自己比</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">AI 代理自动比价、挑最优</td>
-              </tr>
-              {/* ③ 下单 */}
-              <tr>
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">③ 下单</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己填地址、下单</td>
-                <td className="px-3 py-2 bg-[#eef4fa]">用户自己点链接下单</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">AI 代理自动登录、下单</td>
-              </tr>
-              {/* ④ 付款 */}
-              <tr>
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-white">④ 付款</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">用户自己付款</td>
-                <td className="px-3 py-2 bg-[#eef4fa]">用户自己付款</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">AI 代理直接付款</td>
-              </tr>
-              {/* AI 的角色 */}
-              <tr className="bg-[#e0e6f0]">
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">AI 的角色</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">无（人找信息）</td>
-                <td className="px-3 py-2 bg-[#eef4fa]">只“推荐”（给清单，你自己点）</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">“代执行”（走完交易闭环）</td>
-              </tr>
-              {/* 企业怎么赚钱 */}
-              <tr className="bg-[#e0e6f0]">
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">企业怎么赚钱</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">买搜索广告（SEO / SEM）</td>
-                <td className="px-3 py-2 bg-[#eef4fa]">让 AI 引用你（GEO 服务 / 按效果付费）</td>
-                <td className="px-3 py-2 bg-[#e4eef8]">被代理优先路由——联盟佣金 / 交易抽成（费率演进中）</td>
-              </tr>
-              {/* 代表企业 */}
-              <tr className="bg-[#e0e6f0]">
-                <td className="px-3 py-2 font-semibold text-webank-blue bg-[#cdddf0]">代表企业 海外 / 国内</td>
-                <td className="px-3 py-2 bg-[#f7f4ed]">
-                  海外：Google Ads、Amazon、搜索引擎；国内：百度推广、淘宝/天猫、京东
-                </td>
-                <td className="px-3 py-2 bg-[#eef4fa]">
-                海外：Profound、Scrum AI，ChatGPT / Perplexity（广告产品）；国内：智推时代、蓝色光标、新榜智汇、迈富时（按效果付费已商业化）。
-                </td>
-                <td className="px-3 py-2 bg-[#e4eef8]">
-                海外：Shopify / Amazon / Walmart，Google、OpenAI、Visa；国内：淘宝/京东 AI 导购、美团（未成形）（国内 AI 助手多为电商/流量平台自营，预计内生态闭环为主）。
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="px-3 py-1.5 border-t border-webank-line bg-[#f0f0f0] text-[10px] text-webank-subtext leading-snug">
-            灰色 = 人干活 · 浅蓝 = AI 只推荐 · 深蓝 = AI 代执行
-          </div>
+const festivalRaw: Record<string, { visitors: number[]; spending: number[] }> = {
+  春节: { visitors: [4.74, 5.01, 5.96], spending: [6326.87, 6770, 8034.83] },
+  五一: { visitors: [2.95, 3.14, 3.25], spending: [1668.9, 1802.69, 1854.92] },
+  十一: { visitors: [7.65, 8.88, 8.26], spending: [7008.17, 8090.06, 7383.75] },
+};
+
+const perCapita = (spending: number, visitors: number) => Math.round(spending / visitors);
+
+// 合并后的图表数据：每个节日×年一个 period，同时包含出游人数、总花费、人均花费。
+// 在相邻节日之间插入一个空点，用于打断人均线在跨节处的连线（connectNulls=false）。
+const mergedData = festivalOrder.flatMap((festival, festivalIndex) => {
+  const rows = YEARS.map((year, i) => ({
+    period: `${festival}${year.slice(2)}`,
+    visitors: festivalRaw[festival].visitors[i],
+    spending: festivalRaw[festival].spending[i],
+    perCapita: perCapita(festivalRaw[festival].spending[i], festivalRaw[festival].visitors[i]),
+  }));
+  if (festivalIndex < festivalOrder.length - 1) {
+    rows.push({ period: `gap-${festival}`, visitors: null as any, spending: null as any, perCapita: null as any });
+  }
+  return rows;
+});
+
+const mergedCategoryGroups = festivalOrder.map((festival) => ({
+  label: festival,
+  x1: `${festival}${YEARS[0].slice(2)}`,
+  x2: `${festival}${YEARS[2].slice(2)}`,
+  stroke: festivalColor[festival],
+  fill: festivalColor[festival],
+  fillOpacity: 0.06,
+}));
+
+const travelBars: BarConfig[] = [
+  { dataKey: 'visitors', name: '出游人数（亿人次）', color: '#1B4F72', yAxisId: 'left', unit: '亿人次' },
+  { dataKey: 'spending', name: '总花费（亿元）', color: '#C09A4A', yAxisId: 'right', unit: '亿元' },
+];
+
+const travelLines: BarLineConfig[] = [
+  { dataKey: 'perCapita', name: '人均消费（元）', color: '#DC2626', yAxisId: 'lineExtra', unit: '元', strokeWidth: 2 },
+];
+
+export const ContentSlide40: React.FC = () => {
+  return (
+    <BaseContentSlide
+      title={<>特点三：从追求价格到追求性价比</>}
+      subtitle="2026年三季度宏观经济报告"
+      headerClassName="!mb-3"
+    >
+      <div className="flex flex-col h-full">
+        {/* 卡片区域：两张卡片 */}
+        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
+          {/* 卡片1：三大长假（合并原“出游规模与总花费齐增长” + “人均消费”两张卡片） */}
+          <BaseCard title="三大长假：出游规模与总花费齐增长但人均消费下降" delay="0ms" variant="accent">
+            <ul className="text-sm space-y-2 list-disc pl-4">
+              <li>
+                2024到2026，三大长假的出游人数与总花费全线上涨：出游人数春节
+                <span className="font-bold text-webank-blue">5.96亿（+25.7%）</span>
+                、五一
+                <span className="font-bold text-webank-blue">3.25亿（+10.2%）</span>
+                、十一
+                <span className="font-bold text-webank-blue">8.26亿（+8.0%）</span>
+                ；总花费分别增长
+                <span className="font-bold text-webank-blue">+27.0%、+11.1%、+5.4%</span>
+                ，其中2026年春节花费
+                <span className="font-bold text-webank-blue">8,035亿元</span>
+                创历史新高。假日消费规模持续壮大。
+              </li>
+              <li>
+                人均花费却普遍小幅回落：2026年春节人均消费
+                <span className="font-bold text-webank-blue">1,348元</span>
+                、五一
+                <span className="font-bold text-webank-blue">571元</span>
+                、十一
+                <span className="font-bold text-webank-blue">894元</span>
+                ，均低于2025年的1,351元、574元、911元。规模增但人均降，说明更在乎出行性价比。
+              </li>
+            </ul>
+          </BaseCard>
+
+          {/* 卡片2：二手交易和快消零售 */}
+          <BaseCard title="二手交易和快消零售快速增长" delay="120ms">
+            <p className="text-sm">
+              二手交易：2025年全国二手商品交易额约1.7万亿、增速约12%，2026年闲置交易市场规模预计已突破3万亿元；二手车2026H1成交971.32万辆、首超新车。
+            </p>
+            <p className="text-sm mt-1">
+              快消零售：2025年城镇快消销量+3.6%、均价-2.6%、销售额+0.9%；2026Q1 销量+1.3%、销售额-1.3%（贝恩×纽锐拓）。 在高性价比诉求下，消费者转向用低价高频的快消替代高价低频消费，追求更多实用价值。
+            </p>
+            <p className="text-sm mt-1 text-webank-subtext">
+              行为数据印证：82%的人愿意延长物品使用时间，69%选择修理而非丢弃；一半Z世代每2–3个月购买二手，性价比与循环消费意识持续增强。
+            </p>
+          </BaseCard>
+        </div>
+
+        {/* 图表区域：两列 */}
+        <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
+          {/* 左列：合成图（出游人数柱 + 总花费柱 + 人均花费线） */}
+          <ChartContainer delay="600ms" className="h-full min-h-0">
+            <BaseBarChart
+              data={mergedData}
+              title="三大长假出游人数花费与人均消费（按节日分布）"
+              subtitle={`数据来源：文化和旅游部·国家统计局 | 单位：亿人次 / 亿元 / 元 | 红线为人均消费（元）`}
+              xAxisKey="period"
+              bars={travelBars}
+              lines={travelLines}
+              yAxisDomain={[0, 20]}
+              showYAxis={true}
+              yAxisTickFormatter={(v) => `${v}亿`}
+              yAxisWidth={30}
+              legendOrder={['出游人数（亿人次）', '总花费（亿元）', '人均消费（元）']}
+              legendFontSize={9}
+              barSize={14}
+              barGap={3}
+              barCategoryGap="35%"
+              showLabels={true}
+              labelContent={({ value, x, y, width, dataKey }: any) => {
+                if (value == null) return null;
+                const num = Number(value) || 0;
+                const cx = (Number(x) || 0) + (Number(width) || 0) / 2;
+                const isSpending = dataKey === 'spending';
+                const text = isSpending ? Math.round(num).toLocaleString() : num.toFixed(2);
+                return (
+                  <text
+                    x={cx}
+                    y={(Number(y) || 0) - 6}
+                    textAnchor="middle"
+                    fill={isSpending ? '#C09A4A' : '#1B4F72'}
+                    fontSize={8}
+                    fontWeight={700}
+                  >
+                    {text}
+                  </text>
+                );
+              }}
+              xAxisTickFormatter={(v) => {
+                const match = String(v).match(/(\d{2})$/);
+                return match ? match[1] : '';
+              }}
+              xAxisTickFontSize={9}
+              xAxisHeight={22}
+              xAxisInterval={0}
+              categoryGroups={mergedCategoryGroups}
+              showLineYAxis={true}
+              lineAxisDomain={[0, 20000]}
+              lineUnit="元"
+              lineYAxisWidth={44}
+              lineYAxisTickFormatter={(v) => `${Math.round(v)}`}
+              lineExtraAxis={{
+                domain: [0, 1600],
+                unit: '元',
+                width: 44,
+                tickFormatter: (v) => `${Math.round(v)}`,
+              }}
+              unit="亿人次"
+              lineLabelContent={({ value, x, y }: any) => {
+                if (value == null) return null;
+                return (
+                  <text
+                    x={Number(x)}
+                    y={Number(y) - 8}
+                    textAnchor="middle"
+                    fill="#DC2626"
+                    fontSize={8}
+                    fontWeight={700}
+                  >
+                    {Math.round(Number(value)).toLocaleString()}
+                  </text>
+                );
+              }}
+              lineShowDot={true}
+            />
+          </ChartContainer>
+
+          {/* 右列：行为数据表 */}
+          <ChartContainer delay="840ms">
+            <div className="flex flex-col h-full">
+              <div className="mb-1.5">
+                <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+                  行为数据：性价比成消费显著增长点
+                </h3>
+                <p className="text-[10px] text-webank-subtext mt-0.5">
+                  数据来源：贝恩×纽锐拓消费者调研（p15–16）
+                </p>
+              </div>
+              <div className="flex-1 min-h-0 overflow-hidden">
+                <table className="w-full h-full text-[10px] border-collapse">
+                  <thead>
+                    <tr className="bg-webank-blue/10 text-webank-blue">
+                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-14">维度</th>
+                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold">关键数据</th>
+                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-16">解读</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-webank-text">
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">循环使用</td>
+                      <td className="border border-slate-200 px-1.5 py-1">
+                        <span className="font-bold text-webank-blue">82%</span> 更长时间使用物品再更换；
+                        <span className="font-bold text-webank-blue">69%</span> 选择修理而非丢弃；
+                        <span className="font-bold text-webank-blue">68%</span> 主动减少浪费
+                      </td>
+                      <td className="border border-slate-200 px-1.5 py-1">延长使用周期</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">二手循环</td>
+                      <td className="border border-slate-200 px-1.5 py-1">
+                        <span className="font-bold text-webank-blue">30%</span> 购买二手服装、全品类超
+                        <span className="font-bold text-webank-blue">20%</span>；近一半消费者"DIY化"了过去付费的服务（家政维修、理发、美容）
+                      </td>
+                      <td className="border border-slate-200 px-1.5 py-1">二手加速</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">年轻人领先</td>
+                      <td className="border border-slate-200 px-1.5 py-1">
+                        一半 Z 世代在社交平台寻找 DIY 灵感（尤其关注省钱博主）；一半每
+                        <span className="font-bold text-webank-blue">2–3</span> 个月购买二手
+                      </td>
+                      <td className="border border-slate-200 px-1.5 py-1">Z 世代引领</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">二手机动载具</td>
+                      <td className="border border-slate-200 px-1.5 py-1">
+                        Z 世代更看重"淘乐趣""独特孤品"；婴儿潮一代更看重"比新的便宜"（Exhibit 9）
+                      </td>
+                      <td className="border border-slate-200 px-1.5 py-1">动机分化</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </ChartContainer>
         </div>
       </div>
-    </div>
-  </BaseContentSlide>
-);
+    </BaseContentSlide>
+  );
+};

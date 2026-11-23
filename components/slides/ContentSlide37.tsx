@@ -1,143 +1,216 @@
 import React from 'react';
-import { Wallet, Briefcase, Home, ArrowRight } from 'lucide-react';
-import { BaseContentSlide } from '../layouts/BaseContentSlide';
-
-type Tone = 'red' | 'green' | 'blue' | 'amber';
-const toneText: Record<Tone, string> = {
-  red: 'text-red-600',
-  green: 'text-green-600',
-  blue: 'text-webank-blue',
-  amber: 'text-amber-600',
-};
-
-// 二季度归因约束
-const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React.ReactNode }[] = [
-  {
-    icon: Wallet,
-    label: '收入约束',
-    tone: 'blue',
-    body: (
-      <>
-        二季度人均可支配收入 2.3 万元、实际 <b className="text-webank-blue">+4.2%</b>，人均消费支出 1.48 万元、实际仅{' '}
-        <b className="text-webank-blue">+2.7%</b>，剪刀差走阔、新增收入更多转为储蓄。
-      </>
-    ),
-  },
-  {
-    icon: Briefcase,
-    label: '就业约束',
-    tone: 'amber',
-    body: (
-      <>
-        二季度失业率 <b className="text-amber-600">5.0%–5.2%</b>，16–24 岁长期15%；2026 届毕业生
-        1270 万创新高，AI 5 年内或替代约 <b className="text-amber-600">7000 万</b>岗位。
-      </>
-    ),
-  },
-  {
-    icon: Home,
-    label: '房价财富效应',
-    tone: 'red',
-    body: (
-      <>
-        房地产占居民财富约 <b className="text-red-600">52%</b>，住房贷款连续 <b className="text-red-600">13</b> 个季度负增长；房价跌超
-        15% 时，一套房家庭消费降 <b className="text-red-600">11.9%</b>、多套房降 <b className="text-red-600">25.9%</b>。
-      </>
-    ),
-  },
-];
-
-// 三季度研究：承接二季度归因，展开的四个消费特点
-const dimensions: { num: string; tag: string; title: string; body: string }[] = [
-  { num: '①', tag: '特点一', title: '体验与情绪消费', body: '从「占有物品」到「为体验和情绪付费」' },
-  { num: '②', tag: '特点二', title: 'AI 参与消费决策', body: 'AI 进入搜索、比价与决策，重塑消费链路' },
-  { num: '③', tag: '特点三', title: '消费者更倾向有性价比的消费', body: '从追求价格到追求性价比，二手和快消市场增长' },
-  { num: '④', tag: '特点四', title: '健康消费刚性凸显', body: '收缩周期下健康支出的刚性凸显' },
-];
+import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
+import { BaseCard } from '../base/BaseCard';
+import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
+import { increaseConsumptionReasons } from '@/data/increaseConsumptionReasons';
+import { emotionMarketTrend, performanceTrend, tourismTrend } from '@/data/emotionEconomyTrends';
 
 export const ContentSlide37: React.FC = () => {
+  const reasonBars: BarConfig[] = [
+    { dataKey: 'all', name: '全部', color: '#4A79AA' },
+    { dataKey: 'age18_35', name: '18-35岁', color: '#5C9A8A' },
+    { dataKey: 'age36_59', name: '36-59岁', color: '#C09A4A' },
+    { dataKey: 'age60plus', name: '60岁以上', color: '#9AA5AE' },
+  ];
+
+  const tourismBars: BarConfig[] = [
+    { dataKey: 'spending', name: '出游总花费', color: '#4A79AA' },
+    { dataKey: 'trips', name: '出游人次', color: '#C09A4A', yAxisId: 'right', unit: '亿人次' },
+  ];
+  const performanceBars: BarConfig[] = [
+    { dataKey: 'revenue', name: '市场总收入', color: '#C09A4A' },
+  ];
+  const emotionBars: BarConfig[] = [
+    { dataKey: 'size', name: '市场规模', color: '#5C9A8A' },
+  ];
+
   return (
     <BaseContentSlide
-      title={<></>}
-      subtitle="2026年三季度宏观经济报告"
-      headerClassName="!mb-3"
+      title={<>特点一：从“占有物品”到“为体验和情绪付费”</>}
+      cardColumns={2}
     >
-      <div className="flex h-full items-center justify-center pb-6">
-        {/* 二季度归因 → 三季度研究四个特点 */}
-        <div className="flex h-[80%] max-h-[560px] w-[94%] min-h-0 items-stretch gap-4">
-          {/* 左：二季度归因 */}
-          <div
-            className="flex-1 min-w-0 rounded-xl border border-webank-line bg-white shadow-card p-4 flex flex-col gap-3 animate-fade-in-up fill-mode-forwards opacity-0"
-            style={{ animationDelay: '180ms' }}
-          >
-            <div className="flex items-center gap-2">
-              <span className="w-1 h-3.5 bg-webank-blue rounded-sm" />
-              <h3 className="text-[18px] font-bold text-webank-blue">二季度归因：三重约束压缩总消费大盘</h3>
-            </div>
-            <div className="flex-1 min-h-0 flex flex-col gap-2.5">
-              {constraints.map((c) => (
-                <div key={c.label} className="flex-1 flex items-center gap-2.5 rounded-lg bg-slate-50 px-3 py-2">
-                  <c.icon size={15} className={`${toneText[c.tone]} mt-0.5 flex-shrink-0`} />
-                  <div className="min-w-0">
-                    <p className={`text-[16px] font-bold leading-tight ${toneText[c.tone]}`}>{c.label}</p>
-                    <p className="text-[16px] leading-snug text-slate-600 mt-0.5">{c.body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 中：承接箭头 二季度 → 三季度 */}
-          <div className="w-24 flex-shrink-0 flex flex-col items-center justify-center gap-3 text-center">
-            <span className="text-[13px] font-semibold tracking-wider text-webank-subtext">研究视角</span>
-            <div className="w-full rounded-xl border border-slate-200 bg-slate-50 px-2 py-3">
-              <p className="text-[14px] font-medium text-webank-subtext">二季度</p>
-              <p className="mt-1 text-[22px] font-bold leading-tight text-webank-blue">归因</p>
-            </div>
-            <div className="relative my-1 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-webank-blue to-webank-accent text-white shadow-lg ring-4 ring-webank-accent/10">
-              <ArrowRight size={30} strokeWidth={2.5} />
-            </div>
-            <div className="w-full rounded-xl border border-webank-accent/30 bg-webank-accent/10 px-2 py-3 shadow-sm">
-              <p className="text-[12px] font-semibold text-webank-accent">三季度</p>
-              <p className="mt-1 text-[18px] font-bold leading-tight text-webank-accent">消费趋势</p>
-            </div>
-          </div>
-
-          {/* 右：三季度研究四个特点 */}
-          <div
-            className="flex-[1.15] min-w-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-4 flex flex-col gap-2 animate-fade-in-up fill-mode-forwards opacity-0"
-            style={{ animationDelay: '240ms' }}
-          >
-            <div className="flex items-center gap-2">
-              <span className="w-1 h-3.5 bg-webank-accent rounded-sm" />
-              <h3 className="text-[18px] font-bold text-webank-blue">三季度研究：消费趋势的四个特点</h3>
-            </div>
-            <p className="text-[15px] text-webank-subtext leading-tight pl-3 -mt-0.5">
-              承接二季度归因，我们继续研究到三季度 →
+      <div className="flex flex-col h-full">
+        {/* 卡片区域 */}
+        <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
+          <BaseCard title="服务零售快于商品零售，情绪价值成共性动因" delay="120ms">
+            <p>
+              服务零售增幅高于商品零售，不同年龄段均计划未来一年增加消费在旅游、保健养生等，不同年龄段日常增加消费的原因前三名均提及情绪价值。
             </p>
-            <div className="flex-1 min-h-0 flex flex-col gap-2.5 pt-1">
-              {dimensions.map((d) => (
-                <div
-                  key={d.num}
-                  className="flex-1 group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2"
-                >
-                  <span className="flex items-center justify-center w-7 h-7 flex-shrink-0 rounded-md bg-gradient-to-br from-webank-accent to-webank-blue text-white text-[16px] font-bold">
-                    {d.num}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <p className="text-[18px] font-bold text-webank-blue leading-tight truncate">{d.title}</p>
-                      <span className="flex-shrink-0 rounded bg-webank-accent/10 text-webank-accent text-[14px] font-semibold px-1 py-0.5 leading-none">
-                        {d.tag}
-                      </span>
-                    </div>
-                    <p className="text-[15px] leading-snug text-slate-500 mt-0.5 truncate">{d.body}</p>
-                  </div>
-                  <ArrowRight size={13} className="flex-shrink-0 text-slate-300 group-hover:text-webank-accent transition-colors" />
-                </div>
-              ))}
+          </BaseCard>
+          <BaseCard title="情绪经济提速，Z世代成为主力" delay="0ms" variant="accent">
+            <div className="space-y-2">
+              <p>
+                近年旅游、演出票房、情绪相关消费增长较好。据艾媒咨询预计 2029 年情绪经济增长至 <span className="font-semibold text-red-500">4.5万亿</span>；其中 Z 世代：
+              </p>
+              <ul className="list-disc pl-4 space-y-0.5 text-[11px] leading-snug">
+                <li>超九成青年认可情绪价值的重要性；近六成青年愿意为情绪价值买单（较 2024 年 <span className="font-semibold text-red-500">+16.2pct</span>）；</li>
+                <li>近九成有过为情绪价值买单的经历，近四成为高频消费者；</li>
+                <li>青年情绪消费月均支出949 元；Z 世代连买实物都在买情绪。</li>
+              </ul>
+              <p className="text-[10px] text-gray-500 leading-snug">
+                数据来源：上海市青少年研究中心联合 Soul App《2025 Z世代情绪消费报告》，2025 年 9 月 5 日发布
+              </p>
             </div>
-          </div>
+          </BaseCard>
+        </div>
+
+        {/* 图表区域 */}
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
+          <ChartContainer delay="600ms">
+            <BaseBarChart
+              data={increaseConsumptionReasons}
+              title="您日常增加消费的主要原因是什么？"
+              subtitle="数据来源：中央广播电视总台研究院《美好生活大调查》 | 单位：%"
+              xAxisKey="reason"
+              bars={reasonBars}
+              yAxisDomain={[0, 50]}
+              showYAxis={true}
+              yAxisWidth={32}
+              legendOrder={['全部', '18-35岁', '36-59岁', '60岁以上']}
+              legendFontSize={9}
+              barSize={7}
+              barGap={1}
+              barCategoryGap="28%"
+              showLabels={false}
+              highlightAreas={[
+                { x1: '旧物更新', x2: '性价比高', stroke: '#b91c1c', strokeWidth: 1.5 },
+              ]}
+              xAxisAngle={-30}
+              xAxisHeight={48}
+              xAxisInterval={0}
+              xAxisTickFontSize={9}
+              unit="%"
+            />
+          </ChartContainer>
+
+          <ChartContainer delay="600ms">
+            <div className="flex flex-col h-full">
+              <div className="mb-2">
+                <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
+                  旅游、演出与情绪经济市场规模
+                </h3>
+                <p className="text-[10px] text-webank-subtext mt-1">
+                  数据来源：文旅部、国家统计局公报；中国演出行业协会；艾媒咨询
+                </p>
+              </div>
+              <div className="flex-1 min-h-0 grid grid-cols-3 gap-2">
+                <BaseBarChart
+                  data={tourismTrend}
+                  title="国内出游总花费与出游人次"
+                  subtitle="左轴：万亿元｜右轴：亿人次"
+                  xAxisKey="year"
+                  bars={tourismBars}
+                  yAxisDomain={[0, 7]}
+                  showYAxis={true}
+                  yAxisWidth={22}
+                  yAxisTickFormatter={(value) => `${value}`}
+                  showLineYAxis={false}
+                  lineAxisDomain={[0, 80]}
+                  lineYAxisWidth={0}
+                  showLegend={true}
+                  legendOrder={['出游总花费', '出游人次']}
+                  legendFontSize={8}
+                  legendGap={8}
+                  legendWrapperStyle={{ bottom: -6 }}
+                  barSize={8}
+                  barGap={2}
+                  barCategoryGap="26%"
+                  showLabels={true}
+                  labelContent={({ x, y, width, value, dataKey }: any) => {
+                    const cx = x + width / 2;
+                    const isTrips = dataKey === 'trips';
+                    const color = isTrips ? '#8A6A2F' : '#475569';
+                    const labelX = isTrips ? cx + 9 : cx;
+                    const labelY = isTrips ? Math.max(10, y - 34) : Math.max(10, y - 13);
+                    const tipX = cx;
+                    const tipY = y - 3;
+                    const fromX = labelX;
+                    const fromY = labelY + 6;
+                    const dx = tipX - fromX;
+                    const dy = tipY - fromY;
+                    const len = Math.hypot(dx, dy) || 1;
+                    const ux = dx / len;
+                    const uy = dy / len;
+                    const bx = tipX - ux * 5;
+                    const by = tipY - uy * 5;
+                    const nx = -uy * 2.2;
+                    const ny = ux * 2.2;
+                    return (
+                      <g>
+                        <line x1={fromX} y1={fromY} x2={tipX} y2={tipY} stroke={color} strokeWidth={0.7} />
+                        <polygon
+                          points={`${tipX},${tipY} ${bx + nx},${by + ny} ${bx - nx},${by - ny}`}
+                          fill={color}
+                        />
+                        <text
+                          x={labelX}
+                          y={labelY}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fill={color}
+                          fontSize={7.5}
+                          fontWeight={700}
+                        >
+                          {Number(value).toFixed(2)}
+                        </text>
+                      </g>
+                    );
+                  }}
+                  xAxisTickFontSize={8}
+                  xAxisHeight={20}
+                  xAxisInterval={0}
+                  unit="万亿"
+                />
+                <BaseBarChart
+                  data={performanceTrend}
+                  title="演出市场总收入"
+                  subtitle="单位：亿元"
+                  xAxisKey="year"
+                  bars={performanceBars}
+                  yAxisDomain={[0, 900]}
+                  showYAxis={true}
+                  yAxisWidth={27}
+                  yAxisTickFormatter={(value) => `${value}`}
+                  showLegend={false}
+                  barSize={13}
+                  barCategoryGap="22%"
+                  showLabels={true}
+                  labelFormatter={(value) => Number(value).toFixed(0)}
+                  labelPositiveOffset={6}
+                  xAxisTickFontSize={8}
+                  xAxisHeight={20}
+                  xAxisInterval={0}
+                  unit="亿元"
+                />
+                <BaseBarChart
+                  data={emotionMarketTrend}
+                  title="情绪经济市场规模"
+                  subtitle="单位：万亿元"
+                  xAxisKey="year"
+                  bars={emotionBars}
+                  yAxisDomain={[0, 4]}
+                  showYAxis={true}
+                  yAxisWidth={25}
+                  yAxisTickFormatter={(value) => `${value}`}
+                  showLegend={false}
+                  barSize={13}
+                  barCategoryGap="18%"
+                  showLabels={true}
+                  labelFormatter={(value) => Number(value).toFixed(2)}
+                  labelPositiveOffset={6}
+                  xAxisTickFontSize={8}
+                  xAxisHeight={20}
+                  xAxisInterval={0}
+                  unit="万亿"
+                />
+              </div>
+            </div>
+          </ChartContainer>
+        </div>
+
+        {/* 备注 */}
+        <div className="mt-4 text-xs text-gray-500 border-t border-gray-200 pt-3 text-left">
+          注：三张图均展示规模/收入数据；情绪经济 2026E 为预测值。
         </div>
       </div>
     </BaseContentSlide>

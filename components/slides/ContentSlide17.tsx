@@ -29,25 +29,28 @@ export const ContentSlide17: React.FC = () => {
 
   // 左图：固投累计同比 + 单月环比（单月环比为季调数据）
   const cumulativeMomData = [
+    { period: '2025-01', cumulative: 4.00, mom: -1.66 },
     { period: '2025-02', cumulative: 4.10, mom: 0.27 },
     { period: '2025-03', cumulative: 4.20, mom: -1.90 },
     { period: '2025-04', cumulative: 4.00, mom: 1.67 },
-    { period: '2025-05', cumulative: 3.70, mom: -0.33 },
+    { period: '2025-05', cumulative: 3.70, mom: 0.92 },
     { period: '2025-06', cumulative: 2.80, mom: -1.41 },
     { period: '2025-07', cumulative: 1.60, mom: -0.38 },
     { period: '2025-08', cumulative: 0.50, mom: -1.52 },
     { period: '2025-09', cumulative: -0.50, mom: -1.34 },
-    { period: '2025-10', cumulative: -1.70, mom: -0.69 },
-    { period: '2025-11', cumulative: -2.60, mom: -0.69 },
-    { period: '2025-12', cumulative: -3.80, mom: -1.52 },
-    { period: '2026-02', cumulative: 1.80, mom: 0.47 },
-    { period: '2026-03', cumulative: 1.70, mom: -0.68 },
-    { period: '2026-04', cumulative: -1.60, mom: -2.83 },
-    { period: '2026-05', cumulative: -4.10, mom: -0.99 },
-    { period: '2026-06', cumulative: -5.70, mom: -0.04 },
-    { period: '2026-07', cumulative: -6.70, mom: -1.25 },
-    { period: '2026-08', cumulative: -7.20, mom: -0.55 },
-    { period: '2026-09', cumulative: -7.20, mom: 0.07 },
+    { period: '2025-10', cumulative: -1.70, mom: 1.09 },
+    { period: '2025-11', cumulative: -2.60, mom: -1.65 },
+    { period: '2025-12', cumulative: -3.80, mom: -2.87 },
+    { period: '2026-01', cumulative: 1.80, mom: 2.03 },
+    { period: '2026-02', cumulative: 1.80, mom: 0.10 },
+    { period: '2026-03', cumulative: 1.70, mom: -0.54 },
+    { period: '2026-04', cumulative: -1.60, mom: -2.95 },
+    { period: '2026-05', cumulative: -4.10, mom: -1.15 },
+    { period: '2026-06', cumulative: -5.70, mom: -0.20 },
+    { period: '2026-07', cumulative: -6.70, mom: -0.77 },
+    { period: '2026-08', cumulative: -7.20, mom: -0.53 },
+    { period: '2026-09', cumulative: -7.20, mom: 0.85 },
+    { period: '2026-10', cumulative: -8.10, mom: -2.93 },
   ];
 
   const cumulativeMomConfigs: LineConfig[] = [
@@ -57,7 +60,7 @@ export const ContentSlide17: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title="投资：Q3累计同比-7.2%，单月环比转正但基础不牢——10月环比转负、降幅走阔"
+      title="投资：前三季度累计同比-7.2%，单月环比转正但基础不牢；10月环比转负、降幅走阔"
       cardColumns={4}
     >
       <div className="flex flex-col h-full">
@@ -68,9 +71,9 @@ export const ContentSlide17: React.FC = () => {
               前三季度固投33.41万亿元、累计同比<span className="text-green-600 font-semibold">-7.2%</span>，降幅较上半年扩大1.5pp；9月环比转正（2月以来首次），主因季末财政支出与专项债拨付提速。但10月累计降幅扩至<span className="text-green-600 font-semibold">-8.1%</span>、单月环比<span className="text-green-600 font-semibold">-2.93%</span>，企稳未能延续。
             </p>
           </BaseCard>
-          <BaseCard title="10月三大类同步走弱，地产仍是最大拖累" delay="120ms">
+          <BaseCard title="三大分类投资同步走弱，地产仍是最大拖累" delay="120ms">
             <p>
-              9月制造业投资累计同比<span className="text-green-600 font-semibold">-2.1%</span>（降幅收窄0.2pp）、基建<span className="text-green-600 font-semibold">-4.2%</span>、地产<span className="text-green-600 font-semibold">-20.6%</span>，制造业降幅明显小于整体、地产拖累最深，10月三大类同步走弱。
+              三季度制造业投资累计同比<span className="text-green-600 font-semibold">-2.1%</span>（降幅收窄0.2pp）、基建<span className="text-green-600 font-semibold">-4.2%</span>、地产<span className="text-green-600 font-semibold">-20.6%</span>，地产拖累最深。10月三大类同步走弱。
             </p>
           </BaseCard>
           <BaseCard title="国有控股降幅收窄，民间投资持续走弱" delay="240ms">
@@ -80,7 +83,7 @@ export const ContentSlide17: React.FC = () => {
           </BaseCard>
           <BaseCard title="建安与其他费用降幅走阔，设备购置维持正增" delay="360ms">
             <p>
-              建筑安装工程累计同比<span className="text-green-600 font-semibold">-10.0%</span>、其他费用<span className="text-green-600 font-semibold">-12.1%</span>，降幅持续走阔；受两新政策影响，仅设备工器具购置维持正增<span className="text-red-500 font-semibold">+9.7%</span>，但增势较年初边际回落。10月建安<span className="text-green-600 font-semibold">-11.0%</span>、其他费用<span className="text-green-600 font-semibold">-13.2%</span>。
+              建筑安装工程累计同比<span className="text-green-600 font-semibold">-10.0%</span>、其他费用<span className="text-green-600 font-semibold">-12.1%</span>，降幅持续走阔；受两新政策影响，仅设备工器具购置维持正增<span className="text-red-500 font-semibold">+9.7%</span>，但增势较年初边际回落。10月建安<span className="text-green-600 font-semibold">-11.0%</span>、其他费用<span className="text-green-600 font-semibold">-13.2%</span>。分行业看：增长集中战略基建与AI产业链，传统制造和公共设施承压。
             </p>
           </BaseCard>
         </div>

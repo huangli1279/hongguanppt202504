@@ -1,402 +1,241 @@
 import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { Landmark, ShoppingBag, CreditCard, Recycle, Home } from 'lucide-react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
-import { BaseCard } from '../base/BaseCard';
 
-const FigureCard: React.FC<{ label: string; title: string; children: React.ReactNode }> = ({
-  label,
-  title,
-  children,
-}) => (
-  <div className="bg-white border border-slate-200 rounded-lg flex flex-col min-h-0 overflow-hidden">
-    <div className="px-2 pt-1.5 pb-1 border-b border-slate-100 shrink-0">
-      <div className="text-[8px] text-slate-400 leading-none mb-0.5">{label}</div>
-      <div className="text-[10px] font-semibold text-slate-700 leading-tight truncate">{title}</div>
+const NumBadge: React.FC<{ n: string; tone?: 'blue' | 'amber' }> = ({ n, tone = 'blue' }) => (
+  <span
+    className={`flex items-center justify-center w-5 h-5 flex-shrink-0 rounded-md text-[11px] font-bold text-white ${
+      tone === 'amber'
+        ? 'bg-gradient-to-br from-amber-400 to-amber-600'
+        : 'bg-gradient-to-br from-webank-accent to-webank-blue'
+    }`}
+  >
+    {n}
+  </span>
+);
+
+const PolicyCard: React.FC<{
+  index: string;
+  icon: LucideIcon;
+  title: string;
+  meta: string;
+  delay: string;
+  children: React.ReactNode;
+}> = ({ index, icon: Icon, title, meta, delay, children }) => (
+  <div
+    className="flex flex-col rounded-lg bg-white border border-webank-line shadow-card animate-fade-in-up fill-mode-forwards opacity-0 px-2.5 py-1.5"
+    style={{ animationDelay: delay }}
+  >
+    <div className="flex items-start gap-2 px-2 py-1.5 border-b border-slate-100 bg-slate-50/80">
+      <NumBadge n={index} />
+      <Icon size={14} className="text-webank-accent mt-0.5 flex-shrink-0" />
+      <div className="min-w-0">
+        <h3 className="text-[12px] font-bold text-webank-blue leading-tight">{title}</h3>
+        <p className="text-[8.5px] text-webank-subtext leading-tight mt-0.5">{meta}</p>
+      </div>
     </div>
-    <div className="flex-1 min-h-0 p-1.5 overflow-hidden">{children}</div>
+    <div className="px-2 py-1.5 text-[10.5px] leading-snug text-slate-700">
+      {children}
+    </div>
   </div>
 );
 
-const healthGroups = [
-  { name: '生活必需品', q2: 32, q3: 40, dot: 20 },
-  { name: '身体健康', q2: 37, q3: 21, dot: 39 },
-  { name: '个人爱好', q2: 5, q3: 10, dot: 19 },
+const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <li className="flex gap-1">
+    <span className="text-webank-accent leading-tight flex-shrink-0">•</span>
+    <span className="min-w-0">{children}</span>
+  </li>
+);
+
+const planFacets = [
+  { n: '①', t: '服务消费提质惠民', d: '养老、托育、文旅、健康置于突出位置' },
+  { n: '②', t: '商品消费扩容升级', d: '推动大宗耐用与升级类商品消费' },
+  { n: '③', t: '培育新业态新模式新场景', d: '数字、绿色、首发、体验式、入境消费' },
+  { n: '④', t: '着力提升消费能力', d: '就业、增收、社保、合理增加公共消费' },
+  { n: '⑤', t: '大力优化消费环境', d: '营造放心安心消费环境' },
+  { n: '⑥', t: '完善促进消费制度机制', d: '加力完善促消费长效机制' },
 ];
-
-const CHART_H = 92;
-const h1 = (v: number) => `${(v / 50) * CHART_H}px`;
-
-const consumeChange = [
-  {
-    label: '实际增加最多',
-    bars: [
-      { name: '医疗', v: 18.9, color: '#2f6db5' },
-      { name: '住房', v: 16.3, color: '#b7ab94' },
-    ],
-  },
-  {
-    label: '实际减少最多',
-    bars: [
-      { name: '外出餐饮', v: 28.2, color: '#b7ab94' },
-      { name: '文娱服务', v: 25.2, color: '#b7ab94' },
-    ],
-  },
-];
-
-const CHART_H2 = 76;
-const h2 = (v: number) => `${(v / 30) * CHART_H2}px`;
-
-type MiniDatum = { label: string; value: number; accent?: boolean };
-
-const fitnessData: MiniDatum[] = [
-  { label: '2024', value: 2851 },
-  { label: '2025', value: 3827, accent: true },
-];
-const wearableData: MiniDatum[] = [
-  { label: '2020', value: 364 },
-  { label: '2025', value: 711, accent: true },
-  { label: '2026E', value: 820, accent: true },
-];
-const therapyData: MiniDatum[] = [
-  { label: '2020', value: 386 },
-  { label: '2021', value: 512 },
-  { label: '2022', value: 678 },
-  { label: '2023', value: 912 },
-  { label: '2024', value: 972 },
-  { label: '2025', value: 1450, accent: true },
-  { label: '2026E', value: 1800 },
-  { label: '2030E', value: 2000, accent: true },
-];
-
-const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, height = 64 }) => {
-  const max = Math.max(...data.map((d) => d.value));
-  return (
-    <div className="flex flex-col h-full">
-      <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
-        {data.map((d) => (
-          <div key={d.label} className="flex flex-col items-center justify-end flex-1 min-w-0">
-            <span className="text-[7px] font-medium text-slate-600 leading-none mb-0.5">{d.value.toLocaleString()}</span>
-            <div
-              className={`w-full max-w-[28px] rounded-t-[2px] ${d.accent ? 'bg-webank-blue' : 'bg-[#a9c3e2]'}`}
-              style={{ height: `${(d.value / max) * height}px` }}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-around gap-1 border-t border-slate-200 pt-0.5">
-        {data.map((d) => (
-          <span key={d.label} className="flex-1 text-center text-[7px] text-slate-700 leading-none truncate">{d.label}</span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
-  const n = data.length;
-  const max = Math.max(...data.map((d) => d.value));
-  const padX = 8;
-  const padTop = 20;
-  const padBottom = 16;
-  const usableW = 100 - 2 * padX;
-  const usableH = 100 - padTop - padBottom;
-  const px = (i: number) => padX + (i / (n - 1)) * usableW;
-  const py = (v: number) => padTop + (1 - v / max) * usableH;
-  const line = data.map((d, i) => `${px(i)},${py(d.value)}`).join(' ');
-  const baseY = 100 - padBottom;
-  const area = `${px(0)},${baseY} ${line} ${px(n - 1)},${baseY}`;
-  return (
-    <div className="relative w-full h-full">
-      <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
-        <polygon points={area} fill="rgba(47,109,181,0.10)" />
-        <polyline
-          points={line}
-          fill="none"
-          stroke="#2f6db5"
-          strokeWidth={1.4}
-          strokeLinejoin="round"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-      {data.map((d, i) => (
-        <React.Fragment key={d.label}>
-          <span
-            className={`absolute -translate-x-1/2 -translate-y-full text-[6px] font-medium leading-none ${
-              d.accent ? 'text-webank-blue' : 'text-slate-600'
-            }`}
-            style={{ left: `${px(i)}%`, top: `${py(d.value) - 5}%` }}
-          >
-            {d.value.toLocaleString()}
-          </span>
-          <span
-            className={`absolute -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full border ${
-              d.accent ? 'bg-webank-blue border-webank-blue' : 'bg-white border-webank-blue'
-            }`}
-            style={{ left: `${px(i)}%`, top: `${py(d.value)}%` }}
-          />
-          <span
-            className="absolute -translate-x-1/2 bottom-0 text-[6px] leading-none text-slate-700 whitespace-nowrap"
-            style={{ left: `${px(i)}%` }}
-          >
-            {d.label}
-          </span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-};
 
 export const ContentSlide42: React.FC = () => {
   return (
     <BaseContentSlide
-      title={<>特点四：健康支出保持刚性</>}
-      cardColumns={3}
+      title="三季度消费政策：扩内需、促消费政策持续加码"
+      subtitle="2026年三季度宏观经济报告"
+      cardColumns={2}
     >
-      <div className="flex flex-col h-full min-h-0">
-        <div className="grid grid-cols-3 gap-4 flex-1 min-h-0 mb-2">
-          {/* 左框：健康支出刚性 */}
-          <BaseCard
-            title="健康支出：各年龄段首要"
-            variant="accent"
-            className="h-full overflow-auto"
-          >
-            <div className="space-y-3 text-sm leading-relaxed">
-              <p>
-                健康支出为各年龄段的首要，特别是
-                <span className="font-semibold text-webank-accent">Z世代</span>。
+      <div className="flex flex-col h-full min-h-0 gap-2">
+        {/* 重点：国务院批复《扩大消费"十五五"规划》 */}
+        <div
+          className="flex-shrink-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-3 animate-fade-in-up fill-mode-forwards opacity-0"
+          style={{ animationDelay: '0ms' }}
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <NumBadge n="1" tone="amber" />
+            <Landmark size={18} className="text-webank-blue flex-shrink-0" />
+            <div className="min-w-0">
+              <h3 className="text-[13.5px] font-bold text-webank-blue leading-tight">
+                国务院批复《扩大消费“十五五”规划》
+              </h3>
+              <p className="text-[10px] text-webank-subtext leading-tight mt-0.5">
+                2026年7月13日 · 我国首份国家级消费领域五年专项规划
               </p>
-              <p>
-                北大汇丰调研中，26年Q2身体健康居「最愿意花钱领域」第一选择（
-                <span className="font-semibold text-webank-accent">37%</span>），Q3仍以{' '}
-                <span className="font-semibold text-webank-accent">39%</span> 稳居第二选择。
-              </p>
-              <div className="rounded-md bg-red-50/70 border-l-4 border-red-400 pl-3 py-2">
-                <p className="font-semibold text-red-600 mb-1">收缩周期里的支出顺序</p>
-                <p className="text-[12px] text-slate-600 leading-relaxed">
-                  必需开支先被保障，居民先减少弹性消费，健康是最后退让的支出方向。
-                </p>
+            </div>
+            <div className="ml-auto flex items-center gap-2 flex-shrink-0">
+              <div className="rounded-md bg-red-50 border border-red-200 px-2 py-1 text-center">
+                <p className="text-[8px] text-red-400 leading-none">2030年社零总额</p>
+                <p className="text-[12px] font-bold text-red-600 leading-tight">≈ 60万亿元</p>
               </div>
-              <p className="text-[12px] text-slate-600 leading-relaxed">
-                26年Q2在<span className="font-semibold text-webank-accent">医疗</span>增加消费最多；而在
-                <span className="font-semibold text-red-500">外出餐饮、文娱服务</span>方面减少支出最多。
-              </p>
+              <div className="rounded-md bg-emerald-50 border border-emerald-200 px-2 py-1 text-center">
+                <p className="text-[8px] text-emerald-500 leading-none">到2030年</p>
+                <p className="text-[11px] font-bold text-emerald-700 leading-tight">居民消费率明显提高</p>
+              </div>
             </div>
-          </BaseCard>
+          </div>
 
-          {/* 中框：三大细分赛道 */}
-          <BaseCard
-            title="三大健康消费赛道"
-            variant="accent"
-            className="h-full overflow-auto"
-          >
-            <ol className="space-y-3 text-[13px] leading-relaxed text-slate-600">
-              <li>
-                <span className="font-bold text-webank-blue">1. 健身：</span>
-                商业健身市场 2025 年 <span className="font-semibold text-webank-accent">3,827 亿</span>（
-                <span className="font-semibold text-red-500">+34.2%</span>），Z世代成消费主力、月均轻中端支出{' '}
-                <span className="font-semibold">300–500 元</span>，县域增速{' '}
-                <span className="font-semibold text-red-500">40%</span>。
-              </li>
-              <li>
-                <span className="font-bold text-webank-blue">2. 智能穿戴：</span>
-                健康设备 <span className="font-semibold text-webank-accent">711 亿</span>（CAGR{' '}
-                <span className="font-semibold">14.4%</span>），腕戴出货{' '}
-                <span className="font-semibold">7,390 万台</span>（
-                <span className="font-semibold text-red-500">+20.8%</span>）；
-                <span className="font-semibold">45%</span> 为健康监测而买、国补{' '}
-                <span className="font-semibold">15%</span>——技术让健康可测量。Z世代使用智能设备监测健康问题{' '}
-                <span className="font-semibold text-webank-accent">75%</span>，
-                <span className="font-semibold">26%</span> 的消费者使用 AI 处理健康问题（高于整体 22%）。
-              </li>
-              <li>
-                <span className="font-bold text-webank-blue">3. 心理咨询/情绪：</span>
-                心理咨询 <span className="font-semibold text-webank-accent">1,450 亿</span>（年均{' '}
-                <span className="font-semibold text-red-500">+27%</span>）；Z世代{' '}
-                <span className="font-semibold text-webank-accent">68.3%</span> 向 AI 倾诉。
-              </li>
-            </ol>
-          </BaseCard>
+          {/* 6方面 */}
+          <div className="grid grid-cols-3 gap-1">
+            {planFacets.map((f) => (
+              <div key={f.n} className="rounded-md border border-slate-200 bg-white px-2 py-1">
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] font-bold text-webank-accent leading-none">{f.n}</span>
+                  <span className="text-[10px] font-bold text-webank-blue leading-tight">{f.t}</span>
+                </div>
+                <p className="text-[9px] text-slate-500 leading-tight mt-0.5">{f.d}</p>
+              </div>
+            ))}
+          </div>
 
-          {/* 右框：技术让健康“可测量” */}
-          <BaseCard
-            title="技术让健康“可测量”"
-            variant="accent"
-            className="h-full overflow-auto"
-          >
-            <div className="space-y-2.5 text-[13px] leading-relaxed text-slate-600">
-              <ul className="space-y-2">
-                <li>
-                  <span className="font-semibold text-webank-blue">实时测量：</span>
-                  智能手表、连续血糖监测、健身手环让睡眠质量、血糖、营养摄入、心脏健康可实时测量。
-                </li>
-                <li>
-                  <span className="font-semibold text-webank-blue">使用率：</span>
-                  Z世代 <span className="font-semibold text-webank-accent">75%</span>、千禧一代{' '}
-                  <span className="font-semibold text-webank-accent">73%</span> 使用此类工具（X世代 55%、婴儿潮 32%）。
-                </li>
-                <li>
-                  <span className="font-semibold text-webank-blue">AI 处理健康问题：</span>
-                  <span className="font-semibold text-webank-accent">22%</span> 的消费者用大语言模型处理健康问题（Z世代 26%）。
-                </li>
-              </ul>
-            </div>
-          </BaseCard>
+          {/* 底部要点 */}
+          <div className="mt-1 flex items-center gap-1.5 flex-wrap border-t border-slate-200 pt-1 text-[9.5px] text-slate-600">
+            <span className="rounded bg-webank-blue/10 text-webank-blue font-semibold px-1.5 py-0.5">
+              6方面 · 28条重点任务
+            </span>
+            <span>稳步提高最低工资标准</span>
+            <span className="text-slate-300">|</span>
+            <span>深入实施提振消费专项行动</span>
+            <span className="text-slate-300">|</span>
+            <span>各省区市把扩大消费作为“十五五”时期重要任务</span>
+          </div>
         </div>
 
-        {/* 底部：五图横向排列 */}
-        <div className="grid grid-cols-5 gap-2 h-[250px] shrink-0">
-          {/* 图1 双柱+圆点 */}
-          <FigureCard label="图1" title="最愿意花钱的领域：第一选择 vs 第二选择">
-            <div className="flex flex-col h-full">
-              <div className="text-[7px] text-slate-400 leading-none mb-1 truncate">
-                北大汇丰 2026Q2–Q3 市场信心调研 · %
-              </div>
-              <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
-                {healthGroups.map((g) => (
-                  <div key={g.name} className="relative flex flex-1 h-full items-end justify-center gap-1">
-                    <div className="flex flex-col items-center justify-end">
-                      <span className="text-[8px] text-slate-600 leading-none mb-0.5">{g.q2}</span>
-                      <div className="w-3.5 bg-[#a9c3e2]" style={{ height: h1(g.q2) }} />
-                    </div>
-                    <div className="flex flex-col items-center justify-end">
-                      <span className="text-[8px] text-webank-blue font-semibold leading-none mb-0.5">{g.q3}</span>
-                      <div className="w-3.5 bg-[#2e4a6b]" style={{ height: h1(g.q3) }} />
-                    </div>
-                    <div
-                      className="absolute right-0 flex flex-col items-center"
-                      style={{ bottom: h1(g.dot) }}
-                    >
-                      <span className="text-[8px] text-orange-500 font-semibold leading-none mb-0.5">{g.dot}</span>
-                      <span className="w-1.5 h-1.5 rounded-full border border-orange-400 bg-white" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex justify-around mt-0.5 border-t border-slate-200 pt-0.5">
-                {healthGroups.map((g) => (
-                  <span key={g.name} className="flex-1 text-center text-[8px] text-slate-700 leading-none truncate">
-                    {g.name}
-                  </span>
-                ))}
-              </div>
-              <div className="flex justify-center gap-1.5 mt-1 text-[7px] text-slate-500 leading-none whitespace-nowrap">
-                <span className="flex items-center gap-0.5">
-                  <i className="w-1.5 h-1.5 bg-[#a9c3e2] inline-block" />第一选择·2026Q2
-                </span>
-                <span className="flex items-center gap-0.5">
-                  <i className="w-1.5 h-1.5 bg-[#2e4a6b] inline-block" />第一选择·2026Q3
-                </span>
-                <span className="flex items-center gap-0.5">
-                  <i className="w-1.5 h-1.5 rounded-full border border-orange-400 inline-block" />第二选择·2026Q3
-                </span>
-              </div>
-              <p className="text-[6.5px] text-slate-400 leading-tight mt-1">
-                注：柱表示「第一选择」占比；圆点为第二选择·2026Q3 占比（按真实数值定位，不连线）。
-              </p>
-            </div>
-          </FigureCard>
+        {/* 其余4项政策 */}
+        <div className="grid grid-cols-2 gap-2 flex-1 min-h-0">
+          <PolicyCard
+            index="2"
+            icon={ShoppingBag}
+            title="《关于推动商品消费扩容升级的实施意见》"
+            meta="商务部等7部门 · 2026年8月 · 提出20项具体举措"
+            delay="120ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>
+                <span className="font-semibold text-webank-blue">大宗耐用品：</span>
+                推进汽车流通消费改革试点、全链条扩大汽车消费、加快智能家居应用推广
+              </Bullet>
+              <Bullet>
+                <span className="font-semibold text-webank-blue">生活日用提质：</span>
+                食品饮料、纺织服装、文体娱乐用品
+              </Bullet>
+              <Bullet>
+                <span className="font-semibold text-webank-blue">聚焦“一老一小”：</span>
+                支持银发、婴童产品消费
+              </Bullet>
+              <Bullet>促进国货“潮品”、外贸优品、国际精品消费</Bullet>
+              <Bullet>培育绿色、智能、健康等升级类商品消费</Bullet>
+            </ul>
+          </PolicyCard>
 
-          {/* 图2 分框柱状 */}
-          <FigureCard label="图2" title="2026Q2 居民实际消费调整">
-            <div className="flex flex-col h-full">
-              <div className="text-[7px] text-slate-400 leading-none mb-1 truncate">
-                厦大×蚂蚁《中国家庭财富与消费报告（2026Q2）》· %
-              </div>
-              <div className="flex-1 min-h-0 flex justify-around items-end gap-2">
-                {consumeChange.map((grp) => (
-                  <div key={grp.label} className="flex flex-col flex-1 min-w-0 justify-end">
-                    <span className="text-[8px] text-slate-600 font-medium text-center leading-none mb-0.5 truncate">
-                      {grp.label}
-                    </span>
-                    <div className="relative h-[88px] border border-[#41508f] rounded-[2px] px-1.5 flex items-end justify-around gap-1.5">
-                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(10) }} />
-                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(20) }} />
-                      {grp.bars.map((b) => (
-                        <div key={b.name} className="flex-1 flex flex-col items-center justify-end min-w-0">
-                          <span className="relative z-10 text-[7.5px] font-semibold text-slate-700 leading-none mb-[1px] whitespace-nowrap bg-white px-[1px]">
-                            {b.v}%
-                          </span>
-                          <div
-                            className="w-full max-w-[16px] rounded-t-[1px]"
-                            style={{ height: h2(b.v), background: b.color }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex justify-around gap-1.5 mt-0.5">
-                      {grp.bars.map((b) => (
-                        <span key={b.name} className="flex-1 text-center text-[7.5px] text-slate-700 leading-none truncate">
-                          {b.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex justify-between text-[6px] text-slate-400 leading-none mt-1 pl-0.5 pr-0.5">
-                <span>0%</span>
-                <span>10%</span>
-                <span>20%</span>
-                <span>30%</span>
-              </div>
-            </div>
-          </FigureCard>
+          <PolicyCard
+            index="3"
+            icon={CreditCard}
+            title="《财政金融协同促内需政策通知》"
+            meta="财政部等三部门 · 2026年8月 · 优化消费贷款贴息"
+            delay="240ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>购车、装修等新发生信用卡分期消费纳入贴息支持范围</Bullet>
+              <Bullet>
+                实施机构扩至
+                <span className="font-semibold text-webank-blue">21家全国性银行</span>
+                及监管评级
+                <span className="font-semibold text-webank-blue">3A及以上</span>
+                城商行、农村合作金融机构、民营银行、外资银行
+              </Bullet>
+              <Bullet>
+                个人消费贷款贴息上限
+                <span className="font-semibold text-red-600">3000元→5000元</span>
+                ；相关贷款单户规模上限
+                <span className="font-semibold text-red-600">5000万元→7500万元</span>
+              </Bullet>
+              <Bullet>下半年继续推出财政金融协同促内需新政策新举措</Bullet>
+            </ul>
+          </PolicyCard>
 
-          {/* 图3 健身市场规模柱状图 */}
-          <FigureCard label="图3" title="商业健身市场规模（单位：亿元）">
-            <div className="flex flex-col h-full text-[8px]">
-              <div className="flex-1 min-h-0">
-                <MiniBarChart data={fitnessData} height={64} />
-              </div>
-              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
-                <li className="flex gap-1">
-                  <span className="text-webank-blue leading-none">•</span>
-                  <span>
-                    <span className="text-red-500 font-semibold">人均消费（元）4,284（+32.3%）</span>
-                    ；县域增速 <b>40%</b>；Z世代成消费主力、月均 300–500 元。
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </FigureCard>
+          <PolicyCard
+            index="4"
+            icon={Recycle}
+            title="第四批消费品以旧换新资金下达"
+            meta="国家发展改革委、财政部 · 2026年9月末"
+            delay="360ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>
+                下达第四批
+                <span className="font-semibold text-red-600">625亿元</span>
+                超长期特别国债，全年
+                <span className="font-semibold text-red-600">2500亿元</span>
+                资金已全部下达
+              </Bullet>
+              <Bullet>
+                1-8月以旧换新销售额
+                <span className="font-semibold text-webank-blue">1.55万亿元</span>
+                ，惠及
+                <span className="font-semibold text-webank-blue">2.08亿人次</span>
+              </Bullet>
+              <Bullet>
+                汽车以旧换新
+                <span className="font-semibold text-webank-blue">535.3万辆</span>
+                、6类家电
+                <span className="font-semibold text-webank-blue">9145.8万台</span>
+                、数码智能产品
+                <span className="font-semibold text-webank-blue">1.08亿件</span>
+                ；新能源乘用车占新车零售比重连续5个月超
+                <span className="font-semibold text-red-600">60%</span>
+              </Bullet>
+              <Bullet>
+                基调由“加力扩围”转向精细化管理与资金使用效率：合理把握节奏、优化资金计划、严格审核兑付、打击骗补套补
+              </Bullet>
+            </ul>
+          </PolicyCard>
 
-          {/* 图4 智能可穿戴规模柱状图 */}
-          <FigureCard label="图4" title="智能可穿戴健康设备（单位：亿元）">
-            <div className="flex flex-col h-full text-[8px]">
-              <div className="flex-1 min-h-0">
-                <MiniBarChart data={wearableData} height={58} />
-              </div>
-              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
-                <li className="flex gap-1">
-                  <span className="text-webank-blue leading-none">•</span>
-                  <span>腕带出货 <b>7,390 万台（+20.8%）</b>；智能手表 5,061 万台、手环 2,329 万台。</span>
-                </li>
-                <li className="flex gap-1">
-                  <span className="text-webank-blue leading-none">•</span>
-                  <span><b>45.48%</b> 以「健康监测」为购买首因；2026 起 <b>15%</b> 国补。</span>
-                </li>
-              </ul>
-            </div>
-          </FigureCard>
-
-          {/* 图5 心理咨询规模折线图 */}
-          <FigureCard label="图5" title="心理咨询行业规模（单位：亿元，宽口径）">
-            <div className="flex flex-col h-full text-[8px]">
-              <div className="flex-1 min-h-0">
-                <MiniLineChart data={therapyData} />
-              </div>
-              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
-                <li className="flex gap-1">
-                  <span className="text-webank-blue leading-none">•</span>
-                  <span>五年增幅约 <b>3.8 倍</b>，年均增速约 <b>27%</b>。</span>
-                </li>
-                <li className="flex gap-1">
-                  <span className="text-webank-blue leading-none">•</span>
-                  <span>Z世代占情绪经济 <b>77.5%</b>；<b>68.3%</b> 曾向 AI 倾诉。</span>
-                </li>
-              </ul>
-            </div>
-          </FigureCard>
+          <PolicyCard
+            index="5"
+            icon={Home}
+            title="《关于实施居民购房贷款贴息政策的通知》"
+            meta="财政部、人民银行、金融监管总局 · 2026年9月发布，10月1日实施"
+            delay="480ms"
+          >
+            <ul className="space-y-1">
+              <Bullet>
+                对购买
+                <span className="font-semibold text-webank-blue">首套住房</span>
+                （建筑面积≤120㎡、房价≤150万元）的居民家庭给予贴息
+              </Bullet>
+              <Bullet>
+                可享贴息贷款规模最高
+                <span className="font-semibold text-red-600">100万元</span>
+                ，财政给予年化
+                <span className="font-semibold text-red-600">1个百分点</span>
+                贴息
+              </Bullet>
+              <Bullet>
+                贴息期限最长
+                <span className="font-semibold text-red-600">5年</span>
+              </Bullet>
+              <Bullet>属住房消费支持政策</Bullet>
+            </ul>
+          </PolicyCard>
         </div>
       </div>
     </BaseContentSlide>

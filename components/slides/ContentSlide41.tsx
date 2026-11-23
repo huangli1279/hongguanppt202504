@@ -1,247 +1,402 @@
 import React from 'react';
+import { BaseContentSlide } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseBarChart, BarConfig, BarLineConfig } from '../base/BaseBarChart';
 
-// 三大长假：出游人数（亿人次）、总花费（亿元）、人均花费（元），按 2024 / 2025 / 2026 年排列
-const YEARS = ['2024', '2025', '2026'] as const;
-const festivalOrder = ['春节', '五一', '十一'] as const;
-const festivalColor: Record<string, string> = {
-  春节: '#1B4F72', // 深蓝
-  五一: '#DC2626', // 红
-  十一: '#C09A4A', // 琥珀
-};
+const FigureCard: React.FC<{ label: string; title: string; children: React.ReactNode }> = ({
+  label,
+  title,
+  children,
+}) => (
+  <div className="bg-white border border-slate-200 rounded-lg flex flex-col min-h-0 overflow-hidden">
+    <div className="px-2 pt-1.5 pb-1 border-b border-slate-100 shrink-0">
+      <div className="text-[8px] text-slate-400 leading-none mb-0.5">{label}</div>
+      <div className="text-[10px] font-semibold text-slate-700 leading-tight truncate">{title}</div>
+    </div>
+    <div className="flex-1 min-h-0 p-1.5 overflow-hidden">{children}</div>
+  </div>
+);
 
-const festivalRaw: Record<string, { visitors: number[]; spending: number[] }> = {
-  春节: { visitors: [4.74, 5.01, 5.96], spending: [6326.87, 6770, 8034.83] },
-  五一: { visitors: [2.95, 3.14, 3.25], spending: [1668.9, 1802.69, 1854.92] },
-  十一: { visitors: [7.65, 8.88, 8.26], spending: [7008.17, 8090.06, 7383.75] },
-};
-
-const perCapita = (spending: number, visitors: number) => Math.round(spending / visitors);
-
-// 合并后的图表数据：每个节日×年一个 period，同时包含出游人数、总花费、人均花费。
-// 在相邻节日之间插入一个空点，用于打断人均线在跨节处的连线（connectNulls=false）。
-const mergedData = festivalOrder.flatMap((festival, festivalIndex) => {
-  const rows = YEARS.map((year, i) => ({
-    period: `${festival}${year.slice(2)}`,
-    visitors: festivalRaw[festival].visitors[i],
-    spending: festivalRaw[festival].spending[i],
-    perCapita: perCapita(festivalRaw[festival].spending[i], festivalRaw[festival].visitors[i]),
-  }));
-  if (festivalIndex < festivalOrder.length - 1) {
-    rows.push({ period: `gap-${festival}`, visitors: null as any, spending: null as any, perCapita: null as any });
-  }
-  return rows;
-});
-
-const mergedCategoryGroups = festivalOrder.map((festival) => ({
-  label: festival,
-  x1: `${festival}${YEARS[0].slice(2)}`,
-  x2: `${festival}${YEARS[2].slice(2)}`,
-  stroke: festivalColor[festival],
-  fill: festivalColor[festival],
-  fillOpacity: 0.06,
-}));
-
-const travelBars: BarConfig[] = [
-  { dataKey: 'visitors', name: '出游人数（亿人次）', color: '#1B4F72', yAxisId: 'left', unit: '亿人次' },
-  { dataKey: 'spending', name: '总花费（亿元）', color: '#C09A4A', yAxisId: 'right', unit: '亿元' },
+const healthGroups = [
+  { name: '生活必需品', q2: 32, q3: 40, dot: 20 },
+  { name: '身体健康', q2: 37, q3: 21, dot: 39 },
+  { name: '个人爱好', q2: 5, q3: 10, dot: 19 },
 ];
 
-const travelLines: BarLineConfig[] = [
-  { dataKey: 'perCapita', name: '人均消费（元）', color: '#DC2626', yAxisId: 'lineExtra', unit: '元', strokeWidth: 2 },
+const CHART_H = 92;
+const h1 = (v: number) => `${(v / 50) * CHART_H}px`;
+
+const consumeChange = [
+  {
+    label: '实际增加最多',
+    bars: [
+      { name: '医疗', v: 18.9, color: '#2f6db5' },
+      { name: '住房', v: 16.3, color: '#b7ab94' },
+    ],
+  },
+  {
+    label: '实际减少最多',
+    bars: [
+      { name: '外出餐饮', v: 28.2, color: '#b7ab94' },
+      { name: '文娱服务', v: 25.2, color: '#b7ab94' },
+    ],
+  },
 ];
+
+const CHART_H2 = 76;
+const h2 = (v: number) => `${(v / 30) * CHART_H2}px`;
+
+type MiniDatum = { label: string; value: number; accent?: boolean };
+
+const fitnessData: MiniDatum[] = [
+  { label: '2024', value: 2851 },
+  { label: '2025', value: 3827, accent: true },
+];
+const wearableData: MiniDatum[] = [
+  { label: '2020', value: 364 },
+  { label: '2025', value: 711, accent: true },
+  { label: '2026E', value: 820, accent: true },
+];
+const therapyData: MiniDatum[] = [
+  { label: '2020', value: 386 },
+  { label: '2021', value: 512 },
+  { label: '2022', value: 678 },
+  { label: '2023', value: 912 },
+  { label: '2024', value: 972 },
+  { label: '2025', value: 1450, accent: true },
+  { label: '2026E', value: 1800 },
+  { label: '2030E', value: 2000, accent: true },
+];
+
+const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, height = 64 }) => {
+  const max = Math.max(...data.map((d) => d.value));
+  return (
+    <div className="flex flex-col h-full">
+      <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
+        {data.map((d) => (
+          <div key={d.label} className="flex flex-col items-center justify-end flex-1 min-w-0">
+            <span className="text-[7px] font-medium text-slate-600 leading-none mb-0.5">{d.value.toLocaleString()}</span>
+            <div
+              className={`w-full max-w-[28px] rounded-t-[2px] ${d.accent ? 'bg-webank-blue' : 'bg-[#a9c3e2]'}`}
+              style={{ height: `${(d.value / max) * height}px` }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-around gap-1 border-t border-slate-200 pt-0.5">
+        {data.map((d) => (
+          <span key={d.label} className="flex-1 text-center text-[7px] text-slate-700 leading-none truncate">{d.label}</span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
+  const n = data.length;
+  const max = Math.max(...data.map((d) => d.value));
+  const padX = 8;
+  const padTop = 20;
+  const padBottom = 16;
+  const usableW = 100 - 2 * padX;
+  const usableH = 100 - padTop - padBottom;
+  const px = (i: number) => padX + (i / (n - 1)) * usableW;
+  const py = (v: number) => padTop + (1 - v / max) * usableH;
+  const line = data.map((d, i) => `${px(i)},${py(d.value)}`).join(' ');
+  const baseY = 100 - padBottom;
+  const area = `${px(0)},${baseY} ${line} ${px(n - 1)},${baseY}`;
+  return (
+    <div className="relative w-full h-full">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
+        <polygon points={area} fill="rgba(47,109,181,0.10)" />
+        <polyline
+          points={line}
+          fill="none"
+          stroke="#2f6db5"
+          strokeWidth={1.4}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+      {data.map((d, i) => (
+        <React.Fragment key={d.label}>
+          <span
+            className={`absolute -translate-x-1/2 -translate-y-full text-[6px] font-medium leading-none ${
+              d.accent ? 'text-webank-blue' : 'text-slate-600'
+            }`}
+            style={{ left: `${px(i)}%`, top: `${py(d.value) - 5}%` }}
+          >
+            {d.value.toLocaleString()}
+          </span>
+          <span
+            className={`absolute -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full border ${
+              d.accent ? 'bg-webank-blue border-webank-blue' : 'bg-white border-webank-blue'
+            }`}
+            style={{ left: `${px(i)}%`, top: `${py(d.value)}%` }}
+          />
+          <span
+            className="absolute -translate-x-1/2 bottom-0 text-[6px] leading-none text-slate-700 whitespace-nowrap"
+            style={{ left: `${px(i)}%` }}
+          >
+            {d.label}
+          </span>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
 
 export const ContentSlide41: React.FC = () => {
   return (
     <BaseContentSlide
-      title={<>特点三：从追求价格到追求性价比</>}
-      subtitle="2026年三季度宏观经济报告"
-      headerClassName="!mb-3"
+      title={<>特点四：健康支出保持刚性</>}
+      cardColumns={3}
     >
-      <div className="flex flex-col h-full">
-        {/* 卡片区域：两张卡片 */}
-        <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
-          {/* 卡片1：三大长假（合并原“出游规模与总花费齐增长” + “人均消费”两张卡片） */}
-          <BaseCard title="三大长假：出游规模与总花费齐增长但人均消费下降" delay="0ms" variant="accent">
-            <ul className="text-sm space-y-2 list-disc pl-4">
-              <li>
-                2024到2026，三大长假的出游人数与总花费全线上涨：出游人数春节
-                <span className="font-bold text-webank-blue">5.96亿（+25.7%）</span>
-                、五一
-                <span className="font-bold text-webank-blue">3.25亿（+10.2%）</span>
-                、十一
-                <span className="font-bold text-webank-blue">8.26亿（+8.0%）</span>
-                ；总花费分别增长
-                <span className="font-bold text-webank-blue">+27.0%、+11.1%、+5.4%</span>
-                ，其中2026年春节花费
-                <span className="font-bold text-webank-blue">8,035亿元</span>
-                创历史新高。假日消费规模持续壮大。
-              </li>
-              <li>
-                人均花费却普遍小幅回落：2026年春节人均消费
-                <span className="font-bold text-webank-blue">1,348元</span>
-                、五一
-                <span className="font-bold text-webank-blue">571元</span>
-                、十一
-                <span className="font-bold text-webank-blue">894元</span>
-                ，均低于2025年的1,351元、574元、911元。规模增但人均降，说明更在乎出行性价比。
-              </li>
-            </ul>
+      <div className="flex flex-col h-full min-h-0">
+        <div className="grid grid-cols-3 gap-4 flex-1 min-h-0 mb-2">
+          {/* 左框：健康支出刚性 */}
+          <BaseCard
+            title="健康支出：各年龄段首要"
+            variant="accent"
+            className="h-full overflow-auto"
+          >
+            <div className="space-y-3 text-sm leading-relaxed">
+              <p>
+                健康支出为各年龄段的首要，特别是
+                <span className="font-semibold text-webank-accent">Z世代</span>。
+              </p>
+              <p>
+                北大汇丰调研中，26年Q2身体健康居「最愿意花钱领域」第一选择（
+                <span className="font-semibold text-webank-accent">37%</span>），Q3仍以{' '}
+                <span className="font-semibold text-webank-accent">39%</span> 稳居第二选择。
+              </p>
+              <div className="rounded-md bg-red-50/70 border-l-4 border-red-400 pl-3 py-2">
+                <p className="font-semibold text-red-600 mb-1">收缩周期里的支出顺序</p>
+                <p className="text-[12px] text-slate-600 leading-relaxed">
+                  必需开支先被保障，居民先减少弹性消费，健康是最后退让的支出方向。
+                </p>
+              </div>
+              <p className="text-[12px] text-slate-600 leading-relaxed">
+                26年Q2在<span className="font-semibold text-webank-accent">医疗</span>增加消费最多；而在
+                <span className="font-semibold text-red-500">外出餐饮、文娱服务</span>方面减少支出最多。
+              </p>
+            </div>
           </BaseCard>
 
-          {/* 卡片2：二手交易和快消零售 */}
-          <BaseCard title="二手交易和快消零售快速增长" delay="120ms">
-            <p className="text-sm">
-              二手交易：2025年全国二手商品交易额约1.7万亿、增速约12%，2026年闲置交易市场规模预计已突破3万亿元；二手车2026H1成交971.32万辆、首超新车。
-            </p>
-            <p className="text-sm mt-1">
-              快消零售：2025年城镇快消销量+3.6%、均价-2.6%、销售额+0.9%；2026Q1 销量+1.3%、销售额-1.3%（贝恩×纽锐拓）。 在高性价比诉求下，消费者转向用低价高频的快消替代高价低频消费，追求更多实用价值。
-            </p>
-            <p className="text-sm mt-1 text-webank-subtext">
-              行为数据印证：82%的人愿意延长物品使用时间，69%选择修理而非丢弃；一半Z世代每2–3个月购买二手，性价比与循环消费意识持续增强。
-            </p>
+          {/* 中框：三大细分赛道 */}
+          <BaseCard
+            title="三大健康消费赛道"
+            variant="accent"
+            className="h-full overflow-auto"
+          >
+            <ol className="space-y-3 text-[13px] leading-relaxed text-slate-600">
+              <li>
+                <span className="font-bold text-webank-blue">1. 健身：</span>
+                商业健身市场 2025 年 <span className="font-semibold text-webank-accent">3,827 亿</span>（
+                <span className="font-semibold text-red-500">+34.2%</span>），Z世代成消费主力、月均轻中端支出{' '}
+                <span className="font-semibold">300–500 元</span>，县域增速{' '}
+                <span className="font-semibold text-red-500">40%</span>。
+              </li>
+              <li>
+                <span className="font-bold text-webank-blue">2. 智能穿戴：</span>
+                健康设备 <span className="font-semibold text-webank-accent">711 亿</span>（CAGR{' '}
+                <span className="font-semibold">14.4%</span>），腕戴出货{' '}
+                <span className="font-semibold">7,390 万台</span>（
+                <span className="font-semibold text-red-500">+20.8%</span>）；
+                <span className="font-semibold">45%</span> 为健康监测而买、国补{' '}
+                <span className="font-semibold">15%</span>——技术让健康可测量。Z世代使用智能设备监测健康问题{' '}
+                <span className="font-semibold text-webank-accent">75%</span>，
+                <span className="font-semibold">26%</span> 的消费者使用 AI 处理健康问题（高于整体 22%）。
+              </li>
+              <li>
+                <span className="font-bold text-webank-blue">3. 心理咨询/情绪：</span>
+                心理咨询 <span className="font-semibold text-webank-accent">1,450 亿</span>（年均{' '}
+                <span className="font-semibold text-red-500">+27%</span>）；Z世代{' '}
+                <span className="font-semibold text-webank-accent">68.3%</span> 向 AI 倾诉。
+              </li>
+            </ol>
+          </BaseCard>
+
+          {/* 右框：技术让健康“可测量” */}
+          <BaseCard
+            title="技术让健康“可测量”"
+            variant="accent"
+            className="h-full overflow-auto"
+          >
+            <div className="space-y-2.5 text-[13px] leading-relaxed text-slate-600">
+              <ul className="space-y-2">
+                <li>
+                  <span className="font-semibold text-webank-blue">实时测量：</span>
+                  智能手表、连续血糖监测、健身手环让睡眠质量、血糖、营养摄入、心脏健康可实时测量。
+                </li>
+                <li>
+                  <span className="font-semibold text-webank-blue">使用率：</span>
+                  Z世代 <span className="font-semibold text-webank-accent">75%</span>、千禧一代{' '}
+                  <span className="font-semibold text-webank-accent">73%</span> 使用此类工具（X世代 55%、婴儿潮 32%）。
+                </li>
+                <li>
+                  <span className="font-semibold text-webank-blue">AI 处理健康问题：</span>
+                  <span className="font-semibold text-webank-accent">22%</span> 的消费者用大语言模型处理健康问题（Z世代 26%）。
+                </li>
+              </ul>
+            </div>
           </BaseCard>
         </div>
 
-        {/* 图表区域：两列 */}
-        <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
-          {/* 左列：合成图（出游人数柱 + 总花费柱 + 人均花费线） */}
-          <ChartContainer delay="600ms" className="h-full min-h-0">
-            <BaseBarChart
-              data={mergedData}
-              title="三大长假出游人数花费与人均消费（按节日分布）"
-              subtitle={`数据来源：文化和旅游部·国家统计局 | 单位：亿人次 / 亿元 / 元 | 红线为人均消费（元）`}
-              xAxisKey="period"
-              bars={travelBars}
-              lines={travelLines}
-              yAxisDomain={[0, 20]}
-              showYAxis={true}
-              yAxisTickFormatter={(v) => `${v}亿`}
-              yAxisWidth={30}
-              legendOrder={['出游人数（亿人次）', '总花费（亿元）', '人均消费（元）']}
-              legendFontSize={9}
-              barSize={14}
-              barGap={3}
-              barCategoryGap="35%"
-              showLabels={true}
-              labelContent={({ value, x, y, width, dataKey }: any) => {
-                if (value == null) return null;
-                const num = Number(value) || 0;
-                const cx = (Number(x) || 0) + (Number(width) || 0) / 2;
-                const isSpending = dataKey === 'spending';
-                const text = isSpending ? Math.round(num).toLocaleString() : num.toFixed(2);
-                return (
-                  <text
-                    x={cx}
-                    y={(Number(y) || 0) - 6}
-                    textAnchor="middle"
-                    fill={isSpending ? '#C09A4A' : '#1B4F72'}
-                    fontSize={8}
-                    fontWeight={700}
-                  >
-                    {text}
-                  </text>
-                );
-              }}
-              xAxisTickFormatter={(v) => {
-                const match = String(v).match(/(\d{2})$/);
-                return match ? match[1] : '';
-              }}
-              xAxisTickFontSize={9}
-              xAxisHeight={22}
-              xAxisInterval={0}
-              categoryGroups={mergedCategoryGroups}
-              showLineYAxis={true}
-              lineAxisDomain={[0, 20000]}
-              lineUnit="元"
-              lineYAxisWidth={44}
-              lineYAxisTickFormatter={(v) => `${Math.round(v)}`}
-              lineExtraAxis={{
-                domain: [0, 1600],
-                unit: '元',
-                width: 44,
-                tickFormatter: (v) => `${Math.round(v)}`,
-              }}
-              unit="亿人次"
-              lineLabelContent={({ value, x, y }: any) => {
-                if (value == null) return null;
-                return (
-                  <text
-                    x={Number(x)}
-                    y={Number(y) - 8}
-                    textAnchor="middle"
-                    fill="#DC2626"
-                    fontSize={8}
-                    fontWeight={700}
-                  >
-                    {Math.round(Number(value)).toLocaleString()}
-                  </text>
-                );
-              }}
-              lineShowDot={true}
-            />
-          </ChartContainer>
-
-          {/* 右列：行为数据表 */}
-          <ChartContainer delay="840ms">
+        {/* 底部：五图横向排列 */}
+        <div className="grid grid-cols-5 gap-2 h-[250px] shrink-0">
+          {/* 图1 双柱+圆点 */}
+          <FigureCard label="图1" title="最愿意花钱的领域：第一选择 vs 第二选择">
             <div className="flex flex-col h-full">
-              <div className="mb-1.5">
-                <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-                  行为数据：性价比成消费显著增长点
-                </h3>
-                <p className="text-[10px] text-webank-subtext mt-0.5">
-                  数据来源：贝恩×纽锐拓消费者调研（p15–16）
-                </p>
+              <div className="text-[7px] text-slate-400 leading-none mb-1 truncate">
+                北大汇丰 2026Q2–Q3 市场信心调研 · %
               </div>
-              <div className="flex-1 min-h-0 overflow-hidden">
-                <table className="w-full h-full text-[10px] border-collapse">
-                  <thead>
-                    <tr className="bg-webank-blue/10 text-webank-blue">
-                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-14">维度</th>
-                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold">关键数据</th>
-                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-16">解读</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-webank-text">
-                    <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">循环使用</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        <span className="font-bold text-webank-blue">82%</span> 更长时间使用物品再更换；
-                        <span className="font-bold text-webank-blue">69%</span> 选择修理而非丢弃；
-                        <span className="font-bold text-webank-blue">68%</span> 主动减少浪费
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">延长使用周期</td>
-                    </tr>
-                    <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">二手循环</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        <span className="font-bold text-webank-blue">30%</span> 购买二手服装、全品类超
-                        <span className="font-bold text-webank-blue">20%</span>；近一半消费者"DIY化"了过去付费的服务（家政维修、理发、美容）
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">二手加速</td>
-                    </tr>
-                    <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">年轻人领先</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        一半 Z 世代在社交平台寻找 DIY 灵感（尤其关注省钱博主）；一半每
-                        <span className="font-bold text-webank-blue">2–3</span> 个月购买二手
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">Z 世代引领</td>
-                    </tr>
-                    <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">二手机动载具</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        Z 世代更看重"淘乐趣""独特孤品"；婴儿潮一代更看重"比新的便宜"（Exhibit 9）
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">动机分化</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
+                {healthGroups.map((g) => (
+                  <div key={g.name} className="relative flex flex-1 h-full items-end justify-center gap-1">
+                    <div className="flex flex-col items-center justify-end">
+                      <span className="text-[8px] text-slate-600 leading-none mb-0.5">{g.q2}</span>
+                      <div className="w-3.5 bg-[#a9c3e2]" style={{ height: h1(g.q2) }} />
+                    </div>
+                    <div className="flex flex-col items-center justify-end">
+                      <span className="text-[8px] text-webank-blue font-semibold leading-none mb-0.5">{g.q3}</span>
+                      <div className="w-3.5 bg-[#2e4a6b]" style={{ height: h1(g.q3) }} />
+                    </div>
+                    <div
+                      className="absolute right-0 flex flex-col items-center"
+                      style={{ bottom: h1(g.dot) }}
+                    >
+                      <span className="text-[8px] text-orange-500 font-semibold leading-none mb-0.5">{g.dot}</span>
+                      <span className="w-1.5 h-1.5 rounded-full border border-orange-400 bg-white" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-around mt-0.5 border-t border-slate-200 pt-0.5">
+                {healthGroups.map((g) => (
+                  <span key={g.name} className="flex-1 text-center text-[8px] text-slate-700 leading-none truncate">
+                    {g.name}
+                  </span>
+                ))}
+              </div>
+              <div className="flex justify-center gap-1.5 mt-1 text-[7px] text-slate-500 leading-none whitespace-nowrap">
+                <span className="flex items-center gap-0.5">
+                  <i className="w-1.5 h-1.5 bg-[#a9c3e2] inline-block" />第一选择·2026Q2
+                </span>
+                <span className="flex items-center gap-0.5">
+                  <i className="w-1.5 h-1.5 bg-[#2e4a6b] inline-block" />第一选择·2026Q3
+                </span>
+                <span className="flex items-center gap-0.5">
+                  <i className="w-1.5 h-1.5 rounded-full border border-orange-400 inline-block" />第二选择·2026Q3
+                </span>
+              </div>
+              <p className="text-[6.5px] text-slate-400 leading-tight mt-1">
+                注：柱表示「第一选择」占比；圆点为第二选择·2026Q3 占比（按真实数值定位，不连线）。
+              </p>
+            </div>
+          </FigureCard>
+
+          {/* 图2 分框柱状 */}
+          <FigureCard label="图2" title="2026Q2 居民实际消费调整">
+            <div className="flex flex-col h-full">
+              <div className="text-[7px] text-slate-400 leading-none mb-1 truncate">
+                厦大×蚂蚁《中国家庭财富与消费报告（2026Q2）》· %
+              </div>
+              <div className="flex-1 min-h-0 flex justify-around items-end gap-2">
+                {consumeChange.map((grp) => (
+                  <div key={grp.label} className="flex flex-col flex-1 min-w-0 justify-end">
+                    <span className="text-[8px] text-slate-600 font-medium text-center leading-none mb-0.5 truncate">
+                      {grp.label}
+                    </span>
+                    <div className="relative h-[88px] border border-[#41508f] rounded-[2px] px-1.5 flex items-end justify-around gap-1.5">
+                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(10) }} />
+                      <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(20) }} />
+                      {grp.bars.map((b) => (
+                        <div key={b.name} className="flex-1 flex flex-col items-center justify-end min-w-0">
+                          <span className="relative z-10 text-[7.5px] font-semibold text-slate-700 leading-none mb-[1px] whitespace-nowrap bg-white px-[1px]">
+                            {b.v}%
+                          </span>
+                          <div
+                            className="w-full max-w-[16px] rounded-t-[1px]"
+                            style={{ height: h2(b.v), background: b.color }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-around gap-1.5 mt-0.5">
+                      {grp.bars.map((b) => (
+                        <span key={b.name} className="flex-1 text-center text-[7.5px] text-slate-700 leading-none truncate">
+                          {b.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between text-[6px] text-slate-400 leading-none mt-1 pl-0.5 pr-0.5">
+                <span>0%</span>
+                <span>10%</span>
+                <span>20%</span>
+                <span>30%</span>
               </div>
             </div>
-          </ChartContainer>
+          </FigureCard>
+
+          {/* 图3 健身市场规模柱状图 */}
+          <FigureCard label="图3" title="商业健身市场规模（单位：亿元）">
+            <div className="flex flex-col h-full text-[8px]">
+              <div className="flex-1 min-h-0">
+                <MiniBarChart data={fitnessData} height={64} />
+              </div>
+              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
+                <li className="flex gap-1">
+                  <span className="text-webank-blue leading-none">•</span>
+                  <span>
+                    <span className="text-red-500 font-semibold">人均消费（元）4,284（+32.3%）</span>
+                    ；县域增速 <b>40%</b>；Z世代成消费主力、月均 300–500 元。
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </FigureCard>
+
+          {/* 图4 智能可穿戴规模柱状图 */}
+          <FigureCard label="图4" title="智能可穿戴健康设备（单位：亿元）">
+            <div className="flex flex-col h-full text-[8px]">
+              <div className="flex-1 min-h-0">
+                <MiniBarChart data={wearableData} height={58} />
+              </div>
+              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
+                <li className="flex gap-1">
+                  <span className="text-webank-blue leading-none">•</span>
+                  <span>腕带出货 <b>7,390 万台（+20.8%）</b>；智能手表 5,061 万台、手环 2,329 万台。</span>
+                </li>
+                <li className="flex gap-1">
+                  <span className="text-webank-blue leading-none">•</span>
+                  <span><b>45.48%</b> 以「健康监测」为购买首因；2026 起 <b>15%</b> 国补。</span>
+                </li>
+              </ul>
+            </div>
+          </FigureCard>
+
+          {/* 图5 心理咨询规模折线图 */}
+          <FigureCard label="图5" title="心理咨询行业规模（单位：亿元，宽口径）">
+            <div className="flex flex-col h-full text-[8px]">
+              <div className="flex-1 min-h-0">
+                <MiniLineChart data={therapyData} />
+              </div>
+              <ul className="mt-1 space-y-0.5 text-[7px] leading-snug text-slate-600">
+                <li className="flex gap-1">
+                  <span className="text-webank-blue leading-none">•</span>
+                  <span>五年增幅约 <b>3.8 倍</b>，年均增速约 <b>27%</b>。</span>
+                </li>
+                <li className="flex gap-1">
+                  <span className="text-webank-blue leading-none">•</span>
+                  <span>Z世代占情绪经济 <b>77.5%</b>；<b>68.3%</b> 曾向 AI 倾诉。</span>
+                </li>
+              </ul>
+            </div>
+          </FigureCard>
         </div>
       </div>
     </BaseContentSlide>

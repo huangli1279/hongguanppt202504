@@ -6,7 +6,7 @@ import { BaseSectionTransitionSlide } from './components/layouts/BaseSectionTran
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 44;
+const TOTAL_SLIDES = 43;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -30,18 +30,18 @@ const ContentSlide17 = lazyNamed(() => import('./components/slides/ContentSlide1
 const ContentSlide18 = lazyNamed(() => import('./components/slides/ContentSlide18'), 'ContentSlide18');
 const ContentSlide19 = lazyNamed(() => import('./components/slides/ContentSlide19'), 'ContentSlide19');
 const ContentSlide20 = lazyNamed(() => import('./components/slides/ContentSlide20'), 'ContentSlide20');
-const ContentSlide21 = lazyNamed(() => import('./components/slides/ContentSlide21'), 'ContentSlide21');
+const ContentSlide22 = lazyNamed(() => import('./components/slides/ContentSlide22'), 'ContentSlide22');
 const ContentSlide23 = lazyNamed(() => import('./components/slides/ContentSlide23'), 'ContentSlide23');
 const ContentSlide24 = lazyNamed(() => import('./components/slides/ContentSlide24'), 'ContentSlide24');
 const ContentSlide25 = lazyNamed(() => import('./components/slides/ContentSlide25'), 'ContentSlide25');
 const ContentSlide26 = lazyNamed(() => import('./components/slides/ContentSlide26'), 'ContentSlide26');
-const ContentSlide27 = lazyNamed(() => import('./components/slides/ContentSlide27'), 'ContentSlide27');
+const ContentSlide28 = lazyNamed(() => import('./components/slides/ContentSlide28'), 'ContentSlide28');
 const ContentSlide29 = lazyNamed(() => import('./components/slides/ContentSlide29'), 'ContentSlide29');
-const ContentSlide30 = lazyNamed(() => import('./components/slides/ContentSlide30'), 'ContentSlide30');
+const ContentSlide31 = lazyNamed(() => import('./components/slides/ContentSlide31'), 'ContentSlide31');
 const ContentSlide32 = lazyNamed(() => import('./components/slides/ContentSlide32'), 'ContentSlide32');
 const ContentSlide33 = lazyNamed(() => import('./components/slides/ContentSlide33'), 'ContentSlide33');
 const ContentSlide34 = lazyNamed(() => import('./components/slides/ContentSlide34'), 'ContentSlide34');
-const ContentSlide35 = lazyNamed(() => import('./components/slides/ContentSlide35'), 'ContentSlide35');
+const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
 const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
 const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
 const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
@@ -49,7 +49,6 @@ const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide4
 const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
 const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
 const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
-const ContentSlide44 = lazyNamed(() => import('./components/slides/ContentSlide44'), 'ContentSlide44');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -169,28 +168,28 @@ const App: React.FC = () => {
       case 18: return <ContentSlide18 />;
       case 19: return <ContentSlide19 />;
       case 20: return <ContentSlide20 />;
-      case 21: return <ContentSlide21 />;
-      case 22: return <BaseSectionTransitionSlide id="05" title="进出口分析" />;
+      case 21: return <BaseSectionTransitionSlide id="05" title="进出口分析" />;
+      case 22: return <ContentSlide22 />;
       case 23: return <ContentSlide23 />;
       case 24: return <ContentSlide24 />;
       case 25: return <ContentSlide25 />;
       case 26: return <ContentSlide26 />;
-      case 27: return <ContentSlide27 />;
-      case 28: return <BaseSectionTransitionSlide id="06" title="财政分析" />;
+      case 27: return <BaseSectionTransitionSlide id="06" title="财政分析" />;
+      case 28: return <ContentSlide28 />;
       case 29: return <ContentSlide29 />;
-      case 30: return <ContentSlide30 />;
-      case 31: return <BaseSectionTransitionSlide id="07" title="金融数据分析" />;
+      case 30: return <BaseSectionTransitionSlide id="07" title="金融数据分析" />;
+      case 31: return <ContentSlide31 />;
       case 32: return <ContentSlide32 />;
       case 33: return <ContentSlide33 />;
       case 34: return <ContentSlide34 />;
-      case 35: return <ContentSlide35 />;
-      case 36: return (
+      case 35: return (
         <BaseSectionTransitionSlide
           id="08"
           title="消费特点"
           subtitle="体验与情绪消费崛起、情绪经济提速；AI深度介入搜索、比价与决策，重塑消费链路；消费者更精明，从追求价格转向追求性价比；收缩周期下健康支出刚性凸显，医疗、健身与智能穿戴逆势增长。"
         />
       );
+      case 36: return <ContentSlide36 />;
       case 37: return <ContentSlide37 />;
       case 38: return <ContentSlide38 />;
       case 39: return <ContentSlide39 />;
@@ -198,7 +197,6 @@ const App: React.FC = () => {
       case 41: return <ContentSlide41 />;
       case 42: return <ContentSlide42 />;
       case 43: return <ContentSlide43 />;
-      case 44: return <ContentSlide44 />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);

@@ -38,9 +38,9 @@ export const ContentSlide18: React.FC = () => (
             1—9月新增专项债发行<span className="font-semibold">3.56万亿元</span>、进度<span className="font-semibold">81%</span>，9月同比多增<span className="font-semibold">2,148亿元</span>，叠加特别国债、政策性金融工具等多元工具协同。但专项债中化债、土储等非直接投资类占比仍处高位（图2），“资金到位→实物工作量”的传导存在时滞，四季度仍需观察。
           </p>
         </BaseCard>
-        <BaseCard title="专项债提速，多元工具协同" delay="120ms">
+        <BaseCard title="多元工具协同稳投资" delay="120ms">
           <p>
-            专项债发行提速，1—9月全国发行新增专项债<span className="font-semibold">35,608亿元</span>，发行进度<span className="font-semibold">81%</span>，快于时间进度；9月单月发行<span className="font-semibold">6,339亿元</span>、同比多增<span className="font-semibold">2,148亿元</span>，提速最为明显。多元工具超长特别国债、新型政策性金融工具、PSL降息扩围、地方债结存限额等协同，助力稳投资。（图3）
+            多元工具超长特别国债、新型政策性金融工具、PSL（抵押补充贷款）降息扩围、地方债结存限额等协同，助力稳投资。（图3）
           </p>
         </BaseCard>
       </div>
@@ -118,7 +118,7 @@ export const ContentSlide18: React.FC = () => (
               <p className="text-xs text-webank-subtext mt-1">数据来源：公开资料整理</p>
             </div>
             <div className="flex-grow min-h-0 overflow-hidden">
-              <table className="w-full h-full text-[10px] leading-tight border-collapse table-fixed">
+              <table className="w-full h-full text-[9px] leading-[1.1] border-collapse table-fixed">
                 <colgroup>
                   <col className="w-[19%]" />
                   <col className="w-[21%]" />
@@ -127,49 +127,61 @@ export const ContentSlide18: React.FC = () => (
                 </colgroup>
                 <thead>
                   <tr className="bg-webank-accent/10 text-webank-blue">
-                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">政策工具</th>
-                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">总规模</th>
-                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">资金投向 / 用途</th>
-                    <th className="border border-slate-300 px-1.5 py-1 text-left font-bold">进度与时点</th>
+                    <th className="border border-slate-300 px-1 py-0.5 text-left font-bold">政策工具</th>
+                    <th className="border border-slate-300 px-1 py-0.5 text-left font-bold">总规模</th>
+                    <th className="border border-slate-300 px-1 py-0.5 text-left font-bold">资金投向 / 用途</th>
+                    <th className="border border-slate-300 px-1 py-0.5 text-left font-bold">进度与时点</th>
                   </tr>
                 </thead>
                 <tbody className="text-webank-text align-top">
                   <tr className="even:bg-slate-50/70">
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">超长期特别国债</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold tabular-nums">1.3万亿元</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5">
+                    <td className="border border-slate-300 px-1 py-1 font-semibold text-webank-blue">
+                      超长期特别国债
+                      <div className="mt-0.5">（中央财政发行，市场认购）</div>
+                    </td>
+                    <td className="border border-slate-300 px-1 py-1 font-semibold tabular-nums">1.3万亿元</td>
+                    <td className="border border-slate-300 px-1 py-1">
                       8,000亿→“两重”建设；<br />
                       2,500亿→消费品以旧换新；<br />
                       2,000亿→大规模设备更新
                     </td>
-                    <td className="border border-slate-300 px-1.5 py-1.5">
+                    <td className="border border-slate-300 px-1 py-1">
                       4月24日开始，10月16日发行结束
-                      <div className="mt-1 text-webank-subtext">二季度 5,720亿｜三季度 6,050亿｜四季度 1,230亿</div>
+                      <div className="mt-0.5 text-webank-subtext">二季度 5,720亿｜三季度 6,050亿｜四季度 1,230亿</div>
                     </td>
                   </tr>
                   <tr className="even:bg-slate-50/70">
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">新型政策性金融工具</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold tabular-nums">8,000亿元</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5">补充项目资本金</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5">
+                    <td className="border border-slate-300 px-1 py-1 font-semibold text-webank-blue">
+                      新型政策性金融工具
+                      <div className="mt-0.5">（政策性银行发债募资、财政贴息，为项目补充资本金）</div>
+                    </td>
+                    <td className="border border-slate-300 px-1 py-1 font-semibold tabular-nums">8,000亿元</td>
+                    <td className="border border-slate-300 px-1 py-1">补充项目资本金</td>
+                    <td className="border border-slate-300 px-1 py-1">
                       9月开闸 → 10月28日全部投放完毕
-                      <div className="mt-1 text-webank-subtext">撬动项目总投资约11万亿元</div>
+                      <div className="mt-0.5 text-webank-subtext">撬动项目总投资约11万亿元</div>
                     </td>
                   </tr>
                   <tr className="even:bg-slate-50/70">
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">PSL</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold">降息扩围</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5">“六张网”纳入支持范围</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5 text-webank-subtext">—</td>
+                    <td className="border border-slate-300 px-1 py-1 font-semibold text-webank-blue">
+                      PSL（抵押补充贷款）
+                      <div className="mt-0.5">（央行给政策性银行供应“定向低息资金”）</div>
+                    </td>
+                    <td className="border border-slate-300 px-1 py-1 font-semibold">降息扩围</td>
+                    <td className="border border-slate-300 px-1 py-1">“六张网”纳入支持范围</td>
+                    <td className="border border-slate-300 px-1 py-1 text-webank-subtext">—</td>
                   </tr>
                   <tr className="even:bg-slate-50/70">
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold text-webank-blue">地方债结存限额</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5 font-semibold tabular-nums">
+                    <td className="border border-slate-300 px-1 py-1 font-semibold text-webank-blue">
+                      地方债结存限额
+                      <div className="mt-0.5">（盘活前期未使用地方债额度）</div>
+                    </td>
+                    <td className="border border-slate-300 px-1 py-1 font-semibold tabular-nums">
                       5,500亿元
                       <div className="text-webank-subtext font-normal">（其中专项债2,500亿）</div>
                     </td>
-                    <td className="border border-slate-300 px-1.5 py-1.5">可用作项目资本金</td>
-                    <td className="border border-slate-300 px-1.5 py-1.5 text-webank-subtext">—</td>
+                    <td className="border border-slate-300 px-1 py-1">可用作项目资本金</td>
+                    <td className="border border-slate-300 px-1 py-1 text-webank-subtext">—</td>
                   </tr>
                 </tbody>
               </table>
