@@ -59,17 +59,19 @@ export const ContentSlide08: React.FC = () => {
               title="规上工业分行业增加值累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'industrial', name: '全部', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -22 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -5 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': 28 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'utilities', name: '电力热力燃气水', color: seriesColors[3], strokeWidth: 1.8, pointOffsets: { '2026-09': -38 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'industrial', name: '全部', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': 22 } },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -10 } },
+                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': -5 } },
+                { dataKey: 'utilities', name: '电力热力燃气水', color: seriesColors[3], strokeWidth: 1.8, pointOffsets: { '2026-09': 15, '2026-10': 14 } },
               ]}
               yAxisDomain={[0, 8]}
               showYAxis={true}
               legendOrder={['全部', '制造业', '采矿业', '电力热力燃气水']}
               highlightPeriods={['2026-09']}
-              xAxisTicks={['2024-06', '2024-12', '2025-06', '2025-12', '2026-09']}
-              xAxisAngle={0}
+              xAxisTicks={['2024-03', '2024-09', '2025-03', '2025-09', '2026-03', '2026-09']}
+              xAxisAngle={-45}
+              xAxisDy={10}
+              xAxisHeight={16}
             />
           </ChartContainer>
 
@@ -80,16 +82,18 @@ export const ContentSlide08: React.FC = () => {
               subtitle="分行业当季值 | 数据来源：国家统计局 | 单位：%"
               lines={[
                 { dataKey: 'industrial', name: '全部工业', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': 2 } },
-                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -16 } },
-                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': 4 } },
-                { dataKey: 'utilities', name: '电力热力燃气水', color: seriesColors[3], strokeWidth: 2, pointOffsets: { '2026-09': 16 } },
+                { dataKey: 'manufacturing', name: '制造业', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -6 } },
+                { dataKey: 'mining', name: '采矿业', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': 3 } },
+                { dataKey: 'utilities', name: '电力热力燃气水', color: seriesColors[3], strokeWidth: 2, pointOffsets: { '2026-09': 8 } },
               ]}
               yAxisDomain={[60, 80]}
               showYAxis={true}
               legendOrder={['全部工业', '制造业', '采矿业', '电力热力燃气水']}
               highlightPeriods={['2026-09']}
-              xAxisTicks={['2023-03', '2024-06', '2025-09', '2026-09']}
-              xAxisAngle={0}
+              xAxisTicks={['2023-03', '2023-12', '2024-09', '2025-06', '2026-03', '2026-09']}
+              xAxisAngle={-45}
+              xAxisDy={10}
+              xAxisHeight={16}
             />
           </ChartContainer>
 
@@ -108,8 +112,10 @@ export const ContentSlide08: React.FC = () => {
               showYAxis={true}
               legendOrder={['汽车', '计算机通信电子', '专用设备', '电气机械']}
               highlightPeriods={['2026-09']}
-              xAxisTicks={['2023-03', '2024-06', '2025-09', '2026-09']}
-              xAxisAngle={0}
+              xAxisTicks={['2023-03', '2023-12', '2024-09', '2025-06', '2026-03', '2026-09']}
+              xAxisAngle={-45}
+              xAxisDy={10}
+              xAxisHeight={16}
             />
           </ChartContainer>
         </>

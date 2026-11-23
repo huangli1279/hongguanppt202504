@@ -15,8 +15,8 @@ import { CpiCategoryDataPoint, cpiCategoryData, cpiTrendData } from '@/data/cpi'
 import { uiColors } from '@/utils/chartColors';
 
 const cpiLines: LineConfig[] = [
-  { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5 },
-  { dataKey: 'coreCpi', name: '剔除食品能源CPI:当月同比', strokeWidth: 2 },
+  { dataKey: 'cpi', name: 'CPI:当月同比', strokeWidth: 2.5, labelDY: 6 },
+  { dataKey: 'coreCpi', name: '剔除食品能源CPI:当月同比', strokeWidth: 2, labelDY: 2 },
 ];
 
 const MINI_LINE_COLOR = '#005c8f';

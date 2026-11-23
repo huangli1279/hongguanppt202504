@@ -75,13 +75,13 @@ export const ContentSlide09: React.FC = () => {
       }
       charts={
         <>
-          <ChartContainer delay="600ms" className="pb-8">
+          <ChartContainer delay="600ms">
             <BaseLineChart
               data={profitChartData}
               title="规上工业企业利润累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'industrialProfit', name: '规上工业企业利润总额', strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                { dataKey: 'industrialProfit', name: '规上工业企业利润总额', strokeWidth: 2.5, pointOffsets: { '2026-09': 3 } },
               ]}
               yAxisDomain={[-5, 25]}
               showYAxis={true}
@@ -92,15 +92,16 @@ export const ContentSlide09: React.FC = () => {
               unit="%"
               yAxisTickFormatter={(val) => `${val}`}
               xAxisTicks={['2025-02', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
+              xAxisHeight={17}
             />
           </ChartContainer>
-          <ChartContainer delay="660ms" className="pb-8">
+          <ChartContainer delay="660ms">
             <BaseLineChart
               data={ppiChartData}
               title="PPI当月同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-10': 14 } },
+                { dataKey: 'ppiYoy', name: 'PPI当月同比', strokeWidth: 2.5, pointOffsets: { '2026-10': 3 } },
               ]}
               yAxisDomain={[-7, 11]}
               showYAxis={true}
@@ -111,9 +112,10 @@ export const ContentSlide09: React.FC = () => {
               xAxisTicks={ppiHalfYearTicks}
               unit="%"
               yAxisTickFormatter={(val) => `${val}`}
+              xAxisHeight={17}
             />
           </ChartContainer>
-          <ChartContainer delay="720ms" className="pb-8" ariaLabel="生产资料与生活资料当月同比双线与剪刀差阴影，标注 9 月与 10 月数据">
+          <ChartContainer delay="720ms" ariaLabel="生产资料与生活资料当月同比双线与剪刀差阴影，标注 9 月与 10 月数据">
             <div className="w-full h-full flex flex-col">
               <div className="mb-4">
                 <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
@@ -121,7 +123,7 @@ export const ContentSlide09: React.FC = () => {
                 </h3>
                 <p className="text-xs text-webank-subtext mt-1">数据来源：国家统计局 | 单位：%</p>
               </div>
-              <div className="flex-grow min-h-0">
+              <div className="flex-grow min-h-0 band-after-lines">
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart
                     data={ppiMaterialsGapData}
@@ -134,6 +136,7 @@ export const ContentSlide09: React.FC = () => {
                       tickLine={false}
                       tick={{ fill: uiColors.tick, fontSize: 10 }}
                       dy={10}
+                      height={16}
                       interval={0}
                       angle={-45}
                       textAnchor="end"
@@ -206,7 +209,8 @@ export const ContentSlide09: React.FC = () => {
                               x={props.cx}
                               y={props.cy}
                               dx={isSep ? -6 : 8}
-                              dy={isSep ? -8 : 12}
+                              dy={isSep ? 3 : 3}
+                              className="label-fade-in"
                               fill="#b91c1c"
                               fontSize={10}
                               fontWeight={600}
@@ -235,7 +239,8 @@ export const ContentSlide09: React.FC = () => {
                               x={props.cx}
                               y={props.cy}
                               dx={isSep ? -6 : 8}
-                              dy={isSep ? -8 : 12}
+                              dy={isSep ? 20 : 3}
+                              className="label-fade-in"
                               fill="#2563eb"
                               fontSize={10}
                               fontWeight={600}

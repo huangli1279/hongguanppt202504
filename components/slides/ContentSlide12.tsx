@@ -101,8 +101,8 @@ export const ContentSlide12: React.FC = () => {
               title="社零当月同比与除汽车外社零"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'totalRetail', name: '社零当月同比', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 } },
-                { dataKey: 'exAutoRetail', name: '除汽车外社零当月同比', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 12 } },
+                { dataKey: 'totalRetail', name: '社零当月同比', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': 3 } },
+                { dataKey: 'exAutoRetail', name: '除汽车外社零当月同比', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 3 } },
               ]}
               legendOrder={['社零当月同比', '除汽车外社零当月同比']}
               yAxisDomain={[-1, 8]}
@@ -119,10 +119,10 @@ export const ContentSlide12: React.FC = () => {
               title="分地区社零累计同比"
               subtitle="数据来源：各地统计局 | 单位：%（广州为1—8月口径）"
               lines={[
-                { dataKey: 'beijing', name: '北京', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': -12 } },
-                { dataKey: 'shanghai', name: '上海', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': 14 } },
-                { dataKey: 'guangzhou', name: '广州', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': -10 } },
-                { dataKey: 'shenzhen', name: '深圳', color: seriesColors[3], strokeWidth: 2, pointOffsets: { '2026-09': 6 } },
+                { dataKey: 'beijing', name: '北京', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': 0 } },
+                { dataKey: 'shanghai', name: '上海', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': 10 } },
+                { dataKey: 'guangzhou', name: '广州', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': -3 } },
+                { dataKey: 'shenzhen', name: '深圳', color: seriesColors[3], strokeWidth: 2, pointOffsets: { '2026-09': 7 } },
               ]}
               yAxisDomain={[-6, 12]}
               showYAxis

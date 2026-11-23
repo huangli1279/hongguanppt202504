@@ -35,9 +35,9 @@ export const ContentSlide06: React.FC = () => {
                   <li>
                     <span className="font-semibold">关键驱动力：</span>
                     出口+ 高技术制造业支撑总量，
-                    <span className="font-semibold text-webank-blue">8,000 亿</span>
+                    <span className="font-semibold text-black">8,000 亿</span>
                     新型政策性金融工具 + 六张网 +
-                    <span className="font-semibold text-webank-blue">5,500 亿</span>
+                    <span className="font-semibold text-black">5,500 亿</span>
                     结存限额支撑投资
                   </li>
                   <li>
@@ -50,19 +50,19 @@ export const ContentSlide06: React.FC = () => {
               <BaseCard title="机构预测" delay="120ms" variant="accent" className="!gap-1.5 !p-3 w-full">
                 <ul className="space-y-1 text-[11px] leading-snug">
                   <li>
-                    <span className="font-bold text-webank-blue">IMF：</span>
+                    <span className="font-bold text-black">IMF：</span>
                     10 月 13 日下修 4.6%→4.5%，理由是 Q2 表现不及预期，地产拖累下消费与投资放缓
                   </li>
                   <li>
-                    <span className="font-bold text-webank-blue">OECD：</span>
+                    <span className="font-bold text-black">OECD：</span>
                     4.5%，与 Q2 持平，外部环境与内需修复仍面临不确定性
                   </li>
                   <li>
-                    <span className="font-bold text-webank-blue">高盛：</span>
+                    <span className="font-bold text-black">高盛：</span>
                     4.6%，Q3 好于预期，9 月经济改善
                   </li>
                   <li>
-                    <span className="font-bold text-webank-blue">国内机构：</span>
+                    <span className="font-bold text-black">国内机构：</span>
                     <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] mt-0.5">
                       <li>
                         <span className="font-semibold">第一财经：</span>

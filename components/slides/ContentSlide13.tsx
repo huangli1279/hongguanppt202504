@@ -44,8 +44,8 @@ export const ContentSlide13: React.FC = () => {
               title="服务零售额 vs 商品零售额累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', color: seriesColors[0], strokeWidth: 2.5, labelDY: -8 },
-                { dataKey: 'goodsRetail', name: '商品零售额:累计同比', color: seriesColors[1], strokeWidth: 2.5, labelDY: 8 },
+                { dataKey: 'serviceRetail', name: '服务零售额:累计同比', color: seriesColors[0], strokeWidth: 2.5, labelDY: 3 },
+                { dataKey: 'goodsRetail', name: '商品零售额:累计同比', color: seriesColors[1], strokeWidth: 2.5, labelDY: 3 },
               ]}
               legendOrder={['服务零售额:累计同比', '商品零售额:累计同比']}
               yAxisDomain={[0, 8]}
@@ -61,9 +61,9 @@ export const ContentSlide13: React.FC = () => {
               title="乘用车及分项零售销量累计同比：燃油、新能源"
               subtitle="数据来源：乘联会（零售口径，不含出口） | 单位：%"
               lines={[
-                { dataKey: 'fuelRetailYoy', name: '燃油车', color: seriesColors[0], strokeWidth: 2.5, labelDY: 8 },
-                { dataKey: 'nevRetailYoy', name: '新能源汽车', color: seriesColors[1], strokeWidth: 2.5, labelDY: -12 },
-                { dataKey: 'narrowPassengerCarYoy', name: '乘用车:累计同比', color: seriesColors[2], strokeWidth: 2.5, labelDY: 14 },
+                { dataKey: 'fuelRetailYoy', name: '燃油车', color: seriesColors[0], strokeWidth: 2.5, labelDY: 3 },
+                { dataKey: 'nevRetailYoy', name: '新能源汽车', color: seriesColors[1], strokeWidth: 2.5, labelDY: 3 },
+                { dataKey: 'narrowPassengerCarYoy', name: '乘用车:累计同比', color: seriesColors[2], strokeWidth: 2.5, labelDY: 3 },
               ]}
               legendOrder={['燃油车', '新能源汽车', '乘用车:累计同比']}
               yAxisDomain={[-40, 40]}

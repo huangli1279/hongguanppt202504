@@ -192,3 +192,12 @@ body {
 .animate-float-4 { animation: float4 4.5s ease-in-out 1.5s infinite; }
 
 .fill-mode-forwards { animation-fill-mode: forwards; }
+
+/* 折线图面积在折线动画结束后淡入 */
+.band-after-lines .recharts-area { animation: bandFadeIn 0.8s ease-out 1.55s both; }
+@keyframes bandFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+/* 折线动画结束后浮现的数据标签 */
+.label-fade-in { animation: bandFadeIn 0.4s ease-out 1.55s both; }
+

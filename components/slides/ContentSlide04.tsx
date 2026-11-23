@@ -60,7 +60,7 @@ export const ContentSlide04: React.FC = () => {
                   fillOpacity: 0,
                   labelFill: '#ef4444',
                   labelPosition: 'insideTop',
-                  labelDy: 90,
+                  labelDy: 80,
                 },
               ]}
               lines={[
@@ -69,10 +69,10 @@ export const ContentSlide04: React.FC = () => {
                   name: 'GDP不变价',
                   strokeWidth: 2,
                   labelPosition: 'top',
-                  labelDY: -8,
+                  labelDY: 3,
                   pointOffsets: { '2026-06': 18 },
                 },
-                { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom', labelDY: 14, hiddenLabelPeriods: ['2026-06'] },
+                { dataKey: 'nominal', name: 'GDP现价', strokeWidth: 2, labelPosition: 'bottom', labelDY: 3, hiddenLabelPeriods: ['2026-06'] },
               ]}
             />
           </ChartContainer>
@@ -94,8 +94,8 @@ export const ContentSlide04: React.FC = () => {
                   color: chartColors.primary,
                   strokeWidth: 2,
                   labelPosition: 'top',
-                  labelDY: -8,
-                  pointOffsets: { '2026-03': -14, '2026-06': 18 },
+                  labelDY: 3,
+                  pointOffsets: { '2026-03': -8, '2026-06': 18 },
                 },
               ]}
             />
@@ -113,10 +113,10 @@ export const ContentSlide04: React.FC = () => {
               referenceLineY={0}
               legendOrder={['整体', '第一产业', '第二产业', '第三产业']}
               lines={[
-                { dataKey: 'overall', name: '整体', color: '#dc2626', strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
-                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 12 },
-                { dataKey: 'secondary', name: '第二产业', color: seriesColors[3], strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
-                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: -8 },
+                { dataKey: 'overall', name: '整体', color: '#dc2626', strokeWidth: 2, labelPosition: 'top', labelDY: 3 },
+                { dataKey: 'primary', name: '第一产业', color: industryColors.primary, strokeWidth: 2, labelPosition: 'bottom', labelDY: 3 },
+                { dataKey: 'secondary', name: '第二产业', color: seriesColors[3], strokeWidth: 2, labelPosition: 'top', labelDY: 3 },
+                { dataKey: 'tertiary', name: '第三产业', color: industryColors.tertiary, strokeWidth: 2, labelPosition: 'top', labelDY: 3 },
               ]}
             />
           </ChartContainer>

@@ -53,8 +53,8 @@ export const ContentSlide10: React.FC = () => {
               title="制造业PMI / 服务业PMI"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -16 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'servicePmi', name: '服务业PMI', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 28 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'pmi', name: '制造业PMI', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': 22, '2026-10': 3 } },
+                { dataKey: 'servicePmi', name: '服务业PMI', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -8, '2026-10': 3 } },
               ]}
               yAxisDomain={[48, 52]}
               showYAxis={true}
@@ -62,7 +62,11 @@ export const ContentSlide10: React.FC = () => {
               referenceLineY={50}
               legendOrder={['制造业PMI', '服务业PMI']}
               highlightPeriods={['2026-09']}
-              xAxisAngle={0}
+              xAxisAngle={-45}
+              xAxisDy={10}
+              xAxisHeight={16}
+              chartMarginBottom={2}
+              legendPaddingBottom={0}
             />
           </ChartContainer>
 
@@ -73,8 +77,8 @@ export const ContentSlide10: React.FC = () => {
               title="制造业PMI分项：生产与新订单指数"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'newOrders', name: '新订单', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'production', name: '生产', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -8, '2026-10': 3 } },
+                { dataKey: 'newOrders', name: '新订单', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -8, '2026-10': 3 } },
               ]}
               yAxisDomain={[47, 53]}
               showYAxis={true}
@@ -82,7 +86,7 @@ export const ContentSlide10: React.FC = () => {
               referenceLineY={50}
               legendOrder={['生产', '新订单']}
               highlightPeriods={['2026-09']}
-              xAxisAngle={0}
+              xAxisAngle={-45}
               xAxisTicks={['2026-03', '2026-06', '2026-09']}
               compact={true}
             />
@@ -95,8 +99,8 @@ export const ContentSlide10: React.FC = () => {
               title="制造业PMI分项：原材料购进价格与出厂价格"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={[
-                { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -12 }, hiddenLabelPeriods: ['2026-10'] },
-                { dataKey: 'outputPrice', name: '出厂价格', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': 16 }, hiddenLabelPeriods: ['2026-10'] },
+                { dataKey: 'rawMaterialPurchasePrice', name: '原材料购进价格', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -8, '2026-10': 3 } },
+                { dataKey: 'outputPrice', name: '出厂价格', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -8, '2026-10': 3 } },
               ]}
               yAxisDomain={[44, 65]}
               showYAxis={true}
@@ -104,7 +108,7 @@ export const ContentSlide10: React.FC = () => {
               referenceLineY={50}
               legendOrder={['原材料购进价格', '出厂价格']}
               highlightPeriods={['2026-09']}
-              xAxisAngle={0}
+              xAxisAngle={-45}
               xAxisTicks={['2026-03', '2026-06', '2026-09']}
               compact={true}
             />

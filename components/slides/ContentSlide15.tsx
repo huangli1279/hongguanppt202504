@@ -140,7 +140,7 @@ export const ContentSlide15: React.FC = () => {
                 </h3>
                 <p className="text-xs text-webank-subtext mt-1">数据来源：国家统计局 | 单位：%</p>
               </div>
-              <div className="flex-grow min-h-0">
+              <div className="flex-grow min-h-0 band-after-lines">
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart
                     data={incomeVsConsumptionData}
