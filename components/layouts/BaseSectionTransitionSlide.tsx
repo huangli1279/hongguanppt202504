@@ -4,9 +4,11 @@ interface Props {
   id: string;
   title: string;
   subtitle?: string;
+  /** 一句话主线：在目录页醒目位置放置的核心立论 */
+  lead?: React.ReactNode;
 }
 
-export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle }) => {
+export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitle, lead }) => {
   return (
     <div className="w-full h-full bg-webank-blue flex flex-col justify-center items-center relative overflow-hidden text-white">
       <div className="absolute top-0 left-0 w-full h-2 bg-webank-lightBlue animate-top-line" />
@@ -43,6 +45,14 @@ export const BaseSectionTransitionSlide: React.FC<Props> = ({ id, title, subtitl
           >
             {subtitle}
           </p>
+        )}
+        {lead && (
+          <div
+            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 max-w-4xl mx-auto mt-8 animate-fade-in-up"
+            style={{ animationDelay: '1.1s' }}
+          >
+            <p className="text-white/90 leading-relaxed">{lead}</p>
+          </div>
         )}
       </div>
 

@@ -2,17 +2,9 @@ import React from 'react';
 import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
 import { BaseCard } from '../base/BaseCard';
 import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { increaseConsumptionReasons } from '@/data/increaseConsumptionReasons';
 import { emotionMarketTrend, performanceTrend, tourismTrend } from '@/data/emotionEconomyTrends';
 
 export const ContentSlide37: React.FC = () => {
-  const reasonBars: BarConfig[] = [
-    { dataKey: 'all', name: '全部', color: '#4A79AA' },
-    { dataKey: 'age18_35', name: '18-35岁', color: '#5C9A8A' },
-    { dataKey: 'age36_59', name: '36-59岁', color: '#C09A4A' },
-    { dataKey: 'age60plus', name: '60岁以上', color: '#9AA5AE' },
-  ];
-
   const tourismBars: BarConfig[] = [
     { dataKey: 'spending', name: '出游总花费', color: '#4A79AA' },
     { dataKey: 'trips', name: '出游人次', color: '#C09A4A', yAxisId: 'right', unit: '亿人次' },
@@ -26,28 +18,33 @@ export const ContentSlide37: React.FC = () => {
 
   return (
     <BaseContentSlide
-      title={<>特点一：从“占有物品”到“为体验和情绪付费”</>}
+      title={<>为体验和情绪付费，Z世代成为主力</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full">
         {/* 卡片区域 */}
         <div className="grid grid-cols-2 gap-4 mb-6 flex-shrink-0">
-          <BaseCard title="服务零售快于商品零售，情绪价值成共性动因" delay="120ms">
-            <p>
-              服务零售增幅高于商品零售，不同年龄段均计划未来一年增加消费在旅游、保健养生等，不同年龄段日常增加消费的原因前三名均提及情绪价值。
-            </p>
-          </BaseCard>
-          <BaseCard title="情绪经济提速，Z世代成为主力" delay="0ms" variant="accent">
+          <BaseCard title="总体：情绪经济持续提速" delay="120ms">
             <div className="space-y-2">
               <p>
-                近年旅游、演出票房、情绪相关消费增长较好。据艾媒咨询预计 2029 年情绪经济增长至 <span className="font-semibold text-red-500">4.5万亿</span>；其中 Z 世代：
+                近年旅游、演出票房及情绪相关消费增长较好。国内出游人次从 2022 年的 <span className="font-semibold text-red-500">25.3 亿</span>增至 2025 年的 <span className="font-semibold text-red-500">65.22 亿</span>，三年增长近 1.6 倍；2025 年同比增长约 <span className="font-semibold text-red-500">16.1%</span>，文旅消费持续升温。
               </p>
-              <ul className="list-disc pl-4 space-y-0.5 text-[11px] leading-snug">
+              <p>
+                演出市场同步回暖：全国演出市场总收入从 2022 年的 <span className="font-semibold text-red-500">220.31 亿元</span>增至 2025 年的 <span className="font-semibold text-red-500">837.22 亿元</span>，规模接近增长 2.8 倍。据艾媒咨询预计，2029 年情绪经济市场规模将增长至 <span className="font-semibold text-red-500">4.5 万亿元</span>。
+              </p>
+              <p className="text-[10px] text-gray-500 leading-snug">
+                数据来源：文旅部、国家统计局公报；中国演出行业协会《全国演出市场年度报告》；艾媒咨询
+              </p>
+            </div>
+          </BaseCard>
+          <BaseCard title="Z世代：成为情绪消费主力" delay="0ms" variant="accent">
+            <div className="space-y-2">
+              <ul className="list-disc pl-4 space-y-1 text-[14px] leading-relaxed">
                 <li>超九成青年认可情绪价值的重要性；近六成青年愿意为情绪价值买单（较 2024 年 <span className="font-semibold text-red-500">+16.2pct</span>）；</li>
                 <li>近九成有过为情绪价值买单的经历，近四成为高频消费者；</li>
                 <li>青年情绪消费月均支出949 元；Z 世代连买实物都在买情绪。</li>
               </ul>
-              <p className="text-[10px] text-gray-500 leading-snug">
+              <p className="text-[12px] text-gray-500 leading-relaxed">
                 数据来源：上海市青少年研究中心联合 Soul App《2025 Z世代情绪消费报告》，2025 年 9 月 5 日发布
               </p>
             </div>
@@ -55,45 +52,10 @@ export const ContentSlide37: React.FC = () => {
         </div>
 
         {/* 图表区域 */}
-        <div className="flex-1 min-h-0 grid grid-cols-2 gap-6">
-          <ChartContainer delay="600ms">
-            <BaseBarChart
-              data={increaseConsumptionReasons}
-              title="您日常增加消费的主要原因是什么？"
-              subtitle="数据来源：中央广播电视总台研究院《美好生活大调查》 | 单位：%"
-              xAxisKey="reason"
-              bars={reasonBars}
-              yAxisDomain={[0, 50]}
-              showYAxis={true}
-              yAxisWidth={32}
-              legendOrder={['全部', '18-35岁', '36-59岁', '60岁以上']}
-              legendFontSize={9}
-              barSize={7}
-              barGap={1}
-              barCategoryGap="28%"
-              showLabels={false}
-              highlightAreas={[
-                { x1: '旧物更新', x2: '性价比高', stroke: '#b91c1c', strokeWidth: 1.5 },
-              ]}
-              xAxisAngle={-30}
-              xAxisHeight={48}
-              xAxisInterval={0}
-              xAxisTickFontSize={9}
-              unit="%"
-            />
-          </ChartContainer>
-
+        <div className="flex-1 min-h-0">
           <ChartContainer delay="600ms">
             <div className="flex flex-col h-full">
-              <div className="mb-2">
-                <h3 className="text-sm font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-                  旅游、演出与情绪经济市场规模
-                </h3>
-                <p className="text-[10px] text-webank-subtext mt-1">
-                  数据来源：文旅部、国家统计局公报；中国演出行业协会；艾媒咨询
-                </p>
-              </div>
-              <div className="flex-1 min-h-0 grid grid-cols-3 gap-2">
+              <div className="flex-1 min-h-0 grid grid-cols-3 gap-4">
                 <BaseBarChart
                   data={tourismTrend}
                   title="国内出游总花费与出游人次"
@@ -112,9 +74,9 @@ export const ContentSlide37: React.FC = () => {
                   legendFontSize={8}
                   legendGap={8}
                   legendWrapperStyle={{ bottom: -6 }}
-                  barSize={8}
+                  barSize={11}
                   barGap={2}
-                  barCategoryGap="26%"
+                  barCategoryGap="24%"
                   showLabels={true}
                   labelContent={({ x, y, width, value, dataKey }: any) => {
                     const cx = x + width / 2;
@@ -172,8 +134,8 @@ export const ContentSlide37: React.FC = () => {
                   yAxisWidth={27}
                   yAxisTickFormatter={(value) => `${value}`}
                   showLegend={false}
-                  barSize={13}
-                  barCategoryGap="22%"
+                  barSize={18}
+                  barCategoryGap="20%"
                   showLabels={true}
                   labelFormatter={(value) => Number(value).toFixed(0)}
                   labelPositiveOffset={6}
@@ -193,8 +155,8 @@ export const ContentSlide37: React.FC = () => {
                   yAxisWidth={25}
                   yAxisTickFormatter={(value) => `${value}`}
                   showLegend={false}
-                  barSize={13}
-                  barCategoryGap="18%"
+                  barSize={18}
+                  barCategoryGap="16%"
                   showLabels={true}
                   labelFormatter={(value) => Number(value).toFixed(2)}
                   labelPositiveOffset={6}

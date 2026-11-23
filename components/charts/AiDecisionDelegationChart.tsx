@@ -25,17 +25,6 @@ const RED = '#c81e1e';
 export const AiDecisionDelegationChart: React.FC = () => (
   <div className="flex h-full w-full flex-col">
     <div className="flex flex-1 min-h-0 flex-col justify-center rounded-lg bg-white p-2.5">
-      <div className="mb-2 px-1">
-        <div className="flex items-center justify-between text-[9px] text-slate-500">
-          <span>人保留全部决策</span>
-          <span>委托程度递增</span>
-          <span>AI决策权最大</span>
-        </div>
-        <div className="relative mt-1 h-[1.5px] w-full bg-slate-400">
-          <span className="absolute -right-0.5 top-1/2 h-0 w-0 -translate-y-1/2 border-y-[4px] border-l-[7px] border-y-transparent border-l-slate-400" />
-        </div>
-      </div>
-
       <div className="grid grid-cols-5 gap-2">
         {stages.map((s) => (
           <div
@@ -70,7 +59,7 @@ export const AiDecisionDelegationChart: React.FC = () => (
     </div>
 
     <p className="mt-2 shrink-0 text-[8px] leading-snug text-slate-500">
-      数据：①②中国中小商业企业协会×立信数据 2026Q2；③中国青年报社调；④⑤海外口径·16国调研
+      数据：①②中国中小商业企业协会×立信数据 2026Q2；③中国青年报社调；④⑤埃森哲：与AI代理对话：品牌价值的新规则
     </p>
   </div>
 );

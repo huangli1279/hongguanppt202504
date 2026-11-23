@@ -82,6 +82,8 @@ export interface BaseBarChartProps {
   showYAxis?: boolean;
   yAxisTickFormatter?: (value: any) => string;
   yAxisWidth?: number;
+  /** 左侧坐标轴与图表边界的留白，避免 Y 轴刻度文字被裁切 */
+  chartMarginLeft?: number;
   showReferenceLine?: boolean;
   referenceLineY?: number;
   legendOrder?: string[];
@@ -123,6 +125,7 @@ export interface BaseBarChartProps {
     unit?: string;
     width?: number;
     tickFormatter?: (value: any) => string;
+    hide?: boolean;
   };
   xAxisAngle?: number;
   xAxisHeight?: number;
@@ -250,6 +253,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   showYAxis = false,
   yAxisTickFormatter,
   yAxisWidth,
+  chartMarginLeft,
   showReferenceLine = false,
   referenceLineY = 0,
   legendOrder,
@@ -338,7 +342,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
           <ChartComponent
             data={data}
             layout={isHorizontal ? 'vertical' : undefined}
-            margin={{ top: hasCategoryGroups ? 28 : 20, right: 30, left: showYAxis ? (yAxisWidth ? 0 : -20) : 20, bottom: 5 }}
+            margin={{ top: hasCategoryGroups ? 28 : 20, right: 30, left: chartMarginLeft ?? (showYAxis ? (yAxisWidth ? 0 : -20) : 20), bottom: 5 }}
             barSize={barSize}
             barGap={barGap}
             barCategoryGap={barCategoryGap}
@@ -485,6 +489,7 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                 tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
                 tickFormatter={lineExtraAxis.tickFormatter || ((val) => `${val}${lineExtraAxis.unit ?? ''}`)}
                 width={lineExtraAxis.width ?? 40}
+                hide={lineExtraAxis.hide}
               />
             )}
             <Tooltip content={<CustomTooltip unitByKey={unitByKey} defaultUnit={unit} labelMap={labelMap} />} cursor={{ stroke: uiColors.cursor, strokeWidth: 1 }} />

@@ -89,6 +89,10 @@ export interface BaseLineChartProps {
   xAxisHeight?: number;
   /** 图表容器底边距，默认 compact?2:5 */
   chartMarginBottom?: number;
+  /** 图表左侧边距 */
+  chartMarginLeft?: number;
+  /** 坐标轴刻度字号 */
+  axisTickFontSize?: number;
   /** 图例底部留白，默认 compact?0:10 */
   legendPaddingBottom?: number;
   /** tooltip单位，默认% */
@@ -204,6 +208,8 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
   xAxisDy = 10,
   xAxisHeight = 30,
   chartMarginBottom,
+  chartMarginLeft,
+  axisTickFontSize = 10,
   legendPaddingBottom,
   compact = false
 }) => {
@@ -333,7 +339,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: hasCategoryGroups ? 36 : compact ? 10 : 20, right: hasDualAxis ? 50 : 50, left: showYAxis ? -20 : 20, bottom: chartMarginBottom ?? (compact ? 2 : 5) }}
+            margin={{ top: hasCategoryGroups ? 36 : compact ? 10 : 20, right: hasDualAxis ? 50 : 50, left: chartMarginLeft ?? (showYAxis ? 0 : 20), bottom: chartMarginBottom ?? (compact ? 2 : 5) }}
           >
             <CartesianGrid vertical={false} stroke={uiColors.grid} strokeDasharray="3 3" />
             {categoryGroups?.map((group, groupIndex) => {
@@ -370,23 +376,18 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
                     }
                     // 根据 labelPos 计算锚点和水平/垂直偏移
                     let anchor: 'start' | 'middle' | 'end' = 'middle';
-                    let dx = 0;
                     let dy = 12;
                     if (labelPos === 'insideTopLeft') {
                       anchor = 'start';
-                      dx = 6;
                       dy = 16;
                     } else if (labelPos === 'insideTopRight') {
                       anchor = 'end';
-                      dx = -6;
                       dy = 16;
                     } else if (labelPos === 'insideBottomLeft') {
                       anchor = 'start';
-                      dx = 6;
                       dy = height ? height - 6 : -6;
                     } else if (labelPos === 'insideBottomRight') {
                       anchor = 'end';
-                      dx = -6;
                       dy = height ? height - 6 : -6;
                     } else if (labelPos === 'insideBottom') {
                       anchor = 'middle';
@@ -449,7 +450,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               dataKey="period"
               axisLine={showYAxis ? { stroke: uiColors.axis } : false}
               tickLine={false}
-              tick={{ fill: uiColors.tick, fontSize: 10 }}
+              tick={{ fill: uiColors.tick, fontSize: axisTickFontSize }}
               dy={xAxisDy}
               height={xAxisHeight}
               interval={0}
@@ -479,7 +480,7 @@ export const BaseLineChart: React.FC<BaseLineChartProps> = ({
               domain={yAxisDomain}
               axisLine={false}
               tickLine={false}
-              tick={{ fill: uiColors.tickSecondary, fontSize: 10 }}
+              tick={{ fill: uiColors.tickSecondary, fontSize: axisTickFontSize }}
               tickFormatter={yAxisTickFormatter || ((val) => `${val}%`)}
               yAxisId={hasDualAxis ? 'left' : undefined}
             />
