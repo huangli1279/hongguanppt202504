@@ -21,20 +21,22 @@ const consumeChange = [
     label: '实际增加最多',
     bars: [
       { name: '医疗', v: 18.9, color: '#2f6db5' },
-      { name: '住房', v: 16.3, color: '#b7ab94' },
+      { name: '住房', v: 16.3, color: '#a9c3e2' },
     ],
   },
   {
     label: '实际减少最多',
     bars: [
-      { name: '外出餐饮', v: 28.2, color: '#b7ab94' },
-      { name: '文娱服务', v: 25.2, color: '#b7ab94' },
+      { name: '外出餐饮', v: 28.2, color: '#a9c3e2' },
+      { name: '文娱服务', v: 25.2, color: '#a9c3e2' },
     ],
   },
 ];
 
-const CHART_H2 = 140;
+const CHART_H2 = 160;
 const h2 = (v: number) => `${(v / 30) * CHART_H2}px`;
+
+const growthRate = (current: number, previous: number) => ((current - previous) / previous) * 100;
 
 type MiniDatum = { label: string; value: number; accent?: boolean };
 
@@ -58,24 +60,64 @@ const therapyData: MiniDatum[] = [
   { label: '2030E', value: 2000, accent: true },
 ];
 
-const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, height = 88 }) => {
+const BAR_MAX_H = 160;
+const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, height = BAR_MAX_H }) => {
   const max = Math.max(...data.map((d) => d.value));
+  const barH = (v: number) => (v / max) * height;
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
-        {data.map((d) => (
-          <div key={d.label} className="flex flex-col items-center justify-end flex-1 min-w-0">
-            <span className="text-[10px] font-medium text-slate-600 leading-none mb-0.5">{d.value.toLocaleString()}</span>
-            <div
-              className={`w-full max-w-[40px] rounded-t-[3px] ${d.accent ? 'bg-webank-blue' : 'bg-[#a9c3e2]'}`}
-              style={{ height: `${(d.value / max) * height}px` }}
-            />
-          </div>
-        ))}
+      <div className="relative flex-1 min-h-0 flex items-end justify-around gap-1">
+        <div className="flex w-full h-full items-end justify-around gap-1">
+          {data.map((d) => (
+            <div key={d.label} className="flex flex-col items-center justify-end flex-1 min-w-0">
+              <span className="relative z-10 bg-white text-[10px] font-medium text-webank-blue leading-none mb-0.5">
+                {d.value.toLocaleString()}
+              </span>
+              <div
+                className={`w-full max-w-[40px] rounded-t-[3px] ${d.accent ? 'bg-[#2f6db5]' : 'bg-[#a9c3e2]'}`}
+                style={{ height: `${barH(d.value)}px` }}
+              />
+            </div>
+          ))}
+        </div>
+        {/* 37页式增速框：两根柱顶引出竖线，横向相连成"门"字，中间放一个圆角长方形框 */}
+        {data.map((d, index) => {
+          if (index === 0) return null;
+          const previous = data[index - 1];
+          const growth = growthRate(d.value, previous.value);
+          const n = data.length;
+          const leftCx = (((index - 1) + 0.5) / n) * 100;
+          const rightCx = ((index + 0.5) / n) * 100;
+          const leftH = barH(previous.value);
+          const rightH = barH(d.value);
+          const bracketBottom = Math.max(leftH, rightH) + 22;
+          return (
+            <React.Fragment key={`${d.label}-growth`}>
+              <div
+                className="absolute w-px bg-webank-blue"
+                style={{ left: `${leftCx}%`, bottom: `${leftH}px`, height: `${bracketBottom - leftH}px` }}
+              />
+              <div
+                className="absolute w-px bg-webank-blue"
+                style={{ left: `${rightCx}%`, bottom: `${rightH}px`, height: `${bracketBottom - rightH}px` }}
+              />
+              <div
+                className="absolute h-px bg-webank-blue"
+                style={{ left: `${leftCx}%`, width: `${rightCx - leftCx}%`, bottom: `${bracketBottom}px` }}
+              />
+              <span
+                className="absolute -translate-x-1/2 translate-y-1/2 rounded-[2px] border border-webank-blue bg-white px-1 text-[8px] font-extrabold leading-[12px] text-webank-blue whitespace-nowrap"
+                style={{ left: `${(leftCx + rightCx) / 2}%`, bottom: `${bracketBottom}px` }}
+              >
+                {growth > 0 ? '+' : ''}{growth.toFixed(1)}%
+              </span>
+            </React.Fragment>
+          );
+        })}
       </div>
       <div className="flex justify-around gap-1 border-t border-slate-200 pt-0.5">
         {data.map((d) => (
-          <span key={d.label} className="flex-1 text-center text-[10px] text-slate-700 leading-none truncate">{d.label}</span>
+          <span key={d.label} className="flex-1 text-center text-[10px] text-webank-blue leading-none truncate">{d.label}</span>
         ))}
       </div>
     </div>
@@ -208,7 +250,7 @@ export const ContentSlide39: React.FC = () => {
                     <span className="text-[10px] text-slate-600 font-medium text-center leading-none mb-0.5 truncate">
                       {grp.label}
                     </span>
-                    <div className="relative h-[140px] border border-[#41508f] rounded-[2px] px-1.5 flex items-end justify-around gap-1.5">
+                    <div className="relative h-[168px] border border-[#41508f] rounded-[2px] px-1.5 flex items-end justify-around gap-1.5">
                       <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(10) }} />
                       <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(20) }} />
                       {grp.bars.map((b) => (
@@ -246,7 +288,7 @@ export const ContentSlide39: React.FC = () => {
           <FigureCard label="图2" title="商业健身市场规模（单位：亿元）">
             <div className="flex flex-col h-full text-[8px]">
               <div className="flex-1 min-h-0">
-                <MiniBarChart data={fitnessData} height={100} />
+                <MiniBarChart data={fitnessData} />
               </div>
 
             </div>
@@ -256,7 +298,7 @@ export const ContentSlide39: React.FC = () => {
           <FigureCard label="图3" title="智能可穿戴健康设备（单位：亿元）">
             <div className="flex flex-col h-full text-[8px]">
               <div className="flex-1 min-h-0">
-                <MiniBarChart data={wearableData} height={92} />
+                <MiniBarChart data={wearableData} />
               </div>
             </div>
           </FigureCard>

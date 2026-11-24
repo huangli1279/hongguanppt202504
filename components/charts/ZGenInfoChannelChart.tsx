@@ -20,7 +20,7 @@ const rows: ChannelRow[] = [
 ];
 
 const FULL_COLOR = '#3978b9';
-const ZGEN_COLOR = '#e94545';
+const ZGEN_COLOR = '#8ecae6';
 const MAX = 70;
 
 const Legend: React.FC<{ color: string; children: React.ReactNode }> = ({ color, children }) => (
@@ -37,7 +37,7 @@ const Bars: React.FC<{ full: number; zgen: number }> = ({ full, zgen }) => (
       <span className="text-[8px] leading-none tabular-nums text-slate-600">{full}%</span>
     </div>
     <div className="flex items-center gap-1">
-      <div className="h-1.5 rounded-r bg-[#e94545]" style={{ width: `${(zgen / MAX) * 100}%` }} />
+      <div className="h-1.5 rounded-r bg-[#8ecae6]" style={{ width: `${(zgen / MAX) * 100}%` }} />
       <span className="text-[8px] leading-none tabular-nums text-slate-600">{zgen}%</span>
     </div>
   </div>
@@ -48,7 +48,7 @@ export const ZGenInfoChannelChart: React.FC = () => (
   <div className="flex h-full w-full flex-col">
     <div className="shrink-0 text-center">
       <h3 className="text-[12px] font-bold leading-tight text-webank-blue">
-        Z 世代的消费决策高度依赖视频、内容平台以及 AI 工具
+        消费决策高度依赖视频、内容平台以及 AI 工具
       </h3>
       <div className="mt-1 flex justify-center gap-3">
         <Legend color={FULL_COLOR}>全年龄样本</Legend>

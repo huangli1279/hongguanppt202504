@@ -73,19 +73,13 @@ export const ContentSlide05: React.FC = () => {
 
           <BaseCard title="行业分化" delay="120ms">
             <p>
-              第二产业中装备制造、高技术制造业增加值增速较快，成为二产回升的重要支撑；信息传输软件和信息技术服务业（
+              二产中装备制造、高技术制造业增长较快，是二产回升的主要支撑；信息软件（
               <span className="font-bold text-red-500">+9.8%</span>
-              ）、租赁商务服务业（
+              ）、租赁商务（
               <span className="font-bold text-red-500">+12.9%</span>
-              ）维持高增，两者增加值合计占GDP比重
-              <span className="text-black">10.1%</span>
-              、同比提高
-              <span className="text-black">0.5个百分点</span>
-              ，AI算力需求和商务活动是两大增长引擎；批发零售、交运仓储、住宿餐饮三季度分别增长
-              <span className="text-black">5.6%</span>、
-              <span className="text-black">5.9%</span>、
-              <span className="text-black">6.3%</span>
-              ，较二季度增幅明显提升，与外需及出行需求增长有关；建筑、房地产仍处于负增长；
+              ）维持高增，AI算力与商务活动是两大引擎；批发零售、交运仓储、住宿餐饮增速较二季度明显回升（
+              <span className="text-black">5.6%–6.3%</span>
+              ），建筑与房地产仍为负增长。
             </p>
           </BaseCard>
         </>

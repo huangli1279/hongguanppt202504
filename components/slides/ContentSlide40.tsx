@@ -17,15 +17,12 @@ export const ContentSlide40: React.FC = () => (
         <BaseCard title="AI进入消费决策" variant="accent" className="h-full !py-3" animated={false}>
           <div className="space-y-1.5 text-xs leading-relaxed">
             <p>
-              AI 逐渐进入消费决策各环节，重塑消费者搜索、比价、选择和购后评价的全流程。目前主要在选择、比价环节影响较大，全权交由 AI 处理的比例仍较低。
+              AI 逐渐进入消费决策各环节，重塑消费者搜索、比价、选择和购后评价的全流程。目前在比价、研究查找产品、汇总评论等环节影响较大，全权交由 AI 处理的比例仍较低。
             </p>
             <p>
-              <span className="font-semibold text-webank-blue">国内：</span>
-              79.4% 消费者购物时主动咨询 AI 工具；认为 AI 咨询“很有影响/较有影响”的合计 43.7%（影响力首次超过传统媒体广告的 42.6%）。2026 年双 11 期间 66.7% 的受访者会用 AI 辅助购物（比价、算满减等）。
+              一项针对 7 国消费者的调研显示，在独立比价、研究查找产品、汇总评论等环节，消费者对 AI 参与的接受度约为 70%；但在 AI 自主完成购买环节，接受度仅为 21%，其中中国消费者为 39%，相对较高。
             </p>
-            <p>
-              <span className="font-semibold text-webank-blue">海外：</span>
-              从独立 AI 平台开始做购买研究的比例由 25%（2024）升至 46%（2026），从传统搜索开始的比例由 43% 降至 24%。
+            <p className="text-[10px] text-webank-subtext">
             </p>
           </div>
         </BaseCard>
@@ -45,7 +42,7 @@ export const ContentSlide40: React.FC = () => (
       </div>
 
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
-        <ChartContainer ariaLabel="AI参与消费决策的委托程度阶梯">
+        <ChartContainer ariaLabel="AI参与消费决策各环节的接受度漏斗图">
           <AiDecisionDelegationChart />
         </ChartContainer>
         <ChartContainer ariaLabel="Z世代消费决策信息来源">

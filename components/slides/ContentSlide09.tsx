@@ -54,7 +54,7 @@ export const ContentSlide09: React.FC = () => {
               <span className="text-red-500 font-bold">5.0%</span>
               ，10月升至
               <span className="text-red-500 font-bold">5.7%</span>
-              ，为22年7月以来首次破5，受到外部战争等因素影响，输入性通胀为上游企业带来利润高增但持续挤压中下游企业利润。但机构普遍预测年内高点已过，随着美伊战争和谈取得进展，11-12月PPI将回落。
+              ，为22年7月以来首次破5，受到外部战争等因素影响。但机构普遍预测年内高点已过，随着美伊战争和谈取得进展，11-12月PPI将回落。
             </p>
           </BaseCard>
 

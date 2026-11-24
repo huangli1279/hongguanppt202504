@@ -85,16 +85,21 @@ export const ContentSlide38: React.FC = () => {
             </ul>
           </BaseCard>
 
-          {/* 卡片2：二手交易扩容，平替成为默认选择 */}
-          <BaseCard title="二手交易扩容，平替成为默认选择" delay="0ms" className="order-1">
+          {/* 卡片2：二手交易扩容，平替成为比价起点 */}
+          <BaseCard title="二手交易扩容，平替成为比价起点" delay="0ms" className="order-1">
             <p className="text-xs">
-              二手交易：2025年交易额约1.69万亿元、+12.4%；二手车2026H1成交971.32万辆，6月单月首超乘用车零售，上半年与新车之比接近1:1——三年期二手车约为新车五折。
+              <span className="font-semibold text-webank-blue">二手交易：</span>
+              2025年交易额约1.69万亿元、<span className="text-webank-blue">+12.4%</span>；二手车上半年与新车之比接近1:1（三年期二手车约为新车五折）。
             </p>
             <p className="text-xs mt-1">
-              平替经济：57.2%的消费者在质量功能相近时倾向平替，00后72.7%、90后69.3%，高出80后27.6和24.2个百分点（知萌2024）；美团“平替”搜索+26.4%、含“平替”到店商品供给+97.8%（2025）。
+              <span className="font-semibold text-webank-blue">平替经济：</span>
+              调查显示，<span className="text-webank-blue">71.2%</span>的消费者在过去半年有过“平替”行为；美团“平替”搜索<span className="text-webank-blue">+26.4%</span>（2025）。
             </p>
             <p className="text-xs mt-1 text-webank-subtext">
-              行为数据印证：82%的人愿意延长物品使用时间，69%选择修理而非丢弃；一半Z世代每2–3个月购买二手，性价比与循环消费意识持续增强。
+              消费者并未压缩品质要求，而是拒绝继续支付品牌溢价。
+            </p>
+            <p className="text-[10px] mt-2 text-webank-subtext">
+              数据来源：中国中小商业企业协会×立信数据研究院《2026年二季度中国消费者消费意愿调查报告》
             </p>
           </BaseCard>
         </div>
@@ -184,46 +189,51 @@ export const ContentSlide38: React.FC = () => {
             <div className="flex flex-col h-full">
               <div className="mb-1.5">
                 <h3 className="text-base font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">
-                  行为数据：性价比成消费显著增长点
+                  行为数据印证
                 </h3>
                 <p className="text-[12px] text-webank-subtext mt-0.5">
-                  数据来源：贝恩×纽锐拓消费者调研（p15–16）
+                  数据来源：麦肯锡《2026 消费者现状》
                 </p>
               </div>
               <div className="flex-1 min-h-0 overflow-hidden">
                 <table className="w-full h-full text-[12px] border-collapse">
                   <thead>
-                    <tr className="bg-webank-blue/10 text-webank-blue">
-                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-14">维度</th>
-                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold">关键数据</th>
-                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-16">解读</th>
+                    <tr className="bg-webank-blue/10 text-black">
+                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-40">行为</th>
+                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold w-20">占比</th>
+                      <th className="border border-slate-200 px-1.5 py-1 text-left font-bold">备注</th>
                     </tr>
                   </thead>
                   <tbody className="text-webank-text">
                     <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">循环使用</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        <span className="font-bold text-webank-blue">82%</span> 更长时间使用物品再更换；
-                        <span className="font-bold text-webank-blue">69%</span> 选择修理而非丢弃；
-                        <span className="font-bold text-webank-blue">68%</span> 主动减少浪费
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">延长使用周期</td>
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">延长物品使用周期再更换</td>
+                      <td className="border border-slate-200 px-1.5 py-1 text-center font-bold text-black">82%</td>
+                      <td className="border border-slate-200 px-1.5 py-1">全年龄</td>
                     </tr>
                     <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">二手循环</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        <span className="font-bold text-webank-blue">30%</span> 购买二手服装、全品类超
-                        <span className="font-bold text-webank-blue">20%</span>；近一半消费者"DIY化"了过去付费的服务（家政维修、理发、美容）
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">二手加速</td>
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">维修而非丢弃</td>
+                      <td className="border border-slate-200 px-1.5 py-1 text-center font-bold text-webank-blue">69%</td>
+                      <td className="border border-slate-200 px-1.5 py-1">全年龄</td>
                     </tr>
                     <tr className="align-top">
-                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">年轻人领先</td>
-                      <td className="border border-slate-200 px-1.5 py-1">
-                        一半 Z 世代在社交平台寻找 DIY 灵感（尤其关注省钱博主）；一半每
-                        <span className="font-bold text-webank-blue">2–3</span> 个月购买二手
-                      </td>
-                      <td className="border border-slate-200 px-1.5 py-1">Z 世代引领</td>
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">主动减少浪费</td>
+                      <td className="border border-slate-200 px-1.5 py-1 text-center font-bold text-webank-blue">68%</td>
+                      <td className="border border-slate-200 px-1.5 py-1">全年龄</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">购买二手服装</td>
+                      <td className="border border-slate-200 px-1.5 py-1 text-center font-bold text-webank-blue">30%</td>
+                      <td className="border border-slate-200 px-1.5 py-1">多数品类超20%</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">DIY 此前付费的服务</td>
+                      <td className="border border-slate-200 px-1.5 py-1 text-center font-bold text-webank-blue">近一半</td>
+                      <td className="border border-slate-200 px-1.5 py-1">家政、理发、美容等</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="border border-slate-200 px-1.5 py-1 font-semibold text-webank-accent">每2–3个月买一次二手</td>
+                      <td className="border border-slate-200 px-1.5 py-1 text-center font-bold text-webank-blue">50%</td>
+                      <td className="border border-slate-200 px-1.5 py-1">Z世代</td>
                     </tr>
                   </tbody>
                 </table>

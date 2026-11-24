@@ -34,7 +34,10 @@ export const ContentSlide08: React.FC = () => {
         <>
           <BaseCard title="工业增长稳定，采矿业受停产拖累" delay="0ms" variant="accent">
             <p>
-              前三季度工业增加值累计同比 +5.3%，制造业同比 +5.7%，采矿业 +2.0%，电力、热力、燃气及水生产供应业 +5.4%。三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响（7月煤炭开采和洗选业同比 <span className="text-green-600 font-bold">-10.8%</span>，8月 -5.6%，9月 -3.3%）。
+              前三季度工业增加值累计同比 +5.3%，制造业同比 +5.7%，采矿业 +2.0%，电力、热力、燃气及水生产供应业 +5.4%。
+            </p>
+            <p>
+              三季度采矿业拖累总体，主要受煤炭开采监管加强和复产进度不及预期影响。
             </p>
           </BaseCard>
 
@@ -46,7 +49,7 @@ export const ContentSlide08: React.FC = () => {
 
           <BaseCard title="新动能增长迅猛，汽车成为明显拖累" delay="240ms">
             <p>
-              新动能相关的高技术制造业增加值 Q3 单季同比 <span className="text-red-600 font-bold">+16.2%</span>，计算机通信产能利用率三季度上升 1.6% 达 <span className="text-red-600 font-bold">80.3%</span>。汽车产能利用率下降至 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>，9月产量同比 <span className="text-green-600 font-bold">-5.7%</span>，拖累整体工业效率和产量。
+              新动能相关的高技术制造业增加值 Q3 单季同比 <span className="text-red-600 font-bold">+16.2%</span>，计算机通信产能利用率三季度上升 1.6% 达 <span className="text-red-600 font-bold">80.3%</span>。汽车产能利用率下降至 <span className="text-green-600 font-bold">66.2%</span>，同比下降 <span className="text-green-600 font-bold">7%</span>。
             </p>
           </BaseCard>
         </>
