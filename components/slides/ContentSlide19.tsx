@@ -8,7 +8,7 @@ import { investmentData, unsoldAreaData, housePriceMomData, nationalHousePriceMo
 const investmentLineConfigs: LineConfig[] = [
   { dataKey: 'salesArea', name: '商品房销售面积', strokeWidth: 2.5 },
   { dataKey: 'realEstateInvestment', name: '房地产开发投资', strokeWidth: 2 },
-  { dataKey: 'newConstruction', name: '新开工施工面积', strokeWidth: 2 },
+  { dataKey: 'newConstruction', name: '新开工施工面积', strokeWidth: 2, pointOffsets: { '2026-09': 14 } },
 ];
 
 // 商品房待售面积折线图配置
@@ -18,10 +18,10 @@ const unsoldAreaLineConfigs: LineConfig[] = [
 
 // 房价环比折线图配置（一二线）
 const priceMomLineConfigs: LineConfig[] = [
-  { dataKey: 'firstTierNew', name: '一线新建', strokeWidth: 2, pointOffsets: { '2026-09': 6 } },
-  { dataKey: 'secondTierNew', name: '二线新建', strokeWidth: 2, pointOffsets: { '2026-09': 18 } },
-  { dataKey: 'firstTierUsed', name: '一线二手', strokeWidth: 1.5, labelDY: 10, pointOffsets: { '2026-09': -12 } },
-  { dataKey: 'secondTierUsed', name: '二线二手', strokeWidth: 1.5, labelDY: 10, pointOffsets: { '2026-09': 14 } },
+  { dataKey: 'firstTierNew', name: '一线新建', strokeWidth: 2, labelDY: 0 },
+  { dataKey: 'secondTierNew', name: '二线新建', strokeWidth: 2, labelDY: 5 },
+  { dataKey: 'firstTierUsed', name: '一线二手', strokeWidth: 1.5, labelDY: -5 },
+  { dataKey: 'secondTierUsed', name: '二线二手', strokeWidth: 1.5, labelDY: 5 },
 ];
 
 // 70城房价环比折线图配置
@@ -76,7 +76,7 @@ export const ContentSlide19: React.FC = () => {
           <ChartContainer delay="600ms">
             <BaseLineChart
               data={investmentData}
-              title="图1 房地产开发投资/销售面积/新开工累计同比"
+              title="图1 房产开发投资/销售面积/新开工累计同比"
               subtitle="数据来源：国家统计局 | 单位：%"
               lines={investmentLineConfigs}
               yAxisDomain={[-35, 5]}
@@ -101,6 +101,7 @@ export const ContentSlide19: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['商品房待售面积']}
+              legendPaddingBottom={4.5}
               xAxisTicks={['2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
               highlightPeriods={['2026-09']}
             />
@@ -117,6 +118,7 @@ export const ContentSlide19: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['全国新建', '全国二手']}
+              legendPaddingBottom={4.5}
               xAxisTicks={['2024-05', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
               highlightPeriods={['2026-09']}
             />
@@ -133,6 +135,7 @@ export const ContentSlide19: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['一线新建', '二线新建', '一线二手', '二线二手']}
+              legendPaddingBottom={4.5}
               xAxisTicks={['2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
               highlightPeriods={['2026-09']}
             />

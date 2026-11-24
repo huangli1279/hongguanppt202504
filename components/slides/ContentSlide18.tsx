@@ -54,7 +54,7 @@ export const ContentSlide18: React.FC = () => (
               { dataKey: 'planned', name: '计划发行', color: seriesColors[1] },
               { dataKey: 'actual', name: '实际发行额', color: seriesColors[3] },
             ]}
-            lines={[{ dataKey: 'completion', name: '完成率', color: '#8A8A8A', yAxisId: 'right', unit: '', dotsOnly: true }]}
+            lines={[{ dataKey: 'completion', name: '完成率', color: seriesColors[0], yAxisId: 'right', unit: '', dotsOnly: true }]}
             showYAxis={true}
             yAxisDomain={[0, 7000]}
             yAxisTickFormatter={(value) => formatThousands(Number(value))}

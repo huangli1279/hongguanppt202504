@@ -8,9 +8,9 @@ import { seriesColors } from '../../utils/chartColors';
 export const ContentSlide17: React.FC = () => {
   // 固定资产投资三大支柱折线图配置
   const investmentLineConfigs: LineConfig[] = [
-    { dataKey: 'manufacturing', name: '制造业投资', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -8 } },
-    { dataKey: 'infrastructure', name: '基础设施建设投资', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': 8 } },
-    { dataKey: 'realEstate', name: '房地产开发投资', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': -12 } },
+    { dataKey: 'manufacturing', name: '制造业投资', color: seriesColors[1], strokeWidth: 2.5, pointOffsets: { '2026-09': -10 } },
+    { dataKey: 'infrastructure', name: '基建投资', color: seriesColors[0], strokeWidth: 2, pointOffsets: { '2026-09': 16 } },
+    { dataKey: 'realEstate', name: '房地产开发投资', color: seriesColors[2], strokeWidth: 2, pointOffsets: { '2026-09': -8 } },
   ];
 
   // 民间投资与国有控股投资折线图配置
@@ -55,7 +55,7 @@ export const ContentSlide17: React.FC = () => {
 
   const cumulativeMomConfigs: LineConfig[] = [
     { dataKey: 'cumulative', name: '固投累计同比', color: seriesColors[0], strokeWidth: 2.5, pointOffsets: { '2026-09': -8 } },
-    { dataKey: 'mom', name: '固投单月环比', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': 8 } },
+    { dataKey: 'mom', name: '固投单月环比', color: seriesColors[1], strokeWidth: 2, pointOffsets: { '2026-09': -8 } },
   ];
 
   return (
@@ -119,7 +119,7 @@ export const ContentSlide17: React.FC = () => {
               showYAxis={true}
               showReferenceLine={true}
               referenceLineY={0}
-              legendOrder={['制造业投资', '基础设施建设投资', '房地产开发投资']}
+              legendOrder={['制造业投资', '基建投资', '房地产开发投资']}
               highlightPeriods={['2026-09']}
               xAxisTicks={['2025-03', '2025-09', '2026-03', '2026-09']}
               compact
