@@ -42,15 +42,16 @@ const tourismLabel = (dataKey: 'spending' | 'trips', color: string) => {
           {curr.toFixed(2)}
         </text>
 
-        {/* 两两柱子之间：从柱顶引出细线，横向连接成方框，增速标在横线中央 */}
+        {/* 两两柱子之间：从柱顶数值上方引出细线，横向连接成方框，增速标在横线中央
+            竖线下端止于数值上方（-18），避免竖线穿过柱顶数字压住小数点 */}
         {growth != null && barPositions[index - 1] && (() => {
           const previousBar = barPositions[index - 1];
-          const bracketY = Math.min(previousBar.topY, y) - 24;
+          const bracketY = Math.min(previousBar.topY, y) - 39;
           const labelX = (previousBar.cx + cx) / 2;
           return (
             <g>
               <path
-                d={`M ${previousBar.cx} ${previousBar.topY - 5} V ${bracketY} H ${cx} V ${y - 5}`}
+                d={`M ${previousBar.cx} ${previousBar.topY - 18} V ${bracketY} H ${cx} V ${y - 18}`}
                 fill="none"
                 stroke={color}
                 strokeWidth={1.2}
