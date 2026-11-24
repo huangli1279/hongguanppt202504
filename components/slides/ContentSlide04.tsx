@@ -125,7 +125,7 @@ export const ContentSlide04: React.FC = () => {
     <BaseContentSlide
       title={
         <>
-          前三季度累计增长回落至4.6%，
+          三季度GDP增速回升至4.5%，
           <span className="text-webank-accent">平减指数连续两季回正</span>
         </>
       }

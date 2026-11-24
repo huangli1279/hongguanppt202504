@@ -68,13 +68,13 @@ export const ContentSlide12: React.FC = () => {
         <>
           <BaseCard title="基数压制社零增长，剔除汽车后消费总量尚可" delay="0ms" variant="accent">
             <p className="text-meta">
-              1—9月社零累计37.0万亿元，9月单月4.24万亿元，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。9月受中秋错位（去年中秋在10月）影响，10月社零面临高基数与错位回吐压力。
+              1—9月社零累计37.0万亿元，9月4.24万亿元，当月同比<span className="font-bold text-red-500">+1.1%</span>，较7月（0.6%）和8月（0.4%）有所回升。剔除汽车后的社零9月<span className="font-bold text-red-500">+3.9%</span>，为去年11月以来最高。9月受中秋错位影响，10月社零面临高基数与回吐压力。
             </p>
           </BaseCard>
 
           <BaseCard title="深圳消费亮眼，上海与北京社零偏弱" delay="120ms">
             <p className="text-meta">
-              北京前三季度社零<span className="font-bold text-green-600">-0.7%</span>、上海受汽车销量拖累同比<span className="font-bold text-green-600">-1.1%</span>均为负增长；广州增长<span className="font-bold text-red-500">2.5%</span>；深圳受AI快速发展与价格上涨带来的影响，1—9月社零增长<span className="font-bold text-red-500">2.3%</span>，其中通讯器材累计<span className="font-bold text-red-500">+56.8%</span>。
+              北京前三季度社零<span className="font-bold text-green-600">-0.7%</span>、上海受汽车销量拖累同比<span className="font-bold text-green-600">-1.1%</span>；广州<span className="font-bold text-red-500">2.5%</span>；深圳受AI快速发展与价格上涨带来的影响，前三季度社零增长<span className="font-bold text-red-500">2.3%</span>，其中通讯器材累计<span className="font-bold text-red-500">+56.8%</span>。
             </p>
             <p className="mt-2">
         
@@ -82,14 +82,14 @@ export const ContentSlide12: React.FC = () => {
           </BaseCard>
 
           <BaseCard title="旅游数据：国庆潜力释放，三季度入境游亮点" delay="240ms">
-            <ul className="list-disc pl-5 space-y-2 text-meta">
-              <li>
-                2026年国庆节假期7天，全国国内出游<span className="font-bold text-red-500">8.26亿人次</span>，出游总花费7,383.75亿元，日均同比分别增长<span className="font-bold text-red-500">6.3%</span>、<span className="font-bold text-red-500">4.3%</span>（25年较24年同比人次+1.6%、消费+1.0%）。
-              </li>
-              <li>
-                入境游成亮点，三季度免签入境外国人增速<span className="font-bold text-red-500">+48.3%</span>，中信测算1位外国游客在华花费约为16人次国内出游，促消费政策效果初现。文旅部数据显示，2025年入境游总花费1311亿美元，《旅游强国建设“十五五”规划》提到2030年目标为超过1500亿美元，预计入境游潜力将持续释放。
-              </li>
-            </ul>
+            <div className="space-y-2 text-meta">
+              <p>
+                2026年国庆节假期7天，全国国内出游<span className="font-bold text-red-500">8.26亿人次</span>，出游总花费7,384亿元，日均同比分别增长<span className="font-bold text-red-500">6.3%</span>、<span className="font-bold text-red-500">4.3%</span>（25年同比人次+1.6%、消费+1.0%）。
+              </p>
+              <p>
+                入境游成亮点，三季度免签入境外国人增速<span className="font-bold text-red-500">+48.3%</span>，促消费政策效果初现。《旅游强国建设“十五五”规划》提到2030年目标为超过1500亿美元，预计入境游潜力将持续释放。
+              </p>
+            </div>
           </BaseCard>
         </>
       }

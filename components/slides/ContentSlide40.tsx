@@ -15,7 +15,7 @@ export const ContentSlide40: React.FC = () => (
 
       <div className="grid shrink-0 grid-cols-2 gap-3">
         <BaseCard title="AI进入消费决策" variant="accent" className="h-full !py-3" animated={false}>
-          <div className="space-y-1.5 text-xs leading-relaxed">
+          <div className="space-y-1.5 text-sm leading-relaxed">
             <p>
               AI 逐渐进入消费决策各环节，重塑消费者搜索、比价、选择和购后评价的全流程。目前在比价、研究查找产品、汇总评论等环节影响较大，全权交由 AI 处理的比例仍较低。
             </p>
