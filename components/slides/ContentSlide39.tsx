@@ -9,8 +9,8 @@ const FigureCard: React.FC<{ label: string; title: string; children: React.React
 }) => (
   <div className="bg-white border border-slate-200/90 rounded-xl shadow-[0_3px_12px_rgba(47,74,107,0.08)] flex flex-col min-h-0 overflow-hidden">
     <div className="px-3 pt-2 pb-1.5 border-b border-slate-100 bg-slate-50/70 shrink-0">
-      <div className="text-[8px] font-semibold tracking-wide text-webank-blue leading-none mb-1">{label}</div>
-      <div className="text-[10px] font-semibold text-slate-700 leading-tight truncate">{title}</div>
+      <div className="text-[11px] font-semibold tracking-wide text-webank-blue leading-none mb-1">{label}</div>
+      <div className="text-[13px] font-semibold text-slate-700 leading-tight truncate">{title}</div>
     </div>
     <div className="flex-1 min-h-0 p-2 overflow-hidden">{children}</div>
   </div>
@@ -65,7 +65,7 @@ const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, 
       <div className="flex-1 min-h-0 flex items-end justify-around gap-1">
         {data.map((d) => (
           <div key={d.label} className="flex flex-col items-center justify-end flex-1 min-w-0">
-            <span className="text-[7px] font-medium text-slate-600 leading-none mb-0.5">{d.value.toLocaleString()}</span>
+            <span className="text-[10px] font-medium text-slate-600 leading-none mb-0.5">{d.value.toLocaleString()}</span>
             <div
               className={`w-full max-w-[40px] rounded-t-[3px] ${d.accent ? 'bg-webank-blue' : 'bg-[#a9c3e2]'}`}
               style={{ height: `${(d.value / max) * height}px` }}
@@ -75,7 +75,7 @@ const MiniBarChart: React.FC<{ data: MiniDatum[]; height?: number }> = ({ data, 
       </div>
       <div className="flex justify-around gap-1 border-t border-slate-200 pt-0.5">
         {data.map((d) => (
-          <span key={d.label} className="flex-1 text-center text-[7px] text-slate-700 leading-none truncate">{d.label}</span>
+          <span key={d.label} className="flex-1 text-center text-[10px] text-slate-700 leading-none truncate">{d.label}</span>
         ))}
       </div>
     </div>
@@ -112,7 +112,7 @@ const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
       {data.map((d, i) => (
         <React.Fragment key={d.label}>
           <span
-            className={`absolute -translate-x-1/2 -translate-y-full text-[6px] font-medium leading-none ${
+            className={`absolute -translate-x-1/2 -translate-y-full text-[10px] font-medium leading-none ${
               d.accent ? 'text-webank-blue' : 'text-slate-600'
             }`}
             style={{ left: `${px(i)}%`, top: `${py(d.value) - 5}%` }}
@@ -126,7 +126,7 @@ const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
             style={{ left: `${px(i)}%`, top: `${py(d.value)}%` }}
           />
           <span
-            className="absolute -translate-x-1/2 bottom-0 text-[6px] leading-none text-slate-700 whitespace-nowrap"
+            className="absolute -translate-x-1/2 bottom-0 text-[10px] leading-none text-slate-700 whitespace-nowrap"
             style={{ left: `${px(i)}%` }}
           >
             {d.label}
@@ -140,7 +140,7 @@ const MiniLineChart: React.FC<{ data: MiniDatum[] }> = ({ data }) => {
 export const ContentSlide39: React.FC = () => {
   return (
     <BaseContentSlide
-      title={<>健康支出保持刚性</>}
+      title={<>特点三：健康支出保持刚性</>}
       cardColumns={2}
     >
       <div className="flex flex-col h-full min-h-0">
@@ -151,9 +151,9 @@ export const ContentSlide39: React.FC = () => {
             variant="accent"
             className="h-full overflow-auto"
           >
-            <div className="space-y-3 text-sm leading-relaxed">
+            <div className="space-y-3 text-[14px] leading-relaxed">
               <p>央视美好生活调查显示，保健养生稳居各年龄段增加消费前三名。</p>
-              <p className="text-[12px] text-slate-600 leading-relaxed">
+              <p className="text-[14px] text-black-600 leading-relaxed">
                 26年Q2在医疗增加消费最多；而在外出餐饮、文娱服务方面减少支出最多。居民先减少弹性消费，健康是最后退让的支出方向。
               </p>
             </div>
@@ -199,13 +199,13 @@ export const ContentSlide39: React.FC = () => {
           {/* 图1 分框柱状 */}
           <FigureCard label="图1" title="2026Q2 居民实际消费调整">
             <div className="flex flex-col h-full">
-              <div className="text-[7px] text-slate-400 leading-none mb-1 truncate">
+              <div className="text-[10px] text-slate-400 leading-none mb-1 truncate">
                 厦大×蚂蚁《中国家庭财富与消费报告（2026Q2）》· %
               </div>
               <div className="flex-1 min-h-0 flex justify-around items-end gap-2">
                 {consumeChange.map((grp) => (
                   <div key={grp.label} className="flex flex-col flex-1 min-w-0 justify-end">
-                    <span className="text-[8px] text-slate-600 font-medium text-center leading-none mb-0.5 truncate">
+                    <span className="text-[10px] text-slate-600 font-medium text-center leading-none mb-0.5 truncate">
                       {grp.label}
                     </span>
                     <div className="relative h-[140px] border border-[#41508f] rounded-[2px] px-1.5 flex items-end justify-around gap-1.5">
@@ -213,7 +213,7 @@ export const ContentSlide39: React.FC = () => {
                       <div className="absolute inset-x-0 border-t border-dashed border-slate-300" style={{ bottom: h2(20) }} />
                       {grp.bars.map((b) => (
                         <div key={b.name} className="flex-1 flex flex-col items-center justify-end min-w-0">
-                          <span className="relative z-10 text-[7.5px] font-semibold text-slate-700 leading-none mb-[1px] whitespace-nowrap bg-white px-[1px]">
+                          <span className="relative z-10 text-[9px] font-semibold text-slate-700 leading-none mb-[1px] whitespace-nowrap bg-white px-[1px]">
                             {b.v}%
                           </span>
                           <div
@@ -225,7 +225,7 @@ export const ContentSlide39: React.FC = () => {
                     </div>
                     <div className="flex justify-around gap-1.5 mt-0.5">
                       {grp.bars.map((b) => (
-                        <span key={b.name} className="flex-1 text-center text-[7.5px] text-slate-700 leading-none truncate">
+                        <span key={b.name} className="flex-1 text-center text-[10px] text-slate-700 leading-none truncate">
                           {b.name}
                         </span>
                       ))}
@@ -233,7 +233,7 @@ export const ContentSlide39: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between text-[6px] text-slate-400 leading-none mt-1 pl-0.5 pr-0.5">
+              <div className="flex justify-between text-[10px] text-slate-400 leading-none mt-1 pl-0.5 pr-0.5">
                 <span>0%</span>
                 <span>10%</span>
                 <span>20%</span>

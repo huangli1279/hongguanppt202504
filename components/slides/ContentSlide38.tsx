@@ -56,7 +56,7 @@ const travelLines: BarLineConfig[] = [
 export const ContentSlide38: React.FC = () => {
   return (
     <BaseContentSlide
-      title={<>追求性价比成为主流选择</>}
+      title={<>特点二：追求性价比成为消费共识</>}
       subtitle="2026年三季度宏观经济报告"
       headerClassName="!mb-3"
     >
@@ -64,36 +64,36 @@ export const ContentSlide38: React.FC = () => {
         {/* 卡片区域：两张卡片 */}
         <div className="grid grid-cols-2 gap-3 mb-3 flex-shrink-0">
           {/* 卡片1：三大长假（合并原“出游规模与总花费齐增长” + “人均消费”两张卡片） */}
-          <BaseCard title="出游人次扩张，消费更重性价比" delay="0ms" variant="accent">
-            <ul className="text-sm space-y-2 list-disc pl-4">
+          <BaseCard title="出游人次扩张，消费更重性价比" delay="120ms" variant="accent" className="order-2">
+            <ul className="text-xs space-y-2 list-disc pl-4">
               <li>
                 2026年春节、五一出游人次分别升至
-                <span className="font-bold text-webank-blue">5.96亿</span>
+                <span className="text-webank-blue">5.96亿</span>
                 和
-                <span className="font-bold text-webank-blue">3.25亿</span>
+                <span className="text-webank-blue">3.25亿</span>
                 ，同比增长25.7%、10.2%；对应人均消费却分别降至
-                <span className="font-bold text-webank-blue">1,348元</span>
+                <span className="text-webank-blue">1,348元</span>
                 和
-                <span className="font-bold text-webank-blue">571元</span>
+                <span className="text-webank-blue">571元</span>
                 ，低于上年。
               </li>
               <li>
                 十一假期也呈现相似变化：2026年人均消费
-                <span className="font-bold text-webank-blue">894元</span>
+                <span className="text-webank-blue">894元</span>
                 ，低于2025年的911元；出游人次虽较2024年增加，较2025年则回落。人次与消费金额并非同步上行，而人均支出连续回落，反映假日出游更强调控制预算、提升每笔支出的获得感。
               </li>
             </ul>
           </BaseCard>
 
           {/* 卡片2：二手交易扩容，平替成为默认选择 */}
-          <BaseCard title="二手交易扩容，平替成为默认选择" delay="120ms">
-            <p className="text-sm">
+          <BaseCard title="二手交易扩容，平替成为默认选择" delay="0ms" className="order-1">
+            <p className="text-xs">
               二手交易：2025年交易额约1.69万亿元、+12.4%；二手车2026H1成交971.32万辆，6月单月首超乘用车零售，上半年与新车之比接近1:1——三年期二手车约为新车五折。
             </p>
-            <p className="text-sm mt-1">
+            <p className="text-xs mt-1">
               平替经济：57.2%的消费者在质量功能相近时倾向平替，00后72.7%、90后69.3%，高出80后27.6和24.2个百分点（知萌2024）；美团“平替”搜索+26.4%、含“平替”到店商品供给+97.8%（2025）。
             </p>
-            <p className="text-sm mt-1 text-webank-subtext">
+            <p className="text-xs mt-1 text-webank-subtext">
               行为数据印证：82%的人愿意延长物品使用时间，69%选择修理而非丢弃；一半Z世代每2–3个月购买二手，性价比与循环消费意识持续增强。
             </p>
           </BaseCard>
@@ -102,7 +102,7 @@ export const ContentSlide38: React.FC = () => {
         {/* 图表区域：两列 */}
         <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
           {/* 左列：合成图（出游人数柱 + 总花费柱 + 人均花费线） */}
-          <ChartContainer delay="600ms" className="h-full min-h-0">
+          <ChartContainer delay="600ms" className="h-full min-h-0 order-2">
             <BaseBarChart
               data={mergedData}
               title="三大长假出游人数花费与人均消费（按节日分布）"
@@ -180,7 +180,7 @@ export const ContentSlide38: React.FC = () => {
           </ChartContainer>
 
           {/* 右列：行为数据表 */}
-          <ChartContainer delay="840ms">
+          <ChartContainer delay="840ms" className="order-1">
             <div className="flex flex-col h-full">
               <div className="mb-1.5">
                 <h3 className="text-base font-bold text-webank-blue uppercase tracking-wide border-b border-slate-300 pb-1">

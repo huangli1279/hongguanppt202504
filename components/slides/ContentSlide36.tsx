@@ -72,7 +72,7 @@ const agePlanBars: BarConfig[] = ageGroups.map((group) => ({
 
 export const ContentSlide36: React.FC = () => {
   return (
-    <BaseContentSlide title="消费持续疲弱，增量消费呈现三个新特点" cardColumns={2} chartColumns={2}>
+    <BaseContentSlide title="三重约束压制总消费大盘同时，增量消费向体验文娱、情绪陪伴、健康养老等软消费倾斜" cardColumns={2} chartColumns={2}>
       <div className="flex h-full flex-col gap-3 pb-2">
         <div className="grid flex-shrink-0 grid-cols-2 gap-3">
           <BaseCard title="消费疲弱归因" variant="accent" className="!p-3 gap-1.5 text-[12px] leading-snug">

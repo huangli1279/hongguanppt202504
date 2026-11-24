@@ -12,7 +12,6 @@ export interface TourismTrendPoint {
 }
 
 export const tourismTrend: TourismTrendPoint[] = [
-  { year: '2022', spending: 2.04, trips: 25.3 },
   { year: '2023', spending: 4.91, trips: 48.9 },
   { year: '2024', spending: 5.75, trips: 56.2 },
   { year: '2025', spending: 6.3, trips: 65.22 },
@@ -31,7 +30,6 @@ export interface PerformanceTrendPoint {
 }
 
 export const performanceTrend: PerformanceTrendPoint[] = [
-  { year: '2022', revenue: 220.31, boxOffice: 167.03, shows: 18.17, audience: 0.86 },
   { year: '2023', revenue: 739.56, boxOffice: 509.26, shows: 44.23, audience: 1.68 },
   { year: '2024', revenue: 795.9, boxOffice: 579.5, shows: 60.09, audience: 1.86 },
   { year: '2025', revenue: 837.22, boxOffice: 616.55, shows: 64.04, audience: 1.94 },
@@ -44,7 +42,6 @@ export interface EmotionMarketTrendPoint {
 }
 
 export const emotionMarketTrend: EmotionMarketTrendPoint[] = [
-  { year: '2022', size: 1.63 },
   { year: '2023', size: 1.95 },
   { year: '2024', size: 2.31 },
   { year: '2025', size: 2.72 },

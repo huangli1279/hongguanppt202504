@@ -14,57 +14,9 @@ import {
  * 采用正射投影生成经纬网，金色系以衬托藏青主色，作为装饰性章节徽标
  * ------------------------------------------------------------------------- */
 
-type Vec2 = [number, number];
-
 const GLOBE_VIEW = 200;
 const GLOBE_CENTER = 100;
 const GLOBE_R = 92;
-
-// 地球朝向：向前微倾露出北极，再整体逆时针旋转，使地轴指向左上约 30°
-const ORIENT = {
-  rx: (30 * Math.PI) / 180,
-  ry: (0 * Math.PI) / 180,
-  rz: (-30 * Math.PI) / 180,
-};
-
-const project = (latDeg: number, lonDeg: number): Vec2 => {
-  const lat = (latDeg * Math.PI) / 180;
-  const lon = (lonDeg * Math.PI) / 180;
-  const x0 = Math.cos(lat) * Math.cos(lon);
-  const y0 = Math.sin(lat);
-  const z0 = Math.cos(lat) * Math.sin(lon);
-
-  const { rx, ry, rz } = ORIENT;
-  const y1 = y0 * Math.cos(rx) - z0 * Math.sin(rx);
-  const z1 = y0 * Math.sin(rx) + z0 * Math.cos(rx);
-  const x2 = x0 * Math.cos(ry) + z1 * Math.sin(ry);
-  const y2 = y1;
-
-  const dx = GLOBE_R * x2;
-  const dy = -GLOBE_R * y2;
-  return [
-    GLOBE_CENTER + dx * Math.cos(rz) - dy * Math.sin(rz),
-    GLOBE_CENTER + dx * Math.sin(rz) + dy * Math.cos(rz),
-  ];
-};
-
-const toPath = (pts: Vec2[]): string =>
-  pts.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x.toFixed(2)} ${y.toFixed(2)}`).join(' ') + ' Z';
-
-// 纬线
-const PARALLELS = [-60, -30, 0, 30, 60].map((lat) => {
-  const pts: Vec2[] = [];
-  for (let lon = 0; lon <= 360; lon += 4) pts.push(project(lat, lon));
-  return toPath(pts);
-});
-
-// 经线（在南北极汇聚）
-const MERIDIANS = [0, 30, 60, 90, 120, 150].map((baseLon) => {
-  const pts: Vec2[] = [];
-  for (let lat = -90; lat <= 90; lat += 4) pts.push(project(lat, baseLon));
-  for (let lat = 90; lat >= -90; lat -= 4) pts.push(project(lat, baseLon + 180));
-  return toPath(pts);
-});
 
 const MacroGlobe: React.FC<{ size?: number }> = ({ size = 94 }) => (
   <svg
@@ -90,17 +42,21 @@ const MacroGlobe: React.FC<{ size?: number }> = ({ size = 94 }) => (
 
     <circle cx={GLOBE_CENTER} cy={GLOBE_CENTER} r={GLOBE_R} fill="url(#macroGlobeHalo)" />
 
-    <g stroke="url(#macroGlobeStroke)" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <g strokeWidth="2.2" strokeOpacity="0.55">
-        {PARALLELS.map((d, i) => (
-          <path key={`parallel-${i}`} d={d} />
-        ))}
-      </g>
-      <g strokeWidth="2" strokeOpacity="0.5">
-        {MERIDIANS.map((d, i) => (
-          <path key={`meridian-${i}`} d={d} />
-        ))}
-      </g>
+    <g
+      stroke="url(#macroGlobeStroke)"
+      fill="none"
+      strokeWidth="1.8"
+      strokeOpacity="0.62"
+      transform="rotate(-15 100 100)"
+    >
+      {/* 外层经线：由窄到宽展开，保留球体表面的立体感 */}
+      <ellipse cx={GLOBE_CENTER} cy={GLOBE_CENTER} rx={24} ry={GLOBE_R} />
+      <ellipse cx={GLOBE_CENTER} cy={GLOBE_CENTER} rx={42} ry={GLOBE_R} />
+      <ellipse cx={GLOBE_CENTER} cy={GLOBE_CENTER} rx={62} ry={GLOBE_R} />
+      {/* 外层纬线：围绕赤道分布，避免形成密集网格 */}
+      <ellipse cx={GLOBE_CENTER} cy={GLOBE_CENTER} rx={GLOBE_R} ry={20} />
+      <ellipse cx={GLOBE_CENTER} cy={GLOBE_CENTER} rx={GLOBE_R} ry={38} />
+      <ellipse cx={GLOBE_CENTER} cy={GLOBE_CENTER} rx={GLOBE_R} ry={54} />
     </g>
 
     <circle
