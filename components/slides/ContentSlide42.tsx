@@ -13,20 +13,13 @@ const NumBadge: React.FC<{ n: string; tone?: 'blue' | 'amber' }> = ({ n, tone = 
   </span>
 );
 
-const FeatureTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <span className="rounded-full border border-webank-accent/20 bg-webank-accent/10 px-2 py-0.5 text-[10px] font-semibold text-webank-accent">
-    {children}
-  </span>
-);
-
 const PolicyCard: React.FC<{
   index: string;
   title: string;
   meta: string;
-  features: string;
   delay: string;
   children: React.ReactNode;
-}> = ({ index, title, meta, features, delay, children }) => (
+}> = ({ index, title, meta, delay, children }) => (
   <article
     className="flex min-h-0 flex-col rounded-lg border border-webank-line bg-white px-2.5 py-2 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
     style={{ animationDelay: delay }}
@@ -34,18 +27,17 @@ const PolicyCard: React.FC<{
     <div className="flex items-start gap-2 border-b border-slate-100 bg-slate-50/80 px-2 py-1.5">
       <NumBadge n={index} />
       <div className="min-w-0 flex-1">
-        <h3 className="text-[14px] font-bold leading-tight text-webank-blue">{title}</h3>
-        <p className="mt-0.5 text-[10.5px] leading-tight text-webank-subtext">{meta}</p>
+        <h3 className="text-[15px] font-bold leading-tight text-webank-blue">{title}</h3>
+        <p className="mt-0.5 text-[11px] leading-tight text-webank-subtext">{meta}</p>
       </div>
-      <FeatureTag>{features}</FeatureTag>
     </div>
-    <div className="px-1 py-1.5 text-[12px] leading-snug text-slate-700">{children}</div>
+    <div className="px-1 py-1.5 text-[13px] leading-snug text-slate-700">{children}</div>
   </article>
 );
 
 const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <li className="flex gap-1">
-    <span className="flex-shrink-0 text-[13px] leading-tight text-webank-accent">•</span>
+    <span className="flex-shrink-0 text-[14px] leading-tight text-webank-accent">•</span>
     <span className="min-w-0">{children}</span>
   </li>
 );
@@ -61,11 +53,22 @@ const planFacets = [
 
 export const ContentSlide42: React.FC = () => (
   <BaseContentSlide
-    title="消费政策：从托底需求到重塑消费供给"
+    title="消费政策：着力扩供给、促升级，进一步释放消费潜力"
     subtitle="2026年三季度宏观经济报告"
     cardColumns={2}
   >
     <div className="flex h-full min-h-0 flex-col gap-2">
+      <section
+        className="flex-shrink-0 rounded-xl border border-webank-accent/20 bg-webank-accent/5 p-3 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
+        style={{ animationDelay: '0ms' }}
+      >
+        <div className="flex items-center gap-2">
+        </div>
+        <p className="mt-1 text-left text-[14px] font-bold leading-relaxed text-black">
+          政策既支持汽车、家电等商品更新，也推动二手交易、租赁和AI消费场景发展，进一步丰富消费选择。政策效果最终取决于居民收入预期，以及供给能否满足消费者的实际需求。
+        </p>
+      </section>
+
       <section
         className="flex-shrink-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white p-3 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
         style={{ animationDelay: '0ms' }}
@@ -77,15 +80,15 @@ export const ContentSlide42: React.FC = () => (
             <p className="mt-0.5 text-[11px] leading-tight text-webank-subtext">国函〔2026〕66号 · 2026年7月 · 明确消费作为扩大内需的战略基点</p>
           </div>
           <div className="hidden rounded-md bg-red-50 px-2 py-1 text-center sm:block">
-            <p className="text-[9px] leading-none text-red-400">2030年社零总额</p>
-            <p className="text-[14px] font-bold leading-tight text-red-600">≈60万亿元</p>
+            <p className="text-[10px] leading-none text-red-400">2030年社零总额</p>
+            <p className="text-[15px] font-bold leading-tight text-red-600">≈60万亿元</p>
           </div>
         </div>
         <div className="mt-1.5 grid grid-cols-3 gap-1">
           {planFacets.map((facet) => (
             <div key={facet.n} className="rounded-md border border-slate-200 bg-white px-1.5 py-1">
-              <span className="text-[10px] font-bold text-webank-accent">{facet.n}</span>
-              <span className="ml-1 text-[10.5px] font-semibold leading-tight text-webank-blue">{facet.t}</span>
+              <span className="text-[11px] font-bold text-webank-accent">{facet.n}</span>
+              <span className="ml-1 text-[11px] font-semibold leading-tight text-webank-blue">{facet.t}</span>
             </div>
           ))}
         </div>
@@ -96,7 +99,6 @@ export const ContentSlide42: React.FC = () => (
           index="2"
           title="《关于推动商品消费扩容升级的实施意见》"
           meta="商务部等7部门 · 2026年8月 · 商消费函〔2026〕389号"
-          features="特点①②"
           delay="120ms"
         >
           <ul className="space-y-1">
@@ -109,7 +111,6 @@ export const ContentSlide42: React.FC = () => (
           index="3"
           title="第四批消费品以旧换新资金下达"
           meta="国家发展改革委、财政部 · 2026年9月 · 资金接续支持"
-          features="特点②③"
           delay="240ms"
         >
           <ul className="space-y-1">
@@ -122,7 +123,6 @@ export const ContentSlide42: React.FC = () => (
           index="4"
           title="二手交易与租赁：纳入绿色消费政策框架"
           meta="国家层面规划与部门意见 · 2026年 · 循环消费"
-          features="特点②"
           delay="360ms"
         >
           <ul className="space-y-1">
@@ -135,7 +135,6 @@ export const ContentSlide42: React.FC = () => (
           index="5"
           title="《关于加快“人工智能+消费”发展的实施意见》"
           meta="商务部等8部门 · 2026年6月 · 商建发〔2026〕89号"
-          features="特点①③④"
           delay="480ms"
         >
           <ul className="space-y-1">
@@ -144,19 +143,6 @@ export const ContentSlide42: React.FC = () => (
           </ul>
         </PolicyCard>
       </div>
-
-      <section
-        className="flex-shrink-0 rounded-xl border border-webank-line bg-white p-3 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
-        style={{ animationDelay: '600ms' }}
-      >
-        <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-webank-accent text-[10px] font-bold text-white">结论</span>
-          <h3 className="text-[14px] font-bold leading-tight text-webank-blue">政策主线：扩容、循环、智能化，最终落脚消费能力</h3>
-        </div>
-        <p className="mt-1 pl-8 text-[11px] leading-relaxed text-slate-600">
-          政策已从单纯补贴大宗商品，升级为“顶层规划定方向、以旧换新稳需求、二手与租赁降成本、AI创造新场景、就业增收提能力”的组合拳。其对特点①—④均有对应，但短期关键仍是补贴精准落地、循环交易规范化，以及AI应用能否真正转化为更低成本、更好体验和更强消费意愿。
-        </p>
-      </section>
     </div>
   </BaseContentSlide>
 );

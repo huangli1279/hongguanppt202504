@@ -1,194 +1,133 @@
 import React from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
-  ArrowLeftRight,
+  ArrowDownRight,
+  ArrowUpRight,
   Building2,
   Coins,
   Factory,
   Landmark,
-  ShieldCheck,
+  ShieldAlert,
   ShoppingCart,
-  Sparkles,
   TrendingUp,
 } from 'lucide-react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
+interface MetricProps {
+  value: string;
+  label: string;
+  direction: 'up' | 'down';
+}
+
+const Metric: React.FC<MetricProps> = ({ value, label, direction }) => (
+  <div className="flex min-w-0 items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2.5 shadow-card">
+    <div className="min-w-0">
+      <strong className="block text-[21px] font-bold leading-none tabular-nums text-slate-800">{value}</strong>
+      <span className="mt-1 block text-[10px] leading-none text-webank-subtext">{label}</span>
+    </div>
+    {direction === 'up' ? (
+      <ArrowUpRight size={16} className="text-emerald-500" strokeWidth={2.5} />
+    ) : (
+      <ArrowDownRight size={16} className="text-rose-400" strokeWidth={2.5} />
+    )}
+  </div>
+);
+
 interface SummaryCardProps {
   icon: LucideIcon;
-  eyebrow: string;
   title: string;
-  metric: string;
-  metricLabel: string;
-  detail: string;
+  children: React.ReactNode;
   tone?: 'blue' | 'amber' | 'green' | 'red';
-  delay: string;
 }
 
 const toneStyles = {
-  blue: {
-    icon: 'bg-blue-50 text-webank-blue',
-    metric: 'text-webank-blue',
-    border: 'border-webank-accent/30',
-  },
-  amber: {
-    icon: 'bg-amber-50 text-amber-600',
-    metric: 'text-amber-600',
-    border: 'border-amber-200',
-  },
-  green: {
-    icon: 'bg-emerald-50 text-emerald-600',
-    metric: 'text-emerald-600',
-    border: 'border-emerald-200',
-  },
-  red: {
-    icon: 'bg-red-50 text-red-600',
-    metric: 'text-red-600',
-    border: 'border-red-200',
-  },
+  blue: { icon: 'bg-blue-50 text-webank-blue', accent: 'text-webank-blue' },
+  amber: { icon: 'bg-amber-50 text-amber-600', accent: 'text-amber-600' },
+  green: { icon: 'bg-emerald-50 text-emerald-600', accent: 'text-emerald-600' },
+  red: { icon: 'bg-red-50 text-red-600', accent: 'text-red-600' },
 };
 
-const SummaryCard: React.FC<SummaryCardProps> = ({
-  icon: Icon,
-  eyebrow,
-  title,
-  metric,
-  metricLabel,
-  detail,
-  tone = 'blue',
-  delay,
-}) => {
+const SummaryCard: React.FC<SummaryCardProps> = ({ icon: Icon, title, children, tone = 'blue' }) => {
   const styles = toneStyles[tone];
 
   return (
-    <article
-      className={`flex min-h-0 flex-col rounded-xl border bg-white p-4 shadow-card animate-fade-in-up fill-mode-forwards opacity-0 ${styles.border}`}
-      style={{ animationDelay: delay }}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-[10px] font-bold tracking-[0.14em] text-webank-subtext uppercase">{eyebrow}</p>
-          <h2 className="mt-1 text-[15px] font-bold leading-tight text-webank-blue">{title}</h2>
+    <article className="flex min-h-0 flex-col rounded-lg border border-slate-200 bg-white shadow-card animate-fade-in-up fill-mode-forwards opacity-0">
+      <div className="flex items-center gap-2 border-b border-slate-100 px-3.5 py-2">
+        <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md ${styles.icon}`}>
+          <Icon size={17} strokeWidth={2.2} />
         </div>
-        <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${styles.icon}`}>
-          <Icon size={19} strokeWidth={2.2} />
-        </div>
+        <h2 className="text-[13.5px] font-bold leading-tight text-webank-blue">{title}</h2>
       </div>
-      <div className="mt-3 flex items-baseline gap-2">
-        <strong className={`text-[26px] font-bold leading-none tabular-nums ${styles.metric}`}>{metric}</strong>
-        <span className="text-[11px] text-webank-subtext">{metricLabel}</span>
-      </div>
-      <p className="mt-2 text-[10.5px] leading-relaxed text-slate-600">{detail}</p>
+      <div className="flex-1 space-y-2 px-3.5 py-2.5 text-[12px] leading-relaxed text-slate-700">{children}</div>
     </article>
   );
 };
+
+const Point: React.FC<{ label: string; tone?: keyof typeof toneStyles; children: React.ReactNode }> = ({ label, tone = 'blue', children }) => (
+  <p>
+    <strong className={toneStyles[tone].accent}>{label}：</strong>{children}
+  </p>
+);
 
 export const ContentSlide43: React.FC = () => {
   return (
     <BaseContentSlide
       title={
         <>
-          三季度总结：增长韧性延续，
-          <span className="text-webank-accent">结构加速升级、政策持续发力</span>
+          2026年三季度宏观经济总结：增长韧性延续，
+          <span className="text-webank-accent">结构分化加深、内需修复偏慢</span>
         </>
       }
-      subtitle="2026年三季度宏观经济报告 · 结论页"
-      headerClassName="!mb-4"
-      className="!p-8 sm:!p-10"
+      subtitle="2026年三季度宏观经济报告"
+      headerClassName="!mb-3"
+      className="!p-8 sm:!p-9"
     >
       <div className="flex h-full min-h-0 flex-col gap-3">
-        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-2.5">
-          <SummaryCard
-            icon={TrendingUp}
-            eyebrow="增长"
-            title="经济增速回升"
-            metric="4.5%"
-            metricLabel="Q3实际GDP同比"
-            detail="较二季度回升0.2个百分点；前三季度累计增长4.6%，处于全年4.5%—5.0%目标区间。"
-            tone="blue"
-            delay="0ms"
-          />
-          <SummaryCard
-            icon={Coins}
-            eyebrow="价格"
-            title="平减指数回正"
-            metric="1.44%"
-            metricLabel="Q3 GDP平减指数"
-            detail="名义增速6%，平减指数连续两个季度回正，核心受AI产业链景气与能源价格上行拉动。"
-            tone="green"
-            delay="100ms"
-          />
-          <SummaryCard
-            icon={Factory}
-            eyebrow="生产"
-            title="新动能加速释放"
-            metric="16.2%"
-            metricLabel="高技术制造业Q3同比"
-            detail="电子行业增长17.5%、计算机通信产能利用率达80.3%；1—9月规上工业利润增长15.5%。"
-            tone="green"
-            delay="200ms"
-          />
-          <SummaryCard
-            icon={ShoppingCart}
-            eyebrow="消费"
-            title="社零温和修复"
-            metric="1.1%"
-            metricLabel="前三季度社零累计同比"
-            detail="剔除汽车后累计增长2.8%；以旧换新1—8月销售额1.55万亿元，惠及2.08亿人次。"
-            tone="amber"
-            delay="300ms"
-          />
-          <SummaryCard
-            icon={ArrowLeftRight}
-            eyebrow="外贸"
-            title="出口保持韧性"
-            metric="36.3%"
-            metricLabel="9月出口同比（美元计）"
-            detail="前三季度出口累计增长21.3%，9月贸易顺差同比+50.5%，外需对经济增长形成支撑。"
-            tone="blue"
-            delay="400ms"
-          />
-          <SummaryCard
-            icon={Landmark}
-            eyebrow="财政与金融"
-            title="收支与信用平稳"
-            metric="5.1%"
-            metricLabel="前三季度一般公共预算收入同比"
-            detail="税收增长6.1%、印花税+31.1%；社融增速回落至7.1%，增量主要靠政府债与政策工具。"
-            tone="green"
-            delay="500ms"
-          />
-          <SummaryCard
-            icon={Building2}
-            eyebrow="投资"
-            title="地产仍是修复短板"
-            metric="-7.2%"
-            metricLabel="Q3固投累计同比"
-            detail="民间投资-10.4%、国有控股-3.2%；9月单月环比转正，地产降幅仍在扩大是主要拖累。"
-            tone="amber"
-            delay="600ms"
-          />
-          <SummaryCard
-            icon={Sparkles}
-            eyebrow="新消费"
-            title="AI重塑消费决策"
-            metric="79.4%"
-            metricLabel="消费者购物主动咨询AI"
-            detail="43.7%认为AI咨询有影响，首超传统媒体广告（42.6%）；服务零售+5.0%快于商品。"
-            tone="amber"
-            delay="700ms"
-          />
+        <div className="grid flex-shrink-0 grid-cols-9 gap-1.5">
+          <Metric value="4.5%" label="Q3 GDP" direction="up" />
+          <Metric value="50.1%" label="9月制造业PMI" direction="up" />
+          <Metric value="+5.0%" label="9月PPI" direction="up" />
+          <Metric value="+0.9%" label="9月CPI" direction="up" />
+          <Metric value="-7.2%" label="固投累计" direction="down" />
+          <Metric value="+1.1%" label="9月社零" direction="up" />
+          <Metric value="+36.3%" label="9月出口" direction="up" />
+          <Metric value="+31.0%" label="9月进口" direction="up" />
+          <Metric value="-4.0%" label="M1-M2剪刀差" direction="down" />
         </div>
 
-        <div className="flex flex-shrink-0 items-center gap-3 rounded-xl bg-webank-blue px-5 py-3 text-white shadow-card animate-fade-in-up fill-mode-forwards opacity-0" style={{ animationDelay: '600ms' }}>
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/15">
-            <ShieldCheck size={20} />
-          </div>
-          <div className="min-w-0">
-            <p className="text-[10px] font-bold tracking-[0.16em] text-blue-100 uppercase">季度判断</p>
-            <p className="mt-0.5 text-[15px] font-semibold leading-snug">
-              经济处于“总量稳、结构变、政策托底”的修复阶段：短期看出口与新动能，中期看消费回升和地产企稳，风险关注外部冲击与结构性供需错配。
-            </p>
-          </div>
+        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-2">
+          <SummaryCard icon={TrendingUp} title="增长：增速回升、平减回正">
+            <Point label="增速回升">三季度GDP同比增长<strong>4.5%</strong>，较二季度回升0.2个百分点；前三季度累计增长<strong>4.6%</strong>，处于全年目标区间。</Point>
+            <Point label="价格改善" tone="green">名义增速<strong>6%</strong>，GDP平减指数<strong>1.44%</strong>连续两个季度回正，AI产业链景气与能源价格上行形成支撑。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Factory} title="生产：工业稳增、新旧动能分化" tone="green">
+            <Point label="工业平稳">前三季度规上工业增加值累计增长<strong>5.3%</strong>，制造业增长<strong>5.7%</strong>；三季度产能利用率<strong>73.1%</strong>，环比企稳但同比仍低1.5个百分点。</Point>
+            <Point label="动能分化" tone="green">高技术制造业Q3增长<strong>16.2%</strong>，计算机通信产能利用率达<strong>80.3%</strong>；汽车产能利用率降至<strong>66.2%</strong>，采矿业受煤炭复产偏慢拖累。</Point>
+          </SummaryCard>
+          <SummaryCard icon={ShoppingCart} title="消费：总量偏弱、服务与体验较强" tone="amber">
+            <Point label="总量修复偏慢" tone="amber">前三季度社零累计增长<strong>1.1%</strong>；9月同比回升至<strong>1.1%</strong>，剔除汽车后增长<strong>3.9%</strong>，内需仍受收入预期与就业信心约束。</Point>
+            <Point label="结构分化" tone="green">服务零售增长<strong>5.0%</strong>，快于商品零售<strong>1.0%</strong>；旅游、文体休闲等体验消费较强，汽车零售同比下降<strong>14.9%</strong>。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Building2} title="投资：降幅扩大，地产拖累突出" tone="amber">
+            <Point label="固投偏弱" tone="amber">前三季度固定资产投资累计同比<strong>-7.2%</strong>，降幅较上半年扩大；9月单月环比转正，但10月再度转弱。</Point>
+            <Point label="地产与民间承压" tone="amber">地产开发投资累计<strong>-20.6%</strong>，民间投资<strong>-10.4%</strong>；专项债与政策性金融工具加力，资金转化为实物工作量仍有时滞。</Point>
+          </SummaryCard>
+          <SummaryCard icon={ArrowUpRight} title="外贸：出口高增，AI链贡献突出" tone="blue">
+            <Point label="出口韧性强">前三季度出口累计增长<strong>21.3%</strong>，9月同比<strong>36.3%</strong>；AI产业链出口同比增长<strong>115%</strong>，约拉动整体出口增速13个百分点。</Point>
+            <Point label="进口结构分化" tone="amber">9月进口同比增长<strong>31.0%</strong>，AI相关设备与芯片金额高增，但进口量改善有限，传统制造链需求仍弱。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Landmark} title="财政：支出进度偏慢，政策加力" tone="amber">
+            <Point label="支出进度偏慢" tone="amber">1—9月一般公共预算支出增长<strong>1.0%</strong>，进度<strong>70.0%</strong>，低于收入进度约8个百分点，未达年初增速目标。</Point>
+            <Point label="结构与工具">民生、科创支出托底，基建支出降幅收窄；新增专项债发行提速，8,000亿元新型政策性金融工具落地，稳投资政策继续发力。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Coins} title="金融：社融回落，居民信贷偏弱" tone="blue">
+            <Point label="信用扩张放缓">Q3新增社融<strong>6.11万亿元</strong>，同比少增7,300亿元，社融存量增速回落至<strong>7.1%</strong>；融资主要由政府债与政策工具支撑。</Point>
+            <Point label="居民端仍在收缩" tone="amber">三季度居民贷款下降<strong>6,669亿元</strong>，9月单月接近零增长；居民存款增加<strong>1.81万亿元</strong>，非银存款季末明显回流银行。</Point>
+          </SummaryCard>
+          <SummaryCard icon={ShieldAlert} title="风险：内需不足与外部扰动并存" tone="red">
+            <Point label="内需修复不稳" tone="red">居民收入实际增长<strong>4.4%</strong>，消费支出增长<strong>2.7%</strong>；地产调整、消费信心低位与居民加杠杆意愿偏弱相互影响。</Point>
+            <Point label="外部与价格风险" tone="red">出口高增存在基数与抢出口因素，AI链价格贡献较大；输入性通胀推升PPI，生产资料与生活资料价格剪刀差扩大。</Point>
+          </SummaryCard>
         </div>
       </div>
     </BaseContentSlide>

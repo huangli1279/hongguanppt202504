@@ -71,7 +71,8 @@ const MacroGlobe: React.FC<{ size?: number }> = ({ size = 94 }) => (
   </svg>
 );
 
-const MacroEmblem: React.FC = () => (
+// 备份：右上角「中国宏观」徽标组件（当前未使用，保留以便日后恢复）
+export const MacroEmblem: React.FC = () => (
   <div
     className="flex items-center gap-2 flex-shrink-0 animate-fade-in"
     style={{ animationDelay: '0.5s', marginTop: -50, marginRight: -40 }}
@@ -129,7 +130,8 @@ export const ContentSlide04: React.FC = () => {
           <span className="text-webank-accent">平减指数连续两季回正</span>
         </>
       }
-      headerChild={<MacroEmblem />}
+      // 右上角「中国宏观」徽标已暂时隐藏；组件代码仍保留在本文件顶部作为备份，需要时取消下一行注释即可恢复
+      // headerChild={<MacroEmblem />}
     >
       <div className="flex flex-col h-full min-h-0 gap-3">
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">

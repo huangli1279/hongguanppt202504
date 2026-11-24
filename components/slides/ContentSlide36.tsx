@@ -1,204 +1,153 @@
 import React from 'react';
-import { BaseCard } from '../base/BaseCard';
-import { BaseContentSlide, ChartContainer } from '../layouts/BaseContentSlide';
-import { BaseLineChart } from '../base/BaseLineChart';
-import { BaseBarChart, BarConfig } from '../base/BaseBarChart';
-import { increaseConsumptionReasons } from '@/data/increaseConsumptionReasons';
-import { seriesColors } from '../../utils/chartColors';
-import { retailTrendData } from '@/data/retail';
-import { consumerConfidenceData } from '@/data/consumerConfidence';
+import { Wallet, Briefcase, Home, ArrowRight, Sparkles } from 'lucide-react';
+import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
-// 社零累计同比（现有社零月度数据）
-const retailCumulativeTrend = retailTrendData
-  .filter((d) => d.period >= '2025-01')
-  .map((d) => ({ period: d.period, cumulativeYoy: d.totalRetail }));
+type Tone = 'red' | 'green' | 'blue' | 'amber' | 'black';
+const toneText: Record<Tone, string> = {
+  red: 'text-red-600',
+  green: 'text-green-600',
+  blue: 'text-webank-blue',
+  amber: 'text-amber-600',
+  black: 'text-slate-800',
+};
 
-// 消费者信心指数（现有景气监测数据）
-const confidenceIndexTrend = consumerConfidenceData
-  .filter((d) => d.period >= '2025-01')
-  .map((d) => ({ period: d.period, confidence: d.confidence }));
-
-const quarterTicks = ['2025-03', '2025-09', '2026-03', '2026-09'];
-
-const ageConsumptionData = [
-  { category: '旅游', young: 38, middle: 36, senior: 35 },
-  { category: '保健养生', young: 30, middle: 33, senior: 35 },
-  { category: '数码产品', young: 30, middle: 27, senior: 25 },
-  { category: '教育支出', young: 29, middle: 28, senior: 25 },
-  { category: '文化娱乐', young: 24, middle: 23, senior: 22 },
-  { category: '家居装修', young: 22, middle: 21, senior: 20 },
-  { category: '养老服务', young: 19, middle: 20, senior: 26 },
-  { category: '购买住房', young: 18, middle: 18, senior: 18 },
-  { category: '教育培训', young: 14, middle: 15, senior: 14 },
-  { category: '购买家电', young: 14, middle: 14, senior: 13 },
-  { category: '医疗服务', young: 12, middle: 13, senior: 12 },
-  { category: '购买服装', young: 12, middle: 12, senior: 11 },
-  { category: '餐饮', young: 9, middle: 10, senior: 10 },
-  { category: '美容美发', young: 8, middle: 8, senior: 8 },
-  { category: '其他', young: 6, middle: 7, senior: 7 },
+// 二季度归因约束
+const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React.ReactNode }[] = [
+  {
+    icon: Wallet,
+    label: '收入约束',
+    tone: 'blue',
+    body: (
+      <>
+        二季度人均可支配收入 2.3 万元、实际+4.2%，人均消费支出 1.48 万元、实际仅{' '}
+        +2.7%，剪刀差走阔、新增收入更多转为储蓄。
+      </>
+    ),
+  },
+  {
+    icon: Briefcase,
+    label: '就业约束',
+    tone: 'black',
+    body: (
+      <>
+        二季度失业率 5.0%–5.2%，16–24 岁长期15%；2026 届毕业生
+        1270 万创新高，AI 5 年内或替代约7000 万岗位。
+      </>
+    ),
+  },
+  {
+    icon: Home,
+    label: '房价财富效应',
+    tone: 'black',
+    body: (
+      <>
+        房地产占居民财富约52%，住房贷款连续13个季度负增长；房价跌超
+        15% 时，一套房家庭消费降11.9%、25.9%。
+      </>
+    ),
+  },
 ];
 
-const reasonBars: BarConfig[] = [
-  { dataKey: 'all', name: '全部', color: '#4A79AA' },
-  { dataKey: 'age18_35', name: '18-35岁', color: '#5C9A8A' },
-  { dataKey: 'age36_59', name: '36-59岁', color: '#C09A4A' },
-  { dataKey: 'age60plus', name: '60岁以上', color: '#9AA5AE' },
+// 三季度研究：承接二季度归因，展开的三个消费特点
+const dimensions: { num: string; tag: string; title: string; body: string }[] = [
+  { num: '①', tag: '特点一', title: '体验与情绪消费', body: '从「占有物品」到「为体验和情绪付费」' },
+  { num: '②', tag: '特点二', title: '消费者追求有性价比', body: '从追求价格到追求性价比，二手市场增长' },
+  { num: '③', tag: '特点三', title: '健康消费刚性凸显', body: '收缩周期下健康支出的刚性凸显' },
 ];
-
-const highlightedReasons = increaseConsumptionReasons.filter(({ reason }) =>
-  ['旧物更新', '情绪价值', '性价比高'].includes(reason),
-);
-
-const ageGroups = [
-  { key: 'young', label: '18-35岁', color: '#5A9B8A' },
-  { key: 'middle', label: '36-59岁', color: '#E0935D' },
-  { key: 'senior', label: '60岁以上', color: '#9BC4D2' },
-] as const;
-
-const agePlanData = ageConsumptionData
-  .filter((item) => ['旅游', '保健养生'].includes(item.category))
-  .map((item) => ({
-    name: item.category,
-    young: item.young,
-    middle: item.middle,
-    senior: item.senior,
-  }));
-
-const agePlanBars: BarConfig[] = ageGroups.map((group) => ({
-  dataKey: group.key,
-  name: group.label,
-  color: group.color,
-}));
 
 export const ContentSlide36: React.FC = () => {
   return (
-    <BaseContentSlide title="三重约束压制总消费大盘同时，增量消费向体验文娱、情绪陪伴、健康养老等软消费倾斜" cardColumns={2} chartColumns={2}>
-      <div className="flex h-full flex-col gap-3 pb-2">
-        <div className="grid flex-shrink-0 grid-cols-2 gap-3">
-          <BaseCard title="消费疲弱归因" variant="accent" className="!p-3 gap-1.5 text-[12px] leading-snug">
-            <p>
-              消费疲弱延续，核心制约仍是收入预期、就业、房价三大因素。
-            </p>
-            <p className="mt-1">但总量之下结构并不一致：情绪价值消费、健康支出等领域依然保持较快增长。</p>
-          </BaseCard>
-          <BaseCard title="增量花在哪、为何花" className="!p-3 gap-1.5 text-[12px] leading-snug">
-            <p>
-              调研显示，居民计划增加消费的领域前二均为旅游、保健养生，增加消费的原因前三为旧物更新、情绪价值、性价比高。
-            </p>
-            <p className="mt-1">两张榜单构成增量消费的三个新特点：</p>
-            <ul className="mt-1 list-disc space-y-0.5 pl-4">
-              <li><strong>情绪与体验消费高增：</strong>演唱会、IP潮玩、治愈系旅行等“情价比”消费持续高增。</li>
-              <li><strong>追求性价比：</strong>基础品类转向平替，二手交易高增。</li>
-              <li><strong>健康支出刚性不减：</strong>健康、养老等防御型支出只增不减，各年龄段均居前列。</li>
-            </ul>
-          </BaseCard>
-        </div>
-
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-3">
-          <div className="flex min-h-0 flex-col gap-3">
-            <ChartContainer delay="120ms" ariaLabel="社零累计同比趋势图" className="min-h-0 flex-1">
-              <BaseLineChart
-                data={retailCumulativeTrend}
-                title="社零累计同比"
-                subtitle="数据来源：国家统计局 | 单位：累计同比，%"
-                lines={[
-                  { dataKey: 'cumulativeYoy', name: '社零累计同比', color: seriesColors[0], strokeWidth: 2.5 },
-                ]}
-                yAxisDomain={[0, 6]}
-                showYAxis
-                showReferenceLine
-                referenceLineY={0}
-                showLegend={false}
-                compact
-                chartMarginLeft={30}
-                axisTickFontSize={9}
-                xAxisAngle={0}
-                xAxisHeight={28}
-                chartMarginBottom={8}
-                xAxisTicks={quarterTicks}
-              />
-            </ChartContainer>
-            <ChartContainer delay="240ms" ariaLabel="消费者信心指数趋势图" className="min-h-0 flex-1">
-              <BaseLineChart
-                data={confidenceIndexTrend}
-                title="消费者信心指数"
-                subtitle="数据来源：国家统计局中国经济景气监测中心 | 100为荣枯线"
-                lines={[
-                  { dataKey: 'confidence', name: '消费者信心指数', color: seriesColors[2], strokeWidth: 2.5 },
-                ]}
-                yAxisDomain={[80, 102]}
-                showYAxis
-                showReferenceLine
-                referenceLineY={100}
-                showLegend={false}
-                unit=""
-                yAxisTickFormatter={(val) => `${val}`}
-                compact
-                chartMarginLeft={20}
-                axisTickFontSize={9}
-                xAxisAngle={0}
-                xAxisHeight={28}
-                chartMarginBottom={8}
-                xAxisTicks={quarterTicks}
-              />
-            </ChartContainer>
+    <BaseContentSlide
+      title={<></>}
+      subtitle="2026年三季度宏观经济报告"
+      headerClassName="!mb-3"
+    >
+      <div className="flex h-full items-center justify-center pb-6">
+        {/* 二季度归因 → 三季度研究四个特点 */}
+        <div className="flex h-[80%] max-h-[560px] w-[94%] min-h-0 items-stretch gap-4">
+          {/* 左：二季度归因 */}
+          <div
+            className="flex-1 min-w-0 rounded-xl border border-webank-line bg-white shadow-card p-4 flex flex-col gap-3 animate-fade-in-up fill-mode-forwards opacity-0"
+            style={{ animationDelay: '180ms' }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-1 h-3.5 bg-webank-blue rounded-sm" />
+              <h3 className="text-[18px] font-bold text-webank-blue">二季度归因：三重约束压缩总消费大盘</h3>
+            </div>
+            <div className="flex-1 min-h-0 flex flex-col gap-2.5">
+              {constraints.map((c) => (
+                <div key={c.label} className="flex-1 flex items-center gap-2.5 rounded-lg bg-slate-50 px-3 py-2">
+                  <c.icon size={15} className={`${toneText[c.tone]} mt-0.5 flex-shrink-0`} />
+                  <div className="min-w-0">
+                    <p className={`text-[16px] font-bold leading-tight ${toneText[c.tone]}`}>{c.label}</p>
+                    <p className="text-[16px] leading-snug text-slate-600 mt-0.5">{c.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid min-h-0 grid-cols-2 gap-3">
-            <ChartContainer delay="360ms" ariaLabel="不同年龄段消费计划对比图" className="min-h-0">
-              <div className="flex h-full min-h-0 flex-col">
-                <div className="mb-1 flex-shrink-0 border-b border-slate-300 pb-1">
-                  <h3 className="text-xs font-bold tracking-wide text-webank-blue">2026年您打算在哪些方面增加消费？</h3>
-                  <p className="mt-0.5 text-[9px] text-webank-subtext">数据来源：中央广播电视总台研究院《美好生活大调查》 | 占比，%</p>
-                </div>
-                <div className="min-h-0 flex-1 pl-3">
-                  <BaseBarChart
-                    data={agePlanData}
-                    xAxisKey="name"
-                    bars={agePlanBars}
-                    yAxisDomain={[0, 45]}
-                    showYAxis
-                    yAxisWidth={36}
-                    chartMarginLeft={12}
-                    showLegend
-                    legendOrder={ageGroups.map((group) => group.label)}
-                    legendFontSize={7}
-                    legendGap={5}
-                    showLabels
-                    labelFormatter={(value) => `${value}%`}
-                    barSize={20}
-                    barGap={2}
-                    barCategoryGap="16%"
-                    xAxisTickFontSize={8}
-                    xAxisInterval={0}
-                  />
-                </div>
+
+          {/* 中：承接箭头 二季度 → 三季度 */}
+          <div className="w-24 flex-shrink-0 flex flex-col items-center justify-center gap-3 text-center">
+            <span className="text-[13px] font-semibold tracking-wider text-webank-subtext">研究视角</span>
+            <div className="w-full rounded-xl border border-slate-200 bg-slate-50 px-2 py-3">
+              <p className="text-[14px] font-medium text-webank-subtext">二季度</p>
+              <p className="mt-1 text-[22px] font-bold leading-tight text-webank-blue">归因</p>
+            </div>
+            <div className="relative my-1 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-webank-blue to-webank-accent text-white shadow-lg ring-4 ring-webank-accent/10">
+              <ArrowRight size={30} strokeWidth={2.5} />
+            </div>
+            <div className="w-full rounded-xl border border-webank-accent/30 bg-webank-accent/10 px-2 py-3 shadow-sm">
+              <p className="text-[12px] font-semibold text-webank-accent">三季度</p>
+              <p className="mt-1 text-[18px] font-bold leading-tight text-webank-accent">消费趋势</p>
+            </div>
+          </div>
+
+          {/* 右：三季度研究三个特点 + AI 变量 */}
+          <div
+            className="flex-[1.15] min-w-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white shadow-card p-4 flex flex-col gap-2 animate-fade-in-up fill-mode-forwards opacity-0"
+            style={{ animationDelay: '240ms' }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-1 h-3.5 bg-webank-accent rounded-sm" />
+              <h3 className="text-[18px] font-bold text-webank-blue">三季度研究：消费特点与AI对消费决策的影响</h3>
+            </div>
+            <p className="text-[15px] text-webank-subtext leading-tight pl-3 -mt-0.5">
+              
+            </p>
+            <div className="flex-1 min-h-0 flex gap-2.5 pt-1">
+              <div className="flex-1 min-w-0 flex flex-col gap-2.5">
+                {dimensions.map((d) => (
+                  <div
+                    key={d.num}
+                    className="flex-1 group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2"
+                  >
+                    <span className="flex items-center justify-center w-7 h-7 flex-shrink-0 rounded-md bg-gradient-to-br from-webank-accent to-webank-blue text-white text-[16px] font-bold">
+                      {d.num}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <p className="text-[18px] font-bold text-webank-blue leading-tight">{d.title}</p>
+                        <span className="flex-shrink-0 rounded bg-webank-accent/10 text-webank-accent text-[14px] font-semibold px-1 py-0.5 leading-none">
+                          {d.tag}
+                        </span>
+                      </div>
+                      <p className="text-[15px] leading-snug text-slate-500 mt-0.5">{d.body}</p>
+                    </div>
+                    <ArrowRight size={13} className="flex-shrink-0 text-slate-300 group-hover:text-webank-accent transition-colors" />
+                  </div>
+                ))}
               </div>
-            </ChartContainer>
-            <ChartContainer delay="480ms" ariaLabel="日常增加消费的主要原因图" className="min-h-0">
-              <BaseBarChart
-                data={highlightedReasons}
-                title="您日常增加消费的主要原因是什么？"
-                subtitle="总样本及分年龄段调查占比（%）"
-                xAxisKey="reason"
-                bars={reasonBars}
-                yAxisDomain={[0, 50]}
-                showYAxis
-                yAxisWidth={36}
-                chartMarginLeft={12}
-                legendOrder={['全部', '18-35岁', '36-59岁', '60岁以上']}
-                legendFontSize={7}
-                legendGap={5}
-                barSize={11}
-                barGap={1}
-                barCategoryGap="14%"
-                showLabels={false}
-                xAxisAngle={-35}
-                xAxisHeight={40}
-                xAxisInterval={0}
-                xAxisTickFontSize={7}
-                unit="%"
-              />
-            </ChartContainer>
+
+              {/* AI 工具参与消费决策 */}
+              <div className="w-[30%] flex-shrink-0 flex flex-col items-center justify-center rounded-lg border border-webank-accent/30 bg-gradient-to-b from-webank-accent/10 to-white px-3 py-2 text-center shadow-sm">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-webank-accent to-webank-blue text-white shadow">
+                  <Sparkles size={18} />
+                </span>
+                <p className="mt-2 text-[16px] font-bold leading-tight text-webank-accent">AI参与改变消费决策</p>
+                <p className="mt-1.5 text-[13px] leading-snug text-slate-500">AI 进入搜索、比价与决策，重塑消费链路</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

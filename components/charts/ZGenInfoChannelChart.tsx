@@ -21,24 +21,38 @@ const rows: ChannelRow[] = [
 
 const FULL_COLOR = '#3978b9';
 const ZGEN_COLOR = '#8ecae6';
-const MAX = 70;
+
+// 将数值映射到 [10%, 84%] 的柱长区间，放大不同数据之间的长度差距，并给右侧数值文字留出空间
+const ALL_VALUES = rows.flatMap((r) => [r.left, r.left + r.leftDiff, r.right, r.right + r.rightDiff]);
+const MIN_VALUE = Math.min(...ALL_VALUES);
+const MAX_VALUE = Math.max(...ALL_VALUES);
+const FLOOR = 10;
+const CEIL = 84;
+const barWidth = (value: number) =>
+  FLOOR + ((CEIL - FLOOR) * (value - MIN_VALUE)) / (MAX_VALUE - MIN_VALUE);
 
 const Legend: React.FC<{ color: string; children: React.ReactNode }> = ({ color, children }) => (
-  <span className="inline-flex items-center gap-1 whitespace-nowrap text-[8px] text-slate-600">
-    <span className="inline-block h-2 w-2 rounded-[2px]" style={{ backgroundColor: color }} />
+  <span className="inline-flex items-center gap-1 whitespace-nowrap text-[9px] text-slate-600">
+    <span className="inline-block h-2.5 w-2.5 rounded-[2px]" style={{ backgroundColor: color }} />
     {children}
   </span>
 );
 
 const Bars: React.FC<{ full: number; zgen: number }> = ({ full, zgen }) => (
-  <div className="flex w-full flex-col gap-0.5">
+  <div className="flex w-full flex-col gap-1">
     <div className="flex items-center gap-1">
-      <div className="h-1.5 rounded-r bg-[#3978b9]" style={{ width: `${(full / MAX) * 100}%` }} />
-      <span className="text-[8px] leading-none tabular-nums text-slate-600">{full}%</span>
+      <div
+        className="h-2.5 min-w-[4px] rounded-r"
+        style={{ width: `${barWidth(full)}%`, backgroundColor: FULL_COLOR }}
+      />
+      <span className="shrink-0 text-[10px] leading-none tabular-nums text-slate-600">{full}%</span>
     </div>
     <div className="flex items-center gap-1">
-      <div className="h-1.5 rounded-r bg-[#8ecae6]" style={{ width: `${(zgen / MAX) * 100}%` }} />
-      <span className="text-[8px] leading-none tabular-nums text-slate-600">{zgen}%</span>
+      <div
+        className="h-2.5 min-w-[4px] rounded-r"
+        style={{ width: `${barWidth(zgen)}%`, backgroundColor: ZGEN_COLOR }}
+      />
+      <span className="shrink-0 text-[10px] leading-none tabular-nums text-slate-600">{zgen}%</span>
     </div>
   </div>
 );
@@ -47,7 +61,7 @@ const Bars: React.FC<{ full: number; zgen: number }> = ({ full, zgen }) => (
 export const ZGenInfoChannelChart: React.FC = () => (
   <div className="flex h-full w-full flex-col">
     <div className="shrink-0 text-center">
-      <h3 className="text-[12px] font-bold leading-tight text-webank-blue">
+      <h3 className="text-[13px] font-bold leading-tight text-webank-blue">
         消费决策高度依赖视频、内容平台以及 AI 工具
       </h3>
       <div className="mt-1 flex justify-center gap-3">
@@ -56,7 +70,7 @@ export const ZGenInfoChannelChart: React.FC = () => (
       </div>
     </div>
 
-    <div className="mt-2 grid shrink-0 grid-cols-[1.45fr_1fr_1fr] gap-x-2 text-center text-[9px] font-semibold leading-tight text-slate-700">
+    <div className="mt-2 grid shrink-0 grid-cols-[1.45fr_1fr_1fr] gap-x-2 text-center text-[10px] font-semibold leading-tight text-slate-700">
       <span />
       <span>探索新方案</span>
       <span>有购买需求后</span>
@@ -73,7 +87,7 @@ export const ZGenInfoChannelChart: React.FC = () => (
             }`}
           >
             <span
-              className={`text-[9px] leading-tight ${
+              className={`text-[10px] leading-tight ${
                 highlighted ? 'font-semibold text-[#c81e1e]' : 'text-slate-700'
               }`}
             >
@@ -87,8 +101,8 @@ export const ZGenInfoChannelChart: React.FC = () => (
       })}
     </div>
 
-    <div className="mt-1 shrink-0 space-y-0.5 text-[8px] leading-snug text-slate-500">
-      <p>注：百分比为各渠道信息来源占比；蓝色为全年龄样本，红色为 Z 世代</p>
+    <div className="mt-1 shrink-0 space-y-0.5 text-[9px] leading-snug text-slate-500">
+      <p>注：百分比为各渠道信息来源占比；深蓝色为全年龄样本，浅蓝色为 Z 世代</p>
       <p>数据来源：埃森哲 2025 年中国消费者调研（全年龄样本 N=5000，18-29 岁 N=986，占比 20%）</p>
     </div>
   </div>
