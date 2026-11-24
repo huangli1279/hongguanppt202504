@@ -10,25 +10,43 @@ import {
   nonBankDepositQuarterlyIncrementData,
 } from '@/data/depositData';
 
-/** 柱顶/柱底标签：正值放柱子上方，负值放柱子下方 */
-const barValueLabel = ({ x, y, width, value }: any) => {
-  if (value == null) return null;
-  const v = Number(value);
-  const isNegative = v < 0;
-  return (
-    <text
-      x={Number(x) + Number(width) / 2}
-      y={isNegative ? Number(y) + 11 : Number(y) - 7}
-      textAnchor="middle"
-      dominantBaseline="middle"
-      fill="#475569"
-      fontSize={9}
-      fontWeight={700}
-    >
-      {v}
-    </text>
-  );
+/** 个别柱标签的额外纵向偏移（正值向下），key 为 `${行索引}:${dataKey}` */
+const barValueLabelOffsets: Record<string, number> = {
+  '1:q2024': -5,
+  '3:q2024': -5,
+  '3:q2025': 2,
 };
+
+/** 柱顶/柱底标签：正值放柱子上方，负值放柱子下方；offsets 按 `${行索引}:${dataKey}` 逐根微调（正值向下） */
+const makeBarValueLabel = (offsets: Record<string, number>) => {
+  const BarValueLabel = ({ x, y, width, value, index, dataKey }: any) => {
+    if (value == null) return null;
+    const v = Number(value);
+    const isNegative = v < 0;
+    const dy = offsets[`${index}:${dataKey}`] ?? 0;
+    return (
+      <text
+        x={Number(x) + Number(width) / 2}
+        y={isNegative ? Number(y) + 11 + dy : Number(y) - 7 + dy}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="#475569"
+        fontSize={9}
+        fontWeight={700}
+      >
+        {v}
+      </text>
+    );
+  };
+  return BarValueLabel;
+};
+
+/** 图1：存款增量对比 */
+const barValueLabelC1 = makeBarValueLabel(barValueLabelOffsets);
+/** 图2：季度非银机构存款增量 */
+const barValueLabelC2 = makeBarValueLabel({ '5:value': 4, '6:value': -4 });
+/** 图3/4：月度变化 */
+const barValueLabel = makeBarValueLabel({});
 
 export const ContentSlide34: React.FC = () => {
   return (
@@ -78,7 +96,7 @@ export const ContentSlide34: React.FC = () => {
               yAxisTickFormatter={(val) => `${val}`}
               barSize={14}
               showLabels={true}
-              labelContent={barValueLabel}
+              labelContent={barValueLabelC1}
               xAxisTickFontSize={7}
               legendOrder={['2024Q3', '2025Q3', '2026Q3']}
               unit="万亿"
@@ -102,7 +120,7 @@ export const ContentSlide34: React.FC = () => {
               showLegend={false}
               barSize={9}
               showLabels={true}
-              labelContent={barValueLabel}
+              labelContent={barValueLabelC2}
               xAxisTickFontSize={6}
               unit="万亿"
             />

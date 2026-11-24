@@ -31,14 +31,26 @@ const structureChartData = [
   { category: '股票融资', y2025: structure2025.equity, y2026: structure2026.equity },
 ];
 
-const renderStructureBarLabel = ({ x, y, width, value, dataKey }: any) => {
+const renderStructureBarLabel = ({ x, y, width, height, value, dataKey, index }: any) => {
   const is2026 = dataKey === 'y2026';
   const num = Number(value);
   const centerX = Number(x) + Number(width) / 2;
   const isLargeBar = num > 30000;
 
+  // 兼容 recharts 负值柱 rect 的两种约定，稳定取柱子真实上边
+  const top = Math.min(Number(y), Number(y) + Number(height ?? 0));
+
+  // 未贴现汇票两柱标签微调：2025 上移 1px、2026 下移 1px
+  const isUndiscountedBill = index === 4;
+  // 股票融资两根柱高度接近，标签上下错开避免重叠
+  const isStockFinancing = index === 7;
+  let nudge = 0;
+  if (isUndiscountedBill) nudge = is2026 ? 1 : -1;
+  if (isStockFinancing) nudge = is2026 ? -2 : 2;
+
+  // 所有标注统一贴柱顶（负值柱的柱顶=零轴端）上方 8px，高矮整齐
   const labelX = centerX + (isLargeBar ? (is2026 ? 10 : -10) : 0);
-  const labelY = isLargeBar ? Number(y) - 16 : Number(y) - (is2026 ? 18 : 6);
+  const labelY = top - 8 + nudge;
 
   const text = formatThousands(num);
   const textWidth = text.length * 5.4 + 6;
