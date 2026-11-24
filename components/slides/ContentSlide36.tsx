@@ -83,7 +83,7 @@ export const ContentSlide36: React.FC = () => {
           </BaseCard>
           <BaseCard title="增量花在哪、为何花" className="!p-3 gap-1.5 text-[12px] leading-snug">
             <p>
-              调研显示，居民计划增加消费的领域前三为旅游、保健养生、数码产品，增加消费的原因前三为旧物更新、情绪价值、性价比高。
+              调研显示，居民计划增加消费的领域前二均为旅游、保健养生，增加消费的原因前三为旧物更新、情绪价值、性价比高。
             </p>
             <p className="mt-1">两张榜单构成增量消费的三个新特点：</p>
             <ul className="mt-1 list-disc space-y-0.5 pl-4">

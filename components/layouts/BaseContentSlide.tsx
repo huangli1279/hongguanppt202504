@@ -55,7 +55,7 @@ export const BaseContentSlide: React.FC<BaseContentSlideProps> = ({
             </span>
           </div>
         )}
-        <div className="flex items-start justify-between">
+        <div className="flex items-center justify-between">
           <h1 className="text-h1 font-serif text-webank-blue">
             {title}
           </h1>

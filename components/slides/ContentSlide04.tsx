@@ -9,6 +9,161 @@ import {
   deflatorRecentData as deflatorData,
 } from '../../data';
 
+/* ---------------------------------------------------------------------------
+ * 右上角「中国宏观」线框地球徽标
+ * 采用正射投影生成经纬网，金色系以衬托藏青主色，作为装饰性章节徽标
+ * ------------------------------------------------------------------------- */
+
+type Vec2 = [number, number];
+
+const GLOBE_VIEW = 200;
+const GLOBE_CENTER = 100;
+const GLOBE_R = 92;
+
+// 地球朝向：向前微倾露出北极，再整体逆时针旋转，使地轴指向左上约 30°
+const ORIENT = {
+  rx: (30 * Math.PI) / 180,
+  ry: (0 * Math.PI) / 180,
+  rz: (-30 * Math.PI) / 180,
+};
+
+const project = (latDeg: number, lonDeg: number): Vec2 => {
+  const lat = (latDeg * Math.PI) / 180;
+  const lon = (lonDeg * Math.PI) / 180;
+  const x0 = Math.cos(lat) * Math.cos(lon);
+  const y0 = Math.sin(lat);
+  const z0 = Math.cos(lat) * Math.sin(lon);
+
+  const { rx, ry, rz } = ORIENT;
+  const y1 = y0 * Math.cos(rx) - z0 * Math.sin(rx);
+  const z1 = y0 * Math.sin(rx) + z0 * Math.cos(rx);
+  const x2 = x0 * Math.cos(ry) + z1 * Math.sin(ry);
+  const y2 = y1;
+
+  const dx = GLOBE_R * x2;
+  const dy = -GLOBE_R * y2;
+  return [
+    GLOBE_CENTER + dx * Math.cos(rz) - dy * Math.sin(rz),
+    GLOBE_CENTER + dx * Math.sin(rz) + dy * Math.cos(rz),
+  ];
+};
+
+const toPath = (pts: Vec2[]): string =>
+  pts.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x.toFixed(2)} ${y.toFixed(2)}`).join(' ') + ' Z';
+
+// 纬线
+const PARALLELS = [-60, -30, 0, 30, 60].map((lat) => {
+  const pts: Vec2[] = [];
+  for (let lon = 0; lon <= 360; lon += 4) pts.push(project(lat, lon));
+  return toPath(pts);
+});
+
+// 经线（在南北极汇聚）
+const MERIDIANS = [0, 30, 60, 90, 120, 150].map((baseLon) => {
+  const pts: Vec2[] = [];
+  for (let lat = -90; lat <= 90; lat += 4) pts.push(project(lat, baseLon));
+  for (let lat = 90; lat >= -90; lat -= 4) pts.push(project(lat, baseLon + 180));
+  return toPath(pts);
+});
+
+const MacroGlobe: React.FC<{ size?: number }> = ({ size = 94 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox={`0 0 ${GLOBE_VIEW} ${GLOBE_VIEW}`}
+    fill="none"
+    aria-hidden="true"
+    className="flex-shrink-0"
+  >
+    <defs>
+      <linearGradient id="macroGlobeStroke" x1="0.15" y1="0" x2="0.55" y2="1">
+        <stop offset="0%" stopColor="#EAD2A4" />
+        <stop offset="42%" stopColor="#CBA24E" />
+        <stop offset="100%" stopColor="#8C6220" />
+      </linearGradient>
+      <radialGradient id="macroGlobeHalo" cx="42%" cy="34%" r="70%">
+        <stop offset="0%" stopColor="#E7C98E" stopOpacity="0.14" />
+        <stop offset="68%" stopColor="#C9A24E" stopOpacity="0.04" />
+        <stop offset="100%" stopColor="#8C6220" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+
+    <circle cx={GLOBE_CENTER} cy={GLOBE_CENTER} r={GLOBE_R} fill="url(#macroGlobeHalo)" />
+
+    <g stroke="url(#macroGlobeStroke)" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <g strokeWidth="2.2" strokeOpacity="0.55">
+        {PARALLELS.map((d, i) => (
+          <path key={`parallel-${i}`} d={d} />
+        ))}
+      </g>
+      <g strokeWidth="2" strokeOpacity="0.5">
+        {MERIDIANS.map((d, i) => (
+          <path key={`meridian-${i}`} d={d} />
+        ))}
+      </g>
+    </g>
+
+    <circle
+      cx={GLOBE_CENTER}
+      cy={GLOBE_CENTER}
+      r={GLOBE_R}
+      stroke="url(#macroGlobeStroke)"
+      strokeWidth="2.7"
+      strokeOpacity="0.95"
+      fill="none"
+    />
+  </svg>
+);
+
+const MacroEmblem: React.FC = () => (
+  <div
+    className="flex items-center gap-2 flex-shrink-0 animate-fade-in"
+    style={{ animationDelay: '0.5s', marginTop: -50, marginRight: -40 }}
+  >
+    <div className="text-right" style={{ lineHeight: 1 }}>
+      <div
+        className="font-sans"
+        style={{
+          fontSize: 8,
+          letterSpacing: '0.32em',
+          marginRight: '-0.32em',
+          color: '#B0863A',
+          fontWeight: 600,
+          textTransform: 'uppercase',
+          marginBottom: 4,
+        }}
+      >
+        China Macro
+      </div>
+      <div
+        style={{
+          fontFamily: '"Noto Serif SC", Georgia, serif',
+          fontSize: 12,
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          marginRight: '-0.1em',
+          color: '#051c2c',
+        }}
+      >
+        中国宏观
+      </div>
+    </div>
+
+    <span
+      aria-hidden="true"
+      style={{
+        width: 1,
+        alignSelf: 'stretch',
+        minHeight: 34,
+        margin: '4px 0',
+        background: 'linear-gradient(180deg, rgba(203,162,78,0), #C9A24E 45%, rgba(203,162,78,0))',
+      }}
+    />
+
+    <MacroGlobe size={48} />
+  </div>
+);
+
 export const ContentSlide04: React.FC = () => {
   return (
     <BaseContentSlide
@@ -18,6 +173,7 @@ export const ContentSlide04: React.FC = () => {
           <span className="text-webank-accent">平减指数连续两季回正</span>
         </>
       }
+      headerChild={<MacroEmblem />}
     >
       <div className="flex flex-col h-full min-h-0 gap-3">
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-shrink-0">
