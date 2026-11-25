@@ -53,7 +53,7 @@ const allAgeFeatures: Feature[] = [
     title: '为体验与情绪付费',
     desc: (
       <>
-        情绪经济规模2029年预计达{' '}<span className="font-semibold text-red-500">4.5 万亿</span>，演出市场近两年保持5%-7%的增速，2025年出游 65.2 亿人次（<span className="font-semibold text-red-500">+16.1%</span>）, 2026年节假日（春节、五一、十一）出游人次17.47亿人，同比增长3.1%，花费1.73万亿，同比增长3.7%。
+        情绪经济规模2029年预计达{' '}<span className="font-semibold text-red-500">4.5 万亿</span>，演出市场近两年保持5%-7%的增速。 2026年节假日（春节、五一、十一）出游人次17.47亿人，同比增长3.1%，花费1.73万亿，同比增长3.7%。
       </>
     ),
   },
@@ -97,7 +97,7 @@ const zgenFeatures: Feature[] = [
     title: '健康支出智能化',
     desc: (
       <>
-        <span className="font-semibold text-red-500">75%</span> 用智能设备监测健康、68.3% 向 AI 倾诉，健身月均 300–500 元
+        <span className="font-semibold text-red-500">75%</span> 用智能设备监测健康、68.3% 向 AI 倾诉。
       </>
     ),
   },

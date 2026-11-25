@@ -1,38 +1,10 @@
 import React from 'react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
-const NumBadge: React.FC<{ n: string; tone?: 'blue' | 'amber' }> = ({ n, tone = 'blue' }) => (
-  <span
-    className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-[13px] font-bold text-white ${
-      tone === 'amber'
-        ? 'bg-gradient-to-br from-amber-400 to-amber-600'
-        : 'bg-gradient-to-br from-webank-accent to-webank-blue'
-    }`}
-  >
+const NumBadge: React.FC<{ n: string }> = ({ n }) => (
+  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-webank-accent to-webank-blue text-[13px] font-bold text-white">
     {n}
   </span>
-);
-
-const PolicyCard: React.FC<{
-  index: string;
-  title: string;
-  meta: string;
-  delay: string;
-  children: React.ReactNode;
-}> = ({ index, title, meta, delay, children }) => (
-  <article
-    className="flex min-h-0 flex-col rounded-lg border border-webank-line bg-white px-2.5 py-2 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
-    style={{ animationDelay: delay }}
-  >
-    <div className="flex items-start gap-2 border-b border-slate-100 bg-slate-50/80 px-2 py-1.5">
-      <NumBadge n={index} />
-      <div className="min-w-0 flex-1">
-        <h3 className="text-[15px] font-bold leading-tight text-webank-blue">{title}</h3>
-        <p className="mt-0.5 text-[11px] leading-tight text-webank-subtext">{meta}</p>
-      </div>
-    </div>
-    <div className="px-1 py-1.5 text-[13px] leading-snug text-slate-700">{children}</div>
-  </article>
 );
 
 const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -40,6 +12,16 @@ const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <span className="flex-shrink-0 text-[14px] leading-tight text-webank-accent">•</span>
     <span className="min-w-0">{children}</span>
   </li>
+);
+
+// 特点相关的关键词，标红
+const Red: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <span className="font-semibold text-red-600">{children}</span>
+);
+
+// 政策文件名（括号附在句末）
+const Doc: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <span className="text-[11px] text-webank-subtext">（{children}）</span>
 );
 
 const planFacets = [
@@ -51,94 +33,138 @@ const planFacets = [
   { n: '⑥', t: '完善制度机制' },
 ];
 
+// 前面几页提炼的消费增量特点 → 26年政策内容与对应文件
+const features: {
+  n: string;
+  title: string;
+  points: React.ReactNode[];
+}[] = [
+  {
+    n: '①',
+    title: '体验与情绪消费',
+    points: [
+      <>
+        扩大<Red>文旅</Red>、<Red>演出</Red>、<Red>赛事</Red>、康养、家政等服务供给，落实
+        带薪休假、优化假日安排。
+        <Doc>《扩大消费“十五五”规划》2026.07</Doc>
+      </>,
+      <>
+        培育<Red>沉浸式、体验式</Red>消费新场景，推动商旅文体健融合。
+        <Doc>《扩大消费“十五五”规划》2026.07</Doc>
+      </>,
+    ],
+  },
+  {
+    n: '②',
+    title: '追求性价比 · 二手循环',
+    points: [
+      <>
+        健全<Red>二手商品流通</Red>体系，完善<Red>二手车</Red>流通与回收体系，提高二手市场运营水平，规范<Red>二手交易平台</Red>。
+        <Doc>《循环经济发展“十五五”规划》发改委 2026.07.03</Doc>
+      </>,
+      <>
+        推广<Red>商品租赁</Red>等绿色消费模式；以旧换新资金转向精准投放、提高使用效率。
+        <Doc>第四批消费品以旧换新资金下达 2026.09</Doc>
+      </>,
+    ],
+  },
+  {
+    n: '③',
+    title: '健康消费刚性',
+    points: [
+      <>
+        扩大<Red>健康</Red>、养老、托育等服务供给并放宽市场准入。
+        <Doc>《扩大消费“十五五”规划》2026.07</Doc>
+      </>,
+      <>
+        支持<Red>智能可穿戴</Red>等健康终端购新，推动 <Red>AI 辅助健康管理</Red>、<Red>远程问诊</Red>落地。
+        <Doc>《关于加快“人工智能+消费”发展的实施意见》2026.06</Doc>
+      </>,
+    ],
+  },
+  {
+    n: '④',
+    title: 'AI 参与消费决策',
+    points: [
+      <>
+        推动 AI 进入零售、电商、文旅，支持 <Red>AI 终端购新</Red>、<Red>智能体应用</Red>与场景中尝试。
+        <Doc>《关于加快“人工智能+消费”发展的实施意见》2026.06</Doc>
+      </>,
+      <>
+        强化<Red>算法治理</Red>、数据安全与消费者权益保护，规范 AI 营销与虚假宣传。
+        <Doc>《关于加快“人工智能+消费”发展的实施意见》2026.06</Doc>
+      </>,
+    ],
+  },
+];
+
+const FeaturePolicyCard: React.FC<{
+  feature: (typeof features)[number];
+  delay: string;
+}> = ({ feature, delay }) => (
+  <article
+    className="flex min-h-0 flex-col rounded-lg border border-webank-line bg-white px-2.5 py-2 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
+    style={{ animationDelay: delay }}
+  >
+    <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50/80 px-2 py-1.5">
+      <NumBadge n={feature.n} />
+      <h3 className="text-[15px] font-bold leading-tight text-webank-blue">{feature.title}</h3>
+    </div>
+    <div className="px-1 py-1.5 text-[13px] leading-snug text-slate-700">
+      <ul className="space-y-1.5">
+        {feature.points.map((p, i) => (
+          <Bullet key={i}>{p}</Bullet>
+        ))}
+      </ul>
+    </div>
+  </article>
+);
+
 export const ContentSlide42: React.FC = () => (
   <BaseContentSlide
-    title="消费政策：着力扩供给、促升级，进一步释放消费潜力"
+    title={<>政策：「十五五」规划定调，支撑新特点带来的消费增长</>}
     subtitle="2026年三季度宏观经济报告"
     cardColumns={2}
   >
     <div className="flex h-full min-h-0 flex-col gap-2">
+      {/* 顶部一句话总结 */}
       <section
-        className="flex-shrink-0 rounded-xl border border-webank-accent/20 bg-webank-accent/5 p-3 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
+        className="flex-shrink-0 rounded-xl border border-webank-accent/20 bg-webank-accent/5 px-3 py-2 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
         style={{ animationDelay: '0ms' }}
       >
-        <div className="flex items-center gap-2">
-        </div>
-        <p className="mt-1 text-left text-[14px] font-bold leading-relaxed text-black">
-          政策既支持汽车、家电等商品更新，也推动二手交易、租赁和AI消费场景发展，进一步丰富消费选择。政策效果最终取决于居民收入预期，以及供给能否满足消费者的实际需求。
+        <p className="text-left text-[16px] font-bold leading-relaxed text-black">
+        2026 年政策已基本覆盖消费增量方向，政策推动服务消费、旅游强国、健康养老、二手租赁和积极鼓励创造 AI 消费新场景发展。
         </p>
       </section>
 
+      {/* 一个大框：十五五规划为纲 + 四大特点 */}
       <section
-        className="flex-shrink-0 rounded-xl border border-webank-line bg-gradient-to-br from-[#eef4fb] via-white to-white p-3 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
+        className="flex min-h-0 flex-1 flex-col rounded-xl border border-webank-accent/25 bg-gradient-to-br from-[#eef4fb] via-white to-white p-2.5 shadow-card animate-fade-in-up fill-mode-forwards opacity-0"
         style={{ animationDelay: '0ms' }}
       >
-        <div className="flex items-center gap-2">
-          <NumBadge n="1" tone="amber" />
-          <div className="min-w-0 flex-1">
-            <h3 className="text-[15px] font-bold leading-tight text-webank-blue">国务院批复《扩大消费“十五五”规划》</h3>
-            <p className="mt-0.5 text-[11px] leading-tight text-webank-subtext">国函〔2026〕66号 · 2026年7月 · 明确消费作为扩大内需的战略基点</p>
+        <div className="flex-shrink-0">
+          <div className="flex items-center gap-2">
+            <span className="h-3.5 w-1 flex-shrink-0 rounded-sm bg-webank-accent" />
+            <h3 className="text-[15px] font-bold leading-tight text-webank-blue">《扩大消费“十五五”规划》</h3>
+            <span className="ml-auto text-[10px] leading-tight text-webank-subtext">
+              国函〔2026〕66号 · 2026年7月 · 明确消费作为扩大内需的战略基点
+            </span>
+          </div>
+          <div className="mt-1.5 grid grid-cols-6 gap-1">
+            {planFacets.map((facet) => (
+              <div key={facet.n} className="rounded-md border border-slate-200 bg-white px-1 py-0.5 text-center">
+                <span className="text-[12px] font-bold text-webank-accent">{facet.n}</span>
+                <span className="ml-0.5 text-[13px] font-semibold leading-tight text-webank-blue">{facet.t}</span>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="mt-1.5 grid grid-cols-3 gap-1">
-          {planFacets.map((facet) => (
-            <div key={facet.n} className="rounded-md border border-slate-200 bg-white px-1.5 py-1">
-              <span className="text-[11px] font-bold text-webank-accent">{facet.n}</span>
-              <span className="ml-1 text-[11px] font-semibold leading-tight text-webank-blue">{facet.t}</span>
-            </div>
+        <div className="mt-2 grid min-h-0 flex-1 grid-cols-2 gap-2">
+          {features.map((feature, i) => (
+            <FeaturePolicyCard key={feature.n} feature={feature} delay={`${120 + i * 120}ms`} />
           ))}
         </div>
       </section>
-
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-2">
-        <PolicyCard
-          index="2"
-          title="《关于推动商品消费扩容升级的实施意见》"
-          meta="商务部等7部门 · 2026年8月 · 商消费函〔2026〕389号"
-          delay="120ms"
-        >
-          <ul className="space-y-1">
-            <Bullet>稳定汽车、家居、家电等大宗耐用品消费，完善二手车流通与回收体系。</Bullet>
-            <Bullet>培育绿色、智能、健康消费，支持国货潮品、首发经济和升级类商品。</Bullet>
-          </ul>
-        </PolicyCard>
-
-        <PolicyCard
-          index="3"
-          title="第四批消费品以旧换新资金下达"
-          meta="国家发展改革委、财政部 · 2026年9月 · 资金接续支持"
-          delay="240ms"
-        >
-          <ul className="space-y-1">
-            <Bullet>继续支持汽车、家电、数码智能产品更新，释放存量替换需求。</Bullet>
-            <Bullet>政策重点转向精准投放、严格审核和提高资金使用效率。</Bullet>
-          </ul>
-        </PolicyCard>
-
-        <PolicyCard
-          index="4"
-          title="二手交易与租赁：纳入绿色消费政策框架"
-          meta="国家层面规划与部门意见 · 2026年 · 循环消费"
-          delay="360ms"
-        >
-          <ul className="space-y-1">
-            <Bullet>“十五五”规划明确提高二手商品交易市场和经营企业运营水平，规范二手交易平台。</Bullet>
-            <Bullet>商务部等9部门提出推广二手交易、商品租赁等绿色消费模式，满足性价比需求。</Bullet>
-          </ul>
-        </PolicyCard>
-
-        <PolicyCard
-          index="5"
-          title="《关于加快“人工智能+消费”发展的实施意见》"
-          meta="商务部等8部门 · 2026年6月 · 商建发〔2026〕89号"
-          delay="480ms"
-        >
-          <ul className="space-y-1">
-            <Bullet>推动AI进入商品、文旅、养老、零售、电商和物流，形成新产品、新服务、新场景。</Bullet>
-            <Bullet>支持AI终端购新、消费场景中试和智能体应用，强化数据安全与消费者保护。</Bullet>
-          </ul>
-        </PolicyCard>
-      </div>
     </div>
   </BaseContentSlide>
 );

@@ -13,6 +13,7 @@ const comparison = [
     revenueDetail: '通过 SEO / SEM 抢占搜索流量',
     domestic: '百度推广、淘宝 / 天猫、京东',
     global: 'Google Ads、Amazon',
+    strategy: '买流量：投放 SEM/SEO 广告，让产品在搜索结果里排在前面',
   },
   {
     name: 'GEO 生成式引擎优化',
@@ -25,6 +26,7 @@ const comparison = [
     revenueDetail: 'GEO 服务、按效果付费',
     domestic: '智推时代、蓝色光标、新榜智汇、迈富时',
     global: 'Profound、Scrum AI；ChatGPT / Perplexity',
+    strategy: '做 GEO：改造产品内容与信源，让产品进入 AI 的推荐清单（按效果向服务商付费）',
   },
   {
     name: 'Agentic Commerce',
@@ -37,6 +39,7 @@ const comparison = [
     revenueDetail: '被代理优先路由；费率仍在演进',
     domestic: '淘宝 / 京东 AI 导购、美团（探索中）',
     global: 'Shopify、Amazon、Walmart、Google、OpenAI、Visa',
+    strategy: '接协议：把价格、库存、评价数据接口化，让 AI 能替客户下单（按交易分佣/付通道费）',
   },
 ];
 
@@ -47,7 +50,6 @@ const toneStyles = {
     badge: 'bg-slate-200 text-slate-700',
     accent: 'text-slate-700',
     revenue: 'bg-slate-100 text-slate-800',
-    step: 'border-slate-300 bg-white text-slate-600',
   },
   blue: {
     border: 'border-blue-200',
@@ -55,7 +57,6 @@ const toneStyles = {
     badge: 'bg-blue-100 text-blue-700',
     accent: 'text-blue-700',
     revenue: 'bg-blue-100 text-blue-900',
-    step: 'border-blue-200 bg-blue-50 text-blue-700',
   },
   indigo: {
     border: 'border-indigo-300',
@@ -63,11 +64,8 @@ const toneStyles = {
     badge: 'bg-indigo-600 text-white',
     accent: 'text-indigo-700',
     revenue: 'bg-gradient-to-r from-blue-700 to-indigo-700 text-white',
-    step: 'border-indigo-300 bg-indigo-100 text-indigo-800',
   },
 } as const;
-
-const processSteps = ['找商品', '比价', '下单', '付款'];
 
 export const ContentSlide41: React.FC = () => (
   <BaseContentSlide title={<>AI参与消费决策——从传统做法到 GEO 与代理式商务</>}>
@@ -75,65 +73,44 @@ export const ContentSlide41: React.FC = () => (
       <div className="shrink-0 rounded-lg border-l-4 border-webank-accent bg-blue-50 px-3 py-2 text-[16px] leading-snug text-webank-blue">
         企业的赚钱方式随 AI 介入深度而变：国内 GEO 刚起步，代理式商务尚未成型。
       </div>
-      <div className="grid min-h-0 flex-1 grid-cols-3 gap-3">
-        {comparison.map((item, index) => {
-          const styles = toneStyles[item.tone as keyof typeof toneStyles];
-          return (
-            <article key={item.name} className={`flex min-h-0 flex-col overflow-hidden rounded-xl border ${styles.border} bg-white shadow-card`}>
-              <header className={`min-h-[70px] ${styles.header} px-3 py-2`}>
-                <div className="flex items-center gap-2">
-                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold ${styles.badge}`}>{index + 1}</span>
-                  <div className="min-w-0">
-                    <h2 className="text-[19px] font-bold leading-tight text-webank-blue">{item.name}</h2>
-                    <p className="mt-0.5 text-[13px] leading-tight text-slate-500">{item.subtitle}</p>
-                  </div>
-                </div>
-              </header>
-              <div className="flex min-h-0 flex-1 flex-col divide-y divide-slate-100 px-3">
-                <section className="min-h-[112px] py-2">
-                  <p className="mb-1 text-[12px] font-semibold tracking-wide text-slate-400">消费决策流程</p>
-                  <div className="flex items-start gap-1">
-                    {processSteps.map((step, stepIndex) => {
-                      const done = item.aiSteps[stepIndex];
-                      return (
-                        <React.Fragment key={step}>
-                          <div className="flex flex-1 flex-col items-center gap-1">
-                            <span className="text-center text-[13px] font-semibold leading-tight text-slate-600">{step}</span>
-                            <span
-                              className={`flex h-3.5 w-3.5 items-center justify-center rounded-full border ${
-                                done
-                                  ? 'border-webank-accent bg-webank-accent'
-                                  : 'border-slate-300 bg-white'
-                              }`}
-                            />
-                          </div>
-                          {stepIndex < processSteps.length - 1 && <span className="mt-[19px] text-[12px] text-slate-300">›</span>}
+      <div className="min-h-0 flex-1 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card">
+        <table className="h-full w-full table-fixed border-collapse">
+          <thead>
+            <tr className="bg-slate-50 text-left text-[14px] font-semibold text-webank-blue">
+              <th className="w-[18%] border-b border-slate-200 px-3 py-2">名称</th>
+              <th className="w-[27%] border-b border-slate-200 px-3 py-2">消费决策流程</th>
+              <th className="w-[27%] border-b border-slate-200 px-3 py-2">AI 的角色</th>
+              <th className="w-[28%] border-b border-slate-200 px-3 py-2">品牌方应对策略</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((item) => {
+              const styles = toneStyles[item.tone as keyof typeof toneStyles];
+              return (
+                <tr key={item.name} className="h-1/3 align-middle">
+                  <th className={`border-b ${styles.border} px-3 py-3 text-left`}>
+                    <p className="text-[17px] font-bold leading-tight text-webank-blue">{item.name}</p>
+                    <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
+                  </th>
+                  <td className="border-b border-slate-100 px-3 py-3">
+                    <p className="mb-2 text-[13px] font-semibold text-slate-600">找商品 › 比价 › 下单 › 付款</p>
+                    <div className="flex items-center justify-between px-1">
+                      {item.aiSteps.map((done, stepIndex) => (
+                        <React.Fragment key={stepIndex}>
+                          <span className={`h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
+                          {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 flex-1 border-t border-slate-200" />}
                         </React.Fragment>
-                      );
-                    })}
-                  </div>
-                  <p className={`mt-1 text-[13px] font-semibold ${styles.accent}`}>{item.involvementLabel}</p>
-                </section>
-                <section className="min-h-[106px] py-2">
-                  <p className="mb-1 text-[12px] font-semibold tracking-wide text-slate-400">AI 的角色</p>
-                  <p className="text-[15px] leading-snug text-slate-700">{item.role}</p>
-                </section>
-                <section className="min-h-[102px] py-2">
-                  <p className="mb-1 text-[11px] font-semibold tracking-wide text-slate-400">企业怎么赚钱</p>
-                  <div className={`rounded-md px-2 py-1.5 ${styles.revenue}`}>
-                    <p className="text-[15px] font-bold leading-tight">{item.revenue}</p>
-                    <p className="mt-0.5 text-[12px] leading-snug opacity-80">{item.revenueDetail}</p>
-                  </div>
-                </section>
-                <section className="flex-1 py-2">
-                  <p className="mb-1 text-[11px] font-semibold tracking-wide text-slate-400">代表企业</p>
-                  <p className="text-[13px] leading-snug text-slate-700"><span className="font-semibold text-slate-500">国内</span>　{item.domestic}</p>
-                  <p className="mt-1 text-[13px] leading-snug text-slate-700"><span className="font-semibold text-slate-500">海外</span>　{item.global}</p>
-                </section>
-              </div>
-            </article>
-          );
-        })}
+                      ))}
+                    </div>
+                    <p className={`mt-2 text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
+                  </td>
+                  <td className="border-b border-slate-100 px-3 py-3 text-[14px] leading-snug text-slate-700">{item.role}</td>
+                  <td className="border-b border-slate-100 px-3 py-3 text-[14px] leading-snug text-slate-700">{item.strategy}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   </BaseContentSlide>

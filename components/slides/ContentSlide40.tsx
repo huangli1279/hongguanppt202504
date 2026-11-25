@@ -17,10 +17,10 @@ export const ContentSlide40: React.FC = () => (
         <BaseCard title="AI进入消费决策" variant="accent" className="h-full !py-3" animated={false}>
           <div className="space-y-1.5 text-sm leading-relaxed">
             <p>
-              AI 逐渐进入消费决策各环节，重塑消费者搜索、比价、选择和购后评价的全流程。
+              AI 逐渐进入消费决策各环节，重塑消费者搜索至买单的全流程。目前在购前研究环节影响较大，全权交由 AI 处理的比例低。
             </p>
             <p>
-              一项针对 7 国消费者的调研显示，在独立比价、研究查找产品、汇总评论等环节，消费者对 AI 参与的接受度约为 70%；但在 AI 自主完成购买环节，接受度仅为 21%，其中中国消费者为 39%，相对较高。
+              一项针对 7 国消费者的调研显示，在购前研究环节，消费者对 AI 参与的接受度约为 70%；在 AI 自主完成购买环节（交易执行阶段）接受度仅为 21%。立信 2026Q2 调查：79.4% 的中国消费者购物前会主动咨询 AI，其决策影响力（43.7%）已超过传统广告（42.6%）。
             </p>
             <p className="text-[10px] text-webank-subtext">
             </p>
@@ -28,9 +28,9 @@ export const ContentSlide40: React.FC = () => (
         </BaseCard>
 
         <BaseCard title="消费决策信息来源变化" className="h-full !py-3" animated={false}>
-          <div className="space-y-1.5 text-xs leading-relaxed">
+          <div className="space-y-1.5 text-[15px] leading-relaxed">
             <p>
-              消费决策高度依赖 AI 工具（仅次于视频、内容平台），AI 影响力的跃升意味着消费者获取商品信息的方式正在从“被动接收广告”转向“主动智能咨询”。其中 Z 世代消费决策对 AI 渠道依赖度高于全年龄段样本。
+              消费决策高度依赖 AI 工具（仅次于视频、内容平台），AI 影响力的跃升意味着消费者获取商品信息的方式正在从“被动接收广告”转向“主动智能咨询”。其中 Z 世代消费决策对短视频直播间、小红书、AI 渠道依赖度高于全年龄段样本。
             </p>
           </div>
         </BaseCard>

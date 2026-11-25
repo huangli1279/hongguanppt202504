@@ -20,14 +20,13 @@ const groups: StageGroup[] = [
       { label: '独立比价', value: 74, note: '乐于委托，无需监督' },
       { label: '研究 / 查找产品', value: 69, note: '无需监督' },
       { label: '汇总评论', value: 68, note: '无需监督' },
-      { label: '个性化推荐', value: 64, note: '' },
     ],
   },
   {
     title: '交易执行',
     subtitle: 'AI 直接操作与成交',
     stages: [
-      { label: '建清单 / 加购物车', value: 49, note: '开始腰斩' },
+      { label: '代理完成购买、每笔经本人批准', value: 59, note: '' },
       { label: 'AI 自主完成购买', value: 21, note: '仅少数直接允许' },
     ],
   },
@@ -57,18 +56,19 @@ const StageRow: React.FC<{ stage: FunnelStage }> = ({ stage }) => {
 };
 
 const FlowArrow: React.FC = () => (
-  <div className="flex shrink-0 items-center justify-center py-0.5">
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-      <path d="M9 1.5v13" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
+  <div className="flex shrink-0 items-center justify-center gap-1.5 py-1">
+    <svg width="26" height="34" viewBox="0 0 26 34" aria-hidden="true">
+      <path d="M13 2v26" stroke={BLUE} strokeWidth="3" strokeLinecap="round" />
       <path
-        d="M4 10.5 9 15.5l5-5"
+        d="M5 21 13 31l8-10"
         fill="none"
-        stroke="#64748b"
-        strokeWidth="1.5"
+        stroke={BLUE}
+        strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
+    <span className="text-[9px] font-semibold text-webank-blue">接受度下降</span>
   </div>
 );
 
