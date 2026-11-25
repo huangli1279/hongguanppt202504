@@ -3,10 +3,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CoverSlide } from './components/layouts/CoverSlide';
 import { TableOfContentsSlide } from './components/layouts/TableOfContentsSlide';
 import { BaseSectionTransitionSlide } from './components/layouts/BaseSectionTransitionSlide';
+import { ThankYouSlide } from './components/layouts/ThankYouSlide';
 
 const SLIDE_WIDTH = 1280;
 const SLIDE_HEIGHT = 720;
-const TOTAL_SLIDES = 41;
+const TOTAL_SLIDES = 42;
 const MOBILE_QUERY = '(max-width: 768px), (pointer: coarse)';
 const MOBILE_STAGE_GAP = 12;
 const MOBILE_CONTROLS_SPACE = 96;
@@ -197,6 +198,7 @@ const App: React.FC = () => {
       case 39: return <ContentSlide41 />;
       case 40: return <ContentSlide42 />;
       case 41: return <ContentSlide43 />;
+      case 42: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }
   }, [currentSlide]);
@@ -243,7 +245,7 @@ const App: React.FC = () => {
         </Suspense>
 
         <div className="absolute right-6 bottom-4 z-50 select-none pointer-events-none">
-          <span className={`font-serif font-medium text-meta ${currentSlide === 1 ? 'text-white/50' : 'text-webank-blue'}`}>
+          <span className={`font-serif font-medium text-meta ${currentSlide === 1 || currentSlide === TOTAL_SLIDES ? 'text-white/50' : 'text-webank-blue'}`}>
             {String(currentSlide).padStart(2, '0')}
           </span>
         </div>

@@ -35,7 +35,7 @@ export const ContentSlide10: React.FC = () => {
           <BaseCard title="三季度生产活动回升，价格抬升信号强烈，10月均有所回落" delay="120ms">
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                9月生产指数 51.7%（+1.3pct）、新订单指数 50.5%，景气面扩大。主要原材料购进价格指数 <span className="text-red-500 font-bold">60.8%</span>、出厂价格指数 <span className="text-red-500 font-bold">54.0%</span>，连续两个月大幅回升，表明外部通胀的因素导致成本抬升尚未充分向下游转嫁。
+                9月生产指数 51.7%、新订单指数 50.5%，景气面扩大。主要原材料购进价格指数 <span className="text-red-500 font-bold">60.8%</span>、出厂价格指数 <span className="text-red-500 font-bold">54.0%</span>，连续两个月大幅回升，表明外部通胀的因素导致成本抬升尚未充分向下游转嫁。
               </li>
               <li>
                 10月生产、新订单指数分别回落至49.8%和49.4%，价格指数虽有所收窄但仍处高位。

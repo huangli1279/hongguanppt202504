@@ -55,7 +55,7 @@ export const ContentSlide19: React.FC = () => {
           </BaseCard>
           <BaseCard title="③ 价格端" delay="240ms">
             <p>
-              从房价来看，整体仍然负增；一线城市新房、二手房连续<span className="text-red-500 font-bold">7月</span>环比上升，二线城市环比降幅收窄。
+              从房价来看，整体仍然负增；一线城市新房、二手房<span className="text-red-500 font-bold">连续7月</span>环比上升，二线城市环比降幅收窄。
             </p>
           </BaseCard>
           <BaseCard title="④ 政策影响" delay="360ms">

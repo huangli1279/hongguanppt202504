@@ -62,7 +62,7 @@ const allAgeFeatures: Feature[] = [
     desc: (
       <>
        2025年二手交易额 1.69 万亿（
-       <span className="font-semibold text-red-500">+12.4%</span>）。26Q2调查显示，过去半年 <span className="font-semibold text-red-500">71.2%</span> 有“平替”行为，消费者并未压缩品质要求，转为拒绝为品牌支付溢价。
+       <span className="font-semibold text-red-500">+12.4%</span>）。美团2025年调查显示，“平替”关键词搜索量同比增长 <span className="font-semibold text-red-500">26.4%</span>。
       </>
     ),
   },
@@ -160,7 +160,7 @@ export const ContentSlide37: React.FC = () => {
           <SummaryCard
             title="全年龄段：三大共性特点"
             features={allAgeFeatures}
-            source="数据范围：25–26 年。文旅部、国家统计局；中国演出行业协会；艾媒咨询；麦肯锡；厦大×蚂蚁；立信报告"
+            source="数据范围：25–26 年。文旅部、中国旧货业协会；中国演出行业协会；艾媒咨询；厦大×蚂蚁；美团《2025 生活服务消费趋势洞察》"
           />
           <SummaryCard
             title="Z世代：三大典型特点"

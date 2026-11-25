@@ -14,6 +14,7 @@ const comparison = [
     domestic: '百度推广、淘宝 / 天猫、京东',
     global: 'Google Ads、Amazon',
     strategy: '买流量：投放 SEM/SEO 广告，让产品在搜索结果里排在前面',
+    status: '存量基本盘，仍是电商营销最大预算池，正被 AI 入口持续分流。',
   },
   {
     name: 'GEO 生成式引擎优化',
@@ -27,6 +28,7 @@ const comparison = [
     domestic: '智推时代、蓝色光标、新榜智汇、迈富时',
     global: 'Profound、Scrum AI；ChatGPT / Perplexity',
     strategy: '做 GEO：改造产品内容与信源，让产品进入 AI 的推荐清单（按效果向服务商付费）',
+    status: '国内外已产业化，服务商集中加码；效果口径尚未统一。',
   },
   {
     name: 'Agentic Commerce',
@@ -40,8 +42,11 @@ const comparison = [
     domestic: '淘宝 / 京东 AI 导购、美团（探索中）',
     global: 'Shopify、Amazon、Walmart、Google、OpenAI、Visa',
     strategy: '接协议：把价格、库存、评价数据接口化，让 AI 能替客户下单（按交易分佣/付通道费）',
+    status: '国外协议层已立，规模处于早期。\n国内协议落地仍处早期：国内超级 App 已跑通闭环（如千问×淘宝×支付宝），跨商户开放协议缺位。',
   },
 ];
+
+const stepLabels = ['找商品', '比价', '下单', '付款'];
 
 const toneStyles = {
   slate: {
@@ -71,39 +76,41 @@ export const ContentSlide41: React.FC = () => (
   <BaseContentSlide title={<>AI参与消费决策——从传统做法到 GEO 与代理式商务</>}>
     <div className="flex h-full min-h-0 flex-col gap-2">
       <div className="shrink-0 rounded-lg border-l-4 border-webank-accent bg-blue-50 px-3 py-2 text-[16px] leading-snug text-webank-blue">
-        随着 AI 介入消费决策，企业触达客户的路径正从“搜索排名”转向“AI 引用”：当前靠 GEO 让产品进入 AI 推荐清单；下一步 AI 替消费者下单场景，品牌方要把商品数据改造到 AI 可直接下单。
+        AI 正接管消费决策，品牌触达客户的方式从“抢搜索排名”转向“被 AI 引用、被 AI 调用”：企业的应对策略也从“买流量”转向“做 GEO、接协议”。
       </div>
-      <div className="mb-1 grid min-h-0 grid-cols-[16%_23%_27%_34%] items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] font-semibold text-slate-500">
+      <div className="mb-1 grid min-h-0 grid-cols-[13fr_17fr_20fr_25fr_25fr] items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] font-semibold text-slate-500">
         <div className="min-w-0">名称</div>
-        <div className="min-w-0">
-          <p>消费决策流程</p>
-          <p className="mt-1 text-[12px] font-medium tracking-tight text-slate-600">找商品 › 比价 › 下单 › 付款</p>
-        </div>
+        <div className="min-w-0">消费决策流程</div>
         <div className="min-w-0">AI 的角色</div>
         <div className="min-w-0">品牌方应对策略</div>
+        <div className="min-w-0 border-l border-slate-200 pl-3">现状（2026）</div>
       </div>
       <div className="grid min-h-0 flex-1 grid-rows-3 gap-2">
         {comparison.map((item) => {
           const styles = toneStyles[item.tone as keyof typeof toneStyles];
           return (
-            <article key={item.name} className={`grid min-h-0 grid-cols-[16%_23%_27%_34%] items-center gap-3 rounded-xl border ${styles.border} ${styles.header} px-3 py-2`}>
+            <article key={item.name} className={`grid min-h-0 grid-cols-[13fr_17fr_20fr_25fr_25fr] items-center gap-3 rounded-xl border ${styles.border} ${styles.header} px-3 py-2`}>
               <div className="min-w-0">
                 <h2 className="text-[17px] font-bold leading-tight text-webank-blue">{item.name}</h2>
                 <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
               </div>
-              <div>
-                <div className="flex items-center justify-start px-1">
+              <div className="min-w-0">
+                <div className="flex items-center justify-start pb-4 pt-4 pl-1">
                   {item.aiSteps.map((done, stepIndex) => (
                     <React.Fragment key={stepIndex}>
-                      <span className={`h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
+                      <div className="relative shrink-0">
+                        <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] leading-none text-slate-500">{stepLabels[stepIndex]}</span>
+                        <span className={`block h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
+                      </div>
                       {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 w-6 border-t border-slate-200" />}
                     </React.Fragment>
                   ))}
                 </div>
-                <p className={`mt-2 text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
+                <p className={`text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
               </div>
-              <p className="text-[14px] leading-snug text-slate-700">{item.role}</p>
+              <p className="min-w-0 break-words text-[14px] leading-snug text-slate-700">{item.role}</p>
               <p className="min-w-0 break-words text-[13px] leading-snug text-slate-700">{item.strategy}</p>
+              <p className="min-w-0 break-words border-l border-slate-200 pl-3 text-[12px] leading-snug text-slate-600 whitespace-pre-line">{item.status}</p>
             </article>
           );
         })}

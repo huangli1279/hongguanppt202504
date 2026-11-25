@@ -163,7 +163,7 @@ export const ContentSlide05: React.FC = () => {
                   { dataKey: '2026-09', name: '26-09', color: '#334155' },
                 ]}
                 legendOrder={['25-09', '25-12', '26-03', '26-06', '26-09']}
-                yAxisDomain={[-5, 14]}
+                yAxisDomain={[-5, 16]}
                 barSize={8}
                 showYAxis
                 yAxisTickFormatter={(v) => `${v}%`}
