@@ -71,16 +71,16 @@ export const ContentSlide41: React.FC = () => (
   <BaseContentSlide title={<>AI参与消费决策——从传统做法到 GEO 与代理式商务</>}>
     <div className="flex h-full min-h-0 flex-col gap-2">
       <div className="shrink-0 rounded-lg border-l-4 border-webank-accent bg-blue-50 px-3 py-2 text-[16px] leading-snug text-webank-blue">
-        企业的赚钱方式随 AI 介入深度而变：国内 GEO 刚起步，代理式商务尚未成型。
+        随着 AI 介入消费决策，企业触达客户的路径正从“搜索排名”转向“AI 引用”：当前靠 GEO 让产品进入 AI 推荐清单；下一步 AI 替消费者下单场景，品牌方要把商品数据改造到 AI 可直接下单。
       </div>
-      <div className="mb-1 grid grid-cols-[18%_27%_27%_28%] gap-3 px-3 text-[13px] font-semibold text-slate-500">
-        <div>名称</div>
-        <div>
+      <div className="mb-1 grid min-h-0 grid-cols-[16%_23%_27%_34%] items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] font-semibold text-slate-500">
+        <div className="min-w-0">名称</div>
+        <div className="min-w-0">
           <p>消费决策流程</p>
-          <p className="mt-1 text-[12px] font-medium text-slate-600">找商品 › 比价 › 下单 › 付款</p>
+          <p className="mt-1 text-[12px] font-medium tracking-tight text-slate-600">找商品 › 比价 › 下单 › 付款</p>
         </div>
-        <div>AI 的角色</div>
-        <div>品牌方应对策略</div>
+        <div className="min-w-0">AI 的角色</div>
+        <div className="min-w-0">品牌方应对策略</div>
       </div>
       <div className="grid min-h-0 flex-1 grid-rows-3 gap-2">
         {comparison.map((item) => {
@@ -92,18 +92,18 @@ export const ContentSlide41: React.FC = () => (
                 <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
               </div>
               <div>
-                <div className="flex items-center justify-between px-1">
+                <div className="flex items-center justify-start px-1">
                   {item.aiSteps.map((done, stepIndex) => (
                     <React.Fragment key={stepIndex}>
                       <span className={`h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
-                      {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 flex-1 border-t border-slate-200" />}
+                      {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 w-6 border-t border-slate-200" />}
                     </React.Fragment>
                   ))}
                 </div>
                 <p className={`mt-2 text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
               </div>
               <p className="text-[14px] leading-snug text-slate-700">{item.role}</p>
-              <p className="text-[14px] leading-snug text-slate-700">{item.strategy}</p>
+              <p className="min-w-0 break-words text-[13px] leading-snug text-slate-700">{item.strategy}</p>
             </article>
           );
         })}
