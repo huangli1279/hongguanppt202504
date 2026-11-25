@@ -73,44 +73,40 @@ export const ContentSlide41: React.FC = () => (
       <div className="shrink-0 rounded-lg border-l-4 border-webank-accent bg-blue-50 px-3 py-2 text-[16px] leading-snug text-webank-blue">
         企业的赚钱方式随 AI 介入深度而变：国内 GEO 刚起步，代理式商务尚未成型。
       </div>
-      <div className="min-h-0 flex-1 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card">
-        <table className="h-full w-full table-fixed border-collapse">
-          <thead>
-            <tr className="bg-slate-50 text-left text-[14px] font-semibold text-webank-blue">
-              <th className="w-[18%] border-b border-slate-200 px-3 py-2">名称</th>
-              <th className="w-[27%] border-b border-slate-200 px-3 py-2">消费决策流程</th>
-              <th className="w-[27%] border-b border-slate-200 px-3 py-2">AI 的角色</th>
-              <th className="w-[28%] border-b border-slate-200 px-3 py-2">品牌方应对策略</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comparison.map((item) => {
-              const styles = toneStyles[item.tone as keyof typeof toneStyles];
-              return (
-                <tr key={item.name} className="h-1/3 align-middle">
-                  <th className={`border-b ${styles.border} px-3 py-3 text-left`}>
-                    <p className="text-[17px] font-bold leading-tight text-webank-blue">{item.name}</p>
-                    <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
-                  </th>
-                  <td className="border-b border-slate-100 px-3 py-3">
-                    <p className="mb-2 text-[13px] font-semibold text-slate-600">找商品 › 比价 › 下单 › 付款</p>
-                    <div className="flex items-center justify-between px-1">
-                      {item.aiSteps.map((done, stepIndex) => (
-                        <React.Fragment key={stepIndex}>
-                          <span className={`h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
-                          {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 flex-1 border-t border-slate-200" />}
-                        </React.Fragment>
-                      ))}
-                    </div>
-                    <p className={`mt-2 text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
-                  </td>
-                  <td className="border-b border-slate-100 px-3 py-3 text-[14px] leading-snug text-slate-700">{item.role}</td>
-                  <td className="border-b border-slate-100 px-3 py-3 text-[14px] leading-snug text-slate-700">{item.strategy}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="mb-1 grid grid-cols-[18%_27%_27%_28%] gap-3 px-3 text-[13px] font-semibold text-slate-500">
+        <div>名称</div>
+        <div>
+          <p>消费决策流程</p>
+          <p className="mt-1 text-[12px] font-medium text-slate-600">找商品 › 比价 › 下单 › 付款</p>
+        </div>
+        <div>AI 的角色</div>
+        <div>品牌方应对策略</div>
+      </div>
+      <div className="grid min-h-0 flex-1 grid-rows-3 gap-2">
+        {comparison.map((item) => {
+          const styles = toneStyles[item.tone as keyof typeof toneStyles];
+          return (
+            <article key={item.name} className={`grid min-h-0 grid-cols-[18%_27%_27%_28%] items-center gap-3 rounded-xl border ${styles.border} ${styles.header} px-3 py-2`}>
+              <div className="min-w-0">
+                <h2 className="text-[17px] font-bold leading-tight text-webank-blue">{item.name}</h2>
+                <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
+              </div>
+              <div>
+                <div className="flex items-center justify-between px-1">
+                  {item.aiSteps.map((done, stepIndex) => (
+                    <React.Fragment key={stepIndex}>
+                      <span className={`h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
+                      {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 flex-1 border-t border-slate-200" />}
+                    </React.Fragment>
+                  ))}
+                </div>
+                <p className={`mt-2 text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
+              </div>
+              <p className="text-[14px] leading-snug text-slate-700">{item.role}</p>
+              <p className="text-[14px] leading-snug text-slate-700">{item.strategy}</p>
+            </article>
+          );
+        })}
       </div>
     </div>
   </BaseContentSlide>
