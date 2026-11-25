@@ -86,7 +86,7 @@ export const ContentSlide41: React.FC = () => (
         {comparison.map((item) => {
           const styles = toneStyles[item.tone as keyof typeof toneStyles];
           return (
-            <article key={item.name} className={`grid min-h-0 grid-cols-[18%_27%_27%_28%] items-center gap-3 rounded-xl border ${styles.border} ${styles.header} px-3 py-2`}>
+            <article key={item.name} className={`grid min-h-0 grid-cols-[16%_23%_27%_34%] items-center gap-3 rounded-xl border ${styles.border} ${styles.header} px-3 py-2`}>
               <div className="min-w-0">
                 <h2 className="text-[17px] font-bold leading-tight text-webank-blue">{item.name}</h2>
                 <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
