@@ -16,11 +16,10 @@ interface Feature {
 
 const SummaryCard: React.FC<{
   title: string;
-  tag: string;
   features: Feature[];
   source: string;
   highlight?: boolean;
-}> = ({ title, tag, features, source, highlight = false }) => (
+}> = ({ title, features, source, highlight = false }) => (
   <div
     className={`rounded-xl border border-slate-200 shadow-card p-3.5 flex flex-col gap-2 min-h-0 overflow-hidden ${
       highlight
@@ -31,9 +30,6 @@ const SummaryCard: React.FC<{
     <div className="flex items-center gap-2 shrink-0">
       <span className={`w-1 h-3.5 rounded-sm ${highlight ? 'bg-webank-accent' : 'bg-webank-blue'}`} />
       <h3 className="text-[16px] font-bold text-webank-blue leading-none">{title}</h3>
-      <span className="ml-auto rounded bg-webank-accent/10 px-1.5 py-0.5 text-[11px] font-semibold text-webank-accent leading-none">
-        {tag}
-      </span>
     </div>
     <div className="flex-1 min-h-0 flex flex-col justify-center gap-2">
       {features.map((f, i) => (
@@ -48,7 +44,7 @@ const SummaryCard: React.FC<{
         </div>
       ))}
     </div>
-    <p className="text-[10px] text-slate-400 leading-none shrink-0 truncate">来源：{source}</p>
+    <p className="text-[10px] text-slate-400 leading-tight shrink-0">来源：{source}</p>
   </div>
 );
 
@@ -57,7 +53,7 @@ const allAgeFeatures: Feature[] = [
     title: '为体验与情绪付费',
     desc: (
       <>
-        情绪经济规模2029年预计达{' '}<span className="font-semibold text-red-500">4.5 万亿</span>，演出市场近两年保持5%-7%的增速，2025年出游 65.2 亿人次（<span className="font-semibold text-red-500">+16.1%</span>）。
+        情绪经济规模2029年预计达{' '}<span className="font-semibold text-red-500">4.5 万亿</span>，演出市场近两年保持5%-7%的增速，2025年出游 65.2 亿人次（<span className="font-semibold text-red-500">+16.1%</span>）, 2026年节假日（春节、五一、十一）出游人次17.47亿人，同比增长3.1%，花费1.73万亿，同比增长3.7%。
       </>
     ),
   },
@@ -66,7 +62,7 @@ const allAgeFeatures: Feature[] = [
     desc: (
       <>
        2025年二手交易额 1.69 万亿（
-       <span className="font-semibold text-red-500">+12.4%</span>）。过去半年 <span className="font-semibold text-red-500">71.2%</span> 有“平替”行为，消费者并未压缩品质要求，转为拒绝为品牌支付溢价。
+       <span className="font-semibold text-red-500">+12.4%</span>）。26Q2调查显示，过去半年 <span className="font-semibold text-red-500">71.2%</span> 有“平替”行为，消费者并未压缩品质要求，转为拒绝为品牌支付溢价。
       </>
     ),
   },
@@ -98,7 +94,7 @@ const zgenFeatures: Feature[] = [
     ),
   },
   {
-    title: '健康支出刚性且智能化',
+    title: '健康支出智能化',
     desc: (
       <>
         <span className="font-semibold text-red-500">75%</span> 用智能设备监测健康、68.3% 向 AI 倾诉，健身月均 300–500 元
@@ -163,13 +159,11 @@ export const ContentSlide37: React.FC = () => {
         <div className="grid grid-cols-2 gap-3 shrink-0 mb-3">
           <SummaryCard
             title="全年龄段：三大共性特点"
-            tag="全年龄段"
             features={allAgeFeatures}
-            source="文旅部、国家统计局；中国演出行业协会；艾媒咨询；麦肯锡；厦大×蚂蚁"
+            source="数据范围：25–26 年。文旅部、国家统计局；中国演出行业协会；艾媒咨询；麦肯锡；厦大×蚂蚁；立信报告"
           />
           <SummaryCard
             title="Z世代：三大典型特点"
-            tag="Z世代"
             highlight
             features={zgenFeatures}
             source="Soul《2025 Z世代情绪消费报告》；麦肯锡《2026 消费者现状》；艾媒咨询"
@@ -186,7 +180,7 @@ export const ContentSlide37: React.FC = () => {
                   data={emotionMarketTrend}
                   xAxisKey="year"
                   bars={emotionBars}
-                  yAxisDomain={[0, 4]}
+                  yAxisDomain={[0, 5]}
                   showYAxis={true}
                   yAxisWidth={25}
                   yAxisTickFormatter={(value) => `${value}`}

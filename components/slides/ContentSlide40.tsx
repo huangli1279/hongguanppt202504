@@ -30,13 +30,8 @@ export const ContentSlide40: React.FC = () => (
         <BaseCard title="消费决策信息来源变化" className="h-full !py-3" animated={false}>
           <div className="space-y-1.5 text-xs leading-relaxed">
             <p>
-              消费决策高度依赖 AI 工具（仅次于视频、内容平台）。其中 Z 世代对这些渠道的消费决策依赖度高于全年龄段样本。
+              消费决策高度依赖 AI 工具（仅次于视频、内容平台），AI 影响力的跃升意味着消费者获取商品信息的方式正在从“被动接收广告”转向“主动智能咨询”。其中 Z 世代消费决策对 AI 渠道依赖度高于全年龄段样本。
             </p>
-            <p>
-              <span className="font-semibold text-webank-blue">开放网络流量自 2023 年以来下降 8%：</span>
-              产品触达用户不再主要依赖品牌官网，而越来越依赖平台算法分发。
-            </p>
-            <p className="text-[10px] text-webank-subtext">※ 各渠道信息来源占比详见下图。</p>
           </div>
         </BaseCard>
       </div>

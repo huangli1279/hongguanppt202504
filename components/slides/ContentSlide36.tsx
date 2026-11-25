@@ -19,8 +19,7 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
     tone: 'blue',
     body: (
       <>
-        二季度人均可支配收入 2.3 万元、实际+4.2%，人均消费支出 1.48 万元、实际仅{' '}
-        +2.7%，剪刀差走阔、新增收入更多转为储蓄。
+        二季度人均可支配收入+4.2%，人均消费支出仅 +2.7%，剪刀差走阔、新增收入更多转为储蓄。
       </>
     ),
   },
@@ -30,8 +29,7 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
     tone: 'black',
     body: (
       <>
-        二季度失业率 5.0%–5.2%，16–24 岁长期15%；2026 届毕业生
-        1270 万创新高，AI 5 年内或替代约7000 万岗位。
+        二季度失业率 5.0%–5.2%，2026 届毕业生 1270 万创新高。
       </>
     ),
   },
@@ -41,8 +39,7 @@ const constraints: { icon: typeof Wallet; label: string; tone: Tone; body: React
     tone: 'black',
     body: (
       <>
-        房地产占居民财富约52%，住房贷款连续13个季度负增长；房价跌超
-        15% 时，一套房家庭消费降11.9%、25.9%。
+        房地产占居民财富约52%，住房贷款连续13个季度负增长。
       </>
     ),
   },

@@ -79,10 +79,6 @@ export const ContentSlide42: React.FC = () => (
             <h3 className="text-[15px] font-bold leading-tight text-webank-blue">国务院批复《扩大消费“十五五”规划》</h3>
             <p className="mt-0.5 text-[11px] leading-tight text-webank-subtext">国函〔2026〕66号 · 2026年7月 · 明确消费作为扩大内需的战略基点</p>
           </div>
-          <div className="hidden rounded-md bg-red-50 px-2 py-1 text-center sm:block">
-            <p className="text-[10px] leading-none text-red-400">2030年社零总额</p>
-            <p className="text-[15px] font-bold leading-tight text-red-600">≈60万亿元</p>
-          </div>
         </div>
         <div className="mt-1.5 grid grid-cols-3 gap-1">
           {planFacets.map((facet) => (

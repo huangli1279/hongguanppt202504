@@ -46,4 +46,5 @@ export const emotionMarketTrend: EmotionMarketTrendPoint[] = [
   { year: '2024', size: 2.31 },
   { year: '2025', size: 2.72 },
   { year: '2026E', size: 3.17 },
+  { year: '2029E', size: 4.5 },
 ];

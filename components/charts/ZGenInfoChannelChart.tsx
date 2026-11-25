@@ -14,9 +14,9 @@ const rows: ChannelRow[] = [
   { no: '②', label: '小红书等内容分享平台', left: 59, leftDiff: 7, right: 53, rightDiff: 12 },
   { no: '③', label: '询问AI工具', left: 59, leftDiff: 2, right: 45, rightDiff: 8 },
   { no: '④', label: '淘宝/京东等电商网站', left: 45, leftDiff: -5, right: 56, rightDiff: -4 },
-  { no: '', label: '搜索引擎', left: 35, leftDiff: 0, right: 29, rightDiff: 0 },
-  { no: '', label: '询问家人朋友', left: 35, leftDiff: 0, right: 25, rightDiff: -1 },
-  { no: '', label: '商场/门店体验', left: 33, leftDiff: -2, right: 35, rightDiff: -3 },
+  { no: '⑤', label: '搜索引擎', left: 35, leftDiff: 0, right: 29, rightDiff: 0 },
+  { no: '⑥', label: '询问家人朋友', left: 35, leftDiff: 0, right: 25, rightDiff: -1 },
+  { no: '⑦', label: '商场/门店体验', left: 33, leftDiff: -2, right: 35, rightDiff: -3 },
 ];
 
 const FULL_COLOR = '#3978b9';
