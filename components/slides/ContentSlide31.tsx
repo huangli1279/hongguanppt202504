@@ -159,11 +159,13 @@ export const ContentSlide31: React.FC = () => {
               xAxisInterval={0}
               xAxisAngle={-20}
               xAxisHeight={58}
+              xAxisTickDy={10}
               xAxisTickFontSize={9}
               showLabels={true}
               labelContent={renderStructureBarLabel}
               legendOrder={['2025Q3', '2026Q3']}
               legendGap={16}
+              legendWrapperStyle={{ transform: 'translateY(-10px)' }}
             />
           </ChartContainer>
         </div>

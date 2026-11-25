@@ -102,6 +102,7 @@ export const ContentSlide33: React.FC = () => {
               labelFilter={(p) => Number(p.value) >= 0}
               xAxisAngle={-18}
               xAxisHeight={52}
+              xAxisTickDy={10}
               xAxisTickFontSize={9}
               legendOrder={['2024年', '2025年', '2026年']}
               unit="万亿元"

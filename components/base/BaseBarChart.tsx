@@ -132,6 +132,10 @@ export interface BaseBarChartProps {
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd';
   xAxisTickFormatter?: (value: any) => string;
   xAxisTickFontSize?: number;
+  /** X轴刻度文字下移像素；默认：倾斜 25、水平 10 */
+  xAxisTickDy?: number;
+  /** X轴刻度折行宽度（px），设置后长标签自动按字符折行 */
+  xAxisTickWidth?: number;
   lineShowDot?: boolean;
   lineLabelFormatter?: (value: any) => string;
   /** 自定义折线标签渲染，优先级高于 lineLabelFormatter */
@@ -150,6 +154,10 @@ export interface BaseBarChartProps {
   labelOffset?: number;
   /** 各数据列的负值偏移量，key 为 dataKey，value 为偏移量 */
   labelNegativeOffsets?: Record<string, number>;
+  /** 负值标签置于柱子底边正下方指定像素（正值向下），设置后忽略 labelNegativeOffset */
+  labelNegativeBottomGap?: number;
+  /** 单根柱标签的额外纵向偏移，key 为 `${行索引}:${dataKey}`，正值向下 */
+  labelOffsets?: Record<string, number>;
   /** 按行索引的负值偏移量，key 为行索引，value 为偏移量 */
   labelNegativeOffsetsByIndex?: Record<number, number>;
   /** 垂直分隔线（如在图表中间画一条虚线分割两组柱子） */
@@ -273,6 +281,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   labelOffset = 2,
   labelNegativePosition = 'bottom',
   labelNegativeOffset = -10,
+  labelNegativeBottomGap,
+  labelOffsets,
   labelPositiveOffset = 8,
   labelNegativeOffsets,
   labelNegativeOffsetsByIndex,
@@ -288,6 +298,8 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
   xAxisInterval = 0,
   xAxisTickFormatter,
   xAxisTickFontSize = 10,
+  xAxisTickDy,
+  xAxisTickWidth,
   lineShowDot = false,
   lineLabelFormatter,
   lineLabelContent,
@@ -424,8 +436,12 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                   dataKey={xAxisKey}
                   axisLine={showYAxis ? { stroke: uiColors.axis } : false}
                   tickLine={false}
-                  tick={{ fill: uiColors.tick, fontSize: xAxisTickFontSize }}
-                  dy={xAxisAngle ? 25 : 10}
+                  tick={{
+                    fill: uiColors.tick,
+                    fontSize: xAxisTickFontSize,
+                    ...(xAxisTickWidth ? { width: xAxisTickWidth, breakAll: true } : {}),
+                  }}
+                  dy={xAxisTickDy ?? (xAxisAngle ? 25 : 10)}
                   interval={xAxisInterval}
                   angle={xAxisAngle}
                   textAnchor={xAxisAngle && xAxisAngle < 0 ? 'end' : undefined}
@@ -571,11 +587,18 @@ export const BaseBarChart: React.FC<BaseBarChartProps> = ({
                           } else if (isNegative) {
                             const byIndexOffset = labelNegativeOffsetsByIndex?.[index ?? 0] ?? labelNegativeOffset;
                             const negOffset = labelNegativeOffsets?.[bar.dataKey] ?? byIndexOffset;
-                            labelY = labelNegativePosition === 'bottom' ? numY - numHeight + negOffset : numY;
+                            if (labelNegativeBottomGap !== undefined) {
+                              // 负值柱 rect 的 y 可能带负高度：取两端的下边缘再加固定间距
+                              const bottomEdge = Math.max(numY, numY + numHeight);
+                              labelY = bottomEdge + Math.abs(labelNegativeBottomGap);
+                            } else {
+                              labelY = labelNegativePosition === 'bottom' ? numY - numHeight + negOffset : numY;
+                            }
                           } else {
                             labelY = numY - labelPositiveOffset;
                           }
                         }
+                        if (labelOffsets) labelY += labelOffsets[`${index}:${bar.dataKey}`] ?? 0;
                         return (
                           <text
                             x={labelX}

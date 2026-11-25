@@ -172,7 +172,7 @@ export const ContentSlide05: React.FC = () => {
                   if (dataKey !== '2026-09' || value == null) return null;
                   if (![9.8, 12.9, 10.2, 13.6, 14.3].includes(Number(value))) return null;
                   const labelX = Number(x) + Number(width) / 2;
-                  const labelY = Number(y) - (Number(value) === 14.3 ? 4 : Number(value) === 12.9 ? 15 : Number(value) === 9.8 ? 14 : 10);
+                  const labelY = Number(y) - (Number(value) === 14.3 ? 3 : Number(value) === 12.9 ? 17 : Number(value) === 9.8 ? 14 : 10);
                   return (
                     <text
                       x={labelX}

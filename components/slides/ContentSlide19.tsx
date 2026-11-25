@@ -135,9 +135,9 @@ export const ContentSlide19: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['一线新建', '二线新建', '一线二手', '二线二手']}
-              legendPaddingBottom={4.5}
               xAxisTicks={['2024-06', '2024-09', '2024-12', '2025-03', '2025-06', '2025-09', '2025-12', '2026-03', '2026-06', '2026-09']}
               highlightPeriods={['2026-09']}
+              compact={true}
             />
           </ChartContainer>
         </div>

@@ -59,6 +59,7 @@ export const SemiExportLineChart: React.FC = () => (
         strokeWidth: 2.5,
         unit: '百万美元',
         labelDY: -8,
+        pointOffsets: { '2026-10': 3 },
       },
     ]}
     yAxisDomain={[0, 70000]}
@@ -67,6 +68,7 @@ export const SemiExportLineChart: React.FC = () => (
     showReferenceLine
     referenceLineY={0}
     legendOrder={['韩国：半导体出口额']}
+    legendPaddingBottom={3}
     xAxisTicks={[
       '2024-12',
       '2025-03',

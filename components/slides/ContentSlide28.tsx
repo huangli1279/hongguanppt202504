@@ -8,9 +8,9 @@ import { formatThousands } from '@/utils/numberFormat';
 
 export const ContentSlide28: React.FC = () => {
   const lines: LineConfig[] = [
-    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: -18 },
-    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: 22 },
-    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 4 },
+    { dataKey: 'taxRevenue', name: '税收收入', strokeWidth: 2, labelDY: 1 },
+    { dataKey: 'nonTaxRevenue', name: '非税收入', strokeWidth: 2, labelDY: 3 },
+    { dataKey: 'total', name: '一般公共预算收入', strokeWidth: 2.5, labelDY: 5 },
   ];
 
   const bars: BarConfig[] = [
@@ -56,7 +56,11 @@ export const ContentSlide28: React.FC = () => {
               showReferenceLine={true}
               referenceLineY={0}
               legendOrder={['一般公共预算收入', '税收收入', '非税收入']}
+              legendPaddingBottom={3}
               xAxisTickCount={8}
+              xAxisAngle={-20}
+              xAxisDy={10}
+              xAxisHeight={5}
             />
           </ChartContainer>
 
@@ -84,11 +88,11 @@ export const ContentSlide28: React.FC = () => {
                 const isNegative = Number(val) < 0;
                 return (
                   <text
-                    x={(props.x ?? 0) + 20}
+                    x={(props.x ?? 0) + 14}
                     y={props.y}
                     textAnchor="start"
                     dominantBaseline="middle"
-                    fill={isNegative ? '#16a34a' : props.fill}
+                    fill={isNegative ? '#16a34a' : '#dc2626'}
                     fontSize={9}
                     fontWeight={600}
                   >
@@ -98,8 +102,11 @@ export const ContentSlide28: React.FC = () => {
               }}
               legendOrder={['总额', '增速']}
               barSize={26}
-              xAxisAngle={-45}
-              xAxisHeight={70}
+              xAxisInterval={0}
+              xAxisAngle={-20}
+              xAxisHeight={35}
+              xAxisTickDy={10} 
+              xAxisTickFontSize={9}
             />
           </ChartContainer>
         </div>

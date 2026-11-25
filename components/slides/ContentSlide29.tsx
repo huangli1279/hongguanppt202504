@@ -9,8 +9,8 @@ import { formatThousands } from '@/utils/numberFormat';
 
 export const ContentSlide29: React.FC = () => {
   const trendLines: LineConfig[] = [
-    { dataKey: 'y2025', name: '2025年', color: '#93a3b8', strokeWidth: 2, labelDY: -10, pointDXOffsets: { '12月': -8 } },
-    { dataKey: 'y2026', name: '2026年', color: chartColors.primary, strokeWidth: 2.5, labelDY: 16 },
+    { dataKey: 'y2025', name: '2025年', color: '#93a3b8', strokeWidth: 2, labelDY: 3 },
+    { dataKey: 'y2026', name: '2026年', color: chartColors.primary, strokeWidth: 2.5, labelDY: 3 },
   ];
 
   const expBars: BarConfig[] = [
@@ -25,11 +25,11 @@ export const ContentSlide29: React.FC = () => {
     const isNegative = value < 0;
     return (
       <text
-        x={x + 8}
-        y={y - 10}
+        x={x + 10}
+        y={y}
         textAnchor="start"
         dominantBaseline="middle"
-        fill={isNegative ? '#16a34a' : '#E8913A'}
+        fill={isNegative ? '#16a34a' : '#dc2626'}
         fontSize={9}
         fontWeight={600}
       >
@@ -71,6 +71,10 @@ export const ContentSlide29: React.FC = () => {
               showReferenceLine={false}
               xAxisTicks={['2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']}
               unit="%"
+              legendPaddingBottom={3}
+              xAxisAngle={-20}
+              xAxisDy={10}
+              xAxisHeight={5}
             />
           </ChartContainer>
 
@@ -95,8 +99,11 @@ export const ContentSlide29: React.FC = () => {
               lineLabelContent={lineLabelContent}
               legendOrder={['总额', '增速']}
               barSize={20}
-              xAxisAngle={-45}
-              xAxisHeight={70}
+              xAxisInterval={0}
+              xAxisAngle={-20}
+              xAxisHeight={35}
+              xAxisTickDy={10}
+              xAxisTickFontSize={9}
             />
           </ChartContainer>
         </div>
