@@ -16,10 +16,11 @@ interface Feature {
 
 const SummaryCard: React.FC<{
   title: string;
+  subtitle?: string;
   features: Feature[];
   source: string;
   highlight?: boolean;
-}> = ({ title, features, source, highlight = false }) => (
+}> = ({ title, subtitle, features, source, highlight = false }) => (
   <div
     className={`rounded-xl border border-slate-200 shadow-card p-3.5 flex flex-col gap-2 min-h-0 overflow-hidden ${
       highlight
@@ -27,9 +28,14 @@ const SummaryCard: React.FC<{
         : 'bg-white'
     }`}
   >
-    <div className="flex items-center gap-2 shrink-0">
-      <span className={`w-1 h-3.5 rounded-sm ${highlight ? 'bg-webank-accent' : 'bg-webank-blue'}`} />
-      <h3 className="text-[16px] font-bold text-webank-blue leading-none">{title}</h3>
+    <div className="flex flex-col gap-1 shrink-0">
+      <div className="flex items-center gap-2">
+        <span className={`w-1 h-3.5 rounded-sm ${highlight ? 'bg-webank-accent' : 'bg-webank-blue'}`} />
+        <h3 className="text-[16px] font-bold text-webank-blue leading-none">{title}</h3>
+      </div>
+      {subtitle && (
+        <p className="pl-3 text-[10px] leading-snug text-slate-500">{subtitle}</p>
+      )}
     </div>
     <div className="flex-1 min-h-0 flex flex-col justify-center gap-2">
       {features.map((f, i) => (
@@ -164,6 +170,7 @@ export const ContentSlide37: React.FC = () => {
           />
           <SummaryCard
             title="Z世代：三大典型特点"
+            subtitle="（Z 世代（Generation Z）一般指 1995 年至 2009 年出生的人。）"
             highlight
             features={zgenFeatures}
             source="Soul《2025 Z世代情绪消费报告》；麦肯锡《2026 消费者现状》；艾媒咨询"
