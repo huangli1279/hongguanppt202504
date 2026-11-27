@@ -44,10 +44,10 @@ const ContentSlide33 = lazyNamed(() => import('./components/slides/ContentSlide3
 const ContentSlide34 = lazyNamed(() => import('./components/slides/ContentSlide34'), 'ContentSlide34');
 const ContentSlide36 = lazyNamed(() => import('./components/slides/ContentSlide36'), 'ContentSlide36');
 const ContentSlide37 = lazyNamed(() => import('./components/slides/ContentSlide37'), 'ContentSlide37');
+const ContentSlide38 = lazyNamed(() => import('./components/slides/ContentSlide38'), 'ContentSlide38');
+const ContentSlide39 = lazyNamed(() => import('./components/slides/ContentSlide39'), 'ContentSlide39');
 const ContentSlide40 = lazyNamed(() => import('./components/slides/ContentSlide40'), 'ContentSlide40');
 const ContentSlide41 = lazyNamed(() => import('./components/slides/ContentSlide41'), 'ContentSlide41');
-const ContentSlide42 = lazyNamed(() => import('./components/slides/ContentSlide42'), 'ContentSlide42');
-const ContentSlide43 = lazyNamed(() => import('./components/slides/ContentSlide43'), 'ContentSlide43');
 
 const App: React.FC = () => {
   const [scale, setScale] = useState(1);
@@ -194,10 +194,10 @@ const App: React.FC = () => {
       );
       case 36: return <ContentSlide36 />;
       case 37: return <ContentSlide37 />;
-      case 38: return <ContentSlide40 />;
-      case 39: return <ContentSlide41 />;
-      case 40: return <ContentSlide42 />;
-      case 41: return <ContentSlide43 />;
+      case 38: return <ContentSlide38 />;
+      case 39: return <ContentSlide39 />;
+      case 40: return <ContentSlide40 />;
+      case 41: return <ContentSlide41 />;
       case 42: return <ThankYouSlide />;
       default: return <CoverSlide />;
     }

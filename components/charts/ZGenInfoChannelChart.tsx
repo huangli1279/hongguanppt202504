@@ -10,13 +10,13 @@ interface ChannelRow {
 }
 
 const rows: ChannelRow[] = [
-  { no: '①', label: '直播间/抖音、快手等视频网站', left: 61, leftDiff: 7, right: 57, rightDiff: 7 },
-  { no: '②', label: '小红书等内容分享平台', left: 59, leftDiff: 7, right: 53, rightDiff: 12 },
-  { no: '③', label: '询问AI工具', left: 59, leftDiff: 2, right: 45, rightDiff: 8 },
-  { no: '④', label: '淘宝/京东等电商网站', left: 45, leftDiff: -5, right: 56, rightDiff: -4 },
-  { no: '⑤', label: '搜索引擎', left: 35, leftDiff: 0, right: 29, rightDiff: 0 },
-  { no: '⑥', label: '询问家人朋友', left: 35, leftDiff: 0, right: 25, rightDiff: -1 },
-  { no: '⑦', label: '商场/门店体验', left: 33, leftDiff: -2, right: 35, rightDiff: -3 },
+  { no: '1', label: '直播间/抖音、快手等视频网站', left: 61, leftDiff: 7, right: 57, rightDiff: 7 },
+  { no: '2', label: '小红书等内容分享平台', left: 59, leftDiff: 7, right: 53, rightDiff: 12 },
+  { no: '3', label: '询问AI工具', left: 59, leftDiff: 2, right: 45, rightDiff: 8 },
+  { no: '4', label: '淘宝/京东等电商网站', left: 45, leftDiff: -5, right: 56, rightDiff: -4 },
+  { no: '5', label: '搜索引擎', left: 35, leftDiff: 0, right: 29, rightDiff: 0 },
+  { no: '6', label: '询问家人朋友', left: 35, leftDiff: 0, right: 25, rightDiff: -1 },
+  { no: '7', label: '商场/门店体验', left: 33, leftDiff: -2, right: 35, rightDiff: -3 },
 ];
 
 const FULL_COLOR = '#3978b9';
@@ -78,7 +78,7 @@ export const ZGenInfoChannelChart: React.FC = () => (
 
     <div className="mt-1 flex min-h-0 flex-1 flex-col justify-around">
       {rows.map((row) => {
-        const highlighted = row.no === '③';
+        const highlighted = row.no === '3';
         return (
           <div
             key={row.label}

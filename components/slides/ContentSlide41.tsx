@@ -1,120 +1,135 @@
 import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  Building2,
+  Coins,
+  Factory,
+  Landmark,
+  ShieldAlert,
+  ShoppingCart,
+  TrendingUp,
+} from 'lucide-react';
 import { BaseContentSlide } from '../layouts/BaseContentSlide';
 
-const comparison = [
-  {
-    name: '传统做法',
-    subtitle: 'SEO / SEM · 人主导',
-    tone: 'slate',
-    aiSteps: [false, false, false, false],
-    involvementLabel: '四步均由人完成',
-    role: '人自己找信息、比价并购买，AI 不参与。',
-    revenue: '搜索广告',
-    revenueDetail: '通过 SEO / SEM 抢占搜索流量',
-    domestic: '百度推广、淘宝 / 天猫、京东',
-    global: 'Google Ads、Amazon',
-    strategy: '买流量：投放 SEM/SEO 广告，让产品在搜索结果里排在前面',
-    status: '存量基本盘，仍是电商营销最大预算池，正被 AI 入口持续分流。',
-  },
-  {
-    name: 'GEO 生成式引擎优化',
-    subtitle: 'AI 做推荐 · 人来决策',
-    tone: 'blue',
-    aiSteps: [true, true, false, false],
-    involvementLabel: 'AI 参与找商品与比价，人完成下单付款',
-    role: 'AI 整理清单、引用品牌；消费者仍自行选择和下单。',
-    revenue: 'AI 引用与推荐',
-    revenueDetail: 'GEO 服务、按效果付费',
-    domestic: '智推时代、蓝色光标、新榜智汇、迈富时',
-    global: 'Profound、Scrum AI；ChatGPT / Perplexity',
-    strategy: '做 GEO：改造产品内容与信源，让产品进入 AI 的推荐清单（按效果向服务商付费）',
-    status: '国内外已产业化，服务商集中加码；效果口径尚未统一。',
-  },
-  {
-    name: 'Agentic Commerce',
-    subtitle: 'AI 代执行 · 代理式商务',
-    tone: 'indigo',
-    aiSteps: [true, true, true, true],
-    involvementLabel: 'AI 执行交易全流程',
-    role: 'AI 比价、叠券、下单和付款，用户授权后由代理完成交易。',
-    revenue: '交易佣金与抽成',
-    revenueDetail: '被代理优先路由；费率仍在演进',
-    domestic: '淘宝 / 京东 AI 导购、美团（探索中）',
-    global: 'Shopify、Amazon、Walmart、Google、OpenAI、Visa',
-    strategy: '接协议：把价格、库存、评价数据接口化，让 AI 能替客户下单（按交易分佣/付通道费）',
-    status: '国外协议层已立，规模处于早期。\n国内协议落地仍处早期：国内超级 App 已跑通闭环（如千问×淘宝×支付宝），跨商户开放协议缺位。',
-  },
-];
+interface MetricProps {
+  value: string;
+  label: string;
+  direction: 'up' | 'down';
+}
 
-const stepLabels = ['找商品', '比价', '下单', '付款'];
+const Metric: React.FC<MetricProps> = ({ value, label, direction }) => (
+  <div className="flex min-w-0 items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2.5 shadow-card">
+    <div className="min-w-0">
+      <strong className="block text-[21px] font-bold leading-none tabular-nums text-slate-800">{value}</strong>
+      <span className="mt-1 block text-[10px] leading-none text-webank-subtext">{label}</span>
+    </div>
+    {direction === 'up' ? (
+      <ArrowUpRight size={16} className="text-emerald-500" strokeWidth={2.5} />
+    ) : (
+      <ArrowDownRight size={16} className="text-rose-400" strokeWidth={2.5} />
+    )}
+  </div>
+);
+
+interface SummaryCardProps {
+  icon: LucideIcon;
+  title: string;
+  children: React.ReactNode;
+  tone?: 'blue' | 'amber' | 'green' | 'red';
+}
 
 const toneStyles = {
-  slate: {
-    border: 'border-slate-200',
-    header: 'bg-slate-50',
-    badge: 'bg-slate-200 text-slate-700',
-    accent: 'text-slate-700',
-    revenue: 'bg-slate-100 text-slate-800',
-  },
-  blue: {
-    border: 'border-blue-200',
-    header: 'bg-blue-50',
-    badge: 'bg-blue-100 text-blue-700',
-    accent: 'text-blue-700',
-    revenue: 'bg-blue-100 text-blue-900',
-  },
-  indigo: {
-    border: 'border-indigo-300',
-    header: 'bg-indigo-50',
-    badge: 'bg-indigo-600 text-white',
-    accent: 'text-indigo-700',
-    revenue: 'bg-gradient-to-r from-blue-700 to-indigo-700 text-white',
-  },
-} as const;
+  blue: { icon: 'bg-blue-50 text-webank-blue', accent: 'text-webank-blue' },
+  amber: { icon: 'bg-amber-50 text-amber-600', accent: 'text-amber-600' },
+  green: { icon: 'bg-emerald-50 text-emerald-600', accent: 'text-emerald-600' },
+  red: { icon: 'bg-red-50 text-red-600', accent: 'text-red-600' },
+};
 
-export const ContentSlide41: React.FC = () => (
-  <BaseContentSlide title={<>AI参与消费决策——从传统做法到 GEO 与代理式商务</>}>
-    <div className="flex h-full min-h-0 flex-col gap-2">
-      <div className="shrink-0 rounded-lg border-l-4 border-webank-accent bg-blue-50 px-3 py-2 text-[16px] leading-snug text-webank-blue">
-        AI 正接管消费决策，品牌触达客户的方式从“抢搜索排名”转向“被 AI 引用、被 AI 调用”：企业的应对策略也从“买流量”转向“做 GEO、接协议”。
+const SummaryCard: React.FC<SummaryCardProps> = ({ icon: Icon, title, children, tone = 'blue' }) => {
+  const styles = toneStyles[tone];
+
+  return (
+    <article className="flex min-h-0 flex-col rounded-lg border border-slate-200 bg-white shadow-card animate-fade-in-up fill-mode-forwards opacity-0">
+      <div className="flex items-center gap-2 border-b border-slate-100 px-3.5 py-2">
+        <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md ${styles.icon}`}>
+          <Icon size={17} strokeWidth={2.2} />
+        </div>
+        <h2 className="text-[13.5px] font-bold leading-tight text-webank-blue">{title}</h2>
       </div>
-      <div className="mb-1 grid min-h-0 grid-cols-[13fr_17fr_20fr_25fr_25fr] items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] font-semibold text-slate-500">
-        <div className="min-w-0">名称</div>
-        <div className="min-w-0">消费决策流程</div>
-        <div className="min-w-0">AI 的角色</div>
-        <div className="min-w-0">品牌方应对策略</div>
-        <div className="min-w-0 border-l border-slate-200 pl-3">现状（2026）</div>
-      </div>
-      <div className="grid min-h-0 flex-1 grid-rows-3 gap-2">
-        {comparison.map((item) => {
-          const styles = toneStyles[item.tone as keyof typeof toneStyles];
-          return (
-            <article key={item.name} className={`grid min-h-0 grid-cols-[13fr_17fr_20fr_25fr_25fr] items-center gap-3 rounded-xl border ${styles.border} ${styles.header} px-3 py-2`}>
-              <div className="min-w-0">
-                <h2 className="text-[17px] font-bold leading-tight text-webank-blue">{item.name}</h2>
-                <p className="mt-1 text-[12px] leading-tight text-slate-500">{item.subtitle}</p>
-              </div>
-              <div className="min-w-0">
-                <div className="flex items-center justify-start pb-4 pt-4 pl-1">
-                  {item.aiSteps.map((done, stepIndex) => (
-                    <React.Fragment key={stepIndex}>
-                      <div className="relative shrink-0">
-                        <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] leading-none text-slate-500">{stepLabels[stepIndex]}</span>
-                        <span className={`block h-4 w-4 rounded-full border ${done ? 'border-webank-accent bg-webank-accent' : 'border-slate-300 bg-white'}`} />
-                      </div>
-                      {stepIndex < item.aiSteps.length - 1 && <span className="mx-1 w-6 border-t border-slate-200" />}
-                    </React.Fragment>
-                  ))}
-                </div>
-                <p className={`text-[12px] font-semibold leading-snug ${styles.accent}`}>{item.involvementLabel}</p>
-              </div>
-              <p className="min-w-0 break-words text-[14px] leading-snug text-slate-700">{item.role}</p>
-              <p className="min-w-0 break-words text-[13px] leading-snug text-slate-700">{item.strategy}</p>
-              <p className="min-w-0 break-words border-l border-slate-200 pl-3 text-[12px] leading-snug text-slate-600 whitespace-pre-line">{item.status}</p>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </BaseContentSlide>
+      <div className="flex-1 space-y-2 px-3.5 py-2.5 text-[12px] leading-relaxed text-slate-700">{children}</div>
+    </article>
+  );
+};
+
+const Point: React.FC<{ label: string; tone?: keyof typeof toneStyles; children: React.ReactNode }> = ({ label, tone = 'blue', children }) => (
+  <p>
+    <strong className={toneStyles[tone].accent}>{label}：</strong>{children}
+  </p>
 );
+
+export const ContentSlide41: React.FC = () => {
+  return (
+    <BaseContentSlide
+      title={
+        <>
+          2026年三季度宏观经济总结：增长韧性延续，
+          <span className="text-webank-accent">结构分化加深、内需修复偏慢</span>
+        </>
+      }
+      subtitle="2026年三季度宏观经济报告"
+      headerClassName="!mb-3"
+      className="!p-8 sm:!p-9"
+    >
+      <div className="flex h-full min-h-0 flex-col gap-3">
+        <div className="grid flex-shrink-0 grid-cols-9 gap-1.5">
+          <Metric value="4.5%" label="Q3 GDP" direction="up" />
+          <Metric value="50.1%" label="9月制造业PMI" direction="up" />
+          <Metric value="+5.0%" label="9月PPI" direction="up" />
+          <Metric value="+0.9%" label="9月CPI" direction="up" />
+          <Metric value="-7.2%" label="固投累计" direction="down" />
+          <Metric value="+1.1%" label="9月社零" direction="up" />
+          <Metric value="+36.3%" label="9月出口" direction="up" />
+          <Metric value="+31.0%" label="9月进口" direction="up" />
+          <Metric value="-4.0%" label="M1-M2剪刀差" direction="down" />
+        </div>
+
+        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-2">
+          <SummaryCard icon={TrendingUp} title="增长：增速回升、平减回正">
+            <Point label="增速回升">三季度GDP同比<strong>4.5%</strong>，较二季度回升0.2个百分点；前三季度累计<strong>4.6%</strong>，处于全年目标区间。</Point>
+            <Point label="价格改善" tone="green">名义增速<strong>6%</strong>，GDP平减指数<strong>1.44%</strong>连续两季回正，受AI产业链与能源价格支撑。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Factory} title="生产：工业稳增、新旧动能分化" tone="green">
+            <Point label="工业平稳">前三季度规上工业增<strong>5.3%</strong>，制造业<strong>5.7%</strong>；Q3产能利用率<strong>73.1%</strong>，环比企稳，同比低1.5个百分点。</Point>
+            <Point label="动能分化" tone="green">高技术制造业Q3增<strong>16.2%</strong>，计算机通信产能利用率<strong>80.3%</strong>；汽车<strong>66.2%</strong>，采矿业受煤炭复产拖累。</Point>
+          </SummaryCard>
+          <SummaryCard icon={ShoppingCart} title="消费：总量偏弱、服务与体验较强" tone="amber">
+            <Point label="总量修复偏慢" tone="amber">前三季度社零累计<strong>1.1%</strong>；9月回升<strong>1.1%</strong>，剔汽车后<strong>3.9%</strong>，内需受收入与就业信心约束。</Point>
+            <Point label="结构分化" tone="green">服务零售<strong>5.0%</strong>快于商品<strong>1.0%</strong>；旅游、文体等体验消费强，汽车零售降<strong>14.9%</strong>。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Building2} title="投资：降幅扩大，地产拖累突出" tone="amber">
+            <Point label="固投偏弱" tone="amber">前三季度固投<strong>-7.2%</strong>，降幅扩大；9月环比转正，10月再度转弱。</Point>
+            <Point label="地产与民间承压" tone="amber">地产开发<strong>-20.6%</strong>，民间投资<strong>-10.4%</strong>；专项债与政策工具加力，资金转化有时滞。</Point>
+          </SummaryCard>
+          <SummaryCard icon={ArrowUpRight} title="外贸：出口高增，AI链贡献突出" tone="blue">
+            <Point label="出口韧性强">前三季度出口增<strong>21.3%</strong>，9月<strong>36.3%</strong>；AI链出口增<strong>115%</strong>，拉动整体增速约13个百分点。</Point>
+            <Point label="进口结构分化" tone="amber">9月进口增<strong>31.0%</strong>，AI设备与芯片金额高增，但量改善有限，传统制造链弱。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Landmark} title="财政：支出进度偏慢，政策加力" tone="amber">
+            <Point label="支出进度偏慢" tone="amber">1—9月一般公共预算支出<strong>1.0%</strong>，进度<strong>70.0%</strong>，低收入进度约8个百分点，未达年初目标。</Point>
+            <Point label="结构与工具">民生、科创支出托底，基建降幅收窄；专项债发行提速，8,000亿新型政策性金融工具落地，稳投资持续发力。</Point>
+          </SummaryCard>
+          <SummaryCard icon={Coins} title="金融：社融回落，居民信贷偏弱" tone="blue">
+            <Point label="信用扩张放缓">Q3新增社融<strong>6.11万亿元</strong>，少增7,300亿元，存量增速<strong>7.1%</strong>；融资由政府债与政策工具支撑。</Point>
+            <Point label="居民端仍在收缩" tone="amber">Q3居民贷款降<strong>6,669亿元</strong>，9月近零增长；居民存款增<strong>1.81万亿元</strong>，非银存款季末回流。</Point>
+          </SummaryCard>
+          <SummaryCard icon={ShieldAlert} title="风险：内需不足与外部扰动并存" tone="red">
+            <Point label="内需修复不稳" tone="red">居民收入增<strong>4.4%</strong>，消费支出<strong>2.7%</strong>；地产调整、信心低位与加杠杆意愿弱相互影响。</Point>
+            <Point label="外部与价格风险" tone="red">出口高增含基数与抢出口因素，AI链价格贡献大；输入性通胀推升PPI，生产与生活资料剪刀差扩大。</Point>
+          </SummaryCard>
+        </div>
+      </div>
+    </BaseContentSlide>
+  );
+};
